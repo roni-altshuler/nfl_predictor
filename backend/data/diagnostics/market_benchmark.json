@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-08-16T16:11:08+00:00",
+  "corpus_games": 6492,
+  "scored_games": 5694,
+  "first_scored_season": 2005,
+  "warmup_seasons": 3,
+  "devig_method": "shin",
+  "refit_cadence": "weekly, expanding window",
+  "priced_games": 3820,
+  "unpriced_games": 1874,
+  "market_source_counts": {
+    "spread": 649,
+    "moneyline": 3171
+  },
+  "base_rate": 0.55968,
+  "scorecards": {
+    "margin_model": {
+      "n": 5680,
+      "brier": 0.21986,
+      "log_loss": 0.62911,
+      "accuracy": 0.64085,
+      "ece": 0.02093,
+      "ties_excluded": 14,
+      "brier_ties_as_half": 0.21939
+    },
+    "elo_only": {
+      "n": 5680,
+      "brier": 0.21978,
+      "log_loss": 0.62903,
+      "accuracy": 0.64419,
+      "ece": 0.01202,
+      "ties_excluded": 14,
+      "brier_ties_as_half": 0.21933
+    },
+    "constant_base_rate": {
+      "n": 5680,
+      "brier": 0.24644,
+      "log_loss": 0.68601,
+      "accuracy": 0.55968,
+      "ece": 0.0,
+      "ties_excluded": 14,
+      "brier_ties_as_half": 0.24584
+    },
+    "market": {
+      "n": 3807,
+      "brier": 0.2117,
+      "log_loss": 0.6109,
+      "accuracy": 0.66404,
+      "ece": 0.01274,
+      "ties_excluded": 13,
+      "brier_ties_as_half": 0.21107
+    }
+  },
+  "paired_vs_market": {
+    "margin_model": {
+      "mean": 0.00887968417575227,
+      "lo": 0.005824129036295878,
+      "hi": 0.011998171093819244,
+      "p_better": 0.0
+    },
+    "elo_only": {
+      "mean": 0.008731241664884707,
+      "lo": 0.005614707993281908,
+      "hi": 0.011937743076459974,
+      "p_better": 0.0
+    },
+    "constant_base_rate": {
+      "mean": 0.03517247873073092,
+      "lo": 0.030095472401462854,
+      "hi": 0.04016309691937621,
+      "p_better": 0.0
+    }
+  },
+  "note": "Ties are excluded from every headline figure and counted in ties_excluded; brier_ties_as_half scores the same forecasts over all games with a tie as y=0.5. Model probabilities are conditioned on the game being decided before meeting a moneyline, because a moneyline voids on a tie."
+}
