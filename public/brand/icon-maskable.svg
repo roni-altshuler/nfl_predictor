@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-label="Gridiron">
+  <title>Gridiron</title>
+  <defs>
+    <linearGradient id="gi-mask-grad" x1="64" y1="64" x2="448" y2="448" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d08a35"/>
+      <stop offset="0.55" stop-color="#a05c22"/>
+      <stop offset="1" stop-color="#6b3d18"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Full-bleed fill so the platform mask (circle / squircle / rounded
+       square) never clips a transparent corner. -->
+  <rect width="512" height="512" fill="url(#gi-mask-grad)"/>
+
+  <!-- The same glyph as favicon.svg, scaled into the maskable safe zone.
+       At scale 7.6 the ball's long axis is ~327px of 512 — comfortably
+       inside the central 80% (410px) that every platform mask preserves.
+       A larger, better-filling mark would look right in a preview and get
+       its points shaved off on a circular mask. -->
+  <g transform="translate(256 256) scale(7.6) rotate(-30) translate(-24 -24)">
+    <path d="M2.5 24C9 11 39 11 45.5 24C39 37 9 37 2.5 24Z"
+          fill="#2a1608" stroke="#1a0d04" stroke-width="1.2" stroke-linejoin="round"/>
+    <g stroke="#f7efe1" stroke-linecap="round">
+      <path d="M14.5 24h19" stroke-width="2.3"/>
+      <g stroke-width="2.1">
+        <path d="M19.5 21.5v5"/>
+        <path d="M24 21.2v5.6"/>
+        <path d="M28.5 21.5v5"/>
+      </g>
+    </g>
+  </g>
+</svg>

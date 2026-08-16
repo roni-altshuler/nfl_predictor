@@ -1,11 +1,84 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
 import './globals.css'
 
+/**
+ * The absolute origin, which `metadataBase` needs so `og:image` resolves to
+ * a full URL — a relative one is silently ignored by every social scraper.
+ *
+ * Resolved rather than hardcoded, because a guessed hostname that does not
+ * match the real deployment produces a card that 404s and a preview that
+ * renders blank, with nothing failing at build time. Vercel injects
+ * `VERCEL_PROJECT_PRODUCTION_URL` (the stable production domain, not the
+ * per-deploy one) at build, so the correct value is available without anyone
+ * having to configure it. `NEXT_PUBLIC_SITE_URL` overrides for a custom
+ * domain.
+ */
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : 'http://localhost:3000')
+
 export const metadata: Metadata = {
-  title: 'Gridiron — NFL forecast',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'Gridiron — Calibrated NFL forecasting',
+    template: '%s · Gridiron',
+  },
   description:
-    'NFL game and season probabilities, scored against the closing line.',
+    'Calibrated NFL game and season forecasting, scored against the closing line over a 6,499-game corpus.',
+  manifest: '/manifest.json',
+  appleWebApp: { capable: true, statusBarStyle: 'default', title: 'Gridiron' },
+  // Chrome probes /favicon.ico before it reads these tags, so the .ico is
+  // generated as well as the SVG — without it every cold load takes a 404.
+  //
+  // The SVG is listed FIRST because a browser that understands it should
+  // prefer it: it is 1.5KB, resolution-independent, and stays crisp on a
+  // retina tab strip where the 32px PNG does not.
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+  },
+  openGraph: {
+    type: 'website',
+    siteName: 'Gridiron',
+    title: 'Gridiron — Calibrated NFL forecasting',
+    description:
+      'Calibrated NFL game and season forecasting, scored against the closing line.',
+    url: siteUrl,
+    images: [
+      {
+        url: '/brand/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Gridiron — calibrated NFL forecasting',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gridiron — Calibrated NFL forecasting',
+    description:
+      'Calibrated NFL game and season forecasting, scored against the closing line.',
+    images: ['/brand/og-default.png'],
+  },
+}
+
+export const viewport: Viewport = {
+  // The leather of the mark, so the mobile browser chrome matches the tab
+  // icon rather than the page background. Black would disappear into the
+  // canvas and leave the status bar looking detached.
+  themeColor: '#a05c22',
+  width: 'device-width',
+  initialScale: 1,
 }
 
 /**

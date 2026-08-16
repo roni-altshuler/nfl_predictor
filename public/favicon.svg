@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" role="img" aria-label="Gridiron">
+  <title>Gridiron</title>
+  <defs>
+    <linearGradient id="gi-grad" x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d08a35"/>
+      <stop offset="0.55" stop-color="#a05c22"/>
+      <stop offset="1" stop-color="#6b3d18"/>
+    </linearGradient>
+    <linearGradient id="gi-stroke" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e2882f"/>
+      <stop offset="1" stop-color="#8a4e20"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded plate in the ball's own leather, following the sibling NBA
+       mark's logic: the plate IS the ball's colour, so the glyph does not
+       have to spend contrast separating one from the other.
+
+       Gradient stops are the design system's own sequential ramp, brightened
+       one step. A double hyphen cannot appear inside an XML comment, so the
+       CSS variables are named here without their leading dashes:
+       viz-seq-2 through viz-seq-4. -->
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#gi-grad)"/>
+
+  <!-- The ball is ROTATED onto the diagonal, which is not decoration.
+       A square's diagonal is 41% longer than its side, so a tilted football
+       is meaningfully larger than a horizontal one inside the same plate —
+       and size is the entire problem at 16px. The first version sat
+       horizontally, left a band of empty plate above and below, and read as
+       a slot rather than a ball. -->
+  <g transform="rotate(-30 24 24)">
+    <!-- Two cubics meeting at hard points. An ellipse is not a football:
+         the POINTS are what separate it from every other ball at a glance,
+         so they stay corners rather than being smoothed. -->
+    <path d="M2.5 24C9 11 39 11 45.5 24C39 37 9 37 2.5 24Z"
+          fill="#2a1608" stroke="#1a0d04" stroke-width="1.2" stroke-linejoin="round"/>
+
+    <!-- Seam and laces, in cream.
+
+         The PROPORTIONS are the whole battle here. Laces are short ticks on
+         a long seam; make the ticks tall relative to the seam and the group
+         stops reading as laces and starts reading as a hash or an asterisk,
+         which is exactly what the previous version did — two crossbars at
+         8.8 units against a 16-unit seam drew a "#".
+
+         Ticks are now a third of their old height and there are three of
+         them, which is close enough to a real ball's four and survives the
+         downscale. The seam is longer, so the silhouette's long axis stays
+         the dominant line.
+
+         At 16px the laces are two or three device pixels and blur into a
+         bright dash. That is fine and is the design: the mark is carried at
+         16px by the pointed-oval SILHOUETTE, which is unmistakably a
+         football on its own, and the laces are detail that resolves as the
+         icon gets larger. -->
+    <g stroke="#f7efe1" stroke-linecap="round">
+      <path d="M14.5 24h19" stroke-width="2.3"/>
+      <g stroke-width="2.1">
+        <path d="M19.5 21.5v5"/>
+        <path d="M24 21.2v5.6"/>
+        <path d="M28.5 21.5v5"/>
+      </g>
+    </g>
+  </g>
+
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="none"
+        stroke="url(#gi-stroke)" stroke-opacity="0.45" stroke-width="0.8"/>
+</svg>

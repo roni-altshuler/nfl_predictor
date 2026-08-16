@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none"
+     role="img" aria-label="Gridiron — calibrated NFL forecasting">
+  <title>Gridiron — calibrated NFL forecasting</title>
+  <defs>
+    <linearGradient id="og-ball" x1="0" y1="0" x2="220" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d08a35"/>
+      <stop offset="0.55" stop-color="#a05c22"/>
+      <stop offset="1" stop-color="#6b3d18"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Pure black canvas and hairline rules, matching the site. No gradients
+       behind type, no glow, no chrome — the Bugatti language the sibling
+       projects share. -->
+  <rect width="1200" height="630" fill="#000000"/>
+
+  <!-- Yard lines. The name is literal: a gridiron IS the field's grid, and
+       these are the only decoration on the card. Kept at hairline weight and
+       low opacity so they read as texture rather than as data. -->
+  <g stroke="#262626" stroke-width="1">
+    <path d="M100 0v630"/><path d="M250 0v630"/><path d="M400 0v630"/>
+    <path d="M550 0v630"/><path d="M700 0v630"/><path d="M850 0v630"/>
+    <path d="M1000 0v630"/><path d="M1150 0v630"/>
+  </g>
+
+  <!-- The mark, at the favicon's geometry.
+
+       The PLATE is outside the rotation and only the ball turns. Rotating
+       the whole group tilts the rounded square too, which reads as a
+       mistake rather than as motion — the first version of this card did
+       exactly that. -->
+  <g transform="translate(96 96) scale(2.1) translate(-24 -24)">
+    <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#og-ball)"/>
+    <g transform="rotate(-30 24 24)">
+      <path d="M2.5 24C9 11 39 11 45.5 24C39 37 9 37 2.5 24Z"
+            fill="#2a1608" stroke="#1a0d04" stroke-width="1.2" stroke-linejoin="round"/>
+      <g stroke="#f7efe1" stroke-linecap="round">
+        <path d="M14.5 24h19" stroke-width="2.3"/>
+        <g stroke-width="2.1">
+          <path d="M19.5 21.5v5"/>
+          <path d="M24 21.2v5.6"/>
+          <path d="M28.5 21.5v5"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <text x="96" y="300" fill="#ffffff" font-family="Inter, Helvetica, Arial, sans-serif"
+        font-size="104" font-weight="600" letter-spacing="10">GRIDIRON</text>
+
+  <text x="100" y="366" fill="#cccccc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+        font-size="30" letter-spacing="1.5">Calibrated NFL game and season forecasting</text>
+
+  <path d="M96 424h1008" stroke="#262626" stroke-width="1"/>
+
+  <!-- The card states the project's central claim, including the part that
+       is unflattering. A preview that advertised an edge the accuracy page
+       disclaims would be the one place on the site that oversells. -->
+  <text x="96" y="484" fill="#999999" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+        font-size="26" letter-spacing="1">Scored against the closing line · 6,499 games · 2002-2025</text>
+
+  <text x="96" y="534" fill="#999999" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+        font-size="26" letter-spacing="1">Market .2117 Brier · model .2199 · the market is better</text>
+</svg>
