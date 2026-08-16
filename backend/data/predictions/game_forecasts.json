@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-08-16T17:36:00+00:00",
+  "generated_at": "2026-08-16T17:38:57+00:00",
   "model_version": "nfl-margin-lattice-1",
   "season_start": "2026-09-10T00:20:00+00:00",
   "weeks_in_season": 18,
@@ -30,7 +30,7 @@
         "ml_away": 154.0,
         "spread_home": -3.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -58,7 +58,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -86,7 +86,7 @@
         "ml_away": 145.0,
         "spread_home": -3.0,
         "total_points": 41.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -114,7 +114,7 @@
         "ml_away": -175.0,
         "spread_home": 3.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -142,7 +142,7 @@
         "ml_away": -118.0,
         "spread_home": 1.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -170,7 +170,7 @@
         "ml_away": -148.0,
         "spread_home": 2.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -198,7 +198,7 @@
         "ml_away": 295.0,
         "spread_home": -7.5,
         "total_points": 40.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -226,7 +226,7 @@
         "ml_away": 260.0,
         "spread_home": -7.0,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -254,7 +254,7 @@
         "ml_away": 124.0,
         "spread_home": -3.0,
         "total_points": 38.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -282,7 +282,7 @@
         "ml_away": 164.0,
         "spread_home": -3.5,
         "total_points": 51.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -310,7 +310,7 @@
         "ml_away": 425.0,
         "spread_home": -10.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -338,7 +338,7 @@
         "ml_away": -102.0,
         "spread_home": -1.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -366,7 +366,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 40.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -394,7 +394,7 @@
         "ml_away": 180.0,
         "spread_home": -4.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -422,7 +422,7 @@
         "ml_away": -148.0,
         "spread_home": 2.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -450,7 +450,7 @@
         "ml_away": 124.0,
         "spread_home": -3.0,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -478,7 +478,7 @@
         "ml_away": 136.0,
         "spread_home": -3.0,
         "total_points": 52.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -506,7 +506,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -534,7 +534,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -562,7 +562,7 @@
         "ml_away": 195.0,
         "spread_home": -5.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -590,7 +590,7 @@
         "ml_away": -250.0,
         "spread_home": 5.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -618,7 +618,7 @@
         "ml_away": 154.0,
         "spread_home": -3.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -646,7 +646,7 @@
         "ml_away": 270.0,
         "spread_home": -7.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -674,7 +674,7 @@
         "ml_away": -218.0,
         "spread_home": 4.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -702,7 +702,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -730,7 +730,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -758,7 +758,7 @@
         "ml_away": 310.0,
         "spread_home": -8.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -786,7 +786,7 @@
         "ml_away": 400.0,
         "spread_home": -10.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -814,7 +814,7 @@
         "ml_away": -485.0,
         "spread_home": 10.0,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -842,7 +842,7 @@
         "ml_away": 164.0,
         "spread_home": -4.5,
         "total_points": 51.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -870,7 +870,7 @@
         "ml_away": 230.0,
         "spread_home": -6.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -898,7 +898,7 @@
         "ml_away": 300.0,
         "spread_home": -8.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -926,7 +926,7 @@
         "ml_away": 295.0,
         "spread_home": -7.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -954,7 +954,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 39.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -982,7 +982,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1010,7 +1010,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1038,7 +1038,7 @@
         "ml_away": -345.0,
         "spread_home": 7.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1066,7 +1066,7 @@
         "ml_away": 140.0,
         "spread_home": -3.0,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1094,7 +1094,7 @@
         "ml_away": 340.0,
         "spread_home": -9.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1122,7 +1122,7 @@
         "ml_away": -192.0,
         "spread_home": 3.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1150,7 +1150,7 @@
         "ml_away": 142.0,
         "spread_home": -3.0,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1178,7 +1178,7 @@
         "ml_away": -102.0,
         "spread_home": -1.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1206,7 +1206,7 @@
         "ml_away": 425.0,
         "spread_home": -11.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1234,7 +1234,7 @@
         "ml_away": 105.0,
         "spread_home": null,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1262,7 +1262,7 @@
         "ml_away": -135.0,
         "spread_home": 2.5,
         "total_points": 51.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1290,7 +1290,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1318,7 +1318,7 @@
         "ml_away": -155.0,
         "spread_home": 3.0,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1346,7 +1346,7 @@
         "ml_away": -102.0,
         "spread_home": -1.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1374,7 +1374,7 @@
         "ml_away": -135.0,
         "spread_home": 2.5,
         "total_points": 40.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1402,7 +1402,7 @@
         "ml_away": -102.0,
         "spread_home": -1.5,
         "total_points": 50.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1430,7 +1430,7 @@
         "ml_away": 250.0,
         "spread_home": -7.0,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1458,7 +1458,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1486,7 +1486,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1514,7 +1514,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 51.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1542,7 +1542,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1570,7 +1570,7 @@
         "ml_away": 140.0,
         "spread_home": -3.0,
         "total_points": 49.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1598,7 +1598,7 @@
         "ml_away": 330.0,
         "spread_home": -8.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1626,7 +1626,7 @@
         "ml_away": 310.0,
         "spread_home": -8.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1654,7 +1654,7 @@
         "ml_away": 280.0,
         "spread_home": -7.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1682,7 +1682,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1710,7 +1710,7 @@
         "ml_away": -238.0,
         "spread_home": 5.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1738,7 +1738,7 @@
         "ml_away": 150.0,
         "spread_home": -3.0,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1766,7 +1766,7 @@
         "ml_away": -162.0,
         "spread_home": 3.0,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1794,7 +1794,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1822,7 +1822,7 @@
         "ml_away": 164.0,
         "spread_home": -3.5,
         "total_points": 52.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1850,7 +1850,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1878,7 +1878,7 @@
         "ml_away": -258.0,
         "spread_home": 6.0,
         "total_points": 49.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1906,7 +1906,7 @@
         "ml_away": 110.0,
         "spread_home": -1.5,
         "total_points": 39.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1934,7 +1934,7 @@
         "ml_away": -185.0,
         "spread_home": 3.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1962,7 +1962,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -1990,7 +1990,7 @@
         "ml_away": 310.0,
         "spread_home": -8.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2018,7 +2018,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2046,7 +2046,7 @@
         "ml_away": 110.0,
         "spread_home": -1.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2074,7 +2074,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2102,7 +2102,7 @@
         "ml_away": 140.0,
         "spread_home": -3.0,
         "total_points": 49.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2130,7 +2130,7 @@
         "ml_away": -360.0,
         "spread_home": 8.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2158,7 +2158,7 @@
         "ml_away": 164.0,
         "spread_home": -3.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2186,7 +2186,7 @@
         "ml_away": -205.0,
         "spread_home": 4.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2214,7 +2214,7 @@
         "ml_away": 136.0,
         "spread_home": -3.0,
         "total_points": 53.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2242,7 +2242,7 @@
         "ml_away": -130.0,
         "spread_home": 2.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2270,7 +2270,7 @@
         "ml_away": -108.0,
         "spread_home": -1.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2298,7 +2298,7 @@
         "ml_away": -265.0,
         "spread_home": 6.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2326,7 +2326,7 @@
         "ml_away": 220.0,
         "spread_home": -6.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2354,7 +2354,7 @@
         "ml_away": -155.0,
         "spread_home": 3.0,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2382,7 +2382,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2410,7 +2410,7 @@
         "ml_away": 360.0,
         "spread_home": -9.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2438,7 +2438,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2466,7 +2466,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2494,7 +2494,7 @@
         "ml_away": 500.0,
         "spread_home": -13.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2522,7 +2522,7 @@
         "ml_away": -270.0,
         "spread_home": 6.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2550,7 +2550,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2578,7 +2578,7 @@
         "ml_away": 140.0,
         "spread_home": -3.0,
         "total_points": 51.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2606,7 +2606,7 @@
         "ml_away": 205.0,
         "spread_home": -5.5,
         "total_points": 50.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2634,7 +2634,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2662,7 +2662,7 @@
         "ml_away": -142.0,
         "spread_home": 2.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2690,7 +2690,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 51.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2718,7 +2718,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 40.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2746,7 +2746,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2774,7 +2774,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 41.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2802,7 +2802,7 @@
         "ml_away": 195.0,
         "spread_home": -5.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2830,7 +2830,7 @@
         "ml_away": -218.0,
         "spread_home": 4.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2858,7 +2858,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2886,7 +2886,7 @@
         "ml_away": -355.0,
         "spread_home": 7.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2914,7 +2914,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 50.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2942,7 +2942,7 @@
         "ml_away": -325.0,
         "spread_home": 7.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2970,7 +2970,7 @@
         "ml_away": 136.0,
         "spread_home": -3.0,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -2998,7 +2998,7 @@
         "ml_away": 136.0,
         "spread_home": -3.0,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3026,7 +3026,7 @@
         "ml_away": 260.0,
         "spread_home": -7.0,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3054,7 +3054,7 @@
         "ml_away": 370.0,
         "spread_home": -10.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3082,7 +3082,7 @@
         "ml_away": 180.0,
         "spread_home": -4.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3110,7 +3110,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 51.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3138,7 +3138,7 @@
         "ml_away": 205.0,
         "spread_home": -6.0,
         "total_points": 39.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3166,7 +3166,7 @@
         "ml_away": 180.0,
         "spread_home": -4.5,
         "total_points": 49.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3194,7 +3194,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 40.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3222,7 +3222,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3250,7 +3250,7 @@
         "ml_away": 225.0,
         "spread_home": -6.5,
         "total_points": 49.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3278,7 +3278,7 @@
         "ml_away": 170.0,
         "spread_home": -3.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3306,7 +3306,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3334,7 +3334,7 @@
         "ml_away": -325.0,
         "spread_home": 7.0,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3362,7 +3362,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3390,7 +3390,7 @@
         "ml_away": 180.0,
         "spread_home": -4.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3418,7 +3418,7 @@
         "ml_away": 170.0,
         "spread_home": -4.5,
         "total_points": 49.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3446,7 +3446,7 @@
         "ml_away": -230.0,
         "spread_home": 5.5,
         "total_points": 49.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3474,7 +3474,7 @@
         "ml_away": 164.0,
         "spread_home": -3.5,
         "total_points": 41.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3502,7 +3502,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 52.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3530,7 +3530,7 @@
         "ml_away": -162.0,
         "spread_home": 3.0,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3558,7 +3558,7 @@
         "ml_away": -258.0,
         "spread_home": 6.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3586,7 +3586,7 @@
         "ml_away": -218.0,
         "spread_home": 4.5,
         "total_points": 50.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3614,7 +3614,7 @@
         "ml_away": 190.0,
         "spread_home": -5.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3642,7 +3642,7 @@
         "ml_away": 330.0,
         "spread_home": -9.5,
         "total_points": 41.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3670,7 +3670,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3698,7 +3698,7 @@
         "ml_away": 320.0,
         "spread_home": -8.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3726,7 +3726,7 @@
         "ml_away": 525.0,
         "spread_home": -13.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3754,7 +3754,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3782,7 +3782,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3810,7 +3810,7 @@
         "ml_away": -166.0,
         "spread_home": 3.0,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3838,7 +3838,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3866,7 +3866,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3894,7 +3894,7 @@
         "ml_away": -340.0,
         "spread_home": 7.0,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3922,7 +3922,7 @@
         "ml_away": 100.0,
         "spread_home": -1.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3950,7 +3950,7 @@
         "ml_away": -218.0,
         "spread_home": 4.5,
         "total_points": 38.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -3978,7 +3978,7 @@
         "ml_away": -135.0,
         "spread_home": 2.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4006,7 +4006,7 @@
         "ml_away": -218.0,
         "spread_home": 4.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4034,7 +4034,7 @@
         "ml_away": 225.0,
         "spread_home": -6.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4062,7 +4062,7 @@
         "ml_away": 190.0,
         "spread_home": -4.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4090,7 +4090,7 @@
         "ml_away": -470.0,
         "spread_home": 10.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4118,7 +4118,7 @@
         "ml_away": -298.0,
         "spread_home": 7.0,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4146,7 +4146,7 @@
         "ml_away": 100.0,
         "spread_home": -1.5,
         "total_points": 52.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4174,7 +4174,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4202,7 +4202,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4230,7 +4230,7 @@
         "ml_away": 195.0,
         "spread_home": -5.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4258,7 +4258,7 @@
         "ml_away": 440.0,
         "spread_home": -11.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4286,7 +4286,7 @@
         "ml_away": -205.0,
         "spread_home": 4.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4314,7 +4314,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4342,7 +4342,7 @@
         "ml_away": 440.0,
         "spread_home": -11.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4370,7 +4370,7 @@
         "ml_away": 225.0,
         "spread_home": -6.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4398,7 +4398,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 49.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4426,7 +4426,7 @@
         "ml_away": 230.0,
         "spread_home": -6.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4454,7 +4454,7 @@
         "ml_away": 340.0,
         "spread_home": -9.5,
         "total_points": 41.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4482,7 +4482,7 @@
         "ml_away": 285.0,
         "spread_home": -7.5,
         "total_points": 41.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4510,7 +4510,7 @@
         "ml_away": 205.0,
         "spread_home": -5.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4538,7 +4538,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4566,7 +4566,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 52.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4594,7 +4594,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4622,7 +4622,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 52.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4650,7 +4650,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 49.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4678,7 +4678,7 @@
         "ml_away": 124.0,
         "spread_home": -2.5,
         "total_points": 50.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4706,7 +4706,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 39.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4734,7 +4734,7 @@
         "ml_away": 180.0,
         "spread_home": -4.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4762,7 +4762,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4790,7 +4790,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 39.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4818,7 +4818,7 @@
         "ml_away": 225.0,
         "spread_home": -6.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4846,7 +4846,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4874,7 +4874,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 40.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4902,7 +4902,7 @@
         "ml_away": 200.0,
         "spread_home": -5.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4930,7 +4930,7 @@
         "ml_away": -110.0,
         "spread_home": 1.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4958,7 +4958,7 @@
         "ml_away": -205.0,
         "spread_home": 4.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -4986,7 +4986,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5014,7 +5014,7 @@
         "ml_away": 164.0,
         "spread_home": -3.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5042,7 +5042,7 @@
         "ml_away": 170.0,
         "spread_home": -4.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5070,7 +5070,7 @@
         "ml_away": -166.0,
         "spread_home": 3.0,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5098,7 +5098,7 @@
         "ml_away": -218.0,
         "spread_home": 4.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5126,7 +5126,7 @@
         "ml_away": -185.0,
         "spread_home": 3.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5154,7 +5154,7 @@
         "ml_away": -218.0,
         "spread_home": 4.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5182,7 +5182,7 @@
         "ml_away": 130.0,
         "spread_home": -3.0,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5210,7 +5210,7 @@
         "ml_away": -142.0,
         "spread_home": 2.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5238,7 +5238,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5266,7 +5266,7 @@
         "ml_away": 340.0,
         "spread_home": -9.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5294,7 +5294,7 @@
         "ml_away": -380.0,
         "spread_home": 8.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5322,7 +5322,7 @@
         "ml_away": 102.0,
         "spread_home": -1.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5350,7 +5350,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5378,7 +5378,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 41.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5406,7 +5406,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5434,7 +5434,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5462,7 +5462,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 40.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5490,7 +5490,7 @@
         "ml_away": -238.0,
         "spread_home": 5.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5518,7 +5518,7 @@
         "ml_away": -230.0,
         "spread_home": 5.5,
         "total_points": 39.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5546,7 +5546,7 @@
         "ml_away": -122.0,
         "spread_home": 1.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5574,7 +5574,7 @@
         "ml_away": 195.0,
         "spread_home": -5.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5602,7 +5602,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5630,7 +5630,7 @@
         "ml_away": 210.0,
         "spread_home": -6.0,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5658,7 +5658,7 @@
         "ml_away": 280.0,
         "spread_home": -7.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5686,7 +5686,7 @@
         "ml_away": -230.0,
         "spread_home": 5.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5714,7 +5714,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5742,7 +5742,7 @@
         "ml_away": -130.0,
         "spread_home": 2.5,
         "total_points": 49.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5770,7 +5770,7 @@
         "ml_away": 280.0,
         "spread_home": -7.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5798,7 +5798,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 49.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5826,7 +5826,7 @@
         "ml_away": 136.0,
         "spread_home": -3.0,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5854,7 +5854,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5882,7 +5882,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5910,7 +5910,7 @@
         "ml_away": 164.0,
         "spread_home": -3.5,
         "total_points": 51.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5938,7 +5938,7 @@
         "ml_away": 154.0,
         "spread_home": -3.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5966,7 +5966,7 @@
         "ml_away": -148.0,
         "spread_home": 2.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -5994,7 +5994,7 @@
         "ml_away": -148.0,
         "spread_home": 2.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6022,7 +6022,7 @@
         "ml_away": 180.0,
         "spread_home": -4.5,
         "total_points": 40.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6050,7 +6050,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6078,7 +6078,7 @@
         "ml_away": 136.0,
         "spread_home": -3.0,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6106,7 +6106,7 @@
         "ml_away": 410.0,
         "spread_home": -10.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6134,7 +6134,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6162,7 +6162,7 @@
         "ml_away": -110.0,
         "spread_home": -1.5,
         "total_points": 41.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6190,7 +6190,7 @@
         "ml_away": 205.0,
         "spread_home": -6.0,
         "total_points": 52.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6218,7 +6218,7 @@
         "ml_away": -218.0,
         "spread_home": 4.5,
         "total_points": 41.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6246,7 +6246,7 @@
         "ml_away": -122.0,
         "spread_home": 1.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6274,7 +6274,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6302,7 +6302,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 37.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6330,7 +6330,7 @@
         "ml_away": -102.0,
         "spread_home": -1.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6358,7 +6358,7 @@
         "ml_away": -130.0,
         "spread_home": 1.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6386,7 +6386,7 @@
         "ml_away": 110.0,
         "spread_home": -1.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6414,7 +6414,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 41.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6442,7 +6442,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 52.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6470,7 +6470,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6498,7 +6498,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6526,7 +6526,7 @@
         "ml_away": 200.0,
         "spread_home": -5.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6554,7 +6554,7 @@
         "ml_away": 360.0,
         "spread_home": -10.0,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6582,7 +6582,7 @@
         "ml_away": -325.0,
         "spread_home": 7.0,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6610,7 +6610,7 @@
         "ml_away": -285.0,
         "spread_home": 6.5,
         "total_points": 40.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6638,7 +6638,7 @@
         "ml_away": 105.0,
         "spread_home": null,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6666,7 +6666,7 @@
         "ml_away": 130.0,
         "spread_home": -3.0,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6694,7 +6694,7 @@
         "ml_away": 136.0,
         "spread_home": -3.0,
         "total_points": 51.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6722,7 +6722,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 49.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6750,7 +6750,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 51.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6778,7 +6778,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6806,7 +6806,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6834,7 +6834,7 @@
         "ml_away": -218.0,
         "spread_home": 4.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6862,7 +6862,7 @@
         "ml_away": 154.0,
         "spread_home": -3.5,
         "total_points": 48.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6890,7 +6890,7 @@
         "ml_away": -345.0,
         "spread_home": 7.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6918,7 +6918,7 @@
         "ml_away": -135.0,
         "spread_home": 2.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6946,7 +6946,7 @@
         "ml_away": -185.0,
         "spread_home": 3.5,
         "total_points": 39.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -6974,7 +6974,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7002,7 +7002,7 @@
         "ml_away": 180.0,
         "spread_home": -4.5,
         "total_points": 49.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7030,7 +7030,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7058,7 +7058,7 @@
         "ml_away": -238.0,
         "spread_home": 5.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7086,7 +7086,7 @@
         "ml_away": -130.0,
         "spread_home": 1.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7114,7 +7114,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 49.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7142,7 +7142,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 45.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7170,7 +7170,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7198,7 +7198,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 41.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7226,7 +7226,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7254,7 +7254,7 @@
         "ml_away": 285.0,
         "spread_home": -7.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7282,7 +7282,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 49.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7310,7 +7310,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 47.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7338,7 +7338,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 46.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7366,7 +7366,7 @@
         "ml_away": 295.0,
         "spread_home": -8.5,
         "total_points": 40.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7394,7 +7394,7 @@
         "ml_away": 102.0,
         "spread_home": -1.5,
         "total_points": 41.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7422,7 +7422,7 @@
         "ml_away": 410.0,
         "spread_home": -10.5,
         "total_points": 42.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7450,7 +7450,7 @@
         "ml_away": 370.0,
         "spread_home": -10.0,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7478,7 +7478,7 @@
         "ml_away": -155.0,
         "spread_home": 3.0,
         "total_points": 41.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7506,7 +7506,7 @@
         "ml_away": 190.0,
         "spread_home": -5.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7534,7 +7534,7 @@
         "ml_away": -380.0,
         "spread_home": 8.5,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7562,7 +7562,7 @@
         "ml_away": 136.0,
         "spread_home": -3.0,
         "total_points": 44.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7590,7 +7590,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 43.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     },
     {
@@ -7618,7 +7618,7 @@
         "ml_away": 250.0,
         "spread_home": -7.0,
         "total_points": 39.5,
-        "provider": "DraftKings"
+        "provider": "Draft Kings"
       }
     }
   ]
