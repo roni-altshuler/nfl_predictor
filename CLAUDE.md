@@ -27,7 +27,7 @@ If a proposed feature is none of those four, it does not belong here.
 
 ## Current measured state (2026-08-16)
 
-Corpus: **6,492 games, seasons 2002–2025**, from ESPN, plus the full 2026 schedule (272 regular-season games; the season kicks off **2026-09-10**).
+Corpus: **6,499 games, seasons 2002–2025**, from ESPN, plus the full 2026 schedule (272 regular-season games; the season kicks off **2026-09-10**).
 
 Every season hits its expected game count exactly. **2002 is the earliest season** and that is structural: it is when the league realigned to 32 teams in eight four-team divisions. Before that there were 31 teams in six uneven divisions with different seeding rules, and ESPN will happily serve those seasons into the corpus as if nothing had changed.
 
@@ -64,26 +64,26 @@ Within-season Elo drift over 768 team-seasons: **sd 34.53 rating points** (the N
 
 ### Game prediction, walk-forward
 
-Refit weekly on an expanding window, scored on games strictly later than everything fitted on. 5,680 decided games scored from 2005 after a three-season warm-up.
+Refit weekly on an expanding window, scored on games strictly later than everything fitted on. 5,684 decided games scored from 2005 after a three-season warm-up.
 
 | forecaster | Brier | log loss | accuracy | ECE | n |
 |---|---|---|---|---|---|
 | Market (closing line) | **.2117** | .6109 | .6640 | .0127 | 3,807 |
-| Elo only | .2198 | .6290 | .6442 | **.0120** | 5,680 |
-| Margin model | .2199 | .6291 | .6409 | .0209 | 5,680 |
-| Constant base rate | .2464 | .6860 | .5597 | .0000 | 5,680 |
+| Elo only | .2198 | .6291 | .6443 | **.0123** | 5,684 |
+| Margin model | .2199 | .6292 | .6414 | .0202 | 5,684 |
+| Constant base rate | .2465 | .6861 | .5595 | .0000 | 5,684 |
 
 Paired bootstrap against the closing line on 3,807 priced, decided games:
 
 | forecaster | gap to close | 95% CI | p(better) |
 |---|---|---|---|
-| Margin model | **+.00888** | [+.00582, +.01200] | .000 |
+| Margin model | **+.00884** | [+.00578, +.01196] | .000 |
 | Elo only | +.00873 | [+.00561, +.01194] | .000 |
 | Constant base rate | +.03517 | [+.03010, +.04016] | .000 |
 
 **The market is better, significantly. That is the expected and wanted result** — the model carries no market features. It closes **76%** of the distance from the constant base rate to the market.
 
-**The margin model does not beat Elo-only, and this must not be dressed up.** It is .0001 worse on Brier, .0033 worse on accuracy, and materially worse calibrated (ECE .0209 against .0120) — and Elo-only is the marginally closer of the two to the closing line. Nine features have bought nothing over a rating gap and a home-field constant. That is a real result about football rather than a bug: Elo already encodes team strength, and rest, division and form are either small or already priced into the rating. The honest reading is that the feature layer **has not yet earned its place**, and `/accuracy` says so in those words.
+**The margin model does not beat Elo-only, and this must not be dressed up.** It is .0001 worse on Brier, .0029 worse on accuracy, and materially worse calibrated (ECE .0202 against .0123) — and Elo-only is the marginally closer of the two to the closing line. Nine features have bought nothing over a rating gap and a home-field constant. That is a real result about football rather than a bug: Elo already encodes team strength, and rest, division and form are either small or already priced into the rating. The honest reading is that the feature layer **has not yet earned its place**, and `/accuracy` says so in those words.
 
 ## Where football diverges from basketball — do not port conclusions
 
@@ -148,15 +148,21 @@ The 2026 NFL season kicks off September 2026 and ends with a Super Bowl in Febru
 
 ## Known landmines
 
-- **The Pro Bowl is postseason week 4**, sitting between the conference championships and the Super Bowl. Anything reading "round = week number" gets a five-round bracket whose fourth round is an exhibition. It is refused under its own named skip reason so the count is a **baseline** (one per season) rather than noise.
+- **The Pro Bowl moves between eras and NO calendar rule can pin it.** From 2009 it is postseason week 4, between the conference championships and the Super Bowl. **Before 2009 it was played the week AFTER the Super Bowl**, in Hawaii, so ESPN files 2002-2008 with the Super Bowl as week 4 and no week 5 at all.
 
-- **The Pro Bowl's sides have real ESPN team ids in some seasons** — 31 "AFC All-Stars", 32 "NFC All-Stars" — and nothing at all in others. The calendar test therefore runs **before any team is resolved**, because `_team_key` upserts: the first version judged after resolving and wrote two junk franchises into `teams` permanently. They were then excluded from every surface only because they had no conference, which is a coincidence that held, not a rule.
+  The first version hard-coded "week 4 is the Pro Bowl" and therefore **deleted seven Super Bowls (2002-2008)** while ingesting seven Pro Bowls in their place under the label `super-bowl`. Every season still had a plausible-looking bracket and every regular-season count still passed. It was caught only by `validate_warehouse_integrity`, which knows a single-elimination field of N teams plays exactly N-1 games and found 10 where it wanted 11.
+
+- **Exhibitions are filtered by PARTICIPATION, which is era-independent.** A franchise is a team ESPN's standings place in a conference; the Pro Bowl's sides never are. `ESPNLoader.franchise_ids` is built from the standings pull *before* any season is ingested, and the check runs **before any team is resolved** — because `_team_key` upserts, and ESPN gives the all-star squads real, stable team ids (31 "AFC All-Stars", 32 "NFC All-Stars") in some seasons and nothing at all in others. An earlier version judged after resolving and wrote two junk franchises into `teams` permanently, where they were excluded from every surface only because they happened to have no conference — a coincidence that held, not a rule.
+
+  `client.postseason_round` then labels weeks 1-3 and calls anything later the Super Bowl, correct in both eras precisely because the exhibition is already gone.
 
 - **2022 has 271 regular-season games and that is correct.** Buffalo at Cincinnati, 2 January 2023, was abandoned after Damar Hamlin's cardiac arrest and never resumed — the league cancelled it and declared a no-contest. `KNOWN_CANCELLATIONS` records it so the completeness check still fails 271 in any *other* season.
 
 - **`pickcenter` is EMPTY for the NFL.** The NBA project reads its entire market benchmark from it. Here that array exists and is always length zero and the summary's `odds` key is null. Prices live on `sports.core.api.espn.com/.../competitions/{id}/odds` instead.
 
-- **The odds array mixes prices, public model forecasts and LIVE in-game lines.** `accuscore`, `teamrankings` and `numberfire` are models, not prices. `ESPN Bet - Live Odds` and `Caesars … - Live Odds` are in-game — a line captured in the third quarter is a partial observation of the result, and including it hands the "market" near-perfect foresight. All three are classified at ingest and stored with `kind`.
+- **The odds array mixes prices, public model forecasts and LIVE in-game lines.** `accuscore`, `teamrankings` and `numberfire` are models, not prices. `ESPN Bet - Live Odds` and `Caesars … - Live Odds` are in-game. All three are classified at ingest and stored with `kind`; only `kind='price'` is eligible to become `games.ml_*`.
+
+  The concrete case, from Super Bowl LIX (event `401671889`, Philadelphia 40 Kansas City 22): the pregame ESPN BET line is **spread +1.5, total 48.5**. The live line on the same event is **spread −28.5, total 52.5** — captured while Philadelphia was running away with it. Read as a closing line that single row would imply the market knew the result to within a touchdown before kickoff. A benchmark contaminated this way does not look broken; it looks like a market no model could ever beat, which is exactly the conclusion this project is built to distrust.
 
 - **A backfilled line is not a closing line.** ESPN returns whatever it kept with no timestamp. Every backfilled row carries `before_kickoff = 0`.
 
@@ -210,7 +216,9 @@ Design language is **Bugatti**, ported from the sibling projects: pure black `#0
 | Build the warehouse | `python3 -m backend.scripts.build_warehouse --all` |
 | Refresh the current season | `python3 -m backend.scripts.build_warehouse --current-season` |
 | Backfill odds | `python3 -m backend.scripts.backfill_odds --missing-only` |
+| **Integrity check (run after any ingest change)** | `python3 -m backend.scripts.validate_warehouse_integrity` |
 | Market benchmark | `python3 -m backend.scripts.benchmark_market` |
+| Score the live record | `python3 -m backend.scripts.score_live` |
 | Publish the forecast | `python3 -m backend.scripts.forecast_season --sims 20000` |
 | Backend tests | `python3 -m pytest backend/tests/` |
 | Lint (Vercel hard gate) | `npx next lint` |

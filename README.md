@@ -48,18 +48,18 @@ between the two sides, on the most heavily traded number in the sport.
 
 ## The record
 
-5,680 decided games, walk-forward, refit weekly on an expanding window from
+5,684 decided games, walk-forward, refit weekly on an expanding window from
 2005 after a three-season warm-up.
 
 | forecaster | Brier | log loss | accuracy | ECE | n |
 |---|---|---|---|---|---|
 | Market (closing line) | **.2117** | .6109 | .6640 | .0127 | 3,807 |
-| Elo only | .2198 | .6290 | .6442 | **.0120** | 5,680 |
-| Margin model | .2199 | .6291 | .6409 | .0209 | 5,680 |
-| Constant base rate | .2464 | .6860 | .5597 | .0000 | 5,680 |
+| Elo only | .2198 | .6291 | .6443 | **.0123** | 5,684 |
+| Margin model | .2199 | .6292 | .6414 | .0202 | 5,684 |
+| Constant base rate | .2465 | .6861 | .5595 | .0000 | 5,684 |
 
-Paired bootstrap against the closing line: **+.00888, 95% CI [+.00582,
-+.01200], p(model better) = .000.** The market is better, significantly.
+Paired bootstrap against the closing line: **+.00884, 95% CI [+.00578,
++.01196], p(model better) = .000.** The market is better, significantly.
 **That is the expected and wanted result** — the model carries no market
 features, and one that beat the price without seeing it would be a bug
 announcing itself. It closes 76% of the distance from the base rate to the
