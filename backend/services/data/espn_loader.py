@@ -25,23 +25,26 @@ Inherited
 
 Football-specific
 -----------------
-* **The Pro Bowl is postseason week 4, sitting between the conference
-  championships and the Super Bowl.** This is the single nastiest calendar
-  fact in the sport's data. Anything that reads "postseason round = week
-  number" gets a five-round bracket in which round four is an exhibition
-  between teams called "AFC" and "NFC", and round five is the Super Bowl.
-  The round map in `client.py` skips 4 deliberately.
+* **The Pro Bowl moves, and no calendar rule can pin it.** From 2009 it is
+  postseason week 4, sitting between the conference championships and the
+  Super Bowl — so anything reading "round = week number" gets a five-round
+  bracket whose fourth round is an exhibition between teams called "AFC" and
+  "NFC". **Before 2009 it was played the week AFTER the Super Bowl**, in
+  Hawaii, and ESPN files those seasons with the Super Bowl as week 4 and no
+  week 5 at all.
 
-  It is refused, under **its own named skip reason**, and that naming is the
-  point. The participation filter would drop it anyway — the sides are
-  conference all-star squads and resolve to no franchise — but it would land
-  in the same anonymous bucket as a genuine parse failure. Given its own
-  reason it becomes a **baseline instead of noise**: exactly one per season,
-  so a season reporting two has a new problem and a season reporting zero
-  means the calendar moved. This is the NBA project's All-Star rule with the
-  storage decision inverted, because a modern Pro Bowl is a flag-football
-  skills event that no rating could speak to, whereas an All-Star Game is at
-  least basketball.
+  An earlier version of this file hard-coded "week 4 is the Pro Bowl" and
+  therefore **refused seven Super Bowls (2002-2008)** while ingesting seven
+  Pro Bowls in their place, labelled `super-bowl`. Every season still had a
+  plausible-looking bracket. It was caught only by the integrity checker's
+  postseason count, which knows a single-elimination field of N teams plays
+  exactly N-1 games and found 10 where it wanted 11.
+
+  The filter is **participation**, which is era-independent: a franchise is a
+  team ESPN's standings place in a conference, and the Pro Bowl's sides never
+  are. `client.postseason_round` then labels weeks 1-3 and calls anything
+  later the Super Bowl, which is correct in both eras precisely because the
+  exhibition is already gone.
 
 * **A tie is a result.** `home_score == away_score` is a legal, final NFL
   regular-season outcome. It is never a data error and must never be coerced
@@ -58,15 +61,13 @@ Football-specific
 from __future__ import annotations
 
 import logging
-import re
 from datetime import datetime, timezone
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
 from backend.services.espn.client import (
     NFL_COMPETITION_ID,
     NFL_PLAYOFFS_COMPETITION_ID,
-    POSTSEASON_PRO_BOWL,
-    POSTSEASON_ROUNDS,
+    postseason_round,
     SEASON_TYPE_POSTSEASON,
     SEASON_TYPE_PRESEASON,
     SEASON_TYPE_REGULAR,
@@ -100,19 +101,12 @@ _PLACEHOLDER_NAMES = {
     "tbd", "to be determined", "tba", "afc", "nfc",
     "afc wild card", "nfc wild card", "winner", "bye",
     # ESPN's real, id-bearing Pro Bowl squads. Listed as belt-and-braces
-    # only — the calendar test in `parse_event` is what actually refuses
-    # them, and it runs before any team is resolved. A name list alone
-    # cannot be the guard here: these two changed format (and name) in 2023
-    # and would need editing every time the league rebrands the exhibition.
+    # only — the PARTICIPATION test in `parse_event` is what actually refuses
+    # them, and it runs before any team is resolved. A name list cannot be
+    # the guard here: these two changed format (and name) in 2023 and would
+    # need editing every time the league rebrands the exhibition.
     "afc all-stars", "nfc all-stars",
 }
-
-# The Pro Bowl's sides across eras: conference squads, then the 2023+ flag
-# football format. Recognised so the game can be LABELLED, not so it can be
-# guessed at — the authoritative test is `season_type == 3 and week == 4`.
-_PRO_BOWL_HINTS = re.compile(
-    r"pro bowl|all-?star|afc vs|nfc vs|team (irvin|rice|sanders)", re.I
-)
 
 
 def is_placeholder(name: Optional[str]) -> bool:
@@ -134,6 +128,12 @@ class ESPNLoader:
             NFL_PLAYOFFS_COMPETITION_ID, "NFL Playoffs", "playoffs"
         )
         self._skipped: Dict[str, int] = {}
+        # The 32 real franchises, by ESPN id. Populated by `apply_standings`,
+        # which is the only source that knows which teams are in a
+        # conference. Empty until then — and while it is empty the
+        # participation filter is inert, so `build_warehouse` pulls standings
+        # BEFORE any season.
+        self.franchise_ids: set[str] = set()
 
     # ------------------------------------------------------------- teams
 
@@ -182,6 +182,7 @@ class ESPNLoader:
                 for entry in (conference.get("standings") or {}).get("entries") or []:
                     team = entry.get("team") or {}
                     if team.get("id"):
+                        self.franchise_ids.add(str(team["id"]))
                         self.warehouse.upsert_team(
                             str(team["id"]),
                             str(team.get("displayName") or team.get("name")),
@@ -194,6 +195,7 @@ class ESPNLoader:
                     team = entry.get("team") or {}
                     if not team.get("id"):
                         continue
+                    self.franchise_ids.add(str(team["id"]))
                     self.warehouse.upsert_team(
                         str(team["id"]),
                         str(team.get("displayName") or team.get("name")),
@@ -273,23 +275,29 @@ class ESPNLoader:
         if home is None or away is None:
             return None, None, "no home/away split"
 
-        # ---- the Pro Bowl, identified by CALENDAR POSITION, not by name.
+        # ---- exhibitions, identified by PARTICIPATION, not by calendar.
         #
         # **This test runs BEFORE any team is resolved, and the ordering is
         # the whole point.** `_team_key` upserts, so resolving first and
         # judging second writes the exhibition's sides into `teams` on the way
-        # past. That is not hypothetical: ESPN gives the Pro Bowl squads real,
-        # stable team ids (31 "AFC All-Stars", 32 "NFC All-Stars") in some
-        # seasons and nothing at all in others, so the name-based placeholder
-        # guard misses them and two junk franchises land in the table
-        # permanently. They are then excluded from every product surface only
-        # because they have no conference — a second line of defence that
-        # happens to hold, which is not the same as a rule.
-        is_pro_bowl = (
-            season_type == SEASON_TYPE_POSTSEASON and week == POSTSEASON_PRO_BOWL
-        ) or bool(_PRO_BOWL_HINTS.search(str(event.get("name") or "")))
-        if is_pro_bowl:
-            return None, None, "pro-bowl (exhibition)"
+        # past. ESPN gives the Pro Bowl squads real, stable team ids (31 "AFC
+        # All-Stars", 32 "NFC All-Stars") in some seasons and nothing at all
+        # in others, so a name-based guard misses them and two junk
+        # franchises land in the table permanently.
+        #
+        # **And no calendar rule works either.** The Pro Bowl is postseason
+        # week 4 from 2009 — but before 2009 it was played the week AFTER the
+        # Super Bowl, so ESPN files 2002-2008 with the SUPER BOWL as week 4.
+        # An earlier version refused week 4 outright and deleted seven Super
+        # Bowls while ingesting seven Pro Bowls in their place.
+        #
+        # A franchise is a team ESPN's standings place in a conference. That
+        # is true in every era and needs no maintenance.
+        if self.franchise_ids:
+            for side in (home, away):
+                espn_id = str(((side.get("team") or {}).get("id")) or "")
+                if espn_id and espn_id not in self.franchise_ids:
+                    return None, None, "non-franchise side (exhibition)"
 
         home_id = self._team_key(home, date_utc)
         away_id = self._team_key(away, date_utc)
@@ -303,18 +311,17 @@ class ESPNLoader:
             return None, None, "both sides resolve to one franchise"
 
         phase = (
-            PHASE_PRO_BOWL if is_pro_bowl
-            else PHASE_PRESEASON if season_type == SEASON_TYPE_PRESEASON
+            PHASE_PRESEASON if season_type == SEASON_TYPE_PRESEASON
             else PHASE_REGULAR
         )
-        postseason_round = (
-            POSTSEASON_ROUNDS.get(week)
-            if season_type == SEASON_TYPE_POSTSEASON and not is_pro_bowl
+        round_slug = (
+            postseason_round(week)
+            if season_type == SEASON_TYPE_POSTSEASON
             else None
         )
         competition_id = (
             NFL_PLAYOFFS_COMPETITION_ID
-            if season_type == SEASON_TYPE_POSTSEASON and not is_pro_bowl
+            if season_type == SEASON_TYPE_POSTSEASON
             else NFL_COMPETITION_ID
         )
 
@@ -322,7 +329,7 @@ class ESPNLoader:
             "neutral_site": 1 if comp.get("neutralSite") else 0,
             "venue": (comp.get("venue") or {}).get("fullName"),
             "phase": phase,
-            "postseason_round": postseason_round,
+            "postseason_round": round_slug,
         }
 
         completed = bool(status.get("completed")) or status_name in FINAL_STATUSES

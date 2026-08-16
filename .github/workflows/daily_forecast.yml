@@ -1,0 +1,146 @@
+name: Daily Forecast
+
+# Refreshes results from ESPN, re-rates, re-simulates, and republishes the
+# artifacts the site renders.
+#
+# **Daily rather than weekly, even though football is a weekly sport.** The
+# results that matter arrive on three separate days (Thursday, Sunday,
+# Monday), the schedule itself moves when games are flexed, and lines are
+# only captured for fixtures that still exist. A weekly job would publish a
+# projection that is up to six days stale on the day most people look at it.
+#
+# The forecast re-syncs by construction: each run rebuilds ratings from every
+# game played to date, so the projection tightens as the season runs and
+# played games leave the remaining set. Nothing here is a preseason snapshot.
+
+on:
+  schedule:
+    # 11:00 UTC = 06:00 ET, after every North American game has finished and
+    # ESPN has settled the previous night's results.
+    - cron: '0 11 * * *'
+  workflow_dispatch:
+    inputs:
+      sims:
+        description: 'Monte Carlo iterations'
+        required: false
+        default: '20000'
+      full_rebuild:
+        description: 'Rebuild the whole warehouse from 2002'
+        required: false
+        default: 'false'
+
+# One forecast at a time. Two concurrent runs would both push the artifacts
+# and the git push would lose.
+concurrency:
+  group: daily-forecast
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  forecast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Restore the warehouse
+        # The warehouse is gitignored — it is derived data, and a SQLite file
+        # rebuilt from ESPN does not belong in git history. It is republished
+        # as a release asset each run, so a runner that cannot download it
+        # must rebuild rather than forecast from nothing.
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if gh release download warehouse-latest \
+               --pattern 'warehouse.sqlite.gz' --dir /tmp --clobber; then
+            gunzip -f /tmp/warehouse.sqlite.gz
+            mv /tmp/warehouse.sqlite backend/data/warehouse.sqlite
+            echo "restored warehouse"
+          else
+            echo "no published warehouse — will rebuild from scratch"
+            echo "NEEDS_FULL_BUILD=true" >> "$GITHUB_ENV"
+          fi
+
+      - name: Rebuild the warehouse in full
+        if: env.NEEDS_FULL_BUILD == 'true' || github.event.inputs.full_rebuild == 'true'
+        # 2002 is the first season with 32 teams in eight four-team divisions.
+        # Earlier seasons have different seeding rules and ESPN will serve
+        # them happily.
+        run: |
+          python -m backend.scripts.build_warehouse --all
+          python -m backend.scripts.backfill_odds --seasons 2011-2026 --missing-only
+
+      - name: Refresh the current season
+        # New results are the entire reason this job runs. A failure here
+        # means forecasting from a stale corpus, which is stale but not
+        # WRONG — so it may fail without stopping the run.
+        continue-on-error: true
+        run: |
+          python -m backend.scripts.build_warehouse --current-season
+          python -m backend.scripts.backfill_odds --current-season --limit 400
+
+      - name: Integrity check
+        # NOT continue-on-error. Publishing a forecast derived from a corpus
+        # that counts games twice, holds phantom fixtures, or has grown a
+        # placeholder franchise is worse than publishing nothing — the
+        # previous artifact stays up and is still correct.
+        #
+        # This check has already earned its place: it caught the ingester
+        # deleting seven Super Bowls, by knowing that a single-elimination
+        # field of N teams plays exactly N-1 games.
+        run: python -m backend.scripts.validate_warehouse_integrity
+
+      - name: Publish the forecast
+        run: |
+          python -m backend.scripts.forecast_season \
+            --sims ${{ github.event.inputs.sims || '20000' }}
+
+      - name: Score the live record
+        # Reads back the forecasts stamped BEFORE their kickoffs and scores
+        # the ones whose games have now been played. It must run AFTER the
+        # forecast publish (which stamps today's) and after the results
+        # refresh (which settles the weekend), and it is the only surface on
+        # the site that can claim a number existed before its result did.
+        run: python -m backend.scripts.score_live
+
+      - name: Commit refreshed artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # `forecast_log.json` lives under predictions/ and is the durable
+          # copy of the live record: the warehouse is gitignored and gets
+          # rebuilt from ESPN on a failed restore, and a forecast made before
+          # a game is the one thing a rebuild cannot recover.
+          git add backend/data/predictions/ backend/data/diagnostics/ || true
+          # Artifacts stamp generated_at every run, so ignore a diff that is
+          # only a timestamp — otherwise this job commits daily noise.
+          if git diff --cached --quiet -I'"generated_at":'; then
+            echo "forecast unchanged"
+          else
+            git commit -m "chore: refresh forecast [automated]"
+            git pull --rebase --autostash origin main || true
+            git push
+          fi
+
+      - name: Republish the warehouse
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gzip -c backend/data/warehouse.sqlite > /tmp/warehouse.sqlite.gz
+          gh release view warehouse-latest >/dev/null 2>&1 || \
+            gh release create warehouse-latest --title 'Warehouse (latest)' \
+              --notes 'Derived NFL game warehouse. Rebuilt daily.'
+          gh release upload warehouse-latest /tmp/warehouse.sqlite.gz --clobber

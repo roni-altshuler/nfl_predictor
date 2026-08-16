@@ -77,21 +77,45 @@ SEASON_TYPE_OFFSEASON = 4
 REGULAR_WEEKS_MODERN = 18       # 2021-, 17 games + 1 bye
 REGULAR_WEEKS_LEGACY = 17       # 2002-2020, 16 games + 1 bye
 
-# Postseason week numbering, which is NOT a bracket depth. Week 4 is the Pro
-# Bowl and sits BETWEEN the conference championships and the Super Bowl. See
-# `POSTSEASON_ROUNDS` and the loader's exhibition filter.
+# Postseason week numbering, which is NOT a bracket depth — and **the
+# mapping is not even stable across eras.**
+#
+# From 2009 the Pro Bowl is postseason week 4 and the Super Bowl is week 5.
+# Before 2009 the Pro Bowl was played the week AFTER the Super Bowl, in
+# Hawaii, and ESPN files those seasons with **the Super Bowl as week 4** and
+# no week 5 at all.
+#
+# The first version of this file hard-coded "week 4 is the Pro Bowl" and so
+# refused the SUPER BOWL for every season from 2002 to 2008 — seven of them —
+# while happily ingesting the Pro Bowl from 2009 onward under the label
+# `super-bowl`. Nothing failed. It was caught by the integrity checker's
+# postseason count, which expects `field_size - 1` games and found 10.
+#
+# So no calendar rule identifies the exhibition. **Participation does**, in
+# every era: the Pro Bowl's sides are conference squads and are not among the
+# league's 32 franchises. `ESPNLoader.franchise_ids` is the authority and the
+# round map below is pure labelling, applied only to games that already
+# passed that filter.
 POSTSEASON_WILD_CARD = 1
 POSTSEASON_DIVISIONAL = 2
 POSTSEASON_CONFERENCE = 3
-POSTSEASON_PRO_BOWL = 4
-POSTSEASON_SUPER_BOWL = 5
 
 POSTSEASON_ROUNDS = {
     POSTSEASON_WILD_CARD: "wild-card",
     POSTSEASON_DIVISIONAL: "divisional",
     POSTSEASON_CONFERENCE: "conference",
-    POSTSEASON_SUPER_BOWL: "super-bowl",
 }
+
+
+def postseason_round(week: int) -> str:
+    """Round slug for a postseason week, era-independently.
+
+    Weeks 1-3 are the three conference rounds in every season. **Anything
+    later is the Super Bowl** — week 4 before 2009, week 5 after — and this
+    function never has to know which, because the Pro Bowl that sits between
+    them is refused by participation before it reaches here.
+    """
+    return POSTSEASON_ROUNDS.get(int(week), "super-bowl")
 
 
 class RateLimiter:

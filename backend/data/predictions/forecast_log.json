@@ -1,0 +1,12 @@
+{
+  "season": 2026,
+  "generated_at": "2026-08-16T17:06:28+00:00",
+  "basis": "published",
+  "forecasts_made": 272,
+  "games_played": 0,
+  "games_pending": 272,
+  "ties_excluded": 0,
+  "n": 0,
+  "note": "Every row here was published strictly before its kickoff and is the EARLIEST such publication for that fixture. This record is never merged with the historical walk-forward on /accuracy, which is a reconstruction.",
+  "games": []
+}
