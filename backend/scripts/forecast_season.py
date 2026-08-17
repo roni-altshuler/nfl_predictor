@@ -161,6 +161,16 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
         served_vectors.append(vector)
         forecast = model.predict(vector[None, :])[0]
 
+        # The spread surface is published at the KEY NUMBERS plus the
+        # market's own line. Football's margin lattice makes -3 and -7
+        # qualitatively different from -4 and -8, so a page that shows only
+        # the market line hides the thing this model knows.
+        lines = sorted({
+            -14.0, -10.0, -7.0, -6.0, -4.0, -3.0, 0.0,
+            3.0, 4.0, 6.0, 7.0, 10.0, 14.0,
+            *([float(row["spread_home"])] if row["spread_home"] is not None else []),
+        })
+
         forecasts.append({
             "game_id": row["game_id"],
             "season": season,
@@ -170,9 +180,13 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
             "away_team_id": away_id,
             "home": team_rows[home_id]["abbreviation"],
             "away": team_rows[away_id]["abbreviation"],
+            "home_name": team_rows[home_id]["display_name"],
+            "away_name": team_rows[away_id]["display_name"],
             "neutral_site": bool(row["neutral_site"]),
             "venue": row["venue"],
             **forecast.as_dict(),
+            "margin_distribution": forecast.margin_distribution(),
+            "spread_surface": forecast.spread_surface(lines),
             "market": {
                 "ml_home": row["ml_home"],
                 "ml_away": row["ml_away"],

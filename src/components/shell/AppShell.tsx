@@ -18,6 +18,7 @@ const NAV = [
   { href: '/season', label: 'Season', short: 'Season' },
   { href: '/games', label: 'Schedule', short: 'Games' },
   { href: '/playoffs', label: 'Playoff picture', short: 'Playoff' },
+  { href: '/predict', label: 'Head to head', short: 'H2H' },
   { href: '/ratings', label: 'Power ratings', short: 'Ratings' },
   { href: '/accuracy', label: 'Accuracy', short: 'Record' },
   { href: '/about', label: 'How it works', short: 'About' },

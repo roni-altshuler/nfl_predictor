@@ -1,6 +1,29 @@
 import type { Metadata, Viewport } from 'next'
+import { Inter, JetBrains_Mono } from 'next/font/google'
 
 import './globals.css'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+})
+
+// Monospace carries every number on the site — scores, probabilities, win
+// totals, spreads. Tabular figures keep a column from shifting as digits
+// change, which a probability table does constantly.
+//
+// globals.css has referenced `--font-mono-numeric` since it was ported from
+// the sibling project, but nothing defined it here: every `.numeric` element
+// was silently falling through to the ui-monospace fallback, so the tabular
+// figures the design depends on were never actually applied.
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono-numeric',
+  display: 'swap',
+  weight: ['400', '500', '700'],
+})
 
 /**
  * The absolute origin, which `metadataBase` needs so `og:image` resolves to
@@ -91,7 +114,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark">
+    <html
+      lang="en"
+      className={`dark ${inter.variable} ${jetbrainsMono.variable}`}
+    >
       <body className="bg-[var(--background)] text-[var(--text-primary)] antialiased">
         {children}
       </body>

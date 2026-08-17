@@ -220,6 +220,7 @@ Design language is **Bugatti**, ported from the sibling projects: pure black `#0
 | Market benchmark | `python3 -m backend.scripts.benchmark_market` |
 | Score the live record | `python3 -m backend.scripts.score_live` |
 | Publish the forecast | `python3 -m backend.scripts.forecast_season --sims 20000` |
+| Publish game context + matchups | `python3 -m backend.scripts.build_game_context` |
 | Backend tests | `python3 -m pytest backend/tests/` |
 | Lint (Vercel hard gate) | `npx next lint` |
 | Dev server | `npm run dev` |

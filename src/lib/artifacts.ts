@@ -58,6 +58,20 @@ export interface SeasonProjections {
   teams: TeamProjection[]
 }
 
+export interface SpreadRow {
+  line: number
+  home_cover: number
+  push: number
+  away_cover: number
+}
+
+export interface MarginDistributionData {
+  low: number
+  high: number
+  p: number[]
+  outside: number
+}
+
 export interface GameForecast {
   game_id: string
   season: number
@@ -67,6 +81,8 @@ export interface GameForecast {
   away_team_id: number
   home: string
   away: string
+  home_name: string
+  away_name: string
   neutral_site: boolean
   venue: string | null
   p_home: number
@@ -78,6 +94,8 @@ export interface GameForecast {
   exp_away_score: number
   margin_sd: number
   total_sd: number
+  margin_distribution: MarginDistributionData
+  spread_surface: SpreadRow[]
   market: {
     ml_home: number | null
     ml_away: number | null

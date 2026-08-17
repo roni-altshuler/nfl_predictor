@@ -233,6 +233,53 @@ class GameForecast:
             (float(total_line) - self.exp_total) / self.total_sd
         )
 
+    # ------------------------------------------------------- publishing
+
+    def margin_distribution(
+        self, *, low: int = -28, high: int = 28
+    ) -> Dict[str, object]:
+        """The margin lattice, trimmed for publication.
+
+        Published so the game page can DRAW the distribution rather than
+        recompute it. The frontend never computes a probability — a component
+        that did would be a second model nobody benchmarked — and this is the
+        artifact that lets it show football's 3s and 7s honestly.
+
+        The window is +/-28 rather than the full +/-70 because the tails carry
+        under a tenth of a percent between them and 272 games of trailing
+        zeros is real bytes on a static site. `outside` records the mass that
+        was trimmed, so the chart can say so instead of implying the
+        distribution ends.
+        """
+        mask = (self.lattice >= low) & (self.lattice <= high)
+        inside = self.lattice_pmf[mask]
+        return {
+            "low": int(low),
+            "high": int(high),
+            "p": [round(float(v), 5) for v in inside],
+            "outside": round(float(1.0 - inside.sum()), 5),
+        }
+
+    def spread_surface(self, lines: Sequence[float]) -> List[Dict[str, float]]:
+        """Cover / push / away-cover at each line, published.
+
+        **The push column is the reason this exists.** At a line of exactly
+        -3 a bet on the favourite can win, lose or push, and the push is worth
+        about one game in twelve. Every continuous model assigns it zero by
+        construction and silently splits that mass between the two sides — on
+        the most heavily traded number in the sport.
+        """
+        out: List[Dict[str, float]] = []
+        for line in lines:
+            home, push, away = self.cover_probabilities(float(line))
+            out.append({
+                "line": float(line),
+                "home_cover": round(home, 5),
+                "push": round(push, 5),
+                "away_cover": round(away, 5),
+            })
+        return out
+
     def as_dict(self) -> Dict:
         return {
             "p_home": round(self.p_home, 6),

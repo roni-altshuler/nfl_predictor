@@ -108,6 +108,12 @@ jobs:
           python -m backend.scripts.forecast_season \
             --sims ${{ github.event.inputs.sims || '20000' }}
 
+      - name: Publish game context and the matchup grid
+        # Head-to-head history, recent form and all 992 ordered pairs. Runs
+        # after the forecast because it fits the same model on the same
+        # corpus, and the game pages read both artifacts together.
+        run: python -m backend.scripts.build_game_context
+
       - name: Score the live record
         # Reads back the forecasts stamped BEFORE their kickoffs and scores
         # the ones whose games have now been played. It must run AFTER the
