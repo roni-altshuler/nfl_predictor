@@ -133,6 +133,19 @@ jobs:
         # the site that can claim a number existed before its result did.
         run: python -m backend.scripts.score_live
 
+      - name: Refresh the current season's archive entry
+        # ONLY the current season. Past seasons do not change, and rewriting
+        # 1.7MB of identical JSON through git every morning is noise.
+        #
+        # `--from-season` limits which season FILES are rewritten and nothing
+        # else: `seasons.json` is always rebuilt over every season. The sibling
+        # NBA project filtered its index too, and one scheduled run cut its
+        # archive to a single season and 404'd every other archived URL while
+        # intact season files sat beside them.
+        run: |
+          python -m backend.scripts.build_history \
+            --from-season "$(python -c 'from backend.services.espn.client import current_season; print(current_season())')"
+
       - name: Commit refreshed artifacts
         run: |
           git config user.name "github-actions[bot]"
@@ -141,7 +154,8 @@ jobs:
           # copy of the live record: the warehouse is gitignored and gets
           # rebuilt from ESPN on a failed restore, and a forecast made before
           # a game is the one thing a rebuild cannot recover.
-          git add backend/data/predictions/ backend/data/diagnostics/ || true
+          git add backend/data/predictions/ backend/data/diagnostics/ \
+                  backend/data/history/ || true
           # Artifacts stamp generated_at every run, so ignore a diff that is
           # only a timestamp — otherwise this job commits daily noise.
           if git diff --cached --quiet -I'"generated_at":'; then

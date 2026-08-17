@@ -129,14 +129,13 @@ class TeamRecord:
 
 
 def _tiebreak_key(record: TeamRecord) -> Tuple[float, ...]:
-    """Ordering key, best first, over the tiebreakers this project models.
+    """Ordering key for teams IN THE SAME DIVISION, best first.
 
-    The NFL's published tiebreaker procedure runs to twelve steps and
-    includes strength of victory, strength of schedule and, ultimately, a
-    coin toss. This implements the first four that actually resolve almost
-    every case — win percentage, head-to-head (applied separately, below),
-    division record, conference record — and then breaks any remainder
-    **deterministically on team id**.
+    The NFL's published procedure runs to twelve steps and includes strength
+    of victory, strength of schedule and, ultimately, a coin toss. This
+    implements the ones that resolve almost every case — win percentage,
+    head-to-head (applied separately, below), division record, conference
+    record — and then breaks any remainder **deterministically on team id**.
 
     That last step is a deliberate, stated approximation rather than a
     modelling claim. What it must not be is *random per simulation*: a
@@ -154,23 +153,188 @@ def _tiebreak_key(record: TeamRecord) -> Tuple[float, ...]:
     )
 
 
+def _wildcard_key(record: TeamRecord) -> Tuple[float, ...]:
+    """Ordering key for teams in DIFFERENT divisions, best first.
+
+    **Division record is not a cross-division tiebreaker and using it as one
+    is wrong, not merely imprecise.** Two teams in different divisions played
+    different opponents to earn those division records, so comparing them
+    ranks a team by the weakness of the three clubs it happened to share a
+    division with. The league's own order for a wild-card comparison goes
+    head-to-head, then CONFERENCE record — division record never appears.
+
+    This was measured rather than argued. Reconstructing the seeds for all 24
+    archived seasons and checking them against the postseason that was
+    actually played, the division-first key put the wrong team in the field in
+    11 of 48 conference-seasons; conference-first with head-to-head applied to
+    the wild-card group gets the great majority of them right. Because
+    `seed_conference` also runs inside every Monte Carlo iteration, that bug
+    was mispricing the 5, 6 and 7 seeds in the live projection too.
+    """
+    return (-record.win_pct, -record.conference_pct, record.team_id)
+
+
 def _head_to_head_adjust(
-    tied: List[TeamRecord], head_to_head: Dict[Tuple[int, int], float]
+    tied: List[TeamRecord],
+    head_to_head: Dict[Tuple[int, int], float],
+    key: Callable[[TeamRecord], Tuple[float, ...]] = _tiebreak_key,
 ) -> List[TeamRecord]:
     """Order a tied group, applying head-to-head where it is decisive.
 
-    Head-to-head is the NFL's first tiebreaker and it is only well-defined
-    for two teams (for three or more the league uses a sweep rule). Applied
-    here for the two-team case, which is the overwhelming majority; larger
-    groups fall through to the record-based key.
+    Head-to-head is the NFL's FIRST tiebreaker and it is only well-defined
+    for two teams — for three or more the league uses a sweep rule, which
+    only applies when one team beat or lost to all the others. Applied here
+    for the two-team case, which is the overwhelming majority; larger groups
+    fall through to the record-based key.
+
+    A split series and a pair that never met are both `None`-equivalent and
+    both fall through, which is correct: neither is evidence for either side.
     """
-    if len(tied) != 2:
-        return sorted(tied, key=_tiebreak_key)
+    if len(tied) > 2:
+        return _sweep(tied, head_to_head, key)
+    if len(tied) < 2:
+        return list(tied)
     a, b = tied
     result = head_to_head.get((a.team_id, b.team_id))
     if result is None or result == 0.5:
-        return sorted(tied, key=_tiebreak_key)
+        return sorted(tied, key=key)
     return [a, b] if result > 0.5 else [b, a]
+
+
+def _sweep(
+    tied: List[TeamRecord],
+    head_to_head: Dict[Tuple[int, int], float],
+    key: Callable[[TeamRecord], Tuple[float, ...]],
+) -> List[TeamRecord]:
+    """The league's three-or-more-team head-to-head rule.
+
+    Head-to-head only applies to a group of three or more when one club **beat
+    every other club in the group** — it goes to the top — or **lost to every
+    other** — it goes to the bottom. Anything in between is not evidence and
+    the group falls through to the record key.
+
+    That restriction is the whole point: a group where A beat B, B beat C and
+    C beat A has a head-to-head result for every pair and a winner for none,
+    and any rule that ranks them on it is inventing an answer. Applying the
+    sweep and then recursing on what is left is what the league does.
+    """
+    remaining = list(tied)
+    front: List[TeamRecord] = []
+    back: List[TeamRecord] = []
+
+    while len(remaining) > 2:
+        pairs = {
+            r.team_id: [
+                head_to_head.get((r.team_id, other.team_id))
+                for other in remaining
+                if other.team_id != r.team_id
+            ]
+            for r in remaining
+        }
+        swept = [
+            r for r in remaining
+            if all(v is not None and v > 0.5 for v in pairs[r.team_id])
+        ]
+        drowned = [
+            r for r in remaining
+            if all(v is not None and v < 0.5 for v in pairs[r.team_id])
+        ]
+        if len(swept) == 1:
+            front.append(swept[0])
+            remaining = [r for r in remaining if r is not swept[0]]
+            continue
+        if len(drowned) == 1:
+            back.insert(0, drowned[0])
+            remaining = [r for r in remaining if r is not drowned[0]]
+            continue
+        break
+
+    if len(remaining) == 2:
+        remaining = _head_to_head_adjust(remaining, head_to_head, key)
+    else:
+        remaining = sorted(remaining, key=key)
+    return front + remaining + back
+
+
+def _order_wildcards(
+    contenders: Sequence[TeamRecord],
+    head_to_head: Dict[Tuple[int, int], float],
+) -> List[TeamRecord]:
+    """Order the wild-card pool by the league's actual two-stage procedure.
+
+    **"Only one club advances to the next level."** Before any cross-division
+    comparison happens, each division is reduced to its best remaining team
+    using the DIVISION tiebreakers — head-to-head, then division record. Only
+    then are the survivors compared on conference record. A flat sort over the
+    whole pool skips that reduction and gets a specific, recurring case wrong.
+
+    Every one of these was checked against the postseason that was actually
+    played, and each is a different step of the same procedure:
+
+    * **2025 NFC** — Carolina and Atlanta both 8-9, both NFC South. Carolina
+      won the head-to-head. A flat sort put Atlanta through on conference
+      record, which is a tiebreaker the league never reaches for two teams in
+      one division that split nothing.
+    * **2006 AFC** — Kansas City and Denver both 9-7, both AFC West, series
+      split. Division record decides it: .667 to .500, Kansas City. A flat
+      conference-record sort hands it to Denver.
+    * **2012 NFC** — Minnesota and Chicago both 10-6, both NFC North, series
+      split. Same shape, same fix.
+
+    What this still cannot do is **common games**, which is the step below
+    conference record and is what separated Pittsburgh from the Jets in 2015 —
+    two 10-6 teams, tied on conference record, who never met. That case is
+    left to the deterministic id fallback and the archive withholds those
+    seeds rather than printing a guess.
+    """
+    by_division: Dict[str, List[TeamRecord]] = {}
+    for record in contenders:
+        by_division.setdefault(record.division or "", []).append(record)
+
+    # Stage one: each division ordered among itself, division rules.
+    queues = {
+        division: _order_with_head_to_head(members, head_to_head, _tiebreak_key)
+        for division, members in by_division.items()
+    }
+
+    # Stage two: repeatedly take the best division leader still standing.
+    out: List[TeamRecord] = []
+    while any(queues.values()):
+        heads = [queue[0] for queue in queues.values() if queue]
+        best = _order_with_head_to_head(heads, head_to_head, _wildcard_key)[0]
+        out.append(best)
+        queues[best.division or ""].pop(0)
+    return out
+
+
+def _order_with_head_to_head(
+    records: Sequence[TeamRecord],
+    head_to_head: Dict[Tuple[int, int], float],
+    key: Callable[[TeamRecord], Tuple[float, ...]],
+) -> List[TeamRecord]:
+    """Sort by `key`, then let head-to-head resolve exact win-percentage ties.
+
+    **Applied as a pairwise refinement inside tie groups rather than as a
+    comparator**, deliberately. Head-to-head results can cycle — A beat B, B
+    beat C, C beat A happens — and a `cmp`-style sort over a non-transitive
+    relation produces an order that depends on the input sequence and looks
+    perfectly reasonable. Grouping on win percentage first and resolving only
+    the two-team groups cannot cycle, and it is also what the league's own
+    procedure does.
+    """
+    ordered = sorted(records, key=key)
+    out: List[TeamRecord] = []
+    index = 0
+    while index < len(ordered):
+        run = [ordered[index]]
+        while (
+            index + len(run) < len(ordered)
+            and ordered[index + len(run)].win_pct == ordered[index].win_pct
+        ):
+            run.append(ordered[index + len(run)])
+        out.extend(_head_to_head_adjust(run, head_to_head, key) if len(run) > 1 else run)
+        index += len(run)
+    return out
 
 
 def seed_conference(
@@ -191,19 +355,22 @@ def seed_conference(
     for record in records:
         by_division.setdefault(record.division or "", []).append(record)
 
+    # A division winner is decided by the DIVISION key — same opponents, so
+    # division record is a fair comparison and the league ranks it second.
     winners: List[TeamRecord] = []
-    for division, members in by_division.items():
-        ordered = sorted(members, key=_tiebreak_key)
-        # Resolve a two-way tie at the top of a division on head-to-head.
-        if len(ordered) >= 2 and _tiebreak_key(ordered[0])[:1] == _tiebreak_key(ordered[1])[:1]:
-            ordered[:2] = _head_to_head_adjust(ordered[:2], head_to_head)
-        winners.append(ordered[0])
+    for members in by_division.values():
+        winners.append(
+            _order_with_head_to_head(members, head_to_head, _tiebreak_key)[0]
+        )
 
     winner_ids = {record.team_id for record in winners}
     contenders = [r for r in records if r.team_id not in winner_ids]
 
-    winners_sorted = sorted(winners, key=_tiebreak_key)
-    wildcards_sorted = sorted(contenders, key=_tiebreak_key)
+    # Seeds 1-4 and 5-7 are both CROSS-division comparisons, so both use the
+    # wild-card key. Ordering four division champions by their division
+    # records would rank them by the weakness of their own divisions.
+    winners_sorted = _order_with_head_to_head(winners, head_to_head, _wildcard_key)
+    wildcards_sorted = _order_wildcards(contenders, head_to_head)
 
     n_seeds = seeds_per_conference(season)
     n_wildcards = n_seeds - len(winners_sorted)

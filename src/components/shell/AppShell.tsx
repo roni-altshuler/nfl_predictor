@@ -17,9 +17,11 @@ const NAV = [
   { href: '/', label: 'This week', short: 'Week' },
   { href: '/season', label: 'Season', short: 'Season' },
   { href: '/games', label: 'Schedule', short: 'Games' },
+  { href: '/bracket', label: 'Road to the Super Bowl', short: 'Bracket' },
   { href: '/playoffs', label: 'Playoff picture', short: 'Playoff' },
   { href: '/predict', label: 'Head to head', short: 'H2H' },
   { href: '/ratings', label: 'Power ratings', short: 'Ratings' },
+  { href: '/seasons', label: 'Seasons', short: 'Past' },
   { href: '/accuracy', label: 'Accuracy', short: 'Record' },
   { href: '/about', label: 'How it works', short: 'About' },
 ]
@@ -28,7 +30,7 @@ const NAV = [
 // central claim of this product is that its probabilities are calibrated,
 // and the page that shows whether that is true should not be two taps down.
 const MOBILE_NAV = NAV.filter((item) =>
-  ['/', '/season', '/games', '/playoffs', '/accuracy'].includes(item.href),
+  ['/', '/games', '/bracket', '/seasons', '/accuracy'].includes(item.href),
 )
 
 function isActive(pathname: string, href: string): boolean {

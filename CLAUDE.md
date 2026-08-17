@@ -83,6 +83,31 @@ Paired bootstrap against the closing line on 3,807 priced, decided games:
 
 **The market is better, significantly. That is the expected and wanted result** — the model carries no market features. It closes **76%** of the distance from the constant base rate to the market.
 
+### Margin and total, measured
+
+Every game card publishes an expected margin and an expected total, and until
+`benchmark_market` grew a continuous block neither was scored anywhere — which
+the standing rule does not permit.
+
+| | model MAE | market MAE | gap | bias |
+|---|---|---|---|---|
+| margin | 10.53 | 10.00 (spread, n=3,820) | +0.32 | +0.42 |
+| total | 10.83 | 10.44 (posted, n=3,290) | +0.37 | −0.81 |
+
+Interval coverage, read off the published lattice rather than off a normal at
+the same sd:
+
+| nominal | margin | total |
+|---|---|---|
+| 50% | 54.5% | 51.5% |
+| 80% | 81.8% | 81.0% |
+| 95% | 95.1% | 95.0% |
+
+PIT chi-square per degree of freedom: margin 3.07, total 6.10. **No p-value is
+published**, deliberately — at n in the thousands any real model fails a
+goodness-of-fit test on some decimal place, and `p < .001` beside a visibly
+flat histogram would be true and completely misleading.
+
 **The margin model does not beat Elo-only, and this must not be dressed up.** It is .0001 worse on Brier, .0029 worse on accuracy, and materially worse calibrated (ECE .0202 against .0123) — and Elo-only is the marginally closer of the two to the closing line. Nine features have bought nothing over a rating gap and a home-field constant. That is a real result about football rather than a bug: Elo already encodes team strength, and rest, division and form are either small or already priced into the rating. The honest reading is that the feature layer **has not yet earned its place**, and `/accuracy` says so in those words.
 
 ## Where football diverges from basketball — do not port conclusions
@@ -184,6 +209,16 @@ The 2026 NFL season kicks off September 2026 and ends with a Super Bowl in Febru
 
 - **Elo over an unordered stream reads the future and the output looks entirely normal.** `iter_games` orders on `(date_utc, game_id)`; both `EloRatingSystem.run` and `FeatureBuilder.build` raise on an out-of-order row.
 
+- **Division record is NOT a cross-division tiebreaker, and using it as one shipped.** `seed_conference` originally ordered the whole conference — division winners and wild cards alike — on `(win%, division%, conference%)`. Two teams in different divisions played different opponents to earn those division records, so that ranks a team by the weakness of the three clubs it shared a division with. The league's wild-card order is head-to-head, then CONFERENCE record; division record never appears. Because `seed_conference` runs inside every Monte Carlo iteration, this was mispricing the 5, 6 and 7 seeds in the live projection, not only in the archive.
+
+  Measured by reconstructing all 24 archived seasons and checking against the postseason that actually played: **11 of 48 conference-seasons wrong before, 8 after** — and the remaining 8 all turn on **common games**, which is not modelled. Those withhold their seeds.
+
+- **Same-division wild cards must be reduced by the DIVISION rule first** ("only one club advances to the next level"), before any cross-division comparison. Three real cases, each a different step: 2025 NFC (Carolina beat Atlanta head-to-head), 2006 AFC and 2012 NFC (series split, division record decides). A flat sort over the whole pool gets all three wrong.
+
+- **Head-to-head for three or more teams is the SWEEP rule, not a comparator.** It applies only when one club beat every other in the group, or lost to every other. A group where A beat B, B beat C and C beat A has a result for every pair and a winner for none — and a `cmp`-style sort over a non-transitive relation produces an order that depends on the input sequence and looks entirely reasonable. There is a test that the answer is the same forwards and backwards.
+
+- **The PIT for the margin must be MID-P, because the margin distribution is discrete.** An ordinary `F(y)` on a 57-cell lattice can only take 57 values, so its histogram is spiky however good the forecast is — it would read as a broken model. `F(k-1) + 0.5·P(k)` is uniform under a correct discrete forecast. The same applies to coverage: the margin interval is the smallest lattice range whose mass reaches nominal, which is conservative by construction, so **over-coverage at the 50% level (54.5%) is mostly the fat cells at 3 and 7 points rather than a miscalibration**.
+
 - **A season is `16 * (weeks - 1)` games, not `16 * weeks`.** Every team has exactly one bye, so an 18-week season is 272 games and a 17-week one is 256. The first version of `conference_race` asserted 288 and refused to replay any season at all. 2022 is 271 — see `KNOWN_CANCELLATIONS`.
 
 - **The race replay prices from RATINGS, not through the feature vector.** `FeatureBuilder` is stateful — it carries each team's last kickoff and rolling form — so rewinding it to eighteen points in one season would mean eighteen independent walks, and a builder that has to be told which results it is allowed to have seen is the exact shape of bug this project has been bitten by twice. The replay uses `predict_from_elo` against a model fitted on games strictly earlier than the replayed season, and **the artifact says so in its `note`**. It costs less than it sounds: Elo-only scores .2198 Brier against the feature model's .2199.
@@ -211,11 +246,15 @@ Next.js 15 App Router. **The frontend never computes a probability** — it read
 | `/season` | **the conference race as a line**, then projected standings by division |
 | `/games` | the schedule, **week by week as a calendar** |
 | `/games/[id]` | one game — margin lattice, spread surface, availability, head-to-head, form |
+| `/bracket` | **the projected postseason** — first round as matchups, later rounds as marginals |
 | `/playoffs` | the playoff picture by conference |
 | `/predict` | head-to-head for any two franchises |
 | `/ratings` | all 32 power ratings |
 | `/teams/[abbr]` | one franchise — rating history, seed distribution, schedule, season by season |
-| `/accuracy` | the walk-forward record against the closing line |
+| `/seasons` | **the 24-season archive index** |
+| `/seasons/[season]` | standings, **the bracket that was played**, the model's five biggest misses |
+| `/seasons/[season]/games` | every game that season, by week, with the retrodicted call |
+| `/accuracy` | the record: scorecards, **calibration, per-season Brier, margin/total, PIT** |
 | `/about` | how it works |
 
 **The schedule is a calendar, and its columns are the week's OWN days.** The
@@ -244,6 +283,34 @@ ranked list. `getConferenceRace` prefers the LIVE tracker and falls back to the
 most recent replay — **never a merge**, because one was published before the
 games and one was reconstructed after them.
 
+**The bracket is COMPUTED, not laid out.** `src/lib/bracketLayout.ts` returns
+every card position as arithmetic; the components absolutely position from it
+and draw one `<svg>` underneath. Built from nested flexbox, whether a card sits
+on the centre line between the two feeding it is an emergent property of the
+box model — it looks about right and nothing can check it.
+
+**The NFL board is NOT a balanced tree, which is why none of the sibling's
+bracket code could be ported.** The top seed does not play in the first round
+at all, so it gets a card of its own that says "bye" — a balanced 8-slot tree
+would draw it against a phantom. And the bracket **reseeds every round**, so
+there is no fixed parent for a first-round card. The layout module therefore
+places positions and the CALLER supplies the edges.
+
+**On a played bracket the connectors are computed from participation, and they
+cross.** That crossing IS the reseeding, and it is the most informative thing
+on the board. On the projected bracket there are **no connectors at all**: only
+the first column is a real matchup (2v7, 3v6, 4v5 are fixed by the seeds), and
+every later cell names its likeliest occupant with the marginal probability
+that team reaches that round. Advancing the modal winner would compound one
+seeding assumption three rounds deep and publish the result as a Super Bowl
+number the simulation already computes correctly.
+
+**A seed can legitimately be `null` and renders as `—`.** `build_history`
+reconstructs seeds from final standings and checks them against the postseason
+that actually played; 8 of 48 conference-seasons turn on the league's
+common-games tiebreaker, which this project does not model, and those carry no
+seed numbers at all. The games beside them are real; the numbers would not be.
+
 Design language is **Bugatti**, ported from the sibling projects: pure black `#000`, surfaces `#0d0d0d`/`#141414`, hairlines `#262626`, white uppercase letterspaced display, monospace for nav and tables. **No gradients, no shadows, no glassmorphism.** Colour carries meaning only. **Dark-only** — `<html class="dark">` is hardcoded.
 
 ### Conventions
@@ -266,6 +333,8 @@ Design language is **Bugatti**, ported from the sibling projects: pure black `#0
 | Score the live record | `python3 -m backend.scripts.score_live` |
 | Publish the forecast | `python3 -m backend.scripts.forecast_season --sims 20000` |
 | Publish game context, matchups + team archive | `python3 -m backend.scripts.build_game_context` |
+| Export the season archive | `python3 -m backend.scripts.build_history` |
+| Refresh only the current season's archive | `python3 -m backend.scripts.build_history --from-season 2026` |
 | Append today's conference-race point | `python3 -m backend.scripts.conference_race --track` |
 | Replay a completed season's race | `python3 -m backend.scripts.conference_race --replay 2025 --sims 4000` |
 | Backend tests | `python3 -m pytest backend/tests/` |

@@ -19,7 +19,9 @@ explorable: a game page carries the margin lattice, the cover/push/lose surface
 at each key number, the injury report and the head-to-head; a team page carries
 twenty-four seasons of rating against the league. `/season` draws the
 conference race as a line — the one question on the site that a table cannot
-answer.
+answer. `/bracket` prices the road to the Super Bowl, and `/seasons` is the
+24-season archive: standings, the bracket that was actually played, every game
+and where the model was most wrong.
 
 ## The interesting part: football margins are lumpy
 

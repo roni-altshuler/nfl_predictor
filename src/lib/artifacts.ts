@@ -140,6 +140,71 @@ export interface ScoreCard {
   brier_ties_as_half?: number
 }
 
+export interface ReliabilityBucket {
+  lower: number
+  upper: number
+  count: number
+  mean_predicted: number
+  observed: number
+}
+
+export interface PitBucket {
+  lower: number
+  upper: number
+  count: number
+  share: number
+  expected: number
+}
+
+export interface PitBlock {
+  n: number
+  buckets: PitBucket[]
+  chi_square: number | null
+  dof?: number
+  chi_square_per_dof: number | null
+  max_abs_deviation?: number
+}
+
+export interface ErrorBlock {
+  n: number
+  mae?: number
+  rmse?: number
+  bias?: number
+  median_ae?: number
+  mean_actual?: number
+  mean_predicted?: number
+}
+
+export interface CoverageRow {
+  nominal: number
+  n: number
+  covered: number
+  coverage: number
+  gap: number
+  half_width_z?: number
+}
+
+export interface ContinuousBlock {
+  model: ErrorBlock
+  vs_market: {
+    n: number
+    model_mae?: number | null
+    market_mae?: number | null
+    mae_gap?: number
+  }
+  coverage: CoverageRow[]
+  pit: PitBlock
+}
+
+export interface SeasonScore {
+  n: number
+  model_brier: number | null
+  elo_brier: number | null
+  market_brier: number | null
+  priced_n: number
+  gap_to_market: number | null
+}
+
 export interface MarketBenchmark {
   generated_at: string
   corpus_games: number
@@ -157,6 +222,13 @@ export interface MarketBenchmark {
     string,
     { mean: number; lo: number; hi: number; p_better: number }
   >
+  reliability?: Record<string, ReliabilityBucket[]>
+  continuous?: {
+    note: string
+    margin: ContinuousBlock
+    total: ContinuousBlock
+  }
+  by_season?: Record<string, SeasonScore>
   note: string
 }
 

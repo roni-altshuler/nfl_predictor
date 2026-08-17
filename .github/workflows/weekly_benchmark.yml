@@ -59,11 +59,19 @@ jobs:
         # itself.
         run: python -m backend.scripts.benchmark_market
 
+      - name: Rebuild the whole archive
+        # The FULL rebuild lives here rather than in the daily job because the
+        # thing that makes past seasons change is the MODEL changing: every
+        # archived game carries a retrodiction, and `build_history` reads them
+        # from the `retrodictions.json` the step above just rewrote. The daily
+        # job refreshes only the season in progress.
+        run: python -m backend.scripts.build_history
+
       - name: Commit refreshed diagnostics
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add backend/data/diagnostics/ || true
+          git add backend/data/diagnostics/ backend/data/history/ || true
           if git diff --cached --quiet -I'"generated_at":'; then
             echo "diagnostics unchanged"
           else

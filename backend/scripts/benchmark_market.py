@@ -90,6 +90,109 @@ OUT = Path(__file__).resolve().parent.parent / "data" / "diagnostics"
 
 WARMUP_SEASONS = 3
 
+# Reliability and PIT bins. Ten is the convention and it is a real trade-off:
+# fewer bins hide the shape of a miscalibration, more bins put so few games in
+# each that the observed rate is noise.
+BINS = 10
+
+# The nominal interval levels the coverage check reports.
+COVERAGE_LEVELS = (0.50, 0.80, 0.95)
+
+
+def reliability(
+    probabilities: Sequence[float], outcomes: Sequence[float], bins: int = BINS
+) -> List[Dict[str, float]]:
+    """Bucket forecasts by what they said and report what happened.
+
+    **Empty buckets are dropped, not zeroed.** A bucket holding no games has
+    no observed rate; publishing 0.0 for it would draw a point on the floor of
+    the reliability diagram that reads as catastrophic miscalibration and is
+    actually an absence of evidence.
+    """
+    out: List[Dict[str, float]] = []
+    p = np.asarray(probabilities, dtype=float)
+    y = np.asarray(outcomes, dtype=float)
+    if p.size == 0:
+        return out
+    edges = np.linspace(0.0, 1.0, bins + 1)
+    for i in range(bins):
+        lo, hi = edges[i], edges[i + 1]
+        mask = (p >= lo) & (p < hi) if i < bins - 1 else (p >= lo) & (p <= hi)
+        count = int(mask.sum())
+        if count == 0:
+            continue
+        out.append({
+            "lower": round(float(lo), 3),
+            "upper": round(float(hi), 3),
+            "count": count,
+            "mean_predicted": round(float(p[mask].mean()), 4),
+            "observed": round(float(y[mask].mean()), 4),
+        })
+    return out
+
+
+def pit_histogram(values: Sequence[float], bins: int = BINS) -> Dict[str, Any]:
+    """The PIT in deciles, plus a chi-square statistic and NO p-value.
+
+    **The missing p-value is deliberate.** At n in the thousands any real
+    model fails a goodness-of-fit test on some decimal place, so `p < .001`
+    printed beside a visibly flat histogram would be true and completely
+    misleading. Chi-square per degree of freedom is reported instead: it is
+    roughly 1 when the histogram is as flat as sampling noise allows, and it
+    grows with the size of a real departure rather than with n alone.
+    """
+    v = np.asarray(values, dtype=float)
+    v = v[np.isfinite(v)]
+    n = int(v.size)
+    if n == 0:
+        return {"n": 0, "buckets": [], "chi_square": None, "chi_square_per_dof": None}
+
+    edges = np.linspace(0.0, 1.0, bins + 1)
+    counts, _ = np.histogram(np.clip(v, 0.0, 1.0), bins=edges)
+    expected = n / bins
+    chi = float(((counts - expected) ** 2 / expected).sum())
+    buckets = [
+        {
+            "lower": round(float(edges[i]), 2),
+            "upper": round(float(edges[i + 1]), 2),
+            "count": int(counts[i]),
+            "share": round(float(counts[i] / n), 4),
+            "expected": round(1.0 / bins, 4),
+        }
+        for i in range(bins)
+    ]
+    dof = bins - 1
+    return {
+        "n": n,
+        "buckets": buckets,
+        "chi_square": round(chi, 2),
+        "dof": dof,
+        "chi_square_per_dof": round(chi / dof, 3),
+        "max_abs_deviation": round(
+            float(np.abs(counts / n - 1.0 / bins).max()), 4
+        ),
+    }
+
+
+def _errors(predicted: Sequence[float], actual: Sequence[float]) -> Dict[str, Any]:
+    p = np.asarray(predicted, dtype=float)
+    a = np.asarray(actual, dtype=float)
+    if p.size == 0:
+        return {"n": 0}
+    err = p - a
+    return {
+        "n": int(p.size),
+        "mae": round(float(np.abs(err).mean()), 4),
+        "rmse": round(float(np.sqrt((err ** 2).mean())), 4),
+        # Signed, because a model that is 10 points off in both directions and
+        # one that is 10 points high every time are different failures and the
+        # absolute error cannot tell them apart.
+        "bias": round(float(err.mean()), 4),
+        "median_ae": round(float(np.median(np.abs(err))), 4),
+        "mean_actual": round(float(a.mean()), 4),
+        "mean_predicted": round(float(p.mean()), 4),
+    }
+
 
 def paired_bootstrap(
     a: Sequence[float], b: Sequence[float], *, draws: int = 10000, seed: int = 20260816
@@ -115,6 +218,205 @@ def paired_bootstrap(
         # P(a is better), i.e. that the difference in Brier is negative.
         "p_better": float((means < 0).mean()),
     }
+
+
+def _continuous_block(scored: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
+    """Margin and total, measured — not just the moneyline.
+
+    **Every game card publishes an expected margin and an expected total, and
+    until this block neither was measured anywhere.** The standing rule does
+    not permit that: an accuracy claim is stated as a paired measurement on
+    named games or it is not stated.
+
+    The interval-coverage rows are the ones with consequences beyond their own
+    table. The win probability is not fitted separately — it is the mass of
+    the same lattice above zero, and every cover probability and every playoff
+    price is a sum over it too. So a distribution that is too narrow makes
+    *every percentage on the site* overconfident by an amount the moneyline
+    ECE only partly reveals.
+    """
+    margin_pred = [s["exp_margin"] for s in scored]
+    margin_act = [s["actual_margin"] for s in scored]
+    total_pred = [s["exp_total"] for s in scored]
+    total_act = [s["actual_total"] for s in scored]
+
+    # The market's own number, where it published one. A spread is quoted from
+    # the home side and NEGATIVE when the home team is favoured, so the
+    # implied margin is its negation — an error here looks like a market that
+    # is catastrophically wrong rather than like a sign flip.
+    spread_pred, spread_act, spread_model = [], [], []
+    total_line, total_line_act, total_line_model = [], [], []
+    for s in scored:
+        if s.get("spread_home") is not None:
+            spread_pred.append(-float(s["spread_home"]))
+            spread_act.append(s["actual_margin"])
+            spread_model.append(s["exp_margin"])
+        if s.get("total_points") is not None:
+            total_line.append(float(s["total_points"]))
+            total_line_act.append(s["actual_total"])
+            total_line_model.append(s["exp_total"])
+
+    coverage_margin = [
+        {
+            "nominal": level,
+            "n": len(scored),
+            "covered": sum(1 for s in scored if s[f"in{int(level * 100)}_margin"]),
+            "coverage": round(
+                sum(1 for s in scored if s[f"in{int(level * 100)}_margin"])
+                / max(len(scored), 1),
+                4,
+            ),
+        }
+        for level in COVERAGE_LEVELS
+    ]
+    for row in coverage_margin:
+        row["gap"] = round(row["coverage"] - row["nominal"], 4)
+
+    # The total is served as a normal, so its coverage and PIT are the normal
+    # ones. Only the margin carries the lattice.
+    z_total = [
+        (s["actual_total"] - s["exp_total"]) / s["total_sd"]
+        for s in scored
+        if s["total_sd"] > 0
+    ]
+    coverage_total = []
+    for level in COVERAGE_LEVELS:
+        z_star = float(_norm_ppf((1.0 + level) / 2.0))
+        covered = sum(1 for z in z_total if abs(z) <= z_star)
+        coverage_total.append({
+            "nominal": level,
+            "n": len(z_total),
+            "covered": covered,
+            "coverage": round(covered / max(len(z_total), 1), 4),
+            "gap": round(covered / max(len(z_total), 1) - level, 4),
+            "half_width_z": round(z_star, 4),
+        })
+
+    return {
+        "note": (
+            "Margin coverage and PIT are read off the LATTICE the model "
+            "actually publishes, using the mid-P transform for a discrete "
+            "distribution. The total is served as a normal and is measured as "
+            "one. Comparing either against a normal at the same sd would "
+            "grade a distribution this site never published."
+        ),
+        "margin": {
+            "model": _errors(margin_pred, margin_act),
+            "vs_market": (
+                {
+                    "n": len(spread_pred),
+                    "model_mae": _errors(spread_model, spread_act).get("mae"),
+                    "market_mae": _errors(spread_pred, spread_act).get("mae"),
+                    "mae_gap": round(
+                        (_errors(spread_model, spread_act).get("mae") or 0)
+                        - (_errors(spread_pred, spread_act).get("mae") or 0),
+                        4,
+                    ),
+                }
+                if spread_pred
+                else {"n": 0}
+            ),
+            "coverage": coverage_margin,
+            "pit": pit_histogram([s["pit_margin"] for s in scored]),
+        },
+        "total": {
+            "model": _errors(total_pred, total_act),
+            "vs_market": (
+                {
+                    "n": len(total_line),
+                    "model_mae": _errors(total_line_model, total_line_act).get("mae"),
+                    "market_mae": _errors(total_line, total_line_act).get("mae"),
+                    "mae_gap": round(
+                        (_errors(total_line_model, total_line_act).get("mae") or 0)
+                        - (_errors(total_line, total_line_act).get("mae") or 0),
+                        4,
+                    ),
+                }
+                if total_line
+                else {"n": 0}
+            ),
+            "coverage": coverage_total,
+            "pit": pit_histogram([_norm_cdf(z) for z in z_total]),
+        },
+    }
+
+
+def _norm_cdf(z: float) -> float:
+    from math import erf, sqrt
+
+    return 0.5 * (1.0 + erf(float(z) / sqrt(2.0)))
+
+
+def _norm_ppf(q: float) -> float:
+    """Inverse normal CDF by bisection.
+
+    Bisection rather than a rational approximation for the same reason
+    `market._shin_z` uses it: forty lines of magic constants that are right to
+    seven decimals are also forty lines nobody can check, and this is called
+    three times per run.
+    """
+    lo, hi = -10.0, 10.0
+    for _ in range(200):
+        mid = (lo + hi) / 2.0
+        if _norm_cdf(mid) < q:
+            lo = mid
+        else:
+            hi = mid
+    return (lo + hi) / 2.0
+
+
+def _write(path: Path, payload: Dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(json.dumps(payload, separators=(",", ":")))
+    tmp.replace(path)
+    logger.info("wrote %s (%.0f KB)", path.name, path.stat().st_size / 1024)
+
+
+def _lattice_pit(forecast: Any, actual_margin: int) -> float:
+    """The mid-P probability integral transform for a DISCRETE distribution.
+
+    The published margin distribution is a lattice, not a density, and the
+    ordinary PIT `F(y)` is not uniform for a discrete forecast however good it
+    is — it can only take as many values as the lattice has cells, so a
+    histogram of it is spiky by construction and would read as a broken model.
+
+    The mid-P correction `F(k-1) + 0.5 * P(k)` is the standard fix and it is
+    uniform under a correct discrete forecast. Getting this wrong is the
+    difference between "the interval widths are miscalibrated" and "the test
+    does not apply to this kind of forecast".
+    """
+    lattice = np.asarray(forecast.lattice)
+    pmf = np.asarray(forecast.lattice_pmf, dtype=float)
+    below = float(pmf[lattice < actual_margin].sum())
+    at = float(pmf[lattice == actual_margin].sum())
+    return round(below + 0.5 * at, 6)
+
+
+def _lattice_coverage(forecast: Any, actual_margin: int) -> Dict[str, bool]:
+    """Did the result land inside the model's own central interval?
+
+    **The interval is read off the lattice, not off a normal at the same sd.**
+    The whole point of this model is that the two are different shapes, so
+    checking a normal interval would grade a distribution the site never
+    published.
+
+    A discrete distribution cannot hit an arbitrary nominal level exactly, so
+    the interval is the smallest lattice range whose mass reaches the nominal
+    — which is conservative, and stated as such rather than interpolated into
+    a number that looks exact.
+    """
+    lattice = np.asarray(forecast.lattice)
+    cdf = np.cumsum(np.asarray(forecast.lattice_pmf, dtype=float))
+    out: Dict[str, bool] = {}
+    for level in COVERAGE_LEVELS:
+        tail = (1.0 - level) / 2.0
+        low_index = int(np.searchsorted(cdf, tail, side="left"))
+        high_index = int(np.searchsorted(cdf, 1.0 - tail, side="left"))
+        low = int(lattice[min(low_index, len(lattice) - 1)])
+        high = int(lattice[min(high_index, len(lattice) - 1)])
+        out[f"in{int(level * 100)}_margin"] = bool(low <= actual_margin <= high)
+    return out
 
 
 def run(argv: Optional[Sequence[str]] = None) -> int:
@@ -178,12 +480,27 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
 
         for slot, forecast in zip(target, forecasts):
             row = meta[slot]
+            margin = int(row["home_score"]) - int(row["away_score"])
+            total = int(row["home_score"]) + int(row["away_score"])
             scored.append({
                 **row,
                 "p_home_model": forecast.p_home,
                 "p_tie_model": forecast.p_tie,
                 "p_away_model": forecast.p_away,
                 "elo_expect": elo_expect.get(row["game_id"], 0.5),
+                "exp_margin": float(forecast.exp_margin),
+                "exp_total": float(forecast.exp_total),
+                "total_sd": float(forecast.total_sd),
+                "actual_margin": margin,
+                "actual_total": total,
+                # The distribution diagnostics are computed HERE, against the
+                # lattice this specific forecast published, and only their
+                # scalars are kept. Recomputing them later would need every
+                # game's 57-cell PMF carried through the script, and
+                # reconstructing one from `exp_margin` alone would be a second
+                # implementation of the model's own distribution.
+                "pit_margin": _lattice_pit(forecast, margin),
+                **_lattice_coverage(forecast, margin),
             })
 
     logger.info("scored %d games walk-forward", len(scored))
@@ -223,6 +540,19 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
     model_p, elo_p, base_p = [], [], []
     hs, as_ = [], []
     market_p, market_hs, market_as, market_src = [], [], [], []
+    # Reliability is built on DECIDED games only, so the outcome is genuinely
+    # binary. A tie has no y in {0, 1} and folding it in as 0.5 would put a
+    # half-observation into a bucket whose whole meaning is "what share of
+    # these happened".
+    rel_model_p, rel_model_y = [], []
+    rel_elo_p, rel_elo_y = [], []
+    rel_market_p, rel_market_y = [], []
+    # Per-season Brier, for the chart that shows whether the record is one
+    # steady result or an average over some very different years.
+    per_season: Dict[int, Dict[str, List[float]]] = defaultdict(
+        lambda: {"model": [], "market": [], "elo": [], "paired_model": [], "paired_market": []}
+    )
+    retrodictions: List[Dict[str, Any]] = []
     # Paired series: populated ONLY for games that are both priced and
     # decided, so all four arrays index the same games in the same order.
     paired: Dict[str, List[float]] = {
@@ -242,7 +572,34 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
         base_p.append(base_rate)
         hs.append(s["home_score"]); as_.append(s["away_score"])
 
+        decided = s["home_score"] != s["away_score"]
+        won = 1.0 if s["home_score"] > s["away_score"] else 0.0
+        season = int(s["season"])
+        if decided:
+            rel_model_p.append(cond); rel_model_y.append(won)
+            rel_elo_p.append(elo_cond); rel_elo_y.append(won)
+            per_season[season]["model"].append((cond - won) ** 2)
+            per_season[season]["elo"].append((elo_cond - won) ** 2)
+
         implied, source = market_probability(s)
+
+        # The archive reads this: every game the walk-forward scored, with
+        # what the model said BEFORE it (in the walk-forward sense) and what
+        # the market said. `basis` is stamped once, on the file, because every
+        # row in it is a retrodiction and none of them was published in
+        # advance.
+        retrodictions.append({
+            "game_id": s["game_id"],
+            "season": season,
+            "week": int(s["week"]),
+            "p_home": round(cond, 5),
+            "p_tie": round(s["p_tie_model"], 5),
+            "exp_margin": round(s["exp_margin"], 2),
+            "exp_total": round(s["exp_total"], 2),
+            "p_market": None if implied is None else round(implied, 5),
+            "market_source": source,
+        })
+
         if implied is None:
             continue
 
@@ -251,8 +608,11 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
         market_as.append(s["away_score"])
         market_src.append(source)
 
-        if s["home_score"] != s["away_score"]:
-            won = 1.0 if s["home_score"] > s["away_score"] else 0.0
+        if decided:
+            rel_market_p.append(implied); rel_market_y.append(won)
+            per_season[season]["market"].append((implied - won) ** 2)
+            per_season[season]["paired_model"].append((cond - won) ** 2)
+            per_season[season]["paired_market"].append((implied - won) ** 2)
             paired["margin_model"].append((cond - won) ** 2)
             paired["elo_only"].append((elo_cond - won) ** 2)
             paired["constant_base_rate"].append((base_rate - won) ** 2)
@@ -299,6 +659,61 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
         s: market_src.count(s) for s in set(market_src)
     } if market_src else {}
 
+    continuous = _continuous_block(scored)
+    logger.info("")
+    logger.info(
+        "margin  MAE %.2f (market %s)  bias %+.2f  coverage 50/80/95 = %s",
+        continuous["margin"]["model"]["mae"],
+        continuous["margin"]["vs_market"].get("market_mae", "—"),
+        continuous["margin"]["model"]["bias"],
+        "/".join(f"{c['coverage']:.3f}" for c in continuous["margin"]["coverage"]),
+    )
+    logger.info(
+        "total   MAE %.2f (market %s)  bias %+.2f",
+        continuous["total"]["model"]["mae"],
+        continuous["total"]["vs_market"].get("market_mae", "—"),
+        continuous["total"]["model"]["bias"],
+    )
+
+    seasons_block = {
+        str(season): {
+            "n": len(values["model"]),
+            "model_brier": round(float(np.mean(values["model"])), 5) if values["model"] else None,
+            "elo_brier": round(float(np.mean(values["elo"])), 5) if values["elo"] else None,
+            "market_brier": round(float(np.mean(values["market"])), 5) if values["market"] else None,
+            "priced_n": len(values["paired_market"]),
+            # The gap is computed on the PAIRED subset — the priced games
+            # only — never by subtracting two Briers measured on different
+            # game sets. Those two numbers describe different schedules, and
+            # in a season where the unpriced games happened to be lopsided
+            # the difference is mostly a fact about coverage.
+            "gap_to_market": (
+                round(
+                    float(np.mean(values["paired_model"]) - np.mean(values["paired_market"])),
+                    5,
+                )
+                if values["paired_market"]
+                else None
+            ),
+        }
+        for season, values in sorted(per_season.items())
+    }
+
+    _write(OUT / "retrodictions.json", {
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "basis": "backtest",
+        "n": len(retrodictions),
+        "refit_cadence": "weekly, expanding window",
+        "note": (
+            "What the model would have said about each game, refit on games "
+            "strictly earlier than the week it scores. The model never saw "
+            "the game it is scoring — but nobody read these numbers before "
+            "those kickoffs either, and this project does not blur a "
+            "reconstruction into a published call."
+        ),
+        "games": retrodictions,
+    })
+
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "corpus_games": len(rows),
@@ -313,6 +728,13 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
         "base_rate": round(base_rate, 5),
         "scorecards": cards,
         "paired_vs_market": comparisons,
+        "reliability": {
+            "margin_model": reliability(rel_model_p, rel_model_y),
+            "elo_only": reliability(rel_elo_p, rel_elo_y),
+            "market": reliability(rel_market_p, rel_market_y),
+        },
+        "continuous": continuous,
+        "by_season": seasons_block,
         "note": (
             "Ties are excluded from every headline figure and counted in "
             "ties_excluded; brier_ties_as_half scores the same forecasts over "

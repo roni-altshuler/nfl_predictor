@@ -1,7 +1,16 @@
-import { getMarketBenchmark, getSeasonProjections } from '@/lib/artifacts'
+import { CalibrationChart } from '@/components/charts/CalibrationChart'
+import { PitHistogram } from '@/components/charts/PitHistogram'
+import { SeasonBrierChart } from '@/components/charts/SeasonBrierChart'
+import {
+  getMarketBenchmark,
+  getSeasonProjections,
+  type ContinuousBlock,
+} from '@/lib/artifacts'
 import { pct, signed, stamp } from '@/lib/format'
 
 export const dynamic = 'force-static'
+
+export const metadata = { title: 'Accuracy' }
 
 const LABELS: Record<string, string> = {
   market: 'Market (closing line)',
@@ -202,12 +211,226 @@ export default function AccuracyPage() {
         </section>
       ) : null}
 
+      {/* ------------------------------------------------------ calibration */}
+      {benchmark.reliability?.margin_model?.length ? (
+        <section>
+          <h2 className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
+            Calibration
+          </h2>
+          <p className="mb-3 max-w-2xl font-mono text-[11px] leading-relaxed text-[var(--text-tertiary)]">
+            Accuracy is a fact about the schedule as much as about the model —
+            a season of blowouts is easy to call. Calibration is a fact about
+            the model alone, and it is the property this product is actually
+            selling.
+          </p>
+          <div className="card p-4">
+            <CalibrationChart
+              series={[
+                {
+                  key: 'model',
+                  label: 'Margin model',
+                  color: 'var(--viz-model)',
+                  shape: 'circle',
+                  buckets: benchmark.reliability.margin_model,
+                },
+                {
+                  key: 'market',
+                  label: 'Closing line',
+                  color: 'var(--viz-market)',
+                  shape: 'square',
+                  buckets: benchmark.reliability.market ?? [],
+                },
+              ]}
+              caption="Dot area is the number of games in the bucket. Above the dashed line means it was too cautious; below it, too confident. The two are drawn on different game sets — the market only exists where a line was published — so read each against the diagonal rather than against the other."
+            />
+          </div>
+        </section>
+      ) : null}
+
+      {/* -------------------------------------------------------- by season */}
+      {benchmark.by_season && Object.keys(benchmark.by_season).length > 2 ? (
+        <section>
+          <h2 className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
+            Season by season
+          </h2>
+          <div className="card p-4">
+            <SeasonBrierChart bySeason={benchmark.by_season} />
+          </div>
+        </section>
+      ) : null}
+
+      {/* ------------------------------------------------------- continuous */}
+      {benchmark.continuous ? (
+        <section>
+          <h2 className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
+            Margin and total
+          </h2>
+          <p className="mb-3 max-w-2xl font-mono text-[11px] leading-relaxed text-[var(--text-tertiary)]">
+            Every game card publishes an expected margin and an expected total.
+            Until these were measured, neither was scored anywhere — which the
+            standing rule does not permit.
+          </p>
+
+          <div className="grid gap-4 xl:grid-cols-2">
+            <ContinuousCard
+              title="Margin"
+              block={benchmark.continuous.margin}
+              marketLabel="the spread"
+              unit="points"
+            />
+            <ContinuousCard
+              title="Total"
+              block={benchmark.continuous.total}
+              marketLabel="the posted total"
+              unit="points"
+            />
+          </div>
+
+          <div className="mt-4 grid gap-4 xl:grid-cols-2">
+            <div className="card p-4">
+              <h3 className="eyebrow mb-3">Margin distribution shape</h3>
+              <PitHistogram pit={benchmark.continuous.margin.pit} label="margin" />
+            </div>
+            <div className="card p-4">
+              <h3 className="eyebrow mb-3">Total distribution shape</h3>
+              <PitHistogram pit={benchmark.continuous.total.pit} label="total" />
+            </div>
+          </div>
+
+          <p className="mt-3 max-w-3xl font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
+            {benchmark.continuous.note}
+          </p>
+        </section>
+      ) : null}
+
       <p className="font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
         A Brier from this project is binary, over two outcomes, on NFL games.
         It is not comparable to one from the sibling soccer project
         (multiclass over three outcomes) or from the NBA one (a different
         sport with a different base rate). Never put them in one table.
       </p>
+    </div>
+  )
+}
+
+/**
+ * One continuous quantity: how far off, which direction, and whether the
+ * published interval holds.
+ *
+ * **The coverage rows are the ones with consequences beyond their own table.**
+ * The win probability is not fitted separately — it is the mass of the same
+ * margin lattice above zero, and every cover probability and playoff price is
+ * a sum over it too. A distribution that is too narrow makes every percentage
+ * on this site overconfident by an amount the moneyline ECE only partly shows.
+ */
+function ContinuousCard({
+  title,
+  block,
+  marketLabel,
+  unit,
+}: {
+  title: string
+  block: ContinuousBlock
+  marketLabel: string
+  unit: string
+}) {
+  const gap = block.vs_market?.mae_gap
+  return (
+    <div className="card p-4">
+      <h3 className="eyebrow mb-3">{title}</h3>
+      <dl className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <Stat label="Mean abs. error" value={`${block.model.mae?.toFixed(2) ?? '—'}`} />
+        <Stat
+          label="Bias"
+          value={block.model.bias != null ? signed(block.model.bias, 2) : '—'}
+        />
+        <Stat
+          label={`vs ${marketLabel}`}
+          value={
+            block.vs_market?.market_mae != null
+              ? block.vs_market.market_mae.toFixed(2)
+              : '—'
+          }
+        />
+        <Stat
+          label="Gap"
+          value={gap != null ? signed(gap, 2) : '—'}
+          tone={gap != null && gap > 0 ? 'warn' : undefined}
+        />
+      </dl>
+
+      <table className="mt-4">
+        <thead>
+          <tr>
+            <th scope="col">Interval</th>
+            <th scope="col" className="numeric text-right">Nominal</th>
+            <th scope="col" className="numeric text-right">Actual</th>
+            <th scope="col" className="numeric text-right">Gap</th>
+          </tr>
+        </thead>
+        <tbody>
+          {block.coverage.map((row) => (
+            <tr key={row.nominal}>
+              <td className="numeric text-[var(--text-tertiary)]">
+                central {Math.round(row.nominal * 100)}%
+              </td>
+              <td className="numeric text-right text-[var(--text-tertiary)]">
+                {pct(row.nominal, 0)}
+              </td>
+              <td className="numeric text-right text-[var(--text-primary)]">
+                {pct(row.coverage, 1)}
+              </td>
+              <td
+                className={
+                  Math.abs(row.gap) > 0.03
+                    ? 'numeric text-right text-[var(--accent-warn)]'
+                    : 'numeric text-right text-[var(--text-secondary)]'
+                }
+              >
+                {signed(row.gap * 100, 1)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p className="mt-2 font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
+        Errors are in {unit}. {title === 'Margin' ? (
+          <>
+            The margin interval is read off the LATTICE, which is discrete, so
+            it is the smallest range of whole point margins whose mass reaches
+            the nominal level. That is conservative by construction — over-
+            coverage at the 50% level is mostly the fat cells at 3 and 7 points,
+            not a miscalibration.
+          </>
+        ) : (
+          <>The total is served as a normal and is measured as one.</>
+        )}
+      </p>
+    </div>
+  )
+}
+
+function Stat({
+  label,
+  value,
+  tone,
+}: {
+  label: string
+  value: string
+  tone?: 'warn'
+}) {
+  return (
+    <div>
+      <dt className="eyebrow">{label}</dt>
+      <dd
+        className={
+          tone === 'warn'
+            ? 'numeric mt-1 text-sm text-[var(--accent-warn)]'
+            : 'numeric mt-1 text-sm text-[var(--text-primary)]'
+        }
+      >
+        {value}
+      </dd>
     </div>
   )
 }
