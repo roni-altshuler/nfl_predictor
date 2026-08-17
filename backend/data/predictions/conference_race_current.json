@@ -1,0 +1,245 @@
+{
+  "season": 2026,
+  "basis": "live",
+  "metric": "p_conference_title",
+  "generated_at": "2026-08-17T16:09:42+00:00",
+  "named_per_conference": 3,
+  "champion": null,
+  "teams": {
+    "SEA": {
+      "name": "Seattle Seahawks",
+      "abbreviation": "SEA",
+      "conference": "National Football Conference",
+      "division": "NFC West"
+    },
+    "DEN": {
+      "name": "Denver Broncos",
+      "abbreviation": "DEN",
+      "conference": "American Football Conference",
+      "division": "AFC West"
+    },
+    "HOU": {
+      "name": "Houston Texans",
+      "abbreviation": "HOU",
+      "conference": "American Football Conference",
+      "division": "AFC South"
+    },
+    "BUF": {
+      "name": "Buffalo Bills",
+      "abbreviation": "BUF",
+      "conference": "American Football Conference",
+      "division": "AFC East"
+    },
+    "NE": {
+      "name": "New England Patriots",
+      "abbreviation": "NE",
+      "conference": "American Football Conference",
+      "division": "AFC East"
+    },
+    "LAR": {
+      "name": "Los Angeles Rams",
+      "abbreviation": "LAR",
+      "conference": "National Football Conference",
+      "division": "NFC West"
+    },
+    "JAX": {
+      "name": "Jacksonville Jaguars",
+      "abbreviation": "JAX",
+      "conference": "American Football Conference",
+      "division": "AFC South"
+    },
+    "PHI": {
+      "name": "Philadelphia Eagles",
+      "abbreviation": "PHI",
+      "conference": "National Football Conference",
+      "division": "NFC East"
+    },
+    "BAL": {
+      "name": "Baltimore Ravens",
+      "abbreviation": "BAL",
+      "conference": "American Football Conference",
+      "division": "AFC North"
+    },
+    "DET": {
+      "name": "Detroit Lions",
+      "abbreviation": "DET",
+      "conference": "National Football Conference",
+      "division": "NFC North"
+    },
+    "SF": {
+      "name": "San Francisco 49ers",
+      "abbreviation": "SF",
+      "conference": "National Football Conference",
+      "division": "NFC West"
+    },
+    "MIN": {
+      "name": "Minnesota Vikings",
+      "abbreviation": "MIN",
+      "conference": "National Football Conference",
+      "division": "NFC North"
+    },
+    "CHI": {
+      "name": "Chicago Bears",
+      "abbreviation": "CHI",
+      "conference": "National Football Conference",
+      "division": "NFC North"
+    },
+    "GB": {
+      "name": "Green Bay Packers",
+      "abbreviation": "GB",
+      "conference": "National Football Conference",
+      "division": "NFC North"
+    },
+    "LAC": {
+      "name": "Los Angeles Chargers",
+      "abbreviation": "LAC",
+      "conference": "American Football Conference",
+      "division": "AFC West"
+    },
+    "PIT": {
+      "name": "Pittsburgh Steelers",
+      "abbreviation": "PIT",
+      "conference": "American Football Conference",
+      "division": "AFC North"
+    },
+    "CIN": {
+      "name": "Cincinnati Bengals",
+      "abbreviation": "CIN",
+      "conference": "American Football Conference",
+      "division": "AFC North"
+    },
+    "ATL": {
+      "name": "Atlanta Falcons",
+      "abbreviation": "ATL",
+      "conference": "National Football Conference",
+      "division": "NFC South"
+    },
+    "KC": {
+      "name": "Kansas City Chiefs",
+      "abbreviation": "KC",
+      "conference": "American Football Conference",
+      "division": "AFC West"
+    },
+    "TB": {
+      "name": "Tampa Bay Buccaneers",
+      "abbreviation": "TB",
+      "conference": "National Football Conference",
+      "division": "NFC South"
+    },
+    "NO": {
+      "name": "New Orleans Saints",
+      "abbreviation": "NO",
+      "conference": "National Football Conference",
+      "division": "NFC South"
+    },
+    "DAL": {
+      "name": "Dallas Cowboys",
+      "abbreviation": "DAL",
+      "conference": "National Football Conference",
+      "division": "NFC East"
+    },
+    "IND": {
+      "name": "Indianapolis Colts",
+      "abbreviation": "IND",
+      "conference": "American Football Conference",
+      "division": "AFC South"
+    },
+    "WSH": {
+      "name": "Washington Commanders",
+      "abbreviation": "WSH",
+      "conference": "National Football Conference",
+      "division": "NFC East"
+    },
+    "MIA": {
+      "name": "Miami Dolphins",
+      "abbreviation": "MIA",
+      "conference": "American Football Conference",
+      "division": "AFC East"
+    },
+    "CAR": {
+      "name": "Carolina Panthers",
+      "abbreviation": "CAR",
+      "conference": "National Football Conference",
+      "division": "NFC South"
+    },
+    "NYG": {
+      "name": "New York Giants",
+      "abbreviation": "NYG",
+      "conference": "National Football Conference",
+      "division": "NFC East"
+    },
+    "CLE": {
+      "name": "Cleveland Browns",
+      "abbreviation": "CLE",
+      "conference": "American Football Conference",
+      "division": "AFC North"
+    },
+    "ARI": {
+      "name": "Arizona Cardinals",
+      "abbreviation": "ARI",
+      "conference": "National Football Conference",
+      "division": "NFC West"
+    },
+    "TEN": {
+      "name": "Tennessee Titans",
+      "abbreviation": "TEN",
+      "conference": "American Football Conference",
+      "division": "AFC South"
+    },
+    "LV": {
+      "name": "Las Vegas Raiders",
+      "abbreviation": "LV",
+      "conference": "American Football Conference",
+      "division": "AFC West"
+    },
+    "NYJ": {
+      "name": "New York Jets",
+      "abbreviation": "NYJ",
+      "conference": "American Football Conference",
+      "division": "AFC East"
+    }
+  },
+  "checkpoints": [
+    {
+      "date": "2026-08-17",
+      "generated_at": "2026-08-17T15:08:21+00:00",
+      "games_played": 0,
+      "week": 0,
+      "probabilities": {
+        "SEA": 0.3849,
+        "DEN": 0.1792,
+        "HOU": 0.1749,
+        "BUF": 0.1603,
+        "NE": 0.151,
+        "LAR": 0.1406,
+        "JAX": 0.1246,
+        "PHI": 0.0938,
+        "BAL": 0.0733,
+        "DET": 0.0707,
+        "SF": 0.0658,
+        "MIN": 0.068,
+        "CHI": 0.0433,
+        "GB": 0.0343,
+        "LAC": 0.0343,
+        "PIT": 0.0293,
+        "CIN": 0.0261,
+        "ATL": 0.0245,
+        "KC": 0.0191,
+        "TB": 0.0187,
+        "NO": 0.0158,
+        "DAL": 0.0127,
+        "IND": 0.0106,
+        "WSH": 0.0109,
+        "MIA": 0.0092,
+        "CAR": 0.0078,
+        "NYG": 0.0075,
+        "CLE": 0.007,
+        "ARI": 0.0007,
+        "TEN": 0.0006,
+        "LV": 0.0002,
+        "NYJ": 0.0003
+      }
+    }
+  ],
+  "note": "One point per day the forecast ran. These numbers were published in advance, unlike the season replays."
+}

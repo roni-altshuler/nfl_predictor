@@ -184,6 +184,12 @@ The 2026 NFL season kicks off September 2026 and ends with a Super Bowl in Febru
 
 - **Elo over an unordered stream reads the future and the output looks entirely normal.** `iter_games` orders on `(date_utc, game_id)`; both `EloRatingSystem.run` and `FeatureBuilder.build` raise on an out-of-order row.
 
+- **A season is `16 * (weeks - 1)` games, not `16 * weeks`.** Every team has exactly one bye, so an 18-week season is 272 games and a 17-week one is 256. The first version of `conference_race` asserted 288 and refused to replay any season at all. 2022 is 271 — see `KNOWN_CANCELLATIONS`.
+
+- **The race replay prices from RATINGS, not through the feature vector.** `FeatureBuilder` is stateful — it carries each team's last kickoff and rolling form — so rewinding it to eighteen points in one season would mean eighteen independent walks, and a builder that has to be told which results it is allowed to have seen is the exact shape of bug this project has been bitten by twice. The replay uses `predict_from_elo` against a model fitted on games strictly earlier than the replayed season, and **the artifact says so in its `note`**. It costs less than it sounds: Elo-only scores .2198 Brier against the feature model's .2199.
+
+- **The replay's checkpoint 0 must call `regress_to_season` explicitly.** The rolling update applies the offseason carryover lazily, when the first game of the new season arrives — which is one game too late for a snapshot taken *before* that game. Calling it at the boundary is safe rather than a double regression: it sets `_last_season`, so the lazy path is then a no-op.
+
 ## Architecture
 
 ### Backend (`backend/`)
@@ -197,7 +203,46 @@ The 2026 NFL season kicks off September 2026 and ends with a Super Bowl in Febru
 
 ### Frontend (`src/`)
 
-Next.js 15 App Router, 7 pages. **The frontend never computes a probability** — it reads published JSON. A component that recomputes something is a second model nobody benchmarked.
+Next.js 15 App Router. **The frontend never computes a probability** — it reads published JSON. A component that recomputes something is a second model nobody benchmarked.
+
+| route | what it is |
+|---|---|
+| `/` | the next slate, Super Bowl odds, the top of the power ratings |
+| `/season` | **the conference race as a line**, then projected standings by division |
+| `/games` | the schedule, **week by week as a calendar** |
+| `/games/[id]` | one game — margin lattice, spread surface, availability, head-to-head, form |
+| `/playoffs` | the playoff picture by conference |
+| `/predict` | head-to-head for any two franchises |
+| `/ratings` | all 32 power ratings |
+| `/teams/[abbr]` | one franchise — rating history, seed distribution, schedule, season by season |
+| `/accuracy` | the walk-forward record against the closing line |
+| `/about` | how it works |
+
+**The schedule is a calendar, and its columns are the week's OWN days.** The
+sibling NBA project draws a fixed Monday–Sunday grid, which is right for a
+sport that plays every night. A football week runs Thursday to Monday, so that
+grid would split every single week across its own boundary. The span is read
+from the fixtures instead — which also gets Wednesday Christmas games,
+December Saturdays and Thanksgiving right without a special case.
+
+**Days are bucketed in US EASTERN, never UTC.** A Sunday night kickoff is
+stamped Monday 00:20Z. Grouping on UTC moves the whole prime-time slate
+forward a day, every week, and the resulting calendar looks entirely
+plausible. The calendar is also what made it visible that ESPN files the 2026
+opener at `2026-09-10T00:20Z` — 8:20pm Eastern on **Wednesday** 9 September,
+not a Thursday. That is what the source says and it is rendered as such.
+
+**Every team mark outside a `GameCard` is a link to `/teams/[abbr]`.** Inside
+a card it is not, and that is not an oversight: the card is itself a link, and
+an anchor inside an anchor is invalid HTML that React refuses to hydrate. The
+team page is one further click from the game page's headline.
+
+**The race chart is the one surface where a line is the right form.** Every
+other page answers "what is true now"; that one answers "how did it get
+there", and a favourite falling off a cliff in one week is invisible in any
+ranked list. `getConferenceRace` prefers the LIVE tracker and falls back to the
+most recent replay — **never a merge**, because one was published before the
+games and one was reconstructed after them.
 
 Design language is **Bugatti**, ported from the sibling projects: pure black `#000`, surfaces `#0d0d0d`/`#141414`, hairlines `#262626`, white uppercase letterspaced display, monospace for nav and tables. **No gradients, no shadows, no glassmorphism.** Colour carries meaning only. **Dark-only** — `<html class="dark">` is hardcoded.
 
@@ -220,7 +265,9 @@ Design language is **Bugatti**, ported from the sibling projects: pure black `#0
 | Market benchmark | `python3 -m backend.scripts.benchmark_market` |
 | Score the live record | `python3 -m backend.scripts.score_live` |
 | Publish the forecast | `python3 -m backend.scripts.forecast_season --sims 20000` |
-| Publish game context + matchups | `python3 -m backend.scripts.build_game_context` |
+| Publish game context, matchups + team archive | `python3 -m backend.scripts.build_game_context` |
+| Append today's conference-race point | `python3 -m backend.scripts.conference_race --track` |
+| Replay a completed season's race | `python3 -m backend.scripts.conference_race --replay 2025 --sims 4000` |
 | Backend tests | `python3 -m pytest backend/tests/` |
 | Lint (Vercel hard gate) | `npx next lint` |
 | Dev server | `npm run dev` |

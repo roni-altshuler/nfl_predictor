@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { MarginDistribution } from '@/components/charts/MarginDistribution'
+import { TeamLogo } from '@/components/primitives/TeamLogo'
 import { getGameForecasts, type GameForecast } from '@/lib/artifacts'
 import { getGameDetail, type GameDetail } from '@/lib/espn'
 import {
@@ -12,7 +13,7 @@ import {
   type FormGame,
   type Meeting,
 } from '@/lib/history'
-import { kickoff, logoUrl, moneyline, pct, signed, spread } from '@/lib/format'
+import { kickoff, moneyline, pct, signed, spread } from '@/lib/format'
 
 // The 272 scheduled fixtures are prerendered. A played game resolves from
 // the published context at request time and is cached for a day, so the
@@ -451,19 +452,22 @@ function GameHeader({ game }: { game: GameForecast }) {
   )
 }
 
+/**
+ * A team in the headline, linked to its own page.
+ *
+ * The card that got the reader here is a link to this page, so this is the
+ * first place a team mark can carry its own destination without nesting one
+ * anchor inside another.
+ */
 function TeamName({ abbr, name }: { abbr: string; name?: string }) {
   return (
-    <span className="inline-flex items-center gap-2">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={logoUrl(abbr)}
-        alt=""
-        width={26}
-        height={26}
-        className="h-[26px] w-[26px] rounded bg-white/90 p-0.5"
-      />
-      <span className="text-[var(--text-primary)]">{name ?? abbr}</span>
-    </span>
+    <Link
+      href={`/teams/${abbr}`}
+      className="inline-flex items-center gap-2 text-[var(--text-primary)] transition-colors hover:underline"
+    >
+      <TeamLogo abbreviation={abbr} name={name} size={26} />
+      <span>{name ?? abbr}</span>
+    </Link>
   )
 }
 
@@ -641,7 +645,15 @@ function FormBlock({ home, away }: { home: string; away: string }) {
     <section className="grid gap-4 sm:grid-cols-2" aria-label="Recent form">
       {[away, home].map((team) => (
         <div key={team} className="card p-4">
-          <h2 className="eyebrow mb-3">{team} form</h2>
+          <h2 className="mb-3 flex items-baseline justify-between gap-2">
+            <span className="eyebrow">{team} form</span>
+            <Link
+              href={`/teams/${team}`}
+              className="font-mono text-[10px] normal-case tracking-normal text-[var(--accent-info)] hover:underline"
+            >
+              team page →
+            </Link>
+          </h2>
           <FormList games={context.form[team] ?? []} />
         </div>
       ))}

@@ -7,6 +7,7 @@ Writes to `backend/data/predictions/`:
 * `game_context.json` — the last meetings between every pair of franchises,
   each team's recent form, and current-season records
 * `matchups.json`    — **every ordered pair of franchises, pre-priced**
+* `team_history.json` — end-of-season Elo and record per franchise, per season
 
 Why every pair is precomputed
 -----------------------------
@@ -74,6 +75,96 @@ def _write(path: Path, payload: Any) -> None:
     tmp.write_text(json.dumps(payload, separators=(",", ":")))
     tmp.replace(path)
     logger.info("wrote %s (%.0f KB)", path.name, path.stat().st_size / 1024)
+
+
+def build_team_history(
+    rated: Sequence[Any],
+    rows: Sequence[Any],
+    by_id: Dict[int, Any],
+    abbr: Dict[int, str],
+) -> Dict[str, Any]:
+    """End-of-season Elo and record per franchise, for the team page.
+
+    **The league band is computed here rather than in the component.** It is
+    the 10th-to-90th percentile of end-of-season Elo across the league, and a
+    percentile computed in the browser from the same array the line is drawn
+    from is a second implementation of the same statistic — cheap to get
+    subtly wrong and impossible to test. The frontend scales pixels; it does
+    not compute summaries.
+
+    Elo is zero-sum, so 1500 is the league mean by construction and a rising
+    line means rising RELATIVE to everyone else. The band is what makes that
+    readable: a team on 1600 in a spread-out season is not the same team as
+    one on 1600 in a compressed one.
+    """
+    per_season: Dict[int, Dict[int, float]] = defaultdict(dict)
+    for game in rated:
+        per_season[game.season][game.home_team_id] = game.home_elo_post
+        per_season[game.season][game.away_team_id] = game.away_elo_post
+    seasons = sorted(per_season)
+
+    # Records are regular season only — a 13-4 team that then lost a wild-card
+    # game is 13-4, and folding the playoff loss in would print a record the
+    # league never published. Postseason appearance is carried separately.
+    records: Dict[str, Dict[int, Dict[str, int]]] = defaultdict(dict)
+    postseason: Dict[str, set] = defaultdict(set)
+    for row in rows:
+        home, away = int(row["home_team_id"]), int(row["away_team_id"])
+        if home not in abbr or away not in abbr:
+            continue
+        season = int(row["season"])
+        hs, as_ = int(row["home_score"]), int(row["away_score"])
+        if int(row["season_type"]) == SEASON_TYPE_POSTSEASON:
+            postseason[abbr[home]].add(season)
+            postseason[abbr[away]].add(season)
+            continue
+        for team, scored, allowed in ((home, hs, as_), (away, as_, hs)):
+            entry = records[abbr[team]].setdefault(
+                season,
+                {"wins": 0, "losses": 0, "ties": 0, "points_for": 0, "points_against": 0},
+            )
+            entry["points_for"] += scored
+            entry["points_against"] += allowed
+            if scored == allowed:
+                entry["ties"] += 1
+            elif scored > allowed:
+                entry["wins"] += 1
+            else:
+                entry["losses"] += 1
+
+    band: List[Optional[Dict[str, float]]] = []
+    for season in seasons:
+        column = sorted(per_season[season].values())
+        if len(column) < 5:
+            band.append(None)
+            continue
+        at = lambda q: column[int(q * (len(column) - 1))]  # noqa: E731
+        band.append({"low": round(at(0.1), 1), "high": round(at(0.9), 1)})
+
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "seasons": seasons,
+        "band": band,
+        "elo": {
+            abbr[tid]: [
+                round(per_season[s][tid], 1) if tid in per_season[s] else None
+                for s in seasons
+            ]
+            for tid in by_id
+        },
+        "records": {
+            abbr[tid]: [
+                {
+                    "season": s,
+                    **records[abbr[tid]][s],
+                    "postseason": s in postseason[abbr[tid]],
+                }
+                for s in seasons
+                if s in records[abbr[tid]]
+            ]
+            for tid in by_id
+        },
+    }
 
 
 def run(argv: Optional[Sequence[str]] = None) -> int:
@@ -174,6 +265,12 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
     # ---- every ordered pair, priced through the SERVING path
     elo = EloRatingSystem(EloConfig())
     rated = elo.run(rows)
+
+    # The same walk pays for the team archive. `rated` carries POST-game
+    # ratings per season, which is all an end-of-season series needs, and
+    # re-running Elo in a second script to get them would be a second answer
+    # to the same question.
+    _write(OUT / "team_history.json", build_team_history(rated, rows, by_id, abbr))
 
     builder = FeatureBuilder()
     builder.set_divisions({int(t["team_id"]): t["division"] for t in franchises})

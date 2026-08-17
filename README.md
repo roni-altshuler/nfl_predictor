@@ -14,6 +14,13 @@ conclusions differ, deliberately. See [CLAUDE.md](CLAUDE.md).
 3. **A value surface** — model probability against the no-vig implied probability.
 4. **The playoff picture** — who makes the field and who hosts.
 
+The schedule is a calendar, week by week. Every fixture and every team mark is
+explorable: a game page carries the margin lattice, the cover/push/lose surface
+at each key number, the injury report and the head-to-head; a team page carries
+twenty-four seasons of rating against the league. `/season` draws the
+conference race as a line — the one question on the site that a table cannot
+answer.
+
 ## The interesting part: football margins are lumpy
 
 Margin skewness is +0.07 and excess kurtosis is +0.20 — every summary
@@ -91,6 +98,13 @@ PYTHONPATH=. ./.venv/bin/python -m backend.scripts.benchmark_market
 
 # Publish the forecast artifacts the site reads
 PYTHONPATH=. ./.venv/bin/python -m backend.scripts.forecast_season --sims 20000
+
+# Game context, the 992-pair matchup grid and the team archive
+PYTHONPATH=. ./.venv/bin/python -m backend.scripts.build_game_context
+
+# One point on the conference-race line (daily), or a whole season replayed
+PYTHONPATH=. ./.venv/bin/python -m backend.scripts.conference_race --track
+PYTHONPATH=. ./.venv/bin/python -m backend.scripts.conference_race --replay 2025
 
 # Tests, lint, dev server
 PYTHONPATH=. ./.venv/bin/python -m pytest backend/tests/

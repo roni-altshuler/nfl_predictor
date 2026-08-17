@@ -110,7 +110,7 @@
      actually confuses:
 
        #5fa657,#3987e5,#c25ba6   ALL PASS
-         worst all-pairs CVD  dE 10.6 (protan), tritan 4.6
+         worst all-pairs CVD  dE 10.6 (protan), tritan 5.7
          worst normal vision  dE 21.4
 
      Every four-hue set tried FAILED, and the failures are instructive
@@ -126,7 +126,7 @@
      three named contenders plus the field account for everything — nothing
      is dropped, it is aggregated, and the chart says so.
 
-     Tritan separation is 4.6, below the floor, so team identity is ALWAYS
+     Tritan separation is 5.7, below the floor, so team identity is ALWAYS
      carried by a direct label at the line's right edge as well as by
      colour. Slots 1 and 2 are the same validated steps as the model and
      market series above; that is deliberate reuse of passing values, not a
@@ -137,9 +137,10 @@
   --viz-cat-3: #c25ba6;
   --viz-cat-field: #57575a;  /* the aggregated tail — deliberately recessive */
 
-  /* Team logos are authored for light backgrounds — several NBA marks go
-     invisible on pure black. Every product of this class (ESPN, FotMob)
-     seats them on a light tile for exactly this reason. */
+  /* Team logos are authored for light backgrounds — the Ravens' shield, the
+     Raiders' silver and the Steelers' outline all go invisible on pure
+     black. Every product of this class (ESPN, NFL.com, every broadcast
+     scorebug) seats them on a light tile for exactly this reason. */
   --logo-plate: #ffffff;
   --logo-plate-ring: rgba(19, 19, 22, 0.12);
 }

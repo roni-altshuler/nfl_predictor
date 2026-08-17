@@ -100,6 +100,54 @@ export interface Matchups {
   matchups: Matchup[]
 }
 
+export interface RaceTeam {
+  name: string
+  abbreviation: string
+  conference: string
+  division: string
+}
+
+export interface RaceCheckpoint {
+  date: string
+  /** Weeks banked. Null on a live point taken before the season starts. */
+  week: number | null
+  games_played: number
+  probabilities: Record<string, number>
+}
+
+export interface ConferenceRace {
+  season: number
+  /** `live` was published in advance; `backtest` is a reconstruction. */
+  basis: 'live' | 'backtest'
+  metric: string
+  generated_at: string
+  named_per_conference: number
+  champion: string | null
+  champion_conference?: string | null
+  teams: Record<string, RaceTeam>
+  checkpoints: RaceCheckpoint[]
+  note: string
+}
+
+export interface SeasonRecord {
+  season: number
+  wins: number
+  losses: number
+  ties: number
+  points_for: number
+  points_against: number
+  postseason: boolean
+}
+
+export interface TeamHistory {
+  generated_at: string
+  seasons: number[]
+  /** League 10th/90th percentile of end-of-season Elo, per season. */
+  band: Array<{ low: number; high: number } | null>
+  elo: Record<string, Array<number | null>>
+  records: Record<string, SeasonRecord[]>
+}
+
 function readJson<T>(file: string): T | null {
   try {
     return JSON.parse(
@@ -116,6 +164,41 @@ export function getGameContext(): GameContext | null {
 
 export function getMatchups(): Matchups | null {
   return readJson<Matchups>('matchups.json')
+}
+
+export function getTeamHistory(): TeamHistory | null {
+  return readJson<TeamHistory>('team_history.json')
+}
+
+/**
+ * The completed season the replay covers.
+ *
+ * Named here rather than globbed because the frontend reads a fixed set of
+ * artifacts: a directory listing at build time would make the page's content
+ * depend on what happened to be on the builder's disk.
+ */
+export const REPLAY_SEASON = 2025
+
+/**
+ * The race to draw, and whether anyone read it in advance.
+ *
+ * **The live line is preferred and the replay is the fallback, never a
+ * merge.** They are different claims: one was published before the games, the
+ * other reconstructed after them, and averaging or concatenating them would
+ * produce a single line whose left half is a backtest wearing a live label.
+ * A live line needs two points to be a line at all, so before the season has
+ * run twice there is nothing live to draw and the most recent replay is shown
+ * — with its own `basis`, which the chart prints.
+ */
+export function getConferenceRace(): ConferenceRace | null {
+  const live = readJson<ConferenceRace>('conference_race_current.json')
+  if (live && (live.checkpoints?.length ?? 0) >= 2) return live
+  return readJson<ConferenceRace>(`conference_race_${REPLAY_SEASON}.json`)
+}
+
+/** The live tracker, whatever length it is — for the "not yet a line" note. */
+export function getLiveRace(): ConferenceRace | null {
+  return readJson<ConferenceRace>('conference_race_current.json')
 }
 
 /**

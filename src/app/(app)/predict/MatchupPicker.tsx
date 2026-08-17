@@ -3,7 +3,8 @@
 import Link from 'next/link'
 import { useMemo, useState } from 'react'
 
-import { logoUrl, pct, signed, spread } from '@/lib/format'
+import { TeamLogo } from '@/components/primitives/TeamLogo'
+import { pct, signed, spread } from '@/lib/format'
 import type { Matchups } from '@/lib/history'
 
 /**
@@ -260,18 +261,17 @@ function Side({
     <div
       className={`flex min-w-0 items-center gap-2.5 ${align === 'right' ? 'flex-row-reverse text-right' : ''}`}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={logoUrl(team.abbreviation)}
-        alt=""
-        width={32}
-        height={32}
-        className="h-8 w-8 shrink-0 rounded bg-white/90 p-0.5"
-      />
+      <TeamLogo abbreviation={team.abbreviation} name={team.name} size={32} />
       <div className="min-w-0">
-        <p className="truncate text-[13px] text-[var(--text-primary)]">
+        {/* The selected side names a real franchise, so it links to it. The
+            select above is the control; this is the answer, and the answer
+            being a dead end is what the team pages exist to fix. */}
+        <Link
+          href={`/teams/${team.abbreviation}`}
+          className="block truncate text-[13px] text-[var(--text-primary)] hover:underline"
+        >
           {team.name}
-        </p>
+        </Link>
         <p className="numeric text-[10px] text-[var(--text-tertiary)]">
           {team.division} · elo {elo?.toFixed(0) ?? '—'}
         </p>

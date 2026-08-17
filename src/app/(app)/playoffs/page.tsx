@@ -1,7 +1,10 @@
+import { TeamLabel } from '@/components/primitives/TeamLogo'
 import { getSeasonProjections } from '@/lib/artifacts'
-import { logoUrl, longshot, record } from '@/lib/format'
+import { longshot, record } from '@/lib/format'
 
 export const dynamic = 'force-static'
+
+export const metadata = { title: 'Playoff picture' }
 
 /**
  * The playoff picture, by conference.
@@ -77,20 +80,15 @@ export default function PlayoffsPage() {
                     >
                       <td className="px-3 py-2.5">
                         <div className="flex items-center gap-2.5">
-                          <span className="w-4 font-mono text-[10px] text-[var(--text-tertiary)]">
+                          <span className="w-4 shrink-0 font-mono text-[10px] text-[var(--text-tertiary)]">
                             {index + 1}
                           </span>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={logoUrl(team.abbreviation)}
-                            alt=""
-                            width={20}
-                            height={20}
-                            className="h-5 w-5 rounded bg-white/90 p-0.5"
+                          <TeamLabel
+                            abbreviation={team.abbreviation}
+                            name={team.name}
+                            size={20}
+                            className="text-sm"
                           />
-                          <span className="truncate text-sm text-[var(--text-secondary)]">
-                            {team.name}
-                          </span>
                         </div>
                       </td>
                       <td className="px-3 py-2.5 font-mono text-[11px] text-[var(--text-primary)]">

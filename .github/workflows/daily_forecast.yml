@@ -108,11 +108,22 @@ jobs:
           python -m backend.scripts.forecast_season \
             --sims ${{ github.event.inputs.sims || '20000' }}
 
-      - name: Publish game context and the matchup grid
-        # Head-to-head history, recent form and all 992 ordered pairs. Runs
-        # after the forecast because it fits the same model on the same
-        # corpus, and the game pages read both artifacts together.
+      - name: Publish game context, the matchup grid and the team archive
+        # Head-to-head history, recent form, all 992 ordered pairs, and
+        # end-of-season Elo per franchise. Runs after the forecast because it
+        # fits the same model on the same corpus, and the game pages read both
+        # artifacts together.
         run: python -m backend.scripts.build_game_context
+
+      - name: Append today's point to the conference race
+        # ONE point per run, on the line the /season chart draws. It must run
+        # AFTER the forecast publish, because it reads the projection that
+        # publish just wrote — the whole value of this artifact is that each
+        # point was recorded on the day it was current, and a chart rebuilt
+        # from the corpus afterwards would be a backtest by this project's own
+        # definition. Idempotent per Eastern day, so a re-run after a failed
+        # deploy replaces the day's point rather than doubling it.
+        run: python -m backend.scripts.conference_race --track
 
       - name: Score the live record
         # Reads back the forecasts stamped BEFORE their kickoffs and scores

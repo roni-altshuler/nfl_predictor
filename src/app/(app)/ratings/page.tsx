@@ -1,7 +1,10 @@
+import { TeamLabel } from '@/components/primitives/TeamLogo'
 import { getPowerRatings } from '@/lib/artifacts'
-import { logoUrl, stamp } from '@/lib/format'
+import { stamp } from '@/lib/format'
 
 export const dynamic = 'force-static'
+
+export const metadata = { title: 'Power ratings' }
 
 /**
  * All 32 power ratings.
@@ -46,17 +49,12 @@ export default function RatingsPage() {
             <span className="w-6 font-mono text-[11px] text-[var(--text-tertiary)]">
               {index + 1}
             </span>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={logoUrl(team.abbreviation)}
-              alt=""
-              width={22}
-              height={22}
-              className="h-[22px] w-[22px] rounded bg-white/90 p-0.5"
+            <TeamLabel
+              abbreviation={team.abbreviation}
+              name={team.name}
+              size={22}
+              className="flex-1 text-sm"
             />
-            <span className="flex-1 truncate text-sm text-[var(--text-secondary)]">
-              {team.name}
-            </span>
             <span className="hidden font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--text-tertiary)] sm:block">
               {team.division}
             </span>

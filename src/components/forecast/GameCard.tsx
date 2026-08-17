@@ -1,7 +1,8 @@
 import Link from 'next/link'
 
+import { TeamLogo } from '@/components/primitives/TeamLogo'
 import type { GameForecast } from '@/lib/artifacts'
-import { kickoff, logoUrl, moneyline, pct, signed, spread } from '@/lib/format'
+import { kickoff, moneyline, pct, signed, spread } from '@/lib/format'
 
 /**
  * One fixture, with the model's call and the market's beside it.
@@ -23,6 +24,10 @@ import { kickoff, logoUrl, moneyline, pct, signed, spread } from '@/lib/format'
  * published" and "the line is even" are different facts.
  */
 
+// The two sides are NOT separately linked, deliberately: the whole card is a
+// link to the game, and an anchor inside an anchor is invalid HTML that React
+// refuses to hydrate. The team page is reachable in one further click from the
+// game page's headline, where there is room to say which link is which.
 function Side({
   abbr,
   probability,
@@ -36,14 +41,7 @@ function Side({
 }) {
   return (
     <div className="flex items-center gap-3">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={logoUrl(abbr)}
-        alt=""
-        width={28}
-        height={28}
-        className="h-7 w-7 shrink-0 rounded bg-white/90 p-0.5"
-      />
+      <TeamLogo abbreviation={abbr} size={28} />
       <div className="min-w-0 flex-1">
         <div
           className={

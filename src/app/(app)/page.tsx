@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { GameCard } from '@/components/forecast/GameCard'
+import { TeamLabel } from '@/components/primitives/TeamLogo'
 import {
   currentWeek,
   gamesForWeek,
@@ -8,7 +9,7 @@ import {
   getPowerRatings,
   getSeasonProjections,
 } from '@/lib/artifacts'
-import { logoUrl, longshot, record, stamp } from '@/lib/format'
+import { longshot, record, stamp } from '@/lib/format'
 
 export const dynamic = 'force-static'
 
@@ -100,17 +101,12 @@ export default function HomePage() {
                 <span className="w-5 font-mono text-[11px] text-[var(--text-tertiary)]">
                   {index + 1}
                 </span>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={logoUrl(team.abbreviation)}
-                  alt=""
-                  width={22}
-                  height={22}
-                  className="h-[22px] w-[22px] rounded bg-white/90 p-0.5"
+                <TeamLabel
+                  abbreviation={team.abbreviation}
+                  name={team.name}
+                  size={22}
+                  className="flex-1 text-sm"
                 />
-                <span className="flex-1 truncate text-sm text-[var(--text-secondary)]">
-                  {team.name}
-                </span>
                 <span className="font-mono text-[11px] text-[var(--text-tertiary)]">
                   {record(team.wins, team.losses, team.ties, 1)}
                 </span>
@@ -151,17 +147,12 @@ export default function HomePage() {
                 <span className="w-5 font-mono text-[11px] text-[var(--text-tertiary)]">
                   {index + 1}
                 </span>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={logoUrl(team.abbreviation)}
-                  alt=""
-                  width={20}
-                  height={20}
-                  className="h-5 w-5 rounded bg-white/90 p-0.5"
+                <TeamLabel
+                  abbreviation={team.abbreviation}
+                  name={team.name}
+                  size={20}
+                  className="flex-1 text-sm"
                 />
-                <span className="flex-1 truncate text-sm text-[var(--text-secondary)]">
-                  {team.name}
-                </span>
                 <span className="font-mono text-sm text-[var(--text-primary)]">
                   {team.elo.toFixed(0)}
                 </span>
