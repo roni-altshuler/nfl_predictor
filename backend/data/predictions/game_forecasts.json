@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-08-19T11:28:10+00:00",
+  "generated_at": "2026-08-20T11:29:39+00:00",
   "model_version": "nfl-margin-lattice-1",
   "season_start": "2026-09-10T00:20:00+00:00",
   "weeks_in_season": 18,
@@ -182,7 +182,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -358,11 +358,11 @@
         }
       ],
       "market": {
-        "ml_home": -192.0,
-        "ml_away": 160.0,
+        "ml_home": -198.0,
+        "ml_away": 164.0,
         "spread_home": -3.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -536,7 +536,7 @@
         "ml_away": 145.0,
         "spread_home": -3.0,
         "total_points": 41.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -712,11 +712,11 @@
         }
       ],
       "market": {
-        "ml_home": 154.0,
-        "ml_away": -185.0,
+        "ml_home": 150.0,
+        "ml_away": -180.0,
         "spread_home": 3.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -731,7 +731,7 @@
       "home_name": "Houston Texans",
       "away_name": "Buffalo Bills",
       "neutral_site": false,
-      "venue": "NRG Stadium",
+      "venue": "Reliant Stadium",
       "p_home": 0.569863,
       "p_tie": 0.003789,
       "p_away": 0.426348,
@@ -896,7 +896,7 @@
         "ml_away": -118.0,
         "spread_home": 1.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -1076,7 +1076,7 @@
         "ml_away": -148.0,
         "spread_home": 2.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -1256,7 +1256,7 @@
         "ml_away": 300.0,
         "spread_home": -7.5,
         "total_points": 40.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -1430,7 +1430,7 @@
         "ml_away": 250.0,
         "spread_home": -7.0,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -1604,7 +1604,7 @@
         "ml_away": 130.0,
         "spread_home": -3.0,
         "total_points": 38.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -1784,7 +1784,7 @@
         "ml_away": 170.0,
         "spread_home": -3.5,
         "total_points": 51.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -1964,7 +1964,7 @@
         "ml_away": 455.0,
         "spread_home": -10.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -2144,7 +2144,7 @@
         "ml_away": -102.0,
         "spread_home": -1.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -2324,7 +2324,7 @@
         "ml_away": 180.0,
         "spread_home": -3.5,
         "total_points": 40.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -2504,7 +2504,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -2684,7 +2684,7 @@
         "ml_away": -155.0,
         "spread_home": 2.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -2699,7 +2699,7 @@
       "home_name": "Kansas City Chiefs",
       "away_name": "Denver Broncos",
       "neutral_site": false,
-      "venue": "GEHA Field at Arrowhead Stadium",
+      "venue": "Arrowhead Stadium",
       "p_home": 0.401412,
       "p_tie": 0.003729,
       "p_away": 0.594859,
@@ -2858,7 +2858,7 @@
         "ml_away": 130.0,
         "spread_home": -3.0,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -3032,7 +3032,7 @@
         "ml_away": 136.0,
         "spread_home": -3.0,
         "total_points": 52.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -3212,7 +3212,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -3227,7 +3227,7 @@
       "home_name": "Houston Texans",
       "away_name": "Cincinnati Bengals",
       "neutral_site": false,
-      "venue": "NRG Stadium",
+      "venue": "Reliant Stadium",
       "p_home": 0.702385,
       "p_tie": 0.003326,
       "p_away": 0.294289,
@@ -3388,11 +3388,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
+        "ml_home": -142.0,
+        "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -3572,7 +3572,7 @@
         "ml_away": 200.0,
         "spread_home": -5.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -3748,11 +3748,11 @@
         }
       ],
       "market": {
-        "ml_home": 200.0,
-        "ml_away": -245.0,
+        "ml_home": 205.0,
+        "ml_away": -250.0,
         "spread_home": 5.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -3932,7 +3932,7 @@
         "ml_away": 170.0,
         "spread_home": -3.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -4108,11 +4108,11 @@
         }
       ],
       "market": {
-        "ml_home": -345.0,
-        "ml_away": 275.0,
+        "ml_home": -355.0,
+        "ml_away": 280.0,
         "spread_home": -7.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -4292,7 +4292,7 @@
         "ml_away": -218.0,
         "spread_home": 4.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -4472,7 +4472,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -4652,7 +4652,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -4832,7 +4832,7 @@
         "ml_away": 295.0,
         "spread_home": -8.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -5012,7 +5012,7 @@
         "ml_away": 455.0,
         "spread_home": -10.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -5186,7 +5186,7 @@
         "ml_away": -520.0,
         "spread_home": 10.0,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -5366,7 +5366,7 @@
         "ml_away": 170.0,
         "spread_home": -4.5,
         "total_points": 51.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -5381,7 +5381,7 @@
       "home_name": "Kansas City Chiefs",
       "away_name": "Indianapolis Colts",
       "neutral_site": false,
-      "venue": "GEHA Field at Arrowhead Stadium",
+      "venue": "Arrowhead Stadium",
       "p_home": 0.583286,
       "p_tie": 0.003763,
       "p_away": 0.41295,
@@ -5542,11 +5542,11 @@
         }
       ],
       "market": {
-        "ml_home": -290.0,
-        "ml_away": 235.0,
+        "ml_home": -298.0,
+        "ml_away": 240.0,
         "spread_home": -6.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -5726,7 +5726,7 @@
         "ml_away": 310.0,
         "spread_home": -8.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -5902,11 +5902,11 @@
         }
       ],
       "market": {
-        "ml_home": -375.0,
-        "ml_away": 295.0,
+        "ml_home": -360.0,
+        "ml_away": 285.0,
         "spread_home": -7.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -6086,7 +6086,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 39.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -6266,7 +6266,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -6446,7 +6446,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -6626,7 +6626,7 @@
         "ml_away": -380.0,
         "spread_home": 7.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -6800,7 +6800,7 @@
         "ml_away": 136.0,
         "spread_home": -3.0,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -6976,11 +6976,11 @@
         }
       ],
       "market": {
-        "ml_home": -395.0,
-        "ml_away": 310.0,
+        "ml_home": -425.0,
+        "ml_away": 330.0,
         "spread_home": -9.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -7160,7 +7160,7 @@
         "ml_away": -192.0,
         "spread_home": 3.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -7334,7 +7334,7 @@
         "ml_away": 140.0,
         "spread_home": -3.0,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -7514,7 +7514,7 @@
         "ml_away": -102.0,
         "spread_home": -1.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -7694,7 +7694,7 @@
         "ml_away": 455.0,
         "spread_home": -11.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -7868,7 +7868,7 @@
         "ml_away": 105.0,
         "spread_home": null,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -8048,7 +8048,7 @@
         "ml_away": -135.0,
         "spread_home": 2.5,
         "total_points": 51.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -8228,7 +8228,7 @@
         "ml_away": 154.0,
         "spread_home": -3.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -8402,7 +8402,7 @@
         "ml_away": -162.0,
         "spread_home": 3.0,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -8582,7 +8582,7 @@
         "ml_away": -102.0,
         "spread_home": -1.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -8762,7 +8762,7 @@
         "ml_away": -135.0,
         "spread_home": 2.5,
         "total_points": 40.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -8942,7 +8942,7 @@
         "ml_away": -102.0,
         "spread_home": -1.5,
         "total_points": 50.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -9116,7 +9116,7 @@
         "ml_away": 260.0,
         "spread_home": -7.0,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -9131,7 +9131,7 @@
       "home_name": "Houston Texans",
       "away_name": "Dallas Cowboys",
       "neutral_site": false,
-      "venue": "NRG Stadium",
+      "venue": "Reliant Stadium",
       "p_home": 0.735306,
       "p_tie": 0.003137,
       "p_away": 0.261557,
@@ -9296,7 +9296,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -9476,7 +9476,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -9656,7 +9656,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 51.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -9836,7 +9836,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -10010,7 +10010,7 @@
         "ml_away": 140.0,
         "spread_home": -3.0,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -10190,7 +10190,7 @@
         "ml_away": 330.0,
         "spread_home": -8.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -10370,7 +10370,7 @@
         "ml_away": 320.0,
         "spread_home": -8.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -10550,7 +10550,7 @@
         "ml_away": 330.0,
         "spread_home": -7.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -10726,11 +10726,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
+        "ml_home": -142.0,
+        "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -10906,11 +10906,11 @@
         }
       ],
       "market": {
-        "ml_home": 190.0,
-        "ml_away": -230.0,
+        "ml_home": 195.0,
+        "ml_away": -238.0,
         "spread_home": 5.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -11084,7 +11084,7 @@
         "ml_away": 145.0,
         "spread_home": -3.0,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -11258,7 +11258,7 @@
         "ml_away": -162.0,
         "spread_home": 3.0,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -11438,7 +11438,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -11618,7 +11618,7 @@
         "ml_away": 170.0,
         "spread_home": -3.5,
         "total_points": 52.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -11798,7 +11798,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -11972,7 +11972,7 @@
         "ml_away": -270.0,
         "spread_home": 6.0,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -12152,7 +12152,7 @@
         "ml_away": 110.0,
         "spread_home": -2.5,
         "total_points": 39.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -12332,7 +12332,7 @@
         "ml_away": -192.0,
         "spread_home": 3.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -12512,7 +12512,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -12692,7 +12692,7 @@
         "ml_away": 310.0,
         "spread_home": -8.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -12872,7 +12872,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -13052,7 +13052,7 @@
         "ml_away": 110.0,
         "spread_home": -2.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -13228,11 +13228,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
+        "ml_home": -142.0,
+        "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -13406,7 +13406,7 @@
         "ml_away": 140.0,
         "spread_home": -3.0,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -13586,7 +13586,7 @@
         "ml_away": -395.0,
         "spread_home": 8.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -13766,7 +13766,7 @@
         "ml_away": 164.0,
         "spread_home": -3.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -13946,7 +13946,7 @@
         "ml_away": -218.0,
         "spread_home": 4.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -14120,7 +14120,7 @@
         "ml_away": 140.0,
         "spread_home": -3.0,
         "total_points": 53.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -14300,7 +14300,7 @@
         "ml_away": -130.0,
         "spread_home": 1.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -14480,7 +14480,7 @@
         "ml_away": -108.0,
         "spread_home": -1.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -14660,7 +14660,7 @@
         "ml_away": -265.0,
         "spread_home": 6.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -14836,11 +14836,11 @@
         }
       ],
       "market": {
-        "ml_home": -270.0,
-        "ml_away": 220.0,
+        "ml_home": -278.0,
+        "ml_away": 225.0,
         "spread_home": -6.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -15014,7 +15014,7 @@
         "ml_away": -155.0,
         "spread_home": 3.0,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -15194,7 +15194,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -15374,7 +15374,7 @@
         "ml_away": 340.0,
         "spread_home": -9.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -15554,7 +15554,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -15734,7 +15734,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -15914,7 +15914,7 @@
         "ml_away": 500.0,
         "spread_home": -13.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -16094,7 +16094,7 @@
         "ml_away": -270.0,
         "spread_home": 6.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -16109,7 +16109,7 @@
       "home_name": "Kansas City Chiefs",
       "away_name": "Los Angeles Chargers",
       "neutral_site": false,
-      "venue": "GEHA Field at Arrowhead Stadium",
+      "venue": "Arrowhead Stadium",
       "p_home": 0.526028,
       "p_tie": 0.003842,
       "p_away": 0.470129,
@@ -16274,7 +16274,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -16448,7 +16448,7 @@
         "ml_away": 140.0,
         "spread_home": -3.0,
         "total_points": 51.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -16628,7 +16628,7 @@
         "ml_away": 205.0,
         "spread_home": -5.5,
         "total_points": 50.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -16808,7 +16808,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -16988,7 +16988,7 @@
         "ml_away": -142.0,
         "spread_home": 2.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -17168,7 +17168,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 51.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -17348,7 +17348,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 40.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -17528,7 +17528,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -17708,7 +17708,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 41.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -17723,7 +17723,7 @@
       "home_name": "Houston Texans",
       "away_name": "New York Giants",
       "neutral_site": false,
-      "venue": "NRG Stadium",
+      "venue": "Reliant Stadium",
       "p_home": 0.752773,
       "p_tie": 0.003023,
       "p_away": 0.244204,
@@ -17884,11 +17884,11 @@
         }
       ],
       "market": {
-        "ml_home": -245.0,
-        "ml_away": 200.0,
+        "ml_home": -238.0,
+        "ml_away": 195.0,
         "spread_home": -5.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -18068,7 +18068,7 @@
         "ml_away": -225.0,
         "spread_home": 4.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -18248,7 +18248,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -18428,7 +18428,7 @@
         "ml_away": -375.0,
         "spread_home": 7.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -18608,7 +18608,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 50.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -18788,7 +18788,7 @@
         "ml_away": -340.0,
         "spread_home": 7.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -18962,7 +18962,7 @@
         "ml_away": 140.0,
         "spread_home": -3.0,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -19136,7 +19136,7 @@
         "ml_away": 136.0,
         "spread_home": -3.0,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -19310,7 +19310,7 @@
         "ml_away": 260.0,
         "spread_home": -7.0,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -19490,7 +19490,7 @@
         "ml_away": 400.0,
         "spread_home": -10.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -19670,7 +19670,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -19850,7 +19850,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 51.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -20020,11 +20020,11 @@
         }
       ],
       "market": {
-        "ml_home": -265.0,
-        "ml_away": 215.0,
+        "ml_home": -258.0,
+        "ml_away": 210.0,
         "spread_home": -6.0,
         "total_points": 39.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -20204,7 +20204,7 @@
         "ml_away": 190.0,
         "spread_home": -4.5,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -20384,7 +20384,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 40.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -20564,7 +20564,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -20740,11 +20740,11 @@
         }
       ],
       "market": {
-        "ml_home": -290.0,
-        "ml_away": 235.0,
+        "ml_home": -285.0,
+        "ml_away": 230.0,
         "spread_home": -6.5,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -20924,7 +20924,7 @@
         "ml_away": 164.0,
         "spread_home": -4.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -21104,7 +21104,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -21278,7 +21278,7 @@
         "ml_away": -355.0,
         "spread_home": 7.0,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -21458,7 +21458,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -21638,7 +21638,7 @@
         "ml_away": 190.0,
         "spread_home": -4.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -21818,7 +21818,7 @@
         "ml_away": 170.0,
         "spread_home": -4.5,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -21998,7 +21998,7 @@
         "ml_away": -230.0,
         "spread_home": 5.5,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -22178,7 +22178,7 @@
         "ml_away": 164.0,
         "spread_home": -3.5,
         "total_points": 41.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -22358,7 +22358,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 52.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -22532,7 +22532,7 @@
         "ml_away": -162.0,
         "spread_home": 3.0,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -22708,11 +22708,11 @@
         }
       ],
       "market": {
-        "ml_home": 230.0,
-        "ml_away": -285.0,
+        "ml_home": 225.0,
+        "ml_away": -278.0,
         "spread_home": 6.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -22892,7 +22892,7 @@
         "ml_away": -218.0,
         "spread_home": 5.5,
         "total_points": 50.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -23072,7 +23072,7 @@
         "ml_away": 195.0,
         "spread_home": -5.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -23087,7 +23087,7 @@
       "home_name": "Kansas City Chiefs",
       "away_name": "New York Jets",
       "neutral_site": false,
-      "venue": "GEHA Field at Arrowhead Stadium",
+      "venue": "Arrowhead Stadium",
       "p_home": 0.728152,
       "p_tie": 0.003181,
       "p_away": 0.268667,
@@ -23252,7 +23252,7 @@
         "ml_away": 310.0,
         "spread_home": -9.5,
         "total_points": 41.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -23428,11 +23428,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
+        "ml_home": -142.0,
+        "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -23612,7 +23612,7 @@
         "ml_away": 330.0,
         "spread_home": -8.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -23792,7 +23792,7 @@
         "ml_away": 575.0,
         "spread_home": -13.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -23972,7 +23972,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -24152,7 +24152,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -24326,7 +24326,7 @@
         "ml_away": -170.0,
         "spread_home": 3.0,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -24502,11 +24502,11 @@
         }
       ],
       "market": {
-        "ml_home": -122.0,
-        "ml_away": 102.0,
+        "ml_home": -125.0,
+        "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -24686,7 +24686,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -24856,11 +24856,11 @@
         }
       ],
       "market": {
-        "ml_home": 270.0,
-        "ml_away": -340.0,
+        "ml_home": 275.0,
+        "ml_away": -345.0,
         "spread_home": 7.0,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -25040,7 +25040,7 @@
         "ml_away": 100.0,
         "spread_home": -1.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -25216,11 +25216,11 @@
         }
       ],
       "market": {
-        "ml_home": 180.0,
-        "ml_away": -218.0,
+        "ml_home": 170.0,
+        "ml_away": -205.0,
         "spread_home": 4.5,
         "total_points": 38.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -25400,7 +25400,7 @@
         "ml_away": -135.0,
         "spread_home": 2.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -25576,11 +25576,11 @@
         }
       ],
       "market": {
-        "ml_home": 170.0,
-        "ml_away": -205.0,
+        "ml_home": 180.0,
+        "ml_away": -218.0,
         "spread_home": 4.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -25760,7 +25760,7 @@
         "ml_away": 250.0,
         "spread_home": -6.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -25940,7 +25940,7 @@
         "ml_away": 200.0,
         "spread_home": -4.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -26120,7 +26120,7 @@
         "ml_away": -470.0,
         "spread_home": 10.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -26294,7 +26294,7 @@
         "ml_away": -310.0,
         "spread_home": 7.0,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -26474,7 +26474,7 @@
         "ml_away": 100.0,
         "spread_home": -1.5,
         "total_points": 52.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -26654,7 +26654,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -26834,7 +26834,7 @@
         "ml_away": 154.0,
         "spread_home": -3.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -26849,7 +26849,7 @@
       "home_name": "Houston Texans",
       "away_name": "Indianapolis Colts",
       "neutral_site": false,
-      "venue": "NRG Stadium",
+      "venue": "Reliant Stadium",
       "p_home": 0.722928,
       "p_tie": 0.003212,
       "p_away": 0.273861,
@@ -27010,11 +27010,11 @@
         }
       ],
       "market": {
-        "ml_home": -250.0,
-        "ml_away": 205.0,
+        "ml_home": -245.0,
+        "ml_away": 200.0,
         "spread_home": -5.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -27029,7 +27029,7 @@
       "home_name": "Kansas City Chiefs",
       "away_name": "Arizona Cardinals",
       "neutral_site": false,
-      "venue": "GEHA Field at Arrowhead Stadium",
+      "venue": "Arrowhead Stadium",
       "p_home": 0.690827,
       "p_tie": 0.003385,
       "p_away": 0.305788,
@@ -27194,7 +27194,7 @@
         "ml_away": 440.0,
         "spread_home": -11.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -27370,11 +27370,11 @@
         }
       ],
       "market": {
-        "ml_home": 170.0,
-        "ml_away": -205.0,
+        "ml_home": 185.0,
+        "ml_away": -225.0,
         "spread_home": 4.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -27554,7 +27554,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -27734,7 +27734,7 @@
         "ml_away": 440.0,
         "spread_home": -11.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -27914,7 +27914,7 @@
         "ml_away": 235.0,
         "spread_home": -6.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -28090,11 +28090,11 @@
         }
       ],
       "market": {
-        "ml_home": -218.0,
-        "ml_away": 180.0,
+        "ml_home": -225.0,
+        "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -28274,7 +28274,7 @@
         "ml_away": 240.0,
         "spread_home": -6.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -28450,11 +28450,11 @@
         }
       ],
       "market": {
-        "ml_home": -440.0,
-        "ml_away": 340.0,
+        "ml_home": -425.0,
+        "ml_away": 330.0,
         "spread_home": -9.5,
         "total_points": 41.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -28634,7 +28634,7 @@
         "ml_away": 275.0,
         "spread_home": -7.5,
         "total_points": 41.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -28810,11 +28810,11 @@
         }
       ],
       "market": {
-        "ml_home": -258.0,
-        "ml_away": 210.0,
+        "ml_home": -245.0,
+        "ml_away": 200.0,
         "spread_home": -5.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -28994,7 +28994,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -29174,7 +29174,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 52.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -29354,7 +29354,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -29534,7 +29534,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 52.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -29714,7 +29714,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -29894,7 +29894,7 @@
         "ml_away": 124.0,
         "spread_home": -2.5,
         "total_points": 50.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -30074,7 +30074,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 39.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -30254,7 +30254,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -30269,7 +30269,7 @@
       "home_name": "Houston Texans",
       "away_name": "Baltimore Ravens",
       "neutral_site": false,
-      "venue": "NRG Stadium",
+      "venue": "Reliant Stadium",
       "p_home": 0.65583,
       "p_tie": 0.003542,
       "p_away": 0.340628,
@@ -30434,7 +30434,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -30614,7 +30614,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 39.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -30794,7 +30794,7 @@
         "ml_away": 240.0,
         "spread_home": -6.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -30974,7 +30974,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -31154,7 +31154,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 40.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -31334,7 +31334,7 @@
         "ml_away": 200.0,
         "spread_home": -5.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -31514,7 +31514,7 @@
         "ml_away": -110.0,
         "spread_home": 1.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -31694,7 +31694,7 @@
         "ml_away": -218.0,
         "spread_home": 4.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -31874,7 +31874,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -32054,7 +32054,7 @@
         "ml_away": 164.0,
         "spread_home": -3.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -32234,7 +32234,7 @@
         "ml_away": 170.0,
         "spread_home": -3.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -32408,7 +32408,7 @@
         "ml_away": -166.0,
         "spread_home": 3.0,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -32584,11 +32584,11 @@
         }
       ],
       "market": {
-        "ml_home": 180.0,
-        "ml_away": -218.0,
+        "ml_home": 185.0,
+        "ml_away": -225.0,
         "spread_home": 4.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -32768,7 +32768,7 @@
         "ml_away": -185.0,
         "spread_home": 3.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -32944,11 +32944,11 @@
         }
       ],
       "market": {
-        "ml_home": 190.0,
-        "ml_away": -230.0,
+        "ml_home": 185.0,
+        "ml_away": -225.0,
         "spread_home": 4.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -33122,7 +33122,7 @@
         "ml_away": 130.0,
         "spread_home": -3.0,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -33302,7 +33302,7 @@
         "ml_away": -142.0,
         "spread_home": 2.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -33482,7 +33482,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -33662,7 +33662,7 @@
         "ml_away": 350.0,
         "spread_home": -9.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -33838,11 +33838,11 @@
         }
       ],
       "market": {
-        "ml_home": 320.0,
-        "ml_away": -410.0,
+        "ml_home": 310.0,
+        "ml_away": -395.0,
         "spread_home": 8.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -34022,7 +34022,7 @@
         "ml_away": 102.0,
         "spread_home": -1.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -34202,7 +34202,7 @@
         "ml_away": 164.0,
         "spread_home": -3.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -34382,7 +34382,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 41.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -34562,7 +34562,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -34742,7 +34742,7 @@
         "ml_away": 190.0,
         "spread_home": -4.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -34922,7 +34922,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 40.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -35102,7 +35102,7 @@
         "ml_away": -250.0,
         "spread_home": 5.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -35282,7 +35282,7 @@
         "ml_away": -238.0,
         "spread_home": 5.5,
         "total_points": 39.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -35462,7 +35462,7 @@
         "ml_away": -122.0,
         "spread_home": 1.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -35642,7 +35642,7 @@
         "ml_away": 210.0,
         "spread_home": -5.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -35822,7 +35822,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -35996,7 +35996,7 @@
         "ml_away": 210.0,
         "spread_home": -6.0,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -36172,11 +36172,11 @@
         }
       ],
       "market": {
-        "ml_home": -355.0,
-        "ml_away": 280.0,
+        "ml_home": -360.0,
+        "ml_away": 285.0,
         "spread_home": -7.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -36356,7 +36356,7 @@
         "ml_away": -238.0,
         "spread_home": 5.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -36536,7 +36536,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -36716,7 +36716,7 @@
         "ml_away": -130.0,
         "spread_home": 1.5,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -36896,7 +36896,7 @@
         "ml_away": 310.0,
         "spread_home": -7.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -37076,7 +37076,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -37250,7 +37250,7 @@
         "ml_away": 140.0,
         "spread_home": -3.0,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -37430,7 +37430,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -37610,7 +37610,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -37790,7 +37790,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 51.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -37970,7 +37970,7 @@
         "ml_away": 154.0,
         "spread_home": -3.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -38150,7 +38150,7 @@
         "ml_away": -148.0,
         "spread_home": 2.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -38330,7 +38330,7 @@
         "ml_away": -148.0,
         "spread_home": 2.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -38510,7 +38510,7 @@
         "ml_away": 180.0,
         "spread_home": -4.5,
         "total_points": 40.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -38690,7 +38690,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -38705,7 +38705,7 @@
       "home_name": "Houston Texans",
       "away_name": "Jacksonville Jaguars",
       "neutral_site": false,
-      "venue": "NRG Stadium",
+      "venue": "Reliant Stadium",
       "p_home": 0.564139,
       "p_tie": 0.003799,
       "p_away": 0.432062,
@@ -38864,7 +38864,7 @@
         "ml_away": 136.0,
         "spread_home": -3.0,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -39044,7 +39044,7 @@
         "ml_away": 440.0,
         "spread_home": -10.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -39224,7 +39224,7 @@
         "ml_away": 164.0,
         "spread_home": -3.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -39404,7 +39404,7 @@
         "ml_away": -110.0,
         "spread_home": 1.5,
         "total_points": 41.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -39578,7 +39578,7 @@
         "ml_away": 205.0,
         "spread_home": -6.0,
         "total_points": 52.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -39758,7 +39758,7 @@
         "ml_away": -218.0,
         "spread_home": 4.5,
         "total_points": 41.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -39938,7 +39938,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -39953,7 +39953,7 @@
       "home_name": "Kansas City Chiefs",
       "away_name": "New England Patriots",
       "neutral_site": false,
-      "venue": "GEHA Field at Arrowhead Stadium",
+      "venue": "Arrowhead Stadium",
       "p_home": 0.400524,
       "p_tie": 0.003727,
       "p_away": 0.595749,
@@ -40118,7 +40118,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -40298,7 +40298,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 37.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -40478,7 +40478,7 @@
         "ml_away": -102.0,
         "spread_home": -1.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -40658,7 +40658,7 @@
         "ml_away": -130.0,
         "spread_home": 1.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -40838,7 +40838,7 @@
         "ml_away": 110.0,
         "spread_home": -1.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -41018,7 +41018,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 41.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -41198,7 +41198,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 52.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -41378,7 +41378,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -41554,11 +41554,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
+        "ml_home": -142.0,
+        "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -41734,11 +41734,11 @@
         }
       ],
       "market": {
-        "ml_home": -250.0,
-        "ml_away": 205.0,
+        "ml_home": -245.0,
+        "ml_away": 200.0,
         "spread_home": -5.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -41912,7 +41912,7 @@
         "ml_away": 350.0,
         "spread_home": -10.0,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -42086,7 +42086,7 @@
         "ml_away": -360.0,
         "spread_home": 7.0,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -42262,11 +42262,11 @@
         }
       ],
       "market": {
-        "ml_home": 220.0,
-        "ml_away": -270.0,
+        "ml_home": 225.0,
+        "ml_away": -278.0,
         "spread_home": 6.5,
         "total_points": 40.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -42440,7 +42440,7 @@
         "ml_away": 105.0,
         "spread_home": null,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -42455,7 +42455,7 @@
       "home_name": "Kansas City Chiefs",
       "away_name": "San Francisco 49ers",
       "neutral_site": false,
-      "venue": "GEHA Field at Arrowhead Stadium",
+      "venue": "Arrowhead Stadium",
       "p_home": 0.454047,
       "p_tie": 0.003825,
       "p_away": 0.542128,
@@ -42614,7 +42614,7 @@
         "ml_away": 130.0,
         "spread_home": -3.0,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -42788,7 +42788,7 @@
         "ml_away": 136.0,
         "spread_home": -3.0,
         "total_points": 51.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -42968,7 +42968,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -43148,7 +43148,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 51.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -43328,7 +43328,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -43508,7 +43508,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -43688,7 +43688,7 @@
         "ml_away": -225.0,
         "spread_home": 4.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -43864,11 +43864,11 @@
         }
       ],
       "market": {
-        "ml_home": -192.0,
-        "ml_away": 160.0,
+        "ml_home": -185.0,
+        "ml_away": 154.0,
         "spread_home": -3.5,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -44048,7 +44048,7 @@
         "ml_away": -360.0,
         "spread_home": 7.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -44228,7 +44228,7 @@
         "ml_away": -135.0,
         "spread_home": 2.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -44408,7 +44408,7 @@
         "ml_away": -192.0,
         "spread_home": 3.5,
         "total_points": 39.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -44588,7 +44588,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -44768,7 +44768,7 @@
         "ml_away": 185.0,
         "spread_home": -4.5,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -44948,7 +44948,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -45128,7 +45128,7 @@
         "ml_away": -245.0,
         "spread_home": 5.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -45308,7 +45308,7 @@
         "ml_away": -130.0,
         "spread_home": 1.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -45488,7 +45488,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -45668,7 +45668,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -45844,11 +45844,11 @@
         }
       ],
       "market": {
-        "ml_home": -142.0,
-        "ml_away": 120.0,
+        "ml_home": -135.0,
+        "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -46028,7 +46028,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 41.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -46208,7 +46208,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -46388,7 +46388,7 @@
         "ml_away": 285.0,
         "spread_home": -7.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -46564,11 +46564,11 @@
         }
       ],
       "market": {
-        "ml_home": 105.0,
-        "ml_away": -125.0,
+        "ml_home": 102.0,
+        "ml_away": -122.0,
         "spread_home": 1.5,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -46748,7 +46748,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -46928,7 +46928,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -46943,7 +46943,7 @@
       "home_name": "Kansas City Chiefs",
       "away_name": "Las Vegas Raiders",
       "neutral_site": false,
-      "venue": "GEHA Field at Arrowhead Stadium",
+      "venue": "Arrowhead Stadium",
       "p_home": 0.708341,
       "p_tie": 0.003294,
       "p_away": 0.288365,
@@ -47104,11 +47104,11 @@
         }
       ],
       "market": {
-        "ml_home": -345.0,
-        "ml_away": 275.0,
+        "ml_home": -355.0,
+        "ml_away": 280.0,
         "spread_home": -8.5,
         "total_points": 40.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -47288,7 +47288,7 @@
         "ml_away": 105.0,
         "spread_home": -1.5,
         "total_points": 41.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -47468,7 +47468,7 @@
         "ml_away": 425.0,
         "spread_home": -10.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -47642,7 +47642,7 @@
         "ml_away": 350.0,
         "spread_home": -10.0,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -47812,11 +47812,11 @@
         }
       ],
       "market": {
-        "ml_home": 130.0,
-        "ml_away": -155.0,
+        "ml_home": 136.0,
+        "ml_away": -162.0,
         "spread_home": 3.0,
         "total_points": 41.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -47992,11 +47992,11 @@
         }
       ],
       "market": {
-        "ml_home": -238.0,
-        "ml_away": 195.0,
+        "ml_home": -230.0,
+        "ml_away": 190.0,
         "spread_home": -5.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -48176,7 +48176,7 @@
         "ml_away": -410.0,
         "spread_home": 8.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -48350,7 +48350,7 @@
         "ml_away": 136.0,
         "spread_home": -3.0,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -48530,7 +48530,7 @@
         "ml_away": -125.0,
         "spread_home": 1.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -48545,7 +48545,7 @@
       "home_name": "Houston Texans",
       "away_name": "Tennessee Titans",
       "neutral_site": false,
-      "venue": "NRG Stadium",
+      "venue": "Reliant Stadium",
       "p_home": 0.804582,
       "p_tie": 0.002631,
       "p_away": 0.192787,
@@ -48700,11 +48700,11 @@
         }
       ],
       "market": {
-        "ml_home": -305.0,
-        "ml_away": 245.0,
+        "ml_home": -298.0,
+        "ml_away": 240.0,
         "spread_home": -7.0,
         "total_points": 39.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     }
   ]
