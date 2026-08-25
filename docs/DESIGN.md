@@ -127,6 +127,23 @@ the posts, and a drive that reaches the paint gets TOUCHDOWN scrawled
 across the end zone before possession flips. The ball is a small yellow
 ellipse; flights (throws, punts, kicks) trail dashes.
 
+**The broadcast camera (v3.1)** is what makes it a game rather than a
+diagram. A virtual camera frames every play: a push-in on the formation as
+it lines up, a slow tightening at the set, a tight track on the ball
+through the snap, a hold on the tackle — with a chalk impact burst and a
+decaying frame of camera shake — a push into the end zone for the
+celebration, then a pull back to the full field for the huddle, so the
+"field is the page" wide look returns between plays. Every punt and kick,
+and roughly one play in five, is covered wide (all-22) instead. Position
+and zoom glide exponentially toward per-phase targets (pan faster than
+zoom, like a real rig) and the view is clamped inside the field. The
+field renders as vectors *through* the camera transform each frame so
+chalk stays crisp at any zoom — which is why all hand-ruled wobble comes
+from a deterministic noise hash, never `Math.random` at draw time (random
+wobble re-rolled per frame makes the whole board shimmer). Close-up
+polish that earns the zoom: ghost marks trail a carried ball, the ball
+has a lace, and the O's are drawn as not-quite-closed hand circles.
+
 Rules:
 
 - **No score is ever kept and no team is ever named.** A fake score in the
