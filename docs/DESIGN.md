@@ -107,27 +107,51 @@ The pieces: `.page-enter` (route-keyed content rise, replayed by `AppShell`),
 `.skeleton-shimmer` (the one gradient in the product — a static grey block
 reads as broken rather than loading).
 
-## 6a. The field
+## 6a. The field, and the game played on it
 
-`ChalkboardField` draws the whole field: sidelines at the viewport edges,
-hand-ruled yard lines, hash rows, big chalk numerals (10…50…10) hugging
-both sidelines, and — every several seconds — one chalk play: O's and X's
-fade in, a single route draws itself in `--accent-primary`, holds, fades.
+`ChalkboardField` draws a TRUE field: sidelines at the viewport edges,
+goal lines, hatched end zones with the brand in faint chalk, goalposts,
+hand-ruled yard lines every ten yards with numerals cycling to the 50, and
+hash rows at the five-yard midpoints. Yardage is real — yard 0 is the
+bottom goal line, 100 the top — so everything the game does is legible.
+
+On it, an endless **simulated game** (v3): the O team in white chalk
+against the X team in blue chalk (`--accent-info`), whoever holds the ball
+lining up on offense. Snaps resolve from a plausible football
+distribution — runs through a gap, passes with the route drawn in
+`--accent-primary`, sacks, incompletions, interceptions returned the other
+way — the white scrimmage line and the TV-convention **yellow line to
+gain** (`--accent-warn`, hidden on goal-to-go) glide with every result, the
+down is chalked in the margin (`3RD & 4`), fourth downs punt or kick at
+the posts, and a drive that reaches the paint gets TOUCHDOWN scrawled
+across the end zone before possession flips. The ball is a small yellow
+ellipse; flights (throws, punts, kicks) trail dashes.
+
 Rules:
 
+- **No score is ever kept and no team is ever named.** A fake score in the
+  background of a forecasting site would read as a real one. The game is
+  atmosphere with football's grammar — never data.
 - Field alphas live in one budget with card transparency (§1). Current
-  values: sidelines 0.20, lines 0.16, hashes 0.10, numerals 0.14, play
-  marks 0.36, route 0.50. Change them only together with `--card-bg`.
-- One play at a time, then rest. `requestAnimationFrame` runs only while a
-  play is animating; a hidden tab stops it; reduced motion gets a single
-  static frame with a finished play.
+  values: sidelines 0.20, lines 0.16, goal lines 0.24, hashes 0.10,
+  numerals 0.14, end-zone hatch 0.05 / text 0.08, posts 0.16, player
+  marks 0.36, route 0.50, scrimmage 0.26, first-down line 0.32, ball 0.70,
+  down text 0.24, celebration 0.42. Change them only together with
+  `--card-bg`.
+- The game is the sanctioned exception to §6's "nothing loops" rule, and
+  it earns it by pacing: one snap at a time (~2–3s), then a huddle. The
+  rAF loop skips drawing entirely while the board is static between
+  plays; a hidden tab stops it; a resize resets the play in progress
+  rather than animating against a stale field; reduced motion gets one
+  static frame — field, formation, a finished route — and never moves.
 - The shell wrapper deliberately paints **no** background — the body's
   slate (and its two light gradients) is what the field draws on.
   Reintroducing an opaque wrapper silently deletes the field, and an opaque
   card token walls it out of the content column.
 - Canvas font strings cannot resolve CSS variables — the numerals use a
   plain monospace stack, and an invalid font declaration is silently
-  ignored wholesale.
+  ignored wholesale. Team colours are read from the live tokens once at
+  init, so the palette still cascades.
 
 ## 7. Loading, empty, missing
 
