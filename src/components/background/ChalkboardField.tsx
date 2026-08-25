@@ -4,29 +4,35 @@ import { useEffect, useRef } from 'react'
 
 /**
  * The chalkboard: Gridiron's ambient identity layer — a whole simulated
- * game played in chalk, covered like a broadcast.
+ * game played in chalk on a properly bounded field.
  *
- * The fixed canvas at z-index -1 draws a TRUE field: goal lines, hatched
- * end zones, yard lines every ten yards with numerals cycling to the 50,
- * hash rows, goalposts. On it, two chalk teams play an endless scrimmage:
- * the O team (white chalk) against the X team (blue chalk). Plays snap —
- * runs through a gap, passes with the route drawn in the model's green,
- * sacks, incompletions, interceptions — the yellow first-down line and the
+ * The fixed canvas at z-index -1 draws a TRUE field as a centred design:
+ * a full boundary with BOTH end zones always on screen, goal lines,
+ * goalposts, lines every five yards, numerals cycling to the 50, interior
+ * hash columns. It is centred in the CONTENT area — the sidebar is
+ * measured and excluded — and its width is proportioned against its
+ * length, so on every device it reads as a football field seen whole,
+ * never as an abstract board cropped by the viewport.
+ *
+ * On it, two chalk teams play an endless scrimmage: the O team (white
+ * chalk) against the X team (blue chalk). Plays snap — runs through a
+ * gap, passes with the route drawn in the model's green, sacks,
+ * incompletions, interceptions — the yellow first-down line and the
  * scrimmage line slide with every result, downs count up in a chalk note
- * beside the formation, fourth downs punt or kick, and a drive that
- * reaches the paint gets TOUCHDOWN scrawled across the end zone.
+ * in the margin, fourth downs punt or kick, and a drive that reaches the
+ * paint gets TOUCHDOWN scrawled across the end zone.
  *
- * **The camera is what makes it feel like a game rather than a diagram.**
- * A virtual broadcast camera frames every play: a push-in on the formation
- * as it lines up, a tight track on the ball through the snap, a hold on
- * the tackle — with a chalk impact burst and a frame of camera shake — a
- * push into the end zone for the celebration, then a slow pull back to
- * the full field for the huddle. Some plays (and every punt and kick) are
- * covered from the wide all-22 angle instead, so the whole board is still
- * seen regularly. The field renders as vectors through the camera
- * transform every frame, so chalk lines stay crisp at any zoom; all
- * hand-ruled wobble comes from a deterministic noise hash, never
- * Math.random at draw time, or the board would shimmer.
+ * **The camera is contained, by rule.** This layer sits behind data the
+ * reader came for, so the broadcast push-in of v3.1 is capped: the camera
+ * may lean toward the play only as far as keeps the ENTIRE field — both
+ * end zones — inside the frame (`maxZoom`, ~1.08). The result is a slow
+ * breath toward the action rather than a cut, and the resting state
+ * between plays is always the full centred field. Camera shake was
+ * removed for the same reason; the chalk impact burst at a tackle stays,
+ * because it is local to the play. The field renders as vectors through
+ * the camera transform so chalk stays crisp; all hand-ruled wobble comes
+ * from a deterministic noise hash, never Math.random at draw time, or the
+ * board would shimmer.
  *
  * **Nothing here is data.** No score is kept and no team is named — the
  * teams are chalk marks, deliberately, because a fake score in the
@@ -63,16 +69,15 @@ const BALL_ALPHA = 0.7
 const DOWN_TEXT_ALPHA = 0.24
 const CELEBRATE_ALPHA = 0.42
 
-// Pacing, ms. One snap runs ~2-3s; a full down cycle is ~6s.
+// Pacing, ms. One snap runs ~2-3s; the huddles are deliberately long —
+// the board should rest more than it moves, or it competes with the data.
 const LINEUP = 900
 const SET = 420
 const WHISTLE = 850
 const FADE = 600
-const HUDDLE_MIN = 1100
-const HUDDLE_RANGE = 1300
+const HUDDLE_MIN = 1600
+const HUDDLE_RANGE = 2000
 const CELEBRATE = 2100
-
-const HASH_GAP = 26
 
 type Phase = 'lineup' | 'set' | 'live' | 'whistle' | 'celebrate' | 'fade' | 'huddle'
 type Team = 'o' | 'x'
@@ -133,14 +138,19 @@ interface Snap {
   focus: Point
   /** The play's own attack direction in px, frozen at the snap. */
   fw: number
-  /** Covered from the wide all-22 angle instead of the tight camera. */
+  /** Covered from the fixed wide angle instead of the gentle lean. */
   wide: boolean
 }
 
 interface Geometry {
   w: number
   h: number
-  /** Field edges in px: top = the top goal line, bottom = the bottom one. */
+  /** The field boundary: outer end lines and sidelines, all on screen. */
+  oTop: number
+  oBottom: number
+  fx0: number
+  fx1: number
+  /** Goal lines. */
   top: number
   bottom: number
   ez: number
@@ -230,15 +240,21 @@ const own25 = (team: Team) => (team === 'o' ? 25 : 75)
 const other = (team: Team) => (team === 'o' ? 'x' : 'o')
 const attackOf = (team: Team, yard: number) => (team === 'o' ? yard : 100 - yard)
 
-function newDrive(team: Team, ballYard: number, w: number): Game {
+function newDrive(team: Team, ballYard: number, geom: Geometry): Game {
   const yard = clamp(Math.round(ballYard), 2, 98)
   const first = team === 'o' ? Math.min(yard + 10, 100) : Math.max(yard - 10, 0)
+  const width = geom.fx1 - geom.fx0
+  const lo = geom.fx0 + 95
+  const hi = geom.fx1 - 95
   return {
     possession: team,
     ballYard: yard,
     down: 1,
     firstDownYard: first,
-    formationX: clamp(rand(w * 0.32, w * 0.68), 130, Math.max(w - 130, 131)),
+    formationX:
+      lo <= hi
+        ? clamp(rand(geom.fx0 + width * 0.3, geom.fx0 + width * 0.7), lo, hi)
+        : (geom.fx0 + geom.fx1) / 2,
   }
 }
 
@@ -286,7 +302,7 @@ function callPlay(game: Game): Result {
 function applyResult(
   game: Game,
   res: Result,
-  w: number,
+  geom: Geometry,
 ): { next: Game; celebrate?: string } {
   const dir = game.possession === 'o' ? 1 : -1
   const opp = other(game.possession)
@@ -295,7 +311,7 @@ function applyResult(
     case 'gain': {
       const landed = game.ballYard + dir * res.yards
       if (res.yards > 0 && attackOf(game.possession, landed) >= 100) {
-        return { next: newDrive(opp, own25(opp), w), celebrate: 'TOUCHDOWN' }
+        return { next: newDrive(opp, own25(opp), geom), celebrate: 'TOUCHDOWN' }
       }
       const ball = clamp(landed, 1, 99)
       const gotFirst =
@@ -306,23 +322,23 @@ function applyResult(
         return { next: { ...game, ballYard: ball, down: 1, firstDownYard: first } }
       }
       const down = game.down + 1
-      if (down > 4) return { next: newDrive(opp, ball, w) }
+      if (down > 4) return { next: newDrive(opp, ball, geom) }
       return { next: { ...game, ballYard: ball, down } }
     }
     case 'incomplete': {
       const down = game.down + 1
-      if (down > 4) return { next: newDrive(opp, game.ballYard, w) }
+      if (down > 4) return { next: newDrive(opp, game.ballYard, geom) }
       return { next: { ...game, down } }
     }
     case 'interception':
-      return { next: newDrive(opp, res.spotYard, w) }
+      return { next: newDrive(opp, res.spotYard, geom) }
     case 'punt':
-      return { next: newDrive(opp, res.spotYard, w) }
+      return { next: newDrive(opp, res.spotYard, geom) }
     case 'fg':
       if (res.good) {
-        return { next: newDrive(opp, own25(opp), w), celebrate: 'FIELD GOAL' }
+        return { next: newDrive(opp, own25(opp), geom), celebrate: 'FIELD GOAL' }
       }
-      return { next: newDrive(opp, clamp(game.ballYard, 20, 80), w) }
+      return { next: newDrive(opp, clamp(game.ballYard, 20, 80), geom) }
   }
 }
 
@@ -338,13 +354,17 @@ function downLabel(game: Game): string {
 // ---------------------------------------------------------------------------
 
 function makeSnap(game: Game, res: Result, geom: Geometry): Snap {
-  const { w, h, ppy } = geom
+  const { ppy, fx0, fx1, oTop, oBottom } = geom
+  const fieldCx = (fx0 + fx1) / 2
   const fw = game.possession === 'o' ? -1 : 1 // px direction of attack
   const scrimY = yardToY(geom, game.ballYard)
   const sp = 28
-  const cx = clamp(game.formationX + rand(-24, 24), 120, Math.max(w - 120, 121))
-  const cX = (x: number) => clamp(x, 26, w - 26)
-  const cY = (y: number) => clamp(y, 14, h - 14)
+  const cxLo = fx0 + 92
+  const cxHi = fx1 - 92
+  const cx =
+    cxLo <= cxHi ? clamp(game.formationX + rand(-24, 24), cxLo, cxHi) : fieldCx
+  const cX = (x: number) => clamp(x, fx0 + 10, fx1 - 10)
+  const cY = (y: number) => clamp(y, oTop + 8, oBottom - 8)
   const behind = (d: number) => cY(scrimY - fw * d)
   const beyond = (d: number) => cY(scrimY + fw * d)
   const side = Math.random() < 0.5 ? -1 : 1
@@ -398,8 +418,8 @@ function makeSnap(game: Game, res: Result, geom: Geometry): Snap {
   }))
   const lbs: Point[] = [-1, 0, 1].map((i) => ({ x: cx + i * sp * 1.5 + j(), y: beyond(40) }))
   const safeties: Point[] = [
-    { x: cx - sp * 1.7, y: beyond(88) },
-    { x: cx + sp * 1.7, y: beyond(88) },
+    { x: cX(cx - sp * 1.7), y: beyond(88) },
+    { x: cX(cx + sp * 1.7), y: beyond(88) },
   ]
   const cb1Pos = { x: cX(wr1Pos.x + side * 6), y: beyond(14) }
   const cb2Pos = { x: cX(wr2Pos.x - side * 6), y: beyond(12) }
@@ -410,8 +430,8 @@ function makeSnap(game: Game, res: Result, geom: Geometry): Snap {
   const cb1A = still(defense, cb1Pos, false)
   still(defense, cb2Pos, false)
 
-  // Punts and kicks travel too far for a tight frame; the rest of the time
-  // the broadcast goes wide roughly one play in five, for the all-22 look.
+  // Punts and kicks travel too far for even the gentle lean; and roughly
+  // one play in five is covered from the fixed wide angle for variety.
   const wide = res.type === 'punt' || res.type === 'fg' || Math.random() < 0.22
   const snap: Snap = {
     actors,
@@ -606,7 +626,7 @@ function makeSnap(game: Game, res: Result, geom: Geometry): Snap {
     snap.ball = [
       { path: [center, qbPos], t0: 0.08, t1: 0.2 },
       { path: [qbPos, land], via: midVia(qbPos, land), t0: 0.3, t1: 0.8, flight: true },
-      { path: [land, { x: land.x + rand(-14, 14), y: cY(land.y + fw * 10) }], t0: 0.8, t1: 0.9 },
+      { path: [land, { x: cX(land.x + rand(-14, 14)), y: cY(land.y + fw * 10) }], t0: 0.8, t1: 0.9 },
     ]
     for (const gunner of [wr1A, wr2A]) {
       gunner.path = [gunner.path[0], { x: cX(land.x + rand(-24, 24)), y: cY(land.y - fw * 12) }]
@@ -620,7 +640,7 @@ function makeSnap(game: Game, res: Result, geom: Geometry): Snap {
   if (res.type === 'fg') {
     const postY = fw === -1 ? geom.top - geom.ez * 0.55 : geom.bottom + geom.ez * 0.55
     const target = {
-      x: w / 2 + (res.good ? rand(-10, 10) : side * rand(48, 75)),
+      x: fieldCx + (res.good ? rand(-10, 10) : side * rand(48, 75)),
       y: cY(postY),
     }
     snap.ball = [
@@ -682,7 +702,18 @@ export function ChalkboardField() {
 
     const state = {
       dpr: Math.min(window.devicePixelRatio || 1, DPR_CAP),
-      geom: { w: 0, h: 0, top: 0, bottom: 0, ez: 0, ppy: 1 } as Geometry,
+      geom: {
+        w: 0,
+        h: 0,
+        oTop: 0,
+        oBottom: 0,
+        fx0: 0,
+        fx1: 0,
+        top: 0,
+        bottom: 0,
+        ez: 0,
+        ppy: 1,
+      } as Geometry,
       game: null as Game | null,
       snap: null as Snap | null,
       phase: 'huddle' as Phase,
@@ -692,7 +723,6 @@ export function ChalkboardField() {
       celebrateZone: 'top' as 'top' | 'bottom',
       disp: { ball: 0, first: 0 },
       cam: { x: 0, y: 0, zoom: 1 } as Camera,
-      shakeAmp: 0,
       burst: null as { x: number; y: number } | null,
       lastNow: 0,
       staticDrawn: false,
@@ -701,11 +731,34 @@ export function ChalkboardField() {
       running: false,
     }
 
+    /* The field is a centred design, sized against the CONTENT area: the
+       sidebar is measured (its rect is zero when the mobile layout hides
+       it) and excluded, the width is proportioned against the length, and
+       the whole boundary — both end zones — always fits on screen. */
     const layout = () => {
       const w = window.innerWidth
       const h = window.innerHeight
-      const ez = clamp(h * 0.09, 48, 96)
-      state.geom = { w, h, top: ez, bottom: h - ez, ez, ppy: (h - ez * 2) / 100 }
+      const aside = document.querySelector('aside')
+      const rect = aside?.getBoundingClientRect()
+      const contentLeft = rect && rect.width > 0 ? rect.right : 0
+      const contentW = Math.max(w - contentLeft, 220)
+      const marginY = clamp(h * 0.055, 28, 64)
+      const fieldLen = h - marginY * 2
+      const ez = clamp(fieldLen * 0.1, 44, 90)
+      const fieldW = clamp(Math.min(contentW - 48, fieldLen * 0.62), 220, 680)
+      const fx0 = contentLeft + (contentW - fieldW) / 2
+      state.geom = {
+        w,
+        h,
+        oTop: marginY,
+        oBottom: h - marginY,
+        fx0,
+        fx1: fx0 + fieldW,
+        top: marginY + ez,
+        bottom: h - marginY - ez,
+        ez,
+        ppy: (h - (marginY + ez) * 2) / 100,
+      }
       canvas.width = Math.floor(w * state.dpr)
       canvas.height = Math.floor(h * state.dpr)
       // A play in flight was choreographed against the old field: reset to
@@ -715,56 +768,82 @@ export function ChalkboardField() {
         state.phaseStart = performance.now()
         state.huddleDur = 500
       }
+      if (state.game) {
+        // Re-centre the drive laterally on the new field.
+        state.game = { ...state.game, formationX: (state.geom.fx0 + state.geom.fx1) / 2 }
+      }
       state.cam = { x: w / 2, y: h / 2, zoom: 1 }
       state.staticDrawn = false
     }
 
     // -----------------------------------------------------------------
-    // The camera. Targets are per phase; position and zoom glide toward
-    // them, so every cut is a broadcast-style push or pull, never a jump.
+    // The camera: a contained lean, never a cut. maxZoom is exactly the
+    // magnification at which the entire field boundary still fits the
+    // frame, so however the camera leans toward the play, both end zones
+    // stay on screen. That containment IS the anti-distraction rule.
     // -----------------------------------------------------------------
 
-    const fitCam = (x: number, y: number, zoom: number): Camera => {
-      const { w, h } = state.geom
+    const maxZoom = () => {
+      const { w, h, fx0, fx1, oTop, oBottom } = state.geom
+      return Math.max(
+        1,
+        Math.min(1.09, w / (fx1 - fx0 + 40), h / (oBottom - oTop + 28)),
+      )
+    }
+
+    /** Clamp a camera so its view contains the whole field boundary. */
+    const containCam = (x: number, y: number, zoom: number): Camera => {
+      const { w, h, fx0, fx1, oTop, oBottom } = state.geom
       const hw = w / (2 * zoom)
       const hh = h / (2 * zoom)
-      return { x: clamp(x, hw, w - hw), y: clamp(y, hh, h - hh), zoom }
+      const pad = 8
+      const xLo = fx1 + pad - hw
+      const xHi = fx0 - pad + hw
+      const yLo = oBottom + pad - hh
+      const yHi = oTop - pad + hh
+      return {
+        x: xLo > xHi ? (fx0 + fx1) / 2 : clamp(x, xLo, xHi),
+        y: yLo > yHi ? h / 2 : clamp(y, yLo, yHi),
+        zoom,
+      }
+    }
+
+    /* The camera never pans sideways: its x is always the value that pins
+       the field to the SAME screen position at any zoom, so the centred
+       design stays put and only a gentle vertical lean moves. */
+    const pinnedX = (zoom: number) => {
+      const { w, fx0, fx1 } = state.geom
+      const fieldCx = (fx0 + fx1) / 2
+      return fieldCx - (fieldCx - w / 2) / zoom
     }
 
     const camTarget = (now: number): Camera => {
       const { w, h } = state.geom
       const wideCam: Camera = { x: w / 2, y: h / 2, zoom: 1 }
       const snap = state.snap
-      if (!snap || state.phase === 'huddle') return wideCam
-      // Tight enough to feel inside the play, loose enough that the
-      // formation fits; on a phone the formation already fills the frame.
-      const tight = clamp(w / 700, 1.25, 2.1)
-      if (snap.wide && state.phase !== 'celebrate') {
-        const b = ballAt(snap.ball, state.phase === 'live' ? clamp((now - state.phaseStart) / snap.dur, 0, 1) : 1).pos
-        return fitCam(w / 2, state.phase === 'lineup' || state.phase === 'set' ? snap.focus.y : b.y, 1.06)
-      }
+      if (!snap || state.phase === 'huddle' || state.phase === 'fade') return wideCam
+      if (snap.wide && state.phase !== 'celebrate') return wideCam
+      const z = maxZoom()
       switch (state.phase) {
         case 'lineup':
-          return fitCam(snap.focus.x, snap.focus.y + snap.fw * 12, tight * 0.76)
         case 'set':
-          // The slow push-in before the snap is what makes it feel called.
-          return fitCam(snap.focus.x, snap.focus.y + snap.fw * 16, tight * 0.9)
+          return containCam(pinnedX(z), snap.focus.y + snap.fw * 14, z)
         case 'live': {
           const p = clamp((now - state.phaseStart) / snap.dur, 0, 1)
           const b = ballAt(snap.ball, p).pos
-          return fitCam(b.x, b.y + snap.fw * 36, tight)
+          return containCam(pinnedX(z), b.y + snap.fw * 30, z)
         }
         case 'whistle': {
           const b = ballAt(snap.ball, 1).pos
-          return fitCam(b.x, b.y, tight)
+          return containCam(pinnedX(z), b.y, z)
         }
         case 'celebrate': {
           const zoneY =
-            state.celebrateZone === 'top' ? state.geom.top * 0.5 : h - state.geom.ez * 0.5
-          return fitCam(w / 2, zoneY, tight * 0.82)
+            state.celebrateZone === 'top'
+              ? (state.geom.oTop + state.geom.top) / 2
+              : (state.geom.bottom + state.geom.oBottom) / 2
+          return containCam(pinnedX(z), zoneY, z)
         }
-        case 'fade':
-          return wideCam
         default:
           return wideCam
       }
@@ -773,15 +852,13 @@ export function ChalkboardField() {
     const applyCamera = () => {
       const { w, h } = state.geom
       const z = state.cam.zoom
-      const sx = state.shakeAmp > 0.05 ? (Math.random() * 2 - 1) * state.shakeAmp : 0
-      const sy = state.shakeAmp > 0.05 ? (Math.random() * 2 - 1) * state.shakeAmp : 0
       ctx.setTransform(
         state.dpr * z,
         0,
         0,
         state.dpr * z,
-        state.dpr * (w / 2 - state.cam.x * z + sx),
-        state.dpr * (h / 2 - state.cam.y * z + sy),
+        state.dpr * (w / 2 - state.cam.x * z),
+        state.dpr * (h / 2 - state.cam.y * z),
       )
     }
 
@@ -800,41 +877,59 @@ export function ChalkboardField() {
 
     // -----------------------------------------------------------------
     // The field, drawn as vectors through the camera every frame so chalk
-    // stays crisp at any zoom. All wobble comes from noise(), never
-    // Math.random — random at draw time would make the board shimmer.
+    // stays crisp. All wobble comes from noise(), never Math.random —
+    // random at draw time would make the board shimmer.
     // -----------------------------------------------------------------
 
     const drawField = () => {
-      const { w, h, top, bottom, ez } = state.geom
+      const { oTop, oBottom, fx0, fx1, top, bottom, ez } = state.geom
+      const fieldCx = (fx0 + fx1) / 2
+      const fieldW = fx1 - fx0
       const view = viewRect()
+
+      // The boundary: sidelines the full length, end lines behind the
+      // end zones. Seeing the whole rectangle is the point.
+      ctx.strokeStyle = `rgba(255,255,255,${SIDELINE_ALPHA})`
+      ctx.lineWidth = 2
+      ctx.beginPath()
+      for (const x of [fx0, fx1]) {
+        ctx.moveTo(x, oTop)
+        ctx.lineTo(x + (noise(x, 7) - 0.5) * 2, oBottom)
+      }
+      for (const y of [oTop, oBottom]) {
+        ctx.moveTo(fx0, y)
+        ctx.lineTo(fx1, y + (noise(y, 5) - 0.5) * 2)
+      }
+      ctx.stroke()
 
       // End zones: diagonal hatch, the brand in faint letterspaced chalk.
       ctx.strokeStyle = `rgba(255,255,255,${ENDZONE_HATCH_ALPHA})`
       ctx.lineWidth = 1
       for (const [zTop, zBottom] of [
-        [2, top - 2],
-        [bottom + 2, h - 2],
+        [oTop + 2, top - 2],
+        [bottom + 2, oBottom - 2],
       ]) {
         if (zBottom < view.y0 || zTop > view.y1) continue
         ctx.save()
         ctx.beginPath()
-        ctx.rect(14, zTop, w - 28, zBottom - zTop)
+        ctx.rect(fx0 + 2, zTop, fieldW - 4, zBottom - zTop)
         ctx.clip()
         const depth = zBottom - zTop
-        const startX = Math.floor((view.x0 - depth) / 24) * 24
         ctx.beginPath()
-        for (let x = startX; x < view.x1; x += 24) {
+        for (let x = fx0 - depth; x < fx1; x += 24) {
           ctx.moveTo(x, zTop)
           ctx.lineTo(x + depth, zBottom)
         }
         ctx.stroke()
         ctx.restore()
-        const size = Math.round(clamp(ez * 0.4, 18, 32))
+        const size = Math.round(
+          Math.min(clamp(ez * 0.4, 16, 30), (fieldW - 24) / 9.5),
+        )
         ctx.fillStyle = `rgba(255,255,255,${ENDZONE_TEXT_ALPHA})`
         ctx.font = `600 ${size}px ui-monospace, SFMono-Regular, Menlo, monospace`
         ctx.textAlign = 'center'
         ctx.textBaseline = 'middle'
-        ctx.fillText('G R I D I R O N', w / 2, (zTop + zBottom) / 2)
+        ctx.fillText('G R I D I R O N', fieldCx, (zTop + zBottom) / 2)
       }
 
       // Goalposts, one small chalk glyph per end zone.
@@ -846,24 +941,14 @@ export function ChalkboardField() {
       ]) {
         if (py < view.y0 - 30 || py > view.y1 + 30) continue
         ctx.beginPath()
-        ctx.moveTo(w / 2, py - up * 10)
-        ctx.lineTo(w / 2, py) // stem
-        ctx.moveTo(w / 2 - 23, py)
-        ctx.lineTo(w / 2 + 23, py) // crossbar
-        ctx.moveTo(w / 2 - 23, py)
-        ctx.lineTo(w / 2 - 23, py + up * 16)
-        ctx.moveTo(w / 2 + 23, py)
-        ctx.lineTo(w / 2 + 23, py + up * 16)
-        ctx.stroke()
-      }
-
-      // Sidelines: the page is the field between them.
-      ctx.strokeStyle = `rgba(255,255,255,${SIDELINE_ALPHA})`
-      ctx.lineWidth = 2
-      for (const x of [14, w - 14]) {
-        ctx.beginPath()
-        ctx.moveTo(x, 0)
-        ctx.lineTo(x + (noise(x, 7) - 0.5) * 2, h)
+        ctx.moveTo(fieldCx, py - up * 10)
+        ctx.lineTo(fieldCx, py) // stem
+        ctx.moveTo(fieldCx - 23, py)
+        ctx.lineTo(fieldCx + 23, py) // crossbar
+        ctx.moveTo(fieldCx - 23, py)
+        ctx.lineTo(fieldCx - 23, py + up * 16)
+        ctx.moveTo(fieldCx + 23, py)
+        ctx.lineTo(fieldCx + 23, py + up * 16)
         ctx.stroke()
       }
 
@@ -873,23 +958,28 @@ export function ChalkboardField() {
       for (const y of [top, bottom]) {
         if (y < view.y0 || y > view.y1) continue
         ctx.beginPath()
-        ctx.moveTo(14, y)
-        ctx.lineTo(w - 14, y + (noise(y, 11) - 0.5) * 2)
+        ctx.moveTo(fx0, y)
+        ctx.lineTo(fx1, y + (noise(y, 11) - 0.5) * 2)
         ctx.stroke()
       }
 
+      // A line every five yards — the fives lighter — numerals at the tens.
       const gap10 = state.geom.ppy * 10
-      const numeralSize = Math.round(clamp(gap10 * 0.5, 26, 44))
+      const numeralSize = Math.round(
+        Math.min(clamp(gap10 * 0.5, 20, 40), fieldW / 8),
+      )
       ctx.lineWidth = 1
-      for (let yard = 10; yard <= 90; yard += 10) {
+      for (let yard = 5; yard <= 95; yard += 5) {
         const y = yardToY(state.geom, yard)
         if (y < view.y0 - numeralSize || y > view.y1 + numeralSize) continue
+        const ten = yard % 10 === 0
         const sag = noise(yard, 3) * 2 - 1
-        ctx.strokeStyle = `rgba(255,255,255,${GRID_ALPHA})`
+        ctx.strokeStyle = `rgba(255,255,255,${ten ? GRID_ALPHA : GRID_ALPHA * 0.6})`
         ctx.beginPath()
-        ctx.moveTo(14, y)
-        ctx.quadraticCurveTo(w / 2, y + sag * 3, w - 14, y + sag)
+        ctx.moveTo(fx0, y)
+        ctx.quadraticCurveTo(fieldCx, y + sag * 3, fx1, y + sag)
         ctx.stroke()
+        if (!ten) continue
 
         // Real yard numerals: they cycle up to the 50 and back down.
         const numeral = String(Math.min(yard, 100 - yard))
@@ -899,24 +989,24 @@ export function ChalkboardField() {
         ctx.font = `600 ${numeralSize}px ui-monospace, SFMono-Regular, Menlo, monospace`
         ctx.textBaseline = 'middle'
         ctx.textAlign = 'left'
-        ctx.fillText(numeral, 30, y - numeralSize * 0.72)
+        ctx.fillText(numeral, fx0 + 18, y - numeralSize * 0.72)
         ctx.textAlign = 'right'
-        ctx.fillText(numeral, w - 30, y - numeralSize * 0.72)
+        ctx.fillText(numeral, fx1 - 18, y - numeralSize * 0.72)
       }
 
-      // Hash rows at the five-yard midpoints.
+      // Interior hash columns, a tick at every yard between the fives.
       ctx.strokeStyle = `rgba(255,255,255,${HASH_ALPHA})`
-      for (let yard = 5; yard <= 95; yard += 10) {
-        const hy = yardToY(state.geom, yard)
-        if (hy < view.y0 || hy > view.y1) continue
-        ctx.beginPath()
-        for (let x = 14 + HASH_GAP / 2; x < w - 14; x += HASH_GAP) {
-          if (x < view.x0 || x > view.x1) continue
-          ctx.moveTo(x, hy - 3)
-          ctx.lineTo(x + (noise(x, yard) - 0.5), hy + 3)
+      ctx.beginPath()
+      for (const hx of [fx0 + fieldW * 0.37, fx0 + fieldW * 0.63]) {
+        for (let yard = 1; yard <= 99; yard++) {
+          if (yard % 5 === 0) continue
+          const hy = yardToY(state.geom, yard)
+          if (hy < view.y0 || hy > view.y1) continue
+          ctx.moveTo(hx - 3, hy)
+          ctx.lineTo(hx + 3, hy + (noise(hx, yard) - 0.5))
         }
-        ctx.stroke()
       }
+      ctx.stroke()
     }
 
     const drawMark = (p: Point, kind: Team) => {
@@ -924,7 +1014,7 @@ export function ChalkboardField() {
       ctx.beginPath()
       if (kind === 'o') {
         // A hand-drawn circle: it starts where the wrist happened to be and
-        // does not quite close — visible when the camera is in tight.
+        // does not quite close.
         const a0 = noise(p.x, p.y) * Math.PI * 2
         ctx.arc(p.x, p.y, 6, a0, a0 + Math.PI * 1.94)
       } else {
@@ -960,7 +1050,7 @@ export function ChalkboardField() {
       ctx.beginPath()
       ctx.ellipse(0, 0, 6, 3.6, 0, 0, Math.PI * 2)
       ctx.fill()
-      // The lace: invisible from the wide shot, the tell up close.
+      // The lace.
       ctx.globalAlpha = alpha * 0.45
       ctx.strokeStyle = '#ffffff'
       ctx.lineWidth = 0.8
@@ -974,15 +1064,15 @@ export function ChalkboardField() {
     const drawMarkers = () => {
       const game = state.game
       if (!game) return
-      const { w } = state.geom
+      const { fx0, fx1 } = state.geom
       const scrimY = yardToY(state.geom, state.disp.ball)
       ctx.save()
       ctx.globalAlpha = SCRIMMAGE_ALPHA
       ctx.strokeStyle = '#ffffff'
       ctx.lineWidth = 1.5
       ctx.beginPath()
-      ctx.moveTo(18, scrimY)
-      ctx.lineTo(w - 18, scrimY)
+      ctx.moveTo(fx0 + 3, scrimY)
+      ctx.lineTo(fx1 - 3, scrimY)
       ctx.stroke()
       // The broadcast convention: the line to gain is yellow. Hidden on
       // goal-to-go, where it would only retrace the goal line.
@@ -992,24 +1082,25 @@ export function ChalkboardField() {
         ctx.strokeStyle = colors.yellow
         ctx.setLineDash([12, 8])
         ctx.beginPath()
-        ctx.moveTo(18, firstY)
-        ctx.lineTo(w - 18, firstY)
+        ctx.moveTo(fx0 + 3, firstY)
+        ctx.lineTo(fx1 - 3, firstY)
         ctx.stroke()
         ctx.setLineDash([])
       }
-      // The down, chalked beside the formation so the tight camera keeps it
-      // in frame — a margin note would sit outside the shot.
+      // The down, chalked in the margin beside the field when there is
+      // one, tucked inside the sideline when there is not (small screens).
       const fw = game.possession === 'o' ? -1 : 1
       ctx.globalAlpha = DOWN_TEXT_ALPHA
       ctx.fillStyle = '#ffffff'
       ctx.font = '600 12px ui-monospace, SFMono-Regular, Menlo, monospace'
-      ctx.textAlign = 'left'
       ctx.textBaseline = 'middle'
-      ctx.fillText(
-        downLabel(game),
-        clamp(game.formationX - 205, 24, w - 90),
-        scrimY - fw * 18,
-      )
+      if (fx0 >= 104) {
+        ctx.textAlign = 'right'
+        ctx.fillText(downLabel(game), fx0 - 14, scrimY - fw * 14)
+      } else {
+        ctx.textAlign = 'left'
+        ctx.fillText(downLabel(game), fx0 + 8, scrimY - fw * 16)
+      }
       ctx.restore()
     }
 
@@ -1159,24 +1250,24 @@ export function ChalkboardField() {
 
     const drawCelebration = (now: number) => {
       if (state.phase !== 'celebrate' || !state.celebrate) return
-      const { w, h, top, bottom } = state.geom
+      const { oTop, oBottom, top, bottom, fx0, fx1 } = state.geom
       const p = clamp((now - state.phaseStart) / CELEBRATE, 0, 1)
       const env = Math.sin(Math.PI * p)
-      const zoneTop = state.celebrateZone === 'top' ? 2 : bottom + 2
-      const zoneBottom = state.celebrateZone === 'top' ? top - 2 : h - 2
+      const zoneTop = state.celebrateZone === 'top' ? oTop + 2 : bottom + 2
+      const zoneBottom = state.celebrateZone === 'top' ? top - 2 : oBottom - 2
       ctx.save()
       ctx.globalAlpha = env * 0.05
       ctx.fillStyle = '#ffffff'
-      ctx.fillRect(14, zoneTop, w - 28, zoneBottom - zoneTop)
+      ctx.fillRect(fx0 + 2, zoneTop, fx1 - fx0 - 4, zoneBottom - zoneTop)
       ctx.globalAlpha = env * CELEBRATE_ALPHA
       ctx.fillStyle = '#ffffff'
-      // Sized against the camera's view, not the page, so the word fits the
-      // frame however far the push-in has come.
-      const size = Math.round(clamp((w / state.cam.zoom) * 0.032, 14, 30))
+      const size = Math.round(
+        Math.min(clamp((state.geom.w / state.cam.zoom) * 0.032, 13, 28), (fx1 - fx0) / 12),
+      )
       ctx.font = `600 ${size}px ui-monospace, SFMono-Regular, Menlo, monospace`
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
-      ctx.fillText(state.celebrate.split('').join(' '), w / 2, (zoneTop + zoneBottom) / 2)
+      ctx.fillText(state.celebrate.split('').join(' '), (fx0 + fx1) / 2, (zoneTop + zoneBottom) / 2)
       ctx.restore()
     }
 
@@ -1224,20 +1315,15 @@ export function ChalkboardField() {
         case 'live': {
           const snap = state.snap
           if (!snap) return
-          const { next, celebrate } = applyResult(game, snap.result, state.geom.w)
+          const { next, celebrate } = applyResult(game, snap.result, state.geom)
           state.celebrate = celebrate ?? null
           state.celebrateZone = game.possession === 'o' ? 'top' : 'bottom'
           state.game = next
           state.phase = celebrate ? 'celebrate' : 'whistle'
-          // A tackle ends with an impact: a chalk burst at the spot and a
-          // frame of camera shake. Kicks and incompletions end quietly.
+          // A tackle ends with a chalk burst at the spot — local to the
+          // play, unlike the camera shake this replaced.
           const tackled = snap.result.type === 'gain' || snap.result.type === 'interception'
-          if (!celebrate && tackled) {
-            state.burst = ballAt(snap.ball, 1).pos
-            state.shakeAmp = snap.wide ? 1.5 : 3.5
-          } else {
-            state.burst = null
-          }
+          state.burst = !celebrate && tackled ? ballAt(snap.ball, 1).pos : null
           break
         }
         case 'whistle':
@@ -1273,19 +1359,17 @@ export function ChalkboardField() {
 
       if (now - state.phaseStart >= phaseDur()) advance(now)
 
-      // The camera glides: pan tracks faster than zoom, like a real rig.
+      // The camera glides, slowly — a lean, not a cut.
       const target = camTarget(now)
-      const kp = 1 - Math.exp(-dt / 300)
-      const kz = 1 - Math.exp(-dt / 520)
+      const kp = 1 - Math.exp(-dt / 450)
+      const kz = 1 - Math.exp(-dt / 700)
       state.cam.x += (target.x - state.cam.x) * kp
       state.cam.y += (target.y - state.cam.y) * kp
       state.cam.zoom += (target.zoom - state.cam.zoom) * kz
-      state.shakeAmp *= Math.exp(-dt / 90)
       const camMoving =
         Math.abs(target.x - state.cam.x) > 0.4 ||
         Math.abs(target.y - state.cam.y) > 0.4 ||
-        Math.abs(target.zoom - state.cam.zoom) > 0.002 ||
-        state.shakeAmp > 0.05
+        Math.abs(target.zoom - state.cam.zoom) > 0.002
 
       // Between plays nothing moves: draw the board once and idle.
       const isStatic =
@@ -1309,17 +1393,15 @@ export function ChalkboardField() {
       cancelAnimationFrame(state.rafId)
     }
 
-    /* Reduced motion: one static frame — the field, a formation frozen
-       mid-play with its route drawn, the camera in at a mid shot. */
+    /* Reduced motion: one static frame — the whole field, a formation
+       frozen mid-play with its route drawn, the camera at rest. */
     const drawStill = () => {
       const game = state.game
       if (!game) return
       state.disp.ball = game.ballYard
       state.disp.first = game.firstDownYard
       state.snap = makeSnap(game, { type: 'gain', mode: 'pass', yards: 12 }, state.geom)
-      state.snap.wide = false
-      const tight = clamp(state.geom.w / 700, 1.25, 2.1)
-      state.cam = fitCam(state.snap.focus.x, state.snap.focus.y, tight * 0.8)
+      state.cam = { x: state.geom.w / 2, y: state.geom.h / 2, zoom: 1 }
       state.phase = 'live'
       state.phaseStart = 0
       drawFrame(state.snap.dur * 0.72)
@@ -1349,7 +1431,7 @@ export function ChalkboardField() {
 
     layout()
     const openingTeam: Team = Math.random() < 0.5 ? 'o' : 'x'
-    state.game = newDrive(openingTeam, own25(openingTeam), state.geom.w)
+    state.game = newDrive(openingTeam, own25(openingTeam), state.geom)
     state.disp = { ball: state.game.ballYard, first: state.game.firstDownYard }
     // The opening drive lines up almost immediately — a fresh page load
     // should show the board playing, not an empty field.

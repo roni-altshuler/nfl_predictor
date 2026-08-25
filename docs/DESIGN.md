@@ -12,11 +12,11 @@ chosen. This file records what the system is and, where it matters, why.
 ## 1. Surfaces — the board
 
 Blackboard slate `#0b120e` canvas, lit from above by two body gradients (the
-theme's depth). The full-viewport field — sidelines, yard lines, hash marks,
-numerals — is drawn by `ChalkboardField` at z-index −1 and **spans the
-entire page**: every surface above it is TRANSLUCENT by token
-(`--card-bg: rgba(13,22,17,0.72)`) so the field reads through the cards
-rather than being walled off by them. Hairlines are chalk
+theme's depth). The field — a complete, bounded design with both end
+zones — is drawn by `ChalkboardField` at z-index −1, **centred in the
+content area and always seen whole** (§6a): every surface above it is
+TRANSLUCENT by token (`--card-bg: rgba(13,22,17,0.72)`) so the field reads
+through the cards rather than being walled off by them. Hairlines are chalk
 (`rgba(255,255,255,0.14)`, `0.28` on hover); chrome (`--nav-bg`) is
 translucent + backdrop-blur.
 
@@ -109,11 +109,17 @@ reads as broken rather than loading).
 
 ## 6a. The field, and the game played on it
 
-`ChalkboardField` draws a TRUE field: sidelines at the viewport edges,
-goal lines, hatched end zones with the brand in faint chalk, goalposts,
-hand-ruled yard lines every ten yards with numerals cycling to the 50, and
-hash rows at the five-yard midpoints. Yardage is real — yard 0 is the
-bottom goal line, 100 the top — so everything the game does is legible.
+`ChalkboardField` draws a TRUE field as a **centred, complete design**: a
+full boundary with both end zones always on screen, goal lines, hatched
+end zones with the brand in faint chalk, goalposts, hand-ruled lines every
+five yards (the fives lighter), numerals cycling to the 50 at the tens,
+and interior hash columns ticked at every yard. The field is centred in
+the CONTENT area — the sidebar is measured at layout and excluded, so its
+rect goes to zero on the mobile layout — and its width is proportioned
+against its length (≤0.62, clamped), so on every device it reads as a
+football field seen whole, never an abstract board cropped by the
+viewport. Yardage is real — yard 0 is the bottom goal line, 100 the top —
+so everything the game does is legible.
 
 On it, an endless **simulated game** (v3): the O team in white chalk
 against the X team in blue chalk (`--accent-info`), whoever holds the ball
@@ -127,22 +133,23 @@ the posts, and a drive that reaches the paint gets TOUCHDOWN scrawled
 across the end zone before possession flips. The ball is a small yellow
 ellipse; flights (throws, punts, kicks) trail dashes.
 
-**The broadcast camera (v3.1)** is what makes it a game rather than a
-diagram. A virtual camera frames every play: a push-in on the formation as
-it lines up, a slow tightening at the set, a tight track on the ball
-through the snap, a hold on the tackle — with a chalk impact burst and a
-decaying frame of camera shake — a push into the end zone for the
-celebration, then a pull back to the full field for the huddle, so the
-"field is the page" wide look returns between plays. Every punt and kick,
-and roughly one play in five, is covered wide (all-22) instead. Position
-and zoom glide exponentially toward per-phase targets (pan faster than
-zoom, like a real rig) and the view is clamped inside the field. The
+**The camera is contained, by rule (v3.2).** This layer sits behind data
+the reader came for, so the v3.1 broadcast push-in was capped: the camera
+may lean toward the play only as far as keeps the ENTIRE field — both end
+zones — inside the frame (`maxZoom`, ~1.08), and it never pans sideways
+(`pinnedX` keeps the field at the same screen position at any zoom, so
+the centred design stays put and only a gentle vertical lean moves). The
+result is a slow breath toward the action, never a cut; the resting state
+between plays is always the full centred field; and the huddles are
+deliberately long — the board rests more than it moves, or it competes
+with the data. Camera shake was removed for the same reason; the chalk
+impact burst at a tackle stays, because it is local to the play. The
 field renders as vectors *through* the camera transform each frame so
-chalk stays crisp at any zoom — which is why all hand-ruled wobble comes
-from a deterministic noise hash, never `Math.random` at draw time (random
-wobble re-rolled per frame makes the whole board shimmer). Close-up
-polish that earns the zoom: ghost marks trail a carried ball, the ball
-has a lace, and the O's are drawn as not-quite-closed hand circles.
+chalk stays crisp — which is why all hand-ruled wobble comes from a
+deterministic noise hash, never `Math.random` at draw time (random wobble
+re-rolled per frame makes the whole board shimmer). Close-up polish:
+ghost marks trail a carried ball, the ball has a lace, and the O's are
+drawn as not-quite-closed hand circles.
 
 Rules:
 
