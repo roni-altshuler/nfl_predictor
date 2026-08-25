@@ -115,9 +115,8 @@ export default function PlayoffsPage() {
               </table>
             </div>
             <p className="mt-2 font-mono text-[10px] text-[var(--text-tertiary)]">
-              The rule above the line is the cut. Seeds 1–4 go to division
-              winners regardless of record, so a team can sit below the line on
-              probability and still be favoured to host a game.
+              The line is the cut — but seeds 1–4 are division winners
+              regardless of record.
             </p>
           </section>
         )

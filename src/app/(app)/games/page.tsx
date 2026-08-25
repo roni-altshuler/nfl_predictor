@@ -1,6 +1,5 @@
-import Link from 'next/link'
-
 import { WeekCalendar } from '@/components/schedule/WeekCalendar'
+import { WeekRail } from '@/components/schedule/WeekRail'
 import { currentWeek, getGameForecasts } from '@/lib/artifacts'
 import { stamp } from '@/lib/format'
 
@@ -18,15 +17,14 @@ export const metadata = { title: 'Schedule' }
  * Monday, and an international game in London kicks off on a UTC date that
  * belongs to the previous week everywhere in the United States.
  *
- * **Inside a week, the calendar.** The previous version rendered 272 forecast
- * cards down a single column — the whole season at roughly one screen per
- * three games. The calendar is about a fifth the height per week and puts a
- * whole slate in view, which is the only way the shape of a week (a lone
- * Thursday game, five Sunday windows, one Monday) is visible at all.
+ * **Each week is a `<details>` and only the next one ships open**, the NBA
+ * sibling's pattern: eighteen expanded calendars are a two-minute scroll,
+ * but a folded week is still one click away AND still in the DOM for
+ * in-page search. The rail unfolds a week before jumping to it.
  *
- * The jump rail is anchor links rather than a client component: the whole
- * page is one static document, so moving between weeks costs no JavaScript
- * and works with the page half-loaded.
+ * Kickoffs are US Eastern, and games are filed under the Eastern day they
+ * are played on — bucketing on UTC would move every prime-time slate a day
+ * forward and the result would look entirely plausible.
  */
 export default function GamesPage() {
   const forecasts = getGameForecasts()
@@ -45,7 +43,7 @@ export default function GamesPage() {
   const next = currentWeek(forecasts)
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <header>
         <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--text-tertiary)]">
           {forecasts.season} season
@@ -59,62 +57,52 @@ export default function GamesPage() {
         </p>
       </header>
 
-      {/* The jump rail. Sticky, because a season is eighteen weeks tall and a
-          reader who wants week 14 should not have to scroll back to the top
-          to say so. */}
-      <nav
-        aria-label="Jump to week"
-        className="sticky top-0 z-20 -mx-4 border-b border-[var(--border-color)] bg-[var(--background)]/95 px-4 py-2 backdrop-blur lg:top-0"
-      >
-        <ul className="flex flex-wrap gap-1">
-          {weeks.map((week) => (
-            <li key={week}>
-              <Link
-                href={`#week-${week}`}
-                className={
-                  week === next
-                    ? 'block rounded-sm border border-[var(--accent-primary)] px-2 py-1 font-mono text-[11px] text-[var(--accent-primary)]'
-                    : 'block rounded-sm border border-[var(--border-color)] px-2 py-1 font-mono text-[11px] text-[var(--text-tertiary)] transition-colors hover:border-[var(--border-hover)] hover:text-[var(--text-secondary)]'
-                }
-                aria-current={week === next ? 'true' : undefined}
-              >
-                {week}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <WeekRail weeks={weeks} next={next} />
 
-      {weeks.map((week) => {
-        const slate = forecasts.games
-          .filter((g) => g.week === week)
-          .sort((a, b) => a.date_utc.localeCompare(b.date_utc))
-        return (
-          <section key={week} id={`week-${week}`} className="scroll-mt-16">
-            <h2 className="mb-3 flex items-baseline gap-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
-              <span
-                className={
-                  week === next
-                    ? 'text-[var(--accent-primary)]'
-                    : 'text-[var(--text-secondary)]'
-                }
-              >
-                Week {week}
-              </span>
-              <span>{slate.length} games</span>
-              {week === next ? <span>· next up</span> : null}
-            </h2>
-            <WeekCalendar games={slate} />
-          </section>
-        )
-      })}
-
-      <p className="font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-        Kickoffs are US Eastern, and games are filed under the Eastern day they
-        are played on. A Sunday night kickoff carries a Monday UTC timestamp,
-        so bucketing on UTC would move the whole prime-time slate forward a day
-        every week — and the resulting calendar would look entirely plausible.
-      </p>
+      <div className="space-y-3">
+        {weeks.map((week) => {
+          const slate = forecasts.games
+            .filter((g) => g.week === week)
+            .sort((a, b) => a.date_utc.localeCompare(b.date_utc))
+          return (
+            <details
+              key={week}
+              id={`week-${week}`}
+              open={week === next || (next === null && week === weeks[0])}
+              className="group scroll-mt-16"
+            >
+              <summary className="flex cursor-pointer list-none items-baseline gap-3 rounded-sm border border-transparent px-1 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)] transition-colors hover:text-[var(--text-secondary)] [&::-webkit-details-marker]:hidden">
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  aria-hidden="true"
+                  className="shrink-0 self-center transition-transform group-open:rotate-90"
+                >
+                  <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span
+                  className={
+                    week === next
+                      ? 'text-[var(--accent-primary)]'
+                      : 'text-[var(--text-secondary)]'
+                  }
+                >
+                  Week {week}
+                </span>
+                <span>{slate.length} games</span>
+                {week === next ? <span>· next up</span> : null}
+              </summary>
+              <div className="pt-2">
+                <WeekCalendar games={slate} />
+              </div>
+            </details>
+          )
+        })}
+      </div>
     </div>
   )
 }

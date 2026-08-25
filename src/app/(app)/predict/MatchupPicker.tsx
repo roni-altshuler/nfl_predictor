@@ -102,19 +102,25 @@ export function MatchupPicker({ data }: { data: Matchups }) {
               role="img"
               aria-label={`${home.abbreviation} ${pct(result.p_home)}, ${away.abbreviation} ${pct(result.p_away)}, tie ${pct(result.p_tie)}`}
             >
+              {/* prob-segment: a new selection settles into place rather
+                  than snapping — the one visible payoff of the picker being
+                  a client component. */}
               <span
+                className="prob-segment"
                 style={{
                   width: `${result.p_away * 100}%`,
                   background: 'var(--viz-cat-2)',
                 }}
               />
               <span
+                className="prob-segment"
                 style={{
                   width: `${Math.max(result.p_tie * 100, 0.4)}%`,
                   background: 'var(--viz-reference)',
                 }}
               />
               <span
+                className="prob-segment"
                 style={{
                   width: `${result.p_home * 100}%`,
                   background: 'var(--viz-cat-1)',
@@ -151,9 +157,8 @@ export function MatchupPicker({ data }: { data: Matchups }) {
             <div className="card mt-4 p-4">
               <h2 className="eyebrow mb-1">At the key numbers</h2>
               <p className="mb-3 text-[11px] leading-relaxed text-[var(--text-tertiary)]">
-                Three and seven are the two margins football produces most
-                often. A bet on either can push, and that push is worth real
-                probability rather than the zero a continuous model assigns.
+                Football&apos;s two most common margins — and at either, the
+                push is worth real probability.
               </p>
               <table>
                 <thead>
@@ -206,8 +211,7 @@ export function MatchupPicker({ data }: { data: Matchups }) {
       )}
 
       <p className="mt-6 border-t border-[var(--border-color)] pt-3 text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-        {data.note} Ratings are shown after the offseason regression toward
-        the mean, which is what the season projection runs on.
+        {data.note} Ratings include the offseason regression.
       </p>
     </div>
   )

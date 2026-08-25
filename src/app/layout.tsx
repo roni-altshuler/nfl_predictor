@@ -119,6 +119,12 @@ export default function RootLayout({
       className={`dark ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body className="bg-[var(--background)] text-[var(--text-primary)] antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded focus:bg-[var(--card-bg)] focus:px-3 focus:py-2 focus:text-sm focus:font-semibold"
+        >
+          Skip to content
+        </a>
         {children}
       </body>
     </html>

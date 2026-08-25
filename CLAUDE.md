@@ -24,6 +24,7 @@ If a proposed feature is none of those four, it does not belong here.
 - **No fabricated data.** Sparse coverage stays genuinely missing; never impute a plausible value.
 - **Whenever a challenger beats the closing line, suspect the harness first.** A model with no market features cannot out-predict the market. That result is a bug announcing itself.
 - **Vercel escalates ESLint warnings to errors.** Run `npx next lint` before pushing; `npm run build` is not enough.
+- **The design system is documented in [docs/DESIGN.md](docs/DESIGN.md)** — tokens, copy discipline, the CSS-only motion vocabulary, and the back-navigation contract. Read it before touching the frontend.
 
 ## Current measured state (2026-08-16)
 

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { RatingHistoryChart } from '@/components/charts/RatingHistoryChart'
+import { BackButton } from '@/components/primitives/BackButton'
 import { TeamLogo } from '@/components/primitives/TeamLogo'
 import {
   getGameForecasts,
@@ -82,12 +83,7 @@ export default async function TeamPage({
   return (
     <div className="space-y-8">
       <header>
-        <Link
-          href="/ratings"
-          className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]"
-        >
-          ← All 32
-        </Link>
+        <BackButton fallback="/ratings" label="All 32" />
         <div className="mt-3 flex items-center gap-4">
           <TeamLogo abbreviation={team.abbreviation} name={team.name} size={56} />
           <div className="min-w-0">
@@ -286,10 +282,8 @@ export default async function TeamPage({
             </table>
           </div>
           <p className="mt-2 font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-            Records are regular season only — a team that went 13-4 and then
-            lost a wild-card game is 13-4, and folding the playoff loss in
-            would print a record the league never published. The Elo column is
-            where the rating finished, including any postseason run.
+            Regular-season records; the Elo column is where the rating
+            finished, postseason included.
           </p>
         </section>
       ) : null}
@@ -386,9 +380,8 @@ function SeedDistribution({
         </div>
       ))}
       <p className="pt-2 font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-        Conference seed at the end of the regular season. Seeds 1–{seeds}{' '}
-        qualify; the top seed gets the bye. Seeds 1–4 go to division winners
-        regardless of record, so this is not a ranking by wins.
+        Seeds 1–{seeds} qualify, the top seed gets the bye — and seeds 1–4 are
+        division winners regardless of record.
       </p>
     </div>
   )

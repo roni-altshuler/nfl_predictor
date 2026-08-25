@@ -41,11 +41,8 @@ export default function SeasonsPage() {
           Seasons
         </h1>
         <p className="mt-2 max-w-2xl font-mono text-[11px] leading-relaxed text-[var(--text-tertiary)]">
-          The corpus starts at 2002 because that is when the league realigned
-          to 32 teams in eight four-team divisions. Earlier seasons had 31
-          teams, six uneven divisions and different seeding rules — ESPN will
-          serve them, and they would quietly break every playoff calculation on
-          this site.
+          Every completed season since the league realigned to 32 teams —
+          earlier seasons play by different rules and are deliberately out.
         </p>
       </header>
 
@@ -121,25 +118,15 @@ export default function SeasonsPage() {
         </table>
       </div>
 
-      <div className="space-y-2 font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-        <p>
-          <strong className="text-[var(--text-secondary)]">
-            The seeds column is a claim about this pipeline, not about the
-            season.
-          </strong>{' '}
-          The warehouse stores results, not seeds, so a seed number here is a
-          reconstruction from final standings — and it is checked against the
-          postseason field that actually played.{' '}
-          {unverified === 0
-            ? 'Every season reconciles.'
-            : `${unverified} of ${index.seasons.length} seasons have a conference where it does not, because they turn on the league's common-games tiebreaker, which this project does not model. Those conferences carry no seed numbers at all rather than confident wrong ones.`}
-        </p>
-        <p>
-          2022 has 271 regular-season games rather than 272. Buffalo at
-          Cincinnati was abandoned after Damar Hamlin&apos;s cardiac arrest and
-          never resumed; the league declared a no-contest.
-        </p>
-      </div>
+      <p className="font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
+        Seeds are reconstructed from final standings and checked against the
+        postseason that actually played
+        {unverified === 0
+          ? ' — every season reconciles.'
+          : ` — ${unverified} seasons turn on an unmodelled tiebreaker and carry no seed numbers rather than wrong ones.`}{' '}
+        2022 has 271 games: Buffalo at Cincinnati was cancelled and declared a
+        no-contest.
+      </p>
     </div>
   )
 }

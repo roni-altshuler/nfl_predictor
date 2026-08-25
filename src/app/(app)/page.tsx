@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { EvidencePanel } from '@/components/evidence/EvidencePanel'
 import { GameCard } from '@/components/forecast/GameCard'
 import { TeamLabel } from '@/components/primitives/TeamLogo'
 import {
@@ -49,30 +50,44 @@ export default function HomePage() {
       </header>
 
       {preseason ? (
-        <p className="rounded-[var(--radius)] border border-[var(--border-color)] bg-[var(--card-bg)] px-4 py-3 font-mono text-[11px] leading-relaxed text-[var(--accent-warn)]">
-          The season has not kicked off. Every number here is a projection
-          from ratings carried over and regressed from last season — there is
-          no live record yet, and{' '}
-          <Link href="/accuracy" className="underline">
-            the accuracy page
+        <p className="rounded-[var(--radius)] border border-[var(--border-color)] bg-[var(--card-bg)] px-4 py-3 font-mono text-[11px] text-[var(--accent-warn)]">
+          Season not yet kicked off — everything here is projected from
+          regressed ratings.{' '}
+          <Link
+            href="/accuracy"
+            className="text-[var(--accent-info)] underline"
+          >
+            The record
           </Link>{' '}
-          reports the historical walk-forward only, labelled as such.
+          is the historical walk-forward, labelled as such.
         </p>
       ) : null}
 
       {/* ------------------------------------------------------- the slate */}
       <section>
-        <h2 className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
-          The slate
-        </h2>
+        <div className="mb-4 flex items-baseline justify-between">
+          <h2 className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
+            The slate
+          </h2>
+          <Link
+            href="/games"
+            className="font-mono text-[11px] text-[var(--accent-info)] hover:underline"
+          >
+            full schedule
+          </Link>
+        </div>
         {slate.length === 0 ? (
           <p className="font-mono text-sm text-[var(--text-tertiary)]">
             No fixtures published.
           </p>
         ) : (
           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-            {slate.map((game) => (
-              <GameCard key={game.game_id} game={game} />
+            {slate.map((game, index) => (
+              <GameCard
+                key={game.game_id}
+                game={game}
+                riseIndex={Math.min(index, 11)}
+              />
             ))}
           </div>
         )}
@@ -96,7 +111,7 @@ export default function HomePage() {
             {projections.teams.slice(0, 10).map((team, index) => (
               <li
                 key={team.team_id}
-                className="flex items-center gap-3 px-4 py-2.5"
+                className="flex items-center gap-3 px-4 py-2.5 transition-colors hover:bg-[var(--card-hover)]"
               >
                 <span className="w-5 font-mono text-[11px] text-[var(--text-tertiary)]">
                   {index + 1}
@@ -117,9 +132,8 @@ export default function HomePage() {
             ))}
           </ol>
           <p className="mt-2 font-mono text-[10px] text-[var(--text-tertiary)]">
-            {projections.simulations.toLocaleString()} simulated seasons. The
-            model carries no injury or roster data, so these stay more
-            concentrated than a real futures market.
+            {projections.simulations.toLocaleString()} simulated seasons — no
+            injury or roster data, so more concentrated than a futures market.
           </p>
         </section>
       ) : null}
@@ -142,7 +156,7 @@ export default function HomePage() {
             {ratings.teams.slice(0, 8).map((team, index) => (
               <div
                 key={team.team_id}
-                className="flex items-center gap-3 rounded-[var(--radius)] border border-[var(--border-color)] bg-[var(--card-bg)] px-3 py-2"
+                className="flex items-center gap-3 rounded-[var(--radius)] border border-[var(--border-color)] bg-[var(--card-bg)] px-3 py-2 transition-colors hover:border-[var(--border-hover)]"
               >
                 <span className="w-5 font-mono text-[11px] text-[var(--text-tertiary)]">
                   {index + 1}
@@ -161,6 +175,8 @@ export default function HomePage() {
           </div>
         </section>
       ) : null}
+
+      <EvidencePanel />
     </div>
   )
 }

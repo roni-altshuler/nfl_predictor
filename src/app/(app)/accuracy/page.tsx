@@ -62,9 +62,20 @@ export default function AccuracyPage() {
   return (
     <div className="space-y-8">
       <header>
-        <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--text-tertiary)]">
-          walk-forward, {benchmark.refit_cadence}
-        </p>
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--text-tertiary)]">
+            walk-forward, {benchmark.refit_cadence}
+          </p>
+          <span
+            className={
+              live
+                ? 'font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent-primary)]'
+                : 'font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent-warn)]'
+            }
+          >
+            {live ? 'live season underway' : 'backtest'}
+          </span>
+        </div>
         <h1 className="mt-2 text-3xl font-semibold uppercase tracking-[0.1em]">
           Accuracy
         </h1>
@@ -78,15 +89,10 @@ export default function AccuracyPage() {
 
       {!live ? (
         <p className="rounded-[var(--radius)] border border-[var(--border-color)] bg-[var(--card-bg)] px-4 py-3 font-mono text-[11px] leading-relaxed text-[var(--accent-warn)]">
-          <strong className="font-semibold">
-            There is no live record yet.
-          </strong>{' '}
-          The season has not kicked off. Everything below is a historical
-          walk-forward — the model refit on games strictly earlier than each
-          week it scores, so it never saw the game it is being graded on. But
-          nobody read these numbers before those kickoffs either. The live
-          record will start at zero and be reported at whatever n it reaches,
-          never merged with this.
+          <strong className="font-semibold">No live record yet.</strong>{' '}
+          Everything below is out-of-sample walk-forward — but read by nobody
+          before those kickoffs. The live record starts at zero and is never
+          merged with this.
         </p>
       ) : null}
 
@@ -147,23 +153,18 @@ export default function AccuracyPage() {
           </table>
         </div>
         <p className="mt-2 font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-          Ties are excluded from every figure above and counted separately —{' '}
-          {cards[0]?.ties_excluded ?? 0} of them in the market&apos;s sample. A
-          moneyline voids on a tie, so the model&apos;s three-outcome forecast
-          is conditioned on the game being decided before it meets one.
+          Ties ({cards[0]?.ties_excluded ?? 0}) are excluded and counted — a
+          moneyline voids on one, so every comparison is on decided games.
         </p>
 
         {eloBeatsModel ? (
           <p className="mt-3 rounded-[var(--radius)] border border-[var(--border-color)] bg-[var(--background-tertiary)] px-4 py-3 font-mono text-[11px] leading-relaxed text-[var(--accent-warn)]">
             <strong className="font-semibold">
-              The margin model does not currently beat Elo alone.
+              The margin model does not currently beat Elo alone
             </strong>{' '}
-            It is level on Brier and worse calibrated. Nine features have
-            bought nothing over a rating gap and a home-field constant — Elo
-            already encodes team strength, and rest, division and form are
-            either small or already priced into the rating. The feature layer
-            has not earned its place yet, and this page is not going to imply
-            otherwise. Elo-only stays live as the yardstick.
+            — level on Brier, worse calibrated. Nine features have bought
+            nothing over a rating gap and home field, and this page is not
+            going to imply otherwise.
           </p>
         ) : null}
       </section>
@@ -194,17 +195,13 @@ export default function AccuracyPage() {
             </p>
             {model.mean < 0 ? (
               <p className="mt-3 font-mono text-[11px] leading-relaxed text-[var(--accent-loss)]">
-                The model is ahead of the closing line on this sample. It
-                carries no market features, so that result should be read as a
-                warning about the harness or the sample rather than as an
-                edge — see the note below.
+                The model is ahead of the closing line here — with no market
+                features, that is a warning about the harness, not an edge.
               </p>
             ) : (
               <p className="mt-3 font-mono text-[11px] leading-relaxed text-[var(--text-secondary)]">
-                The market is better. That is the expected and wanted result:
-                the model carries no market features, and a forecaster with no
-                price information that beat the price would be a bug
-                announcing itself.
+                The market is better — the expected result for a model that
+                carries no price information.
               </p>
             )}
           </div>
@@ -218,10 +215,8 @@ export default function AccuracyPage() {
             Calibration
           </h2>
           <p className="mb-3 max-w-2xl font-mono text-[11px] leading-relaxed text-[var(--text-tertiary)]">
-            Accuracy is a fact about the schedule as much as about the model —
-            a season of blowouts is easy to call. Calibration is a fact about
-            the model alone, and it is the property this product is actually
-            selling.
+            Calibration is a fact about the model alone — and the property
+            this product is actually selling.
           </p>
           <div className="card p-4">
             <CalibrationChart
@@ -266,9 +261,8 @@ export default function AccuracyPage() {
             Margin and total
           </h2>
           <p className="mb-3 max-w-2xl font-mono text-[11px] leading-relaxed text-[var(--text-tertiary)]">
-            Every game card publishes an expected margin and an expected total.
-            Until these were measured, neither was scored anywhere — which the
-            standing rule does not permit.
+            Every game card publishes a margin and a total, so both are
+            scored here.
           </p>
 
           <div className="grid gap-4 xl:grid-cols-2">
@@ -304,10 +298,8 @@ export default function AccuracyPage() {
       ) : null}
 
       <p className="font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-        A Brier from this project is binary, over two outcomes, on NFL games.
-        It is not comparable to one from the sibling soccer project
-        (multiclass over three outcomes) or from the NBA one (a different
-        sport with a different base rate). Never put them in one table.
+        A Brier here is binary, on NFL games — never comparable across the
+        sibling projects.
       </p>
     </div>
   )

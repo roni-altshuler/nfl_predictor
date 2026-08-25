@@ -69,7 +69,7 @@ function Side({
   )
 }
 
-export function GameCard({ game }: { game: GameForecast }) {
+export function GameCard({ game, riseIndex }: { game: GameForecast; riseIndex?: number }) {
   const homeFavoured = game.p_home >= game.p_away
   const hasLine =
     game.market.spread_home !== null ||
@@ -78,7 +78,10 @@ export function GameCard({ game }: { game: GameForecast }) {
   return (
     <Link
       href={`/games/${game.game_id}`}
-      className="block rounded-[var(--radius)] border border-[var(--border-color)] bg-[var(--card-bg)] p-4 transition-colors hover:border-[var(--border-hover)] hover:bg-[var(--card-hover)] focus-visible:border-[var(--border-hover)]"
+      className={`group block rounded-[var(--radius)] border border-[var(--border-color)] bg-[var(--card-bg)] p-4 transition-colors hover:border-[var(--border-hover)] hover:bg-[var(--card-hover)] focus-visible:border-[var(--border-hover)]${
+        riseIndex !== undefined ? ' rise' : ''
+      }`}
+      style={riseIndex !== undefined ? ({ '--rise-i': riseIndex } as React.CSSProperties) : undefined}
       aria-label={`${game.away} at ${game.home}, week ${game.week} — full forecast`}
     >
       <header className="mb-3 flex items-baseline justify-between gap-2">
@@ -104,6 +107,24 @@ export function GameCard({ game }: { game: GameForecast }) {
           probability={game.p_home}
           score={game.exp_home_score}
           favoured={homeFavoured}
+        />
+      </div>
+
+      {/* The forecast as a shape, not only a number: away's share grows from
+          the left, home's from the right, and they settle on arrival. The
+          numbers above are the primary encoding — the bar is a glance. */}
+      <div
+        className="prob-track mt-3 flex"
+        role="img"
+        aria-label={`${game.away} ${pct(game.p_away)}, ${game.home} ${pct(game.p_home)}`}
+      >
+        <span
+          className="bar-grow h-full"
+          style={{ width: `${game.p_away * 100}%`, background: 'var(--viz-cat-2)' }}
+        />
+        <span
+          className="bar-grow bar-grow-r ml-auto h-full"
+          style={{ width: `${game.p_home * 100}%`, background: 'var(--viz-cat-1)' }}
         />
       </div>
 
@@ -143,11 +164,29 @@ export function GameCard({ game }: { game: GameForecast }) {
           </div>
         </dl>
 
-        {game.p_tie >= 0.01 ? (
-          <p className="mt-2 font-mono text-[10px] text-[var(--accent-warn)]">
-            tie {pct(game.p_tie)}
-          </p>
-        ) : null}
+        <div className="mt-2 flex items-baseline justify-between gap-2">
+          {game.p_tie >= 0.01 ? (
+            <p className="font-mono text-[10px] text-[var(--accent-warn)]">
+              tie {pct(game.p_tie)}
+            </p>
+          ) : (
+            <span />
+          )}
+          <span className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--text-tertiary)] transition-colors group-hover:text-[var(--accent-info)]">
+            Game detail
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              aria-hidden="true"
+            >
+              <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+        </div>
       </footer>
     </Link>
   )
