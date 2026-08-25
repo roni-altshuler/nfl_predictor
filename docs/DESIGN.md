@@ -107,9 +107,14 @@ reads as broken rather than loading).
 ## 8. Interaction inventory
 
 Client components, exhaustively: `AppShell` (route tracking, seasons menu),
-`BackButton`, `WeekRail` (scroll-spy + unfold-on-jump), `MatchupPicker`.
-Everything else is a server component reading published JSON. A component
-that computes a probability is a second model nobody benchmarked.
+`BackButton`, `WeekRail` (scroll-spy + unfold-on-jump), `MatchupPicker`,
+`FollowButton` + `SlateWithFilter` + `FollowFilter` (the localStorage
+watchlist — a device preference, never an account), `LiveBadge` (one shared
+browser poller against ESPN's CORS-open scoreboard, gated to the live
+window; the site itself stays static and serverless), and
+`KickoffCountdown`. Everything else is a server component reading published
+JSON. A component that computes a probability is a second model nobody
+benchmarked — the live badge shows the score and never restates the model.
 
 Whole cards and whole rows are links; an anchor never nests inside an
 anchor. Team marks sit on a light plate (`--logo-plate`) because NFL marks

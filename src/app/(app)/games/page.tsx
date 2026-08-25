@@ -1,3 +1,4 @@
+import { FollowFilter } from '@/components/schedule/FollowFilter'
 import { WeekCalendar } from '@/components/schedule/WeekCalendar'
 import { WeekRail } from '@/components/schedule/WeekRail'
 import { currentWeek, getGameForecasts } from '@/lib/artifacts'
@@ -51,10 +52,13 @@ export default function GamesPage() {
         <h1 className="mt-2 text-3xl font-semibold uppercase tracking-[0.1em]">
           Schedule
         </h1>
-        <p className="mt-2 font-mono text-[11px] text-[var(--text-tertiary)]">
-          {forecasts.games.length} fixtures over {weeks.length} weeks ·
-          published {stamp(forecasts.generated_at)}
-        </p>
+        <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
+          <p className="font-mono text-[11px] text-[var(--text-tertiary)]">
+            {forecasts.games.length} fixtures over {weeks.length} weeks ·
+            published {stamp(forecasts.generated_at)}
+          </p>
+          <FollowFilter />
+        </div>
       </header>
 
       <WeekRail weeks={weeks} next={next} />

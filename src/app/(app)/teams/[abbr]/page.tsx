@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 
 import { RatingHistoryChart } from '@/components/charts/RatingHistoryChart'
 import { BackButton } from '@/components/primitives/BackButton'
+import { FollowButton } from '@/components/primitives/FollowButton'
 import { TeamLogo } from '@/components/primitives/TeamLogo'
 import {
   getGameForecasts,
@@ -84,9 +85,9 @@ export default async function TeamPage({
     <div className="space-y-8">
       <header>
         <BackButton fallback="/ratings" label="All 32" />
-        <div className="mt-3 flex items-center gap-4">
+        <div className="mt-3 flex flex-wrap items-center gap-4">
           <TeamLogo abbreviation={team.abbreviation} name={team.name} size={56} />
-          <div className="min-w-0">
+          <div className="min-w-0 flex-1">
             <h1 className="text-2xl">{team.name}</h1>
             <p className="mt-1 font-mono text-[11px] text-[var(--text-tertiary)]">
               {team.division} · power rating #{index + 1} of{' '}
@@ -96,6 +97,7 @@ export default async function TeamPage({
                 : ''}
             </p>
           </div>
+          <FollowButton abbr={team.abbreviation} />
         </div>
       </header>
 

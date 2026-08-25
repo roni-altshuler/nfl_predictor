@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { MarginDistribution } from '@/components/charts/MarginDistribution'
+import { LiveBadge } from '@/components/live/LiveBadge'
 import { BackButton } from '@/components/primitives/BackButton'
 import { TeamLogo } from '@/components/primitives/TeamLogo'
 import { getGameForecasts, type GameForecast } from '@/lib/artifacts'
@@ -17,12 +18,19 @@ import {
 import { kickoff, moneyline, pct, signed, spread } from '@/lib/format'
 
 // The 272 scheduled fixtures are prerendered. A played game resolves from
-// the published context at request time and is cached for a day, so the
-// archive is explorable without prerendering thousands of pages that almost
-// nobody opens.
+// the published context at request time and is then cached UNTIL THE NEXT
+// DEPLOY (`revalidate = false`), so the archive is explorable without
+// prerendering thousands of pages that almost nobody opens.
+//
+// The revalidate used to be a day, and that was a billing bug, not a
+// freshness feature: an archived game never changes between deploys, but
+// every crawler visit after expiry re-rendered and re-cached the page — an
+// ISR write — across thousands of archive URLs, every day. The daily
+// forecast deploy already resets this cache, which is exactly the cadence
+// the underlying artifacts change at.
 export const dynamic = 'force-static'
 export const dynamicParams = true
-export const revalidate = 86_400
+export const revalidate = false
 
 export function generateStaticParams() {
   return (getGameForecasts()?.games ?? []).map((game) => ({ id: game.game_id }))
@@ -439,12 +447,20 @@ function GameHeader({ game }: { game: GameForecast }) {
         <span className="text-[var(--text-tertiary)]">at</span>
         <TeamName abbr={game.home} name={game.home_name} />
       </h1>
-      <p className="mt-2 numeric text-[11px] text-[var(--text-tertiary)]">
-        {kickoff(game.date_utc)}
-        {game.venue ? ` · ${game.venue}` : ''}
-        {awayRecord && homeRecord
-          ? ` · ${recordLine(awayRecord)} vs ${recordLine(homeRecord)}`
-          : ''}
+      <p className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1 numeric text-[11px] text-[var(--text-tertiary)]">
+        <span>
+          {kickoff(game.date_utc)}
+          {game.venue ? ` · ${game.venue}` : ''}
+          {awayRecord && homeRecord
+            ? ` · ${recordLine(awayRecord)} vs ${recordLine(homeRecord)}`
+            : ''}
+        </span>
+        <LiveBadge
+          gameId={game.game_id}
+          kickoff={game.date_utc}
+          away={game.away}
+          home={game.home}
+        />
       </p>
     </header>
   )

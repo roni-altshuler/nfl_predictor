@@ -28,6 +28,7 @@ export interface ShellSeason {
 
 const NAV = [
   { href: '/', label: 'This week', short: 'Week' },
+  { href: '/preview', label: 'Season preview', short: 'Preview' },
   { href: '/season', label: 'Season', short: 'Season' },
   { href: '/games', label: 'Schedule', short: 'Games' },
   { href: '/bracket', label: 'Road to the Super Bowl', short: 'Bracket' },

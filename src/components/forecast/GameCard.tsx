@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { LiveBadge } from '@/components/live/LiveBadge'
 import { TeamLogo } from '@/components/primitives/TeamLogo'
 import type { GameForecast } from '@/lib/artifacts'
 import { kickoff, moneyline, pct, signed, spread } from '@/lib/format'
@@ -88,11 +89,19 @@ export function GameCard({ game, riseIndex }: { game: GameForecast; riseIndex?: 
         <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
           {kickoff(game.date_utc)}
         </span>
-        {game.neutral_site ? (
-          <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent-warn)]">
-            neutral
-          </span>
-        ) : null}
+        <span className="flex items-baseline gap-2">
+          {game.neutral_site ? (
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent-warn)]">
+              neutral
+            </span>
+          ) : null}
+          <LiveBadge
+            gameId={game.game_id}
+            kickoff={game.date_utc}
+            away={game.away}
+            home={game.home}
+          />
+        </span>
       </header>
 
       <div className="space-y-2.5">

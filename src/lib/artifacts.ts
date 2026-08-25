@@ -259,6 +259,26 @@ export function getMarketBenchmark(): MarketBenchmark | null {
   return readJson<MarketBenchmark>(DIAGNOSTICS_DIR, 'market_benchmark.json')
 }
 
+export interface ForecastLog {
+  season: number
+  generated_at: string
+  basis: string
+  forecasts_made: number
+  games_played: number
+  games_pending: number
+  n: number
+  note: string
+}
+
+/**
+ * The append-only live record: every forecast published strictly before its
+ * kickoff. Distinct from the walk-forward — one was read in advance, the
+ * other was not, and the two are never merged.
+ */
+export function getForecastLog(): ForecastLog | null {
+  return readJson<ForecastLog>(PREDICTIONS_DIR, 'forecast_log.json')
+}
+
 /**
  * The next slate to play, as a week number.
  *

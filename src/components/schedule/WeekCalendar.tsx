@@ -210,6 +210,9 @@ function GameChip({ game }: { game: GameForecast }) {
     <Link
       href={`/games/${game.game_id}`}
       className="block rounded-sm px-1.5 py-1.5 transition-colors hover:bg-[var(--card-hover)]"
+      // Read by the schedule's Following filter, which hides chips in the
+      // DOM rather than re-rendering 272 serialized forecasts client-side.
+      data-teams={`${game.away},${game.home}`}
       aria-label={`${game.away_name} at ${game.home_name}, ${TIME.format(new Date(game.date_utc))} Eastern. ${
         homeFavoured ? game.home_name : game.away_name
       } favoured at ${pct(homeFavoured ? game.p_home : game.p_away, 0)}.`}

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { EvidencePanel } from '@/components/evidence/EvidencePanel'
-import { GameCard } from '@/components/forecast/GameCard'
+import { SlateWithFilter } from '@/components/forecast/SlateWithFilter'
 import { TeamLabel } from '@/components/primitives/TeamLogo'
 import {
   currentWeek,
@@ -81,15 +81,7 @@ export default function HomePage() {
             No fixtures published.
           </p>
         ) : (
-          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-            {slate.map((game, index) => (
-              <GameCard
-                key={game.game_id}
-                game={game}
-                riseIndex={Math.min(index, 11)}
-              />
-            ))}
-          </div>
+          <SlateWithFilter games={slate} />
         )}
       </section>
 
