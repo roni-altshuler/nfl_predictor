@@ -3,47 +3,60 @@
 @tailwind utilities;
 
 /* ────────────────────────────────────────────────────────────
-   Design tokens — Bugatti, dark only.
+   Design tokens — CHALKBOARD, dark only.
 
-   Ported from the sibling Hardwood (NBA), Pitchverse (soccer) and RaceIQ
-   (F1) projects.
-   Pure black canvas, hairline borders, no gradients, no shadows, no chrome.
-   Colour carries MEANING only — win/loss, value, live state — never
-   decoration.
+   Gridiron's own theme, at the owner's request, and a deliberate departure
+   from the flat-black "Bugatti" language the sibling projects keep: the
+   whole page is a coach's board. The canvas is blackboard slate-green, the
+   field (drawn by ChalkboardField at z:-1) spans the entire viewport, and
+   every surface above it is TRANSLUCENT so the yard lines read through the
+   cards rather than being walled off by them.
+
+   What survives from Bugatti, on purpose: colour still carries MEANING only
+   (win/loss/market/live), every probability still renders as text, and the
+   chart palette is unchanged because it was validated, not chosen.
 
    Dark-only by design. `<html class="dark">` is hardcoded and there is no
    theme provider; :root is the single source of truth and `.dark` below is
    intentionally empty so the hardcoded class stays harmless.
    ──────────────────────────────────────────────────────────── */
 :root {
-  --background: #000000;
-  --background-secondary: #0d0d0d;
-  --background-tertiary: #141414;
-  --card-bg: #0d0d0d;
-  --card-hover: #141414;
-  --input-bg: #141414;
-  --muted-bg: #1f1f1f;
-  --nav-bg: #000000;
-  --nav-border: #262626;
+  /* Blackboard slate: near-black with the green cast of an actual board. */
+  --background: #0b120e;
+  --background-secondary: #101913;
+  --background-tertiary: #15201a;
 
-  --text-primary: #ffffff;
-  --text-secondary: #cccccc;
-  --text-tertiary: #999999;
+  /* Surfaces are translucent — the field shows through them. The alpha is
+     the legibility contract: at 0.72 over the slate, a 0.15-alpha yard line
+     arrives under a table at ~0.04, present but never competing with ink. */
+  --card-bg: rgba(13, 22, 17, 0.72);
+  --card-hover: rgba(255, 255, 255, 0.05);
+  --input-bg: rgba(13, 22, 17, 0.92);
+  --muted-bg: rgba(255, 255, 255, 0.09);
+  --nav-bg: rgba(8, 14, 11, 0.88);
+  --nav-border: rgba(255, 255, 255, 0.12);
 
-  /* Four signals, muted. Anything that is not one of these is not carrying
-     meaning and should be a hairline or a shade of grey instead. */
+  /* Chalk ink: warm-white, never pure. */
+  --text-primary: #f4f7f2;
+  --text-secondary: #ccd6cc;
+  --text-tertiary: #91a094;
+
+  /* Four signals. The warn is a penalty flag now — the one accent the
+     re-theme changed, because on a green board the old ochre read muddy. */
   --accent-primary: #5fa657;      /* positive / favoured / model edge */
   --accent-primary-soft: #7cbb74;
-  --accent-warn: #d4a017;         /* uncertainty / in the hunt / caution */
-  --accent-warn-soft: #e0b545;
-  --accent-loss: #c1443c;         /* negative / eliminated / live */
+  --accent-warn: #e8c34a;         /* uncertainty / backtest / the flag */
+  --accent-warn-soft: #f0d37a;
+  --accent-loss: #c8544c;         /* negative / eliminated / live */
   --accent-loss-soft: #d4655e;
   --accent-info: #c3d9f3;         /* links, market, informational */
   --accent-info-soft: #d6e5f7;
   --accent-market: var(--accent-info);
 
-  --border-color: #262626;
-  --border-hover: #3a3a3a;
+  /* Hairlines are chalk: translucent white, so they sit naturally on any
+     part of the board. */
+  --border-color: rgba(255, 255, 255, 0.14);
+  --border-hover: rgba(255, 255, 255, 0.28);
   --shadow-sm: none;
   --shadow-md: none;
   --shadow-lg: none;
@@ -88,10 +101,12 @@
      ──────────────────────────────────────────────────────────── */
   --viz-model: #5fa657;      /* categorical slot 1 — this model */
   --viz-market: #3987e5;     /* categorical slot 2 — the closing line */
-  --viz-reference: #4d4d4d;  /* de-emphasis: baselines, the ideal diagonal */
-  --viz-grid: #1f1f1f;       /* recessive gridlines */
-  --viz-axis: #333333;
-  --viz-surface: var(--card-bg);
+  --viz-reference: #5c665e;  /* de-emphasis: baselines, the ideal diagonal */
+  --viz-grid: rgba(255, 255, 255, 0.07);  /* recessive gridlines */
+  --viz-axis: rgba(255, 255, 255, 0.18);
+  /* Solid, not the translucent card token: chart dots wear a surface-
+     coloured ring to stay countable, and a see-through ring defeats it. */
+  --viz-surface: #101913;
   /* Sequential ramp, one hue, light->dark. For magnitude (seed likelihood,
      schedule density). Never a rainbow. */
   --viz-seq-1: #2c1a0e;
@@ -157,8 +172,18 @@
 
 html { scroll-behavior: smooth; }
 
+/* The board itself: slate green with the light falling from above, the way
+   a chalkboard actually sits under a room's light. The field canvas draws
+   on top of this (z:-1), and every surface above both is translucent.
+   These two gradients are the theme's depth — deliberate, and the only
+   ones outside the skeleton shimmer. */
 body {
   background-color: var(--background);
+  background-image:
+    radial-gradient(130% 85% at 50% -12%, rgba(214, 232, 216, 0.07), transparent 58%),
+    radial-gradient(140% 80% at 50% 118%, rgba(0, 0, 0, 0.55), transparent 62%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: var(--text-secondary);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   min-height: 100vh;
@@ -175,6 +200,9 @@ h1, h2, h3 {
   letter-spacing: 0.08em;
   font-weight: 600;
   color: var(--text-primary);
+  /* A breath of chalk dust around display type — the one glow in the
+     theme, and it is display-only: body text and numbers stay crisp. */
+  text-shadow: 0 0 18px rgba(244, 247, 242, 0.16);
 }
 
 h4, h5, h6 {
@@ -324,7 +352,7 @@ tbody tr:hover { background: var(--card-hover); }
   background-image: linear-gradient(
     90deg,
     transparent 0%,
-    #262626 50%,
+    rgba(255, 255, 255, 0.12) 50%,
     transparent 100%
   );
   background-size: 200% 100%;

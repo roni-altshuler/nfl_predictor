@@ -87,7 +87,7 @@ export function AppShell({
       <ChalkboardField />
       {/* ---------------------------------------------------- desktop rail */}
       <aside
-        className="fixed left-0 top-0 z-40 hidden h-screen flex-col border-r border-[var(--nav-border)] bg-[var(--nav-bg)] md:flex"
+        className="fixed left-0 top-0 z-40 hidden h-screen flex-col border-r border-[var(--nav-border)] bg-[var(--nav-bg)] backdrop-blur-md md:flex"
         style={{ width: 'var(--shell-sidebar-w)' }}
       >
         <Link href="/" className="flex items-center gap-3 px-5 py-6">
@@ -151,7 +151,7 @@ export function AppShell({
       </aside>
 
       {/* -------------------------------------------------------- mobile bar */}
-      <header className="sticky top-0 z-30 flex h-[var(--shell-topbar-h)] items-center justify-between border-b border-[var(--nav-border)] bg-[var(--nav-bg)] px-4 md:hidden">
+      <header className="sticky top-0 z-30 flex h-[var(--shell-topbar-h)] items-center justify-between border-b border-[var(--nav-border)] bg-[var(--nav-bg)] px-4 backdrop-blur-md md:hidden">
         <Link href="/" className="flex items-center gap-2.5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -188,7 +188,7 @@ export function AppShell({
         </div>
       </main>
 
-      <nav className="fixed bottom-0 left-0 right-0 z-40 grid grid-cols-5 border-t border-[var(--nav-border)] bg-[var(--nav-bg)] md:hidden">
+      <nav className="fixed bottom-0 left-0 right-0 z-40 grid grid-cols-5 border-t border-[var(--nav-border)] bg-[var(--nav-bg)] backdrop-blur-md md:hidden">
         {MOBILE_NAV.map((item) => (
           <Link
             key={item.href}

@@ -26,7 +26,8 @@ export const contentType = 'image/png'
 
 const INK = '#f5f5f5'
 const MUTED = '#8a8a8a'
-const LINE = '#262626'
+const LINE = 'rgba(255,255,255,0.18)'
+const SLATE = '#0b120e'
 
 export default async function Image({
   params,
@@ -45,7 +46,7 @@ export default async function Image({
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          background: '#000',
+          background: SLATE,
           padding: '64px 72px',
           fontFamily: 'sans-serif',
         }}

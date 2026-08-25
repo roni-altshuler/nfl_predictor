@@ -1,20 +1,32 @@
 # Gridiron design system
 
 Authored from `src/app/globals.css` — if the two disagree, the CSS wins. The
-language is **Bugatti**, shared with the sibling projects (Hardwood/NBA,
-Pitchverse/soccer): pure black canvas, hairline borders, colour as meaning.
-This file records what the system is and, where it matters, why the
-alternative was rejected.
+language is **Chalkboard** (v2, 2026-08-25): the whole site is a coach's
+board, at the owner's explicit request, and a deliberate divergence from the
+flat-black "Bugatti" language the sibling projects (Hardwood/NBA,
+Pitchverse/soccer) keep. What survives from Bugatti on purpose: colour
+carries MEANING only, every probability renders as text, absent data renders
+as absent, and the chart palette is unchanged because it was validated, not
+chosen. This file records what the system is and, where it matters, why.
 
-## 1. Surfaces
+## 1. Surfaces — the board
 
-Pure black `#000000` canvas; cards `#0d0d0d`; hover step `#141414`; hairlines
-`#262626`, `#3a3a3a` on hover. `--shadow-*` are all `none` — **no gradients,
-no shadows, no glass**, with two recorded exceptions: the skeleton shimmer
-(§6) and the chalkboard (§6a). The soccer sibling shipped an "ambient depth"
-layer of radial washes and card gradients in 2026-07 and reverted all of it
-within a fortnight; that revert is the precedent this system designs
-against, not around.
+Blackboard slate `#0b120e` canvas, lit from above by two body gradients (the
+theme's depth). The full-viewport field — sidelines, yard lines, hash marks,
+numerals — is drawn by `ChalkboardField` at z-index −1 and **spans the
+entire page**: every surface above it is TRANSLUCENT by token
+(`--card-bg: rgba(13,22,17,0.72)`) so the field reads through the cards
+rather than being walled off by them. Hairlines are chalk
+(`rgba(255,255,255,0.14)`, `0.28` on hover); chrome (`--nav-bg`) is
+translucent + backdrop-blur.
+
+**The legibility contract replaces the old flat rule**: a field line at
+0.16 alpha arrives under a table at ~0.04 through the 0.72 card — present,
+never competing with ink. Raise the card transparency or the field alphas
+together and this breaks; they are one budget. The soccer sibling's 2026-07
+ambient revert happened because atmosphere sat OVER data at full strength —
+this system inverts that: the atmosphere is total, and the data surfaces
+are the shield.
 
 ## 2. Colour carries meaning only
 
@@ -95,25 +107,27 @@ The pieces: `.page-enter` (route-keyed content rise, replayed by `AppShell`),
 `.skeleton-shimmer` (the one gradient in the product — a static grey block
 reads as broken rather than loading).
 
-## 6a. The chalkboard
+## 6a. The field
 
-`ChalkboardField` is Gridiron's ambient identity layer, added at the owner's
-request and engineered not to repeat the soccer sibling's ambient revert: a
-fixed canvas at z-index −1 drawing a faint hand-ruled yard-line grid, and —
-every eight seconds or so — one dim chalk play: O's and X's fade in, a
-single route draws itself in `--accent-primary`, holds, fades. Rules that
-keep it a board and not a mood:
+`ChalkboardField` draws the whole field: sidelines at the viewport edges,
+hand-ruled yard lines, hash rows, big chalk numerals (10…50…10) hugging
+both sidelines, and — every several seconds — one chalk play: O's and X's
+fade in, a single route draws itself in `--accent-primary`, holds, fades.
+Rules:
 
-- **It never sits under a number.** Cards, tables, and chrome are opaque by
-  system rule; the board lives in the page's margins and gaps.
-- Chalk-dust alphas only (grid ≤ 0.05, figures ≤ 0.16 at peak). If a value
-  wants to be higher, the answer is no.
+- Field alphas live in one budget with card transparency (§1). Current
+  values: sidelines 0.20, lines 0.16, hashes 0.10, numerals 0.14, play
+  marks 0.36, route 0.50. Change them only together with `--card-bg`.
 - One play at a time, then rest. `requestAnimationFrame` runs only while a
   play is animating; a hidden tab stops it; reduced motion gets a single
   static frame with a finished play.
 - The shell wrapper deliberately paints **no** background — the body's
-  black is the canvas the board draws on. Reintroducing an opaque wrapper
-  silently deletes the board.
+  slate (and its two light gradients) is what the field draws on.
+  Reintroducing an opaque wrapper silently deletes the field, and an opaque
+  card token walls it out of the content column.
+- Canvas font strings cannot resolve CSS variables — the numerals use a
+  plain monospace stack, and an invalid font declaration is silently
+  ignored wholesale.
 
 ## 7. Loading, empty, missing
 

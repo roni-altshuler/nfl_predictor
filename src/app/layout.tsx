@@ -96,10 +96,9 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  // The leather of the mark, so the mobile browser chrome matches the tab
-  // icon rather than the page background. Black would disappear into the
-  // canvas and leave the status bar looking detached.
-  themeColor: '#a05c22',
+  // The blackboard slate, so the mobile browser chrome reads as part of
+  // the board rather than a bar floating above it.
+  themeColor: '#0b120e',
   width: 'device-width',
   initialScale: 1,
 }

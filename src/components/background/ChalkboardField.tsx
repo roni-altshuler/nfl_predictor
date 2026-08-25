@@ -29,13 +29,15 @@ const DPR_CAP = 2
 const YARD_GAP = 132 // px between yard lines
 const HASH_GAP = 26 // px between hash ticks along a line
 
-/* Tuned UP from the first release deliberately: at chalk-dust levels the
-   board read as "nothing changed". These are the highest values that still
-   leave every card and table untouched — the theme should be seen. */
-const GRID_ALPHA = 0.12
-const HASH_ALPHA = 0.08
-const NUMERAL_ALPHA = 0.1
-const PLAY_ALPHA = 0.32
+/* Chalkboard v2: the field IS the page now. Surfaces above this canvas are
+   translucent by token, so these values are what a reader sees in the open
+   and roughly a quarter of it through a card — strong enough to carry the
+   theme, still under the ink. */
+const GRID_ALPHA = 0.16
+const HASH_ALPHA = 0.1
+const NUMERAL_ALPHA = 0.14
+const SIDELINE_ALPHA = 0.2
+const PLAY_ALPHA = 0.36
 const ROUTE_ALPHA = 0.5
 
 // Phase lengths, ms. One play runs ~6s and then the board rests briefly.
@@ -164,8 +166,18 @@ export function ChalkboardField() {
       const g = off.getContext('2d')
       if (!g) return
       g.setTransform(state.dpr, 0, 0, state.dpr, 0, 0)
-      g.lineWidth = 1
 
+      // Sidelines: the page is the field between them.
+      g.strokeStyle = `rgba(255,255,255,${SIDELINE_ALPHA})`
+      g.lineWidth = 2
+      for (const x of [14, state.width - 14]) {
+        g.beginPath()
+        g.moveTo(x, 0)
+        g.lineTo(x + (Math.random() - 0.5) * 2, state.height)
+        g.stroke()
+      }
+
+      g.lineWidth = 1
       let line = 0
       for (let y = YARD_GAP * 0.7; y < state.height; y += YARD_GAP, line++) {
         const sag = Math.random() * 2 - 1
@@ -181,12 +193,12 @@ export function ChalkboardField() {
         g.fillStyle = `rgba(255,255,255,${NUMERAL_ALPHA})`
         // A plain stack: canvas font strings cannot resolve CSS variables —
         // an invalid declaration is silently ignored wholesale.
-        g.font = '600 26px ui-monospace, SFMono-Regular, Menlo, monospace'
+        g.font = '600 44px ui-monospace, SFMono-Regular, Menlo, monospace'
         g.textBaseline = 'middle'
         g.textAlign = 'left'
-        g.fillText(numeral, 18, y - 20)
+        g.fillText(numeral, 30, y - 32)
         g.textAlign = 'right'
-        g.fillText(numeral, state.width - 18, y - 20)
+        g.fillText(numeral, state.width - 30, y - 32)
 
         // Hash ticks midway to the next line.
         g.strokeStyle = `rgba(255,255,255,${HASH_ALPHA})`

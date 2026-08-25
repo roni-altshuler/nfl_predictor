@@ -51,7 +51,7 @@ export function WeekRail({ weeks, next }: { weeks: number[]; next: number | null
   return (
     <nav
       aria-label="Jump to week"
-      className="sticky top-[var(--shell-topbar-h)] z-20 -mx-4 border-b border-[var(--border-color)] bg-[var(--background)]/95 px-4 py-2 backdrop-blur md:top-0"
+      className="sticky top-[var(--shell-topbar-h)] z-20 -mx-4 border-b border-[var(--border-color)] bg-[var(--nav-bg)] px-4 py-2 backdrop-blur-md md:top-0"
     >
       <ul className="flex flex-wrap gap-1">
         {weeks.map((week) => {
