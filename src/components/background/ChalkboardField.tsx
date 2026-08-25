@@ -29,18 +29,25 @@ const DPR_CAP = 2
 const YARD_GAP = 132 // px between yard lines
 const HASH_GAP = 26 // px between hash ticks along a line
 
-const GRID_ALPHA = 0.07
-const HASH_ALPHA = 0.05
-const PLAY_ALPHA = 0.17
-const ROUTE_ALPHA = 0.26
+/* Tuned UP from the first release deliberately: at chalk-dust levels the
+   board read as "nothing changed". These are the highest values that still
+   leave every card and table untouched — the theme should be seen. */
+const GRID_ALPHA = 0.12
+const HASH_ALPHA = 0.08
+const NUMERAL_ALPHA = 0.1
+const PLAY_ALPHA = 0.32
+const ROUTE_ALPHA = 0.5
 
-// Phase lengths, ms. One play runs ~6s and then the board rests.
+// Phase lengths, ms. One play runs ~6s and then the board rests briefly.
 const FADE_IN = 600
 const DRAW = 2200
 const HOLD = 1900
 const FADE_OUT = 1500
-const REST_MIN = 3500
-const REST_RANGE = 4000
+const REST_MIN = 3000
+const REST_RANGE = 3500
+
+// Field numerals cycle up to midfield and back, like the real thing.
+const NUMERALS = ['10', '20', '30', '40', '50', '40', '30', '20']
 
 interface Point {
   x: number
@@ -159,13 +166,27 @@ export function ChalkboardField() {
       g.setTransform(state.dpr, 0, 0, state.dpr, 0, 0)
       g.lineWidth = 1
 
-      for (let y = YARD_GAP * 0.7; y < state.height; y += YARD_GAP) {
+      let line = 0
+      for (let y = YARD_GAP * 0.7; y < state.height; y += YARD_GAP, line++) {
         const sag = Math.random() * 2 - 1
         g.strokeStyle = `rgba(255,255,255,${GRID_ALPHA})`
         g.beginPath()
         g.moveTo(0, y)
         g.quadraticCurveTo(state.width / 2, y + sag * 3, state.width, y + sag)
         g.stroke()
+
+        // Yard numerals hugging both sidelines, cycling to the 50 and back —
+        // the single cheapest "this is a football field" signal there is.
+        const numeral = NUMERALS[line % NUMERALS.length]
+        g.fillStyle = `rgba(255,255,255,${NUMERAL_ALPHA})`
+        // A plain stack: canvas font strings cannot resolve CSS variables —
+        // an invalid declaration is silently ignored wholesale.
+        g.font = '600 26px ui-monospace, SFMono-Regular, Menlo, monospace'
+        g.textBaseline = 'middle'
+        g.textAlign = 'left'
+        g.fillText(numeral, 18, y - 20)
+        g.textAlign = 'right'
+        g.fillText(numeral, state.width - 18, y - 20)
 
         // Hash ticks midway to the next line.
         g.strokeStyle = `rgba(255,255,255,${HASH_ALPHA})`
@@ -314,7 +335,9 @@ export function ChalkboardField() {
     })
 
     layout()
-    state.restUntil = performance.now() + 1200
+    // The first play arrives almost immediately — a fresh page load should
+    // show the board working, not an empty field.
+    state.restUntil = performance.now() + 350
     handleMotion()
     resizeObserver.observe(document.documentElement)
     motionQuery.addEventListener('change', handleMotion)

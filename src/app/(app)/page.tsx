@@ -1,6 +1,10 @@
 import Link from 'next/link'
 
 import { EvidencePanel } from '@/components/evidence/EvidencePanel'
+import {
+  FollowingStrip,
+  type NextFixture,
+} from '@/components/forecast/FollowingStrip'
 import { SlateWithFilter } from '@/components/forecast/SlateWithFilter'
 import { TeamLabel } from '@/components/primitives/TeamLogo'
 import {
@@ -32,6 +36,36 @@ export default function HomePage() {
   const slate = week === null ? [] : gamesForWeek(forecasts, week)
   const preseason = projections?.games_played === 0
 
+  // Each team's next kickoff, for the Following strip. Computed at build —
+  // the daily forecast deploy refreshes it, which is the cadence the
+  // schedule itself changes at.
+  const nextFixtures: Record<string, NextFixture> = {}
+  const upcoming = [...(forecasts?.games ?? [])]
+    .filter((g) => new Date(g.date_utc).getTime() >= Date.now())
+    .sort((a, b) => a.date_utc.localeCompare(b.date_utc))
+  for (const game of upcoming) {
+    if (!(game.home in nextFixtures)) {
+      nextFixtures[game.home] = {
+        game_id: game.game_id,
+        opponent: game.away,
+        opponentName: game.away_name,
+        home: true,
+        date_utc: game.date_utc,
+        p_win: game.p_home,
+      }
+    }
+    if (!(game.away in nextFixtures)) {
+      nextFixtures[game.away] = {
+        game_id: game.game_id,
+        opponent: game.home,
+        opponentName: game.home_name,
+        home: false,
+        date_utc: game.date_utc,
+        p_win: game.p_away,
+      }
+    }
+  }
+
   return (
     <div className="space-y-10">
       <header>
@@ -62,6 +96,8 @@ export default function HomePage() {
           is the historical walk-forward, labelled as such.
         </p>
       ) : null}
+
+      <FollowingStrip fixtures={nextFixtures} />
 
       {/* ------------------------------------------------------- the slate */}
       <section>
