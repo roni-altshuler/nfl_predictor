@@ -10,10 +10,11 @@ alternative was rejected.
 
 Pure black `#000000` canvas; cards `#0d0d0d`; hover step `#141414`; hairlines
 `#262626`, `#3a3a3a` on hover. `--shadow-*` are all `none` — **no gradients,
-no shadows, no glass**, with exactly one recorded exception (§6, the skeleton
-shimmer). The soccer sibling shipped an "ambient depth" layer of radial
-washes and card gradients in 2026-07 and reverted all of it within a
-fortnight; that revert is the precedent here.
+no shadows, no glass**, with two recorded exceptions: the skeleton shimmer
+(§6) and the chalkboard (§6a). The soccer sibling shipped an "ambient depth"
+layer of radial washes and card gradients in 2026-07 and reverted all of it
+within a fortnight; that revert is the precedent this system designs
+against, not around.
 
 ## 2. Colour carries meaning only
 
@@ -93,6 +94,26 @@ The pieces: `.page-enter` (route-keyed content rise, replayed by `AppShell`),
 `.prob-segment` (post-mount width settle, client components only),
 `.skeleton-shimmer` (the one gradient in the product — a static grey block
 reads as broken rather than loading).
+
+## 6a. The chalkboard
+
+`ChalkboardField` is Gridiron's ambient identity layer, added at the owner's
+request and engineered not to repeat the soccer sibling's ambient revert: a
+fixed canvas at z-index −1 drawing a faint hand-ruled yard-line grid, and —
+every eight seconds or so — one dim chalk play: O's and X's fade in, a
+single route draws itself in `--accent-primary`, holds, fades. Rules that
+keep it a board and not a mood:
+
+- **It never sits under a number.** Cards, tables, and chrome are opaque by
+  system rule; the board lives in the page's margins and gaps.
+- Chalk-dust alphas only (grid ≤ 0.05, figures ≤ 0.16 at peak). If a value
+  wants to be higher, the answer is no.
+- One play at a time, then rest. `requestAnimationFrame` runs only while a
+  play is animating; a hidden tab stops it; reduced motion gets a single
+  static frame with a finished play.
+- The shell wrapper deliberately paints **no** background — the body's
+  black is the canvas the board draws on. Reintroducing an opaque wrapper
+  silently deletes the board.
 
 ## 7. Loading, empty, missing
 

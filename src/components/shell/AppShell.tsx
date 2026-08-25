@@ -1,11 +1,20 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
 import { markNavigation } from '@/components/primitives/BackButton'
 import { cn } from '@/lib/utils'
+
+// The chalkboard never runs on the server: ssr:false keeps the canvas out
+// of the prerendered HTML (zero CLS, zero hydration cost on crawlers), the
+// same loader pattern as the personal site's particle field.
+const ChalkboardField = dynamic(
+  () => import('@/components/background/ChalkboardField'),
+  { ssr: false },
+)
 
 /**
  * The app chrome: a fixed sidebar on desktop, a bottom tab bar on mobile.
@@ -71,7 +80,11 @@ export function AppShell({
   }, [pathname])
 
   return (
-    <div className="min-h-screen bg-[var(--background)]">
+    // No background here, deliberately: the body paints the black, the
+    // chalkboard canvas sits at z-index -1 above it, and an opaque wrapper
+    // would put a wall between the two.
+    <div className="min-h-screen">
+      <ChalkboardField />
       {/* ---------------------------------------------------- desktop rail */}
       <aside
         className="fixed left-0 top-0 z-40 hidden h-screen flex-col border-r border-[var(--nav-border)] bg-[var(--nav-bg)] md:flex"
