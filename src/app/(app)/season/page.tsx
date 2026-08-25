@@ -89,13 +89,9 @@ export default function SeasonPage() {
 
           {race.basis === 'backtest' ? (
             <p className="mt-3 font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-              This is {race.season} replayed, shown because the{' '}
-              {projections.season} line does not exist yet — the live tracker
-              has {live?.checkpoints?.length ?? 0} point
-              {(live?.checkpoints?.length ?? 0) === 1 ? '' : 's'} and a line
-              needs two. It is replaced by the live race the moment there are
-              two days of published forecasts, and the two are never merged:
-              one was read before the games and one was not.
+              {race.season} replayed — the {projections.season} live line
+              needs two published days and has{' '}
+              {live?.checkpoints?.length ?? 0}. The two are never merged.
             </p>
           ) : null}
         </section>
@@ -163,9 +159,8 @@ export default function SeasonPage() {
       ))}
 
       <p className="font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-        Win totals count a tie as half a win, which is the league&apos;s own
-        definition. The p10–p90 range is deliberately wide: seventeen games is
-        a short season and luck outranks skill over ordinary ranges.
+        A tie counts as half a win. The p10–p90 range is deliberately wide —
+        seventeen games is a short season.
       </p>
     </div>
   )

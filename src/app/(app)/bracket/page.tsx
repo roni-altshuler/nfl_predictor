@@ -124,11 +124,9 @@ export default function BracketPage() {
               </table>
             </div>
             <p className="mt-2 font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-              Every column is a marginal probability over{' '}
-              {projections.simulations.toLocaleString()} simulated seasons, so
-              each one already accounts for every path a team could take to get
-              there. They are not multiplied down the row — a bye makes the next
-              round easier, and the columns are not independent.
+              Marginal probabilities over{' '}
+              {projections.simulations.toLocaleString()} simulated seasons —
+              never multiply them down a row.
             </p>
           </section>
         )

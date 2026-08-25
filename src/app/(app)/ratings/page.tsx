@@ -14,6 +14,10 @@ export const metadata = { title: 'Power ratings' }
  * projection built on end-of-last-season ratings skips the single most
  * valuable Elo setting the sweep found. The page says so rather than
  * printing a number whose basis is invisible.
+ *
+ * The relative bar is scaled to the CURRENT spread of the league, worst to
+ * best, matching the NBA sibling — a bar scaled from zero would render
+ * thirty-two nearly full bars and say nothing.
  */
 export default function RatingsPage() {
   const ratings = getPowerRatings()
@@ -25,6 +29,11 @@ export default function RatingsPage() {
       </p>
     )
   }
+
+  const values = ratings.teams.map((t) => t.elo)
+  const best = Math.max(...values)
+  const worst = Math.min(...values)
+  const span = Math.max(best - worst, 1)
 
   return (
     <div className="space-y-6">
@@ -45,7 +54,11 @@ export default function RatingsPage() {
 
       <ol className="divide-y divide-[var(--border-color)] rounded-[var(--radius)] border border-[var(--border-color)] bg-[var(--card-bg)]">
         {ratings.teams.map((team, index) => (
-          <li key={team.team_id} className="flex items-center gap-3 px-4 py-2.5">
+          <li
+            key={team.team_id}
+            className="rise flex items-center gap-3 px-4 py-2.5 transition-colors hover:bg-[var(--card-hover)]"
+            style={{ '--rise-i': Math.min(index, 11) } as React.CSSProperties}
+          >
             <span className="w-6 font-mono text-[11px] text-[var(--text-tertiary)]">
               {index + 1}
             </span>
@@ -53,12 +66,22 @@ export default function RatingsPage() {
               abbreviation={team.abbreviation}
               name={team.name}
               size={22}
-              className="flex-1 text-sm"
+              className="w-44 shrink-0 text-sm sm:w-56"
             />
-            <span className="hidden font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--text-tertiary)] sm:block">
+            <span className="hidden w-24 shrink-0 font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--text-tertiary)] md:block">
               {team.division}
             </span>
-            <span className="w-16 text-right font-mono text-sm text-[var(--text-primary)]">
+            <span
+              className="prob-track hidden flex-1 sm:block"
+              role="img"
+              aria-label={`Relative strength ${Math.round(((team.elo - worst) / span) * 100)} of 100`}
+            >
+              <span
+                className="prob-fill bar-grow block"
+                style={{ width: `${Math.max(((team.elo - worst) / span) * 100, 2)}%` }}
+              />
+            </span>
+            <span className="ml-auto w-14 text-right font-mono text-sm text-[var(--text-primary)] sm:ml-0">
               {team.elo.toFixed(0)}
             </span>
           </li>
@@ -66,10 +89,8 @@ export default function RatingsPage() {
       </ol>
 
       <p className="font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-        100 rating points is worth about 3.4 points of margin, measured on the
-        2002–2025 corpus. The scale is not comparable to the sibling NBA
-        project&apos;s, whose conversion depends on a different k-factor and a
-        different margin-of-victory multiplier.
+        100 rating points ≈ 3.4 points of margin on the 2002–2025 corpus. Not
+        comparable to the sibling projects&apos; scales.
       </p>
     </div>
   )

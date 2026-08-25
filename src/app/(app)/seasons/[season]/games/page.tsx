@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
+import { BackButton } from '@/components/primitives/BackButton'
 import { TeamLogo } from '@/components/primitives/TeamLogo'
 import {
   getArchivedSeason,
@@ -51,12 +52,7 @@ export default async function SeasonGamesPage({
   return (
     <div className="space-y-8">
       <header>
-        <Link
-          href={`/seasons/${season}`}
-          className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]"
-        >
-          ← {season}
-        </Link>
+        <BackButton fallback={`/seasons/${season}`} label={`${season} season`} />
         <h1 className="mt-3 text-3xl font-semibold uppercase tracking-[0.1em]">
           {season} games
         </h1>
@@ -68,11 +64,8 @@ export default async function SeasonGamesPage({
 
       {scored.length ? (
         <p className="rounded-[var(--radius)] border border-[var(--border-color)] bg-[var(--card-bg)] px-4 py-3 font-mono text-[11px] leading-relaxed text-[var(--accent-warn)]">
-          The model column is a <strong>backtest</strong>. Each figure comes
-          from a model refit on games strictly earlier than the week it scores,
-          so it never saw the result — but nobody read these numbers before
-          those kickoffs, and this project does not blur a reconstruction into
-          a call made in advance.
+          The model column is a <strong>backtest</strong> — refit strictly
+          before each week, but read by nobody before kickoff.
         </p>
       ) : null}
 

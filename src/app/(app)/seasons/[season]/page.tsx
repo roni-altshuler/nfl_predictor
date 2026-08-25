@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { PlayoffBracket } from '@/components/playoffs/PlayoffBracket'
+import { BackButton } from '@/components/primitives/BackButton'
 import { TeamLabel } from '@/components/primitives/TeamLogo'
 import {
   byDivision,
@@ -65,12 +66,7 @@ export default async function SeasonPage({
   return (
     <div className="space-y-8">
       <header>
-        <Link
-          href="/seasons"
-          className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]"
-        >
-          ← All seasons
-        </Link>
+        <BackButton fallback="/seasons" label="All seasons" />
         <h1 className="mt-3 text-3xl font-semibold uppercase tracking-[0.1em]">
           {season}
         </h1>
@@ -133,15 +129,13 @@ export default async function SeasonPage({
         )}
         {Object.values(data.seeds_verified).some((v) => !v) ? (
           <p className="mt-2 font-mono text-[10px] leading-relaxed text-[var(--accent-warn)]">
-            Seed numbers are withheld for{' '}
+            Seed numbers withheld for{' '}
             {Object.entries(data.seeds_verified)
               .filter(([, ok]) => !ok)
               .map(([conference]) => conference)
-              .join(' and ')}
-            . The reconstruction from final standings did not produce the field
-            that actually played, which means the season turned on a tiebreaker
-            below the four this project models. The games are real; the numbers
-            beside them would not be.
+              .join(' and ')}{' '}
+            — the season turned on a tiebreaker this project does not model,
+            and a confident wrong number is worse than none.
           </p>
         ) : null}
       </section>
@@ -251,17 +245,14 @@ export default async function SeasonPage({
             })}
           </div>
           <p className="mt-2 font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-            <span className="text-[var(--accent-warn)]">A reconstruction.</span>{' '}
-            These probabilities come from the weekly walk-forward — refit on
-            games strictly earlier than the week being scored, so the model
-            never saw the result — but nobody read them before those kickoffs.
+            <span className="text-[var(--accent-warn)]">Backtest</span> — the
+            walk-forward never saw these results, but nobody read its numbers
+            before kickoff either.
             {withForecast.length < data.games.length ? (
               <>
                 {' '}
-                {data.games.length - withForecast.length} games this season
-                carry no forecast at all: they fall inside the three-season
-                warm-up the model was fitted on, and a number for them would be
-                a forecast that had seen the answer.
+                {data.games.length - withForecast.length} warm-up games carry
+                no forecast at all.
               </>
             ) : null}
           </p>

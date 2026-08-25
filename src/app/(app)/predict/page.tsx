@@ -30,10 +30,8 @@ export default function PredictPage() {
         <p className="eyebrow">{matchups.season} ratings</p>
         <h1 className="mt-2 text-2xl">Head to head</h1>
         <p className="mt-3 text-sm leading-relaxed text-[var(--text-secondary)]">
-          Pick any two of the 32 franchises and see what the model makes of
-          the game. All {matchups.matchups.length} ordered pairs are priced in
-          advance, so this is the same forecast the schedule shows rather than
-          a second one computed a different way.
+          Any two franchises, priced by the same model the schedule runs on —
+          all {matchups.matchups.length} pairings computed in advance.
         </p>
         <p className="mt-2 numeric text-[10px] text-[var(--text-tertiary)]">
           published {stamp(matchups.generated_at)}

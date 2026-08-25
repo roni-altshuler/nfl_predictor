@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { MarginDistribution } from '@/components/charts/MarginDistribution'
+import { BackButton } from '@/components/primitives/BackButton'
 import { TeamLogo } from '@/components/primitives/TeamLogo'
 import { getGameForecasts, type GameForecast } from '@/lib/artifacts'
 import { getGameDetail, type GameDetail } from '@/lib/espn'
@@ -129,10 +130,8 @@ function UpcomingGame({
         <section className="card p-4" aria-label="Margin distribution">
           <h2 className="eyebrow mb-1">How it is likely to finish</h2>
           <p className="mb-3 text-[11px] leading-relaxed text-[var(--text-tertiary)]">
-            Football margins are not smooth. Three and seven points are the
-            two most likely results of any game, because that is what a field
-            goal and a touchdown are worth — a normal curve fitted to these
-            games would draw a tidy bell straight through it.
+            The 3s and 7s are football&apos;s arithmetic — a normal curve
+            would draw a tidy bell straight through them.
           </p>
           <MarginDistribution
             data={game.margin_distribution}
@@ -146,9 +145,8 @@ function UpcomingGame({
         <section className="card p-4" aria-label="Against the spread">
           <h2 className="eyebrow mb-1">Against the spread</h2>
           <p className="mb-3 text-[11px] leading-relaxed text-[var(--text-tertiary)]">
-            A bet on a whole number can win, lose <em>or push</em>. At −3 the
-            push is worth roughly one game in twelve, and a model that assumes
-            a continuous margin prices it at zero.
+            A whole-number line can win, lose <em>or push</em> — and at −3 the
+            push is worth about one game in twelve.
           </p>
           <div className="overflow-x-auto">
             <table className="min-w-[420px]">
@@ -234,15 +232,13 @@ function UpcomingGame({
               </p>
             ) : null}
             <p className="mt-3 text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-              Provider {market.provider ?? 'unknown'}. The market is the
-              benchmark here, not the target — it beats this model by a
-              published margin.
+              Provider {market.provider ?? 'unknown'} · the market is the
+              benchmark, not the target.
             </p>
           </>
         ) : (
           <p className="text-sm text-[var(--text-tertiary)]">
-            No line published for this game. That is different from an even
-            line, and it is rendered differently.
+            No line published — which is a different fact from an even line.
           </p>
         )}
       </section>
@@ -279,7 +275,11 @@ function PlayedGame({
   return (
     <div className="space-y-6">
       <header>
-        <p className="eyebrow">
+        <BackButton
+          fallback={`/seasons/${game.season}`}
+          label={`${game.season} season`}
+        />
+        <p className="eyebrow mt-3">
           {game.season} · {game.postseason ? (game.round ?? 'postseason') : `Week ${game.week}`}
           {game.neutral ? ' · neutral site' : ''}
         </p>
@@ -302,9 +302,8 @@ function PlayedGame({
 
       {tie ? (
         <p className="card px-4 py-3 text-[11px] leading-relaxed text-[var(--accent-warn)]">
-          This game ended in a tie. Fifteen of 6,223 regular-season games in
-          this corpus did — rare, but a real outcome, and one the model
-          allocates probability to rather than assuming away.
+          Ended in a tie — one of fifteen in 6,223 regular-season games. Rare,
+          but real, and priced.
         </p>
       ) : null}
 
@@ -414,10 +413,8 @@ function PlayedGame({
       />
 
       <p className="text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-        No forecast is shown for this game. The model was fitted on a corpus
-        that includes it, so anything printed here would be a reconstruction
-        rather than a call made in advance — and this project does not blur
-        the two.
+        No forecast shown — the model was fitted on a corpus that includes
+        this game, and a reconstruction is not a call made in advance.
       </p>
     </div>
   )
@@ -432,7 +429,8 @@ function GameHeader({ game }: { game: GameForecast }) {
 
   return (
     <header>
-      <p className="eyebrow">
+      <BackButton fallback="/games" label="Schedule" />
+      <p className="eyebrow mt-3">
         Week {game.week} · {game.season}
         {game.neutral_site ? ' · neutral site' : ''}
       </p>
@@ -486,12 +484,14 @@ function ProbabilityRow({ game }: { game: GameForecast }) {
       </div>
       <div className="prob-track flex" role="img" aria-label={`${game.home} ${pct(game.p_home)}, ${game.away} ${pct(game.p_away)}, tie ${pct(game.p_tie)}`}>
         <span
+          className="bar-grow"
           style={{ width: `${game.p_away * 100}%`, background: 'var(--viz-cat-2)' }}
         />
         <span
           style={{ width: `${Math.max(tiePct, 0.4)}%`, background: 'var(--viz-reference)' }}
         />
         <span
+          className="bar-grow bar-grow-r"
           style={{ width: `${homePct}%`, background: 'var(--viz-cat-1)' }}
         />
       </div>
@@ -528,10 +528,8 @@ function Availability({
     <section className="card p-4" aria-label="Availability">
       <h2 className="eyebrow mb-1">Availability</h2>
       <p className="mb-3 text-[11px] leading-relaxed text-[var(--text-tertiary)]">
-        From ESPN, at request time. <strong>The model does not see this.</strong>{' '}
-        It knows nothing about who is playing, which is the largest single gap
-        in the forecast above — shown here so a reader can apply what the
-        model cannot.
+        From ESPN. <strong>The model does not see this</strong> — the largest
+        single gap in the forecast above, shown so a reader can apply it.
       </p>
       <div className="grid gap-4 sm:grid-cols-2">
         {byTeam.map(({ team, entries }) => (

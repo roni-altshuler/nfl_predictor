@@ -258,9 +258,85 @@ td {
 }
 tbody tr:hover { background: var(--card-hover); }
 
+/* ────────────────────────────────────────────────────────────
+   Motion.
+
+   CSS only, no animation library — the soccer sibling carries framer-motion
+   and the NBA sibling carries nothing; this project takes the soccer
+   sibling's VOCABULARY (its 0.22,1,0.36,1 ease-out curve, its enter-only
+   page rise, its 0.8s probability-segment settle) without its dependency.
+
+   Three rules keep it from becoming decoration:
+   - Motion happens ONCE, on arrival. Nothing loops except a skeleton and a
+     live dot; a page of probabilities that keeps moving looks like it is
+     performing rather than reporting.
+   - Everything animates in under half a second except a probability bar,
+     whose slower settle is what makes the number feel measured.
+   - The reduced-motion block below kills all of it, unconditionally.
+   ──────────────────────────────────────────────────────────── */
+
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter {
+  animation: page-enter 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* One list item rising into place. Stagger with `--rise-i` (0, 1, 2…);
+   capped in the components at a dozen or so — a 30-row table that trickles
+   in one row at a time is a loading screen, not a reveal. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.rise {
+  animation: rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--rise-i, 0) * 45ms);
+}
+
+/* A probability fill growing to its value on arrival. Transform, not width,
+   so it composites; origin set per side so a two-sided bar grows outward
+   from its own edge. */
+@keyframes bar-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.bar-grow {
+  animation: bar-grow 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: left center;
+}
+.bar-grow-r { transform-origin: right center; }
+
+/* A fill whose width changes AFTER mount (the head-to-head picker) settles
+   rather than jumps. */
+.prob-segment { transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* Loading surfaces. The shimmer is one of exactly two gradients in the
+   product (the other is nothing — this is the only one); it exists because
+   a static grey block reads as broken rather than loading. */
+@keyframes skeleton-shimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+.skeleton-shimmer {
+  background-color: var(--card-hover);
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #262626 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+  border-radius: 4px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
