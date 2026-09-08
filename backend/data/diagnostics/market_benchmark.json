@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-01T17:07:55+00:00",
+  "generated_at": "2026-09-08T17:02:53+00:00",
   "corpus_games": 6499,
   "scored_games": 5698,
   "first_scored_season": 2005,
@@ -9,8 +9,8 @@
   "priced_games": 3820,
   "unpriced_games": 1878,
   "market_source_counts": {
-    "spread": 649,
-    "moneyline": 3171
+    "moneyline": 3171,
+    "spread": 649
   },
   "base_rate": 0.55947,
   "scorecards": {
@@ -53,9 +53,9 @@
   },
   "paired_vs_market": {
     "margin_model": {
-      "mean": 0.008843447041871523,
-      "lo": 0.005778118927447928,
-      "hi": 0.01195701683090267,
+      "mean": 0.008843447041871521,
+      "lo": 0.005778118927447927,
+      "hi": 0.011957016830902669,
       "p_better": 0.0
     },
     "elo_only": {
