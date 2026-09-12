@@ -15,14 +15,15 @@ Blackboard slate `#0b120e` canvas, lit from above by two body gradients (the
 theme's depth). The field — a complete, bounded design with both end
 zones — is drawn by `ChalkboardField` at z-index −1, **centred in the
 content area and always seen whole** (§6a): every surface above it is
-TRANSLUCENT by token (`--card-bg: rgba(13,22,17,0.72)`) so the field reads
-through the cards rather than being walled off by them. Hairlines are chalk
+TRANSLUCENT by token (`--card-bg: rgba(13,22,17,0.80)`, 0.72 until
+2026-09-12) so the field reads through the cards rather than being walled
+off by them. Hairlines are chalk
 (`rgba(255,255,255,0.14)`, `0.28` on hover); chrome (`--nav-bg`) is
 translucent + backdrop-blur.
 
 **The legibility contract replaces the old flat rule**: a field line at
-0.16 alpha arrives under a table at ~0.04 through the 0.72 card — present,
-never competing with ink. Raise the card transparency or the field alphas
+0.12 alpha arrives under a table at ~0.02 through the 0.80 card (and at
+~0.013 under the default `soft` dial) — present, never competing with ink. Raise the card transparency or the field alphas
 together and this breaks; they are one budget. The soccer sibling's 2026-07
 ambient revert happened because atmosphere sat OVER data at full strength —
 this system inverts that: the atmosphere is total, and the data surfaces
@@ -136,7 +137,8 @@ ellipse; flights (throws, punts, kicks) trail dashes.
 **The camera is contained, by rule (v3.2).** This layer sits behind data
 the reader came for, so the v3.1 broadcast push-in was capped: the camera
 may lean toward the play only as far as keeps the ENTIRE field — both end
-zones — inside the frame (`maxZoom`, ~1.08), and it never pans sideways
+zones — inside the frame (`maxZoom`, capped at 1.03 since 2026-09-12; ~1.08
+before), and it never pans sideways
 (`pinnedX` keeps the field at the same screen position at any zoom, so
 the centred design stays put and only a gentle vertical lean moves). The
 result is a slow breath toward the action, never a cut; the resting state
@@ -157,11 +159,17 @@ Rules:
   background of a forecasting site would read as a real one. The game is
   atmosphere with football's grammar — never data.
 - Field alphas live in one budget with card transparency (§1). Current
-  values: sidelines 0.20, lines 0.16, goal lines 0.24, hashes 0.10,
-  numerals 0.14, end-zone hatch 0.05 / text 0.08, posts 0.16, player
-  marks 0.36, route 0.50, scrimmage 0.26, first-down line 0.32, ball 0.70,
-  down text 0.24, celebration 0.42. Change them only together with
-  `--card-bg`.
+  (`vivid`) values: sidelines 0.15, lines 0.12, goal lines 0.18, hashes
+  0.08, numerals 0.10, end-zone hatch 0.04 / text 0.06, posts 0.12, player
+  marks 0.24, route 0.32, scrimmage 0.18, first-down line 0.22, ball 0.45,
+  down text 0.16, celebration 0.26; tackle burst 0.30 over 240ms. The
+  default `soft` dial multiplies the whole canvas by 0.55 and blurs it
+  0.6px on top. Pacing: huddle 2.4–5.4s, whistle 0.7s, celebration 1.5s.
+  Change the alphas only together with `--card-bg`.
+  (v2, 2026-08-25 → 2026-09-12: sidelines 0.20, lines 0.16, goal 0.24,
+  hashes 0.10, numerals 0.14, hatch 0.05 / text 0.08, posts 0.16, marks
+  0.36, route 0.50, scrimmage 0.26, first-down 0.32, ball 0.70, down text
+  0.24, celebration 0.42; huddle 1.6–3.6s, celebration 2.1s.)
 - The game is the sanctioned exception to §6's "nothing loops" rule, and
   it earns it by pacing: one snap at a time (~2–3s), then a huddle. The
   rAF loop skips drawing entirely while the board is static between
@@ -177,6 +185,27 @@ Rules:
   ignored wholesale. Team colours are read from the live tokens once at
   init, so the palette still cascades.
 
+**2026-09-12 — the quiet board.** The owner's read was that the field had
+become "a little too sharp" and was pulling focus from the numbers. Three
+things changed, all recorded above. (1) The reader now holds the dial:
+`AmbientToggle` ("Board · soft / vivid / off") in the sidebar footer and
+the mobile header writes `gridiron-ambient` to localStorage, stamps
+`data-ambient` on `<html>` and fires `ambientchange`; the root layout runs
+a ~180-byte inline script before first paint so the choice never flashes;
+globals.css dims the canvas to 0.55 opacity + 0.6px blur under `soft`
+(the default) and removes it under `off`, where the canvas also stops its
+rAF loop. (2) Even `vivid` is calmer: field lines ×0.75, moving marks
+×0.6–0.7, zoom cap 1.09 → 1.03, camera lean halved, huddles 1.5× longer,
+whistle and celebration shorter, burst quieter. (3) The surfaces shield
+more: cards 0.72 → 0.80, the body's two gradients −30% (0.07 → 0.05,
+0.55 → 0.38), the display text-shadow halved. Reduced motion is unchanged.
+The same day the pages lost prose and gained play: title odds and ratings
+as bar lists, a 32-mark team explorer, quick-pick chips and `/predict`
+deep links (`?home=&away=`), a spread slider over the published surface
+with the table folded into `<details>`, and a hover/tap/arrow-key readout
+on the margin lattice. Nothing computes a probability; the slider and the
+readout are lookups and sums over published cells.
+
 ## 7. Loading, empty, missing
 
 - The game page ships a skeleton (`loading.tsx`) because an archived game
@@ -190,7 +219,10 @@ Rules:
 ## 8. Interaction inventory
 
 Client components, exhaustively: `AppShell` (route tracking, seasons menu),
-`BackButton`, `WeekRail` (scroll-spy + unfold-on-jump), `MatchupPicker`,
+`AmbientToggle` (the board dial — a device preference, like the watchlist),
+`BackButton`, `WeekRail` (scroll-spy + unfold-on-jump), `MatchupPicker`
+(URL-synced via `?home=&away=`), `SpreadSlider` (a range input over the
+published spread rows), `MarginDistribution` (hover/tap/arrow readout),
 `FollowButton` + `SlateWithFilter` + `FollowFilter` (the localStorage
 watchlist — a device preference, never an account), `LiveBadge` (one shared
 browser poller against ESPN's CORS-open scoreboard, gated to the live

@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
 import { markNavigation } from '@/components/primitives/BackButton'
+import { AmbientToggle } from '@/components/shell/AmbientToggle'
 import { cn } from '@/lib/utils'
 
 // The chalkboard never runs on the server: ssr:false keeps the canvas out
@@ -142,7 +143,11 @@ export function AppShell({
           )}
         </nav>
 
-        <div className="border-t border-[var(--nav-border)] px-5 py-4">
+        <div className="space-y-3 border-t border-[var(--nav-border)] px-5 py-4">
+          {/* The ambient dial lives in the quiet bottom block: a reader who
+              finds the board distracting should find the switch where the
+              eye settles, not in a settings page. */}
+          <AmbientToggle />
           <p className="font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
             Model probabilities, scored against the closing line. Not betting
             advice.
@@ -166,9 +171,10 @@ export function AppShell({
             Gridiron
           </span>
         </Link>
-        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
-          NFL forecast
-        </span>
+        {/* Replaces the "NFL forecast" caption: the wordmark already says
+            what the site is, and the dial is the one control a reader may
+            want before anything else on a small screen. */}
+        <AmbientToggle />
       </header>
 
       <main

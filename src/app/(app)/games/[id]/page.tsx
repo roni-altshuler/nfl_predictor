@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { MarginDistribution } from '@/components/charts/MarginDistribution'
+import { SpreadSlider } from '@/components/forecast/SpreadSlider'
 import { LiveBadge } from '@/components/live/LiveBadge'
 import { BackButton } from '@/components/primitives/BackButton'
 import { TeamLogo } from '@/components/primitives/TeamLogo'
@@ -130,6 +131,25 @@ function UpcomingGame({
           />
           <Stat label="Margin sd" value={game.margin_sd.toFixed(1)} />
         </dl>
+
+        {/* Into the picker. The picker prices a HYPOTHETICAL meeting (no
+            date, neutral rest) so its number can differ from this one, and
+            flipping the venue is the cheapest way to see what home field is
+            worth in this matchup. */}
+        <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 border-t border-[var(--border-color)] pt-3 font-mono text-[11px]">
+          <Link
+            href={`/predict?home=${game.home}&away=${game.away}`}
+            className="text-[var(--accent-info)] hover:underline"
+          >
+            price this matchup →
+          </Link>
+          <Link
+            href={`/predict?home=${game.away}&away=${game.home}`}
+            className="text-[var(--text-tertiary)] transition-colors hover:text-[var(--text-primary)] hover:underline"
+          >
+            flip venue · {game.home} at {game.away}
+          </Link>
+        </p>
       </section>
 
       {/* The distinctive surface. Every sibling project shows a win
@@ -153,51 +173,62 @@ function UpcomingGame({
         <section className="card p-4" aria-label="Against the spread">
           <h2 className="eyebrow mb-1">Against the spread</h2>
           <p className="mb-3 text-[11px] leading-relaxed text-[var(--text-tertiary)]">
-            A whole-number line can win, lose <em>or push</em> — and at −3 the
-            push is worth about one game in twelve.
+            Slide to any line the model prices — a whole number can{' '}
+            <em>push</em>, and at −3 that is worth about one game in twelve.
           </p>
-          <div className="overflow-x-auto">
-            <table className="min-w-[420px]">
-              <thead>
-                <tr>
-                  <th scope="col">{game.home} line</th>
-                  <th scope="col" className="numeric text-right">covers</th>
-                  <th scope="col" className="numeric text-right">push</th>
-                  <th scope="col" className="numeric text-right">{game.away} covers</th>
-                </tr>
-              </thead>
-              <tbody>
-                {game.spread_surface.map((row) => {
-                  const isMarket = row.line === market.spread_home
-                  return (
-                    <tr key={row.line}>
-                      <td
-                        className={
-                          isMarket
-                            ? 'numeric text-[var(--accent-market)]'
-                            : 'numeric'
-                        }
-                      >
-                        {spread(row.line)}
-                        {isMarket ? ' · market' : ''}
-                      </td>
-                      <td className="numeric text-right">{pct(row.home_cover)}</td>
-                      <td
-                        className={
-                          row.push >= 0.04
-                            ? 'numeric text-right text-[var(--accent-warn)]'
-                            : 'numeric text-right text-[var(--text-tertiary)]'
-                        }
-                      >
-                        {row.push < 0.0005 ? '—' : pct(row.push)}
-                      </td>
-                      <td className="numeric text-right">{pct(row.away_cover)}</td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
-          </div>
+          <SpreadSlider
+            rows={game.spread_surface}
+            home={game.home}
+            away={game.away}
+            marketLine={market.spread_home}
+          />
+          <details className="mt-4">
+            <summary className="cursor-pointer font-mono text-[11px] text-[var(--accent-info)] hover:underline">
+              every line as a table
+            </summary>
+            <div className="mt-2 overflow-x-auto">
+              <table className="min-w-[420px]">
+                <thead>
+                  <tr>
+                    <th scope="col">{game.home} line</th>
+                    <th scope="col" className="numeric text-right">covers</th>
+                    <th scope="col" className="numeric text-right">push</th>
+                    <th scope="col" className="numeric text-right">{game.away} covers</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {game.spread_surface.map((row) => {
+                    const isMarket = row.line === market.spread_home
+                    return (
+                      <tr key={row.line}>
+                        <td
+                          className={
+                            isMarket
+                              ? 'numeric text-[var(--accent-market)]'
+                              : 'numeric'
+                          }
+                        >
+                          {spread(row.line)}
+                          {isMarket ? ' · market' : ''}
+                        </td>
+                        <td className="numeric text-right">{pct(row.home_cover)}</td>
+                        <td
+                          className={
+                            row.push >= 0.04
+                              ? 'numeric text-right text-[var(--accent-warn)]'
+                              : 'numeric text-right text-[var(--text-tertiary)]'
+                          }
+                        >
+                          {row.push < 0.0005 ? '—' : pct(row.push)}
+                        </td>
+                        <td className="numeric text-right">{pct(row.away_cover)}</td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </details>
         </section>
       ) : null}
 
@@ -216,22 +247,16 @@ function UpcomingGame({
             </dl>
             {atMarket ? (
               <p className="mt-4 border-t border-[var(--border-color)] pt-3 text-[11px] leading-relaxed text-[var(--text-secondary)]">
-                At the market&apos;s {spread(market.spread_home)}, the model
+                At the market&apos;s {spread(market.spread_home)} the model
                 gives {game.home} {pct(atMarket.home_cover)} to cover and{' '}
                 {pct(atMarket.away_cover)} against
                 {atMarket.push < 0.0005 ? (
                   <>
-                    . A half-point line{' '}
+                    {' '}
+                    — a half-point line{' '}
                     <strong className="text-[var(--text-primary)]">
                       cannot push
                     </strong>
-                    , which is exactly what the hook is bought for — at the
-                    whole number beside it the push is worth{' '}
-                    {pct(
-                      game.spread_surface.find(
-                        (r) => r.line === Math.trunc(market.spread_home ?? 0),
-                      )?.push ?? 0,
-                    )}
                     .
                   </>
                 ) : (
@@ -544,8 +569,8 @@ function Availability({
     <section className="card p-4" aria-label="Availability">
       <h2 className="eyebrow mb-1">Availability</h2>
       <p className="mb-3 text-[11px] leading-relaxed text-[var(--text-tertiary)]">
-        From ESPN. <strong>The model does not see this</strong> — the largest
-        single gap in the forecast above, shown so a reader can apply it.
+        From ESPN — <strong>the model does not see this</strong>, so apply it
+        to the forecast above yourself.
       </p>
       <div className="grid gap-4 sm:grid-cols-2">
         {byTeam.map(({ team, entries }) => (

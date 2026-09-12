@@ -1,3 +1,5 @@
+import { Suspense } from 'react'
+
 import { MatchupPicker } from './MatchupPicker'
 import { getMatchups } from '@/lib/history'
 import { stamp } from '@/lib/format'
@@ -12,6 +14,10 @@ export const dynamic = 'force-static'
  * the season projection — not a second one. Every pair is precomputed by
  * `build_game_context` through the identical serving path, so a matchup here
  * and the same fixture on its game page cannot disagree.
+ *
+ * The picker reads `?home=&away=` and writes them back as the selection
+ * changes, so any pairing is a shareable URL; that needs `useSearchParams`,
+ * which on a statically rendered page needs a Suspense boundary around it.
  */
 export default function PredictPage() {
   const matchups = getMatchups()
@@ -29,16 +35,19 @@ export default function PredictPage() {
       <header>
         <p className="eyebrow">{matchups.season} ratings</p>
         <h1 className="mt-2 text-2xl">Head to head</h1>
-        <p className="mt-3 text-sm leading-relaxed text-[var(--text-secondary)]">
-          Any two franchises, priced by the same model the schedule runs on —
-          all {matchups.matchups.length} pairings computed in advance.
-        </p>
-        <p className="mt-2 numeric text-[10px] text-[var(--text-tertiary)]">
-          published {stamp(matchups.generated_at)}
+        <p className="mt-2 numeric text-[11px] text-[var(--text-tertiary)]">
+          {matchups.matchups.length} pairings priced in advance · published{' '}
+          {stamp(matchups.generated_at)}
         </p>
       </header>
 
-      <MatchupPicker data={matchups} />
+      <Suspense
+        fallback={
+          <div className="card h-24 skeleton-shimmer" aria-hidden="true" />
+        }
+      >
+        <MatchupPicker data={matchups} />
+      </Suspense>
     </div>
   )
 }

@@ -104,8 +104,22 @@ export const viewport: Viewport = {
 }
 
 /**
+ * The ambient preference, applied BEFORE first paint.
+ *
+ * `data-ambient` on <html> drives the chalkboard's opacity (globals.css) and
+ * its loop (ChalkboardField). Read from localStorage here, synchronously,
+ * so a reader who chose `off` never sees one frame of the field; anything
+ * absent or unrecognised is `soft`. ~200 bytes, wrapped so a blocked
+ * storage API still yields the default. Kept in sync with AmbientToggle.
+ */
+const AMBIENT_SCRIPT =
+  "try{var v=localStorage.getItem('gridiron-ambient');document.documentElement.dataset.ambient=v==='vivid'||v==='off'?v:'soft'}catch(e){document.documentElement.dataset.ambient='soft'}"
+
+/**
  * Dark-only by design. `<html class="dark">` is hardcoded and there is no
  * theme provider; `:root` in globals.css is the single source of truth.
+ * `suppressHydrationWarning` covers the one attribute the inline script
+ * adds to <html> before React attaches.
  */
 export default function RootLayout({
   children,
@@ -116,8 +130,10 @@ export default function RootLayout({
     <html
       lang="en"
       className={`dark ${inter.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
     >
       <body className="bg-[var(--background)] text-[var(--text-primary)] antialiased">
+        <script dangerouslySetInnerHTML={{ __html: AMBIENT_SCRIPT }} />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded focus:bg-[var(--card-bg)] focus:px-3 focus:py-2 focus:text-sm focus:font-semibold"

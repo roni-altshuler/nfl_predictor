@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { useMemo, useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { TeamLogo } from '@/components/primitives/TeamLogo'
 import { pct, signed, spread } from '@/lib/format'
@@ -23,11 +24,66 @@ import type { Matchups } from '@/lib/history'
  * so rest is neutral for both sides and the week is the opener. That is an
  * assumption, and a page that quietly picked one would be claiming an answer
  * to a question it was not asked.
+ *
+ * **The pair lives in the URL.** `?home=&away=` initialises the picker and
+ * every change is written back with `router.replace`, so a matchup is a
+ * link — the home page's quick picks and the game page's "price this
+ * matchup" arrive here prefilled, and a reader can send one on. An unknown
+ * or duplicated abbreviation falls back to the defaults rather than
+ * erroring: a bad link should still land on a working picker.
+ *
+ * **The URL is read after mount, from `window.location`.** This page is
+ * `force-static`, which makes `useSearchParams()` empty during the
+ * prerender WITHOUT the usual bail-out to client rendering — so the HTML
+ * carries the default pair, and a first render that read the URL would
+ * mismatch it on hydration. The picker therefore renders its skeleton
+ * until the mount effect has applied the URL, and only syncs the selection
+ * back to the URL after that, so the incoming pair is never overwritten
+ * by the defaults. `useSearchParams` is kept only as the trigger for a
+ * same-page navigation (a quick-pick chip followed while already here).
  */
 export function MatchupPicker({ data }: { data: Matchups }) {
   const teams = data.teams
+  const router = useRouter()
+  const params = useSearchParams()
+
   const [awayKey, setAway] = useState(teams[0]?.abbreviation ?? '')
   const [homeKey, setHome] = useState(teams[1]?.abbreviation ?? '')
+  const [applied, setApplied] = useState(false)
+
+  // The current selection through a ref, so the URL effect depends on the
+  // URL alone and cannot race the write below.
+  const current = useRef({ home: homeKey, away: awayKey })
+  current.current = { home: homeKey, away: awayKey }
+
+  // URL -> selection: on mount, and again whenever the router reports new
+  // search params. `window.location` is the source of truth here because
+  // the router's own copy is empty on the static first render.
+  useEffect(() => {
+    const known = (value: string | null) => {
+      const key = value?.toUpperCase()
+      return key && teams.some((t) => t.abbreviation === key) ? key : null
+    }
+    const search = new URLSearchParams(window.location.search)
+    const home = known(search.get('home'))
+    const away = known(search.get('away'))
+    if (home && away && home !== away) {
+      if (home !== current.current.home) setHome(home)
+      if (away !== current.current.away) setAway(away)
+    }
+    setApplied(true)
+  }, [params, teams])
+
+  // Selection -> URL, only once the URL has been applied. Replace, never
+  // push: dragging through five pairs should not leave five history
+  // entries behind.
+  useEffect(() => {
+    if (!applied || !homeKey || !awayKey) return
+    const next = `/predict?home=${homeKey}&away=${awayKey}`
+    if (`${window.location.pathname}${window.location.search}` !== next) {
+      router.replace(next, { scroll: false })
+    }
+  }, [applied, homeKey, awayKey, router])
 
   const lookup = useMemo(() => {
     const map = new Map<string, Matchups['matchups'][number]>()
@@ -43,6 +99,10 @@ export function MatchupPicker({ data }: { data: Matchups }) {
   const swap = () => {
     setHome(awayKey)
     setAway(homeKey)
+  }
+
+  if (!applied) {
+    return <div className="card h-24 skeleton-shimmer" aria-hidden="true" />
   }
 
   return (
@@ -211,7 +271,8 @@ export function MatchupPicker({ data }: { data: Matchups }) {
       )}
 
       <p className="mt-6 border-t border-[var(--border-color)] pt-3 text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-        {data.note} Ratings include the offseason regression.
+        Hypothetical basis · {data.basis} · no date, so rest is neutral and
+        the ratings carry the offseason regression.
       </p>
     </div>
   )

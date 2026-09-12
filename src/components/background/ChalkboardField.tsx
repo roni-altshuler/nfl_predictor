@@ -25,7 +25,7 @@ import { useEffect, useRef } from 'react'
  * **The camera is contained, by rule.** This layer sits behind data the
  * reader came for, so the broadcast push-in of v3.1 is capped: the camera
  * may lean toward the play only as far as keeps the ENTIRE field — both
- * end zones — inside the frame (`maxZoom`, ~1.08). The result is a slow
+ * end zones — inside the frame (`maxZoom`, capped at 1.03). The result is a slow
  * breath toward the action rather than a cut, and the resting state
  * between plays is always the full centred field. Camera shake was
  * removed for the same reason; the chalk impact burst at a tackle stays,
@@ -49,35 +49,39 @@ import { useEffect, useRef } from 'react'
 
 const DPR_CAP = 2
 
-/* Chalkboard v2 budget (DESIGN.md §6a): surfaces above this canvas are
-   translucent by token, so these alphas are what a reader sees in the open
-   and roughly a quarter of it through a card. Change them only together
-   with --card-bg. */
-const SIDELINE_ALPHA = 0.2
-const GRID_ALPHA = 0.16
-const HASH_ALPHA = 0.1
-const NUMERAL_ALPHA = 0.14
-const GOAL_ALPHA = 0.24
-const ENDZONE_HATCH_ALPHA = 0.05
-const ENDZONE_TEXT_ALPHA = 0.08
-const POST_ALPHA = 0.16
-const MARK_ALPHA = 0.36
-const ROUTE_ALPHA = 0.5
-const SCRIMMAGE_ALPHA = 0.26
-const FIRST_DOWN_ALPHA = 0.32
-const BALL_ALPHA = 0.7
-const DOWN_TEXT_ALPHA = 0.24
-const CELEBRATE_ALPHA = 0.42
+/* Chalkboard v2.1 budget (DESIGN.md §6a, "quiet board" 2026-09-12):
+   surfaces above this canvas are translucent by token, so these alphas are
+   what a reader sees in the open and roughly a fifth of it through a card.
+   These are the VIVID values; the default `soft` preference applies a
+   further 0.55 opacity in CSS on top of them. Change them only together
+   with --card-bg. Field lines are the old budget x0.75, moving marks
+   (players, ball, routes, celebration) x0.6-0.7. */
+const SIDELINE_ALPHA = 0.15
+const GRID_ALPHA = 0.12
+const HASH_ALPHA = 0.08
+const NUMERAL_ALPHA = 0.1
+const GOAL_ALPHA = 0.18
+const ENDZONE_HATCH_ALPHA = 0.04
+const ENDZONE_TEXT_ALPHA = 0.06
+const POST_ALPHA = 0.12
+const MARK_ALPHA = 0.24
+const ROUTE_ALPHA = 0.32
+const SCRIMMAGE_ALPHA = 0.18
+const FIRST_DOWN_ALPHA = 0.22
+const BALL_ALPHA = 0.45
+const DOWN_TEXT_ALPHA = 0.16
+const CELEBRATE_ALPHA = 0.26
 
 // Pacing, ms. One snap runs ~2-3s; the huddles are deliberately long —
 // the board should rest more than it moves, or it competes with the data.
+// 2026-09-12: huddles 1.5x longer than v2, whistle and celebration shorter.
 const LINEUP = 900
 const SET = 420
-const WHISTLE = 850
+const WHISTLE = 700
 const FADE = 600
-const HUDDLE_MIN = 1600
-const HUDDLE_RANGE = 2000
-const CELEBRATE = 2100
+const HUDDLE_MIN = 2400
+const HUDDLE_RANGE = 3000
+const CELEBRATE = 1500
 
 type Phase = 'lineup' | 'set' | 'live' | 'whistle' | 'celebrate' | 'fade' | 'huddle'
 type Team = 'o' | 'x'
@@ -727,6 +731,10 @@ export function ChalkboardField() {
       lastNow: 0,
       staticDrawn: false,
       reducedMotion: false,
+      /* The reader's `ambient` preference (data-ambient on <html>). While
+         'off' the canvas is display:none by CSS AND the loop is stopped —
+         a hidden canvas still burning rAF would be the worst of both. */
+      off: false,
       rafId: 0,
       running: false,
     }
@@ -787,7 +795,7 @@ export function ChalkboardField() {
       const { w, h, fx0, fx1, oTop, oBottom } = state.geom
       return Math.max(
         1,
-        Math.min(1.09, w / (fx1 - fx0 + 40), h / (oBottom - oTop + 28)),
+        Math.min(1.03, w / (fx1 - fx0 + 40), h / (oBottom - oTop + 28)),
       )
     }
 
@@ -827,11 +835,11 @@ export function ChalkboardField() {
       switch (state.phase) {
         case 'lineup':
         case 'set':
-          return containCam(pinnedX(z), snap.focus.y + snap.fw * 14, z)
+          return containCam(pinnedX(z), snap.focus.y + snap.fw * 7, z)
         case 'live': {
           const p = clamp((now - state.phaseStart) / snap.dur, 0, 1)
           const b = ballAt(snap.ball, p).pos
-          return containCam(pinnedX(z), b.y + snap.fw * 30, z)
+          return containCam(pinnedX(z), b.y + snap.fw * 15, z)
         }
         case 'whistle': {
           const b = ballAt(snap.ball, 1).pos
@@ -1229,11 +1237,11 @@ export function ChalkboardField() {
     /** The chalk impact burst at the tackle, drawn early in the whistle. */
     const drawBurst = (now: number) => {
       if (!state.burst || state.phase !== 'whistle') return
-      const t = clamp((now - state.phaseStart) / 340, 0, 1)
+      const t = clamp((now - state.phaseStart) / 240, 0, 1)
       if (t >= 1) return
       const { x, y } = state.burst
       ctx.save()
-      ctx.globalAlpha = (1 - t) * 0.45
+      ctx.globalAlpha = (1 - t) * 0.3
       ctx.strokeStyle = '#ffffff'
       ctx.lineWidth = 1.25
       ctx.beginPath()
@@ -1382,7 +1390,7 @@ export function ChalkboardField() {
     }
 
     const start = () => {
-      if (state.running || state.reducedMotion) return
+      if (state.running || state.reducedMotion || state.off) return
       state.running = true
       state.lastNow = 0
       state.phaseStart = performance.now()
@@ -1424,6 +1432,22 @@ export function ChalkboardField() {
       }
     }
 
+    /* The ambient dial. Read once at mount (the root layout's pre-paint
+       script has already stamped <html>), then follow `ambientchange` from
+       AmbientToggle. Leaving 'off' resumes exactly where reduced-motion
+       and visibility would: one still frame, or the loop. */
+    const readAmbient = () => document.documentElement.dataset.ambient === 'off'
+    const handleAmbient = () => {
+      state.off = readAmbient()
+      if (state.off) {
+        stop()
+      } else if (state.reducedMotion) {
+        drawStill()
+      } else {
+        start()
+      }
+    }
+
     const resizeObserver = new ResizeObserver(() => {
       layout()
       if (state.reducedMotion) drawStill()
@@ -1437,13 +1461,16 @@ export function ChalkboardField() {
     // should show the board playing, not an empty field.
     state.huddleDur = 350
     state.phaseStart = performance.now()
+    state.off = readAmbient()
     handleMotion()
     resizeObserver.observe(document.documentElement)
     motionQuery.addEventListener('change', handleMotion)
     document.addEventListener('visibilitychange', handleVisibility)
+    window.addEventListener('ambientchange', handleAmbient)
 
     return () => {
       stop()
+      window.removeEventListener('ambientchange', handleAmbient)
       document.removeEventListener('visibilitychange', handleVisibility)
       motionQuery.removeEventListener('change', handleMotion)
       resizeObserver.disconnect()
@@ -1454,6 +1481,7 @@ export function ChalkboardField() {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
+      className="ambient-layer"
       style={{
         position: 'fixed',
         inset: 0,

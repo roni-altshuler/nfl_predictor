@@ -27,9 +27,10 @@
   --background-tertiary: #15201a;
 
   /* Surfaces are translucent — the field shows through them. The alpha is
-     the legibility contract: at 0.72 over the slate, a 0.15-alpha yard line
-     arrives under a table at ~0.04, present but never competing with ink. */
-  --card-bg: rgba(13, 22, 17, 0.72);
+     the legibility contract: at 0.80 over the slate, a 0.12-alpha yard line
+     arrives under a table at ~0.02, present but never competing with ink.
+     (0.72 until 2026-09-12; raised one step so data surfaces shield more.) */
+  --card-bg: rgba(13, 22, 17, 0.8);
   --card-hover: rgba(255, 255, 255, 0.05);
   --input-bg: rgba(13, 22, 17, 0.92);
   --muted-bg: rgba(255, 255, 255, 0.09);
@@ -176,12 +177,13 @@ html { scroll-behavior: smooth; }
    a chalkboard actually sits under a room's light. The field canvas draws
    on top of this (z:-1), and every surface above both is translucent.
    These two gradients are the theme's depth — deliberate, and the only
-   ones outside the skeleton shimmer. */
+   ones outside the skeleton shimmer. Their alpha was cut ~30% on
+   2026-09-12 (0.07 -> 0.05, 0.55 -> 0.38) as part of the quiet board. */
 body {
   background-color: var(--background);
   background-image:
-    radial-gradient(130% 85% at 50% -12%, rgba(214, 232, 216, 0.07), transparent 58%),
-    radial-gradient(140% 80% at 50% 118%, rgba(0, 0, 0, 0.55), transparent 62%);
+    radial-gradient(130% 85% at 50% -12%, rgba(214, 232, 216, 0.05), transparent 58%),
+    radial-gradient(140% 80% at 50% 118%, rgba(0, 0, 0, 0.38), transparent 62%);
   background-attachment: fixed;
   background-repeat: no-repeat;
   color: var(--text-secondary);
@@ -201,9 +203,24 @@ h1, h2, h3 {
   font-weight: 600;
   color: var(--text-primary);
   /* A breath of chalk dust around display type — the one glow in the
-     theme, and it is display-only: body text and numbers stay crisp. */
-  text-shadow: 0 0 18px rgba(244, 247, 242, 0.16);
+     theme, and it is display-only: body text and numbers stay crisp.
+     Halved on 2026-09-12; at 0.16 it read as bloom over a moving field. */
+  text-shadow: 0 0 14px rgba(244, 247, 242, 0.08);
 }
+
+/* ────────────────────────────────────────────────────────────
+   The ambient dial (DESIGN.md §6a, 2026-09-12).
+
+   `data-ambient` on <html> is stamped before first paint by the root
+   layout's inline script (default `soft`) and changed by AmbientToggle.
+   The canvas is the ONE ambient layer, so these three rules are the whole
+   contract: soft dims and softens it, vivid is the canvas's own budget,
+   off removes it — and ChalkboardField stops its loop on the same signal,
+   so a hidden canvas never burns a frame.
+   ──────────────────────────────────────────────────────────── */
+.ambient-layer { transition: opacity 0.4s ease-out; }
+html[data-ambient='soft'] .ambient-layer { opacity: 0.55; filter: blur(0.6px); }
+html[data-ambient='off'] .ambient-layer { display: none; }
 
 h4, h5, h6 {
   font-family: var(--font-display), var(--font-sans), sans-serif;
@@ -267,6 +284,70 @@ nav, button, .caption, th, [role='tab'] {
   overflow: hidden;
 }
 .prob-fill { height: 100%; background: var(--accent-primary); }
+
+/* The spread slider (game page). A native range input, restyled only as
+   far as a 44px hit band and a chalk thumb: keyboard behaviour, focus
+   ring and the value semantics stay the browser's. */
+.spread-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.spread-range::-webkit-slider-runnable-track {
+  height: 4px;
+  background: var(--muted-bg);
+}
+.spread-range::-moz-range-track {
+  height: 4px;
+  background: var(--muted-bg);
+}
+.spread-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -6px;
+  border-radius: 999px;
+  background: var(--text-primary);
+  border: 2px solid var(--background);
+  box-shadow: 0 0 0 1px var(--border-hover);
+}
+.spread-range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--text-primary);
+  border: 2px solid var(--background);
+  box-shadow: 0 0 0 1px var(--border-hover);
+}
+.spread-range:focus-visible { outline: none; }
+.spread-range:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 2px var(--accent-primary);
+}
+.spread-range:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 2px var(--accent-primary);
+}
+
+/* A chip: the one-line, one-tap unit for a notice or a quick pick. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 36px;
+  padding: 0.25rem 0.625rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--card-bg);
+  font-family: var(--font-mono-numeric), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  transition: border-color 0.18s, background-color 0.18s;
+}
+a.chip:hover { border-color: var(--border-hover); background: var(--card-hover); }
 
 table { border-collapse: collapse; width: 100%; }
 th {
