@@ -31,6 +31,7 @@ from backend.services.data.warehouse import (
 )
 from backend.services.espn.client import (
     KNOWN_CANCELLATIONS,
+    current_season,
     expected_regular_games,
     regular_season_games,
 )
@@ -136,22 +137,74 @@ def check_franchises(w: Warehouse, r: Report) -> None:
             r.ok("8 divisions of 4")
 
 
+def _scheduled_by_season(w: Warehouse, season_type: int) -> Dict[int, int]:
+    """Fixtures still to be played, per season, for one season type."""
+    return {
+        int(row["season"]): int(row["n"])
+        for row in w.conn.execute(
+            "SELECT season, COUNT(*) n FROM scheduled_games WHERE season_type = ? "
+            "GROUP BY season",
+            (season_type,),
+        )
+    }
+
+
+def in_progress(season: int, scheduled: int, live: Optional[int] = None) -> bool:
+    """Whether a season is still being played, and so is allowed to be partial.
+
+    A season is in progress when fixtures remain in `scheduled_games` — the
+    warehouse's own evidence — or when the calendar says it is the current
+    one. The second clause matters at the edges: the day after a season's
+    last fixture is refreshed into `games` there is nothing left in
+    `scheduled_games`, and the whole corpus must not suddenly be judged
+    complete by a stricter rule than the one it was built under.
+
+    **This is the check that failed on opening night, 2026.** Every check
+    below was written against a corpus of finished seasons, and the first
+    Thursday of the season put one played game and 271 fixtures into the
+    2026 row. `1 != 272` is exactly what the check is for on a finished
+    season and exactly wrong on a live one — the invariant during the season
+    is `played + scheduled == 272`, and that is what is asserted instead.
+    """
+    live = current_season() if live is None else live
+    return scheduled > 0 or season >= live
+
+
 def check_season_counts(w: Warehouse, r: Report) -> None:
     """Every season holds exactly the games it should.
 
     Only possible because ingest is week-based: a week is a complete,
     bounded slate, so this is an assertion rather than a hope.
+
+    A finished season must hold every game it played. The season in
+    progress must hold every game it played PLUS every fixture still to
+    come — `games` is results-only and `scheduled_games` is the remainder,
+    and the two together are the whole schedule on any day of the season.
     """
+    scheduled = _scheduled_by_season(w, SEASON_TYPE_REGULAR)
     rows = w.conn.execute(
         "SELECT season, COUNT(*) n FROM games WHERE season_type = ? "
         "GROUP BY season ORDER BY season",
         (SEASON_TYPE_REGULAR,),
     ).fetchall()
+    played = {int(row["season"]): int(row["n"]) for row in rows}
+    seasons = sorted(set(played) | set(scheduled))
+
     bad: List[str] = []
-    for row in rows:
-        season, n = int(row["season"]), int(row["n"])
+    live_note: Optional[str] = None
+    for season in seasons:
+        n = played.get(season, 0)
+        remaining = scheduled.get(season, 0)
         expected = expected_regular_games(season)
-        if n != expected:
+        if in_progress(season, remaining):
+            if n + remaining != expected:
+                bad.append(
+                    f"{season} (in progress): {n} played + {remaining} "
+                    f"scheduled != {expected}"
+                )
+            else:
+                live_note = f"{season} in progress: {n} played + {remaining} scheduled = {expected}"
+        elif n != expected:
             note = ""
             if season in KNOWN_CANCELLATIONS:
                 note = f" (known cancellations: {KNOWN_CANCELLATIONS[season]})"
@@ -159,18 +212,27 @@ def check_season_counts(w: Warehouse, r: Report) -> None:
     if bad:
         r.fail("regular-season counts wrong — " + "; ".join(bad))
     else:
-        r.ok(f"{len(rows)} seasons hold their exact regular-season game count")
+        r.ok(f"{len(seasons)} seasons hold their exact regular-season game count")
+        if live_note:
+            r.ok(live_note)
 
+    post_scheduled = _scheduled_by_season(w, SEASON_TYPE_POSTSEASON)
     post = w.conn.execute(
         "SELECT season, COUNT(*) n FROM games WHERE season_type = ? "
         "GROUP BY season ORDER BY season",
         (SEASON_TYPE_POSTSEASON,),
     ).fetchall()
-    bad_post = [
-        f"{int(row['season'])}: {int(row['n'])} != {expected_playoff_games(int(row['season']))}"
-        for row in post
-        if int(row["n"]) != expected_playoff_games(int(row["season"]))
-    ]
+    bad_post: List[str] = []
+    for row in post:
+        season, n = int(row["season"]), int(row["n"])
+        expected = expected_playoff_games(season)
+        if in_progress(season, scheduled.get(season, 0) + post_scheduled.get(season, 0)):
+            # A bracket fills in as it is played: the count can only be
+            # asserted as an upper bound until the Super Bowl is in.
+            if n + post_scheduled.get(season, 0) > expected:
+                bad_post.append(f"{season} (in progress): {n} > {expected}")
+        elif n != expected:
+            bad_post.append(f"{season}: {n} != {expected}")
     if bad_post:
         # A wrong playoff count usually means the Pro Bowl got in, which is
         # the single most likely ingest regression in this sport.
@@ -238,13 +300,17 @@ def check_games_per_team(w: Warehouse, r: Report) -> None:
     missing game removes it from two teams' records but only one from the
     total.
     """
-    seasons = [
-        int(row["season"])
-        for row in w.conn.execute(
-            "SELECT DISTINCT season FROM games WHERE season_type = ? ORDER BY season",
-            (SEASON_TYPE_REGULAR,),
-        )
-    ]
+    scheduled = _scheduled_by_season(w, SEASON_TYPE_REGULAR)
+    seasons = sorted(
+        {
+            int(row["season"])
+            for row in w.conn.execute(
+                "SELECT DISTINCT season FROM games WHERE season_type = ?",
+                (SEASON_TYPE_REGULAR,),
+            )
+        }
+        | set(scheduled)
+    )
     bad: List[str] = []
     for season in seasons:
         counts = Counter()
@@ -255,6 +321,16 @@ def check_games_per_team(w: Warehouse, r: Report) -> None:
         ):
             counts[int(row["h"])] += 1
             counts[int(row["a"])] += 1
+        if in_progress(season, scheduled.get(season, 0)):
+            # Mid-season a franchise's schedule is its results plus its
+            # remaining fixtures; the two tables together must still say 17.
+            for row in w.conn.execute(
+                "SELECT home_team_id h, away_team_id a FROM scheduled_games "
+                "WHERE season = ? AND season_type = ?",
+                (season, SEASON_TYPE_REGULAR),
+            ):
+                counts[int(row["h"])] += 1
+                counts[int(row["a"])] += 1
         expected = regular_season_games(season)
         allowed = {expected}
         if season in KNOWN_CANCELLATIONS:
