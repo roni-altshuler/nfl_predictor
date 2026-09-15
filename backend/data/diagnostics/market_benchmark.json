@@ -1,73 +1,73 @@
 {
-  "generated_at": "2026-09-08T17:02:53+00:00",
-  "corpus_games": 6499,
-  "scored_games": 5698,
+  "generated_at": "2026-09-15T17:27:19+00:00",
+  "corpus_games": 6515,
+  "scored_games": 5714,
   "first_scored_season": 2005,
   "warmup_seasons": 3,
   "devig_method": "shin",
   "refit_cadence": "weekly, expanding window",
-  "priced_games": 3820,
+  "priced_games": 3836,
   "unpriced_games": 1878,
   "market_source_counts": {
-    "moneyline": 3171,
+    "moneyline": 3187,
     "spread": 649
   },
-  "base_rate": 0.55947,
+  "base_rate": 0.55965,
   "scorecards": {
     "margin_model": {
-      "n": 5684,
-      "brier": 0.21989,
-      "log_loss": 0.62918,
-      "accuracy": 0.64145,
-      "ece": 0.02024,
+      "n": 5700,
+      "brier": 0.21994,
+      "log_loss": 0.62929,
+      "accuracy": 0.6414,
+      "ece": 0.01988,
       "ties_excluded": 14,
-      "brier_ties_as_half": 0.21942
+      "brier_ties_as_half": 0.21948
     },
     "elo_only": {
-      "n": 5684,
-      "brier": 0.21981,
-      "log_loss": 0.62914,
-      "accuracy": 0.64426,
-      "ece": 0.01233,
+      "n": 5700,
+      "brier": 0.21984,
+      "log_loss": 0.6292,
+      "accuracy": 0.64421,
+      "ece": 0.01189,
       "ties_excluded": 14,
-      "brier_ties_as_half": 0.21936
+      "brier_ties_as_half": 0.21939
     },
     "constant_base_rate": {
-      "n": 5684,
-      "brier": 0.24646,
-      "log_loss": 0.68606,
-      "accuracy": 0.55947,
+      "n": 5700,
+      "brier": 0.24644,
+      "log_loss": 0.68601,
+      "accuracy": 0.55965,
       "ece": 0.0,
       "ties_excluded": 14,
-      "brier_ties_as_half": 0.24587
+      "brier_ties_as_half": 0.24585
     },
     "market": {
-      "n": 3807,
+      "n": 3823,
       "brier": 0.2117,
-      "log_loss": 0.6109,
-      "accuracy": 0.66404,
-      "ece": 0.01274,
+      "log_loss": 0.61094,
+      "accuracy": 0.66414,
+      "ece": 0.01265,
       "ties_excluded": 13,
-      "brier_ties_as_half": 0.21107
+      "brier_ties_as_half": 0.21108
     }
   },
   "paired_vs_market": {
     "margin_model": {
-      "mean": 0.008843447041871521,
-      "lo": 0.005778118927447927,
-      "hi": 0.011957016830902669,
+      "mean": 0.008912999290640971,
+      "lo": 0.005848695560959529,
+      "hi": 0.012002712523348167,
       "p_better": 0.0
     },
     "elo_only": {
-      "mean": 0.008731372898530083,
-      "lo": 0.005614987636809884,
-      "hi": 0.011937949280365207,
+      "mean": 0.008764584148007272,
+      "lo": 0.005632949097794767,
+      "hi": 0.011868458776139363,
       "p_better": 0.0
     },
     "constant_base_rate": {
-      "mean": 0.03517095614974502,
-      "lo": 0.03009528936269714,
-      "hi": 0.04015473096276359,
+      "mean": 0.03513385028394994,
+      "lo": 0.0300659183157014,
+      "hi": 0.04018729463800577,
       "p_better": 0.0
     }
   },
@@ -97,30 +97,30 @@
       {
         "lower": 0.4,
         "upper": 0.5,
-        "count": 968,
-        "mean_predicted": 0.453,
-        "observed": 0.4256
+        "count": 972,
+        "mean_predicted": 0.4529,
+        "observed": 0.4259
       },
       {
         "lower": 0.5,
         "upper": 0.6,
-        "count": 1362,
-        "mean_predicted": 0.5514,
-        "observed": 0.533
+        "count": 1368,
+        "mean_predicted": 0.5515,
+        "observed": 0.5336
       },
       {
         "lower": 0.6,
         "upper": 0.7,
-        "count": 1350,
+        "count": 1354,
         "mean_predicted": 0.6472,
-        "observed": 0.6311
+        "observed": 0.6315
       },
       {
         "lower": 0.7,
         "upper": 0.8,
-        "count": 889,
+        "count": 891,
         "mean_predicted": 0.7451,
-        "observed": 0.7548
+        "observed": 0.7542
       },
       {
         "lower": 0.8,
@@ -162,30 +162,30 @@
       {
         "lower": 0.4,
         "upper": 0.5,
-        "count": 948,
-        "mean_predicted": 0.452,
-        "observed": 0.4409
+        "count": 952,
+        "mean_predicted": 0.4519,
+        "observed": 0.4412
       },
       {
         "lower": 0.5,
         "upper": 0.6,
-        "count": 1212,
+        "count": 1217,
         "mean_predicted": 0.5502,
-        "observed": 0.552
+        "observed": 0.5514
       },
       {
         "lower": 0.6,
         "upper": 0.7,
-        "count": 1174,
+        "count": 1178,
         "mean_predicted": 0.6482,
-        "observed": 0.6337
+        "observed": 0.635
       },
       {
         "lower": 0.7,
         "upper": 0.8,
-        "count": 856,
-        "mean_predicted": 0.7472,
-        "observed": 0.7325
+        "count": 859,
+        "mean_predicted": 0.7471,
+        "observed": 0.7322
       },
       {
         "lower": 0.8,
@@ -227,44 +227,44 @@
       {
         "lower": 0.3,
         "upper": 0.4,
-        "count": 457,
-        "mean_predicted": 0.3555,
-        "observed": 0.3589
+        "count": 459,
+        "mean_predicted": 0.3557,
+        "observed": 0.3595
       },
       {
         "lower": 0.4,
         "upper": 0.5,
-        "count": 538,
+        "count": 539,
         "mean_predicted": 0.4408,
-        "observed": 0.4349
+        "observed": 0.4341
       },
       {
         "lower": 0.5,
         "upper": 0.6,
-        "count": 698,
-        "mean_predicted": 0.558,
-        "observed": 0.5473
+        "count": 702,
+        "mean_predicted": 0.5578,
+        "observed": 0.547
       },
       {
         "lower": 0.6,
         "upper": 0.7,
-        "count": 746,
+        "count": 751,
         "mean_predicted": 0.6475,
-        "observed": 0.626
+        "observed": 0.6272
       },
       {
         "lower": 0.7,
         "upper": 0.8,
-        "count": 648,
+        "count": 650,
         "mean_predicted": 0.7475,
-        "observed": 0.7577
+        "observed": 0.7585
       },
       {
         "lower": 0.8,
         "upper": 0.9,
-        "count": 291,
-        "mean_predicted": 0.8426,
-        "observed": 0.866
+        "count": 293,
+        "mean_predicted": 0.8424,
+        "observed": 0.8635
       },
       {
         "lower": 0.9,
@@ -279,242 +279,242 @@
     "note": "Margin coverage and PIT are read off the LATTICE the model actually publishes, using the mid-P transform for a discrete distribution. The total is served as a normal and is measured as one. Comparing either against a normal at the same sd would grade a distribution this site never published.",
     "margin": {
       "model": {
-        "n": 5698,
-        "mae": 10.5301,
-        "rmse": 13.5178,
-        "bias": 0.4236,
-        "median_ae": 8.3055,
-        "mean_actual": 2.1967,
-        "mean_predicted": 2.6203
+        "n": 5714,
+        "mae": 10.5353,
+        "rmse": 13.5206,
+        "bias": 0.428,
+        "median_ae": 8.307,
+        "mean_actual": 2.1929,
+        "mean_predicted": 2.6209
       },
       "vs_market": {
-        "n": 3820,
-        "model_mae": 10.3201,
-        "market_mae": 10.0033,
-        "mae_gap": 0.3168
+        "n": 3836,
+        "model_mae": 10.3287,
+        "market_mae": 10.0083,
+        "mae_gap": 0.3204
       },
       "coverage": [
         {
           "nominal": 0.5,
-          "n": 5698,
-          "covered": 3106,
-          "coverage": 0.5451,
-          "gap": 0.0451
+          "n": 5714,
+          "covered": 3113,
+          "coverage": 0.5448,
+          "gap": 0.0448
         },
         {
           "nominal": 0.8,
-          "n": 5698,
-          "covered": 4660,
-          "coverage": 0.8178,
-          "gap": 0.0178
+          "n": 5714,
+          "covered": 4672,
+          "coverage": 0.8176,
+          "gap": 0.0176
         },
         {
           "nominal": 0.95,
-          "n": 5698,
-          "covered": 5420,
-          "coverage": 0.9512,
-          "gap": 0.0012
+          "n": 5714,
+          "covered": 5436,
+          "coverage": 0.9513,
+          "gap": 0.0013
         }
       ],
       "pit": {
-        "n": 5698,
+        "n": 5714,
         "buckets": [
           {
             "lower": 0.0,
             "upper": 0.1,
-            "count": 571,
-            "share": 0.1002,
+            "count": 574,
+            "share": 0.1005,
             "expected": 0.1
           },
           {
             "lower": 0.1,
             "upper": 0.2,
-            "count": 587,
-            "share": 0.103,
+            "count": 589,
+            "share": 0.1031,
             "expected": 0.1
           },
           {
             "lower": 0.2,
             "upper": 0.3,
-            "count": 574,
-            "share": 0.1007,
+            "count": 575,
+            "share": 0.1006,
             "expected": 0.1
           },
           {
             "lower": 0.3,
             "upper": 0.4,
-            "count": 593,
+            "count": 595,
             "share": 0.1041,
             "expected": 0.1
           },
           {
             "lower": 0.4,
             "upper": 0.5,
-            "count": 575,
-            "share": 0.1009,
+            "count": 576,
+            "share": 0.1008,
             "expected": 0.1
           },
           {
             "lower": 0.5,
             "upper": 0.6,
             "count": 637,
-            "share": 0.1118,
+            "share": 0.1115,
             "expected": 0.1
           },
           {
             "lower": 0.6,
             "upper": 0.7,
-            "count": 608,
-            "share": 0.1067,
+            "count": 610,
+            "share": 0.1068,
             "expected": 0.1
           },
           {
             "lower": 0.7,
             "upper": 0.8,
-            "count": 512,
-            "share": 0.0899,
+            "count": 513,
+            "share": 0.0898,
             "expected": 0.1
           },
           {
             "lower": 0.8,
             "upper": 0.9,
-            "count": 502,
-            "share": 0.0881,
+            "count": 504,
+            "share": 0.0882,
             "expected": 0.1
           },
           {
             "lower": 0.9,
             "upper": 1.0,
-            "count": 539,
-            "share": 0.0946,
+            "count": 541,
+            "share": 0.0947,
             "expected": 0.1
           }
         ],
-        "chi_square": 27.63,
+        "chi_square": 27.26,
         "dof": 9,
-        "chi_square_per_dof": 3.07,
-        "max_abs_deviation": 0.0119
+        "chi_square_per_dof": 3.029,
+        "max_abs_deviation": 0.0118
       }
     },
     "total": {
       "model": {
-        "n": 5698,
-        "mae": 10.8261,
-        "rmse": 13.6994,
-        "bias": -0.8065,
-        "median_ae": 9.0197,
-        "mean_actual": 44.8808,
-        "mean_predicted": 44.0743
+        "n": 5714,
+        "mae": 10.8322,
+        "rmse": 13.713,
+        "bias": -0.8172,
+        "median_ae": 9.0278,
+        "mean_actual": 44.8936,
+        "mean_predicted": 44.0764
       },
       "vs_market": {
-        "n": 3290,
-        "model_mae": 10.808,
-        "market_mae": 10.4351,
-        "mae_gap": 0.3729
+        "n": 3306,
+        "model_mae": 10.8186,
+        "market_mae": 10.4412,
+        "mae_gap": 0.3774
       },
       "coverage": [
         {
           "nominal": 0.5,
-          "n": 5698,
-          "covered": 2933,
-          "coverage": 0.5147,
-          "gap": 0.0147,
+          "n": 5714,
+          "covered": 2940,
+          "coverage": 0.5145,
+          "gap": 0.0145,
           "half_width_z": 0.6745
         },
         {
           "nominal": 0.8,
-          "n": 5698,
-          "covered": 4613,
-          "coverage": 0.8096,
-          "gap": 0.0096,
+          "n": 5714,
+          "covered": 4624,
+          "coverage": 0.8092,
+          "gap": 0.0092,
           "half_width_z": 1.2816
         },
         {
           "nominal": 0.95,
-          "n": 5698,
-          "covered": 5415,
+          "n": 5714,
+          "covered": 5430,
           "coverage": 0.9503,
           "gap": 0.0003,
           "half_width_z": 1.96
         }
       ],
       "pit": {
-        "n": 5698,
+        "n": 5714,
         "buckets": [
           {
             "lower": 0.0,
             "upper": 0.1,
-            "count": 443,
+            "count": 444,
             "share": 0.0777,
             "expected": 0.1
           },
           {
             "lower": 0.1,
             "upper": 0.2,
-            "count": 599,
-            "share": 0.1051,
+            "count": 600,
+            "share": 0.105,
             "expected": 0.1
           },
           {
             "lower": 0.2,
             "upper": 0.3,
-            "count": 603,
-            "share": 0.1058,
+            "count": 605,
+            "share": 0.1059,
             "expected": 0.1
           },
           {
             "lower": 0.3,
             "upper": 0.4,
             "count": 559,
-            "share": 0.0981,
+            "share": 0.0978,
             "expected": 0.1
           },
           {
             "lower": 0.4,
             "upper": 0.5,
-            "count": 626,
-            "share": 0.1099,
+            "count": 630,
+            "share": 0.1103,
             "expected": 0.1
           },
           {
             "lower": 0.5,
             "upper": 0.6,
-            "count": 596,
-            "share": 0.1046,
+            "count": 597,
+            "share": 0.1045,
             "expected": 0.1
           },
           {
             "lower": 0.6,
             "upper": 0.7,
-            "count": 579,
-            "share": 0.1016,
+            "count": 580,
+            "share": 0.1015,
             "expected": 0.1
           },
           {
             "lower": 0.7,
             "upper": 0.8,
             "count": 521,
-            "share": 0.0914,
+            "share": 0.0912,
             "expected": 0.1
           },
           {
             "lower": 0.8,
             "upper": 0.9,
-            "count": 530,
-            "share": 0.093,
+            "count": 532,
+            "share": 0.0931,
             "expected": 0.1
           },
           {
             "lower": 0.9,
             "upper": 1.0,
-            "count": 642,
-            "share": 0.1127,
+            "count": 646,
+            "share": 0.1131,
             "expected": 0.1
           }
         ],
-        "chi_square": 54.86,
+        "chi_square": 56.27,
         "dof": 9,
-        "chi_square_per_dof": 6.095,
+        "chi_square_per_dof": 6.252,
         "max_abs_deviation": 0.0223
       }
     }
@@ -687,6 +687,14 @@
       "market_brier": 0.21198,
       "priced_n": 284,
       "gap_to_market": 0.00961
+    },
+    "2026": {
+      "n": 16,
+      "model_brier": 0.23811,
+      "elo_brier": 0.22931,
+      "market_brier": 0.21265,
+      "priced_n": 16,
+      "gap_to_market": 0.02546
     }
   },
   "note": "Ties are excluded from every headline figure and counted in ties_excluded; brier_ties_as_half scores the same forecasts over all games with a tie as y=0.5. Model probabilities are conditioned on the game being decided before meeting a moneyline, because a moneyline voids on a tie."
