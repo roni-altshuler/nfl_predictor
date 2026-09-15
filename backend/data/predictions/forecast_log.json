@@ -1,16 +1,16 @@
 {
   "season": 2026,
-  "generated_at": "2026-09-14T16:50:55+00:00",
+  "generated_at": "2026-09-15T15:29:29+00:00",
   "basis": "published",
   "forecasts_made": 272,
-  "games_played": 15,
-  "games_pending": 257,
+  "games_played": 16,
+  "games_pending": 256,
   "ties_excluded": 0,
-  "n": 15,
+  "n": 16,
   "note": "Every row here was published strictly before its kickoff and is the EARLIEST such publication for that fixture. This record is never merged with the historical walk-forward on /accuracy, which is a reconstruction.",
-  "brier": 0.22984,
-  "accuracy": 0.66667,
-  "ece": 0.11772,
+  "brier": 0.23776,
+  "accuracy": 0.625,
+  "ece": 0.1069,
   "games": [
     {
       "game_id": "401872656",
@@ -311,6 +311,26 @@
       "p_home_conditional": 0.528068,
       "brier": 0.22272,
       "correct": true
+    },
+    {
+      "game_id": "401872931",
+      "season": 2026,
+      "week": 1,
+      "kickoff_utc": "2026-09-15T00:15:00+00:00",
+      "generated_at": "2026-08-16T15:19:07+00:00",
+      "model_version": "nfl-margin-lattice-1",
+      "home": "KC",
+      "away": "DEN",
+      "p_home": 0.401484,
+      "p_tie": 0.003731,
+      "p_away": 0.594785,
+      "exp_margin": -3.431,
+      "home_score": 31,
+      "away_score": 10,
+      "tie": false,
+      "p_home_conditional": 0.402988,
+      "brier": 0.356424,
+      "correct": false
     }
   ]
 }
