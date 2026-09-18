@@ -1,16 +1,47 @@
 {
   "season": 2026,
-  "generated_at": "2026-09-17T15:28:57+00:00",
+  "generated_at": "2026-09-18T14:50:15+00:00",
   "basis": "published",
   "forecasts_made": 272,
-  "games_played": 16,
-  "games_pending": 256,
+  "games_played": 17,
+  "games_pending": 255,
   "ties_excluded": 0,
-  "n": 16,
+  "invalid_excluded": 0,
+  "n": 17,
   "note": "Every row here was published strictly before its kickoff and is the EARLIEST such publication for that fixture. This record is never merged with the historical walk-forward on /accuracy, which is a reconstruction.",
-  "brier": 0.23776,
-  "accuracy": 0.625,
-  "ece": 0.1069,
+  "brier": 0.23104,
+  "accuracy": 0.64706,
+  "ece": 0.12129,
+  "cohorts": {
+    "model_version": {
+      "nfl-margin-lattice-1": {
+        "n": 17,
+        "brier": 0.23104,
+        "log_loss": 0.65441,
+        "accuracy": 0.64706
+      }
+    },
+    "horizon": {
+      "under_24h": {
+        "n": 0,
+        "brier": null,
+        "log_loss": null,
+        "accuracy": null
+      },
+      "1_to_7_days": {
+        "n": 0,
+        "brier": null,
+        "log_loss": null,
+        "accuracy": null
+      },
+      "7_days_or_more": {
+        "n": 17,
+        "brier": 0.23104,
+        "log_loss": 0.65441,
+        "accuracy": 0.64706
+      }
+    }
+  },
   "games": [
     {
       "game_id": "401872656",
@@ -19,6 +50,7 @@
       "kickoff_utc": "2026-09-10T00:20:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 585.01,
       "home": "SEA",
       "away": "NE",
       "p_home": 0.654656,
@@ -30,6 +62,7 @@
       "tie": false,
       "p_home_conditional": 0.656988,
       "brier": 0.117657,
+      "log_loss": 0.420089,
       "correct": true
     },
     {
@@ -39,6 +72,7 @@
       "kickoff_utc": "2026-09-11T00:35:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 609.26,
       "home": "LAR",
       "away": "SF",
       "p_home": 0.588397,
@@ -50,6 +84,7 @@
       "tie": false,
       "p_home_conditional": 0.590615,
       "brier": 0.348826,
+      "log_loss": 0.893099,
       "correct": false
     },
     {
@@ -59,6 +94,7 @@
       "kickoff_utc": "2026-09-13T17:00:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 673.68,
       "home": "PIT",
       "away": "ATL",
       "p_home": 0.590168,
@@ -70,6 +106,7 @@
       "tie": false,
       "p_home_conditional": 0.59239,
       "brier": 0.166146,
+      "log_loss": 0.52359,
       "correct": true
     },
     {
@@ -79,6 +116,7 @@
       "kickoff_utc": "2026-09-13T17:00:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 673.68,
       "home": "IND",
       "away": "BAL",
       "p_home": 0.455614,
@@ -90,6 +128,7 @@
       "tie": false,
       "p_home_conditional": 0.457365,
       "brier": 0.209183,
+      "log_loss": 0.611319,
       "correct": true
     },
     {
@@ -99,6 +138,7 @@
       "kickoff_utc": "2026-09-13T17:00:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 673.68,
       "home": "HOU",
       "away": "BUF",
       "p_home": 0.570448,
@@ -110,6 +150,7 @@
       "tie": false,
       "p_home_conditional": 0.572619,
       "brier": 0.327892,
+      "log_loss": 0.850079,
       "correct": false
     },
     {
@@ -119,6 +160,7 @@
       "kickoff_utc": "2026-09-13T17:00:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 673.68,
       "home": "CAR",
       "away": "CHI",
       "p_home": 0.446899,
@@ -130,6 +172,7 @@
       "tie": false,
       "p_home_conditional": 0.448612,
       "brier": 0.201253,
+      "log_loss": 0.595316,
       "correct": true
     },
     {
@@ -139,6 +182,7 @@
       "kickoff_utc": "2026-09-13T17:00:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 673.68,
       "home": "JAX",
       "away": "CLE",
       "p_home": 0.759586,
@@ -150,6 +194,7 @@
       "tie": false,
       "p_home_conditional": 0.761856,
       "brier": 0.056712,
+      "log_loss": 0.271997,
       "correct": true
     },
     {
@@ -159,6 +204,7 @@
       "kickoff_utc": "2026-09-13T17:00:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 673.68,
       "home": "DET",
       "away": "NO",
       "p_home": 0.649517,
@@ -170,6 +216,7 @@
       "tie": false,
       "p_home_conditional": 0.651844,
       "brier": 0.121213,
+      "log_loss": 0.42795,
       "correct": true
     },
     {
@@ -179,6 +226,7 @@
       "kickoff_utc": "2026-09-13T17:00:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 673.68,
       "home": "TEN",
       "away": "NYJ",
       "p_home": 0.603461,
@@ -190,6 +238,7 @@
       "tie": false,
       "p_home_conditional": 0.605714,
       "brier": 0.366889,
+      "log_loss": 0.930678,
       "correct": false
     },
     {
@@ -199,6 +248,7 @@
       "kickoff_utc": "2026-09-13T17:00:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 673.68,
       "home": "CIN",
       "away": "TB",
       "p_home": 0.590991,
@@ -210,6 +260,7 @@
       "tie": false,
       "p_home_conditional": 0.593216,
       "brier": 0.165474,
+      "log_loss": 0.522197,
       "correct": true
     },
     {
@@ -219,6 +270,7 @@
       "kickoff_utc": "2026-09-13T20:25:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 677.1,
       "home": "LAC",
       "away": "ARI",
       "p_home": 0.725332,
@@ -230,6 +282,7 @@
       "tie": false,
       "p_home_conditional": 0.727661,
       "brier": 0.529491,
+      "log_loss": 1.300709,
       "correct": false
     },
     {
@@ -239,6 +292,7 @@
       "kickoff_utc": "2026-09-13T20:25:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 677.1,
       "home": "MIN",
       "away": "GB",
       "p_home": 0.587433,
@@ -250,6 +304,7 @@
       "tie": false,
       "p_home_conditional": 0.589648,
       "brier": 0.168389,
+      "log_loss": 0.528229,
       "correct": true
     },
     {
@@ -259,6 +314,7 @@
       "kickoff_utc": "2026-09-13T20:25:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 677.1,
       "home": "LV",
       "away": "MIA",
       "p_home": 0.418624,
@@ -270,6 +326,7 @@
       "tie": false,
       "p_home_conditional": 0.420208,
       "brier": 0.336159,
+      "log_loss": 0.867005,
       "correct": false
     },
     {
@@ -279,6 +336,7 @@
       "kickoff_utc": "2026-09-13T20:25:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 677.1,
       "home": "PHI",
       "away": "WSH",
       "p_home": 0.666499,
@@ -290,6 +348,7 @@
       "tie": false,
       "p_home_conditional": 0.668841,
       "brier": 0.109667,
+      "log_loss": 0.402209,
       "correct": true
     },
     {
@@ -299,6 +358,7 @@
       "kickoff_utc": "2026-09-14T00:20:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 681.01,
       "home": "NYG",
       "away": "DAL",
       "p_home": 0.526037,
@@ -310,6 +370,7 @@
       "tie": false,
       "p_home_conditional": 0.528068,
       "brier": 0.22272,
+      "log_loss": 0.63853,
       "correct": true
     },
     {
@@ -319,6 +380,7 @@
       "kickoff_utc": "2026-09-15T00:15:00+00:00",
       "generated_at": "2026-08-16T15:19:07+00:00",
       "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 704.93,
       "home": "KC",
       "away": "DEN",
       "p_home": 0.401484,
@@ -330,7 +392,30 @@
       "tie": false,
       "p_home_conditional": 0.402988,
       "brier": 0.356424,
+      "log_loss": 0.90885,
       "correct": false
+    },
+    {
+      "game_id": "401872932",
+      "season": 2026,
+      "week": 2,
+      "kickoff_utc": "2026-09-18T00:15:00+00:00",
+      "generated_at": "2026-08-16T15:19:07+00:00",
+      "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 776.93,
+      "home": "BUF",
+      "away": "DET",
+      "p_home": 0.646211,
+      "p_tie": 0.003583,
+      "p_away": 0.350206,
+      "exp_margin": 5.276,
+      "home_score": 41,
+      "away_score": 31,
+      "tie": false,
+      "p_home_conditional": 0.648535,
+      "brier": 0.123528,
+      "log_loss": 0.43304,
+      "correct": true
     }
   ]
 }
