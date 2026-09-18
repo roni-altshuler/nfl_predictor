@@ -366,6 +366,7 @@ class FeatureBuilder:
                         "game_id": row["game_id"],
                         "date_utc": row["date_utc"],
                         "season": season,
+                        "season_type": int(row["season_type"]) if "season_type" in row.keys() else 2,
                         "week": week,
                         "home_team_id": int(row["home_team_id"]),
                         "away_team_id": int(row["away_team_id"]),

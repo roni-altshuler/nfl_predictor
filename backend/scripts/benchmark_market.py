@@ -209,8 +209,16 @@ def paired_bootstrap(
     n = len(diff)
     if n == 0:
         return {"mean": float("nan"), "lo": float("nan"), "hi": float("nan"), "p": float("nan")}
-    idx = rng.integers(0, n, size=(draws, n))
-    means = diff[idx].mean(axis=1)
+    if a_arr.shape != b_arr.shape or a_arr.ndim != 1 or not np.isfinite(diff).all():
+        raise ValueError('paired observations must be finite aligned vectors')
+    if draws < 1:
+        raise ValueError('draws must be positive')
+    means = np.empty(draws)
+    # Preserve the random sequence without a draws-by-corpus allocation.
+    for start in range(0, draws, 128):
+        stop = min(start + 128, draws)
+        idx = rng.integers(0, n, size=(stop - start, n))
+        means[start:stop] = diff[idx].mean(axis=1)
     return {
         "mean": float(diff.mean()),
         "lo": float(np.percentile(means, 2.5)),
@@ -381,8 +389,8 @@ def _lattice_pit(forecast: Any, actual_margin: int) -> float:
     is — it can only take as many values as the lattice has cells, so a
     histogram of it is spiky by construction and would read as a broken model.
 
-    The mid-P correction `F(k-1) + 0.5 * P(k)` is the standard fix and it is
-    uniform under a correct discrete forecast. Getting this wrong is the
+    The mid-P value `F(k-1) + 0.5 * P(k)` centers each discrete cell; it
+    is not exactly uniform even under a correct discrete forecast. Getting this wrong is the
     difference between "the interval widths are miscalibrated" and "the test
     does not apply to this kind of forecast".
     """
@@ -419,11 +427,22 @@ def _lattice_coverage(forecast: Any, actual_margin: int) -> Dict[str, bool]:
     return out
 
 
+def week_key(row):
+    """Postseason week 1 is not regular-season week 1."""
+    return (int(row['season']), int(row.get('season_type', 2)), int(row['week']))
+
+
+def training_base_rate(margins):
+    decided = np.asarray(margins)[np.asarray(margins) != 0]
+    return float(np.mean(decided > 0)) if len(decided) else .5
+
+
 def run(argv: Optional[Sequence[str]] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--from-season", type=int, default=None)
     parser.add_argument("--devig", default="shin", choices=("shin", "proportional"))
     parser.add_argument("--db")
+    parser.add_argument("--output-dir", type=Path, default=OUT)
     args = parser.parse_args(argv)
 
     warehouse = get_warehouse(args.db) if args.db else get_warehouse()
@@ -457,17 +476,17 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
 
     # ---- walk forward: refit weekly, predict that week only.
     order = np.argsort([m["date_utc"] for m in meta], kind="stable")
-    buckets: Dict[Tuple[int, int], List[int]] = defaultdict(list)
+    buckets: Dict[Tuple[int, int, int], List[int]] = defaultdict(list)
     for i in order:
-        buckets[(meta[i]["season"], meta[i]["week"])].append(int(i))
+        buckets[week_key(meta[i])].append(int(i))
 
     model = MarginModel()
     scored: List[Dict[str, Any]] = []
 
-    for (season, week) in sorted(buckets):
+    for (season, season_type, week) in sorted(buckets):
         if season < first_scored:
             continue
-        target = buckets[(season, week)]
+        target = buckets[(season, season_type, week)]
         earliest = min(meta[i]["date_utc"] for i in target)
         train_idx = [i for i in range(len(meta)) if meta[i]["date_utc"] < earliest]
         if len(train_idx) < 500:
@@ -488,6 +507,7 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
                 "p_tie_model": forecast.p_tie,
                 "p_away_model": forecast.p_away,
                 "elo_expect": elo_expect.get(row["game_id"], 0.5),
+                "base_probability": training_base_rate(margins[train_idx]),
                 "exp_margin": float(forecast.exp_margin),
                 "exp_total": float(forecast.exp_total),
                 "total_sd": float(forecast.total_sd),
@@ -506,16 +526,8 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
     logger.info("scored %d games walk-forward", len(scored))
 
     # ---- assemble each forecaster's conditional (two-way) probability.
-    base_rate_decided = float(
-        np.mean([
-            1.0 for s in scored if s["home_score"] > s["away_score"]
-        ] or [0.0])
-    ) if scored else 0.5
-    decided_n = sum(1 for s in scored if s["home_score"] != s["away_score"])
-    base_rate = (
-        sum(1 for s in scored if s["home_score"] > s["away_score"]) / decided_n
-        if decided_n else 0.5
-    )
+    # Summary of training-only baseline probabilities, not the test outcome rate.
+    base_rate = float(np.mean([s['base_probability'] for s in scored])) if scored else .5
 
     def market_probability(row: Dict[str, Any]) -> Tuple[Optional[float], Optional[str]]:
         """The closing line as a two-way probability, and where it came from.
@@ -569,7 +581,7 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
 
         model_p.append(cond)
         elo_p.append(elo_cond)
-        base_p.append(base_rate)
+        base_p.append(s["base_probability"])
         hs.append(s["home_score"]); as_.append(s["away_score"])
 
         decided = s["home_score"] != s["away_score"]
@@ -615,7 +627,7 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
             per_season[season]["paired_market"].append((implied - won) ** 2)
             paired["margin_model"].append((cond - won) ** 2)
             paired["elo_only"].append((elo_cond - won) ** 2)
-            paired["constant_base_rate"].append((base_rate - won) ** 2)
+            paired["constant_base_rate"].append((s["base_probability"] - won) ** 2)
             paired["market"].append((implied - won) ** 2)
 
     cards = {
@@ -699,7 +711,7 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
         for season, values in sorted(per_season.items())
     }
 
-    _write(OUT / "retrodictions.json", {
+    _write(args.output_dir / "retrodictions.json", {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "basis": "backtest",
         "n": len(retrodictions),
@@ -726,6 +738,9 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
         "unpriced_games": len(scored) - len(market_p),
         "market_source_counts": source_counts,
         "base_rate": round(base_rate, 5),
+        "base_rate_basis": "weekly training-only home-win frequency",
+        "market_timing": "historical retained prices; closing timestamps unverified",
+        "week_grouping": "season, season_type, week",
         "scorecards": cards,
         "paired_vs_market": comparisons,
         "reliability": {
@@ -743,8 +758,8 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
             "moneyline, because a moneyline voids on a tie."
         ),
     }
-    OUT.mkdir(parents=True, exist_ok=True)
-    path = OUT / "market_benchmark.json"
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    path = args.output_dir / "market_benchmark.json"
     path.write_text(json.dumps(payload, indent=2))
     logger.info("")
     logger.info("wrote %s", path)

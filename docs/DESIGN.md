@@ -236,3 +236,35 @@ anchor. Team marks sit on a light plate (`--logo-plate`) because NFL marks
 are authored for light backgrounds. Every table row hovers to
 `--card-hover`; every card hovers to `--border-hover`. Focus is a 2px
 `--accent-primary` outline, always visible.
+
+
+## Forecast Lab (2026-09-18)
+
+`/lab` and the homepage spotlight connect the published matchup probabilities,
+spread surface and margin lattice. Search, week and following filters, shareable
+fixture URLs and a hypothetical record calculator support exploration. The
+record calculator changes only wins/losses/ties, never forecast probabilities.
+The selected game precedes the fixture picker on narrow screens. New controls
+have 44px minimum targets; the existing chalkboard and ambient dial remain.
+
+Font variables now use native sans/monospace stacks, preserving tabular figures
+without a Google Fonts request at build time. The mobile bar includes Lab;
+season archives remain available from Schedule and the desktop rail.
+
+
+## January effect and weekly briefing (2026-09-18)
+
+The homepage briefing surfaces three concrete entry points: next kickoff, closest
+model matchup and largest simulated playoff swing. Cards use the same team marks,
+slate surfaces and directly labelled numbers as the rest of the site.
+
+The Lab's January effect reads published conditional season simulations. A green
+bar shows the selected outcome's playoff chance; a white marker identifies the
+simulation baseline. Numeric probabilities and percentage-point changes appear
+beside every bar. Result controls are 44px native buttons; insufficient samples
+are visibly withheld. Technical interpretation lives in a native disclosure.
+The simple record-only calculator is now a secondary disclosure.
+
+The accuracy page's research ledger keeps exploratory experiments separate from
+live and production backtest results. Higher winner accuracy alone is not a claim
+of improved probabilities. First-load motion still respects reduced motion.

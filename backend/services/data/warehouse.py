@@ -836,8 +836,24 @@ class Warehouse:
         if not prepared:
             return 0
         with self.transaction() as conn:
+            # An identical retry is safe; replacing an earlier claim is not.
+            columns = ('fixture_uid', 'generated_at', 'model_version', 'competition_id',
+                       'season', 'week', 'kickoff_utc', 'home_team', 'away_team',
+                       'p_home', 'p_away', 'p_tie', 'exp_margin', 'exp_total')
+            seen = {}
+            for values in prepared:
+                key = values[:3]
+                if key in seen and seen[key] != values:
+                    raise ValueError('Conflicting immutable snapshots in one batch')
+                seen[key] = values
+                prior = conn.execute(
+                    'SELECT * FROM prediction_snapshots WHERE fixture_uid = ? '
+                    'AND generated_at = ? AND model_version = ?', values[:3],
+                ).fetchone()
+                if prior is not None and tuple(prior[k] for k in columns) != values:
+                    raise ValueError('Refusing to rewrite an immutable prediction snapshot')
             conn.executemany(
-                "INSERT OR REPLACE INTO prediction_snapshots ("
+                "INSERT OR IGNORE INTO prediction_snapshots ("
                 "fixture_uid, generated_at, model_version, competition_id, "
                 "season, week, kickoff_utc, home_team, away_team, p_home, "
                 "p_away, p_tie, exp_margin, exp_total) "
@@ -853,11 +869,11 @@ class Warehouse:
         game started is not a forecast, whatever it says.
         """
         sql = (
-            "SELECT * FROM prediction_snapshots p WHERE generated_at = ("
-            "  SELECT MIN(generated_at) FROM prediction_snapshots q "
-            "  WHERE q.fixture_uid = p.fixture_uid "
-            "    AND q.generated_at < q.kickoff_utc"
-            ") AND generated_at < kickoff_utc"
+            'SELECT * FROM (SELECT *, ROW_NUMBER() OVER ('
+            'PARTITION BY fixture_uid ORDER BY julianday(generated_at), model_version'
+            ') AS publication_rank FROM prediction_snapshots '
+            'WHERE julianday(generated_at) < julianday(kickoff_utc)) '
+            'WHERE publication_rank = 1'
         )
         params: List[Any] = []
         if season is not None:

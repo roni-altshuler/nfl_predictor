@@ -382,6 +382,7 @@ class MarginModel:
         ridge: float = 1.0,
         trained_through: Optional[str] = None,
         fit_key_numbers: bool = True,
+        sample_weight: Optional[np.ndarray] = None,
     ) -> MarginModelParams:
         """Ridge-fit margin and total on the same design matrix.
 
@@ -406,8 +407,15 @@ class MarginModel:
         design = np.hstack([np.ones((len(X), 1)), X])
         self.feature_names = list(feature_names)
 
-        self._margin_coef = _ridge_solve(design, y_margin, ridge)
-        self._total_coef = _ridge_solve(design, y_total, ridge)
+        weights = np.ones(len(X))
+        if sample_weight is not None:
+            weights = np.asarray(sample_weight, dtype=float)
+            if weights.shape != (len(X),) or not np.isfinite(weights).all() or (weights <= 0).any():
+                raise ValueError('sample_weight must contain one finite positive weight per row')
+            weights = weights / weights.mean()
+        root = np.sqrt(weights)
+        self._margin_coef = _ridge_solve(design * root[:, None], y_margin * root, ridge)
+        self._total_coef = _ridge_solve(design * root[:, None], y_total * root, ridge)
 
         margin_resid = y_margin - design @ self._margin_coef
         total_resid = y_total - design @ self._total_coef
@@ -416,8 +424,8 @@ class MarginModel:
         # a handful of features it barely moves, but a fit on one season
         # would otherwise report an optimistic sigma.
         dof = max(1, len(X) - design.shape[1])
-        self.params.margin_sd = float(np.sqrt((margin_resid ** 2).sum() / dof))
-        self.params.total_sd = float(np.sqrt((total_resid ** 2).sum() / dof))
+        self.params.margin_sd = float(np.sqrt((weights * margin_resid ** 2).sum() / dof))
+        self.params.total_sd = float(np.sqrt((weights * total_resid ** 2).sum() / dof))
         self.params.margin_intercept = float(self._margin_coef[0])
         self.params.total_intercept = float(self._total_coef[0])
         self.params.n_train = int(len(X))

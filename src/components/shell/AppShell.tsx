@@ -38,6 +38,7 @@ export interface ShellSeason {
 
 const NAV = [
   { href: '/', label: 'This week', short: 'Week' },
+  { href: '/lab', label: 'Forecast Lab', short: 'Lab' },
   { href: '/preview', label: 'Season preview', short: 'Preview' },
   { href: '/season', label: 'Season', short: 'Season' },
   { href: '/games', label: 'Schedule', short: 'Games' },
@@ -55,7 +56,7 @@ const NAV = [
 // central claim of this product is that its probabilities are calibrated,
 // and the page that shows whether that is true should not be two taps down.
 const MOBILE_NAV = NAV.filter((item) =>
-  ['/', '/games', '/bracket', '/seasons', '/accuracy'].includes(item.href),
+  ['/', '/lab', '/games', '/bracket', '/accuracy'].includes(item.href),
 )
 
 function isActive(pathname: string, href: string): boolean {
@@ -149,7 +150,7 @@ export function AppShell({
               eye settles, not in a settings page. */}
           <AmbientToggle />
           <p className="font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-            Model probabilities, scored against the closing line. Not betting
+            Model probabilities, compared with historical prices. Not betting
             advice.
           </p>
         </div>

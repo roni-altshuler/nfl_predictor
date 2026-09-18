@@ -15,7 +15,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: weekly-benchmark
+  group: nfl-data-publication
   cancel-in-progress: false
 
 permissions:
@@ -76,6 +76,6 @@ jobs:
             echo "diagnostics unchanged"
           else
             git commit -m "chore: refresh benchmarks [automated]"
-            git pull --rebase --autostash origin main || true
+            git pull --rebase --autostash origin main
             git push
           fi

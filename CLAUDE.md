@@ -22,7 +22,7 @@ If a proposed feature is none of those four, it does not belong here.
 - **The market is the benchmark.** Any accuracy claim is stated as a paired Brier against the closing line on named games, or it is not stated.
 - **Baselines are never deleted.** Constant base rate and Elo-only stay live as yardsticks.
 - **No fabricated data.** Sparse coverage stays genuinely missing; never impute a plausible value.
-- **Whenever a challenger beats the closing line, suspect the harness first.** A model with no market features cannot out-predict the market. That result is a bug announcing itself.
+- **Whenever a challenger beats retained historical prices, audit the harness first.** Check leakage, price timestamps and paired coverage before making a claim. Such a result is not logically impossible, and backfilled ESPN prices are not verified closing prices.
 - **Vercel escalates ESLint warnings to errors.** Run `npx next lint` before pushing; `npm run build` is not enough.
 - **The design system is documented in [docs/DESIGN.md](docs/DESIGN.md)** — tokens, copy discipline, the CSS-only motion vocabulary, and the back-navigation contract. Read it before touching the frontend.
 
@@ -220,7 +220,7 @@ The 2026 NFL season kicks off September 2026 and ends with a Super Bowl in Febru
 
 - **Head-to-head for three or more teams is the SWEEP rule, not a comparator.** It applies only when one club beat every other in the group, or lost to every other. A group where A beat B, B beat C and C beat A has a result for every pair and a winner for none — and a `cmp`-style sort over a non-transitive relation produces an order that depends on the input sequence and looks entirely reasonable. There is a test that the answer is the same forwards and backwards.
 
-- **The PIT for the margin must be MID-P, because the margin distribution is discrete.** An ordinary `F(y)` on a 57-cell lattice can only take 57 values, so its histogram is spiky however good the forecast is — it would read as a broken model. `F(k-1) + 0.5·P(k)` is uniform under a correct discrete forecast. The same applies to coverage: the margin interval is the smallest lattice range whose mass reaches nominal, which is conservative by construction, so **over-coverage at the 50% level (54.5%) is mostly the fat cells at 3 and 7 points rather than a miscalibration**.
+- **The PIT for the margin must be MID-P, because the margin distribution is discrete.** An ordinary `F(y)` on a 57-cell lattice can only take 57 values, so its histogram is spiky however good the forecast is — it would read as a broken model. `F(k-1) + 0.5·P(k)` centers each discrete cell; it is not exactly uniform even under a correct forecast. The same applies to coverage: the margin interval is the smallest lattice range whose mass reaches nominal, which is conservative by construction, so **over-coverage at the 50% level (54.5%) is mostly the fat cells at 3 and 7 points rather than a miscalibration**.
 
 - **A season is `16 * (weeks - 1)` games, not `16 * weeks`.** Every team has exactly one bye, so an 18-week season is 272 games and a 17-week one is 256. The first version of `conference_race` asserted 288 and refused to replay any season at all. 2022 is 271 — see `KNOWN_CANCELLATIONS`.
 
@@ -352,4 +352,19 @@ Recorded rather than papered over:
 - **No team box-score features.** See the landmine above; they return when a `backfill_boxscores` pass exists, and not before.
 - **Tiebreakers are approximated.** Win percentage, head-to-head (two-team), division and conference record. The league's procedure has twelve steps; the remainder breaks deterministically on team id rather than by simulated coin toss, because a random tiebreak inside a Monte Carlo adds variance that looks like uncertainty and is not.
 - **The margin model does not currently beat Elo-only.** On the walk-forward it scores .2199 against Elo's .2198, with worse calibration (ECE .0209 vs .0120). The extra features have not yet earned their place and the accuracy page must not imply otherwise.
-- **The live published record is empty** because the season has not started. It will grow from zero and be reported at whatever n it reaches, never merged with the historical walk-forward.
+- **Read the live published record from `forecast_log.json`.** The 2026 season is in progress. Report its actual sample size separately from the historical walk-forward.
+
+
+## Continued improvement pass, 2026-09-18
+
+`/lab` now renders conditional playoff scenarios from `playoff_scenarios.json`.
+The simulator passes both actual and simulated head-to-head results to seeding;
+older projections did not. Its version is `nfl-season-h2h-2`. The game-probability
+model is unchanged. The daily forecaster writes the scenario artifact from the
+same simulation as its season projections. A standalone rebuild from matching
+published artifacts is available as `python -m backend.scripts.build_playoff_scenarios`.
+
+Recency weighting and a temporal blend/calibration challenger were evaluated and
+held from production. See `docs/CONTINUED_IMPROVEMENTS_2026-09-18.md`. Run backend
+pytest, `npm test`, `npm run lint`, `npm run typecheck`, production build, and
+`npm run test:browser` against a production server before publishing UI changes.

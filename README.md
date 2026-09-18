@@ -1,6 +1,12 @@
 # Gridiron
 
-NFL game and season probabilities, scored against the closing line.
+NFL game and season probabilities, compared with historical market prices.
+
+[Forecast Lab and reliability improvements](docs/IMPROVEMENT_AUDIT_2026-09-18.md)
+adds interactive matchup exploration, record scenarios, safer forecast history,
+and a measured recency experiment. See the [verification report](docs/VERIFICATION_2026-09-18.md)
+for results and reproduction commands. Historical price timestamps are not
+verified closes; the published benchmark predates the latest evaluation fixes.
 
 A sibling of [`../nba_predictor`](../nba_predictor) (Hardwood) and
 [`../soccer_predictor`](../soccer_predictor) (Pitchverse) — same architecture,
@@ -124,3 +130,5 @@ npm run dev
 Not betting advice. These are model probabilities published for their own
 sake, and the accuracy page says with a confidence interval that the market
 is better.
+
+The continued improvement pass adds conditional playoff scenarios, a weekly fan briefing, and an evidence ledger: [implementation and model results](docs/CONTINUED_IMPROVEMENTS_2026-09-18.md).

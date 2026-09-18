@@ -65,6 +65,7 @@ from backend.services.prediction.feature_builder import (
 from backend.services.prediction.margin_model import MarginModel
 from backend.services.ratings.elo import EloConfig, EloRatingSystem
 from backend.services.simulation.season_simulator import Fixture, SeasonSimulator
+from backend.scripts.build_playoff_scenarios import scenario_ids, scenario_payload, SIMULATION_VERSION
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s %(levelname)-7s %(message)s"
@@ -120,7 +121,7 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
         return 1
 
     model = MarginModel()
-    params = model.fit(X, margins, totals, FEATURE_NAMES)
+    params = model.fit(X, margins, totals, FEATURE_NAMES, trained_through=max(str(r["date_utc"]) for r in rows))
     logger.info(
         "fitted on %d games: margin_sd %.3f, total_sd %.3f, home advantage %+.2f pts",
         params.n_train, params.margin_sd, params.total_sd, model._margin_coef[0],
@@ -201,6 +202,7 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
             p_home=forecast.p_home,
             p_tie=forecast.p_tie,
             neutral=bool(row["neutral_site"]),
+            game_id=str(row["game_id"]),
         ))
 
         # Advance the schedule clock. `iter_scheduled` yields in date order,
@@ -246,6 +248,7 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
         season, teams_payload, played,
         [f for f in sim_fixtures],
         generated_at=generated_at,
+        scenario_game_ids=scenario_ids({"games": forecasts, "generated_at": generated_at}),
     )
     logger.info(
         "simulated %d seasons: %d played, %d remaining",
@@ -257,6 +260,8 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
         "season": season,
         "generated_at": generated_at,
         "model_version": MODEL_VERSION,
+        "trained_through": params.trained_through,
+        "training_games": params.n_train,
         "season_start": min(
             (f["date_utc"] for f in forecasts), default=None
         ),
@@ -266,9 +271,12 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
 
     _write(OUT_DIR / "season_projections.json", {
         **result.as_dict(),
+        "simulation_version": SIMULATION_VERSION,
         "model_version": MODEL_VERSION,
         "seeds_per_conference": seeds_per_conference(season),
     })
+
+    _write(OUT_DIR / "playoff_scenarios.json", scenario_payload(result, (OUT_DIR / "game_forecasts.json").read_bytes()))
 
     _write(OUT_DIR / "power_ratings.json", {
         "season": season,

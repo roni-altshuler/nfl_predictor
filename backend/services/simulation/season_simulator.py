@@ -146,6 +146,7 @@ class SeasonSimulationResult:
     games_played: int
     games_remaining: int
     generated_at: str
+    scenarios: List[Dict[str, Any]] = field(default_factory=list)
 
     def as_dict(self) -> Dict:
         return {
@@ -167,6 +168,7 @@ class Fixture:
     p_home: float
     p_tie: float
     neutral: bool = False
+    game_id: str = ""
 
 
 class SeasonSimulator:
@@ -178,6 +180,8 @@ class SeasonSimulator:
         simulations: int = 20000,
         shock_sd: float = STRENGTH_SHOCK_SD,
     ):
+        if simulations < 1 or not math.isfinite(shock_sd) or shock_sd < 0:
+            raise ValueError("positive simulations and finite nonnegative shock required")
         self.simulations = simulations
         self.shock_sd = shock_sd
 
@@ -190,6 +194,7 @@ class SeasonSimulator:
         *,
         head_to_head: Optional[Dict[Tuple[int, int], float]] = None,
         generated_at: str = "",
+        scenario_game_ids: Sequence[str] = (),
     ) -> SeasonSimulationResult:
         """Project a season.
 
@@ -197,6 +202,19 @@ class SeasonSimulator:
         `played` is the games already decided this season.
         `remaining` is every fixture still to come, already priced.
         """
+        # Canonical input order makes seeded runs invariant to provider row order.
+        teams = sorted(teams, key=lambda t: int(t["team_id"]))
+        remaining = sorted(remaining, key=lambda f: (f.game_id, f.home_team_id, f.away_team_id, f.p_home, f.p_tie))
+        if len({int(t["team_id"]) for t in teams}) != len(teams):
+            raise ValueError("duplicate team identity")
+        fixture_ids = [f.game_id for f in remaining if f.game_id]
+        if len(fixture_ids) != len(set(fixture_ids)):
+            raise ValueError("duplicate fixture identity")
+        for f in remaining:
+            if not (math.isfinite(f.p_home) and math.isfinite(f.p_tie) and 0 <= f.p_home <= 1 and 0 <= f.p_tie <= 1 and f.p_home + f.p_tie <= 1):
+                raise ValueError("invalid fixture probabilities")
+            if f.home_team_id == f.away_team_id or any(t not in {int(x["team_id"]) for x in teams} for t in (f.home_team_id, f.away_team_id)):
+                raise ValueError("fixture references unknown or identical teams")
         rng = np.random.default_rng(
             int(hashlib.sha256(str(season).encode()).hexdigest()[:16], 16)
         )
@@ -218,6 +236,21 @@ class SeasonSimulator:
         base_conf_w = np.zeros(n_teams)
         base_conf_g = np.zeros(n_teams)
         h2h: Dict[Tuple[int, int], float] = dict(head_to_head or {})
+        # Store points and meeting counts, not a sum of win percentages. A split
+        # home/away series is .500, including ties as half-wins.
+        pair_points: Dict[Tuple[int, int], np.ndarray] = {}
+        pair_games: Dict[Tuple[int, int], int] = defaultdict(int)
+        def add_meeting(home: int, away: int, home_points: Any) -> None:
+            if conference_of[home] != conference_of[away]:
+                return
+            pair = tuple(sorted((home, away)))
+            if pair not in pair_points:
+                pair_points[pair] = np.zeros(n_sims)
+            pair_points[pair] += home_points if home == pair[0] else 1.0 - home_points
+            pair_games[pair] += 1
+
+        scenario_ids = set(scenario_game_ids)
+        outcomes: Dict[str, Tuple[Fixture, np.ndarray]] = {}
 
         for game in played:
             h, a = int(game["home_team_id"]), int(game["away_team_id"])
@@ -225,6 +258,7 @@ class SeasonSimulator:
                 continue
             hi, ai = index_of[h], index_of[a]
             hs, as_ = float(game["home_score"]), float(game["away_score"])
+            add_meeting(h, a, 0.5 if hs == as_ else float(hs > as_))
             same_div = division_of[h] == division_of[a]
             same_conf = conference_of[h] == conference_of[a]
             for i, j, score, other in ((hi, ai, hs, as_), (ai, hi, as_, hs)):
@@ -277,6 +311,9 @@ class SeasonSimulator:
             is_tie = draw < p_tie
             home_win = (~is_tie) & (draw < p_tie + (1.0 - p_tie) * adjusted)
             away_win = (~is_tie) & (~home_win)
+            add_meeting(fixture.home_team_id, fixture.away_team_id, home_win + 0.5 * is_tie)
+            if fixture.game_id in scenario_ids:
+                outcomes[fixture.game_id] = (fixture, np.where(is_tie, 0, np.where(home_win, 1, -1)))
 
             wins[:, hi] += home_win
             wins[:, ai] += away_win
@@ -301,6 +338,9 @@ class SeasonSimulator:
         seed_counts = np.zeros((n_teams, n_seeds + 1))
         division_titles = np.zeros(n_teams)
         playoff_hits = np.zeros(n_teams)
+        playoff_samples = np.zeros((n_sims, n_teams), dtype=bool)
+        division_samples = np.zeros((n_sims, n_teams), dtype=bool)
+        champion_samples = np.zeros((n_sims, n_teams), dtype=bool)
         bye_hits = np.zeros(n_teams)
         round_hits = {
             "divisional": np.zeros(n_teams),
@@ -318,6 +358,11 @@ class SeasonSimulator:
         elo_of = {int(t["team_id"]): float(t.get("elo", 1500.0)) for t in teams}
 
         for sim in range(n_sims):
+            sim_h2h = dict(h2h)
+            for (a, b), points in pair_points.items():
+                fraction = float(points[sim] / pair_games[(a, b)])
+                sim_h2h[(a, b)] = fraction
+                sim_h2h[(b, a)] = 1.0 - fraction
             seeded: Dict[str, List[int]] = {}
             for conf, members in by_conference.items():
                 records = [
@@ -335,18 +380,20 @@ class SeasonSimulator:
                     )
                     for tid in members
                 ]
-                ordered = seed_conference(records, season, head_to_head=h2h)
+                ordered = seed_conference(records, season, head_to_head=sim_h2h)
                 ids = [r.team_id for r in ordered]
                 seeded[conf] = ids
                 for seed_index, tid in enumerate(ids, start=1):
                     i = index_of[tid]
                     seed_counts[i, seed_index] += 1
                     playoff_hits[i] += 1
+                    playoff_samples[sim, i] = True
                     if seed_index <= (1 if season >= 2020 else 2):
                         bye_hits[i] += 1
                 # Division titles are the top four seeds by construction.
-                for tid in ids[:4]:
+                for tid in ids[:len({division_of[t] for t in members})]:
                     division_titles[index_of[tid]] += 1
+                    division_samples[sim, index_of[tid]] = True
 
             if len(conferences) < 2:
                 continue
@@ -376,6 +423,7 @@ class SeasonSimulator:
                     if key:
                         round_hits[key][index_of[tid]] += 1
             round_hits["championship"][index_of[champion]] += 1
+            champion_samples[sim, index_of[champion]] = True
 
         # ---- assemble
         projections: List[TeamProjection] = []
@@ -390,7 +438,7 @@ class SeasonSimulator:
             projections.append(
                 TeamProjection(
                     team_id=tid,
-                    name=str(team.get("display_name") or ""),
+                    name=str(team.get("display_name") or team.get("name") or ""),
                     abbreviation=str(team.get("abbreviation") or ""),
                     conference=str(conference_of.get(tid) or ""),
                     division=str(division_of.get(tid) or ""),
@@ -420,6 +468,31 @@ class SeasonSimulator:
                 )
             )
 
+        scenarios = []
+        for game_id, (fixture, outcome) in outcomes.items():
+            branches = {}
+            for label, code in (("home", 1), ("away", -1), ("tie", 0)):
+                mask = outcome == code
+                n = int(mask.sum())
+                branches[label] = {"samples": n, "available": n >= 200, "teams": []}
+                if n < 200:
+                    continue
+                for i, tid in enumerate(team_ids):
+                    p = float(playoff_samples[mask, i].mean())
+                    # Wilson bounds describe Monte Carlo precision ONLY, not
+                    # structural model error or confidence in the real world.
+                    z2 = 1.96 ** 2
+                    center = (p + z2 / (2*n)) / (1 + z2/n)
+                    radius = 1.96 * math.sqrt(p*(1-p)/n + z2/(4*n*n)) / (1+z2/n)
+                    branches[label]["teams"].append({
+                        "team_id": tid, "p_playoffs": round(p, 6),
+                        "p_division": round(float(division_samples[mask, i].mean()), 6),
+                        "p_championship": round(float(champion_samples[mask, i].mean()), 6),
+                        "playoff_mc_interval": [round(max(0, center-radius), 6), round(min(1, center+radius), 6)],
+                    })
+            scenarios.append({"game_id": game_id, "home_team_id": fixture.home_team_id,
+                              "away_team_id": fixture.away_team_id, "branches": branches})
+
         projections.sort(key=lambda p: -p.p_championship)
         return SeasonSimulationResult(
             season=season,
@@ -428,4 +501,5 @@ class SeasonSimulator:
             games_played=len(played),
             games_remaining=len(remaining),
             generated_at=generated_at,
+            scenarios=scenarios,
         )

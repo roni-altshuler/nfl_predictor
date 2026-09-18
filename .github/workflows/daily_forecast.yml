@@ -32,7 +32,7 @@ on:
 # One forecast at a time. Two concurrent runs would both push the artifacts
 # and the git push would lose.
 concurrency:
-  group: daily-forecast
+  group: nfl-data-publication
   cancel-in-progress: false
 
 permissions:
@@ -57,25 +57,19 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Restore the warehouse
-        # The warehouse is gitignored — it is derived data, and a SQLite file
-        # rebuilt from ESPN does not belong in git history. It is republished
-        # as a release asset each run, so a runner that cannot download it
-        # must rebuild rather than forecast from nothing.
+        # Forecast snapshots cannot be reconstructed from results. A failed
+        # restore must stop publication, including on a requested full rebuild.
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if gh release download warehouse-latest \
-               --pattern 'warehouse.sqlite.gz' --dir /tmp --clobber; then
-            gunzip -f /tmp/warehouse.sqlite.gz
-            mv /tmp/warehouse.sqlite backend/data/warehouse.sqlite
-            echo "restored warehouse"
-          else
-            echo "no published warehouse — will rebuild from scratch"
-            echo "NEEDS_FULL_BUILD=true" >> "$GITHUB_ENV"
-          fi
+          gh release download warehouse-latest \
+            --pattern 'warehouse.sqlite.gz' --dir /tmp --clobber
+          gunzip -f /tmp/warehouse.sqlite.gz
+          mv /tmp/warehouse.sqlite backend/data/warehouse.sqlite
+          cp backend/data/warehouse.sqlite /tmp/warehouse-before.sqlite
 
       - name: Rebuild the warehouse in full
-        if: env.NEEDS_FULL_BUILD == 'true' || github.event.inputs.full_rebuild == 'true'
+        if: github.event.inputs.full_rebuild == 'true'
         # 2002 is the first season with 32 teams in eight four-team divisions.
         # Earlier seasons have different seeding rules and ESPN will serve
         # them happily.
@@ -84,10 +78,7 @@ jobs:
           python -m backend.scripts.backfill_odds --seasons 2011-2026 --missing-only
 
       - name: Refresh the current season
-        # New results are the entire reason this job runs. A failure here
-        # means forecasting from a stale corpus, which is stale but not
-        # WRONG — so it may fail without stopping the run.
-        continue-on-error: true
+        # A failed ingest must not receive a fresh publication timestamp.
         run: |
           python -m backend.scripts.build_warehouse --current-season
           python -m backend.scripts.backfill_odds --current-season --limit 400
@@ -146,32 +137,34 @@ jobs:
           python -m backend.scripts.build_history \
             --from-season "$(python -c 'from backend.services.espn.client import current_season; print(current_season())')"
 
+      - name: Verify and preserve forecast history before publication
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python -m backend.scripts.verify_snapshot_history \
+            --previous /tmp/warehouse-before.sqlite
+          gzip -c backend/data/warehouse.sqlite > /tmp/warehouse.sqlite.gz
+          # A unique backup survives interrupted replacement of the latest asset.
+          cp /tmp/warehouse.sqlite.gz "/tmp/warehouse-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.sqlite.gz"
+          gh release upload warehouse-latest \
+            "/tmp/warehouse-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.sqlite.gz"
+          gh release upload warehouse-latest /tmp/warehouse.sqlite.gz --clobber
+
       - name: Commit refreshed artifacts
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # `forecast_log.json` lives under predictions/ and is the durable
-          # copy of the live record: the warehouse is gitignored and gets
-          # rebuilt from ESPN on a failed restore, and a forecast made before
-          # a game is the one thing a rebuild cannot recover.
+          # copy of the live record alongside the release warehouse. A forecast
+          # made before a game is the one thing an ESPN rebuild cannot recover.
           git add backend/data/predictions/ backend/data/diagnostics/ \
-                  backend/data/history/ || true
+                  backend/data/history/
           # Artifacts stamp generated_at every run, so ignore a diff that is
           # only a timestamp — otherwise this job commits daily noise.
           if git diff --cached --quiet -I'"generated_at":'; then
             echo "forecast unchanged"
           else
             git commit -m "chore: refresh forecast [automated]"
-            git pull --rebase --autostash origin main || true
+            git pull --rebase --autostash origin main
             git push
           fi
-
-      - name: Republish the warehouse
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gzip -c backend/data/warehouse.sqlite > /tmp/warehouse.sqlite.gz
-          gh release view warehouse-latest >/dev/null 2>&1 || \
-            gh release create warehouse-latest --title 'Warehouse (latest)' \
-              --notes 'Derived NFL game warehouse. Rebuilt daily.'
-          gh release upload warehouse-latest /tmp/warehouse.sqlite.gz --clobber

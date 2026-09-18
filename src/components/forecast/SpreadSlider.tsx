@@ -148,50 +148,28 @@ export function SpreadSlider({
         id={`${id}-readout`}
         className="mt-2 grid grid-cols-3 gap-2 font-mono text-[11px]"
       >
-        <div className="flex items-baseline gap-1.5">
-          <span
-            aria-hidden="true"
-            className="inline-block h-2 w-2 shrink-0 rounded-[1px]"
-            style={{ background: 'var(--viz-cat-1)' }}
-          />
-          <span>
-            <dt className="text-[var(--text-tertiary)]">{home} covers</dt>
-            <dd className="numeric text-sm text-[var(--text-primary)]">
-              {pct(row.home_cover)}
-            </dd>
-          </span>
+        <div>
+          <dt className="flex items-center gap-1.5 text-[var(--text-tertiary)]">
+            <span aria-hidden="true" className="inline-block h-2 w-2 shrink-0 rounded-[1px]" style={{ background: 'var(--viz-cat-1)' }} />
+            {home} covers
+          </dt>
+          <dd className="numeric text-sm text-[var(--text-primary)]">{pct(row.home_cover)}</dd>
         </div>
-        <div className="flex items-baseline justify-center gap-1.5 text-center">
-          <span
-            aria-hidden="true"
-            className="inline-block h-2 w-2 shrink-0 rounded-[1px]"
-            style={{ background: 'var(--viz-reference)' }}
-          />
-          <span>
-            <dt className="text-[var(--text-tertiary)]">push</dt>
-            <dd
-              className={
-                row.push >= 0.04
-                  ? 'numeric text-sm text-[var(--accent-warn)]'
-                  : 'numeric text-sm text-[var(--text-secondary)]'
-              }
-            >
-              {noPush ? '—' : pct(row.push)}
-            </dd>
-          </span>
+        <div className="text-center">
+          <dt className="flex items-center justify-center gap-1.5 text-[var(--text-tertiary)]">
+            <span aria-hidden="true" className="inline-block h-2 w-2 shrink-0 rounded-[1px]" style={{ background: 'var(--viz-reference)' }} />
+            push
+          </dt>
+          <dd className={row.push >= 0.04 ? 'numeric text-sm text-[var(--accent-warn)]' : 'numeric text-sm text-[var(--text-secondary)]'}>
+            {noPush ? '—' : pct(row.push)}
+          </dd>
         </div>
-        <div className="flex items-baseline justify-end gap-1.5 text-right">
-          <span>
-            <dt className="text-[var(--text-tertiary)]">{away} covers</dt>
-            <dd className="numeric text-sm text-[var(--text-primary)]">
-              {pct(row.away_cover)}
-            </dd>
-          </span>
-          <span
-            aria-hidden="true"
-            className="inline-block h-2 w-2 shrink-0 rounded-[1px]"
-            style={{ background: 'var(--viz-cat-2)' }}
-          />
+        <div className="text-right">
+          <dt className="flex items-center justify-end gap-1.5 text-[var(--text-tertiary)]">
+            {away} covers
+            <span aria-hidden="true" className="inline-block h-2 w-2 shrink-0 rounded-[1px]" style={{ background: 'var(--viz-cat-2)' }} />
+          </dt>
+          <dd className="numeric text-sm text-[var(--text-primary)]">{pct(row.away_cover)}</dd>
         </div>
       </dl>
     </div>

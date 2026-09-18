@@ -64,7 +64,7 @@ export function AmbientToggle({ className }: { className?: string }) {
       aria-label="Chalkboard animation"
       className={cn('flex items-center gap-1', className)}
     >
-      <span className="mr-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+      <span className="mr-1 hidden font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--text-tertiary)] sm:inline">
         Board
       </span>
       <div className="flex items-center rounded-sm border border-[var(--border-color)]">

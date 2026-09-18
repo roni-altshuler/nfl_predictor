@@ -1,9 +1,10 @@
+import { ResearchLedger } from '@/components/evidence/ResearchLedger'
 import { CalibrationChart } from '@/components/charts/CalibrationChart'
 import { PitHistogram } from '@/components/charts/PitHistogram'
 import { SeasonBrierChart } from '@/components/charts/SeasonBrierChart'
 import {
   getMarketBenchmark,
-  getSeasonProjections,
+  getForecastLog,
   type ContinuousBlock,
 } from '@/lib/artifacts'
 import { pct, signed, stamp } from '@/lib/format'
@@ -13,7 +14,7 @@ export const dynamic = 'force-static'
 export const metadata = { title: 'Accuracy' }
 
 const LABELS: Record<string, string> = {
-  market: 'Market (closing line)',
+  market: 'Historical market',
   margin_model: 'Margin model',
   elo_only: 'Elo only',
   constant_base_rate: 'Constant base rate',
@@ -33,8 +34,8 @@ const ORDER = ['market', 'margin_model', 'elo_only', 'constant_base_rate']
  */
 export default function AccuracyPage() {
   const benchmark = getMarketBenchmark()
-  const projections = getSeasonProjections()
-  const live = (projections?.games_played ?? 0) > 0
+  const forecastLog = getForecastLog()
+  const live = (forecastLog?.n ?? 0) > 0
 
   if (!benchmark) {
     return (
@@ -73,7 +74,7 @@ export default function AccuracyPage() {
                 : 'font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent-warn)]'
             }
           >
-            {live ? 'live season underway' : 'backtest'}
+            Historical backtest
           </span>
         </div>
         <h1 className="mt-2 text-3xl font-semibold uppercase tracking-[0.1em]">
@@ -95,6 +96,22 @@ export default function AccuracyPage() {
           merged with this.
         </p>
       ) : null}
+
+      {forecastLog ? <section className="card p-4" aria-label="Published forecast record">
+        <h2 className="eyebrow">Published forecast record · {forecastLog.season}</h2>
+        <dl className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div><dt className="eyebrow">Decided games</dt><dd className="numeric mt-1 text-xl">{forecastLog.n}</dd></div>
+          <div><dt className="eyebrow">Brier</dt><dd className="numeric mt-1 text-xl">{forecastLog.brier?.toFixed(4) ?? '—'}</dd></div>
+          <div><dt className="eyebrow">Accuracy</dt><dd className="numeric mt-1 text-xl">{pct(forecastLog.accuracy)}</dd></div>
+          <div><dt className="eyebrow">Pending</dt><dd className="numeric mt-1 text-xl">{forecastLog.games_pending}</dd></div>
+        </dl>
+        <p className="mt-4 text-xs leading-relaxed text-[var(--text-secondary)]">Earliest recorded pregame forecast per fixture. This small live sample is separate from the historical backtest below. Published {stamp(forecastLog.generated_at)}.</p>
+        {forecastLog.cohorts ? <details className="mt-4"><summary className="cursor-pointer font-mono text-xs">Break down by model and forecast horizon</summary>
+          {Object.entries(forecastLog.cohorts).map(([scope,cohorts])=><div key={scope} className="mt-3 overflow-x-auto"><p className="eyebrow mb-2">{scope.replace('_',' ')}</p><table className="w-full text-left font-mono text-xs"><thead><tr><th className="p-2">Cohort</th><th className="p-2">Games</th><th className="p-2">Brier</th><th className="p-2">Log loss</th></tr></thead><tbody>{Object.entries(cohorts).map(([key,c])=><tr key={key}><td className="p-2">{key.replaceAll('_',' ')}</td><td className="p-2">{c.n}</td><td className="p-2">{c.brier?.toFixed(4)??'—'}</td><td className="p-2">{c.log_loss?.toFixed(4)??'—'}</td></tr>)}</tbody></table></div>)}
+        </details>:null}
+      </section>:null}
+
+      <ResearchLedger />
 
       {/* ------------------------------------------------------ scorecards */}
       <section>
@@ -153,6 +170,7 @@ export default function AccuracyPage() {
           </table>
         </div>
         <p className="mt-2 font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
+          Historical ESPN prices have no verified closing timestamp.
           Ties ({cards[0]?.ties_excluded ?? 0}) are excluded and counted — a
           moneyline voids on one, so every comparison is on decided games.
         </p>
@@ -169,11 +187,15 @@ export default function AccuracyPage() {
         ) : null}
       </section>
 
+      {benchmark.week_grouping !== 'season, season_type, week' ? (
+        <p className="lab-notice">This published benchmark predates the regular/postseason week separation and training-only baseline fixes. Updated measurements are pending the next successful benchmark run.</p>
+      ) : null}
+
       {/* ---------------------------------------------- paired comparison */}
       {model ? (
         <section>
           <h2 className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
-            Paired against the closing line
+            Paired against historical prices
           </h2>
           <div className="rounded-[var(--radius)] border border-[var(--border-color)] bg-[var(--card-bg)] p-4">
             <p className="font-mono text-sm text-[var(--text-secondary)]">
@@ -195,8 +217,8 @@ export default function AccuracyPage() {
             </p>
             {model.mean < 0 ? (
               <p className="mt-3 font-mono text-[11px] leading-relaxed text-[var(--accent-loss)]">
-                The model is ahead of the closing line here — with no market
-                features, that is a warning about the harness, not an edge.
+                The model is ahead on this sample. Audit price timing and data
+                leakage before interpreting that difference as an advantage.
               </p>
             ) : (
               <p className="mt-3 font-mono text-[11px] leading-relaxed text-[var(--text-secondary)]">

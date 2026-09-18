@@ -51,7 +51,7 @@ export function EvidencePanel() {
           </dd>
         </div>
         <div>
-          <dt className="eyebrow">Gap to the close</dt>
+          <dt className="eyebrow">Paired market gap</dt>
           <dd className="numeric mt-1 text-sm text-[var(--text-primary)]">
             {paired ? signed(paired.mean, 4) : '—'}
           </dd>
@@ -59,8 +59,9 @@ export function EvidencePanel() {
       </dl>
       <p className="mt-3 border-t border-[var(--border-color)] pt-3 font-mono text-[10px] leading-relaxed text-[var(--text-tertiary)]">
         Walk-forward on {benchmark.scored_games.toLocaleString()} games,
-        accuracy {pct(model.accuracy, 1)}. The market is ahead — expected, and
-        published rather than hidden.
+        accuracy {pct(model.accuracy, 1)}. Model and market scorecards cover
+        different samples; the gap uses paired games. Historical retained
+        prices have no verified closing timestamp.
       </p>
     </section>
   )

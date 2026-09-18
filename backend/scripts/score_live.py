@@ -42,6 +42,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import math
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -57,6 +58,18 @@ logging.basicConfig(
 logger = logging.getLogger("score_live")
 
 OUT = Path(__file__).resolve().parent.parent / "data" / "predictions"
+
+
+def assert_history_preserved(prior, candidate):
+    """Fail closed on missing/replaced forecasts, while allowing score corrections."""
+    if candidate['forecasts_made'] < prior.get('forecasts_made',0):
+        raise ValueError('Forecast history shrank; restore the published warehouse before scoring')
+    current = {g['game_id']:g for g in candidate['games']}
+    fields = ('generated_at','model_version','home','away','p_home','p_tie','p_away','exp_margin')
+    for old in prior.get('games',[]):
+        new = current.get(old['game_id'])
+        if new is None or any(new.get(k) != old.get(k) for k in fields):
+            raise ValueError('Published forecast disappeared or changed; refusing to replace live record')
 
 
 def run(argv: Optional[Sequence[str]] = None) -> int:
@@ -76,6 +89,7 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
 
     graded: List[Dict[str, Any]] = []
     pending = 0
+    invalid = 0
 
     for snapshot in snapshots:
         row = warehouse.conn.execute(
@@ -89,9 +103,18 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
 
         home_score = int(row["home_score"])
         away_score = int(row["away_score"])
-        p_home = float(snapshot["p_home"] or 0.0)
-        p_tie = float(snapshot["p_tie"] or 0.0)
-        p_away = float(snapshot["p_away"] or 0.0)
+        try:
+            p_home, p_tie, p_away = [float(snapshot[k]) for k in ('p_home','p_tie','p_away')]
+            generated = datetime.fromisoformat(snapshot['generated_at'].replace('Z','+00:00'))
+            actual_kickoff = datetime.fromisoformat(row['date_utc'].replace('Z','+00:00'))
+            if (not all(math.isfinite(p) and 0 <= p <= 1 for p in (p_home,p_tie,p_away))
+                or abs(p_home+p_tie+p_away-1) > 0.00001 or p_home+p_away <= 0
+                or generated.tzinfo is None or actual_kickoff.tzinfo is None
+                or generated >= actual_kickoff):
+                raise ValueError('invalid probability or post-kickoff forecast')
+        except (ValueError, TypeError):
+            invalid += 1
+            continue
 
         entry: Dict[str, Any] = {
             "game_id": str(snapshot["fixture_uid"]),
@@ -100,6 +123,7 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
             "kickoff_utc": snapshot["kickoff_utc"],
             "generated_at": snapshot["generated_at"],
             "model_version": snapshot["model_version"],
+            "horizon_hours": round((actual_kickoff-generated).total_seconds()/3600, 2),
             "home": snapshot["home_team"],
             "away": snapshot["away_team"],
             "p_home": round(p_home, 6),
@@ -119,6 +143,7 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
             won = home_score > away_score
             entry["p_home_conditional"] = round(conditional, 6)
             entry["brier"] = round(mkt.brier_score(conditional, won), 6)
+            entry["log_loss"] = round(mkt.log_loss(conditional, won), 6)
             entry["correct"] = (conditional >= 0.5) == won
 
         graded.append(entry)
@@ -134,6 +159,7 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
         "games_played": len(graded),
         "games_pending": pending,
         "ties_excluded": ties,
+        "invalid_excluded": invalid,
         "n": len(decided),
         "note": (
             "Every row here was published strictly before its kickoff and is "
@@ -170,10 +196,27 @@ def run(argv: Optional[Sequence[str]] = None) -> int:
             "the live record is empty and says so"
         )
 
+    def cohort(games):
+        return {"n":len(games), "brier":round(sum(g['brier'] for g in games)/len(games),5) if games else None,
+                "log_loss":round(sum(g['log_loss'] for g in games)/len(games),5) if games else None,
+                "accuracy":round(sum(g['correct'] for g in games)/len(games),5) if games else None}
+    summary['cohorts'] = {
+        'model_version': {v:cohort([g for g in decided if g['model_version']==v]) for v in sorted({g['model_version'] for g in decided})},
+        'horizon': {label:cohort([g for g in decided if low <= g['horizon_hours'] < high])
+                    for label,low,high in [('under_24h',0,24),('1_to_7_days',24,168),('7_days_or_more',168,float('inf'))]},
+    }
     OUT.mkdir(parents=True, exist_ok=True)
     path = OUT / "forecast_log.json"
+    if path.exists():
+        prior = json.loads(path.read_text())
+        if prior.get('season') == season:
+            assert_history_preserved(prior, {**summary, 'games':graded})
+        else:
+            archive = OUT / f"forecast_log_{prior['season']}.json"
+            if not archive.exists():
+                archive.write_text(json.dumps(prior, indent=2, allow_nan=False))
     tmp = path.with_suffix(".json.tmp")
-    tmp.write_text(json.dumps({**summary, "games": graded}, indent=2))
+    tmp.write_text(json.dumps({**summary, "games": graded}, indent=2, allow_nan=False))
     tmp.replace(path)
     logger.info("wrote %s", path.name)
     return 0

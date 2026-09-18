@@ -16,8 +16,10 @@ import { useEffect, useState } from 'react'
  */
 
 const KEY = 'gridiron:watchlist:v1'
+let memory: string[] | null = null
 
 export function readWatchlist(): string[] {
+  if (memory !== null) return memory
   try {
     const raw = localStorage.getItem(KEY)
     if (!raw) return []
@@ -33,8 +35,9 @@ export function readWatchlist(): string[] {
 function write(list: string[]) {
   try {
     localStorage.setItem(KEY, JSON.stringify(list))
+    memory = null
   } catch {
-    /* private mode — the in-memory state still works for this page */
+    memory = list
   }
   // `storage` only fires in OTHER tabs; notify this one explicitly.
   window.dispatchEvent(new Event('gridiron:watchlist'))

@@ -1,4 +1,8 @@
 import Link from 'next/link'
+import { playoffSwing } from '@/lib/playoffScenarios'
+import { WeekBriefing } from '@/components/forecast/WeekBriefing'
+import { ForecastLab } from '@/components/forecast/ForecastLab'
+import { getLabData } from '@/lib/server/forecastLab'
 
 import { EvidencePanel } from '@/components/evidence/EvidencePanel'
 import {
@@ -37,6 +41,7 @@ export const dynamic = 'force-static'
  * still read from a published artifact; the bars only scale them.
  */
 export default function HomePage() {
+  const lab = getLabData()
   const forecasts = getGameForecasts()
   const projections = getSeasonProjections()
   const ratings = getPowerRatings()
@@ -106,7 +111,11 @@ export default function HomePage() {
         </p>
       ) : null}
 
+      <WeekBriefing games={(lab.forecast?.games ?? []).map(({game_id,date_utc,week,home,away,home_name,away_name,p_home,p_away}) => ({game_id,date_utc,week,home,away,home_name,away_name,p_home,p_away}))} stakes={(lab.scenarios?.games ?? []).map(g=>({game_id:g.game_id,swing:playoffSwing(g)}))} asOf={lab.asOf} />
+
       <FollowingStrip fixtures={nextFixtures} />
+
+      <ForecastLab initial={{...lab,scenarios:null}} compact />
 
       {/* ------------------------------------------------------- the slate */}
       <section>

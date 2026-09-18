@@ -1,0 +1,696 @@
+{
+  "generated_at": "2026-09-18T11:59:06+00:00",
+  "corpus_games": 6499,
+  "scored_games": 5698,
+  "first_scored_season": 2005,
+  "warmup_seasons": 3,
+  "devig_method": "shin",
+  "refit_cadence": "weekly, expanding window",
+  "priced_games": 3820,
+  "unpriced_games": 1878,
+  "market_source_counts": {
+    "moneyline": 3171,
+    "spread": 649
+  },
+  "base_rate": 0.57329,
+  "base_rate_basis": "weekly training-only home-win frequency",
+  "market_timing": "historical retained prices; closing timestamps unverified",
+  "week_grouping": "season, season_type, week",
+  "scorecards": {
+    "margin_model": {
+      "n": 5684,
+      "brier": 0.21991,
+      "log_loss": 0.62921,
+      "accuracy": 0.64092,
+      "ece": 0.02009,
+      "ties_excluded": 14,
+      "brier_ties_as_half": 0.21944
+    },
+    "elo_only": {
+      "n": 5684,
+      "brier": 0.21981,
+      "log_loss": 0.62914,
+      "accuracy": 0.64426,
+      "ece": 0.01233,
+      "ties_excluded": 14,
+      "brier_ties_as_half": 0.21936
+    },
+    "constant_base_rate": {
+      "n": 5684,
+      "brier": 0.24667,
+      "log_loss": 0.68648,
+      "accuracy": 0.55947,
+      "ece": 0.01383,
+      "ties_excluded": 14,
+      "brier_ties_as_half": 0.24608
+    },
+    "market": {
+      "n": 3807,
+      "brier": 0.2117,
+      "log_loss": 0.6109,
+      "accuracy": 0.66404,
+      "ece": 0.01274,
+      "ties_excluded": 13,
+      "brier_ties_as_half": 0.21107
+    }
+  },
+  "paired_vs_market": {
+    "margin_model": {
+      "mean": 0.008857420570083747,
+      "lo": 0.00576510995508396,
+      "hi": 0.011932241992206721,
+      "p_better": 0.0
+    },
+    "elo_only": {
+      "mean": 0.008731372898530081,
+      "lo": 0.005528261456287684,
+      "hi": 0.01182593756858742,
+      "p_better": 0.0
+    },
+    "constant_base_rate": {
+      "mean": 0.035338182610230744,
+      "lo": 0.030219126031210686,
+      "hi": 0.04039285143632068,
+      "p_better": 0.0
+    }
+  },
+  "reliability": {
+    "margin_model": [
+      {
+        "lower": 0.1,
+        "upper": 0.2,
+        "count": 34,
+        "mean_predicted": 0.1748,
+        "observed": 0.1765
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.3,
+        "count": 206,
+        "mean_predicted": 0.2623,
+        "observed": 0.2718
+      },
+      {
+        "lower": 0.3,
+        "upper": 0.4,
+        "count": 533,
+        "mean_predicted": 0.3564,
+        "observed": 0.3077
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.5,
+        "count": 968,
+        "mean_predicted": 0.453,
+        "observed": 0.4267
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.6,
+        "count": 1363,
+        "mean_predicted": 0.5514,
+        "observed": 0.5326
+      },
+      {
+        "lower": 0.6,
+        "upper": 0.7,
+        "count": 1352,
+        "mean_predicted": 0.6473,
+        "observed": 0.6309
+      },
+      {
+        "lower": 0.7,
+        "upper": 0.8,
+        "count": 887,
+        "mean_predicted": 0.7452,
+        "observed": 0.7542
+      },
+      {
+        "lower": 0.8,
+        "upper": 0.9,
+        "count": 316,
+        "mean_predicted": 0.8391,
+        "observed": 0.8513
+      },
+      {
+        "lower": 0.9,
+        "upper": 1.0,
+        "count": 25,
+        "mean_predicted": 0.9168,
+        "observed": 0.96
+      }
+    ],
+    "elo_only": [
+      {
+        "lower": 0.1,
+        "upper": 0.2,
+        "count": 91,
+        "mean_predicted": 0.1659,
+        "observed": 0.2088
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.3,
+        "count": 331,
+        "mean_predicted": 0.2589,
+        "observed": 0.3021
+      },
+      {
+        "lower": 0.3,
+        "upper": 0.4,
+        "count": 630,
+        "mean_predicted": 0.3549,
+        "observed": 0.3524
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.5,
+        "count": 948,
+        "mean_predicted": 0.452,
+        "observed": 0.4409
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.6,
+        "count": 1212,
+        "mean_predicted": 0.5502,
+        "observed": 0.552
+      },
+      {
+        "lower": 0.6,
+        "upper": 0.7,
+        "count": 1174,
+        "mean_predicted": 0.6482,
+        "observed": 0.6337
+      },
+      {
+        "lower": 0.7,
+        "upper": 0.8,
+        "count": 856,
+        "mean_predicted": 0.7472,
+        "observed": 0.7325
+      },
+      {
+        "lower": 0.8,
+        "upper": 0.9,
+        "count": 402,
+        "mean_predicted": 0.8397,
+        "observed": 0.8582
+      },
+      {
+        "lower": 0.9,
+        "upper": 1.0,
+        "count": 40,
+        "mean_predicted": 0.9153,
+        "observed": 0.9
+      }
+    ],
+    "market": [
+      {
+        "lower": 0.0,
+        "upper": 0.1,
+        "count": 8,
+        "mean_predicted": 0.0878,
+        "observed": 0.0
+      },
+      {
+        "lower": 0.1,
+        "upper": 0.2,
+        "count": 95,
+        "mean_predicted": 0.1651,
+        "observed": 0.1895
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.3,
+        "count": 283,
+        "mean_predicted": 0.2564,
+        "observed": 0.2438
+      },
+      {
+        "lower": 0.3,
+        "upper": 0.4,
+        "count": 457,
+        "mean_predicted": 0.3555,
+        "observed": 0.3589
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.5,
+        "count": 538,
+        "mean_predicted": 0.4408,
+        "observed": 0.4349
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.6,
+        "count": 698,
+        "mean_predicted": 0.558,
+        "observed": 0.5473
+      },
+      {
+        "lower": 0.6,
+        "upper": 0.7,
+        "count": 746,
+        "mean_predicted": 0.6475,
+        "observed": 0.626
+      },
+      {
+        "lower": 0.7,
+        "upper": 0.8,
+        "count": 648,
+        "mean_predicted": 0.7475,
+        "observed": 0.7577
+      },
+      {
+        "lower": 0.8,
+        "upper": 0.9,
+        "count": 291,
+        "mean_predicted": 0.8426,
+        "observed": 0.866
+      },
+      {
+        "lower": 0.9,
+        "upper": 1.0,
+        "count": 43,
+        "mean_predicted": 0.9228,
+        "observed": 0.9302
+      }
+    ]
+  },
+  "continuous": {
+    "note": "Margin coverage and PIT are read off the LATTICE the model actually publishes, using the mid-P transform for a discrete distribution. The total is served as a normal and is measured as one. Comparing either against a normal at the same sd would grade a distribution this site never published.",
+    "margin": {
+      "model": {
+        "n": 5698,
+        "mae": 10.5307,
+        "rmse": 13.5171,
+        "bias": 0.426,
+        "median_ae": 8.3118,
+        "mean_actual": 2.1967,
+        "mean_predicted": 2.6227
+      },
+      "vs_market": {
+        "n": 3820,
+        "model_mae": 10.3197,
+        "market_mae": 10.0033,
+        "mae_gap": 0.3164
+      },
+      "coverage": [
+        {
+          "nominal": 0.5,
+          "n": 5698,
+          "covered": 3106,
+          "coverage": 0.5451,
+          "gap": 0.0451
+        },
+        {
+          "nominal": 0.8,
+          "n": 5698,
+          "covered": 4660,
+          "coverage": 0.8178,
+          "gap": 0.0178
+        },
+        {
+          "nominal": 0.95,
+          "n": 5698,
+          "covered": 5420,
+          "coverage": 0.9512,
+          "gap": 0.0012
+        }
+      ],
+      "pit": {
+        "n": 5698,
+        "buckets": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 572,
+            "share": 0.1004,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 585,
+            "share": 0.1027,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 577,
+            "share": 0.1013,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 592,
+            "share": 0.1039,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 576,
+            "share": 0.1011,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 635,
+            "share": 0.1114,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "count": 609,
+            "share": 0.1069,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "count": 511,
+            "share": 0.0897,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 503,
+            "share": 0.0883,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 538,
+            "share": 0.0944,
+            "expected": 0.1
+          }
+        ],
+        "chi_square": 27.27,
+        "dof": 9,
+        "chi_square_per_dof": 3.03,
+        "max_abs_deviation": 0.0117
+      }
+    },
+    "total": {
+      "model": {
+        "n": 5698,
+        "mae": 10.8272,
+        "rmse": 13.6993,
+        "bias": -0.8034,
+        "median_ae": 9.0197,
+        "mean_actual": 44.8808,
+        "mean_predicted": 44.0775
+      },
+      "vs_market": {
+        "n": 3290,
+        "model_mae": 10.8106,
+        "market_mae": 10.4351,
+        "mae_gap": 0.3755
+      },
+      "coverage": [
+        {
+          "nominal": 0.5,
+          "n": 5698,
+          "covered": 2932,
+          "coverage": 0.5146,
+          "gap": 0.0146,
+          "half_width_z": 0.6745
+        },
+        {
+          "nominal": 0.8,
+          "n": 5698,
+          "covered": 4614,
+          "coverage": 0.8098,
+          "gap": 0.0098,
+          "half_width_z": 1.2816
+        },
+        {
+          "nominal": 0.95,
+          "n": 5698,
+          "covered": 5416,
+          "coverage": 0.9505,
+          "gap": 0.0005,
+          "half_width_z": 1.96
+        }
+      ],
+      "pit": {
+        "n": 5698,
+        "buckets": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 444,
+            "share": 0.0779,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 599,
+            "share": 0.1051,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 602,
+            "share": 0.1057,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 558,
+            "share": 0.0979,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 626,
+            "share": 0.1099,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 597,
+            "share": 0.1048,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "count": 579,
+            "share": 0.1016,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "count": 521,
+            "share": 0.0914,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 532,
+            "share": 0.0934,
+            "expected": 0.1
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 640,
+            "share": 0.1123,
+            "expected": 0.1
+          }
+        ],
+        "chi_square": 53.66,
+        "dof": 9,
+        "chi_square_per_dof": 5.962,
+        "max_abs_deviation": 0.0221
+      }
+    }
+  },
+  "by_season": {
+    "2005": {
+      "n": 267,
+      "model_brier": 0.21145,
+      "elo_brier": 0.21133,
+      "market_brier": null,
+      "priced_n": 0,
+      "gap_to_market": null
+    },
+    "2006": {
+      "n": 267,
+      "model_brier": 0.23522,
+      "elo_brier": 0.23326,
+      "market_brier": null,
+      "priced_n": 0,
+      "gap_to_market": null
+    },
+    "2007": {
+      "n": 267,
+      "model_brier": 0.2127,
+      "elo_brier": 0.2154,
+      "market_brier": null,
+      "priced_n": 0,
+      "gap_to_market": null
+    },
+    "2008": {
+      "n": 266,
+      "model_brier": 0.21955,
+      "elo_brier": 0.21838,
+      "market_brier": null,
+      "priced_n": 0,
+      "gap_to_market": null
+    },
+    "2009": {
+      "n": 267,
+      "model_brier": 0.20681,
+      "elo_brier": 0.20643,
+      "market_brier": null,
+      "priced_n": 0,
+      "gap_to_market": null
+    },
+    "2010": {
+      "n": 267,
+      "model_brier": 0.23243,
+      "elo_brier": 0.2322,
+      "market_brier": null,
+      "priced_n": 0,
+      "gap_to_market": null
+    },
+    "2011": {
+      "n": 267,
+      "model_brier": 0.21233,
+      "elo_brier": 0.21325,
+      "market_brier": null,
+      "priced_n": 0,
+      "gap_to_market": null
+    },
+    "2012": {
+      "n": 266,
+      "model_brier": 0.22149,
+      "elo_brier": 0.21962,
+      "market_brier": 0.22789,
+      "priced_n": 263,
+      "gap_to_market": -0.00733
+    },
+    "2013": {
+      "n": 266,
+      "model_brier": 0.21463,
+      "elo_brier": 0.21662,
+      "market_brier": 0.2153,
+      "priced_n": 264,
+      "gap_to_market": -0.0001
+    },
+    "2014": {
+      "n": 266,
+      "model_brier": 0.20911,
+      "elo_brier": 0.20682,
+      "market_brier": 0.20452,
+      "priced_n": 266,
+      "gap_to_market": 0.0046
+    },
+    "2015": {
+      "n": 267,
+      "model_brier": 0.22218,
+      "elo_brier": 0.22428,
+      "market_brier": 0.22829,
+      "priced_n": 267,
+      "gap_to_market": -0.00612
+    },
+    "2016": {
+      "n": 265,
+      "model_brier": 0.21809,
+      "elo_brier": 0.21876,
+      "market_brier": 0.21507,
+      "priced_n": 265,
+      "gap_to_market": 0.00301
+    },
+    "2017": {
+      "n": 267,
+      "model_brier": 0.21719,
+      "elo_brier": 0.21678,
+      "market_brier": 0.20067,
+      "priced_n": 266,
+      "gap_to_market": 0.01618
+    },
+    "2018": {
+      "n": 265,
+      "model_brier": 0.21797,
+      "elo_brier": 0.22329,
+      "market_brier": 0.21191,
+      "priced_n": 263,
+      "gap_to_market": 0.00715
+    },
+    "2019": {
+      "n": 266,
+      "model_brier": 0.22619,
+      "elo_brier": 0.22254,
+      "market_brier": 0.20091,
+      "priced_n": 266,
+      "gap_to_market": 0.02528
+    },
+    "2020": {
+      "n": 268,
+      "model_brier": 0.21941,
+      "elo_brier": 0.21574,
+      "market_brier": 0.20109,
+      "priced_n": 268,
+      "gap_to_market": 0.01832
+    },
+    "2021": {
+      "n": 284,
+      "model_brier": 0.23096,
+      "elo_brier": 0.23121,
+      "market_brier": 0.21823,
+      "priced_n": 284,
+      "gap_to_market": 0.01273
+    },
+    "2022": {
+      "n": 282,
+      "model_brier": 0.22416,
+      "elo_brier": 0.22281,
+      "market_brier": 0.20891,
+      "priced_n": 282,
+      "gap_to_market": 0.01525
+    },
+    "2023": {
+      "n": 285,
+      "model_brier": 0.22905,
+      "elo_brier": 0.23258,
+      "market_brier": 0.2184,
+      "priced_n": 285,
+      "gap_to_market": 0.01065
+    },
+    "2024": {
+      "n": 285,
+      "model_brier": 0.21424,
+      "elo_brier": 0.21049,
+      "market_brier": 0.20078,
+      "priced_n": 284,
+      "gap_to_market": 0.01338
+    },
+    "2025": {
+      "n": 284,
+      "model_brier": 0.22153,
+      "elo_brier": 0.22287,
+      "market_brier": 0.21198,
+      "priced_n": 284,
+      "gap_to_market": 0.00956
+    }
+  },
+  "note": "Ties are excluded from every headline figure and counted in ties_excluded; brier_ties_as_half scores the same forecasts over all games with a tie as y=0.5. Model probabilities are conditioned on the game being decided before meeting a moneyline, because a moneyline voids on a tie."
+}

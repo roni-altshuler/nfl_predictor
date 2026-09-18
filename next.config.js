@@ -3,6 +3,7 @@ const path = require('node:path')
 
 const nextConfig = {
   reactStrictMode: true,
+  experimental: { cpus: 2 },
   // Pinned because a sibling lockfile one directory up makes Next infer the
   // wrong workspace root and warn on every build.
   outputFileTracingRoot: path.join(__dirname),

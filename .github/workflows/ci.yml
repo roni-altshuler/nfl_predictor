@@ -52,6 +52,9 @@ jobs:
       - name: Lint
         run: npx next lint
 
+      - name: Forecast contract tests
+        run: npm test
+
       - name: Typecheck
         run: npm run typecheck
 
@@ -59,3 +62,19 @@ jobs:
         run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: '1'
+
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Verify production UI
+        env:
+          AUDIT_USE_PUBLICATION_TIME: '1'
+        run: |
+          npm start -- --hostname 127.0.0.1 --port 3012 > /tmp/nfl-preview.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:3012/api/forecast-lab > /dev/null; then break; fi
+            sleep 1
+          done
+          npm run test:browser

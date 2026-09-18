@@ -48,6 +48,7 @@ export interface TeamProjection {
 }
 
 export interface SeasonProjections {
+  simulation_version?: string
   season: number
   simulations: number
   games_played: number
@@ -109,6 +110,8 @@ export interface GameForecasts {
   season: number
   generated_at: string
   model_version: string
+  trained_through?: string | null
+  training_games?: number
   season_start: string | null
   weeks_in_season: number
   games: GameForecast[]
@@ -206,6 +209,9 @@ export interface SeasonScore {
 }
 
 export interface MarketBenchmark {
+  week_grouping?: string
+  base_rate_basis?: string
+  market_timing?: string
   generated_at: string
   corpus_games: number
   scored_games: number
@@ -259,7 +265,15 @@ export function getMarketBenchmark(): MarketBenchmark | null {
   return readJson<MarketBenchmark>(DIAGNOSTICS_DIR, 'market_benchmark.json')
 }
 
+export interface LiveCohort { n: number; brier: number | null; log_loss: number | null; accuracy: number | null }
+
 export interface ForecastLog {
+  brier?: number
+  accuracy?: number
+  ece?: number
+  invalid_excluded?: number
+  cohorts?: { model_version: Record<string, LiveCohort>; horizon: Record<string, LiveCohort> }
+
   season: number
   generated_at: string
   basis: string
