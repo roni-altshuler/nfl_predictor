@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-09-21T16:50:45+00:00",
+  "generated_at": "2026-09-22T15:28:08+00:00",
   "carryover_applied": true,
   "teams": [
     {
@@ -57,7 +57,7 @@
       "abbreviation": "LAR",
       "conference": "National Football Conference",
       "division": "NFC West",
-      "elo": 1566.6
+      "elo": 1582.6
     },
     {
       "team_id": 26,
@@ -164,14 +164,6 @@
       "elo": 1451.7
     },
     {
-      "team_id": 24,
-      "name": "New York Giants",
-      "abbreviation": "NYG",
-      "conference": "National Football Conference",
-      "division": "NFC East",
-      "elo": 1446.4
-    },
-    {
       "team_id": 18,
       "name": "Los Angeles Chargers",
       "abbreviation": "LAC",
@@ -202,6 +194,14 @@
       "conference": "American Football Conference",
       "division": "AFC North",
       "elo": 1430.8
+    },
+    {
+      "team_id": 24,
+      "name": "New York Giants",
+      "abbreviation": "NYG",
+      "conference": "National Football Conference",
+      "division": "NFC East",
+      "elo": 1430.4
     },
     {
       "team_id": 32,

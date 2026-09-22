@@ -1,24 +1,24 @@
 {
   "season": 2026,
-  "generated_at": "2026-09-21T16:50:57+00:00",
+  "generated_at": "2026-09-22T15:28:17+00:00",
   "basis": "published",
   "forecasts_made": 272,
-  "games_played": 31,
-  "games_pending": 241,
+  "games_played": 32,
+  "games_pending": 240,
   "ties_excluded": 0,
   "invalid_excluded": 0,
-  "n": 31,
+  "n": 32,
   "note": "Every row here was published strictly before its kickoff and is the EARLIEST such publication for that fixture. This record is never merged with the historical walk-forward on /accuracy, which is a reconstruction.",
-  "brier": 0.2403,
-  "accuracy": 0.6129,
-  "ece": 0.11962,
+  "brier": 0.23452,
+  "accuracy": 0.625,
+  "ece": 0.10852,
   "cohorts": {
     "model_version": {
       "nfl-margin-lattice-1": {
-        "n": 31,
-        "brier": 0.2403,
-        "log_loss": 0.67356,
-        "accuracy": 0.6129
+        "n": 32,
+        "brier": 0.23452,
+        "log_loss": 0.66092,
+        "accuracy": 0.625
       }
     },
     "horizon": {
@@ -35,10 +35,10 @@
         "accuracy": null
       },
       "7_days_or_more": {
-        "n": 31,
-        "brier": 0.2403,
-        "log_loss": 0.67356,
-        "accuracy": 0.6129
+        "n": 32,
+        "brier": 0.23452,
+        "log_loss": 0.66092,
+        "accuracy": 0.625
       }
     }
   },
@@ -723,6 +723,28 @@
       "p_home_conditional": 0.710448,
       "brier": 0.08384,
       "log_loss": 0.34186,
+      "correct": true
+    },
+    {
+      "game_id": "401872947",
+      "season": 2026,
+      "week": 2,
+      "kickoff_utc": "2026-09-22T00:15:00+00:00",
+      "generated_at": "2026-08-16T15:19:07+00:00",
+      "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 872.93,
+      "home": "LAR",
+      "away": "NYG",
+      "p_home": 0.761994,
+      "p_tie": 0.002963,
+      "p_away": 0.235043,
+      "exp_margin": 9.923,
+      "home_score": 28,
+      "away_score": 6,
+      "tie": false,
+      "p_home_conditional": 0.764258,
+      "brier": 0.055574,
+      "log_loss": 0.268849,
       "correct": true
     }
   ]
