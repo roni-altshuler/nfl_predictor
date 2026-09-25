@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-09-24T15:45:29+00:00",
+  "generated_at": "2026-09-25T15:46:22+00:00",
   "carryover_applied": true,
   "teams": [
     {
@@ -124,14 +124,6 @@
       "elo": 1532.4
     },
     {
-      "team_id": 12,
-      "name": "Green Bay Packers",
-      "abbreviation": "GB",
-      "conference": "National Football Conference",
-      "division": "NFC North",
-      "elo": 1511.7
-    },
-    {
       "team_id": 27,
       "name": "Pittsburgh Steelers",
       "abbreviation": "PIT",
@@ -148,12 +140,28 @@
       "elo": 1468.9
     },
     {
+      "team_id": 12,
+      "name": "Green Bay Packers",
+      "abbreviation": "GB",
+      "conference": "National Football Conference",
+      "division": "NFC North",
+      "elo": 1465.1
+    },
+    {
       "team_id": 9,
       "name": "Dallas Cowboys",
       "abbreviation": "DAL",
       "conference": "National Football Conference",
       "division": "NFC East",
       "elo": 1461.6
+    },
+    {
+      "team_id": 2,
+      "name": "Atlanta Falcons",
+      "abbreviation": "ATL",
+      "conference": "National Football Conference",
+      "division": "NFC South",
+      "elo": 1456.7
     },
     {
       "team_id": 5,
@@ -234,14 +242,6 @@
       "conference": "American Football Conference",
       "division": "AFC East",
       "elo": 1411.8
-    },
-    {
-      "team_id": 2,
-      "name": "Atlanta Falcons",
-      "abbreviation": "ATL",
-      "conference": "National Football Conference",
-      "division": "NFC South",
-      "elo": 1410.1
     },
     {
       "team_id": 25,
