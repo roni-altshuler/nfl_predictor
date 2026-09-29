@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-09-28T18:32:55+00:00",
+  "generated_at": "2026-09-29T16:50:13+00:00",
   "carryover_applied": true,
   "teams": [
     {
@@ -68,12 +68,12 @@
       "elo": 1569.1
     },
     {
-      "team_id": 26,
-      "name": "Philadelphia Eagles",
-      "abbreviation": "PHI",
+      "team_id": 6,
+      "name": "Chicago Bears",
+      "abbreviation": "CHI",
       "conference": "National Football Conference",
-      "division": "NFC East",
-      "elo": 1566.1
+      "division": "NFC North",
+      "elo": 1561.4
     },
     {
       "team_id": 16,
@@ -100,12 +100,12 @@
       "elo": 1543.4
     },
     {
-      "team_id": 6,
-      "name": "Chicago Bears",
-      "abbreviation": "CHI",
+      "team_id": 26,
+      "name": "Philadelphia Eagles",
+      "abbreviation": "PHI",
       "conference": "National Football Conference",
-      "division": "NFC North",
-      "elo": 1532.4
+      "division": "NFC East",
+      "elo": 1537.1
     },
     {
       "team_id": 13,
