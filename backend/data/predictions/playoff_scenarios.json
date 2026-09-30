@@ -1,10 +1,10 @@
 {
   "season": 2026,
-  "generated_at": "2026-09-29T16:50:13+00:00",
-  "computed_at": "2026-09-29T16:50:23+00:00",
+  "generated_at": "2026-09-30T16:44:16+00:00",
+  "computed_at": "2026-09-30T16:44:27+00:00",
   "model_version": "nfl-margin-lattice-1",
   "simulation_version": "nfl-season-h2h-2",
-  "forecast_sha256": "f54213fe62648bfdbf847c3b62a7dd85045925557e146644f55d66e0bba1d97e",
+  "forecast_sha256": "153caa666e3e1429967b1b043b53c6f49a775e2969f2e2218b72d0fdd8f3a6a1",
   "simulations": 20000,
   "min_branch_samples": 200,
   "method": "conditional_simulation",
@@ -32,14 +32,14 @@
       "abbreviation": "MIN",
       "name": "Minnesota Vikings",
       "p_playoffs": 0.95325,
-      "p_division": 0.71435,
+      "p_division": 0.71425,
       "p_championship": 0.1241
     },
     {
       "team_id": 28,
       "abbreviation": "SF",
       "name": "San Francisco 49ers",
-      "p_playoffs": 0.8574,
+      "p_playoffs": 0.8573,
       "p_division": 0.39785,
       "p_championship": 0.09165
     },
@@ -71,8 +71,8 @@
       "team_id": 6,
       "abbreviation": "CHI",
       "name": "Chicago Bears",
-      "p_playoffs": 0.671,
-      "p_division": 0.1316,
+      "p_playoffs": 0.67135,
+      "p_division": 0.13175,
       "p_championship": 0.0307
     },
     {
@@ -95,8 +95,8 @@
       "team_id": 11,
       "abbreviation": "DET",
       "name": "Detroit Lions",
-      "p_playoffs": 0.633,
-      "p_division": 0.14645,
+      "p_playoffs": 0.63295,
+      "p_division": 0.1464,
       "p_championship": 0.0279
     },
     {
@@ -111,7 +111,7 @@
       "team_id": 19,
       "abbreviation": "LAR",
       "name": "Los Angeles Rams",
-      "p_playoffs": 0.412,
+      "p_playoffs": 0.41185,
       "p_division": 0.0588,
       "p_championship": 0.02165
     },
@@ -191,7 +191,7 @@
       "team_id": 9,
       "abbreviation": "DAL",
       "name": "Dallas Cowboys",
-      "p_playoffs": 0.17625,
+      "p_playoffs": 0.1761,
       "p_division": 0.10745,
       "p_championship": 0.0017
     },
@@ -207,7 +207,7 @@
       "team_id": 12,
       "abbreviation": "GB",
       "name": "Green Bay Packers",
-      "p_playoffs": 0.09395,
+      "p_playoffs": 0.094,
       "p_division": 0.0076,
       "p_championship": 0.0014
     },
@@ -223,7 +223,7 @@
       "team_id": 30,
       "abbreviation": "TB",
       "name": "Tampa Bay Buccaneers",
-      "p_playoffs": 0.1349,
+      "p_playoffs": 0.13495,
       "p_division": 0.1204,
       "p_championship": 0.00125
     },
@@ -330,12 +330,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.66663,
-              "p_division": 0.126293,
+              "p_playoffs": 0.666848,
+              "p_division": 0.126511,
               "p_championship": 0.028743,
               "playoff_mc_interval": [
-                0.656921,
-                0.6762
+                0.657141,
+                0.676416
               ]
             },
             {
@@ -381,7 +381,7 @@
             {
               "team_id": 11,
               "p_playoffs": 0.635275,
-              "p_division": 0.150898,
+              "p_division": 0.150789,
               "p_championship": 0.027654,
               "playoff_mc_interval": [
                 0.625376,
@@ -460,12 +460,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.409581,
+              "p_playoffs": 0.409472,
               "p_division": 0.057376,
               "p_championship": 0.022754,
               "playoff_mc_interval": [
-                0.399564,
-                0.419674
+                0.399455,
+                0.419564
               ]
             },
             {
@@ -481,7 +481,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.952096,
-              "p_division": 0.714535,
+              "p_division": 0.714426,
               "p_championship": 0.124878,
               "playoff_mc_interval": [
                 0.947536,
@@ -550,12 +550,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.856723,
+              "p_playoffs": 0.856614,
               "p_division": 0.396952,
               "p_championship": 0.090365,
               "playoff_mc_interval": [
-                0.849409,
-                0.863739
+                0.849297,
+                0.863632
               ]
             },
             {
@@ -656,12 +656,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.67418,
-              "p_division": 0.136084,
+              "p_playoffs": 0.674646,
+              "p_division": 0.136177,
               "p_championship": 0.032321,
               "playoff_mc_interval": [
-                0.665254,
-                0.682982
+                0.665723,
+                0.683445
               ]
             },
             {
@@ -686,12 +686,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.17595,
+              "p_playoffs": 0.175671,
               "p_division": 0.109352,
               "p_championship": 0.002049,
               "playoff_mc_interval": [
-                0.168863,
-                0.183269
+                0.168589,
+                0.182985
               ]
             },
             {
@@ -706,22 +706,22 @@
             },
             {
               "team_id": 11,
-              "p_playoffs": 0.630496,
+              "p_playoffs": 0.630402,
               "p_division": 0.142418,
               "p_championship": 0.02813,
               "playoff_mc_interval": [
-                0.62132,
-                0.639578
+                0.621226,
+                0.639485
               ]
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.094262,
+              "p_playoffs": 0.094355,
               "p_division": 0.006986,
               "p_championship": 0.001583,
               "playoff_mc_interval": [
-                0.088879,
-                0.099936
+                0.08897,
+                0.100031
               ]
             },
             {
@@ -786,12 +786,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.41468,
+              "p_playoffs": 0.414493,
               "p_division": 0.060078,
               "p_championship": 0.020678,
               "playoff_mc_interval": [
-                0.405392,
-                0.424028
+                0.405207,
+                0.423841
               ]
             },
             {
@@ -807,7 +807,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.954359,
-              "p_division": 0.714512,
+              "p_division": 0.714419,
               "p_championship": 0.123323,
               "playoff_mc_interval": [
                 0.950246,
@@ -876,12 +876,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.858141,
+              "p_playoffs": 0.858048,
               "p_division": 0.398379,
               "p_championship": 0.093051,
               "playoff_mc_interval": [
-                0.851413,
-                0.864613
+                0.851318,
+                0.864521
               ]
             },
             {
@@ -896,12 +896,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.131334,
+              "p_playoffs": 0.131427,
               "p_division": 0.11699,
               "p_championship": 0.001118,
               "playoff_mc_interval": [
-                0.125076,
-                0.137855
+                0.125167,
+                0.13795
               ]
             },
             {
@@ -994,12 +994,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.665724,
-              "p_division": 0.132014,
+              "p_playoffs": 0.666271,
+              "p_division": 0.132287,
               "p_championship": 0.032479,
               "playoff_mc_interval": [
-                0.656836,
-                0.674496
+                0.657387,
+                0.67504
               ]
             },
             {
@@ -1024,12 +1024,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.173433,
+              "p_playoffs": 0.173342,
               "p_division": 0.1051,
               "p_championship": 0.002098,
               "playoff_mc_interval": [
-                0.16646,
-                0.180635
+                0.16637,
+                0.180543
               ]
             },
             {
@@ -1044,12 +1044,12 @@
             },
             {
               "team_id": 11,
-              "p_playoffs": 0.629961,
-              "p_division": 0.149256,
+              "p_playoffs": 0.62987,
+              "p_division": 0.149165,
               "p_championship": 0.027187,
               "playoff_mc_interval": [
-                0.620878,
-                0.638953
+                0.620786,
+                0.638862
               ]
             },
             {
@@ -1124,12 +1124,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.406806,
+              "p_playoffs": 0.406532,
               "p_division": 0.061217,
               "p_championship": 0.021348,
               "playoff_mc_interval": [
-                0.397644,
-                0.416034
+                0.397371,
+                0.415759
               ]
             },
             {
@@ -1145,7 +1145,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.949457,
-              "p_division": 0.710975,
+              "p_division": 0.710793,
               "p_championship": 0.120518,
               "playoff_mc_interval": [
                 0.945196,
@@ -1214,12 +1214,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.85567,
+              "p_playoffs": 0.855579,
               "p_division": 0.392574,
               "p_championship": 0.090229,
               "playoff_mc_interval": [
-                0.848966,
-                0.862125
+                0.848873,
+                0.862035
               ]
             },
             {
@@ -1320,12 +1320,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.677369,
+              "p_playoffs": 0.67748,
               "p_division": 0.130435,
               "p_championship": 0.028651,
               "playoff_mc_interval": [
-                0.66762,
-                0.686966
+                0.667733,
+                0.687076
               ]
             },
             {
@@ -1350,12 +1350,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.179487,
+              "p_playoffs": 0.179264,
               "p_division": 0.110591,
               "p_championship": 0.001226,
               "playoff_mc_interval": [
-                0.171683,
-                0.187566
+                0.171464,
+                0.187339
               ]
             },
             {
@@ -1380,12 +1380,12 @@
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.09621,
+              "p_playoffs": 0.096321,
               "p_division": 0.007469,
               "p_championship": 0.001338,
               "playoff_mc_interval": [
-                0.090279,
-                0.102486
+                0.090387,
+                0.102601
               ]
             },
             {
@@ -1540,12 +1540,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.859978,
+              "p_playoffs": 0.859866,
               "p_division": 0.404013,
               "p_championship": 0.093534,
               "playoff_mc_interval": [
-                0.852642,
-                0.867005
+                0.852528,
+                0.866896
               ]
             },
             {
@@ -1560,12 +1560,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.130546,
+              "p_playoffs": 0.130658,
               "p_division": 0.116722,
               "p_championship": 0.001449,
               "playoff_mc_interval": [
-                0.123732,
-                0.137677
+                0.123841,
+                0.137791
               ]
             },
             {
@@ -1658,12 +1658,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.670819,
-              "p_division": 0.131949,
+              "p_playoffs": 0.671203,
+              "p_division": 0.132026,
               "p_championship": 0.02922,
               "playoff_mc_interval": [
-                0.662693,
-                0.678844
+                0.66308,
+                0.679226
               ]
             },
             {
@@ -1688,12 +1688,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.171549,
+              "p_playoffs": 0.171396,
               "p_division": 0.1005,
               "p_championship": 0.001999,
               "playoff_mc_interval": [
-                0.165167,
-                0.178125
+                0.165016,
+                0.177969
               ]
             },
             {
@@ -1718,12 +1718,12 @@
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.093349,
+              "p_playoffs": 0.093272,
               "p_division": 0.008458,
               "p_championship": 0.001615,
               "playoff_mc_interval": [
-                0.088468,
-                0.09847
+                0.088393,
+                0.098391
               ]
             },
             {
@@ -1788,12 +1788,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.408689,
+              "p_playoffs": 0.408458,
               "p_division": 0.059208,
               "p_championship": 0.021069,
               "playoff_mc_interval": [
-                0.400268,
-                0.417164
+                0.400038,
+                0.416932
               ]
             },
             {
@@ -1809,7 +1809,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.952941,
-              "p_division": 0.716571,
+              "p_division": 0.716494,
               "p_championship": 0.122722,
               "playoff_mc_interval": [
                 0.949166,
@@ -1898,12 +1898,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.135948,
+              "p_playoffs": 0.136025,
               "p_division": 0.122107,
               "p_championship": 0.001461,
               "playoff_mc_interval": [
-                0.130165,
-                0.141946
+                0.13024,
+                0.142024
               ]
             },
             {
@@ -1984,12 +1984,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.670901,
-              "p_division": 0.131062,
+              "p_playoffs": 0.671189,
+              "p_division": 0.131351,
               "p_championship": 0.033632,
               "playoff_mc_interval": [
-                0.659744,
-                0.681868
+                0.660035,
+                0.682154
               ]
             },
             {
@@ -2014,12 +2014,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.184758,
+              "p_playoffs": 0.184613,
               "p_division": 0.120237,
               "p_championship": 0.001155,
               "playoff_mc_interval": [
-                0.175794,
-                0.19407
+                0.175653,
+                0.193923
               ]
             },
             {
@@ -2034,22 +2034,22 @@
             },
             {
               "team_id": 11,
-              "p_playoffs": 0.635248,
-              "p_division": 0.152714,
+              "p_playoffs": 0.635104,
+              "p_division": 0.152569,
               "p_championship": 0.027569,
               "playoff_mc_interval": [
-                0.623841,
-                0.646505
+                0.623696,
+                0.646362
               ]
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.095121,
+              "p_playoffs": 0.09541,
               "p_division": 0.006062,
               "p_championship": 0.00101,
               "playoff_mc_interval": [
-                0.088435,
-                0.102256
+                0.088715,
+                0.102554
               ]
             },
             {
@@ -2135,7 +2135,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.954388,
-              "p_division": 0.710162,
+              "p_division": 0.710017,
               "p_championship": 0.126588,
               "playoff_mc_interval": [
                 0.949218,
@@ -2204,12 +2204,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.864319,
+              "p_playoffs": 0.86403,
               "p_division": 0.403724,
               "p_championship": 0.092956,
               "playoff_mc_interval": [
-                0.856053,
-                0.872181
+                0.855757,
+                0.8719
               ]
             },
             {
@@ -2322,12 +2322,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.676078,
-              "p_division": 0.131124,
+              "p_playoffs": 0.676455,
+              "p_division": 0.13135,
               "p_championship": 0.032611,
               "playoff_mc_interval": [
-                0.668058,
-                0.683995
+                0.668438,
+                0.68437
               ]
             },
             {
@@ -2352,12 +2352,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.136333,
+              "p_playoffs": 0.136106,
               "p_division": 0.084472,
               "p_championship": 0.001434,
               "playoff_mc_interval": [
-                0.130595,
-                0.142282
+                0.130372,
+                0.142051
               ]
             },
             {
@@ -2373,7 +2373,7 @@
             {
               "team_id": 11,
               "p_playoffs": 0.632294,
-              "p_division": 0.144863,
+              "p_division": 0.144787,
               "p_championship": 0.027478,
               "playoff_mc_interval": [
                 0.624046,
@@ -2382,12 +2382,12 @@
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.096399,
+              "p_playoffs": 0.096475,
               "p_division": 0.008304,
               "p_championship": 0.001661,
               "playoff_mc_interval": [
-                0.09149,
-                0.101543
+                0.091563,
+                0.10162
               ]
             },
             {
@@ -2452,12 +2452,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.414509,
+              "p_playoffs": 0.414358,
               "p_division": 0.059259,
               "p_championship": 0.02159,
               "playoff_mc_interval": [
-                0.406146,
-                0.422922
+                0.405995,
+                0.42277
               ]
             },
             {
@@ -2473,7 +2473,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.953499,
-              "p_division": 0.715709,
+              "p_division": 0.715558,
               "p_championship": 0.125009,
               "playoff_mc_interval": [
                 0.94978,
@@ -2542,12 +2542,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.859364,
+              "p_playoffs": 0.859213,
               "p_division": 0.397071,
               "p_championship": 0.092927,
               "playoff_mc_interval": [
-                0.85334,
-                0.86518
+                0.853186,
+                0.865032
               ]
             },
             {
@@ -2562,12 +2562,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.135351,
+              "p_playoffs": 0.135427,
               "p_division": 0.120027,
               "p_championship": 0.001132,
               "playoff_mc_interval": [
-                0.129631,
-                0.141283
+                0.129705,
+                0.14136
               ]
             },
             {
@@ -2648,12 +2648,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.659727,
+              "p_playoffs": 0.660027,
               "p_division": 0.131496,
               "p_championship": 0.026659,
               "playoff_mc_interval": [
-                0.648274,
-                0.670997
+                0.648575,
+                0.671294
               ]
             },
             {
@@ -2698,12 +2698,12 @@
             },
             {
               "team_id": 11,
-              "p_playoffs": 0.634267,
+              "p_playoffs": 0.634117,
               "p_division": 0.149468,
               "p_championship": 0.029055,
               "playoff_mc_interval": [
-                0.62264,
-                0.645739
+                0.622489,
+                0.645591
               ]
             },
             {
@@ -2778,12 +2778,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.407369,
+              "p_playoffs": 0.407219,
               "p_division": 0.057661,
               "p_championship": 0.021417,
               "playoff_mc_interval": [
-                0.39564,
-                0.419204
+                0.395491,
+                0.419054
               ]
             },
             {
@@ -2986,12 +2986,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.672729,
-              "p_division": 0.133464,
+              "p_playoffs": 0.673102,
+              "p_division": 0.13365,
               "p_championship": 0.030964,
               "playoff_mc_interval": [
-                0.663787,
-                0.681547
+                0.664162,
+                0.681918
               ]
             },
             {
@@ -3016,12 +3016,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.179071,
+              "p_playoffs": 0.178978,
               "p_division": 0.108096,
               "p_championship": 0.001772,
               "playoff_mc_interval": [
-                0.171929,
-                0.186443
+                0.171837,
+                0.186348
               ]
             },
             {
@@ -3036,22 +3036,22 @@
             },
             {
               "team_id": 11,
-              "p_playoffs": 0.6385,
-              "p_division": 0.145962,
+              "p_playoffs": 0.638407,
+              "p_division": 0.145868,
               "p_championship": 0.026581,
               "playoff_mc_interval": [
-                0.629358,
-                0.647543
+                0.629264,
+                0.64745
               ]
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.054561,
+              "p_playoffs": 0.054654,
               "p_division": 0.003917,
               "p_championship": 0.000653,
               "playoff_mc_interval": [
-                0.050419,
-                0.059022
+                0.050509,
+                0.059118
               ]
             },
             {
@@ -3116,12 +3116,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.412703,
+              "p_playoffs": 0.412423,
               "p_division": 0.057825,
               "p_championship": 0.021918,
               "playoff_mc_interval": [
-                0.403417,
-                0.422051
+                0.403138,
+                0.421771
               ]
             },
             {
@@ -3137,7 +3137,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.955885,
-              "p_division": 0.716657,
+              "p_division": 0.716564,
               "p_championship": 0.120593,
               "playoff_mc_interval": [
                 0.951832,
@@ -3206,12 +3206,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.862339,
+              "p_playoffs": 0.862246,
               "p_division": 0.401231,
               "p_championship": 0.093173,
               "playoff_mc_interval": [
-                0.855687,
-                0.868731
+                0.855592,
+                0.86864
               ]
             },
             {
@@ -3226,12 +3226,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.1759,
+              "p_playoffs": 0.175993,
               "p_division": 0.154635,
               "p_championship": 0.002052,
               "playoff_mc_interval": [
-                0.16881,
-                0.183223
+                0.168901,
+                0.183317
               ]
             },
             {
@@ -3312,12 +3312,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.669276,
-              "p_division": 0.129702,
+              "p_playoffs": 0.669602,
+              "p_division": 0.129811,
               "p_championship": 0.030333,
               "playoff_mc_interval": [
-                0.659592,
-                0.678818
+                0.659921,
+                0.679142
               ]
             },
             {
@@ -3342,12 +3342,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.172538,
+              "p_playoffs": 0.17232,
               "p_division": 0.106545,
               "p_championship": 0.001522,
               "playoff_mc_interval": [
-                0.164953,
-                0.180396
+                0.164739,
+                0.180175
               ]
             },
             {
@@ -3463,7 +3463,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.950098,
-              "p_division": 0.711568,
+              "p_division": 0.711459,
               "p_championship": 0.127528,
               "playoff_mc_interval": [
                 0.945457,
@@ -3532,12 +3532,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.851272,
+              "p_playoffs": 0.851163,
               "p_division": 0.39389,
               "p_championship": 0.090237,
               "playoff_mc_interval": [
-                0.843854,
-                0.858397
+                0.843743,
+                0.858291
               ]
             },
             {
@@ -3650,12 +3650,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.670748,
+              "p_playoffs": 0.670968,
               "p_division": 0.132583,
               "p_championship": 0.032319,
               "playoff_mc_interval": [
-                0.661004,
-                0.680347
+                0.661226,
+                0.680566
               ]
             },
             {
@@ -3680,12 +3680,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.175491,
+              "p_playoffs": 0.17527,
               "p_division": 0.108537,
               "p_championship": 0.001875,
               "playoff_mc_interval": [
-                0.167799,
-                0.183458
+                0.167582,
+                0.183234
               ]
             },
             {
@@ -3700,22 +3700,22 @@
             },
             {
               "team_id": 11,
-              "p_playoffs": 0.640304,
+              "p_playoffs": 0.640194,
               "p_division": 0.150342,
               "p_championship": 0.028679,
               "playoff_mc_interval": [
-                0.630368,
-                0.650122
+                0.630257,
+                0.650012
               ]
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.093647,
+              "p_playoffs": 0.093757,
               "p_division": 0.007721,
               "p_championship": 0.000993,
               "playoff_mc_interval": [
-                0.08782,
-                0.099817
+                0.087927,
+                0.09993
               ]
             },
             {
@@ -3870,12 +3870,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.860026,
+              "p_playoffs": 0.859916,
               "p_division": 0.401721,
               "p_championship": 0.089896,
               "playoff_mc_interval": [
-                0.852732,
-                0.867016
+                0.852619,
+                0.866908
               ]
             },
             {
@@ -3890,12 +3890,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.134679,
+              "p_playoffs": 0.134789,
               "p_division": 0.120891,
               "p_championship": 0.001103,
               "playoff_mc_interval": [
-                0.127806,
-                0.141861
+                0.127914,
+                0.141974
               ]
             },
             {
@@ -3976,12 +3976,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.671454,
-              "p_division": 0.130995,
+              "p_playoffs": 0.671914,
+              "p_division": 0.131271,
               "p_championship": 0.02955,
               "playoff_mc_interval": [
-                0.662562,
-                0.680224
+                0.663025,
+                0.680681
               ]
             },
             {
@@ -4006,12 +4006,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.176839,
+              "p_playoffs": 0.176747,
               "p_division": 0.106508,
               "p_championship": 0.001565,
               "playoff_mc_interval": [
-                0.169779,
-                0.184128
+                0.169688,
+                0.184034
               ]
             },
             {
@@ -4027,7 +4027,7 @@
             {
               "team_id": 11,
               "p_playoffs": 0.626622,
-              "p_division": 0.143423,
+              "p_division": 0.143331,
               "p_championship": 0.027341,
               "playoff_mc_interval": [
                 0.617483,
@@ -4106,12 +4106,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.413974,
+              "p_playoffs": 0.413698,
               "p_division": 0.056982,
               "p_championship": 0.021081,
               "playoff_mc_interval": [
-                0.404744,
-                0.423265
+                0.404468,
+                0.422988
               ]
             },
             {
@@ -4127,7 +4127,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.952499,
-              "p_division": 0.718126,
+              "p_division": 0.717942,
               "p_championship": 0.122802,
               "playoff_mc_interval": [
                 0.948337,
@@ -4196,12 +4196,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.855289,
+              "p_playoffs": 0.855197,
               "p_division": 0.394642,
               "p_championship": 0.093344,
               "playoff_mc_interval": [
-                0.848547,
-                0.861779
+                0.848453,
+                0.861689
               ]
             },
             {
@@ -4314,12 +4314,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.67764,
-              "p_division": 0.132921,
+              "p_playoffs": 0.678021,
+              "p_division": 0.133206,
               "p_championship": 0.028449,
               "playoff_mc_interval": [
-                0.668641,
-                0.68651
+                0.669024,
+                0.686887
               ]
             },
             {
@@ -4344,12 +4344,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.169077,
+              "p_playoffs": 0.168982,
               "p_division": 0.089058,
               "p_championship": 0.001237,
               "playoff_mc_interval": [
-                0.162032,
-                0.176364
+                0.161939,
+                0.176267
               ]
             },
             {
@@ -4364,12 +4364,12 @@
             },
             {
               "team_id": 11,
-              "p_playoffs": 0.639581,
-              "p_division": 0.149286,
+              "p_playoffs": 0.639486,
+              "p_division": 0.149191,
               "p_championship": 0.028354,
               "playoff_mc_interval": [
-                0.630353,
-                0.648708
+                0.630257,
+                0.648613
               ]
             },
             {
@@ -4444,12 +4444,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.310561,
+              "p_playoffs": 0.310371,
               "p_division": 0.03863,
               "p_championship": 0.014558,
               "playoff_mc_interval": [
-                0.301785,
-                0.319476
+                0.301597,
+                0.319284
               ]
             },
             {
@@ -4465,7 +4465,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.952331,
-              "p_division": 0.709705,
+              "p_division": 0.709515,
               "p_championship": 0.125595,
               "playoff_mc_interval": [
                 0.94809,
@@ -4640,12 +4640,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.663727,
+              "p_playoffs": 0.664046,
               "p_division": 0.129728,
               "p_championship": 0.033149,
               "playoff_mc_interval": [
-                0.654118,
-                0.673203
+                0.654438,
+                0.67352
               ]
             },
             {
@@ -4670,12 +4670,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.183808,
+              "p_playoffs": 0.183595,
               "p_division": 0.127603,
               "p_championship": 0.002125,
               "playoff_mc_interval": [
-                0.176112,
-                0.191762
+                0.175903,
+                0.191546
               ]
             },
             {
@@ -4700,12 +4700,12 @@
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.089142,
+              "p_playoffs": 0.089248,
               "p_division": 0.006906,
               "p_championship": 0.001169,
               "playoff_mc_interval": [
-                0.083551,
-                0.095067
+                0.083654,
+                0.095177
               ]
             },
             {
@@ -4770,12 +4770,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.526031,
+              "p_playoffs": 0.525924,
               "p_division": 0.081492,
               "p_championship": 0.029643,
               "playoff_mc_interval": [
-                0.515934,
-                0.536106
+                0.515828,
+                0.536
               ]
             },
             {
@@ -4860,12 +4860,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.851785,
+              "p_playoffs": 0.851572,
               "p_division": 0.390353,
               "p_championship": 0.096048,
               "playoff_mc_interval": [
-                0.844463,
-                0.85882
+                0.844246,
+                0.858612
               ]
             },
             {
@@ -4880,12 +4880,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.134297,
+              "p_playoffs": 0.134403,
               "p_division": 0.121228,
               "p_championship": 0.00085,
               "playoff_mc_interval": [
-                0.127557,
-                0.141335
+                0.127661,
+                0.141443
               ]
             },
             {
@@ -4978,12 +4978,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.66824,
-              "p_division": 0.12872,
+              "p_playoffs": 0.66856,
+              "p_division": 0.1288,
               "p_championship": 0.03064,
               "playoff_mc_interval": [
-                0.659935,
-                0.676441
+                0.660257,
+                0.676759
               ]
             },
             {
@@ -5008,12 +5008,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.17176,
+              "p_playoffs": 0.1716,
               "p_division": 0.10584,
               "p_championship": 0.00176,
               "playoff_mc_interval": [
-                0.165249,
-                0.178473
+                0.165091,
+                0.17831
               ]
             },
             {
@@ -5029,7 +5029,7 @@
             {
               "team_id": 11,
               "p_playoffs": 0.63624,
-              "p_division": 0.14656,
+              "p_division": 0.14648,
               "p_championship": 0.02872,
               "playoff_mc_interval": [
                 0.627766,
@@ -5038,12 +5038,12 @@
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.09296,
+              "p_playoffs": 0.09304,
               "p_division": 0.0084,
               "p_championship": 0.00128,
               "playoff_mc_interval": [
-                0.087994,
-                0.098176
+                0.088072,
+                0.098258
               ]
             },
             {
@@ -5108,12 +5108,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.4152,
+              "p_playoffs": 0.41512,
               "p_division": 0.058,
               "p_championship": 0.02216,
               "playoff_mc_interval": [
-                0.406589,
-                0.423863
+                0.406509,
+                0.423783
               ]
             },
             {
@@ -5198,12 +5198,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.85704,
+              "p_playoffs": 0.85688,
               "p_division": 0.39944,
               "p_championship": 0.08992,
               "playoff_mc_interval": [
-                0.850794,
-                0.863067
+                0.850631,
+                0.86291
               ]
             },
             {
@@ -5304,12 +5304,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.675687,
-              "p_division": 0.136914,
+              "p_playoffs": 0.67609,
+              "p_division": 0.137184,
               "p_championship": 0.030829,
               "playoff_mc_interval": [
-                0.664952,
-                0.686239
+                0.66536,
+                0.686639
               ]
             },
             {
@@ -5334,12 +5334,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.183226,
+              "p_playoffs": 0.183091,
               "p_division": 0.109585,
               "p_championship": 0.001616,
               "playoff_mc_interval": [
-                0.174593,
-                0.192186
+                0.17446,
+                0.192049
               ]
             },
             {
@@ -5354,12 +5354,12 @@
             },
             {
               "team_id": 11,
-              "p_playoffs": 0.628164,
+              "p_playoffs": 0.628029,
               "p_division": 0.146473,
               "p_championship": 0.026656,
               "playoff_mc_interval": [
-                0.617109,
-                0.639086
+                0.616974,
+                0.638952
               ]
             },
             {
@@ -5434,12 +5434,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.406974,
+              "p_playoffs": 0.406704,
               "p_division": 0.060043,
               "p_championship": 0.020598,
               "playoff_mc_interval": [
-                0.395852,
-                0.418191
+                0.395584,
+                0.417921
               ]
             },
             {
@@ -5455,7 +5455,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.956112,
-              "p_division": 0.710285,
+              "p_division": 0.710016,
               "p_championship": 0.127356,
               "playoff_mc_interval": [
                 0.951213,
@@ -5544,12 +5544,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.137857,
+              "p_playoffs": 0.137991,
               "p_division": 0.122779,
               "p_championship": 0.00175,
               "playoff_mc_interval": [
-                0.130204,
-                0.145884
+                0.130335,
+                0.146022
               ]
             },
             {
@@ -5642,12 +5642,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.704959,
-              "p_division": 0.145399,
+              "p_playoffs": 0.705338,
+              "p_division": 0.145589,
               "p_championship": 0.03293,
               "playoff_mc_interval": [
-                0.697796,
-                0.712021
+                0.698179,
+                0.712399
               ]
             },
             {
@@ -5672,12 +5672,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.174656,
+              "p_playoffs": 0.17453,
               "p_division": 0.10753,
               "p_championship": 0.001836,
               "playoff_mc_interval": [
-                0.168814,
-                0.180657
+                0.168689,
+                0.180529
               ]
             },
             {
@@ -5693,7 +5693,7 @@
             {
               "team_id": 11,
               "p_playoffs": 0.625546,
-              "p_division": 0.143246,
+              "p_division": 0.143183,
               "p_championship": 0.026661,
               "playoff_mc_interval": [
                 0.617968,
@@ -5702,12 +5702,12 @@
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.092204,
+              "p_playoffs": 0.092268,
               "p_division": 0.007853,
               "p_championship": 0.00133,
               "playoff_mc_interval": [
-                0.087791,
-                0.096817
+                0.087852,
+                0.096881
               ]
             },
             {
@@ -5772,12 +5772,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.405927,
+              "p_playoffs": 0.405737,
               "p_division": 0.057438,
               "p_championship": 0.020391,
               "playoff_mc_interval": [
-                0.398292,
-                0.413609
+                0.398102,
+                0.413418
               ]
             },
             {
@@ -5793,7 +5793,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.952188,
-              "p_division": 0.703502,
+              "p_division": 0.703375,
               "p_championship": 0.123045,
               "playoff_mc_interval": [
                 0.948749,
@@ -5862,12 +5862,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.855867,
+              "p_playoffs": 0.855741,
               "p_division": 0.401811,
               "p_championship": 0.092394,
               "playoff_mc_interval": [
-                0.850303,
-                0.861259
+                0.850174,
+                0.861134
               ]
             },
             {
@@ -5968,12 +5968,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.543551,
+              "p_playoffs": 0.543792,
               "p_division": 0.079644,
               "p_championship": 0.022618,
               "playoff_mc_interval": [
-                0.528374,
-                0.558648
+                0.528615,
+                0.558888
               ]
             },
             {
@@ -5998,12 +5998,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.182146,
+              "p_playoffs": 0.181906,
               "p_division": 0.107074,
               "p_championship": 0.001203,
               "playoff_mc_interval": [
-                0.170707,
-                0.194173
+                0.170473,
+                0.193926
               ]
             },
             {
@@ -6018,12 +6018,12 @@
             },
             {
               "team_id": 11,
-              "p_playoffs": 0.661453,
+              "p_playoffs": 0.661213,
               "p_division": 0.158566,
               "p_championship": 0.032724,
               "playoff_mc_interval": [
-                0.646923,
-                0.675686
+                0.64668,
+                0.675448
               ]
             },
             {
@@ -6208,12 +6208,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.129451,
+              "p_playoffs": 0.129692,
               "p_division": 0.111165,
               "p_championship": 0.000722,
               "playoff_mc_interval": [
-                0.119586,
-                0.140001
+                0.119819,
+                0.140249
               ]
             },
             {
@@ -6306,12 +6306,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.671335,
-              "p_division": 0.132358,
+              "p_playoffs": 0.671707,
+              "p_division": 0.132482,
               "p_championship": 0.031355,
               "playoff_mc_interval": [
-                0.664047,
-                0.678541
+                0.664421,
+                0.67891
               ]
             },
             {
@@ -6336,12 +6336,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.17561,
+              "p_playoffs": 0.175424,
               "p_division": 0.107324,
               "p_championship": 0.001425,
               "playoff_mc_interval": [
-                0.169817,
-                0.181558
+                0.169634,
+                0.18137
               ]
             },
             {
@@ -6356,12 +6356,12 @@
             },
             {
               "team_id": 11,
-              "p_playoffs": 0.633908,
+              "p_playoffs": 0.633846,
               "p_division": 0.145805,
               "p_championship": 0.02931,
               "playoff_mc_interval": [
-                0.626444,
-                0.641307
+                0.626382,
+                0.641246
               ]
             },
             {
@@ -6436,12 +6436,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.41077,
+              "p_playoffs": 0.410584,
               "p_division": 0.057938,
               "p_championship": 0.021316,
               "playoff_mc_interval": [
-                0.403201,
-                0.418381
+                0.403016,
+                0.418194
               ]
             },
             {
@@ -6457,7 +6457,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.953526,
-              "p_division": 0.714339,
+              "p_division": 0.714215,
               "p_championship": 0.124303,
               "playoff_mc_interval": [
                 0.950169,
@@ -6546,12 +6546,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.135767,
+              "p_playoffs": 0.135828,
               "p_division": 0.120833,
               "p_championship": 0.001177,
               "playoff_mc_interval": [
-                0.130568,
-                0.141138
+                0.130629,
+                0.141201
               ]
             },
             {
@@ -6632,12 +6632,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.670431,
-              "p_division": 0.127363,
+              "p_playoffs": 0.670693,
+              "p_division": 0.127626,
               "p_championship": 0.028099,
               "playoff_mc_interval": [
-                0.655336,
-                0.685182
+                0.655601,
+                0.685442
               ]
             },
             {
@@ -6683,7 +6683,7 @@
             {
               "team_id": 11,
               "p_playoffs": 0.629202,
-              "p_division": 0.149947,
+              "p_division": 0.149685,
               "p_championship": 0.022059,
               "playoff_mc_interval": [
                 0.613737,
@@ -6852,12 +6852,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.847164,
+              "p_playoffs": 0.846901,
               "p_division": 0.404937,
               "p_championship": 0.096901,
               "playoff_mc_interval": [
-                0.835385,
-                0.858242
+                0.835115,
+                0.857988
               ]
             },
             {
@@ -6970,12 +6970,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.670952,
-              "p_division": 0.119249,
+              "p_playoffs": 0.671196,
+              "p_division": 0.119371,
               "p_championship": 0.030528,
               "playoff_mc_interval": [
-                0.663724,
-                0.678101
+                0.663969,
+                0.678343
               ]
             },
             {
@@ -7000,12 +7000,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.175492,
+              "p_playoffs": 0.175431,
               "p_division": 0.107184,
               "p_championship": 0.001645,
               "playoff_mc_interval": [
-                0.169748,
-                0.181388
+                0.169688,
+                0.181326
               ]
             },
             {
@@ -7021,7 +7021,7 @@
             {
               "team_id": 11,
               "p_playoffs": 0.632807,
-              "p_division": 0.137347,
+              "p_division": 0.137286,
               "p_championship": 0.027116,
               "playoff_mc_interval": [
                 0.625402,
@@ -7100,12 +7100,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.410578,
+              "p_playoffs": 0.410395,
               "p_division": 0.058924,
               "p_championship": 0.021205,
               "playoff_mc_interval": [
-                0.403073,
-                0.418125
+                0.402891,
+                0.417942
               ]
             },
             {
@@ -7121,7 +7121,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.963256,
-              "p_division": 0.73664,
+              "p_division": 0.736579,
               "p_championship": 0.129243,
               "playoff_mc_interval": [
                 0.960268,
@@ -7190,12 +7190,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.855707,
+              "p_playoffs": 0.855646,
               "p_division": 0.396502,
               "p_championship": 0.090976,
               "playoff_mc_interval": [
-                0.850247,
-                0.860999
+                0.850185,
+                0.86094
               ]
             },
             {
@@ -7210,12 +7210,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.133386,
+              "p_playoffs": 0.133447,
               "p_division": 0.119432,
               "p_championship": 0.001219,
               "playoff_mc_interval": [
-                0.12827,
-                0.138674
+                0.12833,
+                0.138736
               ]
             },
             {
@@ -7296,12 +7296,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.671747,
-              "p_division": 0.187412,
+              "p_playoffs": 0.672312,
+              "p_division": 0.187694,
               "p_championship": 0.031894,
               "playoff_mc_interval": [
-                0.656106,
-                0.687016
+                0.656677,
+                0.687573
               ]
             },
             {
@@ -7326,12 +7326,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.180073,
+              "p_playoffs": 0.179509,
               "p_division": 0.108665,
               "p_championship": 0.001976,
               "playoff_mc_interval": [
-                0.167769,
-                0.19307
+                0.167221,
+                0.192491
               ]
             },
             {
@@ -7356,12 +7356,12 @@
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.096811,
+              "p_playoffs": 0.097093,
               "p_division": 0.01129,
               "p_championship": 0.001129,
               "playoff_mc_interval": [
-                0.087506,
-                0.106989
+                0.087775,
+                0.107283
               ]
             },
             {
@@ -7447,7 +7447,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.907141,
-              "p_division": 0.612475,
+              "p_division": 0.612193,
               "p_championship": 0.100198,
               "playoff_mc_interval": [
                 0.897138,
@@ -7516,12 +7516,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.865933,
+              "p_playoffs": 0.865651,
               "p_division": 0.405306,
               "p_championship": 0.093988,
               "playoff_mc_interval": [
-                0.854316,
-                0.876757
+                0.854024,
+                0.876485
               ]
             },
             {
@@ -7634,12 +7634,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.666723,
-              "p_division": 0.132536,
+              "p_playoffs": 0.66706,
+              "p_division": 0.132705,
               "p_championship": 0.029134,
               "playoff_mc_interval": [
-                0.658192,
-                0.675146
+                0.658531,
+                0.67548
               ]
             },
             {
@@ -7664,12 +7664,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.17548,
+              "p_playoffs": 0.175312,
               "p_division": 0.11098,
               "p_championship": 0.001516,
               "playoff_mc_interval": [
-                0.168744,
-                0.182426
+                0.168578,
+                0.182255
               ]
             },
             {
@@ -7684,22 +7684,22 @@
             },
             {
               "team_id": 11,
-              "p_playoffs": 0.628831,
-              "p_division": 0.14584,
+              "p_playoffs": 0.628747,
+              "p_division": 0.145756,
               "p_championship": 0.026777,
               "playoff_mc_interval": [
-                0.620102,
-                0.637477
+                0.620017,
+                0.637394
               ]
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.086056,
+              "p_playoffs": 0.08614,
               "p_division": 0.007073,
               "p_championship": 0.001516,
               "playoff_mc_interval": [
-                0.081145,
-                0.091235
+                0.081227,
+                0.091321
               ]
             },
             {
@@ -7764,12 +7764,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.408723,
+              "p_playoffs": 0.408555,
               "p_division": 0.050017,
               "p_championship": 0.021219,
               "playoff_mc_interval": [
-                0.399913,
-                0.417593
+                0.399745,
+                0.417424
               ]
             },
             {
@@ -7785,7 +7785,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.951583,
-              "p_division": 0.71455,
+              "p_division": 0.714466,
               "p_championship": 0.124032,
               "playoff_mc_interval": [
                 0.947574,
@@ -7960,12 +7960,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.676975,
+              "p_playoffs": 0.677347,
               "p_division": 0.13003,
               "p_championship": 0.032787,
               "playoff_mc_interval": [
-                0.666678,
-                0.687102
+                0.667054,
+                0.687472
               ]
             },
             {
@@ -7990,12 +7990,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.177223,
+              "p_playoffs": 0.177099,
               "p_division": 0.101962,
               "p_championship": 0.001987,
               "playoff_mc_interval": [
-                0.169037,
-                0.185717
+                0.168915,
+                0.185591
               ]
             },
             {
@@ -8090,12 +8090,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.416915,
+              "p_playoffs": 0.416791,
               "p_division": 0.071535,
               "p_championship": 0.022231,
               "playoff_mc_interval": [
-                0.406188,
-                0.427722
+                0.406064,
+                0.427597
               ]
             },
             {
@@ -8180,12 +8180,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.794213,
+              "p_playoffs": 0.793964,
               "p_division": 0.314953,
               "p_championship": 0.078241,
               "playoff_mc_interval": [
-                0.785243,
-                0.802902
+                0.784991,
+                0.802657
               ]
             },
             {
@@ -8200,12 +8200,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.131272,
+              "p_playoffs": 0.131396,
               "p_division": 0.115872,
               "p_championship": 0.001242,
               "playoff_mc_interval": [
-                0.124071,
-                0.138824
+                0.124192,
+                0.138951
               ]
             },
             {
@@ -8298,12 +8298,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.675258,
-              "p_division": 0.128178,
+              "p_playoffs": 0.675607,
+              "p_division": 0.128294,
               "p_championship": 0.032509,
               "playoff_mc_interval": [
-                0.665292,
-                0.685068
+                0.665643,
+                0.685413
               ]
             },
             {
@@ -8328,12 +8328,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.171717,
+              "p_playoffs": 0.171601,
               "p_division": 0.102984,
               "p_championship": 0.001742,
               "playoff_mc_interval": [
-                0.163899,
-                0.179828
+                0.163785,
+                0.17971
               ]
             },
             {
@@ -8348,12 +8348,12 @@
             },
             {
               "team_id": 11,
-              "p_playoffs": 0.628469,
+              "p_playoffs": 0.628352,
               "p_division": 0.148845,
               "p_championship": 0.026936,
               "playoff_mc_interval": [
-                0.618208,
-                0.638614
+                0.618092,
+                0.638499
               ]
             },
             {
@@ -8449,7 +8449,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.952165,
-              "p_division": 0.716243,
+              "p_division": 0.716127,
               "p_championship": 0.128643,
               "playoff_mc_interval": [
                 0.947453,
@@ -8518,12 +8518,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.854638,
+              "p_playoffs": 0.854522,
               "p_division": 0.401951,
               "p_championship": 0.090677,
               "playoff_mc_interval": [
-                0.847036,
-                0.861924
+                0.846918,
+                0.86181
               ]
             },
             {
@@ -8624,12 +8624,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.66811,
-              "p_division": 0.133993,
+              "p_playoffs": 0.668464,
+              "p_division": 0.13417,
               "p_championship": 0.029433,
               "playoff_mc_interval": [
-                0.659378,
-                0.676729
+                0.659733,
+                0.67708
               ]
             },
             {
@@ -8654,12 +8654,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.179777,
+              "p_playoffs": 0.1796,
               "p_division": 0.110925,
               "p_championship": 0.001591,
               "playoff_mc_interval": [
-                0.17281,
-                0.186961
+                0.172636,
+                0.186782
               ]
             },
             {
@@ -8675,7 +8675,7 @@
             {
               "team_id": 11,
               "p_playoffs": 0.636203,
-              "p_division": 0.144776,
+              "p_division": 0.144688,
               "p_championship": 0.028637,
               "playoff_mc_interval": [
                 0.627293,
@@ -8684,12 +8684,12 @@
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.094043,
+              "p_playoffs": 0.094131,
               "p_division": 0.008308,
               "p_championship": 0.001503,
               "playoff_mc_interval": [
-                0.088801,
-                0.09956
+                0.088887,
+                0.099651
               ]
             },
             {
@@ -8754,12 +8754,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.414796,
+              "p_playoffs": 0.414531,
               "p_division": 0.061163,
               "p_championship": 0.023246,
               "playoff_mc_interval": [
-                0.405748,
-                0.423902
+                0.405483,
+                0.423636
               ]
             },
             {
@@ -8775,7 +8775,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.954128,
-              "p_division": 0.712922,
+              "p_division": 0.712834,
               "p_championship": 0.121001,
               "playoff_mc_interval": [
                 0.950116,
@@ -8844,12 +8844,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.859643,
+              "p_playoffs": 0.859555,
               "p_division": 0.394555,
               "p_championship": 0.092452,
               "playoff_mc_interval": [
-                0.85312,
-                0.865922
+                0.85303,
+                0.865835
               ]
             },
             {
@@ -8864,12 +8864,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.137882,
+              "p_playoffs": 0.137971,
               "p_division": 0.122415,
               "p_championship": 0.001503,
               "playoff_mc_interval": [
-                0.131652,
-                0.144358
+                0.131739,
+                0.144448
               ]
             },
             {
@@ -8962,12 +8962,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.669663,
-              "p_division": 0.130094,
+              "p_playoffs": 0.670088,
+              "p_division": 0.130276,
               "p_championship": 0.030125,
               "playoff_mc_interval": [
-                0.66244,
-                0.676807
+                0.662867,
+                0.67723
               ]
             },
             {
@@ -8992,12 +8992,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.174613,
+              "p_playoffs": 0.174431,
               "p_division": 0.106772,
               "p_championship": 0.001275,
               "playoff_mc_interval": [
-                0.16889,
-                0.180487
+                0.16871,
+                0.180303
               ]
             },
             {
@@ -9012,22 +9012,22 @@
             },
             {
               "team_id": 11,
-              "p_playoffs": 0.632797,
-              "p_division": 0.148011,
+              "p_playoffs": 0.632736,
+              "p_division": 0.14795,
               "p_championship": 0.027027,
               "playoff_mc_interval": [
-                0.625404,
-                0.640128
+                0.625343,
+                0.640068
               ]
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.093896,
+              "p_playoffs": 0.093957,
               "p_division": 0.007713,
               "p_championship": 0.001336,
               "playoff_mc_interval": [
-                0.089535,
-                0.098447
+                0.089594,
+                0.098509
               ]
             },
             {
@@ -9092,12 +9092,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.411965,
+              "p_playoffs": 0.411783,
               "p_division": 0.055026,
               "p_championship": 0.021075,
               "playoff_mc_interval": [
-                0.404468,
-                0.419503
+                0.404286,
+                0.41932
               ]
             },
             {
@@ -9113,7 +9113,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.951898,
-              "p_division": 0.714182,
+              "p_division": 0.71406,
               "p_championship": 0.122988,
               "playoff_mc_interval": [
                 0.948523,
@@ -9182,12 +9182,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.856605,
+              "p_playoffs": 0.856483,
               "p_division": 0.378621,
               "p_championship": 0.090191,
               "playoff_mc_interval": [
-                0.851168,
-                0.861875
+                0.851045,
+                0.861756
               ]
             },
             {
@@ -9202,12 +9202,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.134285,
+              "p_playoffs": 0.134346,
               "p_division": 0.120498,
               "p_championship": 0.001275,
               "playoff_mc_interval": [
-                0.129162,
-                0.139578
+                0.129222,
+                0.13964
               ]
             },
             {
@@ -9626,12 +9626,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.676149,
-              "p_division": 0.140292,
+              "p_playoffs": 0.676582,
+              "p_division": 0.1404,
               "p_championship": 0.030611,
               "playoff_mc_interval": [
-                0.666539,
-                0.685613
+                0.666975,
+                0.686042
               ]
             },
             {
@@ -9656,12 +9656,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.179124,
+              "p_playoffs": 0.179016,
               "p_division": 0.10503,
               "p_championship": 0.001622,
               "playoff_mc_interval": [
-                0.171441,
-                0.187073
+                0.171335,
+                0.186963
               ]
             },
             {
@@ -9676,12 +9676,12 @@
             },
             {
               "team_id": 11,
-              "p_playoffs": 0.531314,
+              "p_playoffs": 0.531206,
               "p_division": 0.104056,
               "p_championship": 0.020227,
               "playoff_mc_interval": [
-                0.521131,
-                0.541471
+                0.521023,
+                0.541363
               ]
             },
             {
@@ -9756,12 +9756,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.431368,
+              "p_playoffs": 0.43126,
               "p_division": 0.057004,
               "p_championship": 0.024662,
               "playoff_mc_interval": [
-                0.421303,
-                0.441491
+                0.421195,
+                0.441382
               ]
             },
             {
@@ -9777,7 +9777,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.954354,
-              "p_division": 0.748837,
+              "p_division": 0.748729,
               "p_championship": 0.12861,
               "playoff_mc_interval": [
                 0.949907,
@@ -9846,12 +9846,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.864792,
+              "p_playoffs": 0.864684,
               "p_division": 0.395998,
               "p_championship": 0.092591,
               "playoff_mc_interval": [
-                0.85767,
-                0.871611
+                0.857559,
+                0.871505
               ]
             },
             {
@@ -9952,12 +9952,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.667041,
-              "p_division": 0.124438,
+              "p_playoffs": 0.667322,
+              "p_division": 0.124625,
               "p_championship": 0.030805,
               "playoff_mc_interval": [
-                0.658045,
-                0.675918
+                0.658327,
+                0.676197
               ]
             },
             {
@@ -9982,12 +9982,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.173783,
+              "p_playoffs": 0.173596,
               "p_division": 0.109551,
               "p_championship": 0.001779,
               "playoff_mc_interval": [
-                0.166714,
-                0.181086
+                0.16653,
+                0.180896
               ]
             },
             {
@@ -10003,7 +10003,7 @@
             {
               "team_id": 11,
               "p_playoffs": 0.720506,
-              "p_division": 0.183614,
+              "p_division": 0.183521,
               "p_championship": 0.034644,
               "playoff_mc_interval": [
                 0.711917,
@@ -10012,12 +10012,12 @@
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.089045,
+              "p_playoffs": 0.089139,
               "p_division": 0.00824,
               "p_championship": 0.001311,
               "playoff_mc_interval": [
-                0.08379,
-                0.094595
+                0.083881,
+                0.094692
               ]
             },
             {
@@ -10082,12 +10082,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.394569,
+              "p_playoffs": 0.394382,
               "p_division": 0.060112,
               "p_championship": 0.019007,
               "playoff_mc_interval": [
-                0.385339,
-                0.403875
+                0.385153,
+                0.403687
               ]
             },
             {
@@ -10103,7 +10103,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.952154,
-              "p_division": 0.683708,
+              "p_division": 0.683614,
               "p_championship": 0.11985,
               "playoff_mc_interval": [
                 0.94794,
@@ -10172,12 +10172,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.850843,
+              "p_playoffs": 0.850749,
               "p_division": 0.399064,
               "p_championship": 0.091011,
               "playoff_mc_interval": [
-                0.84396,
-                0.857473
+                0.843865,
+                0.857381
               ]
             },
             {
@@ -10192,12 +10192,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.143727,
+              "p_playoffs": 0.14382,
               "p_division": 0.132584,
               "p_championship": 0.001124,
               "playoff_mc_interval": [
-                0.137201,
-                0.150508
+                0.137293,
+                0.150604
               ]
             },
             {
@@ -10290,12 +10290,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.668801,
-              "p_division": 0.129882,
+              "p_playoffs": 0.66935,
+              "p_division": 0.130065,
               "p_championship": 0.031007,
               "playoff_mc_interval": [
-                0.659921,
-                0.677562
+                0.660473,
+                0.678107
               ]
             },
             {
@@ -10320,12 +10320,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.173603,
+              "p_playoffs": 0.173511,
               "p_division": 0.106192,
               "p_championship": 0.001738,
               "playoff_mc_interval": [
-                0.166618,
-                0.180817
+                0.166528,
+                0.180724
               ]
             },
             {
@@ -10340,12 +10340,12 @@
             },
             {
               "team_id": 11,
-              "p_playoffs": 0.636239,
-              "p_division": 0.151468,
+              "p_playoffs": 0.636147,
+              "p_division": 0.151377,
               "p_championship": 0.028446,
               "playoff_mc_interval": [
-                0.627175,
-                0.645207
+                0.627083,
+                0.645117
               ]
             },
             {
@@ -10420,12 +10420,12 @@
             },
             {
               "team_id": 19,
-              "p_playoffs": 0.414342,
+              "p_playoffs": 0.414068,
               "p_division": 0.060734,
               "p_championship": 0.021312,
               "playoff_mc_interval": [
-                0.40514,
-                0.423604
+                0.404866,
+                0.423329
               ]
             },
             {
@@ -10441,7 +10441,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.952346,
-              "p_division": 0.71115,
+              "p_division": 0.711058,
               "p_championship": 0.121376,
               "playoff_mc_interval": [
                 0.948191,
@@ -10510,12 +10510,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.852556,
+              "p_playoffs": 0.852465,
               "p_division": 0.39303,
               "p_championship": 0.089728,
               "playoff_mc_interval": [
-                0.845787,
-                0.859079
+                0.845694,
+                0.858989
               ]
             },
             {
@@ -10616,12 +10616,12 @@
             },
             {
               "team_id": 6,
-              "p_playoffs": 0.673374,
-              "p_division": 0.133296,
+              "p_playoffs": 0.673485,
+              "p_division": 0.133407,
               "p_championship": 0.030017,
               "playoff_mc_interval": [
-                0.66361,
-                0.68299
+                0.663722,
+                0.6831
               ]
             },
             {
@@ -10646,12 +10646,12 @@
             },
             {
               "team_id": 9,
-              "p_playoffs": 0.179544,
+              "p_playoffs": 0.179322,
               "p_division": 0.109283,
               "p_championship": 0.001668,
               "playoff_mc_interval": [
-                0.17175,
-                0.187612
+                0.171531,
+                0.187386
               ]
             },
             {
@@ -10676,12 +10676,12 @@
             },
             {
               "team_id": 12,
-              "p_playoffs": 0.089049,
+              "p_playoffs": 0.089161,
               "p_division": 0.007782,
               "p_championship": 0.000778,
               "playoff_mc_interval": [
-                0.083338,
-                0.095112
+                0.083445,
+                0.095227
               ]
             },
             {
@@ -10767,7 +10767,7 @@
             {
               "team_id": 21,
               "p_playoffs": 0.954641,
-              "p_division": 0.718955,
+              "p_division": 0.718844,
               "p_championship": 0.127293,
               "playoff_mc_interval": [
                 0.950144,
@@ -10836,12 +10836,12 @@
             },
             {
               "team_id": 28,
-              "p_playoffs": 0.862813,
+              "p_playoffs": 0.862702,
               "p_division": 0.403224,
               "p_championship": 0.094275,
               "playoff_mc_interval": [
-                0.855548,
-                0.869768
+                0.855434,
+                0.869659
               ]
             },
             {
@@ -10856,12 +10856,12 @@
             },
             {
               "team_id": 30,
-              "p_playoffs": 0.140523,
+              "p_playoffs": 0.140634,
               "p_division": 0.12796,
               "p_championship": 0.000889,
               "playoff_mc_interval": [
-                0.133494,
-                0.147858
+                0.133603,
+                0.147972
               ]
             },
             {
