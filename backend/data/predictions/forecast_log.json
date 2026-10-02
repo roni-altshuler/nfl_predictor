@@ -1,24 +1,24 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-01T17:19:05+00:00",
+  "generated_at": "2026-10-02T16:33:54+00:00",
   "basis": "published",
   "forecasts_made": 272,
-  "games_played": 48,
-  "games_pending": 224,
+  "games_played": 49,
+  "games_pending": 223,
   "ties_excluded": 0,
   "invalid_excluded": 0,
-  "n": 48,
+  "n": 49,
   "note": "Every row here was published strictly before its kickoff and is the EARLIEST such publication for that fixture. This record is never merged with the historical walk-forward on /accuracy, which is a reconstruction.",
-  "brier": 0.23521,
-  "accuracy": 0.64583,
-  "ece": 0.12025,
+  "brier": 0.23629,
+  "accuracy": 0.63265,
+  "ece": 0.10684,
   "cohorts": {
     "model_version": {
       "nfl-margin-lattice-1": {
-        "n": 48,
-        "brier": 0.23521,
-        "log_loss": 0.66223,
-        "accuracy": 0.64583
+        "n": 49,
+        "brier": 0.23629,
+        "log_loss": 0.66442,
+        "accuracy": 0.63265
       }
     },
     "horizon": {
@@ -35,10 +35,10 @@
         "accuracy": null
       },
       "7_days_or_more": {
-        "n": 48,
-        "brier": 0.23521,
-        "log_loss": 0.66223,
-        "accuracy": 0.64583
+        "n": 49,
+        "brier": 0.23629,
+        "log_loss": 0.66442,
+        "accuracy": 0.63265
       }
     }
   },
@@ -1098,6 +1098,28 @@
       "brier": 0.200748,
       "log_loss": 0.594296,
       "correct": true
+    },
+    {
+      "game_id": "401872964",
+      "season": 2026,
+      "week": 4,
+      "kickoff_utc": "2026-10-02T00:15:00+00:00",
+      "generated_at": "2026-08-16T15:19:07+00:00",
+      "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 1112.93,
+      "home": "CLE",
+      "away": "PIT",
+      "p_home": 0.461445,
+      "p_tie": 0.003835,
+      "p_away": 0.53472,
+      "exp_margin": -1.301,
+      "home_score": 27,
+      "away_score": 24,
+      "tie": false,
+      "p_home_conditional": 0.463221,
+      "brier": 0.288131,
+      "log_loss": 0.76955,
+      "correct": false
     }
   ]
 }

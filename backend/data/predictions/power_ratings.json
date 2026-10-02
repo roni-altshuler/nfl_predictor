@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-01T17:18:53+00:00",
+  "generated_at": "2026-10-02T16:33:42+00:00",
   "carryover_applied": true,
   "teams": [
     {
@@ -129,7 +129,7 @@
       "abbreviation": "PIT",
       "conference": "American Football Conference",
       "division": "AFC North",
-      "elo": 1517.0
+      "elo": 1502.0
     },
     {
       "team_id": 12,
@@ -138,6 +138,14 @@
       "conference": "National Football Conference",
       "division": "NFC North",
       "elo": 1465.1
+    },
+    {
+      "team_id": 8,
+      "name": "Cleveland Browns",
+      "abbreviation": "CLE",
+      "conference": "American Football Conference",
+      "division": "AFC North",
+      "elo": 1458.4
     },
     {
       "team_id": 2,
@@ -178,14 +186,6 @@
       "conference": "American Football Conference",
       "division": "AFC South",
       "elo": 1444.8
-    },
-    {
-      "team_id": 8,
-      "name": "Cleveland Browns",
-      "abbreviation": "CLE",
-      "conference": "American Football Conference",
-      "division": "AFC North",
-      "elo": 1443.4
     },
     {
       "team_id": 24,
