@@ -54,19 +54,19 @@ export function BackButton({
   }, [])
 
   const className =
-    'inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--text-tertiary)] transition-colors hover:text-[var(--text-secondary)]'
+    'inline-flex min-h-[44px] items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-[var(--text-tertiary)] transition-colors hover:text-[var(--text-secondary)]'
 
   if (!canGoBack) {
     return (
       <Link href={fallback} className={className}>
-        ← {label}
+        <span aria-hidden="true">←</span> {label}
       </Link>
     )
   }
 
   return (
     <button type="button" onClick={() => router.back()} className={className}>
-      ← Back
+      <span aria-hidden="true">←</span> Back
     </button>
   )
 }
