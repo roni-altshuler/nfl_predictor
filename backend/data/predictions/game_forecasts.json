@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-02T16:33:42+00:00",
+  "generated_at": "2026-10-03T15:05:40+00:00",
   "model_version": "nfl-margin-lattice-1",
   "trained_through": "2026-10-02T00:15:00+00:00",
   "training_games": 6014,
@@ -143,15 +143,15 @@
           "away_cover": 0.32869
         },
         {
-          "line": 3.5,
-          "home_cover": 0.67131,
-          "push": 0.0,
-          "away_cover": 0.32869
-        },
-        {
           "line": 4.0,
           "home_cover": 0.67131,
           "push": 0.02864,
+          "away_cover": 0.30006
+        },
+        {
+          "line": 4.5,
+          "home_cover": 0.69994,
+          "push": 0.0,
           "away_cover": 0.30006
         },
         {
@@ -180,11 +180,11 @@
         }
       ],
       "market": {
-        "ml_home": 164.0,
-        "ml_away": -198.0,
-        "spread_home": 3.5,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": 170.0,
+        "ml_away": -205.0,
+        "spread_home": 4.5,
+        "total_points": 46.5,
+        "provider": "DraftKings"
       }
     },
     {
@@ -360,11 +360,11 @@
         }
       ],
       "market": {
-        "ml_home": 114.0,
-        "ml_away": -135.0,
+        "ml_home": 120.0,
+        "ml_away": -142.0,
         "spread_home": 2.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -538,7 +538,7 @@
         "ml_away": 136.0,
         "spread_home": -3.0,
         "total_points": 48.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -677,12 +677,6 @@
           "away_cover": 0.34082
         },
         {
-          "line": 3.5,
-          "home_cover": 0.65918,
-          "push": 0.0,
-          "away_cover": 0.34082
-        },
-        {
           "line": 4.0,
           "home_cover": 0.65918,
           "push": 0.02905,
@@ -714,11 +708,11 @@
         }
       ],
       "market": {
-        "ml_home": 154.0,
-        "ml_away": -185.0,
-        "spread_home": 3.5,
-        "total_points": 38.5,
-        "provider": "Draft Kings"
+        "ml_home": 142.0,
+        "ml_away": -170.0,
+        "spread_home": 3.0,
+        "total_points": 39.5,
+        "provider": "DraftKings"
       }
     },
     {
@@ -898,7 +892,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 51.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -1078,7 +1072,7 @@
         "ml_away": -185.0,
         "spread_home": 3.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -1248,11 +1242,11 @@
         }
       ],
       "market": {
-        "ml_home": -298.0,
-        "ml_away": 240.0,
+        "ml_home": -310.0,
+        "ml_away": 250.0,
         "spread_home": -7.0,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "total_points": 49.5,
+        "provider": "DraftKings"
       }
     },
     {
@@ -1428,11 +1422,11 @@
         }
       ],
       "market": {
-        "ml_home": -180.0,
-        "ml_away": 150.0,
+        "ml_home": -185.0,
+        "ml_away": 154.0,
         "spread_home": -3.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -1608,11 +1602,11 @@
         }
       ],
       "market": {
-        "ml_home": -675.0,
-        "ml_away": 490.0,
+        "ml_home": -650.0,
+        "ml_away": 470.0,
         "spread_home": -11.5,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -1709,12 +1703,6 @@
           "away_cover": 0.52781
         },
         {
-          "line": -10.5,
-          "home_cover": 0.52649,
-          "push": 0.0,
-          "away_cover": 0.47351
-        },
-        {
           "line": -10.0,
           "home_cover": 0.52649,
           "push": 0.03927,
@@ -1788,11 +1776,11 @@
         }
       ],
       "market": {
-        "ml_home": -625.0,
-        "ml_away": 455.0,
-        "spread_home": -10.5,
+        "ml_home": -535.0,
+        "ml_away": 400.0,
+        "spread_home": -10.0,
         "total_points": 38.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -1966,7 +1954,7 @@
         "ml_away": 124.0,
         "spread_home": -3.0,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -2142,11 +2130,11 @@
         }
       ],
       "market": {
-        "ml_home": 180.0,
-        "ml_away": -218.0,
+        "ml_home": 185.0,
+        "ml_away": -225.0,
         "spread_home": 4.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -2320,7 +2308,7 @@
         "ml_away": 295.0,
         "spread_home": -7.0,
         "total_points": 42.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -2496,11 +2484,11 @@
         }
       ],
       "market": {
-        "ml_home": 154.0,
-        "ml_away": -185.0,
+        "ml_home": 150.0,
+        "ml_away": -180.0,
         "spread_home": 3.5,
         "total_points": 50.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -2676,11 +2664,11 @@
         }
       ],
       "market": {
-        "ml_home": -142.0,
-        "ml_away": 120.0,
+        "ml_home": -135.0,
+        "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -2860,7 +2848,7 @@
         "ml_away": 400.0,
         "spread_home": -9.5,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -3030,11 +3018,11 @@
         }
       ],
       "market": {
-        "ml_home": -155.0,
-        "ml_away": 130.0,
+        "ml_home": -148.0,
+        "ml_away": 124.0,
         "spread_home": -3.0,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -3210,11 +3198,11 @@
         }
       ],
       "market": {
-        "ml_home": 350.0,
-        "ml_away": -455.0,
+        "ml_home": 360.0,
+        "ml_away": -470.0,
         "spread_home": 8.5,
         "total_points": 46.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -3341,12 +3329,6 @@
           "away_cover": 0.6211
         },
         {
-          "line": -2.5,
-          "home_cover": 0.3789,
-          "push": 0.0,
-          "away_cover": 0.6211
-        },
-        {
           "line": 0.0,
           "home_cover": 0.42348,
           "push": 0.00375,
@@ -3390,11 +3372,11 @@
         }
       ],
       "market": {
-        "ml_home": -142.0,
-        "ml_away": 120.0,
-        "spread_home": -2.5,
-        "total_points": 39.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -3570,11 +3552,11 @@
         }
       ],
       "market": {
-        "ml_home": 240.0,
-        "ml_away": -298.0,
+        "ml_home": 245.0,
+        "ml_away": -305.0,
         "spread_home": 6.5,
         "total_points": 39.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -3701,12 +3683,6 @@
           "away_cover": 0.39187
         },
         {
-          "line": -2.5,
-          "home_cover": 0.60813,
-          "push": 0.0,
-          "away_cover": 0.39187
-        },
-        {
           "line": 0.0,
           "home_cover": 0.65303,
           "push": 0.00353,
@@ -3750,11 +3726,11 @@
         }
       ],
       "market": {
-        "ml_home": -142.0,
-        "ml_away": 120.0,
-        "spread_home": -2.5,
-        "total_points": 44.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -3934,7 +3910,7 @@
         "ml_away": 160.0,
         "spread_home": -3.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -4114,7 +4090,7 @@
         "ml_away": -142.0,
         "spread_home": 2.5,
         "total_points": 44.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -4294,7 +4270,7 @@
         "ml_away": 120.0,
         "spread_home": -2.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -4474,7 +4450,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 45.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -4654,7 +4630,7 @@
         "ml_away": -135.0,
         "spread_home": 2.5,
         "total_points": 43.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -4834,7 +4810,7 @@
         "ml_away": -245.0,
         "spread_home": 5.5,
         "total_points": 52.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -5008,7 +4984,7 @@
         "ml_away": 145.0,
         "spread_home": -3.0,
         "total_points": 47.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -5178,11 +5154,11 @@
         }
       ],
       "market": {
-        "ml_home": 225.0,
-        "ml_away": -278.0,
+        "ml_home": 220.0,
+        "ml_away": -270.0,
         "spread_home": 6.0,
         "total_points": 49.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -5362,7 +5338,7 @@
         "ml_away": 114.0,
         "spread_home": -2.5,
         "total_points": 52.5,
-        "provider": "Draft Kings"
+        "provider": "DraftKings"
       }
     },
     {
@@ -5495,12 +5471,6 @@
           "away_cover": 0.55052
         },
         {
-          "line": 1.5,
-          "home_cover": 0.47209,
-          "push": 0.0,
-          "away_cover": 0.52791
-        },
-        {
           "line": 3.0,
           "home_cover": 0.49495,
           "push": 0.07633,
@@ -5538,11 +5508,11 @@
         }
       ],
       "market": {
-        "ml_home": 110.0,
-        "ml_away": -130.0,
-        "spread_home": 1.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -5669,12 +5639,6 @@
           "away_cover": 0.40086
         },
         {
-          "line": -1.5,
-          "home_cover": 0.6221,
-          "push": 0.0,
-          "away_cover": 0.3779
-        },
-        {
           "line": 0.0,
           "home_cover": 0.64433,
           "push": 0.00356,
@@ -5718,11 +5682,11 @@
         }
       ],
       "market": {
-        "ml_home": -112.0,
-        "ml_away": -108.0,
-        "spread_home": -1.5,
-        "total_points": 42.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -5873,12 +5837,6 @@
           "away_cover": 0.35725
         },
         {
-          "line": 6.5,
-          "home_cover": 0.64275,
-          "push": 0.0,
-          "away_cover": 0.35725
-        },
-        {
           "line": 7.0,
           "home_cover": 0.64275,
           "push": 0.05088,
@@ -5898,11 +5856,11 @@
         }
       ],
       "market": {
-        "ml_home": 205.0,
-        "ml_away": -250.0,
-        "spread_home": 6.5,
-        "total_points": 44.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -6011,12 +5969,6 @@
           "away_cover": 0.58738
         },
         {
-          "line": -6.5,
-          "home_cover": 0.41262,
-          "push": 0.0,
-          "away_cover": 0.58738
-        },
-        {
           "line": -6.0,
           "home_cover": 0.41262,
           "push": 0.03694,
@@ -6078,11 +6030,11 @@
         }
       ],
       "market": {
-        "ml_home": -278.0,
-        "ml_away": 225.0,
-        "spread_home": -6.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -6252,11 +6204,11 @@
         }
       ],
       "market": {
-        "ml_home": 130.0,
-        "ml_away": -155.0,
-        "spread_home": 3.0,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -6383,12 +6335,6 @@
           "away_cover": 0.49284
         },
         {
-          "line": -2.5,
-          "home_cover": 0.50716,
-          "push": 0.0,
-          "away_cover": 0.49284
-        },
-        {
           "line": 0.0,
           "home_cover": 0.55393,
           "push": 0.00378,
@@ -6432,11 +6378,11 @@
         }
       ],
       "market": {
-        "ml_home": -142.0,
-        "ml_away": 120.0,
-        "spread_home": -2.5,
-        "total_points": 44.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -6539,12 +6485,6 @@
           "away_cover": 0.49005
         },
         {
-          "line": -9.5,
-          "home_cover": 0.50995,
-          "push": 0.0,
-          "away_cover": 0.49005
-        },
-        {
           "line": -7.0,
           "home_cover": 0.54674,
           "push": 0.05021,
@@ -6612,11 +6552,11 @@
         }
       ],
       "market": {
-        "ml_home": -440.0,
-        "ml_away": 340.0,
-        "spread_home": -9.5,
-        "total_points": 42.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -6743,12 +6683,6 @@
           "away_cover": 0.53297
         },
         {
-          "line": -1.5,
-          "home_cover": 0.49042,
-          "push": 0.0,
-          "away_cover": 0.50958
-        },
-        {
           "line": 0.0,
           "home_cover": 0.51367,
           "push": 0.00382,
@@ -6792,11 +6726,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -6917,12 +6851,6 @@
           "away_cover": 0.46453
         },
         {
-          "line": -3.5,
-          "home_cover": 0.53547,
-          "push": 0.0,
-          "away_cover": 0.46453
-        },
-        {
           "line": -3.0,
           "home_cover": 0.53547,
           "push": 0.08204,
@@ -6972,11 +6900,11 @@
         }
       ],
       "market": {
-        "ml_home": -192.0,
-        "ml_away": 160.0,
-        "spread_home": -3.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -7073,12 +7001,6 @@
           "away_cover": 0.643
         },
         {
-          "line": -13.5,
-          "home_cover": 0.357,
-          "push": 0.0,
-          "away_cover": 0.643
-        },
-        {
           "line": -10.0,
           "home_cover": 0.40972,
           "push": 0.03983,
@@ -7152,11 +7074,11 @@
         }
       ],
       "market": {
-        "ml_home": -750.0,
-        "ml_away": 525.0,
-        "spread_home": -13.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -7307,12 +7229,6 @@
           "away_cover": 0.42956
         },
         {
-          "line": 6.5,
-          "home_cover": 0.57044,
-          "push": 0.0,
-          "away_cover": 0.42956
-        },
-        {
           "line": 7.0,
           "home_cover": 0.57044,
           "push": 0.05337,
@@ -7332,11 +7248,11 @@
         }
       ],
       "market": {
-        "ml_home": 220.0,
-        "ml_away": -270.0,
-        "spread_home": 6.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -7463,12 +7379,6 @@
           "away_cover": 0.3452
         },
         {
-          "line": -2.5,
-          "home_cover": 0.6548,
-          "push": 0.0,
-          "away_cover": 0.3452
-        },
-        {
           "line": 0.0,
           "home_cover": 0.69774,
           "push": 0.00332,
@@ -7512,11 +7422,11 @@
         }
       ],
       "market": {
-        "ml_home": -142.0,
-        "ml_away": 120.0,
-        "spread_home": -2.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -7686,11 +7596,11 @@
         }
       ],
       "market": {
-        "ml_home": -170.0,
-        "ml_away": 142.0,
-        "spread_home": -3.0,
-        "total_points": 51.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -7805,12 +7715,6 @@
           "away_cover": 0.41095
         },
         {
-          "line": -5.5,
-          "home_cover": 0.58905,
-          "push": 0.0,
-          "away_cover": 0.41095
-        },
-        {
           "line": -4.0,
           "home_cover": 0.60961,
           "push": 0.02432,
@@ -7866,11 +7770,11 @@
         }
       ],
       "market": {
-        "ml_home": -250.0,
-        "ml_away": 205.0,
-        "spread_home": -5.5,
-        "total_points": 50.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -7997,12 +7901,6 @@
           "away_cover": 0.48129
         },
         {
-          "line": -1.5,
-          "home_cover": 0.54226,
-          "push": 0.0,
-          "away_cover": 0.45774
-        },
-        {
           "line": 0.0,
           "home_cover": 0.56543,
           "push": 0.00377,
@@ -8046,11 +7944,11 @@
         }
       ],
       "market": {
-        "ml_home": -122.0,
-        "ml_away": 102.0,
-        "spread_home": -1.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -8183,12 +8081,6 @@
           "away_cover": 0.48136
         },
         {
-          "line": 2.5,
-          "home_cover": 0.56362,
-          "push": 0.0,
-          "away_cover": 0.43638
-        },
-        {
           "line": 3.0,
           "home_cover": 0.56362,
           "push": 0.074,
@@ -8226,11 +8118,11 @@
         }
       ],
       "market": {
-        "ml_home": 120.0,
-        "ml_away": -142.0,
-        "spread_home": 2.5,
-        "total_points": 42.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -8351,12 +8243,6 @@
           "away_cover": 0.60581
         },
         {
-          "line": -3.5,
-          "home_cover": 0.39419,
-          "push": 0.0,
-          "away_cover": 0.60581
-        },
-        {
           "line": -3.0,
           "home_cover": 0.39419,
           "push": 0.08254,
@@ -8406,11 +8292,11 @@
         }
       ],
       "market": {
-        "ml_home": -185.0,
-        "ml_away": 154.0,
-        "spread_home": -3.5,
-        "total_points": 51.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -8537,12 +8423,6 @@
           "away_cover": 0.62617
         },
         {
-          "line": -2.5,
-          "home_cover": 0.37383,
-          "push": 0.0,
-          "away_cover": 0.62617
-        },
-        {
           "line": 0.0,
           "home_cover": 0.41821,
           "push": 0.00373,
@@ -8586,11 +8466,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
-        "spread_home": -2.5,
-        "total_points": 40.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -8717,12 +8597,6 @@
           "away_cover": 0.23548
         },
         {
-          "line": -2.5,
-          "home_cover": 0.76452,
-          "push": 0.0,
-          "away_cover": 0.23548
-        },
-        {
           "line": 0.0,
           "home_cover": 0.80004,
           "push": 0.00265,
@@ -8766,11 +8640,11 @@
         }
       ],
       "market": {
-        "ml_home": -142.0,
-        "ml_away": 120.0,
-        "spread_home": -2.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -8897,12 +8771,6 @@
           "away_cover": 0.58961
         },
         {
-          "line": -2.5,
-          "home_cover": 0.41039,
-          "push": 0.0,
-          "away_cover": 0.58961
-        },
-        {
           "line": 0.0,
           "home_cover": 0.45599,
           "push": 0.00379,
@@ -8946,11 +8814,11 @@
         }
       ],
       "market": {
-        "ml_home": -142.0,
-        "ml_away": 120.0,
-        "spread_home": -2.5,
-        "total_points": 41.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -9065,12 +8933,6 @@
           "away_cover": 0.52443
         },
         {
-          "line": -5.5,
-          "home_cover": 0.47557,
-          "push": 0.0,
-          "away_cover": 0.52443
-        },
-        {
           "line": -4.0,
           "home_cover": 0.49713,
           "push": 0.02606,
@@ -9126,11 +8988,11 @@
         }
       ],
       "market": {
-        "ml_home": -238.0,
-        "ml_away": 195.0,
-        "spread_home": -5.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -9275,12 +9137,6 @@
           "away_cover": 0.44264
         },
         {
-          "line": 4.5,
-          "home_cover": 0.55736,
-          "push": 0.0,
-          "away_cover": 0.44264
-        },
-        {
           "line": 6.0,
           "home_cover": 0.57901,
           "push": 0.03528,
@@ -9306,11 +9162,11 @@
         }
       ],
       "market": {
-        "ml_home": 190.0,
-        "ml_away": -230.0,
-        "spread_home": 4.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -9443,12 +9299,6 @@
           "away_cover": 0.43011
         },
         {
-          "line": 1.5,
-          "home_cover": 0.59188,
-          "push": 0.0,
-          "away_cover": 0.40812
-        },
-        {
           "line": 3.0,
           "home_cover": 0.61361,
           "push": 0.07086,
@@ -9486,11 +9336,11 @@
         }
       ],
       "market": {
-        "ml_home": 105.0,
-        "ml_away": -125.0,
-        "spread_home": 1.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -9647,12 +9497,6 @@
           "away_cover": 0.41099
         },
         {
-          "line": 7.5,
-          "home_cover": 0.58901,
-          "push": 0.0,
-          "away_cover": 0.41099
-        },
-        {
           "line": 10.0,
           "home_cover": 0.62288,
           "push": 0.0329,
@@ -9666,11 +9510,11 @@
         }
       ],
       "market": {
-        "ml_home": 295.0,
-        "ml_away": -375.0,
-        "spread_home": 7.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -9797,12 +9641,6 @@
           "away_cover": 0.36029
         },
         {
-          "line": -2.5,
-          "home_cover": 0.63971,
-          "push": 0.0,
-          "away_cover": 0.36029
-        },
-        {
           "line": 0.0,
           "home_cover": 0.68336,
           "push": 0.0034,
@@ -9846,11 +9684,11 @@
         }
       ],
       "market": {
-        "ml_home": -142.0,
-        "ml_away": 120.0,
-        "spread_home": -2.5,
-        "total_points": 50.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -10007,12 +9845,6 @@
           "away_cover": 0.3
         },
         {
-          "line": 7.5,
-          "home_cover": 0.7,
-          "push": 0.0,
-          "away_cover": 0.3
-        },
-        {
           "line": 10.0,
           "home_cover": 0.73085,
           "push": 0.02885,
@@ -10026,11 +9858,11 @@
         }
       ],
       "market": {
-        "ml_home": 275.0,
-        "ml_away": -345.0,
-        "spread_home": 7.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -10200,11 +10032,11 @@
         }
       ],
       "market": {
-        "ml_home": -170.0,
-        "ml_away": 142.0,
-        "spread_home": -3.0,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -10374,11 +10206,11 @@
         }
       ],
       "market": {
-        "ml_home": -162.0,
-        "ml_away": 136.0,
-        "spread_home": -3.0,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -10548,11 +10380,11 @@
         }
       ],
       "market": {
-        "ml_home": -340.0,
-        "ml_away": 270.0,
-        "spread_home": -7.0,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -10649,12 +10481,6 @@
           "away_cover": 0.75299
         },
         {
-          "line": -10.5,
-          "home_cover": 0.29355,
-          "push": 0.0,
-          "away_cover": 0.70645
-        },
-        {
           "line": -10.0,
           "home_cover": 0.29355,
           "push": 0.03685,
@@ -10728,11 +10554,11 @@
         }
       ],
       "market": {
-        "ml_home": -535.0,
-        "ml_away": 400.0,
-        "spread_home": -10.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -10847,12 +10673,6 @@
           "away_cover": 0.65443
         },
         {
-          "line": -4.5,
-          "home_cover": 0.36603,
-          "push": 0.0,
-          "away_cover": 0.63397
-        },
-        {
           "line": -4.0,
           "home_cover": 0.36603,
           "push": 0.02538,
@@ -10908,11 +10728,11 @@
         }
       ],
       "market": {
-        "ml_home": -218.0,
-        "ml_away": 180.0,
-        "spread_home": -4.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -11039,12 +10859,6 @@
           "away_cover": 0.35364
         },
         {
-          "line": -2.5,
-          "home_cover": 0.64636,
-          "push": 0.0,
-          "away_cover": 0.35364
-        },
-        {
           "line": 0.0,
           "home_cover": 0.68971,
           "push": 0.00336,
@@ -11088,11 +10902,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
-        "spread_home": -2.5,
-        "total_points": 51.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -11262,11 +11076,11 @@
         }
       ],
       "market": {
-        "ml_home": -258.0,
-        "ml_away": 210.0,
-        "spread_home": -6.0,
-        "total_points": 39.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -11381,12 +11195,6 @@
           "away_cover": 0.36065
         },
         {
-          "line": -4.5,
-          "home_cover": 0.6589,
-          "push": 0.0,
-          "away_cover": 0.3411
-        },
-        {
           "line": -4.0,
           "home_cover": 0.6589,
           "push": 0.02291,
@@ -11442,11 +11250,11 @@
         }
       ],
       "market": {
-        "ml_home": -218.0,
-        "ml_away": 180.0,
-        "spread_home": -4.5,
-        "total_points": 49.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -11573,12 +11381,6 @@
           "away_cover": 0.60082
         },
         {
-          "line": -1.5,
-          "home_cover": 0.42173,
-          "push": 0.0,
-          "away_cover": 0.57827
-        },
-        {
           "line": 0.0,
           "home_cover": 0.44445,
           "push": 0.00378,
@@ -11622,11 +11424,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 40.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -11741,12 +11543,6 @@
           "away_cover": 0.72415
         },
         {
-          "line": -4.5,
-          "home_cover": 0.29461,
-          "push": 0.0,
-          "away_cover": 0.70539
-        },
-        {
           "line": -4.0,
           "home_cover": 0.29461,
           "push": 0.02363,
@@ -11802,11 +11598,11 @@
         }
       ],
       "market": {
-        "ml_home": -218.0,
-        "ml_away": 180.0,
-        "spread_home": -4.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -11915,12 +11711,6 @@
           "away_cover": 0.39897
         },
         {
-          "line": -6.5,
-          "home_cover": 0.60103,
-          "push": 0.0,
-          "away_cover": 0.39897
-        },
-        {
           "line": -6.0,
           "home_cover": 0.60103,
           "push": 0.03489,
@@ -11982,11 +11772,11 @@
         }
       ],
       "market": {
-        "ml_home": -290.0,
-        "ml_away": 235.0,
-        "spread_home": -6.5,
-        "total_points": 49.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -12101,12 +11891,6 @@
           "away_cover": 0.50659
         },
         {
-          "line": -4.5,
-          "home_cover": 0.51492,
-          "push": 0.0,
-          "away_cover": 0.48508
-        },
-        {
           "line": -4.0,
           "home_cover": 0.51492,
           "push": 0.02593,
@@ -12162,11 +11946,11 @@
         }
       ],
       "market": {
-        "ml_home": -198.0,
-        "ml_away": 164.0,
-        "spread_home": -4.5,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -12293,12 +12077,6 @@
           "away_cover": 0.4569
         },
         {
-          "line": -1.5,
-          "home_cover": 0.56658,
-          "push": 0.0,
-          "away_cover": 0.43342
-        },
-        {
           "line": 0.0,
           "home_cover": 0.58956,
           "push": 0.00372,
@@ -12342,11 +12120,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -12516,11 +12294,11 @@
         }
       ],
       "market": {
-        "ml_home": 280.0,
-        "ml_away": -355.0,
-        "spread_home": 7.0,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -12653,12 +12431,6 @@
           "away_cover": 0.54275
         },
         {
-          "line": 1.5,
-          "home_cover": 0.47989,
-          "push": 0.0,
-          "away_cover": 0.52011
-        },
-        {
           "line": 3.0,
           "home_cover": 0.50274,
           "push": 0.07618,
@@ -12696,11 +12468,11 @@
         }
       ],
       "market": {
-        "ml_home": 105.0,
-        "ml_away": -125.0,
-        "spread_home": 1.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -12815,12 +12587,6 @@
           "away_cover": 0.48494
         },
         {
-          "line": -4.5,
-          "home_cover": 0.53646,
-          "push": 0.0,
-          "away_cover": 0.46354
-        },
-        {
           "line": -4.0,
           "home_cover": 0.53646,
           "push": 0.02569,
@@ -12876,11 +12642,11 @@
         }
       ],
       "market": {
-        "ml_home": -225.0,
-        "ml_away": 185.0,
-        "spread_home": -4.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -12995,12 +12761,6 @@
           "away_cover": 0.68779
         },
         {
-          "line": -4.5,
-          "home_cover": 0.33196,
-          "push": 0.0,
-          "away_cover": 0.66804
-        },
-        {
           "line": -4.0,
           "home_cover": 0.33196,
           "push": 0.02467,
@@ -13056,11 +12816,11 @@
         }
       ],
       "market": {
-        "ml_home": -205.0,
-        "ml_away": 170.0,
-        "spread_home": -4.5,
-        "total_points": 49.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -13205,12 +12965,6 @@
           "away_cover": 0.39269
         },
         {
-          "line": 5.5,
-          "home_cover": 0.62844,
-          "push": 0.0,
-          "away_cover": 0.37156
-        },
-        {
           "line": 6.0,
           "home_cover": 0.62844,
           "push": 0.0341,
@@ -13236,11 +12990,11 @@
         }
       ],
       "market": {
-        "ml_home": 190.0,
-        "ml_away": -230.0,
-        "spread_home": 5.5,
-        "total_points": 49.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -13361,12 +13115,6 @@
           "away_cover": 0.519
         },
         {
-          "line": -3.5,
-          "home_cover": 0.481,
-          "push": 0.0,
-          "away_cover": 0.519
-        },
-        {
           "line": -3.0,
           "home_cover": 0.481,
           "push": 0.08355,
@@ -13416,11 +13164,11 @@
         }
       ],
       "market": {
-        "ml_home": -192.0,
-        "ml_away": 160.0,
-        "spread_home": -3.5,
-        "total_points": 41.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -13553,12 +13301,6 @@
           "away_cover": 0.44554
         },
         {
-          "line": 1.5,
-          "home_cover": 0.57665,
-          "push": 0.0,
-          "away_cover": 0.42335
-        },
-        {
           "line": 3.0,
           "home_cover": 0.59864,
           "push": 0.07193,
@@ -13596,11 +13338,11 @@
         }
       ],
       "market": {
-        "ml_home": 105.0,
-        "ml_away": -125.0,
-        "spread_home": 1.5,
-        "total_points": 52.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -13770,11 +13512,11 @@
         }
       ],
       "market": {
-        "ml_home": 136.0,
-        "ml_away": -162.0,
-        "spread_home": 3.0,
-        "total_points": 42.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -13925,12 +13667,6 @@
           "away_cover": 0.40297
         },
         {
-          "line": 6.5,
-          "home_cover": 0.59703,
-          "push": 0.0,
-          "away_cover": 0.40297
-        },
-        {
           "line": 7.0,
           "home_cover": 0.59703,
           "push": 0.05267,
@@ -13950,11 +13686,11 @@
         }
       ],
       "market": {
-        "ml_home": 225.0,
-        "ml_away": -278.0,
-        "spread_home": 6.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -14099,12 +13835,6 @@
           "away_cover": 0.42274
         },
         {
-          "line": 5.5,
-          "home_cover": 0.59874,
-          "push": 0.0,
-          "away_cover": 0.40126
-        },
-        {
           "line": 6.0,
           "home_cover": 0.59874,
           "push": 0.03488,
@@ -14130,11 +13860,11 @@
         }
       ],
       "market": {
-        "ml_home": 185.0,
-        "ml_away": -225.0,
-        "spread_home": 5.5,
-        "total_points": 50.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -14249,12 +13979,6 @@
           "away_cover": 0.58441
         },
         {
-          "line": -5.5,
-          "home_cover": 0.41559,
-          "push": 0.0,
-          "away_cover": 0.58441
-        },
-        {
           "line": -4.0,
           "home_cover": 0.43695,
           "push": 0.02613,
@@ -14310,11 +14034,11 @@
         }
       ],
       "market": {
-        "ml_home": -238.0,
-        "ml_away": 195.0,
-        "spread_home": -5.5,
-        "total_points": 44.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -14417,12 +14141,6 @@
           "away_cover": 0.49708
         },
         {
-          "line": -9.5,
-          "home_cover": 0.50292,
-          "push": 0.0,
-          "away_cover": 0.49708
-        },
-        {
           "line": -7.0,
           "home_cover": 0.53983,
           "push": 0.05044,
@@ -14490,11 +14208,11 @@
         }
       ],
       "market": {
-        "ml_home": -395.0,
-        "ml_away": 340.0,
-        "spread_home": -9.5,
-        "total_points": 41.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -14621,12 +14339,6 @@
           "away_cover": 0.6384
         },
         {
-          "line": -2.5,
-          "home_cover": 0.3616,
-          "push": 0.0,
-          "away_cover": 0.6384
-        },
-        {
           "line": 0.0,
           "home_cover": 0.40548,
           "push": 0.00371,
@@ -14670,11 +14382,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
-        "spread_home": -2.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -14777,12 +14489,6 @@
           "away_cover": 0.52527
         },
         {
-          "line": -8.5,
-          "home_cover": 0.48698,
-          "push": 0.0,
-          "away_cover": 0.51302
-        },
-        {
           "line": -7.0,
           "home_cover": 0.51195,
           "push": 0.05123,
@@ -14850,11 +14556,11 @@
         }
       ],
       "market": {
-        "ml_home": -425.0,
-        "ml_away": 330.0,
-        "spread_home": -8.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -14951,12 +14657,6 @@
           "away_cover": 0.49003
         },
         {
-          "line": -13.5,
-          "home_cover": 0.50997,
-          "push": 0.0,
-          "away_cover": 0.49003
-        },
-        {
           "line": -10.0,
           "home_cover": 0.56382,
           "push": 0.03841,
@@ -15030,11 +14730,11 @@
         }
       ],
       "market": {
-        "ml_home": -800.0,
-        "ml_away": 550.0,
-        "spread_home": -13.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -15161,12 +14861,6 @@
           "away_cover": 0.34586
         },
         {
-          "line": -1.5,
-          "home_cover": 0.67609,
-          "push": 0.0,
-          "away_cover": 0.32391
-        },
-        {
           "line": 0.0,
           "home_cover": 0.69712,
           "push": 0.00333,
@@ -15210,11 +14904,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -15335,12 +15029,6 @@
           "away_cover": 0.40703
         },
         {
-          "line": -3.5,
-          "home_cover": 0.59297,
-          "push": 0.0,
-          "away_cover": 0.40703
-        },
-        {
           "line": -3.0,
           "home_cover": 0.59297,
           "push": 0.07875,
@@ -15390,11 +15078,11 @@
         }
       ],
       "market": {
-        "ml_home": -198.0,
-        "ml_away": 164.0,
-        "spread_home": -3.5,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -15564,11 +15252,11 @@
         }
       ],
       "market": {
-        "ml_home": 145.0,
-        "ml_away": -175.0,
-        "spread_home": 3.0,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -15695,12 +15383,6 @@
           "away_cover": 0.47701
         },
         {
-          "line": -1.5,
-          "home_cover": 0.54653,
-          "push": 0.0,
-          "away_cover": 0.45347
-        },
-        {
           "line": 0.0,
           "home_cover": 0.56967,
           "push": 0.00376,
@@ -15744,11 +15426,11 @@
         }
       ],
       "market": {
-        "ml_home": -122.0,
-        "ml_away": 102.0,
-        "spread_home": -1.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -15875,12 +15557,6 @@
           "away_cover": 0.54107
         },
         {
-          "line": -1.5,
-          "home_cover": 0.48225,
-          "push": 0.0,
-          "away_cover": 0.51775
-        },
-        {
           "line": 0.0,
           "home_cover": 0.50547,
           "push": 0.00382,
@@ -15924,11 +15600,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -16098,11 +15774,11 @@
         }
       ],
       "market": {
-        "ml_home": 270.0,
-        "ml_away": -340.0,
-        "spread_home": 7.0,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -16229,12 +15905,6 @@
           "away_cover": 0.4714
         },
         {
-          "line": -1.5,
-          "home_cover": 0.55213,
-          "push": 0.0,
-          "away_cover": 0.44787
-        },
-        {
           "line": 0.0,
           "home_cover": 0.57523,
           "push": 0.00375,
@@ -16278,11 +15948,11 @@
         }
       ],
       "market": {
-        "ml_home": -120.0,
-        "ml_away": 100.0,
-        "spread_home": -1.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -16427,12 +16097,6 @@
           "away_cover": 0.35953
         },
         {
-          "line": 4.5,
-          "home_cover": 0.64047,
-          "push": 0.0,
-          "away_cover": 0.35953
-        },
-        {
           "line": 6.0,
           "home_cover": 0.66105,
           "push": 0.03299,
@@ -16458,11 +16122,11 @@
         }
       ],
       "market": {
-        "ml_home": 170.0,
-        "ml_away": -205.0,
-        "spread_home": 4.5,
-        "total_points": 38.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -16595,12 +16259,6 @@
           "away_cover": 0.77197
         },
         {
-          "line": 2.5,
-          "home_cover": 0.26476,
-          "push": 0.0,
-          "away_cover": 0.73524
-        },
-        {
           "line": 3.0,
           "home_cover": 0.26476,
           "push": 0.06614,
@@ -16638,11 +16296,11 @@
         }
       ],
       "market": {
-        "ml_home": 114.0,
-        "ml_away": -135.0,
-        "spread_home": 2.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -16787,12 +16445,6 @@
           "away_cover": 0.38136
         },
         {
-          "line": 4.5,
-          "home_cover": 0.61864,
-          "push": 0.0,
-          "away_cover": 0.38136
-        },
-        {
           "line": 6.0,
           "home_cover": 0.6396,
           "push": 0.03375,
@@ -16818,11 +16470,11 @@
         }
       ],
       "market": {
-        "ml_home": 170.0,
-        "ml_away": -205.0,
-        "spread_home": 4.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -16931,12 +16583,6 @@
           "away_cover": 0.58643
         },
         {
-          "line": -6.5,
-          "home_cover": 0.41357,
-          "push": 0.0,
-          "away_cover": 0.58643
-        },
-        {
           "line": -6.0,
           "home_cover": 0.41357,
           "push": 0.03695,
@@ -16998,11 +16644,11 @@
         }
       ],
       "market": {
-        "ml_home": -305.0,
-        "ml_away": 245.0,
-        "spread_home": -6.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -17117,12 +16763,6 @@
           "away_cover": 0.80506
         },
         {
-          "line": -4.5,
-          "home_cover": 0.2106,
-          "push": 0.0,
-          "away_cover": 0.7894
-        },
-        {
           "line": -4.0,
           "home_cover": 0.2106,
           "push": 0.02014,
@@ -17178,11 +16818,11 @@
         }
       ],
       "market": {
-        "ml_home": -245.0,
-        "ml_away": 200.0,
-        "spread_home": -4.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -17345,12 +16985,6 @@
           "away_cover": 0.3274
         },
         {
-          "line": 10.5,
-          "home_cover": 0.6726,
-          "push": 0.0,
-          "away_cover": 0.3274
-        },
-        {
           "line": 14.0,
           "home_cover": 0.71891,
           "push": 0.03684,
@@ -17358,11 +16992,11 @@
         }
       ],
       "market": {
-        "ml_home": 360.0,
-        "ml_away": -470.0,
-        "spread_home": 10.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -17532,11 +17166,11 @@
         }
       ],
       "market": {
-        "ml_home": 260.0,
-        "ml_away": -325.0,
-        "spread_home": 7.0,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -17663,12 +17297,6 @@
           "away_cover": 0.65704
         },
         {
-          "line": -1.5,
-          "home_cover": 0.36427,
-          "push": 0.0,
-          "away_cover": 0.63573
-        },
-        {
           "line": 0.0,
           "home_cover": 0.38599,
           "push": 0.00366,
@@ -17712,11 +17340,11 @@
         }
       ],
       "market": {
-        "ml_home": -120.0,
-        "ml_away": 100.0,
-        "spread_home": -1.5,
-        "total_points": 52.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -17837,12 +17465,6 @@
           "away_cover": 0.58062
         },
         {
-          "line": -3.5,
-          "home_cover": 0.41938,
-          "push": 0.0,
-          "away_cover": 0.58062
-        },
-        {
           "line": -3.0,
           "home_cover": 0.41938,
           "push": 0.08328,
@@ -17892,11 +17514,11 @@
         }
       ],
       "market": {
-        "ml_home": -198.0,
-        "ml_away": 164.0,
-        "spread_home": -3.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -18017,12 +17639,6 @@
           "away_cover": 0.39754
         },
         {
-          "line": -3.5,
-          "home_cover": 0.60246,
-          "push": 0.0,
-          "away_cover": 0.39754
-        },
-        {
           "line": -3.0,
           "home_cover": 0.60246,
           "push": 0.07804,
@@ -18072,11 +17688,11 @@
         }
       ],
       "market": {
-        "ml_home": -180.0,
-        "ml_away": 150.0,
-        "spread_home": -3.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -18191,12 +17807,6 @@
           "away_cover": 0.51129
         },
         {
-          "line": -5.5,
-          "home_cover": 0.48871,
-          "push": 0.0,
-          "away_cover": 0.51129
-        },
-        {
           "line": -4.0,
           "home_cover": 0.51025,
           "push": 0.02597,
@@ -18252,11 +17862,11 @@
         }
       ],
       "market": {
-        "ml_home": -238.0,
-        "ml_away": 195.0,
-        "spread_home": -5.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -18353,12 +17963,6 @@
           "away_cover": 0.6343
         },
         {
-          "line": -11.5,
-          "home_cover": 0.40162,
-          "push": 0.0,
-          "away_cover": 0.59838
-        },
-        {
           "line": -10.0,
           "home_cover": 0.41871,
           "push": 0.03991,
@@ -18432,11 +18036,11 @@
         }
       ],
       "market": {
-        "ml_home": -600.0,
-        "ml_away": 440.0,
-        "spread_home": -11.5,
-        "total_points": 44.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -18581,12 +18185,6 @@
           "away_cover": 0.39197
         },
         {
-          "line": 4.5,
-          "home_cover": 0.60803,
-          "push": 0.0,
-          "away_cover": 0.39197
-        },
-        {
           "line": 6.0,
           "home_cover": 0.62915,
           "push": 0.03408,
@@ -18612,11 +18210,11 @@
         }
       ],
       "market": {
-        "ml_home": 180.0,
-        "ml_away": -218.0,
-        "spread_home": 4.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -18749,12 +18347,6 @@
           "away_cover": 0.61405
         },
         {
-          "line": 1.5,
-          "home_cover": 0.40802,
-          "push": 0.0,
-          "away_cover": 0.59198
-        },
-        {
           "line": 3.0,
           "home_cover": 0.43061,
           "push": 0.07637,
@@ -18792,11 +18384,11 @@
         }
       ],
       "market": {
-        "ml_home": 105.0,
-        "ml_away": -125.0,
-        "spread_home": 1.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -18893,12 +18485,6 @@
           "away_cover": 0.52901
         },
         {
-          "line": -11.5,
-          "home_cover": 0.50814,
-          "push": 0.0,
-          "away_cover": 0.49186
-        },
-        {
           "line": -10.0,
           "home_cover": 0.52529,
           "push": 0.03929,
@@ -18972,11 +18558,11 @@
         }
       ],
       "market": {
-        "ml_home": -625.0,
-        "ml_away": 455.0,
-        "spread_home": -11.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -19085,12 +18671,6 @@
           "away_cover": 0.49963
         },
         {
-          "line": -6.5,
-          "home_cover": 0.50037,
-          "push": 0.0,
-          "away_cover": 0.49963
-        },
-        {
           "line": -6.0,
           "home_cover": 0.50037,
           "push": 0.03702,
@@ -19152,11 +18732,11 @@
         }
       ],
       "market": {
-        "ml_home": -285.0,
-        "ml_away": 230.0,
-        "spread_home": -6.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -19271,12 +18851,6 @@
           "away_cover": 0.53203
         },
         {
-          "line": -4.5,
-          "home_cover": 0.48953,
-          "push": 0.0,
-          "away_cover": 0.51047
-        },
-        {
           "line": -4.0,
           "home_cover": 0.48953,
           "push": 0.02611,
@@ -19332,11 +18906,11 @@
         }
       ],
       "market": {
-        "ml_home": -225.0,
-        "ml_away": 185.0,
-        "spread_home": -4.5,
-        "total_points": 49.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -19445,12 +19019,6 @@
           "away_cover": 0.50437
         },
         {
-          "line": -6.5,
-          "home_cover": 0.49563,
-          "push": 0.0,
-          "away_cover": 0.50437
-        },
-        {
           "line": -6.0,
           "home_cover": 0.49563,
           "push": 0.03706,
@@ -19512,11 +19080,11 @@
         }
       ],
       "market": {
-        "ml_home": -290.0,
-        "ml_away": 235.0,
-        "spread_home": -6.5,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -19619,12 +19187,6 @@
           "away_cover": 0.64198
         },
         {
-          "line": -9.5,
-          "home_cover": 0.35802,
-          "push": 0.0,
-          "away_cover": 0.64198
-        },
-        {
           "line": -7.0,
           "home_cover": 0.3946,
           "push": 0.05183,
@@ -19692,11 +19254,11 @@
         }
       ],
       "market": {
-        "ml_home": -425.0,
-        "ml_away": 330.0,
-        "spread_home": -9.5,
-        "total_points": 41.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -19799,12 +19361,6 @@
           "away_cover": 0.5761
         },
         {
-          "line": -7.5,
-          "home_cover": 0.46126,
-          "push": 0.0,
-          "away_cover": 0.53874
-        },
-        {
           "line": -7.0,
           "home_cover": 0.46126,
           "push": 0.05204,
@@ -19872,11 +19428,11 @@
         }
       ],
       "market": {
-        "ml_home": -340.0,
-        "ml_away": 270.0,
-        "spread_home": -7.5,
-        "total_points": 41.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -19991,12 +19547,6 @@
           "away_cover": 0.5221
         },
         {
-          "line": -5.5,
-          "home_cover": 0.4779,
-          "push": 0.0,
-          "away_cover": 0.5221
-        },
-        {
           "line": -4.0,
           "home_cover": 0.49945,
           "push": 0.02605,
@@ -20052,11 +19602,11 @@
         }
       ],
       "market": {
-        "ml_home": -238.0,
-        "ml_away": 195.0,
-        "spread_home": -5.5,
-        "total_points": 42.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -20177,12 +19727,6 @@
           "away_cover": 0.61187
         },
         {
-          "line": -3.5,
-          "home_cover": 0.38813,
-          "push": 0.0,
-          "away_cover": 0.61187
-        },
-        {
           "line": -3.0,
           "home_cover": 0.38813,
           "push": 0.08231,
@@ -20232,11 +19776,11 @@
         }
       ],
       "market": {
-        "ml_home": -192.0,
-        "ml_away": 160.0,
-        "spread_home": -3.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -20369,12 +19913,6 @@
           "away_cover": 0.5183
         },
         {
-          "line": 1.5,
-          "home_cover": 0.50435,
-          "push": 0.0,
-          "away_cover": 0.49565
-        },
-        {
           "line": 3.0,
           "home_cover": 0.52712,
           "push": 0.07553,
@@ -20412,11 +19950,11 @@
         }
       ],
       "market": {
-        "ml_home": 105.0,
-        "ml_away": -125.0,
-        "spread_home": 1.5,
-        "total_points": 52.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -20531,12 +20069,6 @@
           "away_cover": 0.45934
         },
         {
-          "line": -4.5,
-          "home_cover": 0.56186,
-          "push": 0.0,
-          "away_cover": 0.43814
-        },
-        {
           "line": -4.0,
           "home_cover": 0.56186,
           "push": 0.02531,
@@ -20592,11 +20124,11 @@
         }
       ],
       "market": {
-        "ml_home": -225.0,
-        "ml_away": 185.0,
-        "spread_home": -4.5,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -20723,12 +20255,6 @@
           "away_cover": 0.52961
         },
         {
-          "line": -2.5,
-          "home_cover": 0.47039,
-          "push": 0.0,
-          "away_cover": 0.52961
-        },
-        {
           "line": 0.0,
           "home_cover": 0.51706,
           "push": 0.00382,
@@ -20772,11 +20298,11 @@
         }
       ],
       "market": {
-        "ml_home": -142.0,
-        "ml_away": 120.0,
-        "spread_home": -2.5,
-        "total_points": 52.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -20903,12 +20429,6 @@
           "away_cover": 0.6047
         },
         {
-          "line": -1.5,
-          "home_cover": 0.41778,
-          "push": 0.0,
-          "away_cover": 0.58222
-        },
-        {
           "line": 0.0,
           "home_cover": 0.44045,
           "push": 0.00377,
@@ -20952,11 +20472,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 49.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -21083,12 +20603,6 @@
           "away_cover": 0.36572
         },
         {
-          "line": -2.5,
-          "home_cover": 0.63428,
-          "push": 0.0,
-          "away_cover": 0.36572
-        },
-        {
           "line": 0.0,
           "home_cover": 0.67817,
           "push": 0.00342,
@@ -21132,11 +20646,11 @@
         }
       ],
       "market": {
-        "ml_home": -148.0,
-        "ml_away": 124.0,
-        "spread_home": -2.5,
-        "total_points": 50.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -21269,12 +20783,6 @@
           "away_cover": 0.53217
         },
         {
-          "line": 1.5,
-          "home_cover": 0.49048,
-          "push": 0.0,
-          "away_cover": 0.50952
-        },
-        {
           "line": 3.0,
           "home_cover": 0.51331,
           "push": 0.07593,
@@ -21312,11 +20820,11 @@
         }
       ],
       "market": {
-        "ml_home": 102.0,
-        "ml_away": -122.0,
-        "spread_home": 1.5,
-        "total_points": 39.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -21431,12 +20939,6 @@
           "away_cover": 0.45517
         },
         {
-          "line": -4.5,
-          "home_cover": 0.56598,
-          "push": 0.0,
-          "away_cover": 0.43402
-        },
-        {
           "line": -4.0,
           "home_cover": 0.56598,
           "push": 0.02524,
@@ -21492,11 +20994,11 @@
         }
       ],
       "market": {
-        "ml_home": -218.0,
-        "ml_away": 180.0,
-        "spread_home": -4.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -21623,12 +21125,6 @@
           "away_cover": 0.49212
         },
         {
-          "line": -1.5,
-          "home_cover": 0.53143,
-          "push": 0.0,
-          "away_cover": 0.46857
-        },
-        {
           "line": 0.0,
           "home_cover": 0.55465,
           "push": 0.00378,
@@ -21672,11 +21168,11 @@
         }
       ],
       "market": {
-        "ml_home": -122.0,
-        "ml_away": 102.0,
-        "spread_home": -1.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -21803,12 +21299,6 @@
           "away_cover": 0.44769
         },
         {
-          "line": -1.5,
-          "home_cover": 0.57573,
-          "push": 0.0,
-          "away_cover": 0.42427
-        },
-        {
           "line": 0.0,
           "home_cover": 0.59863,
           "push": 0.0037,
@@ -21852,11 +21342,11 @@
         }
       ],
       "market": {
-        "ml_home": -122.0,
-        "ml_away": 102.0,
-        "spread_home": -1.5,
-        "total_points": 39.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -21965,12 +21455,6 @@
           "away_cover": 0.57266
         },
         {
-          "line": -6.5,
-          "home_cover": 0.42734,
-          "push": 0.0,
-          "away_cover": 0.57266
-        },
-        {
           "line": -6.0,
           "home_cover": 0.42734,
           "push": 0.03708,
@@ -22032,11 +21516,11 @@
         }
       ],
       "market": {
-        "ml_home": -285.0,
-        "ml_away": 230.0,
-        "spread_home": -6.5,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -22163,12 +21647,6 @@
           "away_cover": 0.4906
         },
         {
-          "line": -2.5,
-          "home_cover": 0.5094,
-          "push": 0.0,
-          "away_cover": 0.4906
-        },
-        {
           "line": 0.0,
           "home_cover": 0.55616,
           "push": 0.00378,
@@ -22212,11 +21690,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
-        "spread_home": -2.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -22343,12 +21821,6 @@
           "away_cover": 0.46063
         },
         {
-          "line": -1.5,
-          "home_cover": 0.56286,
-          "push": 0.0,
-          "away_cover": 0.43714
-        },
-        {
           "line": 0.0,
           "home_cover": 0.58588,
           "push": 0.00373,
@@ -22392,11 +21864,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 40.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -22511,12 +21983,6 @@
           "away_cover": 0.27219
         },
         {
-          "line": -5.5,
-          "home_cover": 0.72781,
-          "push": 0.0,
-          "away_cover": 0.27219
-        },
-        {
           "line": -4.0,
           "home_cover": 0.74477,
           "push": 0.01951,
@@ -22572,11 +22038,11 @@
         }
       ],
       "market": {
-        "ml_home": -238.0,
-        "ml_away": 195.0,
-        "spread_home": -5.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -22709,12 +22175,6 @@
           "away_cover": 0.59235
         },
         {
-          "line": 1.5,
-          "home_cover": 0.42998,
-          "push": 0.0,
-          "away_cover": 0.57002
-        },
-        {
           "line": 3.0,
           "home_cover": 0.45273,
           "push": 0.07659,
@@ -22752,11 +22212,11 @@
         }
       ],
       "market": {
-        "ml_home": -110.0,
-        "ml_away": -110.0,
-        "spread_home": 1.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -22901,12 +22361,6 @@
           "away_cover": 0.33007
         },
         {
-          "line": 4.5,
-          "home_cover": 0.66993,
-          "push": 0.0,
-          "away_cover": 0.33007
-        },
-        {
           "line": 6.0,
           "home_cover": 0.68988,
           "push": 0.03179,
@@ -22932,11 +22386,11 @@
         }
       ],
       "market": {
-        "ml_home": 180.0,
-        "ml_away": -218.0,
-        "spread_home": 4.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -23063,12 +22517,6 @@
           "away_cover": 0.68384
         },
         {
-          "line": -1.5,
-          "home_cover": 0.33671,
-          "push": 0.0,
-          "away_cover": 0.66329
-        },
-        {
           "line": 0.0,
           "home_cover": 0.35776,
           "push": 0.00356,
@@ -23112,11 +22560,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -23237,12 +22685,6 @@
           "away_cover": 0.59688
         },
         {
-          "line": -3.5,
-          "home_cover": 0.40312,
-          "push": 0.0,
-          "away_cover": 0.59688
-        },
-        {
           "line": -3.0,
           "home_cover": 0.40312,
           "push": 0.08285,
@@ -23292,11 +22734,11 @@
         }
       ],
       "market": {
-        "ml_home": -198.0,
-        "ml_away": 164.0,
-        "spread_home": -3.5,
-        "total_points": 44.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -23417,12 +22859,6 @@
           "away_cover": 0.53016
         },
         {
-          "line": -3.5,
-          "home_cover": 0.46984,
-          "push": 0.0,
-          "away_cover": 0.53016
-        },
-        {
           "line": -3.0,
           "home_cover": 0.46984,
           "push": 0.08366,
@@ -23472,11 +22908,11 @@
         }
       ],
       "market": {
-        "ml_home": -205.0,
-        "ml_away": 170.0,
-        "spread_home": -3.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -23646,11 +23082,11 @@
         }
       ],
       "market": {
-        "ml_home": 140.0,
-        "ml_away": -166.0,
-        "spread_home": 3.0,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -23795,12 +23231,6 @@
           "away_cover": 0.38511
         },
         {
-          "line": 4.5,
-          "home_cover": 0.61489,
-          "push": 0.0,
-          "away_cover": 0.38511
-        },
-        {
           "line": 6.0,
           "home_cover": 0.63591,
           "push": 0.03387,
@@ -23826,11 +23256,11 @@
         }
       ],
       "market": {
-        "ml_home": 185.0,
-        "ml_away": -225.0,
-        "spread_home": 4.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -23969,12 +23399,6 @@
           "away_cover": 0.41677
         },
         {
-          "line": 3.5,
-          "home_cover": 0.58323,
-          "push": 0.0,
-          "away_cover": 0.41677
-        },
-        {
           "line": 4.0,
           "home_cover": 0.58323,
           "push": 0.03086,
@@ -24006,11 +23430,11 @@
         }
       ],
       "market": {
-        "ml_home": 154.0,
-        "ml_away": -185.0,
-        "spread_home": 3.5,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -24155,12 +23579,6 @@
           "away_cover": 0.2739
         },
         {
-          "line": 4.5,
-          "home_cover": 0.7261,
-          "push": 0.0,
-          "away_cover": 0.2739
-        },
-        {
           "line": 6.0,
           "home_cover": 0.74445,
           "push": 0.02888,
@@ -24186,11 +23604,11 @@
         }
       ],
       "market": {
-        "ml_home": 185.0,
-        "ml_away": -225.0,
-        "spread_home": 4.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -24360,11 +23778,11 @@
         }
       ],
       "market": {
-        "ml_home": -155.0,
-        "ml_away": 130.0,
-        "spread_home": -3.0,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -24497,12 +23915,6 @@
           "away_cover": 0.43306
         },
         {
-          "line": 2.5,
-          "home_cover": 0.61075,
-          "push": 0.0,
-          "away_cover": 0.38925
-        },
-        {
           "line": 3.0,
           "home_cover": 0.61075,
           "push": 0.07108,
@@ -24540,11 +23952,11 @@
         }
       ],
       "market": {
-        "ml_home": 114.0,
-        "ml_away": -135.0,
-        "spread_home": 2.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -24677,12 +24089,6 @@
           "away_cover": 0.5546
         },
         {
-          "line": 1.5,
-          "home_cover": 0.46799,
-          "push": 0.0,
-          "away_cover": 0.53201
-        },
-        {
           "line": 3.0,
           "home_cover": 0.49085,
           "push": 0.07639,
@@ -24720,11 +24126,11 @@
         }
       ],
       "market": {
-        "ml_home": 105.0,
-        "ml_away": -125.0,
-        "spread_home": 1.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -24827,12 +24233,6 @@
           "away_cover": 0.47532
         },
         {
-          "line": -9.5,
-          "home_cover": 0.52468,
-          "push": 0.0,
-          "away_cover": 0.47532
-        },
-        {
           "line": -7.0,
           "home_cover": 0.56121,
           "push": 0.04967,
@@ -24900,11 +24300,11 @@
         }
       ],
       "market": {
-        "ml_home": -470.0,
-        "ml_away": 360.0,
-        "spread_home": -9.5,
-        "total_points": 42.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -25061,12 +24461,6 @@
           "away_cover": 0.36063
         },
         {
-          "line": 8.5,
-          "home_cover": 0.66237,
-          "push": 0.0,
-          "away_cover": 0.33763
-        },
-        {
           "line": 10.0,
           "home_cover": 0.67224,
           "push": 0.0314,
@@ -25080,11 +24474,11 @@
         }
       ],
       "market": {
-        "ml_home": 310.0,
-        "ml_away": -395.0,
-        "spread_home": 8.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -25211,12 +24605,6 @@
           "away_cover": 0.59405
         },
         {
-          "line": -1.5,
-          "home_cover": 0.42862,
-          "push": 0.0,
-          "away_cover": 0.57138
-        },
-        {
           "line": 0.0,
           "home_cover": 0.45142,
           "push": 0.00379,
@@ -25260,11 +24648,11 @@
         }
       ],
       "market": {
-        "ml_home": -122.0,
-        "ml_away": 102.0,
-        "spread_home": -1.5,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -25385,12 +24773,6 @@
           "away_cover": 0.33752
         },
         {
-          "line": -3.5,
-          "home_cover": 0.66248,
-          "push": 0.0,
-          "away_cover": 0.33752
-        },
-        {
           "line": -3.0,
           "home_cover": 0.66248,
           "push": 0.07248,
@@ -25440,11 +24822,11 @@
         }
       ],
       "market": {
-        "ml_home": -198.0,
-        "ml_away": 164.0,
-        "spread_home": -3.5,
-        "total_points": 42.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -25577,12 +24959,6 @@
           "away_cover": 0.45493
         },
         {
-          "line": 1.5,
-          "home_cover": 0.56737,
-          "push": 0.0,
-          "away_cover": 0.43263
-        },
-        {
           "line": 3.0,
           "home_cover": 0.58949,
           "push": 0.07253,
@@ -25620,11 +24996,11 @@
         }
       ],
       "market": {
-        "ml_home": 102.0,
-        "ml_away": -122.0,
-        "spread_home": 1.5,
-        "total_points": 41.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -25739,12 +25115,6 @@
           "away_cover": 0.33799
         },
         {
-          "line": -4.5,
-          "home_cover": 0.681,
-          "push": 0.0,
-          "away_cover": 0.319
-        },
-        {
           "line": -4.0,
           "home_cover": 0.681,
           "push": 0.02215,
@@ -25800,11 +25170,11 @@
         }
       ],
       "market": {
-        "ml_home": -225.0,
-        "ml_away": 185.0,
-        "spread_home": -4.5,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -25919,12 +25289,6 @@
           "away_cover": 0.66929
         },
         {
-          "line": -4.5,
-          "home_cover": 0.35087,
-          "push": 0.0,
-          "away_cover": 0.64913
-        },
-        {
           "line": -4.0,
           "home_cover": 0.35087,
           "push": 0.02509,
@@ -25980,11 +25344,11 @@
         }
       ],
       "market": {
-        "ml_home": -218.0,
-        "ml_away": 180.0,
-        "spread_home": -4.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -26111,12 +25475,6 @@
           "away_cover": 0.47507
         },
         {
-          "line": -1.5,
-          "home_cover": 0.54847,
-          "push": 0.0,
-          "away_cover": 0.45153
-        },
-        {
           "line": 0.0,
           "home_cover": 0.5716,
           "push": 0.00376,
@@ -26160,11 +25518,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 40.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -26309,12 +25667,6 @@
           "away_cover": 0.49346
         },
         {
-          "line": 5.5,
-          "home_cover": 0.52834,
-          "push": 0.0,
-          "away_cover": 0.47166
-        },
-        {
           "line": 6.0,
           "home_cover": 0.52834,
           "push": 0.03588,
@@ -26340,11 +25692,11 @@
         }
       ],
       "market": {
-        "ml_home": 205.0,
-        "ml_away": -250.0,
-        "spread_home": 5.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -26489,12 +25841,6 @@
           "away_cover": 0.52057
         },
         {
-          "line": 5.5,
-          "home_cover": 0.50116,
-          "push": 0.0,
-          "away_cover": 0.49884
-        },
-        {
           "line": 6.0,
           "home_cover": 0.50116,
           "push": 0.03595,
@@ -26520,11 +25866,11 @@
         }
       ],
       "market": {
-        "ml_home": 190.0,
-        "ml_away": -230.0,
-        "spread_home": 5.5,
-        "total_points": 39.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -26657,12 +26003,6 @@
           "away_cover": 0.52566
         },
         {
-          "line": 1.5,
-          "home_cover": 0.49701,
-          "push": 0.0,
-          "away_cover": 0.50299
-        },
-        {
           "line": 3.0,
           "home_cover": 0.5198,
           "push": 0.07575,
@@ -26700,11 +26040,11 @@
         }
       ],
       "market": {
-        "ml_home": 102.0,
-        "ml_away": -122.0,
-        "spread_home": 1.5,
-        "total_points": 44.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -26819,12 +26159,6 @@
           "away_cover": 0.52712
         },
         {
-          "line": -5.5,
-          "home_cover": 0.47288,
-          "push": 0.0,
-          "away_cover": 0.52712
-        },
-        {
           "line": -4.0,
           "home_cover": 0.49444,
           "push": 0.02608,
@@ -26880,11 +26214,11 @@
         }
       ],
       "market": {
-        "ml_home": -250.0,
-        "ml_away": 205.0,
-        "spread_home": -5.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -27011,12 +26345,6 @@
           "away_cover": 0.51928
         },
         {
-          "line": -2.5,
-          "home_cover": 0.48072,
-          "push": 0.0,
-          "away_cover": 0.51928
-        },
-        {
           "line": 0.0,
           "home_cover": 0.52746,
           "push": 0.00381,
@@ -27060,11 +26388,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
-        "spread_home": -2.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -27234,11 +26562,11 @@
         }
       ],
       "market": {
-        "ml_home": -258.0,
-        "ml_away": 210.0,
-        "spread_home": -6.0,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -27341,12 +26669,6 @@
           "away_cover": 0.47674
         },
         {
-          "line": -7.5,
-          "home_cover": 0.55982,
-          "push": 0.0,
-          "away_cover": 0.44018
-        },
-        {
           "line": -7.0,
           "home_cover": 0.55982,
           "push": 0.04973,
@@ -27414,11 +26736,11 @@
         }
       ],
       "market": {
-        "ml_home": -360.0,
-        "ml_away": 285.0,
-        "spread_home": -7.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -27563,12 +26885,6 @@
           "away_cover": 0.25997
         },
         {
-          "line": 5.5,
-          "home_cover": 0.75791,
-          "push": 0.0,
-          "away_cover": 0.24209
-        },
-        {
           "line": 6.0,
           "home_cover": 0.75791,
           "push": 0.02804,
@@ -27594,11 +26910,11 @@
         }
       ],
       "market": {
-        "ml_home": 185.0,
-        "ml_away": -225.0,
-        "spread_home": 5.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -27725,12 +27041,6 @@
           "away_cover": 0.50508
         },
         {
-          "line": -1.5,
-          "home_cover": 0.51844,
-          "push": 0.0,
-          "away_cover": 0.48156
-        },
-        {
           "line": 0.0,
           "home_cover": 0.54169,
           "push": 0.0038,
@@ -27774,11 +27084,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -27911,12 +27221,6 @@
           "away_cover": 0.41156
         },
         {
-          "line": 1.5,
-          "home_cover": 0.61015,
-          "push": 0.0,
-          "away_cover": 0.38985
-        },
-        {
           "line": 3.0,
           "home_cover": 0.63151,
           "push": 0.06945,
@@ -27954,11 +27258,11 @@
         }
       ],
       "market": {
-        "ml_home": 110.0,
-        "ml_away": -130.0,
-        "spread_home": 1.5,
-        "total_points": 49.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -28061,12 +27365,6 @@
           "away_cover": 0.45887
         },
         {
-          "line": -7.5,
-          "home_cover": 0.57732,
-          "push": 0.0,
-          "away_cover": 0.42268
-        },
-        {
           "line": -7.0,
           "home_cover": 0.57732,
           "push": 0.04901,
@@ -28134,11 +27432,11 @@
         }
       ],
       "market": {
-        "ml_home": -375.0,
-        "ml_away": 295.0,
-        "spread_home": -7.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -28265,12 +27563,6 @@
           "away_cover": 0.69799
         },
         {
-          "line": -1.5,
-          "home_cover": 0.3221,
-          "push": 0.0,
-          "away_cover": 0.6779
-        },
-        {
           "line": 0.0,
           "home_cover": 0.34275,
           "push": 0.00351,
@@ -28314,11 +27606,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 49.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -28488,11 +27780,11 @@
         }
       ],
       "market": {
-        "ml_home": -162.0,
-        "ml_away": 136.0,
-        "spread_home": -3.0,
-        "total_points": 44.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -28619,12 +27911,6 @@
           "away_cover": 0.67032
         },
         {
-          "line": -2.5,
-          "home_cover": 0.32968,
-          "push": 0.0,
-          "away_cover": 0.67032
-        },
-        {
           "line": 0.0,
           "home_cover": 0.37203,
           "push": 0.00361,
@@ -28668,11 +27954,11 @@
         }
       ],
       "market": {
-        "ml_home": -142.0,
-        "ml_away": 120.0,
-        "spread_home": -2.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -28799,12 +28085,6 @@
           "away_cover": 0.63942
         },
         {
-          "line": -1.5,
-          "home_cover": 0.38233,
-          "push": 0.0,
-          "away_cover": 0.61767
-        },
-        {
           "line": 0.0,
           "home_cover": 0.40442,
           "push": 0.0037,
@@ -28848,11 +28128,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -28973,12 +28253,6 @@
           "away_cover": 0.4707
         },
         {
-          "line": -3.5,
-          "home_cover": 0.5293,
-          "push": 0.0,
-          "away_cover": 0.4707
-        },
-        {
           "line": -3.0,
           "home_cover": 0.5293,
           "push": 0.08229,
@@ -29028,11 +28302,11 @@
         }
       ],
       "market": {
-        "ml_home": -185.0,
-        "ml_away": 154.0,
-        "spread_home": -3.5,
-        "total_points": 51.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -29153,12 +28427,6 @@
           "away_cover": 0.5764
         },
         {
-          "line": -3.5,
-          "home_cover": 0.4236,
-          "push": 0.0,
-          "away_cover": 0.5764
-        },
-        {
           "line": -3.0,
           "home_cover": 0.4236,
           "push": 0.08337,
@@ -29208,11 +28476,11 @@
         }
       ],
       "market": {
-        "ml_home": -185.0,
-        "ml_away": 154.0,
-        "spread_home": -3.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -29345,12 +28613,6 @@
           "away_cover": 0.52796
         },
         {
-          "line": 2.5,
-          "home_cover": 0.51751,
-          "push": 0.0,
-          "away_cover": 0.48249
-        },
-        {
           "line": 3.0,
           "home_cover": 0.51751,
           "push": 0.07582,
@@ -29388,11 +28650,11 @@
         }
       ],
       "market": {
-        "ml_home": 124.0,
-        "ml_away": -148.0,
-        "spread_home": 2.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -29525,12 +28787,6 @@
           "away_cover": 0.52255
         },
         {
-          "line": 2.5,
-          "home_cover": 0.52289,
-          "push": 0.0,
-          "away_cover": 0.47711
-        },
-        {
           "line": 3.0,
           "home_cover": 0.52289,
           "push": 0.07566,
@@ -29568,11 +28824,11 @@
         }
       ],
       "market": {
-        "ml_home": 124.0,
-        "ml_away": -148.0,
-        "spread_home": 2.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -29687,12 +28943,6 @@
           "away_cover": 0.60474
         },
         {
-          "line": -4.5,
-          "home_cover": 0.41643,
-          "push": 0.0,
-          "away_cover": 0.58357
-        },
-        {
           "line": -4.0,
           "home_cover": 0.41643,
           "push": 0.02601,
@@ -29748,11 +28998,11 @@
         }
       ],
       "market": {
-        "ml_home": -205.0,
-        "ml_away": 170.0,
-        "spread_home": -4.5,
-        "total_points": 40.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -29885,12 +29135,6 @@
           "away_cover": 0.56251
         },
         {
-          "line": 1.5,
-          "home_cover": 0.46005,
-          "push": 0.0,
-          "away_cover": 0.53995
-        },
-        {
           "line": 3.0,
           "home_cover": 0.48291,
           "push": 0.0765,
@@ -29928,11 +29172,11 @@
         }
       ],
       "market": {
-        "ml_home": 105.0,
-        "ml_away": -125.0,
-        "spread_home": 1.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -30102,11 +29346,11 @@
         }
       ],
       "market": {
-        "ml_home": -155.0,
-        "ml_away": 130.0,
-        "spread_home": -3.0,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -30203,12 +29447,6 @@
           "away_cover": 0.7435
         },
         {
-          "line": -10.5,
-          "home_cover": 0.30378,
-          "push": 0.0,
-          "away_cover": 0.69622
-        },
-        {
           "line": -10.0,
           "home_cover": 0.30378,
           "push": 0.03728,
@@ -30282,11 +29520,11 @@
         }
       ],
       "market": {
-        "ml_home": -650.0,
-        "ml_away": 470.0,
-        "spread_home": -10.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -30407,12 +29645,6 @@
           "away_cover": 0.61847
         },
         {
-          "line": -3.5,
-          "home_cover": 0.38153,
-          "push": 0.0,
-          "away_cover": 0.61847
-        },
-        {
           "line": -3.0,
           "home_cover": 0.38153,
           "push": 0.08203,
@@ -30462,11 +29694,11 @@
         }
       ],
       "market": {
-        "ml_home": -198.0,
-        "ml_away": 164.0,
-        "spread_home": -3.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -30593,12 +29825,6 @@
           "away_cover": 0.40513
         },
         {
-          "line": -1.5,
-          "home_cover": 0.61788,
-          "push": 0.0,
-          "away_cover": 0.38212
-        },
-        {
           "line": 0.0,
           "home_cover": 0.64019,
           "push": 0.00357,
@@ -30642,11 +29868,11 @@
         }
       ],
       "market": {
-        "ml_home": -110.0,
-        "ml_away": -110.0,
-        "spread_home": -1.5,
-        "total_points": 41.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -30816,11 +30042,11 @@
         }
       ],
       "market": {
-        "ml_home": -245.0,
-        "ml_away": 200.0,
-        "spread_home": -6.0,
-        "total_points": 52.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -30965,12 +30191,6 @@
           "away_cover": 0.4429
         },
         {
-          "line": 4.5,
-          "home_cover": 0.5571,
-          "push": 0.0,
-          "away_cover": 0.4429
-        },
-        {
           "line": 6.0,
           "home_cover": 0.57875,
           "push": 0.03529,
@@ -30996,11 +30216,11 @@
         }
       ],
       "market": {
-        "ml_home": 170.0,
-        "ml_away": -205.0,
-        "spread_home": 4.5,
-        "total_points": 41.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -31133,12 +30353,6 @@
           "away_cover": 0.32303
         },
         {
-          "line": 1.5,
-          "home_cover": 0.69664,
-          "push": 0.0,
-          "away_cover": 0.30336
-        },
-        {
           "line": 3.0,
           "home_cover": 0.71565,
           "push": 0.06068,
@@ -31176,11 +30390,11 @@
         }
       ],
       "market": {
-        "ml_home": 105.0,
-        "ml_away": -125.0,
-        "spread_home": 1.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -31307,12 +30521,6 @@
           "away_cover": 0.51998
         },
         {
-          "line": -2.5,
-          "home_cover": 0.48002,
-          "push": 0.0,
-          "away_cover": 0.51998
-        },
-        {
           "line": 0.0,
           "home_cover": 0.52676,
           "push": 0.00381,
@@ -31356,11 +30564,11 @@
         }
       ],
       "market": {
-        "ml_home": -142.0,
-        "ml_away": 120.0,
-        "spread_home": -2.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -31487,12 +30695,6 @@
           "away_cover": 0.45138
         },
         {
-          "line": -2.5,
-          "home_cover": 0.54862,
-          "push": 0.0,
-          "away_cover": 0.45138
-        },
-        {
           "line": 0.0,
           "home_cover": 0.595,
           "push": 0.00371,
@@ -31536,11 +30738,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
-        "spread_home": -2.5,
-        "total_points": 37.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -31667,12 +30869,6 @@
           "away_cover": 0.34303
         },
         {
-          "line": -1.5,
-          "home_cover": 0.67886,
-          "push": 0.0,
-          "away_cover": 0.32114
-        },
-        {
           "line": 0.0,
           "home_cover": 0.69981,
           "push": 0.00331,
@@ -31716,11 +30912,11 @@
         }
       ],
       "market": {
-        "ml_home": -118.0,
-        "ml_away": -102.0,
-        "spread_home": -1.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -31853,12 +31049,6 @@
           "away_cover": 0.49579
         },
         {
-          "line": 1.5,
-          "home_cover": 0.5268,
-          "push": 0.0,
-          "away_cover": 0.4732
-        },
-        {
           "line": 3.0,
           "home_cover": 0.54941,
           "push": 0.07467,
@@ -31896,11 +31086,11 @@
         }
       ],
       "market": {
-        "ml_home": 110.0,
-        "ml_away": -130.0,
-        "spread_home": 1.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -32027,12 +31217,6 @@
           "away_cover": 0.34679
         },
         {
-          "line": -1.5,
-          "home_cover": 0.67518,
-          "push": 0.0,
-          "away_cover": 0.32482
-        },
-        {
           "line": 0.0,
           "home_cover": 0.69624,
           "push": 0.00333,
@@ -32076,11 +31260,11 @@
         }
       ],
       "market": {
-        "ml_home": -130.0,
-        "ml_away": 110.0,
-        "spread_home": -1.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -32201,12 +31385,6 @@
           "away_cover": 0.50499
         },
         {
-          "line": -3.5,
-          "home_cover": 0.49501,
-          "push": 0.0,
-          "away_cover": 0.50499
-        },
-        {
           "line": -3.0,
           "home_cover": 0.49501,
           "push": 0.08332,
@@ -32256,11 +31434,11 @@
         }
       ],
       "market": {
-        "ml_home": -192.0,
-        "ml_away": 160.0,
-        "spread_home": -3.5,
-        "total_points": 41.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -32393,12 +31571,6 @@
           "away_cover": 0.5447
         },
         {
-          "line": 1.5,
-          "home_cover": 0.47794,
-          "push": 0.0,
-          "away_cover": 0.52206
-        },
-        {
           "line": 3.0,
           "home_cover": 0.50079,
           "push": 0.07622,
@@ -32436,11 +31608,11 @@
         }
       ],
       "market": {
-        "ml_home": 102.0,
-        "ml_away": -122.0,
-        "spread_home": 1.5,
-        "total_points": 52.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -32573,12 +31745,6 @@
           "away_cover": 0.41607
         },
         {
-          "line": 1.5,
-          "home_cover": 0.60572,
-          "push": 0.0,
-          "away_cover": 0.39428
-        },
-        {
           "line": 3.0,
           "home_cover": 0.62717,
           "push": 0.0698,
@@ -32616,11 +31782,11 @@
         }
       ],
       "market": {
-        "ml_home": 105.0,
-        "ml_away": -125.0,
-        "spread_home": 1.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -32747,12 +31913,6 @@
           "away_cover": 0.26328
         },
         {
-          "line": -2.5,
-          "home_cover": 0.73672,
-          "push": 0.0,
-          "away_cover": 0.26328
-        },
-        {
           "line": 0.0,
           "home_cover": 0.77452,
           "push": 0.00285,
@@ -32796,11 +31956,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
-        "spread_home": -2.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -32915,12 +32075,6 @@
           "away_cover": 0.50589
         },
         {
-          "line": -5.5,
-          "home_cover": 0.49411,
-          "push": 0.0,
-          "away_cover": 0.50589
-        },
-        {
           "line": -4.0,
           "home_cover": 0.51562,
           "push": 0.02592,
@@ -32976,11 +32130,11 @@
         }
       ],
       "market": {
-        "ml_home": -245.0,
-        "ml_away": 200.0,
-        "spread_home": -5.5,
-        "total_points": 44.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -33150,11 +32304,11 @@
         }
       ],
       "market": {
-        "ml_home": -410.0,
-        "ml_away": 320.0,
-        "spread_home": -10.0,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -33324,11 +32478,11 @@
         }
       ],
       "market": {
-        "ml_home": 295.0,
-        "ml_away": -375.0,
-        "spread_home": 7.0,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -33479,12 +32633,6 @@
           "away_cover": 0.49033
         },
         {
-          "line": 6.5,
-          "home_cover": 0.50967,
-          "push": 0.0,
-          "away_cover": 0.49033
-        },
-        {
           "line": 7.0,
           "home_cover": 0.50967,
           "push": 0.05401,
@@ -33504,11 +32652,11 @@
         }
       ],
       "market": {
-        "ml_home": 220.0,
-        "ml_away": -270.0,
-        "spread_home": 6.5,
-        "total_points": 40.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -33635,12 +32783,6 @@
           "away_cover": 0.33123
         },
         {
-          "line": -1.5,
-          "home_cover": 0.69037,
-          "push": 0.0,
-          "away_cover": 0.30963
-        },
-        {
           "line": 0.0,
           "home_cover": 0.711,
           "push": 0.00325,
@@ -33684,11 +32826,11 @@
         }
       ],
       "market": {
-        "ml_home": -122.0,
-        "ml_away": 102.0,
-        "spread_home": -1.5,
-        "total_points": 42.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -33858,11 +33000,11 @@
         }
       ],
       "market": {
-        "ml_home": -155.0,
-        "ml_away": 130.0,
-        "spread_home": -3.0,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -34032,11 +33174,11 @@
         }
       ],
       "market": {
-        "ml_home": -162.0,
-        "ml_away": 136.0,
-        "spread_home": -3.0,
-        "total_points": 51.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -34151,12 +33293,6 @@
           "away_cover": 0.50813
         },
         {
-          "line": -4.5,
-          "home_cover": 0.51339,
-          "push": 0.0,
-          "away_cover": 0.48661
-        },
-        {
           "line": -4.0,
           "home_cover": 0.51339,
           "push": 0.02594,
@@ -34212,11 +33348,11 @@
         }
       ],
       "market": {
-        "ml_home": -205.0,
-        "ml_away": 170.0,
-        "spread_home": -4.5,
-        "total_points": 49.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -34343,12 +33479,6 @@
           "away_cover": 0.5144
         },
         {
-          "line": -2.5,
-          "home_cover": 0.4856,
-          "push": 0.0,
-          "away_cover": 0.5144
-        },
-        {
           "line": 0.0,
           "home_cover": 0.53235,
           "push": 0.00381,
@@ -34392,11 +33522,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
-        "spread_home": -2.5,
-        "total_points": 51.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -34523,12 +33653,6 @@
           "away_cover": 0.49687
         },
         {
-          "line": -2.5,
-          "home_cover": 0.50313,
-          "push": 0.0,
-          "away_cover": 0.49687
-        },
-        {
           "line": 0.0,
           "home_cover": 0.54991,
           "push": 0.00379,
@@ -34572,11 +33696,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
-        "spread_home": -2.5,
-        "total_points": 42.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -34703,12 +33827,6 @@
           "away_cover": 0.6249
         },
         {
-          "line": -1.5,
-          "home_cover": 0.39718,
-          "push": 0.0,
-          "away_cover": 0.60282
-        },
-        {
           "line": 0.0,
           "home_cover": 0.41953,
           "push": 0.00374,
@@ -34752,11 +33870,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -34901,12 +34019,6 @@
           "away_cover": 0.43181
         },
         {
-          "line": 4.5,
-          "home_cover": 0.56819,
-          "push": 0.0,
-          "away_cover": 0.43181
-        },
-        {
           "line": 6.0,
           "home_cover": 0.58975,
           "push": 0.03508,
@@ -34932,11 +34044,11 @@
         }
       ],
       "market": {
-        "ml_home": 170.0,
-        "ml_away": -205.0,
-        "spread_home": 4.5,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -35057,12 +34169,6 @@
           "away_cover": 0.33329
         },
         {
-          "line": -3.5,
-          "home_cover": 0.66671,
-          "push": 0.0,
-          "away_cover": 0.33329
-        },
-        {
           "line": -3.0,
           "home_cover": 0.66671,
           "push": 0.07202,
@@ -35112,11 +34218,11 @@
         }
       ],
       "market": {
-        "ml_home": -185.0,
-        "ml_away": 154.0,
-        "spread_home": -3.5,
-        "total_points": 48.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -35273,12 +34379,6 @@
           "away_cover": 0.50013
         },
         {
-          "line": 7.5,
-          "home_cover": 0.49987,
-          "push": 0.0,
-          "away_cover": 0.50013
-        },
-        {
           "line": 10.0,
           "home_cover": 0.53412,
           "push": 0.03422,
@@ -35292,11 +34392,11 @@
         }
       ],
       "market": {
-        "ml_home": 300.0,
-        "ml_away": -380.0,
-        "spread_home": 7.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -35429,12 +34529,6 @@
           "away_cover": 0.39519
         },
         {
-          "line": 2.5,
-          "home_cover": 0.64724,
-          "push": 0.0,
-          "away_cover": 0.35276
-        },
-        {
           "line": 3.0,
           "home_cover": 0.64724,
           "push": 0.06807,
@@ -35472,11 +34566,11 @@
         }
       ],
       "market": {
-        "ml_home": 114.0,
-        "ml_away": -135.0,
-        "spread_home": 2.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -35615,12 +34709,6 @@
           "away_cover": 0.63349
         },
         {
-          "line": 3.5,
-          "home_cover": 0.36651,
-          "push": 0.0,
-          "away_cover": 0.63349
-        },
-        {
           "line": 4.0,
           "home_cover": 0.36651,
           "push": 0.02936,
@@ -35652,11 +34740,11 @@
         }
       ],
       "market": {
-        "ml_home": 154.0,
-        "ml_away": -185.0,
-        "spread_home": 3.5,
-        "total_points": 39.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -35783,12 +34871,6 @@
           "away_cover": 0.5046
         },
         {
-          "line": -1.5,
-          "home_cover": 0.51893,
-          "push": 0.0,
-          "away_cover": 0.48107
-        },
-        {
           "line": 0.0,
           "home_cover": 0.54218,
           "push": 0.0038,
@@ -35832,11 +34914,11 @@
         }
       ],
       "market": {
-        "ml_home": -122.0,
-        "ml_away": 102.0,
-        "spread_home": -1.5,
-        "total_points": 44.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -35951,12 +35033,6 @@
           "away_cover": 0.62783
         },
         {
-          "line": -4.5,
-          "home_cover": 0.39306,
-          "push": 0.0,
-          "away_cover": 0.60694
-        },
-        {
           "line": -4.0,
           "home_cover": 0.39306,
           "push": 0.02577,
@@ -36012,11 +35088,11 @@
         }
       ],
       "market": {
-        "ml_home": -218.0,
-        "ml_away": 180.0,
-        "spread_home": -4.5,
-        "total_points": 49.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -36149,12 +35225,6 @@
           "away_cover": 0.6176
         },
         {
-          "line": 1.5,
-          "home_cover": 0.40442,
-          "push": 0.0,
-          "away_cover": 0.59558
-        },
-        {
           "line": 3.0,
           "home_cover": 0.42697,
           "push": 0.07631,
@@ -36192,11 +35262,11 @@
         }
       ],
       "market": {
-        "ml_home": 102.0,
-        "ml_away": -122.0,
-        "spread_home": 1.5,
-        "total_points": 42.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -36341,12 +35411,6 @@
           "away_cover": 0.5563
         },
         {
-          "line": 5.5,
-          "home_cover": 0.46518,
-          "push": 0.0,
-          "away_cover": 0.53482
-        },
-        {
           "line": 6.0,
           "home_cover": 0.46518,
           "push": 0.03579,
@@ -36372,11 +35436,11 @@
         }
       ],
       "market": {
-        "ml_home": 200.0,
-        "ml_away": -245.0,
-        "spread_home": 5.5,
-        "total_points": 42.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -36509,12 +35573,6 @@
           "away_cover": 0.50035
         },
         {
-          "line": 1.5,
-          "home_cover": 0.52226,
-          "push": 0.0,
-          "away_cover": 0.47774
-        },
-        {
           "line": 3.0,
           "home_cover": 0.5449,
           "push": 0.07487,
@@ -36552,11 +35610,11 @@
         }
       ],
       "market": {
-        "ml_home": 110.0,
-        "ml_away": -130.0,
-        "spread_home": 1.5,
-        "total_points": 42.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -36683,12 +35741,6 @@
           "away_cover": 0.4354
         },
         {
-          "line": -1.5,
-          "home_cover": 0.58794,
-          "push": 0.0,
-          "away_cover": 0.41206
-        },
-        {
           "line": 0.0,
           "home_cover": 0.61069,
           "push": 0.00367,
@@ -36732,11 +35784,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 49.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -36863,12 +35915,6 @@
           "away_cover": 0.4126
         },
         {
-          "line": -1.5,
-          "home_cover": 0.61051,
-          "push": 0.0,
-          "away_cover": 0.38949
-        },
-        {
           "line": 0.0,
           "home_cover": 0.63294,
           "push": 0.0036,
@@ -36912,11 +35958,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 45.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -37043,12 +36089,6 @@
           "away_cover": 0.57685
         },
         {
-          "line": -2.5,
-          "home_cover": 0.42315,
-          "push": 0.0,
-          "away_cover": 0.57685
-        },
-        {
           "line": 0.0,
           "home_cover": 0.46907,
           "push": 0.00381,
@@ -37092,11 +36132,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
-        "spread_home": -2.5,
-        "total_points": 42.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -37223,12 +36263,6 @@
           "away_cover": 0.50146
         },
         {
-          "line": -2.5,
-          "home_cover": 0.49854,
-          "push": 0.0,
-          "away_cover": 0.50146
-        },
-        {
           "line": 0.0,
           "home_cover": 0.54532,
           "push": 0.00379,
@@ -37272,11 +36306,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
-        "spread_home": -2.5,
-        "total_points": 41.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -37403,12 +36437,6 @@
           "away_cover": 0.41874
         },
         {
-          "line": -1.5,
-          "home_cover": 0.60444,
-          "push": 0.0,
-          "away_cover": 0.39556
-        },
-        {
           "line": 0.0,
           "home_cover": 0.62696,
           "push": 0.00362,
@@ -37452,11 +36480,11 @@
         }
       ],
       "market": {
-        "ml_home": -125.0,
-        "ml_away": 105.0,
-        "spread_home": -1.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -37559,12 +36587,6 @@
           "away_cover": 0.63971
         },
         {
-          "line": -7.5,
-          "home_cover": 0.39692,
-          "push": 0.0,
-          "away_cover": 0.60308
-        },
-        {
           "line": -7.0,
           "home_cover": 0.39692,
           "push": 0.05187,
@@ -37632,11 +36654,11 @@
         }
       ],
       "market": {
-        "ml_home": -355.0,
-        "ml_away": 280.0,
-        "spread_home": -7.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -37769,12 +36791,6 @@
           "away_cover": 0.4464
         },
         {
-          "line": 1.5,
-          "home_cover": 0.5758,
-          "push": 0.0,
-          "away_cover": 0.4242
-        },
-        {
           "line": 3.0,
           "home_cover": 0.5978,
           "push": 0.07199,
@@ -37812,11 +36828,11 @@
         }
       ],
       "market": {
-        "ml_home": 102.0,
-        "ml_away": -122.0,
-        "spread_home": 1.5,
-        "total_points": 49.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -37943,12 +36959,6 @@
           "away_cover": 0.61032
         },
         {
-          "line": -2.5,
-          "home_cover": 0.38968,
-          "push": 0.0,
-          "away_cover": 0.61032
-        },
-        {
           "line": 0.0,
           "home_cover": 0.43464,
           "push": 0.00377,
@@ -37992,11 +37002,11 @@
         }
       ],
       "market": {
-        "ml_home": -135.0,
-        "ml_away": 114.0,
-        "spread_home": -2.5,
-        "total_points": 47.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -38123,12 +37133,6 @@
           "away_cover": 0.72033
         },
         {
-          "line": -1.5,
-          "home_cover": 0.29898,
-          "push": 0.0,
-          "away_cover": 0.70102
-        },
-        {
           "line": 0.0,
           "home_cover": 0.31892,
           "push": 0.0034,
@@ -38172,11 +37176,11 @@
         }
       ],
       "market": {
-        "ml_home": -122.0,
-        "ml_away": 102.0,
-        "spread_home": -1.5,
-        "total_points": 46.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -38279,12 +37283,6 @@
           "away_cover": 0.63592
         },
         {
-          "line": -8.5,
-          "home_cover": 0.37599,
-          "push": 0.0,
-          "away_cover": 0.62401
-        },
-        {
           "line": -7.0,
           "home_cover": 0.40078,
           "push": 0.05192,
@@ -38352,11 +37350,11 @@
         }
       ],
       "market": {
-        "ml_home": -380.0,
-        "ml_away": 300.0,
-        "spread_home": -8.5,
-        "total_points": 40.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -38483,12 +37481,6 @@
           "away_cover": 0.3239
         },
         {
-          "line": -1.5,
-          "home_cover": 0.69751,
-          "push": 0.0,
-          "away_cover": 0.30249
-        },
-        {
           "line": 0.0,
           "home_cover": 0.71793,
           "push": 0.00322,
@@ -38532,11 +37524,11 @@
         }
       ],
       "market": {
-        "ml_home": -122.0,
-        "ml_away": 102.0,
-        "spread_home": -1.5,
-        "total_points": 41.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -38633,12 +37625,6 @@
           "away_cover": 0.61092
         },
         {
-          "line": -10.5,
-          "home_cover": 0.44271,
-          "push": 0.0,
-          "away_cover": 0.55729
-        },
-        {
           "line": -10.0,
           "home_cover": 0.44271,
           "push": 0.04001,
@@ -38712,11 +37698,11 @@
         }
       ],
       "market": {
-        "ml_home": -575.0,
-        "ml_away": 425.0,
-        "spread_home": -10.5,
-        "total_points": 42.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -38886,11 +37872,11 @@
         }
       ],
       "market": {
-        "ml_home": -470.0,
-        "ml_away": 360.0,
-        "spread_home": -10.0,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -39060,11 +38046,11 @@
         }
       ],
       "market": {
-        "ml_home": 136.0,
-        "ml_away": -162.0,
-        "spread_home": 3.0,
-        "total_points": 41.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -39179,12 +38165,6 @@
           "away_cover": 0.5296
         },
         {
-          "line": -5.5,
-          "home_cover": 0.4704,
-          "push": 0.0,
-          "away_cover": 0.5296
-        },
-        {
           "line": -4.0,
           "home_cover": 0.49196,
           "push": 0.02609,
@@ -39240,11 +38220,11 @@
         }
       ],
       "market": {
-        "ml_home": -225.0,
-        "ml_away": 185.0,
-        "spread_home": -5.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -39401,12 +38381,6 @@
           "away_cover": 0.4343
         },
         {
-          "line": 8.5,
-          "home_cover": 0.58949,
-          "push": 0.0,
-          "away_cover": 0.41051
-        },
-        {
           "line": 10.0,
           "home_cover": 0.59983,
           "push": 0.03341,
@@ -39420,11 +38394,11 @@
         }
       ],
       "market": {
-        "ml_home": 320.0,
-        "ml_away": -410.0,
-        "spread_home": 8.5,
-        "total_points": 44.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -39594,11 +38568,11 @@
         }
       ],
       "market": {
-        "ml_home": -162.0,
-        "ml_away": 136.0,
-        "spread_home": -3.0,
-        "total_points": 44.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -39731,12 +38705,6 @@
           "away_cover": 0.40198
         },
         {
-          "line": 1.5,
-          "home_cover": 0.61957,
-          "push": 0.0,
-          "away_cover": 0.38043
-        },
-        {
           "line": 3.0,
           "home_cover": 0.64073,
           "push": 0.06865,
@@ -39774,11 +38742,11 @@
         }
       ],
       "market": {
-        "ml_home": 105.0,
-        "ml_away": -125.0,
-        "spread_home": 1.5,
-        "total_points": 43.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     },
     {
@@ -39948,11 +38916,11 @@
         }
       ],
       "market": {
-        "ml_home": -298.0,
-        "ml_away": 240.0,
-        "spread_home": -7.0,
-        "total_points": 39.5,
-        "provider": "Draft Kings"
+        "ml_home": null,
+        "ml_away": null,
+        "spread_home": null,
+        "total_points": null,
+        "provider": null
       }
     }
   ]
