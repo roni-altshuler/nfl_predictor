@@ -6,7 +6,7 @@ NFL game and season probabilities, compared with historical market prices.
 adds interactive matchup exploration, record scenarios, safer forecast history,
 and a measured recency experiment. See the [verification report](docs/VERIFICATION_2026-09-18.md)
 for results and reproduction commands. Historical price timestamps are not
-verified closes; the published benchmark predates the latest evaluation fixes.
+verified closes. The dated evidence below is reproducible from committed artifacts.
 
 A sibling of [`../nba_predictor`](../nba_predictor) (Hardwood) and
 [`../soccer_predictor`](../soccer_predictor) (Pitchverse) — same architecture,
@@ -63,27 +63,50 @@ between the two sides, on the most heavily traded number in the sport.
 
 ## The record
 
-5,684 decided games, walk-forward, refit weekly on an expanding window from
-2005 after a three-season warm-up.
+The [October quality roadmap](docs/QUALITY_ROADMAP_2026-10.md) prioritizes
+temporal evaluation and a clearer weekly game-browsing flow.
+
+The historical artifact generated **2026-09-29** scores 5,732 decided games,
+walk-forward, refit weekly on an expanding window from 2005 after a three-season
+warm-up. Week grouping includes season and season type. The market row uses
+3,855 priced decided games; rows with different sample sizes are not paired
+comparisons.
 
 | forecaster | Brier | log loss | accuracy | ECE | n |
 |---|---|---|---|---|---|
-| Market (closing line) | **.2117** | .6109 | .6640 | .0127 | 3,807 |
-| Elo only | .2198 | .6291 | .6443 | **.0123** | 5,684 |
-| Margin model | .2199 | .6292 | .6414 | .0202 | 5,684 |
-| Constant base rate | .2465 | .6861 | .5595 | .0000 | 5,684 |
+| Market (retained historical prices) | **.21196** | .61152 | .66355 | .01230 | 3,855 |
+| Elo only | .21990 | .62933 | .64445 | .01291 | 5,732 |
+| Margin model | .22002 | .62945 | .64079 | .02015 | 5,732 |
+| Constant base rate (training-only) | .24665 | .68643 | .55967 | .01355 | 5,732 |
 
-Paired bootstrap against the closing line: **+.00884, 95% CI [+.00578,
-+.01196], p(model better) = .000.** The market is better, significantly.
-**That is the expected and wanted result** — the model carries no market
-features, and one that beat the price without seeing it would be a bug
-announcing itself. It closes 76% of the distance from the base rate to the
-market.
+The artifact's paired margin-minus-market Brier gap is **+.00876, 95% CI
+[+.00569, +.01177]**. Lower is better, so retained prices lead on this sample.
+Their closing timestamps are unverified; this is not evidence about beating a
+verified closing line. These are existing artifact results, not a new model run.
 
-**The margin model does not beat Elo alone.** Level on Brier, worse
-calibrated. Nine features have bought nothing over a rating gap and a
-home-field constant. That is reported rather than dressed up, and Elo-only
-stays live as the yardstick.
+**The margin model has not established an improvement over Elo alone.** Its
+current point estimates are slightly worse on Brier and calibration. Elo-only
+stays available as the yardstick for future measured changes.
+
+The separately published live artifact generated **2026-10-02** has **49**
+settled first forecasts: Brier **.23629**, accuracy **63.265%**. All 49 were
+published at least seven days before kickoff. This early, long-horizon sample
+does not measure last-day prediction quality and is not merged with the
+historical record.
+
+Reproduce the table and independently recompute live Brier, accuracy, and
+horizon counts from the stored rows without network access or training:
+
+```bash
+python -m backend.scripts.report_evidence
+python -m pytest backend/tests/test_evidence_report.py -q
+```
+
+Sources: [historical artifact](backend/data/diagnostics/market_benchmark.json)
+and [published forecast log](backend/data/predictions/forecast_log.json).
+The report rejects duplicate games, post-kickoff forecasts, invalid
+probabilities, and inconsistent live headline/cohort counts. Stored results
+remain the outcome source; the report does not independently fetch outcomes.
 
 ## Setup
 
