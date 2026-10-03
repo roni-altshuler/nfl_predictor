@@ -20,8 +20,10 @@ conclusions differ, deliberately. See [CLAUDE.md](CLAUDE.md).
 3. **A value surface** — model probability against the no-vig implied probability.
 4. **The playoff picture** — who makes the field and who hosts.
 
-The schedule is a calendar, week by week. Every fixture and every team mark is
-explorable: a game page carries the margin lattice, the cover/push/lose surface
+The schedule opens on a published week, with season/archive, team and local
+watchlist filters. [Week and game browsing](docs/WEEK_BROWSING_2026-10.md)
+documents the implementation, screenshots and verification limits.
+Every fixture is explorable: a game page carries the margin lattice, the cover/push/lose surface
 at each key number, the injury report and the head-to-head; a team page carries
 twenty-four seasons of rating against the league. `/season` draws the
 conference race as a line — the one question on the site that a table cannot
