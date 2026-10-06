@@ -6,7 +6,8 @@ import { SpreadSlider } from '@/components/forecast/SpreadSlider'
 import { LiveBadge } from '@/components/live/LiveBadge'
 import { BackButton } from '@/components/primitives/BackButton'
 import { TeamLogo } from '@/components/primitives/TeamLogo'
-import { getGameForecasts, type GameForecast } from '@/lib/artifacts'
+import { GameSectionNav } from '@/components/schedule/GameSectionNav'
+import { getGameForecasts, type GameForecast, type GameForecasts } from '@/lib/artifacts'
 import { getGameDetail, type GameDetail } from '@/lib/espn'
 import {
   getGameContext,
@@ -16,7 +17,7 @@ import {
   type FormGame,
   type Meeting,
 } from '@/lib/history'
-import { kickoff, moneyline, pct, signed, spread } from '@/lib/format'
+import { forecastStamp, kickoff, moneyline, pct, signed, spread } from '@/lib/format'
 
 // The 272 scheduled fixtures are prerendered. A played game resolves from
 // the published context at request time and is then cached UNTIL THE NEXT
@@ -43,8 +44,9 @@ export async function generateMetadata({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  const upcoming = getGameForecasts()?.games.find((g) => g.game_id === id)
-  if (upcoming) {
+  const forecasts = getGameForecasts()
+  const upcoming = forecasts?.games.find((g) => g.game_id === id)
+  if (upcoming && forecasts) {
     return { title: `${upcoming.away} at ${upcoming.home} · Week ${upcoming.week}` }
   }
   const played = findPlayedGame(id)
@@ -70,13 +72,14 @@ export default async function GamePage({
 }) {
   const { id } = await params
 
-  const upcoming = getGameForecasts()?.games.find((g) => g.game_id === id)
-  if (upcoming) {
+  const forecasts = getGameForecasts()
+  const upcoming = forecasts?.games.find((g) => g.game_id === id)
+  if (upcoming && forecasts) {
     // Injuries and the ESPN summary are only fetched on the branch that can
     // use them. On an archived fixture an injury report would be today's
     // news about a game played years ago, which is worse than nothing.
     const detail = await getGameDetail(id, upcoming.home, upcoming.away)
-    return <UpcomingGame game={upcoming} detail={detail} />
+    return <UpcomingGame game={upcoming} detail={detail} forecasts={forecasts} />
   }
 
   const played = findPlayedGame(id)
@@ -93,9 +96,11 @@ export default async function GamePage({
 function UpcomingGame({
   game,
   detail,
+  forecasts,
 }: {
   game: GameForecast
   detail: GameDetail
+  forecasts: GameForecasts
 }) {
   const meetings = meetingsBetween(game.home, game.away)
   const split = seriesSplit(meetings, game.home)
@@ -113,9 +118,10 @@ function UpcomingGame({
 
   return (
     <div className="space-y-6">
-      <GameHeader game={game} />
+      <GameHeader game={game} forecasts={forecasts} />
+      <GameSectionNav />
 
-      <section className="card p-4" aria-label="Forecast">
+      <section id="forecast" className="card scroll-mt-20 p-4" aria-label="Forecast">
         <h2 className="eyebrow mb-3">Forecast</h2>
         <ProbabilityRow game={game} />
 
@@ -155,7 +161,7 @@ function UpcomingGame({
       {/* The distinctive surface. Every sibling project shows a win
           probability; this is the one that shows football's lattice. */}
       {game.margin_distribution ? (
-        <section className="card p-4" aria-label="Margin distribution">
+        <section id="distribution" className="card scroll-mt-20 p-4" aria-label="Margin distribution">
           <h2 className="eyebrow mb-1">How it is likely to finish</h2>
           <p className="mb-3 text-[11px] leading-relaxed text-[var(--text-tertiary)]">
             The 3s and 7s are football&apos;s arithmetic — a normal curve
@@ -232,7 +238,7 @@ function UpcomingGame({
         </section>
       ) : null}
 
-      <section className="card p-4" aria-label="Market">
+      <section id="market" className="card scroll-mt-20 p-4" aria-label="Market">
         <h2 className="eyebrow mb-3">The market</h2>
         {hasLine ? (
           <>
@@ -276,14 +282,14 @@ function UpcomingGame({
         )}
       </section>
 
-      <Availability detail={detail} game={game} />
+      <div id="availability" className="scroll-mt-20"><Availability detail={detail} game={game} /></div>
 
-      <HeadToHead
+      <div id="context" className="scroll-mt-20"><HeadToHead
         meetings={meetings}
         split={split}
         home={game.home}
         away={game.away}
-      />
+      /></div>
 
       <FormBlock home={game.home} away={game.away} />
     </div>
@@ -455,14 +461,15 @@ function PlayedGame({
 
 /* --------------------------------------------------------------- pieces */
 
-function GameHeader({ game }: { game: GameForecast }) {
+function GameHeader({ game, forecasts }: { game: GameForecast; forecasts: GameForecasts }) {
   const context = getGameContext()
   const homeRecord = context?.records[game.home] ?? null
   const awayRecord = context?.records[game.away] ?? null
 
   return (
     <header>
-      <BackButton fallback="/games" label="Schedule" />
+      <BackButton fallback={`/games?week=${game.week}`} label={`Week ${game.week} slate`} />
+      <div className="card mt-3 p-4 sm:p-6">
       <p className="eyebrow mt-3">
         Week {game.week} · {game.season}
         {game.neutral_site ? ' · neutral site' : ''}
@@ -487,6 +494,12 @@ function GameHeader({ game }: { game: GameForecast }) {
           home={game.home}
         />
       </p>
+      <dl className="mt-4 grid gap-3 border-t border-[var(--border-color)] pt-4 text-xs sm:grid-cols-2">
+        <div><dt className="text-[var(--text-tertiary)]">Forecast published</dt><dd className="mt-1 font-mono">{forecastStamp(forecasts.generated_at)}</dd></div>
+        <div><dt className="text-[var(--text-tertiary)]">Results used through</dt><dd className="mt-1 font-mono">{forecastStamp(forecasts.trained_through)}</dd></div>
+      </dl>
+      <p className="mt-3 text-xs leading-relaxed text-[var(--text-secondary)]">Published pre-game snapshot. Player availability and roster changes are not inputs to these probabilities.</p>
+      </div>
     </header>
   )
 }
@@ -559,7 +572,10 @@ function Availability({
   detail: GameDetail
   game: GameForecast
 }) {
-  if (!detail.injuries.length) return null
+  if (!detail.injuries.length) return <section className="card p-4" aria-label="Availability">
+    <h2 className="eyebrow">Availability report unavailable</h2>
+    <p className="mt-2 text-sm text-[var(--text-secondary)]">No player report is available in this response. An empty or failed request does not confirm that everyone is available.</p>
+  </section>
   const byTeam = [game.away, game.home].map((team) => ({
     team,
     entries: detail.injuries.filter((i) => i.team === team),

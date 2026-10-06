@@ -108,6 +108,12 @@ export function stamp(iso: string | null | undefined): string {
   }).format(new Date(iso))
 }
 
+/** Exact publication context, shared by the slate and matchup header. */
+export function forecastStamp(value: string | null | undefined): string {
+  if (!value || !Number.isFinite(Date.parse(value))) return 'Unavailable'
+  return new Date(value).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'UTC' }) + ' UTC'
+}
+
 /** ESPN's team logo for an abbreviation. */
 export function logoUrl(abbreviation: string): string {
   return `https://a.espncdn.com/i/teamlogos/nfl/500/${abbreviation.toLowerCase()}.png`

@@ -265,6 +265,20 @@ beside every bar. Result controls are 44px native buttons; insufficient samples
 are visibly withheld. Technical interpretation lives in a native disclosure.
 The simple record-only calculator is now a secondary disclosure.
 
+## Published week and remote marks (2026-10-06)
+
+The week browser keeps publication and results-cutoff timestamps together above
+its controls. On phones, week and team share one row; team options lead with the
+abbreviation so a narrow native select can still distinguish the two Los Angeles
+or New York clubs. Full team names remain on the matchup cards and options.
+
+Shared team marks now use a warm off-white plate (`--logo-plate: #f4efe6`) with
+dark abbreviation ink. The text is present while an image loads or fails; a
+failed image is removed. Successful cached images are recognized at hydration,
+and a changed team starts with fresh loading state. The wrapper keeps its team
+name as an accessible image label. The green board, reduced-motion behavior,
+probabilities and navigation hierarchy remain the existing product identity.
+
 The accuracy page's research ledger keeps exploratory experiments separate from
 live and production backtest results. Higher winner accuracy alone is not a claim
 of improved probabilities. First-load motion still respects reduced motion.

@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
 
 import { logoUrl } from '@/lib/format'
 import { cn } from '@/lib/utils'
@@ -29,29 +32,58 @@ export function TeamLogo({
   size?: number
   className?: string
 }) {
+  // A different team gets fresh loading state even when React reuses the slot.
+  return <TeamMark key={abbreviation} abbreviation={abbreviation} name={name} size={size} className={className} />
+}
+
+function TeamMark({ abbreviation, name, size, className }: {
+  abbreviation: string
+  name?: string | null
+  size: number
+  className?: string
+}) {
+  const [status, setStatus] = useState<'loading' | 'loaded' | 'failed'>('loading')
+  const image = useRef<HTMLImageElement>(null)
+
+  useEffect(() => {
+    // Cached images can finish before hydration attaches the load handler.
+    if (image.current?.complete) {
+      setStatus(image.current.naturalWidth > 0 ? 'loaded' : 'failed')
+    }
+  }, [])
+
   return (
     <span
+      role="img"
+      aria-label={name || abbreviation}
+      data-logo-state={status}
       className={cn(
-        'inline-flex shrink-0 items-center justify-center overflow-hidden rounded-sm',
+        'relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-sm',
         className,
       )}
       style={{
         width: size,
         height: size,
         background: 'var(--logo-plate)',
+        color: 'var(--logo-ink)',
         boxShadow: 'inset 0 0 0 1px var(--logo-plate-ring)',
       }}
     >
+      {status !== 'loaded' && <span aria-hidden="true" className="font-mono font-bold" style={{ fontSize: Math.max(7, size * 0.32) }}>{abbreviation}</span>}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      {status !== 'failed' && <img
+        ref={image}
         src={logoUrl(abbreviation)}
-        alt={name || abbreviation}
+        alt=""
         width={size}
         height={size}
         loading="lazy"
         decoding="async"
-        style={{ width: size * 0.84, height: size * 0.84, objectFit: 'contain' }}
-      />
+        onLoad={() => setStatus('loaded')}
+        onError={() => setStatus('failed')}
+        className="absolute"
+        style={{ width: size * 0.84, height: size * 0.84, objectFit: 'contain', opacity: status === 'loaded' ? 1 : 0 }}
+      />}
     </span>
   )
 }

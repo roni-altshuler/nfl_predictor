@@ -1,112 +1,35 @@
-import { FollowFilter } from '@/components/schedule/FollowFilter'
-import { WeekCalendar } from '@/components/schedule/WeekCalendar'
-import { WeekRail } from '@/components/schedule/WeekRail'
+import Link from 'next/link'
+import { WeekBrowser } from '@/components/schedule/WeekBrowser'
 import { currentWeek, getGameForecasts } from '@/lib/artifacts'
-import { stamp } from '@/lib/format'
+import { forecastStamp } from '@/lib/format'
+import { getSeasonsIndex } from '@/lib/archive'
 
 export const dynamic = 'force-static'
-
 export const metadata = { title: 'Schedule' }
 
-/**
- * The whole season, week by week, as a calendar.
- *
- * **Weeks are the NFL's own index, not a derived bucket.** ESPN serves the
- * schedule week by week and the warehouse stores the week as a NOT-NULL
- * column, so this page groups on a fact rather than on arithmetic over
- * kickoff dates. That matters because games get flexed between Sunday and
- * Monday, and an international game in London kicks off on a UTC date that
- * belongs to the previous week everywhere in the United States.
- *
- * **Each week is a `<details>` and only the next one ships open**, the NBA
- * sibling's pattern: eighteen expanded calendars are a two-minute scroll,
- * but a folded week is still one click away AND still in the DOM for
- * in-page search. The rail unfolds a week before jumping to it.
- *
- * Kickoffs are US Eastern, and games are filed under the Eastern day they
- * are played on — bucketing on UTC would move every prime-time slate a day
- * forward and the result would look entirely plausible.
- */
+/** Published forecasts and recorded season results stay separate. */
 export default function GamesPage() {
   const forecasts = getGameForecasts()
-
-  if (!forecasts || forecasts.games.length === 0) {
-    return (
-      <p className="font-mono text-sm text-[var(--text-tertiary)]">
-        No schedule published.
-      </p>
-    )
+  if (!forecasts || !forecasts.games.length) {
+    return <section className="card p-6">
+      <h1 className="text-lg">No forecasts published</h1>
+      <p className="mt-2 text-sm text-[var(--text-secondary)]">The current snapshot has no scheduled game probabilities. Recorded results remain separate.</p>
+      <Link href="/seasons" className="mt-3 inline-flex min-h-[44px] items-center text-sm text-[var(--accent-info)] hover:underline">Browse recorded seasons →</Link>
+    </section>
   }
-
-  const weeks = [...new Set(forecasts.games.map((g) => g.week))].sort(
-    (a, b) => a - b,
-  )
-  const next = currentWeek(forecasts)
-
-  return (
-    <div className="space-y-6">
-      <header>
-        <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--text-tertiary)]">
-          {forecasts.season} season
-        </p>
-        <h1 className="mt-2 text-3xl font-semibold uppercase tracking-[0.1em]">
-          Schedule
-        </h1>
-        <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
-          <p className="font-mono text-[11px] text-[var(--text-tertiary)]">
-            {forecasts.games.length} fixtures over {weeks.length} weeks ·
-            published {stamp(forecasts.generated_at)}
-          </p>
-          <FollowFilter />
-        </div>
-      </header>
-
-      <WeekRail weeks={weeks} next={next} />
-
-      <div className="space-y-3">
-        {weeks.map((week) => {
-          const slate = forecasts.games
-            .filter((g) => g.week === week)
-            .sort((a, b) => a.date_utc.localeCompare(b.date_utc))
-          return (
-            <details
-              key={week}
-              id={`week-${week}`}
-              open={week === next || (next === null && week === weeks[0])}
-              className="group scroll-mt-16"
-            >
-              <summary className="flex cursor-pointer list-none items-baseline gap-3 rounded-sm border border-transparent px-1 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)] transition-colors hover:text-[var(--text-secondary)] [&::-webkit-details-marker]:hidden">
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  aria-hidden="true"
-                  className="shrink-0 self-center transition-transform group-open:rotate-90"
-                >
-                  <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span
-                  className={
-                    week === next
-                      ? 'text-[var(--accent-primary)]'
-                      : 'text-[var(--text-secondary)]'
-                  }
-                >
-                  Week {week}
-                </span>
-                <span>{slate.length} games</span>
-                {week === next ? <span>· next up</span> : null}
-              </summary>
-              <div className="pt-2">
-                <WeekCalendar games={slate} />
-              </div>
-            </details>
-          )
-        })}
-      </div>
-    </div>
-  )
+  const weeks = [...new Set(forecasts.games.map(game => game.week))].sort((a, b) => a - b)
+  const archiveSeasons = getSeasonsIndex()?.seasons.map(season => season.season) ?? []
+  return <div className="space-y-6">
+    <header>
+      <p className="eyebrow">{forecasts.season} season</p>
+      <h1 className="mt-2 text-3xl">Your NFL week.</h1>
+      <p className="mt-3 font-mono text-xs text-[var(--text-tertiary)]">{forecasts.games.length} published fixtures over {weeks.length} weeks · pre-game snapshots</p>
+      <dl className="mt-4 grid gap-3 border-l-2 border-[var(--accent-primary)] pl-3 text-xs sm:grid-cols-2">
+        <div><dt className="text-[var(--text-tertiary)]">Forecast published</dt><dd className="mt-1 font-mono">{forecastStamp(forecasts.generated_at)}</dd></div>
+        <div><dt className="text-[var(--text-tertiary)]">Results used through</dt><dd className="mt-1 font-mono">{forecastStamp(forecasts.trained_through)}</dd></div>
+      </dl>
+      <p className="mt-3 text-sm text-[var(--text-secondary)]">Pick a week. Find your teams. Open the matchup behind every probability.</p>
+    </header>
+    <WeekBrowser forecasts={forecasts} initialWeek={currentWeek(forecasts) ?? weeks[0]} archiveSeasons={archiveSeasons} />
+  </div>
 }
