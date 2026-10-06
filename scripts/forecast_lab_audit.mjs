@@ -86,6 +86,8 @@ try {
   const checks=[]
   for (const width of [320,390,768,1440]) {
     await page.setViewportSize({width,height:1000})
+    // Let resize layout settle before measuring the new viewport.
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))))
     await page.addScriptTag({path:axePath})
     const evaluation=page.evaluate(async()=>({
       overflow:document.documentElement.scrollWidth>innerWidth,

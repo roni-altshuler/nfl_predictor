@@ -13,6 +13,8 @@
  * host is named once in `backend/services/espn/client.py` and once here.
  */
 
+import { normalizeAthlete, sourceTimestamp, type AthleteReference } from './athletes'
+
 const ESPN_HOST = 'https://site.web.api.espn.com'
 const SUMMARY = `${ESPN_HOST}/apis/site/v2/sports/football/nfl/summary`
 
@@ -20,6 +22,7 @@ const SUMMARY = `${ESPN_HOST}/apis/site/v2/sports/football/nfl/summary`
 // change; for one that has not, a day-old injury report is still the right
 // order of freshness for a weekly sport.
 const REVALIDATE = 86_400
+const list = (value: any): any[] => Array.isArray(value) ? value : []
 
 export interface TeamStat {
   label: string
@@ -36,6 +39,7 @@ export interface Linescore {
 export interface PlayerLine {
   name: string
   stat: string
+  athlete: AthleteReference
 }
 
 export interface PlayerGroup {
@@ -50,9 +54,21 @@ export interface InjuryEntry {
   position: string
   status: string
   detail: string
+  athlete: AthleteReference
+  reportedAt: string | null
+}
+
+export interface SummarySource {
+  provider: 'espn'
+  eventId: string
+  url: string
+  status: 'available' | 'unavailable' | 'mismatched'
+  asOf: string | null
+  responseAt: string | null
 }
 
 export interface GameDetail {
+  source: SummarySource
   teamStats: TeamStat[]
   linescores: Linescore[]
   leaders: PlayerGroup[]
@@ -85,25 +101,26 @@ const TEAM_STATS: { key: string; label: string }[] = [
   { key: 'possessionTime', label: 'Possession' },
 ]
 
-async function fetchSummary(gameId: string): Promise<any | null> {
+async function fetchSummary(gameId: string): Promise<{ summary: any | null; responseAt: string | null }> {
   try {
     const response = await fetch(`${SUMMARY}?event=${encodeURIComponent(gameId)}`, {
       next: { revalidate: REVALIDATE },
       headers: { Accept: 'application/json' },
     })
-    if (!response.ok) return null
-    return await response.json()
+    if (!response.ok) return { summary: null, responseAt: null }
+    const date = response.headers.get('date')
+    return { summary: await response.json(), responseAt: date && Number.isFinite(Date.parse(date)) ? new Date(date).toISOString() : null }
   } catch {
     // ESPN being unreachable is not a page failure. The sections that need
     // this render their absence and everything published stays on screen.
-    return null
+    return { summary: null, responseAt: null }
   }
 }
 
 /** First occurrence wins — see the note on TEAM_STATS. */
 function statMap(entry: any): Map<string, string> {
   const out = new Map<string, string>()
-  for (const stat of entry?.statistics ?? []) {
+  for (const stat of list(entry?.statistics)) {
     if (stat?.name && !out.has(stat.name)) {
       out.set(stat.name, String(stat.displayValue ?? ''))
     }
@@ -116,7 +133,21 @@ export async function getGameDetail(
   homeAbbr: string,
   awayAbbr: string,
 ): Promise<GameDetail> {
+  const { summary, responseAt } = await fetchSummary(gameId)
+  return normalizeGameSummary(summary, gameId, homeAbbr, awayAbbr, responseAt)
+}
+
+/** Shared by game pages and match-scoped profiles; no athlete endpoint or roster read. */
+export function normalizeGameSummary(summary: any | null, gameId: string, homeAbbr: string, awayAbbr: string, responseAt: string | null = null): GameDetail {
+  const competitors = list(summary?.header?.competitions?.[0]?.competitors)
+  const matches = String(summary?.header?.id ?? '') === gameId &&
+    competitors.some(c => c.homeAway === 'home' && c.team?.abbreviation === homeAbbr) &&
+    competitors.some(c => c.homeAway === 'away' && c.team?.abbreviation === awayAbbr)
+  const source: SummarySource = { provider: 'espn', eventId: gameId, url: `${SUMMARY}?event=${encodeURIComponent(gameId)}`,
+    status: !summary ? 'unavailable' : matches ? 'available' : 'mismatched',
+    asOf: matches ? sourceTimestamp(summary?.meta?.lastUpdatedAt) : null, responseAt }
   const empty: GameDetail = {
+    source,
     teamStats: [],
     linescores: [],
     leaders: [],
@@ -124,11 +155,10 @@ export async function getGameDetail(
     attendance: null,
     venue: null,
   }
-  const summary = await fetchSummary(gameId)
-  if (!summary) return empty
+  if (!summary || !matches) return empty
 
   // ---- team statistics
-  const teams: any[] = summary?.boxscore?.teams ?? []
+  const teams = list(summary?.boxscore?.teams)
   const byAbbr = new Map<string, Map<string, string>>()
   for (const entry of teams) {
     const abbr = entry?.team?.abbreviation
@@ -148,11 +178,10 @@ export async function getGameDetail(
   }
 
   // ---- period scoring
-  const competitors: any[] = summary?.header?.competitions?.[0]?.competitors ?? []
   const linescores: Linescore[] = competitors
     .map((competitor) => ({
       team: String(competitor?.team?.abbreviation ?? ''),
-      periods: (competitor?.linescores ?? []).map((l: any) => Number(l?.displayValue ?? l?.value ?? 0)),
+      periods: list(competitor?.linescores).map((l: any) => Number(l?.displayValue ?? l?.value ?? 0)),
       total: Number(competitor?.score ?? 0),
     }))
     .filter((l) => l.team)
@@ -161,17 +190,18 @@ export async function getGameDetail(
 
   // ---- leaders
   const leaders: PlayerGroup[] = []
-  for (const group of summary?.leaders ?? []) {
+  for (const group of list(summary?.leaders)) {
     const abbr = String(group?.team?.abbreviation ?? '')
-    for (const category of group?.leaders ?? []) {
-      const lines: PlayerLine[] = (category?.leaders ?? [])
+    for (const category of list(group?.leaders)) {
+      const lines: PlayerLine[] = list(category?.leaders)
         .slice(0, 1)
         .map((leader: any) => ({
           name: String(leader?.athlete?.displayName ?? ''),
           stat: String(leader?.displayValue ?? ''),
+          athlete: normalizeAthlete(leader?.athlete, source.url),
         }))
         .filter((l: PlayerLine) => l.name)
-      if (lines.length && abbr) {
+      if (lines.length && [homeAbbr, awayAbbr].includes(abbr)) {
         leaders.push({
           team: abbr,
           label: String(category?.displayName ?? category?.name ?? ''),
@@ -189,23 +219,26 @@ export async function getGameDetail(
   // the most decision-relevant thing on the page. It still feeds no
   // probability — the model does not know about it, and `/about` says so.
   const injuries: InjuryEntry[] = []
-  for (const block of summary?.injuries ?? []) {
+  for (const block of list(summary?.injuries)) {
     const abbr = String(block?.team?.abbreviation ?? '')
-    for (const item of block?.injuries ?? []) {
+    for (const item of list(block?.injuries)) {
       const player = String(item?.athlete?.displayName ?? '')
-      if (!player) continue
+      if (!player || ![homeAbbr, awayAbbr].includes(abbr)) continue
       injuries.push({
         team: abbr,
         player,
         position: String(item?.athlete?.position?.abbreviation ?? ''),
         status: String(item?.status ?? ''),
         detail: String(item?.details?.type ?? item?.type?.description ?? ''),
+        athlete: normalizeAthlete(item?.athlete, source.url),
+        reportedAt: sourceTimestamp(item?.date),
       })
     }
   }
 
   const info = summary?.gameInfo ?? {}
   return {
+    source,
     teamStats,
     linescores,
     leaders,

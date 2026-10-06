@@ -282,3 +282,22 @@ probabilities and navigation hierarchy remain the existing product identity.
 The accuracy page's research ledger keeps exploratory experiments separate from
 live and production backtest results. Higher winner accuracy alone is not a claim
 of improved probabilities. First-load motion still respects reduced motion.
+
+## Match-scoped player profiles (2026-10-06)
+
+Player names remain visible in leader/report links and the matchup's player
+cards. Provider-qualified athlete IDs identify profiles; names never become
+route identities. The profile pairs a neutral off-white initials/number plate
+with the existing green board and readable data cards. Selected game statistics,
+team context and dated availability reports are separate sections; absent
+statistics or reports stay unknown. A source/coverage card distinguishes the
+summary update from individual report dates and avoids full-roster or career
+claims. Team pages open player reports through a published matchup.
+
+Portrait contracts record provider, subject, provenance, permission evidence
+and verification. A supplied provider URL grants no display permission. Only
+a previously permitted, verified local athlete asset with a matching subject
+can render. No such assets are shipped; names, initials and shirt numbers carry
+identity without portrait requests. Profile Back follows the originating
+matchup/history; a fresh tab retains a named matchup parent. Loading skeletons
+and explicit unavailable states keep the app's navigation available.

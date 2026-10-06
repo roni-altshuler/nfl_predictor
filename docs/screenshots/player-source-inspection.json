@@ -1,0 +1,26 @@
+{
+  "endpoint": "https://site.web.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872966",
+  "inspected_at": "2026-10-06T15:08:19.831Z",
+  "http_status": 200,
+  "fixture": "scripts/fixtures/espn-player-summary.json",
+  "event": "401872966",
+  "teams": [
+    {
+      "homeAway": "home",
+      "team": {
+        "abbreviation": "NYG"
+      }
+    },
+    {
+      "homeAway": "away",
+      "team": {
+        "abbreviation": "ARI"
+      }
+    }
+  ],
+  "summary_updated_at": "2026-10-04T20:11:04Z",
+  "leader_categories": 10,
+  "included_injuries": 4,
+  "fixture_scope": "Subset of one existing ESPN summary response; fact fields only; no portrait images requested or downloaded",
+  "image_permission": "not verified"
+}

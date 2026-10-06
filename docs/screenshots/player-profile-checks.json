@@ -1,0 +1,118 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-06T15:35:39.696Z",
+  "browser": "151.0.7922.173",
+  "source_mode": "Subset of captured ESPN response for one existing event; other ESPN server requests return controlled 503",
+  "fixture_event": "401872966",
+  "forecast_generated_at": "2026-10-04T15:43:00+00:00",
+  "summary_as_of": "2026-10-04T20:11:04Z",
+  "portrait_policy": "No permitted athlete assets; initials/number fallback; no portrait requests",
+  "portraitRequests": [],
+  "loadingObserved": true,
+  "checks": [
+    {
+      "name": "player",
+      "width": 320,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "name": "player",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "name": "player",
+      "width": 768,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "name": "player",
+      "width": 1440,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "name": "profile-no-context",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "name": "profile-injury",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "name": "profile-source-outage",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    }
+  ],
+  "journeys": [
+    {
+      "width": 320,
+      "filteredUrl": "http://127.0.0.1:3024/games?week=4&team=ARI&following=1",
+      "profileUrl": "http://127.0.0.1:3024/players/espn/2969939?game=401872966",
+      "populated": true,
+      "profilePopulated": true,
+      "keyboard": true,
+      "filtersAndFixturesRestored": true
+    },
+    {
+      "width": 390,
+      "filteredUrl": "http://127.0.0.1:3024/games?week=4&team=ARI&following=1",
+      "profileUrl": "http://127.0.0.1:3024/players/espn/2969939?game=401872966",
+      "populated": true,
+      "profilePopulated": true,
+      "keyboard": true,
+      "filtersAndFixturesRestored": true
+    },
+    {
+      "width": 768,
+      "filteredUrl": "http://127.0.0.1:3024/games?week=4&team=ARI&following=1",
+      "profileUrl": "http://127.0.0.1:3024/players/espn/2969939?game=401872966",
+      "populated": true,
+      "profilePopulated": true,
+      "keyboard": true,
+      "filtersAndFixturesRestored": true
+    },
+    {
+      "width": 1440,
+      "filteredUrl": "http://127.0.0.1:3024/games?week=4&team=ARI&following=1",
+      "profileUrl": "http://127.0.0.1:3024/players/espn/2969939?game=401872966",
+      "populated": true,
+      "profilePopulated": true,
+      "keyboard": true,
+      "filtersAndFixturesRestored": true
+    }
+  ],
+  "teamJourney": {
+    "team": "NYG",
+    "teamMatchUrl": "http://127.0.0.1:3024/games/401872966#players",
+    "teamPlayerOpened": true,
+    "teamProfilePopulated": true,
+    "returnedToTeam": true
+  },
+  "errors": [],
+  "flows": [
+    "keyboard filtered slate→game→player→Back→filtered slate",
+    "team→game→player→Back→team",
+    "fresh-tab canonical matchup parent",
+    "no context/unknown player/unknown event unavailable states",
+    "invalid provider and name-slug recovery",
+    "injury-only profile with separate report date and absent statistics",
+    "source outage recovery"
+  ]
+}
