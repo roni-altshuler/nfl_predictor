@@ -23,11 +23,13 @@ import { useEffect, useState } from 'react'
  */
 
 const KEY = 'gridiron:navigated'
+const NAVIGATION_RECORDED = 'gridiron:navigation-recorded'
 
 /** Called by AppShell on every route change after the first. */
 export function markNavigation() {
   try {
     sessionStorage.setItem(KEY, '1')
+    window.dispatchEvent(new Event(NAVIGATION_RECORDED))
   } catch {
     /* private mode — the fallback link still works */
   }
@@ -46,11 +48,17 @@ export function BackButton({
   const [canGoBack, setCanGoBack] = useState(false)
 
   useEffect(() => {
-    try {
-      setCanGoBack(sessionStorage.getItem(KEY) === '1')
-    } catch {
-      /* keep the fallback */
+    const restore = () => {
+      try {
+        setCanGoBack(sessionStorage.getItem(KEY) === '1')
+      } catch {
+        /* keep the fallback */
+      }
     }
+    // A fast detail can mount before AppShell's route effect records navigation.
+    window.addEventListener(NAVIGATION_RECORDED, restore)
+    restore()
+    return () => window.removeEventListener(NAVIGATION_RECORDED, restore)
   }, [])
 
   const className =

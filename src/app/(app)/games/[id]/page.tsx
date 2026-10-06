@@ -7,6 +7,8 @@ import { LiveBadge } from '@/components/live/LiveBadge'
 import { BackButton } from '@/components/primitives/BackButton'
 import { TeamLogo } from '@/components/primitives/TeamLogo'
 import { GameSectionNav } from '@/components/schedule/GameSectionNav'
+import { GamePlayers } from '@/components/players/GamePlayers'
+import { PlayerLink } from '@/components/players/PlayerLink'
 import { getGameForecasts, type GameForecast, type GameForecasts } from '@/lib/artifacts'
 import { getGameDetail, type GameDetail } from '@/lib/espn'
 import {
@@ -284,6 +286,8 @@ function UpcomingGame({
 
       <div id="availability" className="scroll-mt-20"><Availability detail={detail} game={game} /></div>
 
+      <GamePlayers detail={detail} gameId={game.game_id} />
+
       <div id="context" className="scroll-mt-20"><HeadToHead
         meetings={meetings}
         split={split}
@@ -432,7 +436,7 @@ function PlayedGame({
                     {group.team} · {group.label}
                   </span>
                   <span className="block truncate text-[13px] text-[var(--text-secondary)]">
-                    {group.leaders[0]?.name}
+                    {group.leaders[0] ? <PlayerLink athlete={group.leaders[0].athlete} gameId={game.game_id} /> : null}
                   </span>
                 </span>
                 <span className="numeric shrink-0 text-[11px] text-[var(--text-primary)]">
@@ -443,6 +447,8 @@ function PlayedGame({
           </ul>
         </section>
       ) : null}
+
+      <GamePlayers detail={detail} gameId={game.game_id} includeInjuries={false} />
 
       <HeadToHead
         meetings={meetings}
@@ -598,11 +604,11 @@ function Availability({
               <ul className="space-y-1.5">
                 {entries.slice(0, 8).map((entry, index) => (
                   <li
-                    key={`${entry.player}-${index}`}
+                    key={`${entry.athlete.id ?? 'no-id'}-${index}`}
                     className="flex items-baseline justify-between gap-2"
                   >
-                    <span className="min-w-0 truncate text-[12px] text-[var(--text-secondary)]">
-                      {entry.player}
+                    <span className="min-w-0 break-words text-[12px] text-[var(--text-secondary)]">
+                      <PlayerLink athlete={entry.athlete} gameId={game.game_id} />
                       {entry.position ? (
                         <span className="text-[var(--text-tertiary)]">
                           {' '}

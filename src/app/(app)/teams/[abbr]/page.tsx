@@ -122,6 +122,14 @@ export default async function TeamPage({
         )}
       </section>
 
+      {fixtures[0] ? <section className="card p-4 sm:p-6" aria-label="Explore team players">
+        <h2 className="text-lg">Explore team players</h2>
+        <p className="mt-2 text-sm text-[var(--text-secondary)]">Meet the selected leaders and reported players through a published matchup. Full roster coverage is not available.</p>
+        <Link href={`/games/${fixtures[0].game_id}#players`} className="mt-3 inline-flex min-h-[44px] items-center text-sm text-[var(--accent-info)] hover:underline">
+          Week {fixtures[0].week} matchup player reports →
+        </Link>
+      </section> : null}
+
       {history && history.seasons.length > 2 ? (
         <section>
           <h2 className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
@@ -156,6 +164,7 @@ export default async function TeamPage({
         <h2 className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
           {forecasts?.season ?? ''} schedule
         </h2>
+        <p className="mb-3 text-sm text-[var(--text-secondary)]">Open a matchup to explore its selected player leaders and reported availability. Full roster coverage is not available.</p>
         {fixtures.length ? (
           <div className="card divide-y divide-[var(--border-color)]">
             {fixtures.map((game) => {

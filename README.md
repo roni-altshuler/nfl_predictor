@@ -23,6 +23,17 @@ committed **2026-10-04T15:43:00Z** snapshot (results through
 **2026-10-02T00:15:00Z**). Its 223 fixtures include earlier pre-game snapshots;
 this is not a refreshed live schedule.
 
+[Player exploration](docs/PLAYER_PROFILES_2026-10.md) connects team matchups and
+available ESPN leaders/availability entries to profiles keyed by provider and
+athlete ID. Profiles show the selected game's fields, source update and report
+dates; full rosters and career records remain unavailable. No athlete portrait
+has verified display permission, so profiles retain names with initials/number
+fallbacks and make no portrait requests.
+Archived profiles preserve the published calendar date and explicitly mark
+kickoff time unavailable when the archive supplies no timestamp. Historical
+OAK/LV context requires the matching ESPN franchise ID; the review's archive
+and delayed-navigation checks use documented controlled responses.
+
 ## What it does
 
 1. **Game prediction** — win probability, expected margin and total for every fixture.

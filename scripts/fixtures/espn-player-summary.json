@@ -1,0 +1,330 @@
+{
+  "header": {
+    "id": "401872966",
+    "competitions": [
+      {
+        "competitors": [
+          {
+            "homeAway": "home",
+            "team": {
+              "abbreviation": "NYG"
+            }
+          },
+          {
+            "homeAway": "away",
+            "team": {
+              "abbreviation": "ARI"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "lastUpdatedAt": "2026-10-04T20:11:04Z"
+  },
+  "leaders": [
+    {
+      "team": {
+        "abbreviation": "NYG"
+      },
+      "leaders": [
+        {
+          "displayName": "Passing Yards",
+          "name": "passingYards",
+          "leaders": [
+            {
+              "displayValue": "18/29, 250 YDS, 3 TD, 2 INT",
+              "athlete": {
+                "id": "2969939",
+                "displayName": "Jameis Winston",
+                "position": {
+                  "abbreviation": "QB"
+                },
+                "jersey": "19",
+                "headshot": {
+                  "href": "https://a.espncdn.com/i/headshots/nfl/players/full/2969939.png"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "displayName": "Rushing Yards",
+          "name": "rushingYards",
+          "leaders": [
+            {
+              "displayValue": "18 CAR, 58 YDS",
+              "athlete": {
+                "id": "4696981",
+                "displayName": "Cam Skattebo",
+                "position": {
+                  "abbreviation": "RB"
+                },
+                "jersey": "44",
+                "headshot": {
+                  "href": "https://a.espncdn.com/i/headshots/nfl/players/full/4696981.png"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "displayName": "Receiving Yards",
+          "name": "receivingYards",
+          "leaders": [
+            {
+              "displayValue": "6 REC, 112 YDS, 1 TD",
+              "athlete": {
+                "id": "4595348",
+                "displayName": "Malik Nabers",
+                "position": {
+                  "abbreviation": "WR"
+                },
+                "jersey": "1",
+                "headshot": {
+                  "href": "https://a.espncdn.com/i/headshots/nfl/players/full/4595348.png"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "displayName": "Sacks",
+          "name": "sacks",
+          "leaders": [
+            {
+              "displayValue": "1",
+              "athlete": {
+                "id": "3929950",
+                "displayName": "Tremaine Edmunds",
+                "position": {
+                  "abbreviation": "LB"
+                },
+                "jersey": "49",
+                "headshot": {
+                  "href": "https://a.espncdn.com/i/headshots/nfl/players/full/3929950.png"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "displayName": "Tackles",
+          "name": "totalTackles",
+          "leaders": [
+            {
+              "displayValue": "9",
+              "athlete": {
+                "id": "3929950",
+                "displayName": "Tremaine Edmunds",
+                "position": {
+                  "abbreviation": "LB"
+                },
+                "jersey": "49",
+                "headshot": {
+                  "href": "https://a.espncdn.com/i/headshots/nfl/players/full/3929950.png"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "team": {
+        "abbreviation": "ARI"
+      },
+      "leaders": [
+        {
+          "displayName": "Passing Yards",
+          "name": "passingYards",
+          "leaders": [
+            {
+              "displayValue": "21/35, 166 YDS, 2 TD, 3 INT",
+              "athlete": {
+                "id": "2578570",
+                "displayName": "Jacoby Brissett",
+                "position": {
+                  "abbreviation": "QB"
+                },
+                "jersey": "7",
+                "headshot": {
+                  "href": "https://a.espncdn.com/i/headshots/nfl/players/full/2578570.png"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "displayName": "Rushing Yards",
+          "name": "rushingYards",
+          "leaders": [
+            {
+              "displayValue": "14 CAR, 63 YDS",
+              "athlete": {
+                "id": "4870808",
+                "displayName": "Jeremiyah Love",
+                "position": {
+                  "abbreviation": "RB"
+                },
+                "jersey": "4",
+                "headshot": {
+                  "href": "https://a.espncdn.com/i/headshots/nfl/players/full/4870808.png"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "displayName": "Receiving Yards",
+          "name": "receivingYards",
+          "leaders": [
+            {
+              "displayValue": "7 REC, 95 YDS",
+              "athlete": {
+                "id": "4360761",
+                "displayName": "Michael Wilson",
+                "position": {
+                  "abbreviation": "WR"
+                },
+                "jersey": "14",
+                "headshot": {
+                  "href": "https://a.espncdn.com/i/headshots/nfl/players/full/4360761.png"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "displayName": "Sacks",
+          "name": "sacks",
+          "leaders": [
+            {
+              "displayValue": "1",
+              "athlete": {
+                "id": "3693166",
+                "displayName": "Josh Sweat",
+                "position": {
+                  "abbreviation": "LB"
+                },
+                "jersey": "10",
+                "headshot": {
+                  "href": "https://a.espncdn.com/i/headshots/nfl/players/full/3693166.png"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "displayName": "Tackles",
+          "name": "totalTackles",
+          "leaders": [
+            {
+              "displayValue": "8",
+              "athlete": {
+                "id": "4249739",
+                "displayName": "Jack Gibbens",
+                "position": {
+                  "abbreviation": "LB"
+                },
+                "jersey": "50",
+                "headshot": {
+                  "href": "https://a.espncdn.com/i/headshots/nfl/players/full/4249739.png"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "injuries": [
+    {
+      "team": {
+        "abbreviation": "NYG"
+      },
+      "injuries": [
+        {
+          "status": "Doubtful",
+          "date": "2026-10-05T21:48Z",
+          "details": {
+            "type": "Foot"
+          },
+          "athlete": {
+            "id": "3123075",
+            "displayName": "Braxton Berrios",
+            "position": {
+              "abbreviation": "WR"
+            },
+            "jersey": "87",
+            "headshot": {
+              "href": "https://a.espncdn.com/i/headshots/nfl/players/full/3123075.png"
+            }
+          }
+        },
+        {
+          "status": "Questionable",
+          "date": "2026-10-05T00:59Z",
+          "details": {
+            "type": "Neck"
+          },
+          "athlete": {
+            "id": "4036132",
+            "displayName": "Chauncey Golston",
+            "position": {
+              "abbreviation": "DE"
+            },
+            "jersey": "57",
+            "headshot": {
+              "href": "https://a.espncdn.com/i/headshots/nfl/players/full/4036132.png"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "team": {
+        "abbreviation": "ARI"
+      },
+      "injuries": [
+        {
+          "status": "Out",
+          "date": "2026-10-06T00:46Z",
+          "details": {
+            "type": "Biceps"
+          },
+          "athlete": {
+            "id": "4428991",
+            "displayName": "Paris Johnson Jr.",
+            "position": {
+              "abbreviation": "OT"
+            },
+            "jersey": "70",
+            "headshot": {
+              "href": "https://a.espncdn.com/i/headshots/nfl/players/full/4428991.png"
+            }
+          }
+        },
+        {
+          "status": "Questionable",
+          "date": "2026-10-05T23:51Z",
+          "details": {
+            "type": "Knee"
+          },
+          "athlete": {
+            "id": "3918331",
+            "displayName": "Andrew Wingard",
+            "position": {
+              "abbreviation": "S"
+            },
+            "jersey": "28",
+            "headshot": {
+              "href": "https://a.espncdn.com/i/headshots/nfl/players/full/3918331.png"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
