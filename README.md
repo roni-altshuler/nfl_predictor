@@ -16,7 +16,9 @@ conclusions differ, deliberately. See [CLAUDE.md](CLAUDE.md).
 The [published week browser](docs/WEEK_BROWSING_2026-10.md) connects week/team
 filters to matchup detail and preserves them on return. Both views display
 publication and results-cutoff timestamps; team abbreviations remain visible
-while remote marks load or if the CDN fails. The cloud continuation uses the
+while remote marks load or if the CDN fails. The app's Games/Schedule link resets
+the slate to its default filters; browser Back/Forward restores each URL's filters.
+The cloud continuation uses the
 committed **2026-10-04T15:43:00Z** snapshot (results through
 **2026-10-02T00:15:00Z**). Its 223 fixtures include earlier pre-game snapshots;
 this is not a refreshed live schedule.

@@ -144,3 +144,43 @@ Raw logs and all widths are saved in
 ![Cloud slate on mobile, with failed CDN marks](screenshots/week-cloud-mobile.png)
 ![Cloud matchup on mobile, with unknown availability](screenshots/game-cloud-mobile.png)
 ![Cloud missing-game recovery](screenshots/missing-game-cloud-mobile.png)
+
+### Independent-review follow-up — same-path navigation
+
+Production Chromium reproduced a missed case on head `261286e3ab3b9b731959682fca8c9234ab4aedf3`
+at both 390 and 1440 px. Starting at `/games`, selecting Week 18, IND and
+Following produced `/games?week=18&team=IND&following=1` with one fixture.
+Clicking the mobile **Games** or desktop **Schedule** app link changed the URL
+to `/games`, but retained the selected filters and fixture. Back restored the
+filtered URL; Forward reset the controls. Directly loading the filtered URL
+before clicking the app link already reset correctly. The original audit
+missed the filter-control arrival path.
+
+The narrow fix subscribes to Next's query changes in addition to the existing
+mount/history restoration. Only that subscription sits inside Suspense, keeping
+the static slate available without JavaScript. No layout, source, forecast,
+workflow or dependency changes were needed for this fix.
+
+The added browser regression failed against the old production build with URL
+`/games` and stale Week 18/IND/Following controls. It then passed against the
+revised production build for **both entry paths at 390 and 1440 px**, comparing
+the URL, all three filter values and every visible fixture link after app
+navigation, Back and Forward. On October 6, the clean URL restored Week 5,
+all teams, Following off and 15 fixtures; Back restored Week 18/IND/Following
+and its one fixture; Forward restored the clean slate. Agent-browser independently
+exercised the same mobile control/navigation/history sequence.
+
+Required checks passed again: 116 backend tests, frontend regressions, lint,
+TypeScript and all 321 production routes. The full week/detail and Lab audits
+passed again at 320/390/768/1440 px with zero detected axe violations, overflow,
+overlays or uncaught page exceptions; the no-JavaScript slate check also passed.
+The controlled ESPN outage and clock scope remain as documented above, and
+the October 4 forecast / October 2 results cutoff is unchanged.
+
+The [updated machine results](screenshots/week-navigation-checks.json) include
+all four navigation sequences and fixture URLs. Old-build failure details and
+raw before/after logs are retained in
+`/workspace/nfl-week-review-2026-10-06/same-path/`.
+
+![Mobile after Games resets the filters](screenshots/week-navigation-mobile.png)
+![Desktop after Schedule resets the filters](screenshots/week-navigation-desktop.png)

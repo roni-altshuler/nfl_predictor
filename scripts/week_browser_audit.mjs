@@ -26,6 +26,7 @@ const page = await context.newPage()
 page.setDefaultTimeout(30000)
 const errors = []
 const checks = []
+const navigationChecks = []
 let missingGameStatus
 page.on('pageerror', error => errors.push(error.message))
 const slate = page.getByRole('region', { name: 'Weekly slate', exact: true })
@@ -46,6 +47,75 @@ async function auditViewport(width, name) {
   assert.equal(result.overlay, false)
   await page.screenshot({ path: path.join(output, `${name}-${width}.png`), fullPage: true })
   checks.push({ page: name, width, ...result })
+}
+
+async function auditSamePathNavigation(width, arrival) {
+  const navigationContext = await browser.newContext({ reducedMotion: 'reduce', viewport: { width, height: 900 } })
+  const selectedWeek = weeks.at(-1)
+  const weekGames = forecast.games.filter(game => game.week === selectedWeek)
+  const team = weekGames.some(game => [game.home, game.away].includes('IND')) ? 'IND' : weekGames[0].away
+  await navigationContext.addInitScript(team => localStorage.setItem('gridiron:watchlist:v1', JSON.stringify([team])), team)
+  await navigationContext.route(logoPattern, route => route.abort())
+  const navigationPage = await navigationContext.newPage()
+  navigationPage.on('pageerror', error => errors.push(error.message))
+  const selection = async () => ({ url: navigationPage.url(),
+    week: await navigationPage.getByRole('combobox', { name: 'Select week', exact: true }).inputValue(),
+    team: await navigationPage.getByRole('combobox', { name: 'Filter by team', exact: true }).inputValue(),
+    following: await navigationPage.getByRole('checkbox').isChecked(),
+    games: await navigationPage.getByRole('region', { name: 'Weekly slate', exact: true }).locator('li a')
+      .evaluateAll(links => links.map(link => link.getAttribute('href'))),
+  })
+  const waitForSelection = expected => navigationPage.waitForFunction(expected => {
+    const root = document.querySelector('[aria-label="Weekly slate"]')
+    return root?.querySelector('select[aria-label="Select week"]')?.value === expected.week &&
+      root.querySelector('select[aria-label="Filter by team"]')?.value === expected.team &&
+      root.querySelector('input[type="checkbox"]')?.checked === expected.following
+  }, expected)
+  const filteredUrl = `${base}/games?week=${selectedWeek}&team=${team}&following=1`
+  try {
+    await navigationPage.goto(`${base}/games`)
+    await navigationPage.locator('[data-ready="true"]').waitFor()
+    await navigationPage.getByRole('checkbox', { name: 'Following only (1)', exact: true }).waitFor()
+    const original = await selection()
+    if (arrival === 'direct') {
+      await navigationPage.goto(filteredUrl)
+      await navigationPage.locator('[data-ready="true"]').waitFor()
+    } else {
+      await navigationPage.getByRole('combobox', { name: 'Select week', exact: true }).selectOption(String(selectedWeek))
+      await navigationPage.getByRole('combobox', { name: 'Filter by team', exact: true }).selectOption(team)
+      await navigationPage.getByRole('checkbox').check()
+    }
+    const expectedFilter = { week: String(selectedWeek), team, following: true }
+    await waitForSelection(expectedFilter)
+    assert.equal(navigationPage.url(), filteredUrl)
+    const filtered = await selection()
+    assert.equal(filtered.games.length, weekGames.filter(game => [game.home, game.away].includes(team)).length)
+    // The active app link is a Next client navigation to the same pathname.
+    await navigationPage.getByRole('link', { name: width < 768 ? /^Games$/i : /^Schedule$/i }).click()
+    await navigationPage.waitForURL(`${base}/games`)
+    await waitForSelection(original)
+    const reset = await selection()
+    assert.deepEqual(reset, original, 'Clean Games URL must restore all default controls and fixtures')
+    await navigationPage.screenshot({ path: path.join(output, `navigation-${arrival}-${width}.png`) })
+    await navigationPage.goBack()
+    await navigationPage.waitForURL(filteredUrl)
+    await waitForSelection(expectedFilter)
+    const back = await selection()
+    assert.deepEqual(back, filtered)
+    await navigationPage.goForward()
+    await navigationPage.waitForURL(`${base}/games`)
+    await waitForSelection(original)
+    const forward = await selection()
+    assert.deepEqual(forward, original)
+    navigationChecks.push({ width, arrival, original, filtered, reset, back, forward })
+  } catch (error) {
+    const actual = await selection().catch(() => null)
+    await fs.writeFile(path.join(output, 'navigation-failure.json'), JSON.stringify({ width, arrival, actual }, null, 2) + '\n')
+    await navigationPage.screenshot({ path: path.join(output, 'navigation-failure.png') }).catch(() => {})
+    throw error
+  } finally {
+    await navigationContext.close()
+  }
 }
 
 try {
@@ -107,6 +177,11 @@ try {
   assert.equal(await slate.getByRole('checkbox').isChecked(), false)
   assert.equal(await slate.locator('li').count(), forecast.games.filter(row => row.week === game.week).length)
   console.log('Week selection, keyboard matchup/return, header outage and empty-filter recovery passed')
+
+  for (const width of [390, 1440]) {
+    for (const arrival of ['controls', 'direct']) await auditSamePathNavigation(width, arrival)
+  }
+  console.log('Same-path app navigation resets, Back/Forward and direct/native-filter arrivals passed')
 
   for (const width of [320, 390, 768, 1440]) {
     await page.goto(`${base}/games?week=${game.week}`)
@@ -181,8 +256,8 @@ try {
     forecast_generated_at: forecast.generated_at, trained_through: forecast.trained_through, game_id: game.game_id,
     clock: 'current (no clock override)', logo_outage: 'all ESPN CDN requests aborted',
     no_js: 'Static slate retains text marks; interactive filters require JavaScript',
-    logo_success: 'controlled bundled favicon PNG; ESPN availability not verified', availability, missing_game_status: missingGameStatus, checks, errors,
-    flows: ['week bounds and Back/Forward', 'team URL restoration', 'keyboard matchup entry and return',
+    logo_success: 'controlled bundled favicon PNG; ESPN availability not verified', availability, missing_game_status: missingGameStatus, checks, navigation_checks: navigationChecks, errors,
+    flows: ['week bounds and Back/Forward', 'same-path Games reset after native filters/direct query and Back/Forward', 'team URL restoration', 'keyboard matchup entry and return',
       'section focus', 'keyboard spread slider', 'empty watchlist/reset', 'invalid query recovery',
       '2025 archive on mobile', 'missing-game error with noindex', 'no-JS slate marks and fresh-tab return', 'logo loading/failure/success/reload'] }
   await fs.writeFile(path.join(output, 'results.json'), JSON.stringify(result, null, 2) + '\n')

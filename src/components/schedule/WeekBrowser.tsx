@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { useEffect, useMemo, useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { Suspense, useCallback, useEffect, useMemo, useState } from 'react'
 
 import type { GameForecasts } from '@/lib/artifacts'
 import { TeamLogo } from '@/components/primitives/TeamLogo'
@@ -11,6 +11,12 @@ import { useWatchlist } from '@/lib/watchlist'
 import { publishedWeek, weekDays } from '@/lib/weekBrowser'
 
 const control = 'min-h-[44px] rounded-sm border border-[var(--border-color)] bg-[var(--card-bg)] px-3 font-mono text-xs text-[var(--text-secondary)] hover:border-[var(--border-hover)] disabled:cursor-not-allowed disabled:opacity-40'
+
+function WeekQuerySync({ restore }: { restore: () => void }) {
+  const query = useSearchParams().toString()
+  useEffect(() => { restore() }, [query, restore])
+  return null
+}
 
 export function WeekBrowser({ forecasts, initialWeek, archiveSeasons }: { forecasts: GameForecasts; initialWeek: number; archiveSeasons: number[] }) {
   const router = useRouter()
@@ -21,18 +27,19 @@ export function WeekBrowser({ forecasts, initialWeek, archiveSeasons }: { foreca
   const teams = useMemo(() => [...new Map(forecasts.games.flatMap(game => [[game.home, game.home_name], [game.away, game.away_name]])
     .map(([code, name]) => [code, name])).entries()].sort((a, b) => a[1].localeCompare(b[1])), [forecasts.games])
 
+  const restore = useCallback(() => {
+    const params = new URLSearchParams(window.location.search)
+    const team = params.get('team') ?? ''
+    setSelection({ week: publishedWeek(params.get('week'), weeks, initialWeek),
+      team: teams.some(([code]) => code === team) ? team : '', following: params.get('following') === '1' })
+  }, [initialWeek, weeks, teams])
+
   useEffect(() => {
-    const restore = () => {
-      const params = new URLSearchParams(window.location.search)
-      const team = params.get('team') ?? ''
-      setSelection({ week: publishedWeek(params.get('week'), weeks, initialWeek),
-        team: teams.some(([code]) => code === team) ? team : '', following: params.get('following') === '1' })
-    }
     restore()
     setReady(true)
     window.addEventListener('popstate', restore)
     return () => window.removeEventListener('popstate', restore)
-  }, [initialWeek, weeks, teams])
+  }, [restore])
 
   const select = (next: typeof selection) => {
     const url = new URL(window.location.href)
@@ -51,6 +58,8 @@ export function WeekBrowser({ forecasts, initialWeek, archiveSeasons }: { foreca
   const index = weeks.indexOf(selection.week)
 
   return <section aria-label="Weekly slate" data-ready={ready}>
+    {/* Isolate the query subscription so the slate still renders in static HTML. */}
+    <Suspense fallback={null}><WeekQuerySync restore={restore} /></Suspense>
     <div className="card p-4">
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         <label className="col-span-2 flex min-w-0 flex-col gap-2 sm:col-span-1"><span className="eyebrow">Season / record</span>
