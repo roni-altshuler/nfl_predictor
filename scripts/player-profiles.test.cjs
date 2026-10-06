@@ -13,9 +13,10 @@ function load(file) {
   m.paths = module.paths
   modules.set(file, m)
   const originalRequire = m.require.bind(m)
-  m.require = name => name.startsWith('.') ? load(path.resolve(path.dirname(file), `${name}.ts`)) : originalRequire(name)
+  m.require = name => name.startsWith('.') ? load(path.resolve(path.dirname(file), `${name}.ts`))
+    : name.startsWith('@/lib/') ? load(`${name.slice(6)}.ts`) : originalRequire(name)
   m._compile(ts.transpileModule(fs.readFileSync(file, 'utf8'), {
-    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
+    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020, esModuleInterop: true },
   }).outputText, file)
   return m.exports
 }
@@ -23,8 +24,59 @@ const { normalizeGameSummary, getGameDetail } = load('espn.ts')
 const { providerId, normalizeAthlete, athleteHref, permittedPortrait, athleteInitials } = load('athletes.ts')
 const { playerSnapshots } = load('playerProfiles.ts')
 const fixture = require('./fixtures/espn-player-summary.json')
+const archiveFixture = require('./fixtures/espn-archived-summary.json')
+const { playerGameContext } = load('server/playerContext.ts')
+const { playerMatchDate, kickoff } = load('format.ts')
 const clone = () => structuredClone(fixture)
 const normalize = s => normalizeGameSummary(s, '401872966', 'NYG', 'ARI')
+
+test('archived profiles preserve published date precision across Eastern daylight/standard time', () => {
+  const cases = [['401547421', '2023-09-17', 'Sep 17, 2023'], ['401220253', '2020-12-13', 'Dec 13, 2020'],
+    ['401030706', '2018-10-14', 'Oct 14, 2018']]
+  for (const [id, date, label] of cases) {
+    const game = playerGameContext(id)
+    assert.equal(game.date, date)
+    assert.equal(game.datePrecision, 'day')
+    assert.equal(game.includeInjuries, false)
+    assert.equal(playerMatchDate(game.date, game.datePrecision), `${label} · Kickoff time unavailable`)
+  }
+  const upcoming = playerGameContext('401872966')
+  assert.equal(upcoming.datePrecision, 'instant')
+  assert.equal(playerMatchDate(upcoming.date, upcoming.datePrecision), kickoff(upcoming.date))
+  for (const invalid of ['2023-02-30', '2023-13-17', '', '2023-09-17T20:00:00Z'])
+    assert.equal(playerMatchDate(invalid, 'day'), 'Date unavailable · Kickoff time unavailable')
+})
+
+test('controlled OAK/LV archive uses stable ESPN franchise ID; wrong/missing IDs and wrong teams are withheld', () => {
+  const normalizeArchive = s => normalizeGameSummary(s, '401030706', 'LV', 'SEA')
+  const detail = normalizeArchive(archiveFixture)
+  assert.equal(detail.source.status, 'available')
+  assert.equal(detail.source.asOf, null, 'Synthetic response supplies no source update')
+  assert.deepEqual(detail.linescores.map(row => row.team), ['SEA', 'LV'])
+  assert.equal(detail.teamStats[0].home, '1')
+  assert.equal(detail.leaders[0].team, 'LV')
+  assert.equal(detail.injuries[0].team, 'LV')
+  const profile = playerSnapshots(detail, false)[0]
+  assert.equal(profile.team, 'LV')
+  assert.deepEqual(profile.availability, [])
+  for (const identity of [{ id: '17', abbreviation: 'OAK' }, { abbreviation: 'OAK' }, { id: '13', abbreviation: 'MIA' },
+    { id: '17', abbreviation: 'LV' }]) {
+    const wrong = structuredClone(archiveFixture)
+    wrong.header.competitions[0].competitors[0].team = identity
+    assert.equal(normalizeArchive(wrong).source.status, 'mismatched')
+    assert.deepEqual(normalizeArchive(wrong).leaders, [])
+  }
+  const wrongBlocks = structuredClone(archiveFixture)
+  wrongBlocks.leaders[0].team.id = '17'
+  wrongBlocks.injuries[0].team.id = '17'
+  wrongBlocks.boxscore.teams[0].team.id = '17'
+  assert.deepEqual(normalizeArchive(wrongBlocks).leaders, [])
+  assert.deepEqual(normalizeArchive(wrongBlocks).injuries, [])
+  assert.deepEqual(normalizeArchive(wrongBlocks).teamStats, [])
+  const wrongEvent = structuredClone(archiveFixture)
+  wrongEvent.header.id = '999'
+  assert.equal(normalizeArchive(wrongEvent).source.status, 'mismatched')
+})
 
 test('real response fixture preserves provider IDs, context and distinct source/report dates', () => {
   const before = JSON.stringify(fixture)

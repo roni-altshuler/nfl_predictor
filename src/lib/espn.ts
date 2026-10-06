@@ -128,6 +128,22 @@ function statMap(entry: any): Map<string, string> {
   return out
 }
 
+/** ESPN franchise IDs differ from the warehouse's numeric team IDs. */
+function summaryTeam(team: any, expected: string[]): string | null {
+  const abbreviation = String(team?.abbreviation ?? '')
+  for (const canonical of expected) {
+    // The Raiders retain ESPN ID 13 across the OAK → LV relocation.
+    // Historical aliases require the stable ID; spelling alone grants no match.
+    if (canonical === 'LV' && ['LV', 'OAK'].includes(abbreviation)) {
+      if (String(team?.id ?? '') === '13') return canonical
+      if (abbreviation === 'LV' && team?.id == null) return canonical
+      return null
+    }
+    if (abbreviation === canonical) return canonical
+  }
+  return null
+}
+
 export async function getGameDetail(
   gameId: string,
   homeAbbr: string,
@@ -141,8 +157,8 @@ export async function getGameDetail(
 export function normalizeGameSummary(summary: any | null, gameId: string, homeAbbr: string, awayAbbr: string, responseAt: string | null = null): GameDetail {
   const competitors = list(summary?.header?.competitions?.[0]?.competitors)
   const matches = String(summary?.header?.id ?? '') === gameId &&
-    competitors.some(c => c.homeAway === 'home' && c.team?.abbreviation === homeAbbr) &&
-    competitors.some(c => c.homeAway === 'away' && c.team?.abbreviation === awayAbbr)
+    competitors.some(c => c.homeAway === 'home' && summaryTeam(c.team, [homeAbbr]) === homeAbbr) &&
+    competitors.some(c => c.homeAway === 'away' && summaryTeam(c.team, [awayAbbr]) === awayAbbr)
   const source: SummarySource = { provider: 'espn', eventId: gameId, url: `${SUMMARY}?event=${encodeURIComponent(gameId)}`,
     status: !summary ? 'unavailable' : matches ? 'available' : 'mismatched',
     asOf: matches ? sourceTimestamp(summary?.meta?.lastUpdatedAt) : null, responseAt }
@@ -161,7 +177,7 @@ export function normalizeGameSummary(summary: any | null, gameId: string, homeAb
   const teams = list(summary?.boxscore?.teams)
   const byAbbr = new Map<string, Map<string, string>>()
   for (const entry of teams) {
-    const abbr = entry?.team?.abbreviation
+    const abbr = summaryTeam(entry?.team, [homeAbbr, awayAbbr])
     if (abbr) byAbbr.set(String(abbr), statMap(entry))
   }
   const home = byAbbr.get(homeAbbr)
@@ -180,7 +196,7 @@ export function normalizeGameSummary(summary: any | null, gameId: string, homeAb
   // ---- period scoring
   const linescores: Linescore[] = competitors
     .map((competitor) => ({
-      team: String(competitor?.team?.abbreviation ?? ''),
+      team: summaryTeam(competitor?.team, [homeAbbr, awayAbbr]) ?? '',
       periods: list(competitor?.linescores).map((l: any) => Number(l?.displayValue ?? l?.value ?? 0)),
       total: Number(competitor?.score ?? 0),
     }))
@@ -191,7 +207,7 @@ export function normalizeGameSummary(summary: any | null, gameId: string, homeAb
   // ---- leaders
   const leaders: PlayerGroup[] = []
   for (const group of list(summary?.leaders)) {
-    const abbr = String(group?.team?.abbreviation ?? '')
+    const abbr = summaryTeam(group?.team, [homeAbbr, awayAbbr])
     for (const category of list(group?.leaders)) {
       const lines: PlayerLine[] = list(category?.leaders)
         .slice(0, 1)
@@ -201,7 +217,7 @@ export function normalizeGameSummary(summary: any | null, gameId: string, homeAb
           athlete: normalizeAthlete(leader?.athlete, source.url),
         }))
         .filter((l: PlayerLine) => l.name)
-      if (lines.length && [homeAbbr, awayAbbr].includes(abbr)) {
+      if (lines.length && abbr) {
         leaders.push({
           team: abbr,
           label: String(category?.displayName ?? category?.name ?? ''),
@@ -220,10 +236,10 @@ export function normalizeGameSummary(summary: any | null, gameId: string, homeAb
   // probability — the model does not know about it, and `/about` says so.
   const injuries: InjuryEntry[] = []
   for (const block of list(summary?.injuries)) {
-    const abbr = String(block?.team?.abbreviation ?? '')
+    const abbr = summaryTeam(block?.team, [homeAbbr, awayAbbr])
     for (const item of list(block?.injuries)) {
       const player = String(item?.athlete?.displayName ?? '')
-      if (!player || ![homeAbbr, awayAbbr].includes(abbr)) continue
+      if (!player || !abbr) continue
       injuries.push({
         team: abbr,
         player,

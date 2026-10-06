@@ -30,6 +30,12 @@ are never slugged or used to merge players. Missing IDs leave names visible
 without fabricated links. Repeated IDs combine category lines; conflicting team
 context is withheld. Event ID and home/away participants must match the published
 fixture before its response is shown.
+OAK can resolve to published LV only with ESPN franchise ID `13`; a wrong or
+missing alias ID and an unrelated abbreviation are withheld. This rule applies
+to participants, team statistics, period scores, leaders and injury blocks.
+ESPN IDs are distinct from the warehouse's internal numeric team IDs. This
+bounded mapping covers OAK/LV; other historical abbreviations still require an
+exact match.
 
 Profiles reuse the **existing game-summary endpoint** and day cache. No athlete,
 roster or career endpoint was added. Only events already in published forecasts
@@ -80,7 +86,7 @@ not merely an official or reachable URL.
 
 ## Verification
 
-Local checks: seven new profile/identity/image-policy tests; existing forecast
+Local checks: nine profile/identity/date/image-policy tests; existing forecast
 and week regressions; lint with zero warnings/errors; TypeScript; 116 backend
 tests; production build with 321 static routes plus the dynamic profile route.
 Next 15.5.24 and sharp 0.35.4 remain installed from the security lockfile.
@@ -102,7 +108,8 @@ The Lab audit now allows two animation frames after viewport resizing before
 measuring layout; its overflow and accessibility assertions remain enforced.
 
 The populated browser check deliberately used the captured-response subset for
-one existing event; other ESPN server requests returned controlled 503. Existing
+one existing event and an explicitly synthetic archive response; other ESPN
+server requests returned controlled 503. Existing
 team-logo CDN requests were aborted in the browser. This is repeatable UI evidence,
 not a claim of live provider availability or site-wide player coverage. Profile
 and week checks used the current browser clock; Lab used its explicit publication
@@ -127,6 +134,45 @@ it records actual populated/unavailable coverage rather than assuming it.
 The preloader is opt-in test tooling; it is never loaded by the application,
 CI workflow or production job. Raw logs are retained in
 `/workspace/nfl-player-review-2026-10-06/`.
+
+### Review follow-up: archive dates and delayed navigation
+
+The reviewed `8d366db` build treated a date-only archive record as midnight UTC.
+Production Chromium reproduced `2018-10-14` displaying as **Oct 13, 8:00 PM ET**.
+The [before result](screenshots/player-profile-archive-before.json) records the
+reviewed app head and the controlled response used to isolate the date defect.
+Contexts now retain explicit day/instant precision. Archived profiles render
+**Oct 14, 2018 · Kickoff time unavailable**; real forecast timestamps still render
+their Eastern kickoff. Invalid calendar dates render unavailable. Unit tests
+cover actual published date shapes in both Eastern daylight and standard time.
+
+The OAK/LV hypothesis was reproduced with a **controlled representative response**
+for the already-published 2018 event `401030706`, whose artifact uses LV/SEA.
+`scripts/fixtures/espn-archived-summary.json` is explicitly synthetic: its player
+name and statistic are labelled QA, it supplies no summary update or portrait,
+and it is only served by the opt-in test preloader. It is not a recorded ESPN
+response or historical player evidence. No new provider records were collected
+and no data artifact was refreshed. The real historical response and other
+relocation aliases remain unverified.
+
+Production Chromium passed archive checks at **390/1440 px**: calendar date,
+unavailable kickoff, canonical LV team link, omitted current injury reports,
+missing source update and Back to the archive matchup. A second regression held
+the older Jameis Winston RSC response, navigated through Games to Braxton Berrios,
+then released the older response. The newer URL, athlete identity and report
+stayed in place. No application navigation change was needed for that case.
+These checks supplement the four-width profile, week and Lab suites. The final
+profile audit passed at **2026-10-06T16:01:22Z**, with zero detected axe violations,
+overflow, overlays, page exceptions or portrait requests. Archive and delayed
+response checks run in explicit controlled mode; CI's default profile audit
+continues to report actual conditional coverage. Unit date/alias regressions
+run in ordinary `npm test`.
+
+[Follow-up browser results](screenshots/player-profile-archive-checks.json)
+
+![Synthetic archive QA on mobile — no real historical player data](screenshots/player-profile-archive-mobile.png)
+![Synthetic archive QA on desktop — no real historical player data](screenshots/player-profile-archive-desktop.png)
+![Newer profile after releasing the older response](screenshots/player-profile-newer-navigation-mobile.png)
 
 Machine-readable [profile results](screenshots/player-profile-checks.json) retain
 source mode, dates, viewports, history assertions and portrait request count.

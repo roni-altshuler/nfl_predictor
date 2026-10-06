@@ -1,0 +1,28 @@
+{
+  "_qa": {
+    "synthetic": true,
+    "description": "Controlled representative response for published 2018 event 401030706; no actual historical player data or provider response is asserted. OAK and LV use ESPN franchise ID 13."
+  },
+  "header": {
+    "id": "401030706",
+    "competitions": [{ "competitors": [
+      { "homeAway": "home", "team": { "id": "13", "abbreviation": "OAK" }, "score": "3", "linescores": [{ "displayValue": "3" }] },
+      { "homeAway": "away", "team": { "id": "26", "abbreviation": "SEA" }, "score": "27", "linescores": [{ "displayValue": "27" }] }
+    ] }]
+  },
+  "boxscore": { "teams": [
+    { "team": { "id": "13", "abbreviation": "OAK" }, "statistics": [{ "name": "firstDowns", "displayValue": "1" }] },
+    { "team": { "id": "26", "abbreviation": "SEA" }, "statistics": [{ "name": "firstDowns", "displayValue": "2" }] }
+  ] },
+  "leaders": [{
+    "team": { "id": "13", "abbreviation": "OAK" },
+    "leaders": [{ "displayName": "Controlled QA category", "leaders": [{
+      "displayValue": "Controlled archive test line",
+      "athlete": { "id": "900000013", "displayName": "Archive QA Player", "position": { "abbreviation": "QB" }, "jersey": "13" }
+    }] }]
+  }],
+  "injuries": [{ "team": { "id": "13", "abbreviation": "OAK" }, "injuries": [{
+    "athlete": { "id": "900000013", "displayName": "Archive QA Player" },
+    "status": "Controlled current report", "date": "2026-10-06T12:00:00Z"
+  }] }]
+}

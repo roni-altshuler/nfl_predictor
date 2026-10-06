@@ -97,6 +97,16 @@ export function kickoffDay(iso: string): string {
   return WEEKDAY.format(new Date(iso))
 }
 
+/** Archived meeting dates have no kickoff instant; never convert them to Eastern. */
+export function playerMatchDate(value: string, precision: 'day' | 'instant'): string {
+  if (precision === 'instant') return kickoff(value)
+  const date = /^\d{4}-\d{2}-\d{2}$/.test(value) ? new Date(`${value}T00:00:00Z`) : null
+  if (!date || !Number.isFinite(date.getTime()) || date.toISOString().slice(0, 10) !== value) {
+    return 'Date unavailable · Kickoff time unavailable'
+  }
+  return `${stamp(value)} · Kickoff time unavailable`
+}
+
 /** An ISO timestamp as a plain date, for "generated at" lines. */
 export function stamp(iso: string | null | undefined): string {
   if (!iso) return '—'

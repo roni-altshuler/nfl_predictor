@@ -4,7 +4,7 @@ import { AthletePortrait } from '@/components/players/AthletePortrait'
 import { BackButton } from '@/components/primitives/BackButton'
 import { permittedPortrait, providerId } from '@/lib/athletes'
 import { getGameDetail } from '@/lib/espn'
-import { forecastStamp, kickoff } from '@/lib/format'
+import { forecastStamp, playerMatchDate } from '@/lib/format'
 import { getPowerRatings } from '@/lib/artifacts'
 import { playerSnapshots } from '@/lib/playerProfiles'
 import { playerGameContext } from '@/lib/server/playerContext'
@@ -55,7 +55,7 @@ export default async function PlayerPage({ params, searchParams }: Props) {
     <section className="card p-4 sm:p-6" aria-label="Matchup context">
       <h2 className="eyebrow">Seen in this matchup</h2>
       <Link href={`/games/${game.id}#players`} className="mt-3 inline-flex min-h-[44px] items-center text-lg text-[var(--accent-info)] hover:underline">{game.away} at {game.home} →</Link>
-      <p className="mt-1 font-mono text-xs text-[var(--text-secondary)]">{game.season} · Week {game.week} · {kickoff(game.date)}</p>
+      <p className="mt-1 font-mono text-xs text-[var(--text-secondary)]">{game.season} · Week {game.week} · {playerMatchDate(game.date, game.datePrecision)}</p>
       <p className="mt-3 text-sm text-[var(--text-secondary)]">Selected game-summary fields, not a full season or career record.</p>
     </section>
 

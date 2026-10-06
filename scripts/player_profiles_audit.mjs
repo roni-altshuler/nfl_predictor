@@ -8,6 +8,9 @@ const { chromium } = require('playwright')
 const axePath = require.resolve('axe-core/axe.min.js')
 const forecast = JSON.parse(await fs.readFile('backend/data/predictions/game_forecasts.json', 'utf8'))
 const fixture = JSON.parse(await fs.readFile('scripts/fixtures/espn-player-summary.json', 'utf8'))
+const archiveFixture = JSON.parse(await fs.readFile('scripts/fixtures/espn-archived-summary.json', 'utf8'))
+const meetingIndex = JSON.parse(await fs.readFile('backend/data/predictions/game_context.json', 'utf8'))
+const archiveGame = Object.values(meetingIndex.meetings).flat().find(row => row.game_id === archiveFixture.header.id)
 const game = forecast.games.find(game => game.game_id === fixture.header.id) ?? forecast.games[0]
 const otherGame = forecast.games.find(row => row.game_id !== game.game_id)
 const base = process.env.BASE_URL || 'http://127.0.0.1:3012'
@@ -22,8 +25,10 @@ const errors = []
 const portraitRequests = []
 const checks = []
 const journeys = []
+const archiveChecks = []
 let loadingObserved = false
 let teamJourney
+let delayedNavigation
 async function context(width) {
   const c = await browser.newContext({ reducedMotion: 'reduce', viewport: { width, height: 900 } })
   await c.addInitScript(team => { try { localStorage.setItem('gridiron:watchlist:v1', JSON.stringify([team])) } catch { /* sandboxed audit frames have no storage */ } }, game.away)
@@ -54,6 +59,101 @@ async function waitProfile(page, name) {
   const available = await populated.isVisible()
   if (controlled) assert.equal(available, true, 'Controlled response must populate the selected athlete')
   return available
+}
+
+async function archiveRegression() {
+  assert.ok(archiveGame, 'Archive QA must use an already-published event')
+  const athlete = archiveFixture.leaders[0].leaders[0].leaders[0].athlete
+  const date = new Date(`${archiveGame.date}T00:00:00Z`).toLocaleDateString('en-US', {
+    year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC',
+  })
+  for (const width of [390, 1440]) {
+    const c = await context(width)
+    const page = await c.newPage()
+    await page.goto(`${base}/games/${archiveGame.game_id}#players`)
+    const players = page.getByRole('region', { name: 'Players in this matchup', exact: true })
+    await players.getByRole('link', { name: `${athlete.displayName} — player profile`, exact: true }).click()
+    await page.waitForURL(`**/players/espn/${athlete.id}?game=${archiveGame.game_id}`)
+    await waitProfile(page, athlete.displayName)
+    const matchup = await page.getByRole('region', { name: 'Matchup context', exact: true }).innerText()
+    assert.ok(matchup.includes(`${date} · Kickoff time unavailable`), matchup)
+    assert.doesNotMatch(matchup, /\d{1,2}:\d{2}\s*(AM|PM)|\bET\b/, 'A date-only archive cannot supply a kickoff time')
+    const availability = await page.getByRole('region', { name: 'Reported availability', exact: true }).innerText()
+    assert.match(availability, /Availability is unknown/)
+    assert.ok(!availability.includes('Controlled current report'), 'Current injury reports stay out of archived profiles')
+    await page.locator(`a[href="/teams/${archiveGame.home}"]`).waitFor()
+    const coverage = await page.getByRole('region', { name: 'Source and coverage', exact: true }).innerText()
+    assert.match(coverage, /Summary update\s+Not supplied/i)
+    await visual(page, width, 'profile-archive')
+    await page.getByRole('button', { name: 'Back', exact: true }).click()
+    await page.waitForURL(`${base}/games/${archiveGame.game_id}#players`)
+    await players.waitFor()
+    archiveChecks.push({ width, game: archiveGame.game_id, publishedDate: archiveGame.date, matchup,
+      sourceMode: 'Synthetic OAK response with ESPN franchise ID 13; actual historical response not inspected',
+      canonicalTeam: archiveGame.home, kickoffUnavailable: true, currentReportsOmitted: true, returnedToArchive: true })
+    await c.close()
+  }
+}
+
+async function delayedResponseRegression() {
+  const c = await context(390)
+  const page = await c.newPage()
+  const injury = fixture.injuries[0].injuries[0]
+  let releaseOlder
+  let signalOlder
+  const olderReady = new Promise(resolve => { signalOlder = resolve })
+  const released = new Promise(resolve => { releaseOlder = resolve })
+  const pending = []
+  const deliveries = []
+  await page.route(`**/players/espn/${fixtureAthlete.id}?*`, async route => {
+    if (route.request().headers()['next-router-prefetch'] === '1') return route.abort()
+    let finish
+    pending.push(new Promise(resolve => { finish = resolve }))
+    try {
+      const response = await route.fetch()
+      const body = await response.text()
+      assert.ok(body.includes(fixtureAthlete.displayName), 'Older response contains the older athlete identity')
+      signalOlder()
+      await released
+      await route.fulfill({ response, body })
+      deliveries.push('released after newer profile')
+    } catch (error) {
+      deliveries.push(`cancelled by navigation: ${String(error)}`)
+    } finally { finish() }
+  })
+  try {
+    await page.goto(`${base}/games/${game.game_id}#players`)
+    await page.getByRole('link', { name: `${fixtureAthlete.displayName} — player profile`, exact: true }).click()
+    let timer
+    try {
+      await Promise.race([olderReady, new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Older profile request was not held')), 15000) })])
+    } finally { clearTimeout(timer) }
+    // Navigate through the persistent app link while the older response is held.
+    await page.locator('nav a[href="/games"]:visible').click()
+    await page.locator('[data-ready="true"]').waitFor()
+    await page.getByRole('combobox', { name: 'Select week', exact: true }).selectOption(String(game.week))
+    await page.getByRole('combobox', { name: 'Filter by team', exact: true }).selectOption(game.away)
+    await page.locator(`[aria-label="Weekly slate"] a[href="/games/${game.game_id}"]`).click()
+    await page.getByRole('region', { name: 'Players in this matchup', exact: true }).getByRole('link', {
+      name: `${injury.athlete.displayName} — player profile`, exact: true,
+    }).click()
+    const newerUrl = `${base}/players/espn/${injury.athlete.id}?game=${game.game_id}`
+    await page.waitForURL(newerUrl)
+    await waitProfile(page, injury.athlete.displayName)
+    releaseOlder()
+    await Promise.all(pending)
+    await page.waitForTimeout(500)
+    assert.equal(page.url(), newerUrl)
+    assert.equal(await page.getByRole('heading', { level: 1 }).textContent(), injury.athlete.displayName)
+    assert.ok(!(await page.locator('#main').innerText()).includes(fixtureAthlete.displayName))
+    assert.match(await page.getByRole('region', { name: 'Reported availability', exact: true }).innerText(), new RegExp(injury.status))
+    await visual(page, 390, 'profile-newer-navigation')
+    delayedNavigation = { olderIdentity: fixtureAthlete.id, newerIdentity: injury.athlete.id,
+      olderResponseHeld: true, olderReleasedAfterNewerProfile: true, deliveries, newerUrl, newerIdentityStable: true }
+  } finally {
+    releaseOlder()
+    await c.close()
+  }
 }
 try {
   for (const width of [320, 390, 768, 1440]) {
@@ -157,6 +257,8 @@ try {
   await directPage.goto(`${base}/players/other/${fixtureAthlete.id}?game=${game.game_id}`)
   await directPage.getByRole('heading', { name: 'No such page', exact: true }).waitFor()
   if (controlled) {
+    await archiveRegression()
+    await delayedResponseRegression()
     const injury = fixture.injuries[0].injuries[0]
     await directPage.goto(`${base}/players/espn/${injury.athlete.id}?game=${game.game_id}`)
     await directPage.getByRole('heading', { name: injury.athlete.displayName, level: 1, exact: true }).waitFor()
@@ -180,11 +282,11 @@ try {
   assert.deepEqual(errors, [])
   assert.deepEqual(portraitRequests, [], 'No unverified athlete image is requested')
   const result = { passed: true, checked_at: new Date().toISOString(), browser: browser.version(),
-    source_mode: controlled ? 'Subset of captured ESPN response for one existing event; other ESPN server requests return controlled 503' : 'Application responses; populated coverage is conditional',
+    source_mode: controlled ? 'Captured ESPN subset for one event plus explicitly synthetic OAK archive QA; other ESPN server requests return controlled 503' : 'Application responses; populated coverage is conditional',
     fixture_event: game.game_id, forecast_generated_at: forecast.generated_at, summary_as_of: controlled ? fixture.meta.lastUpdatedAt : 'read from actual responses',
-    portrait_policy: 'No permitted athlete assets; initials/number fallback; no portrait requests', portraitRequests, loadingObserved, checks, journeys, teamJourney, errors,
+    portrait_policy: 'No permitted athlete assets; initials/number fallback; no portrait requests', portraitRequests, loadingObserved, checks, journeys, teamJourney, archiveChecks, delayedNavigation, errors,
     flows: ['keyboard filtered slate→game→player→Back→filtered slate', 'team→game→player→Back→team', 'fresh-tab canonical matchup parent',
-      'no context/unknown player/unknown event unavailable states', 'invalid provider and name-slug recovery', ...(controlled ? ['injury-only profile with separate report date and absent statistics', 'source outage recovery'] : [])] }
+      'no context/unknown player/unknown event unavailable states', 'invalid provider and name-slug recovery', ...(controlled ? ['archived date-only profile and stable-ID OAK/LV context', 'older profile response cannot overwrite newer navigation', 'injury-only profile with separate report date and absent statistics', 'source outage recovery'] : [])] }
   await fs.writeFile(path.join(output, 'results.json'), JSON.stringify(result, null, 2) + '\n')
 } catch (error) {
   await fs.writeFile(path.join(output, 'results.json'), JSON.stringify({ passed: false, checked_at: new Date().toISOString(), error: String(error), errors, checks, journeys }, null, 2) + '\n')

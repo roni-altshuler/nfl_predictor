@@ -29,6 +29,10 @@ athlete ID. Profiles show the selected game's fields, source update and report
 dates; full rosters and career records remain unavailable. No athlete portrait
 has verified display permission, so profiles retain names with initials/number
 fallbacks and make no portrait requests.
+Archived profiles preserve the published calendar date and explicitly mark
+kickoff time unavailable when the archive supplies no timestamp. Historical
+OAK/LV context requires the matching ESPN franchise ID; the review's archive
+and delayed-navigation checks use documented controlled responses.
 
 ## What it does
 
