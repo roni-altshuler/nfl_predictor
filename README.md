@@ -13,6 +13,14 @@ A sibling of [`../nba_predictor`](../nba_predictor) (Hardwood) and
 same evidence discipline, same design language. Several of the measured
 conclusions differ, deliberately. See [CLAUDE.md](CLAUDE.md).
 
+The [published week browser](docs/WEEK_BROWSING_2026-10.md) connects week/team
+filters to matchup detail and preserves them on return. Both views display
+publication and results-cutoff timestamps; team abbreviations remain visible
+while remote marks load or if the CDN fails. The cloud continuation uses the
+committed **2026-10-04T15:43:00Z** snapshot (results through
+**2026-10-02T00:15:00Z**). Its 223 fixtures include earlier pre-game snapshots;
+this is not a refreshed live schedule.
+
 ## What it does
 
 1. **Game prediction** — win probability, expected margin and total for every fixture.
@@ -90,7 +98,7 @@ verified closing line. These are existing artifact results, not a new model run.
 current point estimates are slightly worse on Brier and calibration. Elo-only
 stays available as the yardstick for future measured changes.
 
-The separately published live artifact generated **2026-10-02** has **49**
+The separately published live artifact generated **2026-10-04** has **49**
 settled first forecasts: Brier **.23629**, accuracy **63.265%**. All 49 were
 published at least seven days before kickoff. This early, long-horizon sample
 does not measure last-day prediction quality and is not merged with the

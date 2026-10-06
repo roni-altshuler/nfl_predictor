@@ -17,7 +17,7 @@ import {
   type FormGame,
   type Meeting,
 } from '@/lib/history'
-import { kickoff, moneyline, pct, signed, spread } from '@/lib/format'
+import { forecastStamp, kickoff, moneyline, pct, signed, spread } from '@/lib/format'
 
 // The 272 scheduled fixtures are prerendered. A played game resolves from
 // the published context at request time and is then cached UNTIL THE NEXT
@@ -554,11 +554,6 @@ function ProbabilityRow({ game }: { game: GameForecast }) {
       </p>
     </div>
   )
-}
-
-function forecastStamp(value: string | null | undefined): string {
-  if (!value || !Number.isFinite(Date.parse(value))) return 'Unavailable'
-  return new Date(value).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'UTC' }) + ' UTC'
 }
 
 function Stat({ label, value }: { label: string; value: string }) {

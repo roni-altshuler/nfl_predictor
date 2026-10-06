@@ -9,7 +9,8 @@ const axePath = require.resolve('axe-core/axe.min.js')
 const base = process.env.BASE_URL || 'http://127.0.0.1:3012'
 const output = process.env.AUDIT_OUTPUT || '/tmp/nfl-forecast-lab-audit'
 await fs.mkdir(output,{recursive:true})
-const browser = await chromium.launch({headless:true,args:['--no-sandbox']})
+const browser = await chromium.launch({headless:true,args:['--no-sandbox'],
+  ...(process.env.BROWSER_EXECUTABLE_PATH ? {executablePath:process.env.BROWSER_EXECUTABLE_PATH} : {})})
 const context = await browser.newContext({reducedMotion:'reduce'})
 const page = await context.newPage()
 page.setDefaultTimeout(60000)

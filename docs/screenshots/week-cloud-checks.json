@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-06T12:56:14.866Z",
+  "browser": "151.0.7922.173",
+  "forecast_generated_at": "2026-10-04T15:43:00+00:00",
+  "trained_through": "2026-10-02T00:15:00+00:00",
+  "game_id": "401872965",
+  "clock": "current (no clock override)",
+  "logo_outage": "all ESPN CDN requests aborted",
+  "no_js": "Static slate retains text marks; interactive filters require JavaScript",
+  "logo_success": "controlled bundled favicon PNG; ESPN availability not verified",
+  "availability": "AVAILABILITY REPORT UNAVAILABLE\n\nNo player report is available in this response. An empty or failed request does not confirm that everyone is available.",
+  "missing_game_status": 200,
+  "checks": [
+    {
+      "page": "week",
+      "width": 320,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "page": "game",
+      "width": 320,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "page": "week",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "page": "game",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "page": "week",
+      "width": 768,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "page": "game",
+      "width": 768,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "page": "week",
+      "width": 1440,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "page": "game",
+      "width": 1440,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    }
+  ],
+  "errors": [],
+  "flows": [
+    "week bounds and Back/Forward",
+    "team URL restoration",
+    "keyboard matchup entry and return",
+    "section focus",
+    "keyboard spread slider",
+    "empty watchlist/reset",
+    "invalid query recovery",
+    "2025 archive on mobile",
+    "missing-game error with noindex",
+    "no-JS slate marks and fresh-tab return",
+    "logo loading/failure/success/reload"
+  ]
+}

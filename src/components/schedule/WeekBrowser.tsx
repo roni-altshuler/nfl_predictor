@@ -5,7 +5,8 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 
 import type { GameForecasts } from '@/lib/artifacts'
-import { kickoff, logoUrl, pct, spread } from '@/lib/format'
+import { TeamLogo } from '@/components/primitives/TeamLogo'
+import { kickoff, pct, spread } from '@/lib/format'
 import { useWatchlist } from '@/lib/watchlist'
 import { publishedWeek, weekDays } from '@/lib/weekBrowser'
 
@@ -51,8 +52,8 @@ export function WeekBrowser({ forecasts, initialWeek, archiveSeasons }: { foreca
 
   return <section aria-label="Weekly slate" data-ready={ready}>
     <div className="card p-4">
-      <div className="grid gap-3 sm:grid-cols-3">
-        <label className="flex min-w-0 flex-col gap-2"><span className="eyebrow">Season / record</span>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <label className="col-span-2 flex min-w-0 flex-col gap-2 sm:col-span-1"><span className="eyebrow">Season / record</span>
           <select aria-label="Season or results archive" className={control} value="forecasts"
             onChange={event => { if (event.target.value !== 'forecasts') router.push(`/seasons/${event.target.value}/games`) }}>
             <option value="forecasts">{forecasts.season} published forecasts</option>
@@ -69,7 +70,7 @@ export function WeekBrowser({ forecasts, initialWeek, archiveSeasons }: { foreca
           <select aria-label="Filter by team" className={control} value={selection.team}
             onChange={event => select({ ...selection, team: event.target.value })}>
             <option value="">All teams</option>
-            {teams.map(([code, name]) => <option key={code} value={code}>{name}</option>)}
+            {teams.map(([code, name]) => <option key={code} value={code}>{code} · {name}</option>)}
           </select>
         </label>
       </div>
@@ -107,7 +108,7 @@ export function WeekBrowser({ forecasts, initialWeek, archiveSeasons }: { foreca
               <div className="space-y-3">
                 {[[game.away, game.away_name, game.p_away], [game.home, game.home_name, game.p_home]].map(([code, name, probability]) =>
                   <div key={String(code)} className="flex items-center gap-3">
-                    <WeekTeamMark abbreviation={String(code)} />
+                    <TeamLogo abbreviation={String(code)} name={String(name)} size={28} />
                     <span className="min-w-0 flex-1 text-sm text-[var(--text-secondary)]">{name}</span>
                     <span className="numeric shrink-0 text-base text-[var(--text-primary)]">{pct(Number(probability))}</span>
                   </div>)}
@@ -129,17 +130,4 @@ export function WeekBrowser({ forecasts, initialWeek, archiveSeasons }: { foreca
       <Link href="/accuracy" className="inline-flex min-h-[44px] items-center text-[var(--accent-info)] hover:underline">Check the model evidence →</Link>
     </div>
   </section>
-}
-
-function WeekTeamMark({ abbreviation }: { abbreviation: string }) {
-  const [loaded, setLoaded] = useState(false)
-  const [failed, setFailed] = useState(false)
-  return <span aria-hidden="true" className="relative inline-flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden rounded-sm"
-    style={{ background: 'var(--logo-plate)', color: '#172019', boxShadow: 'inset 0 0 0 1px var(--logo-plate-ring)' }}>
-    {!loaded && <span className="font-mono text-[9px] font-bold">{abbreviation}</span>}
-    {/* eslint-disable-next-line @next/next/no-img-element */}
-    {!failed && <img src={logoUrl(abbreviation)} alt="" width={24} height={24} loading="lazy" decoding="async"
-      onLoad={() => setLoaded(true)} onError={() => { setFailed(true); setLoaded(false) }}
-      className="absolute object-contain" style={{ opacity: loaded ? 1 : 0 }} />}
-  </span>
 }

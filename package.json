@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "icons": "node scripts/generate-icons.mjs",
     "test": "node scripts/forecast-lab.test.cjs && node scripts/week-browser.test.cjs",
-    "test:browser": "node scripts/forecast_lab_audit.mjs"
+    "test:browser": "node scripts/forecast_lab_audit.mjs && node scripts/week_browser_audit.mjs",
+    "test:week-browser": "node scripts/week_browser_audit.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
