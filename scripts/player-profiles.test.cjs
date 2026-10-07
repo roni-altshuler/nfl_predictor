@@ -90,6 +90,38 @@ test('comparison withholds conflicting identities, duplicate team/category lines
   assert.deepEqual(leaderComparisons(normalize(fixture), 'NYG', 'NYG'), [])
 })
 
+test('raw provider multiplicity survives normalization and withholds a single-player comparison', () => {
+  const raw = clone()
+  const second = structuredClone(raw.leaders[0].leaders[2].leaders[0])
+  raw.leaders[0].leaders[0].leaders.push(second)
+  const before = JSON.stringify(raw)
+  const detail = normalize(raw)
+  const passing = leaderComparisons(detail, 'NYG', 'ARI').find(row => row.key === 'passingYards')
+  assert.equal(passing.home.state, 'ambiguous')
+  assert.equal(passing.home.line, null)
+  assert.equal(passing.away.state, 'reported')
+  const group = detail.leaders.find(group => group.team === 'NYG' && group.categoryKey === 'passingYards')
+  assert.equal(group.leaders.length, 2)
+  assert.equal(group.sourceLeaderCount, 2)
+  assert.equal(group.leaders[1].athlete.id, second.athlete.id)
+  assert.equal(group.leaders[1].stat, second.displayValue)
+  assert.ok(playerSnapshots(detail, false).find(player => player.athlete.id === second.athlete.id)
+    .statistics.some(stat => stat.label === 'Passing Yards' && stat.value === second.displayValue))
+  assert.equal(JSON.stringify(raw), before)
+})
+
+test('filtering an incomplete raw leader cannot erase provider multiplicity', () => {
+  const raw = clone()
+  raw.leaders[0].leaders[0].leaders.push({ athlete: { id: '900000099' }, displayValue: '' })
+  const detail = normalize(raw)
+  const group = detail.leaders.find(group => group.team === 'NYG' && group.categoryKey === 'passingYards')
+  assert.equal(group.leaders.length, 1)
+  assert.equal(group.sourceLeaderCount, 2)
+  const passing = leaderComparisons(detail, 'NYG', 'ARI').find(row => row.key === 'passingYards')
+  assert.equal(passing.home.state, 'ambiguous')
+  assert.equal(passing.home.line, null)
+})
+
 test('archived profiles preserve published date precision across Eastern daylight/standard time', () => {
   const cases = [['401547421', '2023-09-17', 'Sep 17, 2023'], ['401220253', '2020-12-13', 'Dec 13, 2020'],
     ['401030706', '2018-10-14', 'Oct 14, 2018']]

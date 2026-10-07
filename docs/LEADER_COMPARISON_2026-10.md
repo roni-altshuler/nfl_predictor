@@ -46,7 +46,7 @@ the existing initials/number fallback is reused, with no portrait requests.
 ## Verification
 
 Required local checks: frontend contract tests, lint, TypeScript, production
-build (306 static pages), and **116 backend tests** passed. Twelve player/date/
+build (306 static pages), and **116 backend tests** passed. Fourteen player/date/
 comparison tests cover source-key pairing, raw lines, missing fields, real zero,
 ambiguous and conflicting identity, source mismatch, provider-qualified profile
 identity, date precision and existing portrait permissions. Five Forecast Lab
@@ -80,6 +80,10 @@ Verified interactions:
 - Fresh category deep link, unknown-category recovery, synthetic missing side /
   ID / position / statistic, available empty summary, source 503 and unknown game
   retain explicit unknowns and useful recovery navigation.
+- Raw categories with two named leaders and with an unnamed second entry
+  withhold the comparison at all four widths. Switching to a single-leader
+  category and returning from its profile works; both named source leaders remain
+  accessible in the existing Players section and preserve their profile returns.
 - Actual server-rendered comparison skeleton observed while local JavaScript
   bundles were held; controls hydrated after the bundles were released. Direct
   visits to this static archive do not independently show the game-route skeleton.
@@ -103,10 +107,31 @@ Evidence: [comparison results](leader-comparison-2026-10/browser-results.json),
 | Controlled source 503 | [Source unavailable](leader-comparison-2026-10/comparison-source-outage-390.png) |
 | Synthetic unknown fields | [Unknown identity/statistic](leader-comparison-2026-10/comparison-unknown-fields-390.png) |
 | Available empty summary | [Empty](leader-comparison-2026-10/comparison-empty-390.png) |
+| Two raw named leaders, mobile / desktop | [Mobile withheld](leader-comparison-2026-10/comparison-ambiguous-320.png) / [Desktop withheld](leader-comparison-2026-10/comparison-ambiguous-1440.png) |
+| Unnamed second raw entry, mobile / desktop | [Mobile incomplete](leader-comparison-2026-10/comparison-ambiguous-unnamed-320.png) / [Desktop incomplete](leader-comparison-2026-10/comparison-ambiguous-unnamed-1440.png) |
 
 After a lifecycle disconnection notice, the same saved executor was verified
 usable: the working branch and files remained intact, and the local production
 server returned HTTP 200. Work continued there without switching environments.
+
+## Independent review correction: raw leader multiplicity
+
+Independent review found that the summary normalizer truncated each raw category
+to its first leader before the comparison checked multiplicity. The earlier test
+added a second line after normalization and missed this boundary. A regression
+adding a second athlete to the raw recorded fixture failed with `reported`
+instead of `ambiguous` before the correction.
+
+Normalization now preserves every named source line and the raw entry count
+before filtering incomplete display fields. The comparison withholds a side
+when either count exceeds one. A separate raw regression verifies that an
+unnamed second entry cannot make the remaining named line appear unambiguous.
+Named source leaders retain their provider-ID profiles and verbatim statistics.
+The added browser fixture for published archive event `400554211` is entirely
+synthetic: two named passing leaders, a receiving category with one unnamed
+entry, and a single rushing leader for recovery navigation. It makes no claim
+about the historical game. No provider request or other feature change was
+needed for this local correction and its controlled QA.
 
 ## Narrow dependency advisory response
 
@@ -130,7 +155,7 @@ toolchain remediation remains for independent review.
 
 The fetch preloader is opt-in test code. It reuses the recorded summary, the
 previously documented synthetic OAK/LV archive response, and explicitly
-synthetic empty/missing-field responses for existing archive events. All other
+synthetic ambiguity/empty/missing-field responses for existing archive events. All other
 ESPN server responses return controlled 503; the browser blocks ESPN CDN assets.
 These fixtures make no claim about actual historical players or source uptime.
 

@@ -32,7 +32,7 @@ export function leaderComparisons(detail: GameDetail, home: string, away: string
     }
     const line = group.leaders[0]
     if (!line) continue
-    if (row[side].state !== 'missing' || group.leaders.length > 1) {
+    if (row[side].state !== 'missing' || Math.max(group.sourceLeaderCount ?? 0, group.leaders.length) > 1) {
       row[side] = { line: null, state: 'ambiguous' }
     } else if (line.athlete.id && identities.get(`${line.athlete.provider}:${line.athlete.id}`) !== group.team) {
       row[side] = { line: null, state: 'conflicting' }

@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "checked_at": "2026-10-07T12:14:26.253Z",
+  "checked_at": "2026-10-07T12:45:42.728Z",
   "browser": "151.0.7922.173",
   "source_mode": "Captured ESPN subset for one event plus explicitly synthetic OAK archive QA; other ESPN server requests return controlled 503",
   "fixture_event": "401872966",

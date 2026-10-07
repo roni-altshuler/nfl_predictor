@@ -1,9 +1,9 @@
 {
   "passed": true,
-  "checked_at": "2026-10-07T12:26:07.314Z",
+  "checked_at": "2026-10-07T12:44:27.087Z",
   "browser": "151.0.7922.173",
   "clock": "current browser clock; no clock override",
-  "sourceMode": "Captured 2026 ESPN summary subset in its published archive context; synthetic absence/unknown fixtures; other ESPN server responses controlled 503",
+  "sourceMode": "Captured 2026 ESPN summary subset in its published archive context; synthetic ambiguity/absence/unknown fixtures; other ESPN server responses controlled 503",
   "capturedEvent": "401872966",
   "capturedSummaryUpdate": "2026-10-04T20:11:04Z",
   "forecastGeneratedAt": "2026-10-06T17:05:01+00:00",
@@ -49,6 +49,78 @@
     },
     {
       "name": "comparison-receiving",
+      "width": 1440,
+      "overflow": false,
+      "axe": [],
+      "overlay": false,
+      "reducedMotion": true,
+      "enterDuration": "1e-05s"
+    },
+    {
+      "name": "comparison-ambiguous",
+      "width": 320,
+      "overflow": false,
+      "axe": [],
+      "overlay": false,
+      "reducedMotion": true,
+      "enterDuration": "1e-05s"
+    },
+    {
+      "name": "comparison-ambiguous-unnamed",
+      "width": 320,
+      "overflow": false,
+      "axe": [],
+      "overlay": false,
+      "reducedMotion": true,
+      "enterDuration": "1e-05s"
+    },
+    {
+      "name": "comparison-ambiguous",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false,
+      "reducedMotion": true,
+      "enterDuration": "1e-05s"
+    },
+    {
+      "name": "comparison-ambiguous-unnamed",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false,
+      "reducedMotion": true,
+      "enterDuration": "1e-05s"
+    },
+    {
+      "name": "comparison-ambiguous",
+      "width": 768,
+      "overflow": false,
+      "axe": [],
+      "overlay": false,
+      "reducedMotion": true,
+      "enterDuration": "1e-05s"
+    },
+    {
+      "name": "comparison-ambiguous-unnamed",
+      "width": 768,
+      "overflow": false,
+      "axe": [],
+      "overlay": false,
+      "reducedMotion": true,
+      "enterDuration": "1e-05s"
+    },
+    {
+      "name": "comparison-ambiguous",
+      "width": 1440,
+      "overflow": false,
+      "axe": [],
+      "overlay": false,
+      "reducedMotion": true,
+      "enterDuration": "1e-05s"
+    },
+    {
+      "name": "comparison-ambiguous-unnamed",
       "width": 1440,
       "overflow": false,
       "axe": [],
@@ -136,6 +208,56 @@
       ]
     }
   ],
+  "ambiguityJourneys": [
+    {
+      "width": 320,
+      "event": "400554211",
+      "sourceMode": "Entirely synthetic raw response with two NYG passing leaders",
+      "homeWithheld": true,
+      "homeComparisonProfileLinks": 0,
+      "awayStillReported": true,
+      "categorySwitchAndProfileReturn": true,
+      "bothSourceLeadersRetainedInPlayers": true,
+      "secondSourceLeaderProfileAndReturn": true,
+      "unnamedRawEntryStillWithheld": true
+    },
+    {
+      "width": 390,
+      "event": "400554211",
+      "sourceMode": "Entirely synthetic raw response with two NYG passing leaders",
+      "homeWithheld": true,
+      "homeComparisonProfileLinks": 0,
+      "awayStillReported": true,
+      "categorySwitchAndProfileReturn": true,
+      "bothSourceLeadersRetainedInPlayers": true,
+      "secondSourceLeaderProfileAndReturn": true,
+      "unnamedRawEntryStillWithheld": true
+    },
+    {
+      "width": 768,
+      "event": "400554211",
+      "sourceMode": "Entirely synthetic raw response with two NYG passing leaders",
+      "homeWithheld": true,
+      "homeComparisonProfileLinks": 0,
+      "awayStillReported": true,
+      "categorySwitchAndProfileReturn": true,
+      "bothSourceLeadersRetainedInPlayers": true,
+      "secondSourceLeaderProfileAndReturn": true,
+      "unnamedRawEntryStillWithheld": true
+    },
+    {
+      "width": 1440,
+      "event": "400554211",
+      "sourceMode": "Entirely synthetic raw response with two NYG passing leaders",
+      "homeWithheld": true,
+      "homeComparisonProfileLinks": 0,
+      "awayStillReported": true,
+      "categorySwitchAndProfileReturn": true,
+      "bothSourceLeadersRetainedInPlayers": true,
+      "secondSourceLeaderProfileAndReturn": true,
+      "unnamedRawEntryStillWithheld": true
+    }
+  ],
   "errors": [],
   "portraitRequests": [],
   "flows": [
@@ -144,6 +266,9 @@
     "provider-ID profile→Back restores category URL",
     "team→Back restores category",
     "one Back restores archive",
+    "raw provider multiplicity→withheld comparison→single-category profile→Back",
+    "incomplete unnamed raw leader→withheld comparison",
+    "both raw source leader profiles retained→second profile→Back",
     "fresh category deep link and unknown-category recovery",
     "comparison skeleton→hydrated controls",
     "source outage→published games",

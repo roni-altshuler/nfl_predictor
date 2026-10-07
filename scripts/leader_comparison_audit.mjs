@@ -21,6 +21,7 @@ const errors = []
 const portraits = []
 const checks = []
 const journeys = []
+const ambiguityJourneys = []
 let loadingObserved = false
 async function newPage(width) {
   const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' })
@@ -181,6 +182,56 @@ try {
     console.log(`Leader comparison ${width}px: ${populated ? 'paired leaders' : 'honest unavailable state'}; layout and accessibility passed`)
   }
   if (controlled) {
+    for (const width of [320, 390, 768, 1440]) {
+      const { context, page } = await newPage(width)
+      await page.goto(`${base}/games/400554211?compare=passingYards#comparison`)
+      await page.locator('[data-comparison-ready="true"]').waitFor()
+      const board = page.getByRole('region', { name: 'Game leader comparison', exact: true })
+      const home = board.getByRole('article', { name: 'NYG Passing Yards leader', exact: true })
+      assert.match(await home.innerText(), /Multiple leader lines supplied; this comparison is withheld/)
+      assert.equal(await home.locator('a[href^="/players/"]').count(), 0)
+      assert.ok(!(await home.innerText()).includes('First QA Leader'))
+      assert.ok(!(await home.innerText()).includes('Second QA Leader'))
+      assert.match(await board.getByRole('article', { name: 'ARI Passing Yards leader', exact: true }).innerText(), /Unambiguous synthetic line/)
+      await audit(page, width, 'comparison-ambiguous')
+      const picker = board.getByRole('combobox', { name: 'Compare leader category', exact: true })
+      await picker.focus()
+      await page.keyboard.press('ArrowDown')
+      await page.keyboard.press('Enter')
+      await board.getByRole('region', { name: 'Rushing Yards comparison', exact: true }).waitFor()
+      const selectedUrl = page.url()
+      await board.getByRole('link', { name: 'Single QA Leader — player profile', exact: true }).click()
+      await page.getByRole('heading', { level: 1, name: 'Single QA Leader', exact: true }).waitFor()
+      await page.getByRole('button', { name: 'Back', exact: true }).click()
+      await page.waitForURL(selectedUrl)
+      await board.locator('[data-comparison-ready="true"]').waitFor()
+      assert.equal(await picker.inputValue(), 'rushingYards')
+      await picker.selectOption('passingYards')
+      assert.match(await home.innerText(), /this comparison is withheld/)
+      await picker.selectOption('receivingYards')
+      const incomplete = board.getByRole('article', { name: 'NYG Receiving Yards leader', exact: true })
+      assert.match(await incomplete.innerText(), /Multiple leader lines supplied; this comparison is withheld/)
+      assert.equal(await incomplete.locator('a[href^="/players/"]').count(), 0)
+      assert.ok(!(await incomplete.innerText()).includes('Named Before Unknown'))
+      await audit(page, width, 'comparison-ambiguous-unnamed')
+      await picker.selectOption('passingYards')
+      await page.getByRole('navigation', { name: 'Game sections', exact: true }).getByRole('link', { name: 'Players', exact: true }).click()
+      const players = page.getByRole('region', { name: 'Players in this matchup', exact: true })
+      for (const name of ['First QA Leader', 'Second QA Leader']) assert.equal(await players.getByRole('link', { name: `${name} — player profile`, exact: true }).count(), 1)
+      const playersUrl = page.url()
+      await players.getByRole('link', { name: 'Second QA Leader — player profile', exact: true }).click()
+      await page.getByRole('heading', { level: 1, name: 'Second QA Leader', exact: true }).waitFor()
+      assert.match(await page.getByRole('region', { name: 'Game statistics', exact: true }).innerText(), /Synthetic second line/)
+      await page.getByRole('button', { name: 'Back', exact: true }).click()
+      await page.waitForURL(playersUrl)
+      await board.locator('[data-comparison-ready="true"]').waitFor()
+      assert.match(await home.innerText(), /this comparison is withheld/)
+      ambiguityJourneys.push({ width, event: '400554211', sourceMode: 'Entirely synthetic raw response with two NYG passing leaders',
+        homeWithheld: true, homeComparisonProfileLinks: 0, awayStillReported: true, categorySwitchAndProfileReturn: true,
+        bothSourceLeadersRetainedInPlayers: true, secondSourceLeaderProfileAndReturn: true, unnamedRawEntryStillWithheld: true })
+      await context.close()
+      console.log(`Raw multiplicity ${width}px: comparison withheld; category recovery and both source profiles passed`)
+    }
     const { context, page } = await newPage(390)
     await page.goto(`${base}/games/${captured.game_id}?compare=receivingYards#comparison`)
     await page.locator('[data-comparison-ready="true"]').waitFor()
@@ -210,15 +261,15 @@ try {
   assert.deepEqual(portraits, [])
   await fs.writeFile(path.join(output, 'results.json'), JSON.stringify({ passed: true, checked_at: new Date().toISOString(),
     browser: browser.version(), clock: 'current browser clock; no clock override', sourceMode: controlled
-      ? 'Captured 2026 ESPN summary subset in its published archive context; synthetic absence/unknown fixtures; other ESPN server responses controlled 503'
+      ? 'Captured 2026 ESPN summary subset in its published archive context; synthetic ambiguity/absence/unknown fixtures; other ESPN server responses controlled 503'
       : 'Application responses; populated coverage conditional', capturedEvent: fixture.header.id,
     capturedSummaryUpdate: fixture.meta.lastUpdatedAt, forecastGeneratedAt: forecast.generated_at, trainedThrough: forecast.trained_through,
-    loadingObserved, loadingMode: controlled ? 'Actual SSR comparison skeleton with local JavaScript bundles held, then released for hydration' : 'Not forced', checks, journeys, errors, portraitRequests: portraits,
+    loadingObserved, loadingMode: controlled ? 'Actual SSR comparison skeleton with local JavaScript bundles held, then released for hydration' : 'Not forced', checks, journeys, ambiguityJourneys, errors, portraitRequests: portraits,
     flows: ['archive→keyboard matchup→comparison anchor', 'keyboard category selection and repeated native selection without game refetch',
       'provider-ID profile→Back restores category URL', 'team→Back restores category', 'one Back restores archive',
-      ...(controlled ? ['fresh category deep link and unknown-category recovery', 'comparison skeleton→hydrated controls', 'source outage→published games', 'synthetic missing side/ID/position/statistic', 'empty response recovery', 'missing game recovery'] : [])],
+      ...(controlled ? ['raw provider multiplicity→withheld comparison→single-category profile→Back', 'incomplete unnamed raw leader→withheld comparison', 'both raw source leader profiles retained→second profile→Back', 'fresh category deep link and unknown-category recovery', 'comparison skeleton→hydrated controls', 'source outage→published games', 'synthetic missing side/ID/position/statistic', 'empty response recovery', 'missing game recovery'] : [])],
   }, null, 2) + '\n')
 } catch (error) {
-  await fs.writeFile(path.join(output, 'results.json'), JSON.stringify({ passed: false, checked_at: new Date().toISOString(), error: String(error), checks, journeys, errors }, null, 2) + '\n')
+  await fs.writeFile(path.join(output, 'results.json'), JSON.stringify({ passed: false, checked_at: new Date().toISOString(), error: String(error), checks, journeys, ambiguityJourneys, errors }, null, 2) + '\n')
   throw error
 } finally { await browser.close() }
