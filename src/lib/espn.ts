@@ -45,6 +45,9 @@ export interface PlayerLine {
 export interface PlayerGroup {
   team: string
   label: string
+  categoryKey?: string
+  /** Provider entry count before filtering incomplete display fields. */
+  sourceLeaderCount?: number
   leaders: PlayerLine[]
 }
 
@@ -209,8 +212,8 @@ export function normalizeGameSummary(summary: any | null, gameId: string, homeAb
   for (const group of list(summary?.leaders)) {
     const abbr = summaryTeam(group?.team, [homeAbbr, awayAbbr])
     for (const category of list(group?.leaders)) {
-      const lines: PlayerLine[] = list(category?.leaders)
-        .slice(0, 1)
+      const sourceLines = list(category?.leaders)
+      const lines: PlayerLine[] = sourceLines
         .map((leader: any) => ({
           name: String(leader?.athlete?.displayName ?? ''),
           stat: String(leader?.displayValue ?? ''),
@@ -221,6 +224,8 @@ export function normalizeGameSummary(summary: any | null, gameId: string, homeAb
         leaders.push({
           team: abbr,
           label: String(category?.displayName ?? category?.name ?? ''),
+          categoryKey: String(category?.name ?? ''),
+          sourceLeaderCount: sourceLines.length,
           leaders: lines,
         })
       }

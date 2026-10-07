@@ -27,8 +27,100 @@ const fixture = require('./fixtures/espn-player-summary.json')
 const archiveFixture = require('./fixtures/espn-archived-summary.json')
 const { playerGameContext } = load('server/playerContext.ts')
 const { playerMatchDate, kickoff } = load('format.ts')
+const { leaderComparisons } = load('leaderComparison.ts')
 const clone = () => structuredClone(fixture)
 const normalize = s => normalizeGameSummary(s, '401872966', 'NYG', 'ARI')
+
+test('leader comparison pairs provider categories and preserves the observed ID, position and raw lines', () => {
+  const before = JSON.stringify(fixture)
+  const rows = leaderComparisons(normalize(fixture), 'NYG', 'ARI')
+  assert.equal(rows.length, 5)
+  const passing = rows.find(row => row.key === 'passingYards')
+  assert.equal(passing.home.line.athlete.id, '2969939')
+  assert.equal(passing.away.line.athlete.id, '2578570')
+  assert.equal(passing.home.line.athlete.position, 'QB')
+  assert.equal(passing.home.line.stat, fixture.leaders[0].leaders[0].leaders[0].displayValue)
+  assert.equal(passing.away.line.stat, fixture.leaders[1].leaders[0].leaders[0].displayValue)
+  assert.equal(JSON.stringify(fixture), before)
+  const sameLabel = clone()
+  sameLabel.leaders[1].leaders[0].name = 'differentProviderCategory'
+  const unpaired = leaderComparisons(normalize(sameLabel), 'NYG', 'ARI').find(row => row.key === 'passingYards')
+  assert.equal(unpaired.away.state, 'missing', 'A display-label collision does not merge different provider categories')
+  const missingKeys = clone()
+  for (const team of missingKeys.leaders) delete team.leaders[0].name
+  assert.equal(leaderComparisons(normalize(missingKeys), 'NYG', 'ARI').length, 4, 'Matching display labels cannot substitute for missing provider category keys')
+})
+
+test('comparison leaves absent sides, IDs, positions and statistics unknown; supplied zero stays zero', () => {
+  const s = clone()
+  s.leaders[1].leaders.shift()
+  const athlete = s.leaders[0].leaders[0].leaders[0].athlete
+  delete athlete.id
+  delete athlete.position
+  s.leaders[0].leaders[0].leaders[0].displayValue = ''
+  s.leaders[0].leaders[3].leaders[0].displayValue = '0'
+  const rows = leaderComparisons(normalize(s), 'NYG', 'ARI')
+  const passing = rows.find(row => row.key === 'passingYards')
+  assert.equal(passing.away.line, null)
+  assert.equal(passing.away.state, 'missing')
+  assert.equal(passing.home.line.athlete.position, null)
+  assert.equal(athleteHref(passing.home.line.athlete, fixture.header.id), null)
+  assert.equal(passing.home.line.stat, '')
+  assert.equal(rows.find(row => row.key === 'sacks').home.line.stat, '0')
+})
+
+test('comparison withholds conflicting identities, duplicate team/category lines and unverified source context', () => {
+  const duplicate = normalize(fixture)
+  duplicate.leaders.push(structuredClone(duplicate.leaders[0]))
+  assert.equal(leaderComparisons(duplicate, 'NYG', 'ARI')[0].home.state, 'ambiguous')
+  const multiple = normalize(fixture)
+  multiple.leaders[0].leaders.push(structuredClone(multiple.leaders[0].leaders[0]))
+  assert.equal(leaderComparisons(multiple, 'NYG', 'ARI')[0].home.state, 'ambiguous', 'Multiple supplied leaders must not become an arbitrary single-player comparison')
+  const conflict = clone()
+  conflict.leaders[1].leaders[0].leaders[0].athlete.id = '2969939'
+  const passing = leaderComparisons(normalize(conflict), 'NYG', 'ARI')[0]
+  assert.equal(passing.home.line, null)
+  assert.equal(passing.away.line, null)
+  assert.equal(passing.home.state, 'conflicting')
+  for (const status of ['unavailable', 'mismatched']) {
+    const detail = normalize(fixture)
+    detail.source.status = status
+    assert.deepEqual(leaderComparisons(detail, 'NYG', 'ARI'), [])
+  }
+  assert.deepEqual(leaderComparisons(normalize(fixture), 'NYG', 'NYG'), [])
+})
+
+test('raw provider multiplicity survives normalization and withholds a single-player comparison', () => {
+  const raw = clone()
+  const second = structuredClone(raw.leaders[0].leaders[2].leaders[0])
+  raw.leaders[0].leaders[0].leaders.push(second)
+  const before = JSON.stringify(raw)
+  const detail = normalize(raw)
+  const passing = leaderComparisons(detail, 'NYG', 'ARI').find(row => row.key === 'passingYards')
+  assert.equal(passing.home.state, 'ambiguous')
+  assert.equal(passing.home.line, null)
+  assert.equal(passing.away.state, 'reported')
+  const group = detail.leaders.find(group => group.team === 'NYG' && group.categoryKey === 'passingYards')
+  assert.equal(group.leaders.length, 2)
+  assert.equal(group.sourceLeaderCount, 2)
+  assert.equal(group.leaders[1].athlete.id, second.athlete.id)
+  assert.equal(group.leaders[1].stat, second.displayValue)
+  assert.ok(playerSnapshots(detail, false).find(player => player.athlete.id === second.athlete.id)
+    .statistics.some(stat => stat.label === 'Passing Yards' && stat.value === second.displayValue))
+  assert.equal(JSON.stringify(raw), before)
+})
+
+test('filtering an incomplete raw leader cannot erase provider multiplicity', () => {
+  const raw = clone()
+  raw.leaders[0].leaders[0].leaders.push({ athlete: { id: '900000099' }, displayValue: '' })
+  const detail = normalize(raw)
+  const group = detail.leaders.find(group => group.team === 'NYG' && group.categoryKey === 'passingYards')
+  assert.equal(group.leaders.length, 1)
+  assert.equal(group.sourceLeaderCount, 2)
+  const passing = leaderComparisons(detail, 'NYG', 'ARI').find(row => row.key === 'passingYards')
+  assert.equal(passing.home.state, 'ambiguous')
+  assert.equal(passing.home.line, null)
+})
 
 test('archived profiles preserve published date precision across Eastern daylight/standard time', () => {
   const cases = [['401547421', '2023-09-17', 'Sep 17, 2023'], ['401220253', '2020-12-13', 'Dec 13, 2020'],
@@ -40,7 +132,8 @@ test('archived profiles preserve published date precision across Eastern dayligh
     assert.equal(game.includeInjuries, false)
     assert.equal(playerMatchDate(game.date, game.datePrecision), `${label} · Kickoff time unavailable`)
   }
-  const upcoming = playerGameContext('401872966')
+  const publishedForecasts = require('../backend/data/predictions/game_forecasts.json')
+  const upcoming = playerGameContext(publishedForecasts.games[0].game_id)
   assert.equal(upcoming.datePrecision, 'instant')
   assert.equal(playerMatchDate(upcoming.date, upcoming.datePrecision), kickoff(upcoming.date))
   for (const invalid of ['2023-02-30', '2023-13-17', '', '2023-09-17T20:00:00Z'])

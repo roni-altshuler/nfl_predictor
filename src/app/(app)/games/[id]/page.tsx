@@ -8,6 +8,7 @@ import { BackButton } from '@/components/primitives/BackButton'
 import { TeamLogo } from '@/components/primitives/TeamLogo'
 import { GameSectionNav } from '@/components/schedule/GameSectionNav'
 import { GamePlayers } from '@/components/players/GamePlayers'
+import { GameLeaderComparison } from '@/components/players/GameLeaderComparison'
 import { PlayerLink } from '@/components/players/PlayerLink'
 import { getGameForecasts, type GameForecast, type GameForecasts } from '@/lib/artifacts'
 import { getGameDetail, type GameDetail } from '@/lib/espn'
@@ -194,7 +195,7 @@ function UpcomingGame({
             <summary className="cursor-pointer font-mono text-[11px] text-[var(--accent-info)] hover:underline">
               every line as a table
             </summary>
-            <div className="mt-2 overflow-x-auto">
+            <div className="mt-2 overflow-x-auto" tabIndex={0} role="region" aria-label="Spread probabilities table">
               <table className="min-w-[420px]">
                 <thead>
                   <tr>
@@ -286,6 +287,8 @@ function UpcomingGame({
 
       <div id="availability" className="scroll-mt-20"><Availability detail={detail} game={game} /></div>
 
+      <GameLeaderComparison detail={detail} gameId={game.game_id} home={game.home} away={game.away} date={game.date_utc} datePrecision="instant" />
+
       <GamePlayers detail={detail} gameId={game.game_id} />
 
       <div id="context" className="scroll-mt-20"><HeadToHead
@@ -341,6 +344,7 @@ function PlayedGame({
           {game.date}
           {tie ? ' · finished level' : ''}
         </p>
+        <div className="mt-4"><GameSectionNav sections={['comparison', 'players', 'context']} /></div>
       </header>
 
       {tie ? (
@@ -353,7 +357,7 @@ function PlayedGame({
       {detail.linescores.length ? (
         <section className="card p-4" aria-label="Scoring by quarter">
           <h2 className="eyebrow mb-3">By quarter</h2>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Quarter scores table">
             <table className="min-w-[360px]">
               <thead>
                 <tr>
@@ -389,7 +393,7 @@ function PlayedGame({
       {detail.teamStats.length ? (
         <section className="card p-4" aria-label="Team statistics">
           <h2 className="eyebrow mb-3">Team totals</h2>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Team totals table">
             <table className="min-w-[420px]">
               <thead>
                 <tr>
@@ -422,40 +426,16 @@ function PlayedGame({
         </section>
       )}
 
-      {detail.leaders.length ? (
-        <section className="card p-4" aria-label="Leaders">
-          <h2 className="eyebrow mb-3">Leaders</h2>
-          <ul className="grid gap-2 sm:grid-cols-2">
-            {detail.leaders.map((group, index) => (
-              <li
-                key={`${group.team}-${group.label}-${index}`}
-                className="flex items-baseline justify-between gap-3 border-b border-[var(--border-color)] pb-1.5"
-              >
-                <span className="min-w-0">
-                  <span className="numeric text-[10px] text-[var(--text-tertiary)]">
-                    {group.team} · {group.label}
-                  </span>
-                  <span className="block truncate text-[13px] text-[var(--text-secondary)]">
-                    {group.leaders[0] ? <PlayerLink athlete={group.leaders[0].athlete} gameId={game.game_id} /> : null}
-                  </span>
-                </span>
-                <span className="numeric shrink-0 text-[11px] text-[var(--text-primary)]">
-                  {group.leaders[0]?.stat}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
+      <GameLeaderComparison detail={detail} gameId={game.game_id} home={game.home} away={game.away} date={game.date} datePrecision="day" />
 
       <GamePlayers detail={detail} gameId={game.game_id} includeInjuries={false} />
 
-      <HeadToHead
+      <div id="context" className="scroll-mt-20"><HeadToHead
         meetings={meetings}
         split={split}
         home={game.home}
         away={game.away}
-      />
+      /></div>
 
       <p className="text-[10px] leading-relaxed text-[var(--text-tertiary)]">
         No forecast shown — the model was fitted on a corpus that includes

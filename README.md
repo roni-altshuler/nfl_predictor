@@ -18,10 +18,9 @@ filters to matchup detail and preserves them on return. Both views display
 publication and results-cutoff timestamps; team abbreviations remain visible
 while remote marks load or if the CDN fails. The app's Games/Schedule link resets
 the slate to its default filters; browser Back/Forward restores each URL's filters.
-The cloud continuation uses the
-committed **2026-10-04T15:43:00Z** snapshot (results through
-**2026-10-02T00:15:00Z**). Its 223 fixtures include earlier pre-game snapshots;
-this is not a refreshed live schedule.
+The October 7 cloud review reads the committed **2026-10-06T17:05:01Z**
+publication (results through **2026-10-06T00:15:00Z**). Its 208 fixtures
+include retained pre-game snapshots; the published slate is not a live schedule.
 
 [Player exploration](docs/PLAYER_PROFILES_2026-10.md) connects team matchups and
 available ESPN leaders/availability entries to profiles keyed by provider and
@@ -33,6 +32,14 @@ Archived profiles preserve the published calendar date and explicitly mark
 kickoff time unavailable when the archive supplies no timestamp. Historical
 OAK/LV context requires the matching ESPN franchise ID; the review's archive
 and delayed-navigation checks use documented controlled responses.
+
+[Game leader comparison](docs/LEADER_COMPARISON_2026-10.md) pairs away/home
+leaders in the same ESPN category on existing matchup pages. Category links
+retain selection on profile/team return. Raw reported lines and actual supplied
+positions stay separate from forecast probabilities; missing or ambiguous
+identity/statistics remain unknown, and statistic period is unverified.
+This cloud review reuses the recorded
+October 4 summary for browser QA and makes no new source-freshness claim.
 
 ## What it does
 
@@ -117,16 +124,20 @@ published at least seven days before kickoff. This early, long-horizon sample
 does not measure last-day prediction quality and is not merged with the
 historical record.
 
-Reproduce the table and independently recompute live Brier, accuracy, and
-horizon counts from the stored rows without network access or training:
+Read the current committed evidence and independently recompute live Brier,
+accuracy and horizon counts without network access or training. The dated
+figures above are retained from the earlier review; later automated artifact
+publications can produce different current counts and scores:
 
 ```bash
 python -m backend.scripts.report_evidence
 python -m pytest backend/tests/test_evidence_report.py -q
 ```
 
-Sources: [historical artifact](backend/data/diagnostics/market_benchmark.json)
-and [published forecast log](backend/data/predictions/forecast_log.json).
+Dated sources: [September 29 historical artifact](https://github.com/roni-altshuler/nfl_predictor/blob/ecd9b1d6b9948394557b2db9916a10717b110fdc/backend/data/diagnostics/market_benchmark.json)
+and [October 4 published forecast log](https://github.com/roni-altshuler/nfl_predictor/blob/ecd9b1d6b9948394557b2db9916a10717b110fdc/backend/data/predictions/forecast_log.json).
+Current files: [historical artifact](backend/data/diagnostics/market_benchmark.json)
+and [forecast log](backend/data/predictions/forecast_log.json).
 The report rejects duplicate games, post-kickoff forecasts, invalid
 probabilities, and inconsistent live headline/cohort counts. Stored results
 remain the outcome source; the report does not independently fetch outcomes.
