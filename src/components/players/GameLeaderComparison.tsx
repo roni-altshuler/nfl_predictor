@@ -12,7 +12,7 @@ export function GameLeaderComparison({ detail, gameId, home, away, date, datePre
   return <section id="comparison" className="card scroll-mt-20 p-4 sm:p-6" aria-label="Game leader comparison">
     <header className="space-y-2">
       <p className="eyebrow">{away} at {home} · game summary</p>
-      <h2 className="text-lg">Compare game leaders</h2>
+      <h2 className="text-lg">Compare matchup leaders</h2>
       <p className="font-mono text-xs text-[var(--text-secondary)]">{playerMatchDate(date, datePrecision)}</p>
       <p className="font-mono text-xs text-[var(--text-tertiary)]">ESPN · summary update {detail.source.asOf ? forecastStamp(detail.source.asOf) : 'not supplied'}</p>
     </header>
@@ -26,6 +26,6 @@ export function GameLeaderComparison({ detail, gameId, home, away, date, datePre
           : 'This summary has no comparable leader categories. A missing leader is not a zero or a missing roster place.'}</p>
       <Link href="/games" className="mt-3 inline-flex min-h-[44px] items-center text-sm text-[var(--accent-info)] hover:underline">Browse published games →</Link>
     </div>}
-    <p className="mt-4 text-xs leading-relaxed text-[var(--text-tertiary)]">Selected category leaders, not position starters or a full roster. Lines are shown as reported; no scouting grade or career comparison is inferred. Summaries may be cached for 24 hours.</p>
+    <p className="mt-4 text-xs leading-relaxed text-[var(--text-tertiary)]">Summary leader lines; statistic period is unverified. No starter, full roster, scouting grade or career record is inferred. Summaries may be cached for 24 hours.</p>
   </section>
 }

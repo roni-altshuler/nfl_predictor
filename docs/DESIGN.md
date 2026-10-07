@@ -309,7 +309,8 @@ including on phones. A native 44px category selector updates the shareable
 `?compare=` URL without a summary refetch or another Back step. Team marks,
 provider-ID profile links, permitted portrait policy and neutral identity plates
 reuse the existing components. Reported positions and raw lines carry the
-comparison; no scouting grade, inferred starter, career total or second model
+comparison, with the unverified statistic period explicitly labelled; no
+scouting grade, inferred starter, career total or second model
 is introduced. Day-only archives label kickoff unavailable; source update and
 cache coverage stay visible beside the game date.
 

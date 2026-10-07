@@ -46,6 +46,9 @@ test('leader comparison pairs provider categories and preserves the observed ID,
   sameLabel.leaders[1].leaders[0].name = 'differentProviderCategory'
   const unpaired = leaderComparisons(normalize(sameLabel), 'NYG', 'ARI').find(row => row.key === 'passingYards')
   assert.equal(unpaired.away.state, 'missing', 'A display-label collision does not merge different provider categories')
+  const missingKeys = clone()
+  for (const team of missingKeys.leaders) delete team.leaders[0].name
+  assert.equal(leaderComparisons(normalize(missingKeys), 'NYG', 'ARI').length, 4, 'Matching display labels cannot substitute for missing provider category keys')
 })
 
 test('comparison leaves absent sides, IDs, positions and statistics unknown; supplied zero stays zero', () => {

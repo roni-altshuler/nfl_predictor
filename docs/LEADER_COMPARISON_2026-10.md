@@ -4,7 +4,9 @@ The existing Games/results archive → matchup → player/team journey now inclu
 an away/home leader comparison. A native category selector pairs only identical
 ESPN category keys and shows each reported statistic verbatim. Provider IDs,
 actual supplied positions and shirt numbers retain their source meaning.
-Missing sides, statistics and IDs stay unknown; conflicting identities or
+The statistic period is unverified and is stated on the board; a summary line
+is not asserted to be game-only or career performance. Missing sides, statistics
+and IDs stay unknown; conflicting identities or
 multiple leader lines are withheld. Profiles and team links return to the
 selected category URL, and one further Back returns to the originating archive.
 

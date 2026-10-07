@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "checked_at": "2026-10-07T12:13:18.227Z",
+  "checked_at": "2026-10-07T12:26:07.314Z",
   "browser": "151.0.7922.173",
   "clock": "current browser clock; no clock override",
   "sourceMode": "Captured 2026 ESPN summary subset in its published archive context; synthetic absence/unknown fixtures; other ESPN server responses controlled 503",
@@ -103,7 +103,12 @@
       "profileAndTeamReturn": true,
       "archiveReturn": true,
       "gameRefetchesDuringSelection": [],
-      "backgroundLinkPrefetches": []
+      "backgroundLinkPrefetches": [
+        {
+          "url": "http://127.0.0.1:3034/games/401872966?_rsc=27HEOsZXF6-ooivg",
+          "prefetch": true
+        }
+      ]
     },
     {
       "width": 768,

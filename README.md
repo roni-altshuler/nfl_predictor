@@ -37,7 +37,8 @@ and delayed-navigation checks use documented controlled responses.
 leaders in the same ESPN category on existing matchup pages. Category links
 retain selection on profile/team return. Raw reported lines and actual supplied
 positions stay separate from forecast probabilities; missing or ambiguous
-identity/statistics remain unknown. This cloud review reuses the recorded
+identity/statistics remain unknown, and statistic period is unverified.
+This cloud review reuses the recorded
 October 4 summary for browser QA and makes no new source-freshness claim.
 
 ## What it does

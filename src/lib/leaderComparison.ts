@@ -22,7 +22,7 @@ export function leaderComparisons(detail: GameDetail, home: string, away: string
   const rows = new Map<string, LeaderComparisonRow>()
   for (const group of detail.leaders) {
     const side = group.team === away ? 'away' : group.team === home ? 'home' : null
-    const key = group.categoryKey?.trim() || (group.label.trim() ? `label:${group.label.trim()}` : '')
+    const key = group.categoryKey?.trim()
     if (!side || !key) continue
     let row = rows.get(key)
     if (!row) {
