@@ -45,6 +45,7 @@ export interface PlayerLine {
 export interface PlayerGroup {
   team: string
   label: string
+  categoryKey?: string
   leaders: PlayerLine[]
 }
 
@@ -221,6 +222,7 @@ export function normalizeGameSummary(summary: any | null, gameId: string, homeAb
         leaders.push({
           team: abbr,
           label: String(category?.displayName ?? category?.name ?? ''),
+          categoryKey: String(category?.name ?? ''),
           leaders: lines,
         })
       }

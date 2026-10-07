@@ -301,3 +301,19 @@ can render. No such assets are shipped; names, initials and shirt numbers carry
 identity without portrait requests. Profile Back follows the originating
 matchup/history; a fresh tab retains a named matchup parent. Loading skeletons
 and explicit unavailable states keep the app's navigation available.
+
+## Game leader comparison (2026-10-07)
+
+Existing matchup pages pair away/home category leaders in two bordered columns,
+including on phones. A native 44px category selector updates the shareable
+`?compare=` URL without a summary refetch or another Back step. Team marks,
+provider-ID profile links, permitted portrait policy and neutral identity plates
+reuse the existing components. Reported positions and raw lines carry the
+comparison; no scouting grade, inferred starter, career total or second model
+is introduced. Day-only archives label kickoff unavailable; source update and
+cache coverage stay visible beside the game date.
+
+The game section navigation opens the comparison with keyboard focus. Existing
+horizontal score/statistic/spread tables also have named focusable scroll regions.
+Empty, source-error and ambiguous/unknown states retain useful navigation and
+explicit missing-data copy.

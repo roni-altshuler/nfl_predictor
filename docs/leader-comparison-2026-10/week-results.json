@@ -1,0 +1,453 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-07T12:14:01.146Z",
+  "browser": "151.0.7922.173",
+  "forecast_generated_at": "2026-10-06T17:05:01+00:00",
+  "trained_through": "2026-10-06T00:15:00+00:00",
+  "game_id": "401872980",
+  "clock": "current (no clock override)",
+  "logo_outage": "all ESPN CDN requests aborted",
+  "no_js": "Static slate retains text marks; interactive filters require JavaScript",
+  "logo_success": "controlled bundled favicon PNG; ESPN availability not verified",
+  "availability": "AVAILABILITY REPORT UNAVAILABLE\n\nNo player report is available in this response. An empty or failed request does not confirm that everyone is available.",
+  "missing_game_status": 200,
+  "checks": [
+    {
+      "page": "week",
+      "width": 320,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "page": "game",
+      "width": 320,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "page": "week",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "page": "game",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "page": "week",
+      "width": 768,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "page": "game",
+      "width": 768,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "page": "week",
+      "width": 1440,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "page": "game",
+      "width": 1440,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    }
+  ],
+  "navigation_checks": [
+    {
+      "width": 390,
+      "arrival": "controls",
+      "original": {
+        "url": "http://127.0.0.1:3034/games",
+        "week": "5",
+        "team": "",
+        "following": false,
+        "games": [
+          "/games/401872980",
+          "/games/401872981",
+          "/games/401872982",
+          "/games/401872983",
+          "/games/401872984",
+          "/games/401872985",
+          "/games/401872986",
+          "/games/401872987",
+          "/games/401872988",
+          "/games/401872990",
+          "/games/401872989",
+          "/games/401872991",
+          "/games/401872992",
+          "/games/401872993",
+          "/games/401872994"
+        ]
+      },
+      "filtered": {
+        "url": "http://127.0.0.1:3034/games?week=18&team=IND&following=1",
+        "week": "18",
+        "team": "IND",
+        "following": true,
+        "games": [
+          "/games/401873177"
+        ]
+      },
+      "reset": {
+        "url": "http://127.0.0.1:3034/games",
+        "week": "5",
+        "team": "",
+        "following": false,
+        "games": [
+          "/games/401872980",
+          "/games/401872981",
+          "/games/401872982",
+          "/games/401872983",
+          "/games/401872984",
+          "/games/401872985",
+          "/games/401872986",
+          "/games/401872987",
+          "/games/401872988",
+          "/games/401872990",
+          "/games/401872989",
+          "/games/401872991",
+          "/games/401872992",
+          "/games/401872993",
+          "/games/401872994"
+        ]
+      },
+      "back": {
+        "url": "http://127.0.0.1:3034/games?week=18&team=IND&following=1",
+        "week": "18",
+        "team": "IND",
+        "following": true,
+        "games": [
+          "/games/401873177"
+        ]
+      },
+      "forward": {
+        "url": "http://127.0.0.1:3034/games",
+        "week": "5",
+        "team": "",
+        "following": false,
+        "games": [
+          "/games/401872980",
+          "/games/401872981",
+          "/games/401872982",
+          "/games/401872983",
+          "/games/401872984",
+          "/games/401872985",
+          "/games/401872986",
+          "/games/401872987",
+          "/games/401872988",
+          "/games/401872990",
+          "/games/401872989",
+          "/games/401872991",
+          "/games/401872992",
+          "/games/401872993",
+          "/games/401872994"
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "arrival": "direct",
+      "original": {
+        "url": "http://127.0.0.1:3034/games",
+        "week": "5",
+        "team": "",
+        "following": false,
+        "games": [
+          "/games/401872980",
+          "/games/401872981",
+          "/games/401872982",
+          "/games/401872983",
+          "/games/401872984",
+          "/games/401872985",
+          "/games/401872986",
+          "/games/401872987",
+          "/games/401872988",
+          "/games/401872990",
+          "/games/401872989",
+          "/games/401872991",
+          "/games/401872992",
+          "/games/401872993",
+          "/games/401872994"
+        ]
+      },
+      "filtered": {
+        "url": "http://127.0.0.1:3034/games?week=18&team=IND&following=1",
+        "week": "18",
+        "team": "IND",
+        "following": true,
+        "games": [
+          "/games/401873177"
+        ]
+      },
+      "reset": {
+        "url": "http://127.0.0.1:3034/games",
+        "week": "5",
+        "team": "",
+        "following": false,
+        "games": [
+          "/games/401872980",
+          "/games/401872981",
+          "/games/401872982",
+          "/games/401872983",
+          "/games/401872984",
+          "/games/401872985",
+          "/games/401872986",
+          "/games/401872987",
+          "/games/401872988",
+          "/games/401872990",
+          "/games/401872989",
+          "/games/401872991",
+          "/games/401872992",
+          "/games/401872993",
+          "/games/401872994"
+        ]
+      },
+      "back": {
+        "url": "http://127.0.0.1:3034/games?week=18&team=IND&following=1",
+        "week": "18",
+        "team": "IND",
+        "following": true,
+        "games": [
+          "/games/401873177"
+        ]
+      },
+      "forward": {
+        "url": "http://127.0.0.1:3034/games",
+        "week": "5",
+        "team": "",
+        "following": false,
+        "games": [
+          "/games/401872980",
+          "/games/401872981",
+          "/games/401872982",
+          "/games/401872983",
+          "/games/401872984",
+          "/games/401872985",
+          "/games/401872986",
+          "/games/401872987",
+          "/games/401872988",
+          "/games/401872990",
+          "/games/401872989",
+          "/games/401872991",
+          "/games/401872992",
+          "/games/401872993",
+          "/games/401872994"
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "arrival": "controls",
+      "original": {
+        "url": "http://127.0.0.1:3034/games",
+        "week": "5",
+        "team": "",
+        "following": false,
+        "games": [
+          "/games/401872980",
+          "/games/401872981",
+          "/games/401872982",
+          "/games/401872983",
+          "/games/401872984",
+          "/games/401872985",
+          "/games/401872986",
+          "/games/401872987",
+          "/games/401872988",
+          "/games/401872990",
+          "/games/401872989",
+          "/games/401872991",
+          "/games/401872992",
+          "/games/401872993",
+          "/games/401872994"
+        ]
+      },
+      "filtered": {
+        "url": "http://127.0.0.1:3034/games?week=18&team=IND&following=1",
+        "week": "18",
+        "team": "IND",
+        "following": true,
+        "games": [
+          "/games/401873177"
+        ]
+      },
+      "reset": {
+        "url": "http://127.0.0.1:3034/games",
+        "week": "5",
+        "team": "",
+        "following": false,
+        "games": [
+          "/games/401872980",
+          "/games/401872981",
+          "/games/401872982",
+          "/games/401872983",
+          "/games/401872984",
+          "/games/401872985",
+          "/games/401872986",
+          "/games/401872987",
+          "/games/401872988",
+          "/games/401872990",
+          "/games/401872989",
+          "/games/401872991",
+          "/games/401872992",
+          "/games/401872993",
+          "/games/401872994"
+        ]
+      },
+      "back": {
+        "url": "http://127.0.0.1:3034/games?week=18&team=IND&following=1",
+        "week": "18",
+        "team": "IND",
+        "following": true,
+        "games": [
+          "/games/401873177"
+        ]
+      },
+      "forward": {
+        "url": "http://127.0.0.1:3034/games",
+        "week": "5",
+        "team": "",
+        "following": false,
+        "games": [
+          "/games/401872980",
+          "/games/401872981",
+          "/games/401872982",
+          "/games/401872983",
+          "/games/401872984",
+          "/games/401872985",
+          "/games/401872986",
+          "/games/401872987",
+          "/games/401872988",
+          "/games/401872990",
+          "/games/401872989",
+          "/games/401872991",
+          "/games/401872992",
+          "/games/401872993",
+          "/games/401872994"
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "arrival": "direct",
+      "original": {
+        "url": "http://127.0.0.1:3034/games",
+        "week": "5",
+        "team": "",
+        "following": false,
+        "games": [
+          "/games/401872980",
+          "/games/401872981",
+          "/games/401872982",
+          "/games/401872983",
+          "/games/401872984",
+          "/games/401872985",
+          "/games/401872986",
+          "/games/401872987",
+          "/games/401872988",
+          "/games/401872990",
+          "/games/401872989",
+          "/games/401872991",
+          "/games/401872992",
+          "/games/401872993",
+          "/games/401872994"
+        ]
+      },
+      "filtered": {
+        "url": "http://127.0.0.1:3034/games?week=18&team=IND&following=1",
+        "week": "18",
+        "team": "IND",
+        "following": true,
+        "games": [
+          "/games/401873177"
+        ]
+      },
+      "reset": {
+        "url": "http://127.0.0.1:3034/games",
+        "week": "5",
+        "team": "",
+        "following": false,
+        "games": [
+          "/games/401872980",
+          "/games/401872981",
+          "/games/401872982",
+          "/games/401872983",
+          "/games/401872984",
+          "/games/401872985",
+          "/games/401872986",
+          "/games/401872987",
+          "/games/401872988",
+          "/games/401872990",
+          "/games/401872989",
+          "/games/401872991",
+          "/games/401872992",
+          "/games/401872993",
+          "/games/401872994"
+        ]
+      },
+      "back": {
+        "url": "http://127.0.0.1:3034/games?week=18&team=IND&following=1",
+        "week": "18",
+        "team": "IND",
+        "following": true,
+        "games": [
+          "/games/401873177"
+        ]
+      },
+      "forward": {
+        "url": "http://127.0.0.1:3034/games",
+        "week": "5",
+        "team": "",
+        "following": false,
+        "games": [
+          "/games/401872980",
+          "/games/401872981",
+          "/games/401872982",
+          "/games/401872983",
+          "/games/401872984",
+          "/games/401872985",
+          "/games/401872986",
+          "/games/401872987",
+          "/games/401872988",
+          "/games/401872990",
+          "/games/401872989",
+          "/games/401872991",
+          "/games/401872992",
+          "/games/401872993",
+          "/games/401872994"
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "flows": [
+    "week bounds and Back/Forward",
+    "same-path Games reset after native filters/direct query and Back/Forward",
+    "team URL restoration",
+    "keyboard matchup entry and return",
+    "section focus",
+    "keyboard spread slider",
+    "empty watchlist/reset",
+    "invalid query recovery",
+    "2025 archive on mobile",
+    "missing-game error with noindex",
+    "no-JS slate marks and fresh-tab return",
+    "logo loading/failure/success/reload"
+  ]
+}

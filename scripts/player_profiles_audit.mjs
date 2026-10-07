@@ -11,7 +11,10 @@ const fixture = JSON.parse(await fs.readFile('scripts/fixtures/espn-player-summa
 const archiveFixture = JSON.parse(await fs.readFile('scripts/fixtures/espn-archived-summary.json', 'utf8'))
 const meetingIndex = JSON.parse(await fs.readFile('backend/data/predictions/game_context.json', 'utf8'))
 const archiveGame = Object.values(meetingIndex.meetings).flat().find(row => row.game_id === archiveFixture.header.id)
-const game = forecast.games.find(game => game.game_id === fixture.header.id) ?? forecast.games[0]
+const capturedForecast = forecast.games.find(game => game.game_id === fixture.header.id)
+const profileGame = capturedForecast ?? Object.values(meetingIndex.meetings).flat().find(row => row.game_id === fixture.header.id)
+assert.ok(profileGame, 'Captured response must still refer to an already-published event')
+const game = capturedForecast ?? forecast.games[0]
 const otherGame = forecast.games.find(row => row.game_id !== game.game_id)
 const base = process.env.BASE_URL || 'http://127.0.0.1:3012'
 const output = process.env.PLAYER_AUDIT_OUTPUT || '/tmp/nfl-player-profile-audit'
@@ -98,7 +101,7 @@ async function archiveRegression() {
 async function delayedResponseRegression() {
   const c = await context(390)
   const page = await c.newPage()
-  const injury = fixture.injuries[0].injuries[0]
+  const newerAthlete = fixture.leaders[1].leaders[0].leaders[0].athlete
   let releaseOlder
   let signalOlder
   const olderReady = new Promise(resolve => { signalOlder = resolve })
@@ -122,8 +125,8 @@ async function delayedResponseRegression() {
     } finally { finish() }
   })
   try {
-    await page.goto(`${base}/games/${game.game_id}#players`)
-    await page.getByRole('link', { name: `${fixtureAthlete.displayName} — player profile`, exact: true }).click()
+    await page.goto(`${base}/games/${profileGame.game_id}#players`)
+    await page.getByRole('region', { name: 'Players in this matchup', exact: true }).getByRole('link', { name: `${fixtureAthlete.displayName} — player profile`, exact: true }).click()
     let timer
     try {
       await Promise.race([olderReady, new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Older profile request was not held')), 15000) })])
@@ -131,24 +134,30 @@ async function delayedResponseRegression() {
     // Navigate through the persistent app link while the older response is held.
     await page.locator('nav a[href="/games"]:visible').click()
     await page.locator('[data-ready="true"]').waitFor()
-    await page.getByRole('combobox', { name: 'Select week', exact: true }).selectOption(String(game.week))
-    await page.getByRole('combobox', { name: 'Filter by team', exact: true }).selectOption(game.away)
-    await page.locator(`[aria-label="Weekly slate"] a[href="/games/${game.game_id}"]`).click()
+    if (capturedForecast) {
+      await page.getByRole('combobox', { name: 'Select week', exact: true }).selectOption(String(profileGame.week))
+      await page.getByRole('combobox', { name: 'Filter by team', exact: true }).selectOption(profileGame.away)
+      await page.locator(`[aria-label="Weekly slate"] a[href="/games/${profileGame.game_id}"]`).click()
+    } else {
+      await page.getByRole('combobox', { name: 'Season or results archive', exact: true }).selectOption(String(profileGame.season))
+      await page.waitForURL(`**/seasons/${profileGame.season}/games`)
+      await page.locator(`a[href="/games/${profileGame.game_id}"]`).click()
+    }
     await page.getByRole('region', { name: 'Players in this matchup', exact: true }).getByRole('link', {
-      name: `${injury.athlete.displayName} — player profile`, exact: true,
+      name: `${newerAthlete.displayName} — player profile`, exact: true,
     }).click()
-    const newerUrl = `${base}/players/espn/${injury.athlete.id}?game=${game.game_id}`
+    const newerUrl = `${base}/players/espn/${newerAthlete.id}?game=${profileGame.game_id}`
     await page.waitForURL(newerUrl)
-    await waitProfile(page, injury.athlete.displayName)
+    await waitProfile(page, newerAthlete.displayName)
     releaseOlder()
     await Promise.all(pending)
     await page.waitForTimeout(500)
     assert.equal(page.url(), newerUrl)
-    assert.equal(await page.getByRole('heading', { level: 1 }).textContent(), injury.athlete.displayName)
+    assert.equal(await page.getByRole('heading', { level: 1 }).textContent(), newerAthlete.displayName)
     assert.ok(!(await page.locator('#main').innerText()).includes(fixtureAthlete.displayName))
-    assert.match(await page.getByRole('region', { name: 'Reported availability', exact: true }).innerText(), new RegExp(injury.status))
+    assert.match(await page.getByRole('region', { name: 'Game statistics', exact: true }).innerText(), /21\/35, 166 YDS/)
     await visual(page, 390, 'profile-newer-navigation')
-    delayedNavigation = { olderIdentity: fixtureAthlete.id, newerIdentity: injury.athlete.id,
+    delayedNavigation = { olderIdentity: fixtureAthlete.id, newerIdentity: newerAthlete.id,
       olderResponseHeld: true, olderReleasedAfterNewerProfile: true, deliveries, newerUrl, newerIdentityStable: true }
   } finally {
     releaseOlder()
@@ -176,8 +185,8 @@ try {
     const players = page.getByRole('region', { name: 'Players in this matchup', exact: true })
     const links = players.getByRole('link', { name: /— player profile$/ })
     const populated = await links.count() > 0
+    if (controlled && capturedForecast) assert.equal(populated, true)
     let profilePopulated = false
-    if (controlled) assert.equal(populated, true, 'Captured-response fixture must produce a real ID profile')
     let profileUrl = `${base}/players/espn/${fixtureAthlete.id}?game=${game.game_id}`
     if (populated) {
       const link = links.first()
@@ -221,7 +230,7 @@ try {
   await page.getByRole('region', { name: 'Players in this matchup', exact: true }).waitFor()
   const teamMatchUrl = page.url()
   const teamPlayers = page.getByRole('region', { name: 'Players in this matchup', exact: true }).getByRole('link', { name: /— player profile$/ })
-  if (controlled) assert.ok(await teamPlayers.count() > 0)
+  if (controlled && capturedForecast) assert.ok(await teamPlayers.count() > 0)
   const teamPlayerOpened = await teamPlayers.count() > 0
   let teamProfilePopulated = false
   if (teamPlayerOpened) {
@@ -242,34 +251,42 @@ try {
 
   const direct = await context(390)
   const directPage = await direct.newPage()
-  await directPage.goto(`${base}/players/espn/${fixtureAthlete.id}?game=${game.game_id}`)
-  assert.equal(await directPage.getByRole('link', { name: `${game.away} at ${game.home} players`, exact: true }).first().getAttribute('href'), `/games/${game.game_id}#players`)
+  await directPage.goto(`${base}/players/espn/${fixtureAthlete.id}?game=${profileGame.game_id}`)
+  assert.equal(await directPage.getByRole('link', { name: `${profileGame.away} at ${profileGame.home} players`, exact: true }).first().getAttribute('href'), `/games/${profileGame.game_id}#players`)
+  if (controlled) await waitProfile(directPage, fixtureAthlete.displayName)
   await directPage.goto(`${base}/players/espn/${fixtureAthlete.id}`)
   await directPage.getByRole('heading', { name: 'Player profile unavailable', exact: true }).waitFor()
   await visual(directPage, 390, 'profile-no-context')
-  await directPage.goto(`${base}/players/espn/999999999?game=${game.game_id}`)
+  await directPage.goto(`${base}/players/espn/999999999?game=${profileGame.game_id}`)
   await directPage.getByRole('heading', { name: 'Player profile unavailable', exact: true }).waitFor()
   if (controlled) assert.match(await directPage.locator('#main').innerText(), /not in the selected leaders/)
   await directPage.goto(`${base}/players/espn/${fixtureAthlete.id}?game=999999999`)
   await directPage.getByRole('heading', { name: 'Player profile unavailable', exact: true }).waitFor()
-  await directPage.goto(`${base}/players/espn/name-slug?game=${game.game_id}`)
+  await directPage.goto(`${base}/players/espn/name-slug?game=${profileGame.game_id}`)
   await directPage.getByRole('heading', { name: 'No such page', exact: true }).waitFor()
-  await directPage.goto(`${base}/players/other/${fixtureAthlete.id}?game=${game.game_id}`)
+  await directPage.goto(`${base}/players/other/${fixtureAthlete.id}?game=${profileGame.game_id}`)
   await directPage.getByRole('heading', { name: 'No such page', exact: true }).waitFor()
   if (controlled) {
     await archiveRegression()
     await delayedResponseRegression()
     const injury = fixture.injuries[0].injuries[0]
-    await directPage.goto(`${base}/players/espn/${injury.athlete.id}?game=${game.game_id}`)
-    await directPage.getByRole('heading', { name: injury.athlete.displayName, level: 1, exact: true }).waitFor()
-    const availability = await directPage.getByRole('region', { name: 'Reported availability', exact: true }).innerText()
-    assert.ok(availability.includes(injury.status))
-    const reportDate = new Date(injury.date).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'UTC' }) + ' UTC'
-    assert.ok(availability.includes(reportDate))
-    assert.match(await directPage.getByRole('region', { name: 'Game statistics', exact: true }).innerText(), /No leader statistics/)
-    await visual(directPage, 390, 'profile-injury')
-    await directPage.goto(`${base}/players/espn/${fixtureAthlete.id}?game=${otherGame.game_id}`, { waitUntil: process.env.PLAYER_AUDIT_SLOW_EVENT ? 'commit' : 'load' })
-    if (process.env.PLAYER_AUDIT_SLOW_EVENT) {
+    await directPage.goto(`${base}/players/espn/${injury.athlete.id}?game=${profileGame.game_id}`)
+    if (capturedForecast) {
+      await directPage.getByRole('heading', { name: injury.athlete.displayName, level: 1, exact: true }).waitFor()
+      const availability = await directPage.getByRole('region', { name: 'Reported availability', exact: true }).innerText()
+      assert.ok(availability.includes(injury.status))
+      const reportDate = new Date(injury.date).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'UTC' }) + ' UTC'
+      assert.ok(availability.includes(reportDate))
+      assert.match(await directPage.getByRole('region', { name: 'Game statistics', exact: true }).innerText(), /No leader statistics/)
+      await visual(directPage, 390, 'profile-injury')
+    } else {
+      await directPage.getByRole('heading', { name: 'Player profile unavailable', exact: true }).waitFor()
+      assert.match(await directPage.locator('#main').innerText(), /not in the selected leaders/)
+      await visual(directPage, 390, 'profile-archive-injury-withheld')
+    }
+    const slowOutage = process.env.PLAYER_AUDIT_SLOW_EVENT === otherGame.game_id
+    await directPage.goto(`${base}/players/espn/${fixtureAthlete.id}?game=${otherGame.game_id}`, { waitUntil: slowOutage ? 'commit' : 'load' })
+    if (slowOutage) {
       await directPage.getByRole('status', { name: 'Loading player profile', exact: true }).waitFor()
       loadingObserved = true
       await directPage.screenshot({ path: path.join(output, 'profile-loading-390.png') })
@@ -283,10 +300,10 @@ try {
   assert.deepEqual(portraitRequests, [], 'No unverified athlete image is requested')
   const result = { passed: true, checked_at: new Date().toISOString(), browser: browser.version(),
     source_mode: controlled ? 'Captured ESPN subset for one event plus explicitly synthetic OAK archive QA; other ESPN server requests return controlled 503' : 'Application responses; populated coverage is conditional',
-    fixture_event: game.game_id, forecast_generated_at: forecast.generated_at, summary_as_of: controlled ? fixture.meta.lastUpdatedAt : 'read from actual responses',
+    fixture_event: fixture.header.id, forecast_test_event: game.game_id, fixtureContext: capturedForecast ? 'forecast' : 'archive', forecast_generated_at: forecast.generated_at, summary_as_of: controlled ? fixture.meta.lastUpdatedAt : 'read from actual responses',
     portrait_policy: 'No permitted athlete assets; initials/number fallback; no portrait requests', portraitRequests, loadingObserved, checks, journeys, teamJourney, archiveChecks, delayedNavigation, errors,
     flows: ['keyboard filtered slate→game→player→Back→filtered slate', 'team→game→player→Back→team', 'fresh-tab canonical matchup parent',
-      'no context/unknown player/unknown event unavailable states', 'invalid provider and name-slug recovery', ...(controlled ? ['archived date-only profile and stable-ID OAK/LV context', 'older profile response cannot overwrite newer navigation', 'injury-only profile with separate report date and absent statistics', 'source outage recovery'] : [])] }
+      'no context/unknown player/unknown event unavailable states', 'invalid provider and name-slug recovery', ...(controlled ? ['archived date-only profile and stable-ID OAK/LV context', 'older profile response cannot overwrite newer navigation', capturedForecast ? 'injury-only profile with separate report date and absent statistics' : 'archived injury-only player withheld', 'source outage recovery'] : [])] }
   await fs.writeFile(path.join(output, 'results.json'), JSON.stringify(result, null, 2) + '\n')
 } catch (error) {
   await fs.writeFile(path.join(output, 'results.json'), JSON.stringify({ passed: false, checked_at: new Date().toISOString(), error: String(error), errors, checks, journeys }, null, 2) + '\n')

@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-07T12:14:26.253Z",
+  "browser": "151.0.7922.173",
+  "source_mode": "Captured ESPN subset for one event plus explicitly synthetic OAK archive QA; other ESPN server requests return controlled 503",
+  "fixture_event": "401872966",
+  "forecast_test_event": "401872980",
+  "fixtureContext": "archive",
+  "forecast_generated_at": "2026-10-06T17:05:01+00:00",
+  "summary_as_of": "2026-10-04T20:11:04Z",
+  "portrait_policy": "No permitted athlete assets; initials/number fallback; no portrait requests",
+  "portraitRequests": [],
+  "loadingObserved": false,
+  "checks": [
+    {
+      "name": "players-unavailable",
+      "width": 320,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "name": "players-unavailable",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "name": "players-unavailable",
+      "width": 768,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "name": "players-unavailable",
+      "width": 1440,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "name": "profile-no-context",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "name": "profile-archive",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "name": "profile-archive",
+      "width": 1440,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "name": "profile-newer-navigation",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "name": "profile-archive-injury-withheld",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "name": "profile-source-outage",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    }
+  ],
+  "journeys": [
+    {
+      "width": 320,
+      "filteredUrl": "http://127.0.0.1:3034/games?week=5&team=TB&following=1",
+      "profileUrl": "http://127.0.0.1:3034/players/espn/2969939?game=401872980",
+      "populated": false,
+      "profilePopulated": false,
+      "keyboard": true,
+      "filtersAndFixturesRestored": true
+    },
+    {
+      "width": 390,
+      "filteredUrl": "http://127.0.0.1:3034/games?week=5&team=TB&following=1",
+      "profileUrl": "http://127.0.0.1:3034/players/espn/2969939?game=401872980",
+      "populated": false,
+      "profilePopulated": false,
+      "keyboard": true,
+      "filtersAndFixturesRestored": true
+    },
+    {
+      "width": 768,
+      "filteredUrl": "http://127.0.0.1:3034/games?week=5&team=TB&following=1",
+      "profileUrl": "http://127.0.0.1:3034/players/espn/2969939?game=401872980",
+      "populated": false,
+      "profilePopulated": false,
+      "keyboard": true,
+      "filtersAndFixturesRestored": true
+    },
+    {
+      "width": 1440,
+      "filteredUrl": "http://127.0.0.1:3034/games?week=5&team=TB&following=1",
+      "profileUrl": "http://127.0.0.1:3034/players/espn/2969939?game=401872980",
+      "populated": false,
+      "profilePopulated": false,
+      "keyboard": true,
+      "filtersAndFixturesRestored": true
+    }
+  ],
+  "teamJourney": {
+    "team": "DAL",
+    "teamMatchUrl": "http://127.0.0.1:3034/games/401872980#players",
+    "teamPlayerOpened": false,
+    "teamProfilePopulated": false,
+    "returnedToTeam": true
+  },
+  "archiveChecks": [
+    {
+      "width": 390,
+      "game": "401030706",
+      "publishedDate": "2018-10-14",
+      "matchup": "SEEN IN THIS MATCHUP\nSEA at LV →\n\n2018 · Week 6 · Oct 14, 2018 · Kickoff time unavailable\n\nSelected game-summary fields, not a full season or career record.",
+      "sourceMode": "Synthetic OAK response with ESPN franchise ID 13; actual historical response not inspected",
+      "canonicalTeam": "LV",
+      "kickoffUnavailable": true,
+      "currentReportsOmitted": true,
+      "returnedToArchive": true
+    },
+    {
+      "width": 1440,
+      "game": "401030706",
+      "publishedDate": "2018-10-14",
+      "matchup": "SEEN IN THIS MATCHUP\nSEA at LV →\n\n2018 · Week 6 · Oct 14, 2018 · Kickoff time unavailable\n\nSelected game-summary fields, not a full season or career record.",
+      "sourceMode": "Synthetic OAK response with ESPN franchise ID 13; actual historical response not inspected",
+      "canonicalTeam": "LV",
+      "kickoffUnavailable": true,
+      "currentReportsOmitted": true,
+      "returnedToArchive": true
+    }
+  ],
+  "delayedNavigation": {
+    "olderIdentity": "2969939",
+    "newerIdentity": "2578570",
+    "olderResponseHeld": true,
+    "olderReleasedAfterNewerProfile": true,
+    "deliveries": [
+      "released after newer profile"
+    ],
+    "newerUrl": "http://127.0.0.1:3034/players/espn/2578570?game=401872966",
+    "newerIdentityStable": true
+  },
+  "errors": [],
+  "flows": [
+    "keyboard filtered slate→game→player→Back→filtered slate",
+    "team→game→player→Back→team",
+    "fresh-tab canonical matchup parent",
+    "no context/unknown player/unknown event unavailable states",
+    "invalid provider and name-slug recovery",
+    "archived date-only profile and stable-ID OAK/LV context",
+    "older profile response cannot overwrite newer navigation",
+    "archived injury-only player withheld",
+    "source outage recovery"
+  ]
+}
