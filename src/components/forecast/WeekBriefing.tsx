@@ -22,7 +22,7 @@ export function WeekBriefing({ games, stakes: publishedStakes, asOf }: { games: 
     ...(stakes?[{label:'January on the line',game:stakes.game,value:`${stakes.value!.toFixed(1)} pp`,note:'Largest playoff-chance difference between home-win and away-win scenarios for either team.'}]:[]),
   ]
   return <section aria-label="Week briefing" className="space-y-4">
-    <div className="flex flex-wrap items-baseline justify-between gap-2"><div><p className="eyebrow">Your week {week} briefing</p><h2 className="mt-2 text-2xl font-semibold">Find your game.</h2></div><Link href="/lab" className="text-sm text-[var(--accent-info)]">Explore every matchup ↗</Link></div>
+    <div className="flex flex-wrap items-baseline justify-between gap-2"><div><p className="eyebrow">Your week {week} briefing</p><h2 className="mt-2 text-2xl font-semibold">Find your game.</h2></div><Link href="/lab" className="font-mono text-sm text-[var(--accent-info)]">Explore every matchup ↗</Link></div>
     <div className="grid gap-3 lg:grid-cols-3">{picks.map((pick,index)=><Link key={pick.label} href={`/lab?game=${pick.game.game_id}`} className="briefing-card card group flex flex-col p-4 sm:p-5">
       <div className="flex items-center justify-between gap-2"><p className="eyebrow">{pick.label}</p><span className="numeric text-xs text-[var(--text-tertiary)]">0{index+1} ↗</span></div>
       <div className="mt-6 flex items-center gap-2"><TeamLogo abbreviation={pick.game.away} name={pick.game.away_name} size={30}/><span className="text-lg font-semibold">{pick.game.away}</span><span className="text-xs text-[var(--text-tertiary)]">at</span><span className="text-lg font-semibold">{pick.game.home}</span><TeamLogo abbreviation={pick.game.home} name={pick.game.home_name} size={30}/></div>

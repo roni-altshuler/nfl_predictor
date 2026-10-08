@@ -1,0 +1,444 @@
+[
+  {
+    "suite": "paths",
+    "passed": true,
+    "loadingObserved": true,
+    "errors": [],
+    "checks": [
+      {
+        "name": "paths-game",
+        "width": 320,
+        "overflow": false,
+        "axe": [],
+        "reducedMotion": true,
+        "enterDuration": "1e-05s",
+        "overlay": false
+      },
+      {
+        "name": "paths-record",
+        "width": 320,
+        "overflow": false,
+        "axe": [],
+        "reducedMotion": true,
+        "enterDuration": "1e-05s",
+        "overlay": false
+      },
+      {
+        "name": "paths-lab",
+        "width": 320,
+        "overflow": false,
+        "axe": [],
+        "reducedMotion": true,
+        "enterDuration": "1e-05s",
+        "overlay": false
+      },
+      {
+        "name": "paths-game",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "reducedMotion": true,
+        "enterDuration": "1e-05s",
+        "overlay": false
+      },
+      {
+        "name": "paths-refresh-outage",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "reducedMotion": true,
+        "enterDuration": "1e-05s",
+        "overlay": false
+      },
+      {
+        "name": "paths-inconsistent-source",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "reducedMotion": true,
+        "enterDuration": "1e-05s",
+        "overlay": false
+      },
+      {
+        "name": "paths-lab",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "reducedMotion": true,
+        "enterDuration": "1e-05s",
+        "overlay": false
+      },
+      {
+        "name": "paths-archive-empty",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "reducedMotion": true,
+        "enterDuration": "1e-05s",
+        "overlay": false
+      },
+      {
+        "name": "paths-game",
+        "width": 768,
+        "overflow": false,
+        "axe": [],
+        "reducedMotion": true,
+        "enterDuration": "1e-05s",
+        "overlay": false
+      },
+      {
+        "name": "paths-lab",
+        "width": 768,
+        "overflow": false,
+        "axe": [],
+        "reducedMotion": true,
+        "enterDuration": "1e-05s",
+        "overlay": false
+      },
+      {
+        "name": "paths-game",
+        "width": 1440,
+        "overflow": false,
+        "axe": [],
+        "reducedMotion": true,
+        "enterDuration": "1e-05s",
+        "overlay": false
+      },
+      {
+        "name": "paths-lab",
+        "width": 1440,
+        "overflow": false,
+        "axe": [],
+        "reducedMotion": true,
+        "enterDuration": "1e-05s",
+        "overlay": false
+      }
+    ]
+  },
+  {
+    "suite": "comparison",
+    "passed": true,
+    "loadingObserved": true,
+    "errors": [],
+    "checks": [
+      {
+        "name": "comparison-source-outage",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      },
+      {
+        "name": "comparison-receiving",
+        "width": 320,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      },
+      {
+        "name": "comparison-receiving",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      },
+      {
+        "name": "comparison-receiving",
+        "width": 768,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      },
+      {
+        "name": "comparison-receiving",
+        "width": 1440,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      },
+      {
+        "name": "comparison-ambiguous",
+        "width": 320,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      },
+      {
+        "name": "comparison-ambiguous-unnamed",
+        "width": 320,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      },
+      {
+        "name": "comparison-ambiguous",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      },
+      {
+        "name": "comparison-ambiguous-unnamed",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      },
+      {
+        "name": "comparison-ambiguous",
+        "width": 768,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      },
+      {
+        "name": "comparison-ambiguous-unnamed",
+        "width": 768,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      },
+      {
+        "name": "comparison-ambiguous",
+        "width": 1440,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      },
+      {
+        "name": "comparison-ambiguous-unnamed",
+        "width": 1440,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      },
+      {
+        "name": "comparison-unknown-category",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      },
+      {
+        "name": "comparison-unknown-fields",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      },
+      {
+        "name": "comparison-empty",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false,
+        "reducedMotion": true,
+        "enterDuration": "1e-05s"
+      }
+    ]
+  },
+  {
+    "suite": "lab",
+    "passed": true,
+    "loadingObserved": null,
+    "errors": [],
+    "checks": [
+      {
+        "width": 320,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      }
+    ]
+  },
+  {
+    "suite": "week",
+    "passed": true,
+    "loadingObserved": null,
+    "errors": [],
+    "checks": [
+      {
+        "page": "week",
+        "width": 320,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "page": "game",
+        "width": 320,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "page": "week",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "page": "game",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "page": "week",
+        "width": 768,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "page": "game",
+        "width": 768,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "page": "week",
+        "width": 1440,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "page": "game",
+        "width": 1440,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      }
+    ]
+  },
+  {
+    "suite": "players",
+    "passed": true,
+    "loadingObserved": false,
+    "errors": [],
+    "checks": [
+      {
+        "name": "players-unavailable",
+        "width": 320,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "name": "players-unavailable",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "name": "players-unavailable",
+        "width": 768,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "name": "players-unavailable",
+        "width": 1440,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "name": "profile-no-context",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "name": "profile-archive",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "name": "profile-archive",
+        "width": 1440,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "name": "profile-newer-navigation",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "name": "profile-archive-injury-withheld",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      },
+      {
+        "name": "profile-source-outage",
+        "width": 390,
+        "overflow": false,
+        "axe": [],
+        "overlay": false
+      }
+    ]
+  }
+]

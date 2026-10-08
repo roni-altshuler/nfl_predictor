@@ -52,6 +52,13 @@ separate from historical evaluation. No model, scouting grade or accuracy
 improvement is claimed. The October 8 evidence check finds **64** settled,
 first-published forecasts, all at least seven days before kickoff.
 
+[Cross-page appearance and preference QA](docs/THEME_JOURNEY_2026-10.md)
+checks the homepage, schedule, matchups, Close-game paths, Forecast Lab and
+profiles under light/dark system preferences. NFL intentionally retains its
+dark green Chalkboard identity and cream logo plates. Board-animation choices
+persist across reload and navigation; controls remain neutral while hydration
+reads that choice. The app manifest now matches the page's green canvas.
+
 ## What it does
 
 1. **Game prediction** — win probability, expected margin and total for every fixture.

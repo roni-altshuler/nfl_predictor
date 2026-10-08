@@ -1,0 +1,19 @@
+{
+  "verified_at": "2026-10-08T08:47:01.781Z",
+  "base_sha": "5fca9984aca3a5c2eb210eb08c6e299a145ffda7",
+  "browser": "Chromium 151.0.7922.173",
+  "playwright": "1.60.0",
+  "clock": "current",
+  "theme_checks": 112,
+  "pre_hydration_cases": 5,
+  "node_contract_tests": 23,
+  "week_contracts": "passed",
+  "backend_tests": 116,
+  "lint": "passed without warnings",
+  "types": "passed",
+  "build": "306/306 static pages",
+  "actual_browser_suites": 6,
+  "provider_capture": "existing October 4 fixture; controlled delayed/outage cases",
+  "model_data_security_changes": false,
+  "hosted_preview_browser_verified": false
+}

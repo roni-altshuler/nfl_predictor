@@ -1,0 +1,28 @@
+{
+  "base_sha": "5fca9984aca3a5c2eb210eb08c6e299a145ffda7",
+  "checks": 52,
+  "widths": [
+    390,
+    1440
+  ],
+  "systemPreferences": [
+    "light",
+    "dark"
+  ],
+  "errors": [],
+  "hydrationErrors": [],
+  "palette": {
+    "--background": "#0b120e",
+    "--card-bg": "rgba(13,22,17,0.8)",
+    "--text-primary": "#f4f7f2",
+    "--text-secondary": "#ccd6cc",
+    "--text-tertiary": "#91a094",
+    "--accent-primary": "#5fa657",
+    "--accent-info": "#c3d9f3",
+    "--logo-plate": "#f4efe6",
+    "--font-sans": "Arial,Helvetica,sans-serif",
+    "--font-mono-numeric": "\"SFMono-Regular\",Consolas,\"Liberation Mono\",monospace"
+  },
+  "allBackgroundsGreen": true,
+  "allTestedContrastChecksPassed": true
+}

@@ -35,10 +35,9 @@ function readAmbient(): Ambient {
 }
 
 export function AmbientToggle({ className }: { className?: string }) {
-  // Render the default first and correct it after mount: the server has no
-  // idea what this device chose, and a wrong initial `aria-pressed` for one
-  // frame is cheaper than a hydration mismatch.
-  const [value, setValue] = useState<Ambient>('soft')
+  // The server cannot read a device preference. Keep controls pending until
+  // the pre-paint attribute is read, rather than announce an incorrect choice.
+  const [value, setValue] = useState<Ambient | null>(null)
 
   useEffect(() => {
     setValue(readAmbient())
@@ -62,6 +61,7 @@ export function AmbientToggle({ className }: { className?: string }) {
     <div
       role="group"
       aria-label="Chalkboard animation"
+      aria-busy={value === null}
       className={cn('flex items-center gap-1', className)}
     >
       <span className="mr-1 hidden font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--text-tertiary)] sm:inline">
@@ -75,6 +75,7 @@ export function AmbientToggle({ className }: { className?: string }) {
               key={option}
               type="button"
               aria-pressed={pressed}
+              disabled={value === null}
               onClick={() => choose(option)}
               className={cn(
                 // 44px tap targets below md (the header), a quieter 28px in

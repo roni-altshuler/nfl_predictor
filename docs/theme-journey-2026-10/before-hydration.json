@@ -1,0 +1,18 @@
+{
+  "ambient": "off",
+  "stored": "off",
+  "metaTheme": "#0b120e",
+  "pressed": [
+    "soft",
+    "soft"
+  ],
+  "busy": [
+    null,
+    null
+  ],
+  "bodyBackground": "rgb(11, 18, 14)",
+  "manifest": {
+    "theme": "#a05c22",
+    "background": "#000000"
+  }
+}

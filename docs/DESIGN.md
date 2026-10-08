@@ -36,8 +36,8 @@ Four accents, and anything that is not one of them is grey or a hairline:
 | token | hex | meaning |
 |---|---|---|
 | `--accent-primary` | `#5fa657` | positive / favoured / model |
-| `--accent-warn` | `#d4a017` | uncertainty / backtest / caution |
-| `--accent-loss` | `#c1443c` | negative / eliminated / live |
+| `--accent-warn` | `#e8c34a` | uncertainty / backtest / caution |
+| `--accent-loss` | `#c8544c` | negative / eliminated / live |
 | `--accent-info` | `#c3d9f3` | links, market, informational |
 
 Chart tokens are **validated, not chosen** — see the long comment block in
@@ -51,9 +51,11 @@ Absent data renders as absent (`—`), never as zero.
 
 ## 3. Type
 
-- Display (`h1`–`h3`): Inter, uppercase, **positive** tracking `0.08em`,
+- Display (`h1`–`h3`): `--font-display` with the shared sans fallback
+  (currently Arial/Helvetica), uppercase, **positive** tracking `0.08em`,
   white. The restraint elsewhere reads as deliberate because this is loud.
-- Every number: JetBrains Mono with `tabular-nums` (`.numeric`), so columns
+- Every number: `--font-mono-numeric` (SFMono/Consolas/Liberation Mono)
+  with `tabular-nums` (`.numeric`), so columns
   do not jitter as digits change.
 - Nav, buttons, captions, table headers: mono, `0.04em` tracking.
 - `.eyebrow`: mono, uppercase, `0.14em`, 11px, tertiary — the universal
@@ -336,3 +338,22 @@ source coverage shows an explicit unavailable state. Forecast publication,
 results cutoff and model version accompany the summary; its evidence link
 opens the existing first-published record. The linked historical score table
 has a named, focusable scroll region on small screens.
+
+## Cross-page appearance and preferences (2026-10-08)
+
+The homepage and inner routes share the same root palette, body gradients,
+typography, shell and card surfaces. NFL remains intentionally dark-only under
+either system color preference; there is no light-theme setting to reset.
+Cream `--logo-plate` surfaces and the leather football mark remain intentional.
+Static manifest background/theme colors match the `--background` token and
+the viewport theme metadata (`#0b120e`).
+
+The root's pre-paint script applies the saved board animation setting before
+client bundles execute. The server cannot read local storage, so the animation
+dial renders neutral, disabled choices with an `aria-busy` group until hydration
+reads that attribute. It then enables and selects the actual choice. Rendering
+`soft` as selected before that read incorrectly described a saved `off` or
+`vivid` setting; a neutral pending dial keeps preference feedback truthful
+without changing the board's first-paint appearance or introducing a theme
+provider. The full desktop/mobile journey checks both system preferences,
+reload, Back/Forward, empty/source-error states and the existing route skeletons.

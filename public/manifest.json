@@ -4,8 +4,8 @@
   "description": "Calibrated NFL game and season forecasting, scored against the closing line.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#a05c22",
+  "background_color": "#0b120e",
+  "theme_color": "#0b120e",
   "orientation": "portrait-primary",
   "icons": [
     { "src": "/icons/icon-72x72.png",   "sizes": "72x72",   "type": "image/png", "purpose": "maskable any" },
