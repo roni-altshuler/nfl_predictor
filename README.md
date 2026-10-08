@@ -18,7 +18,7 @@ filters to matchup detail and preserves them on return. Both views display
 publication and results-cutoff timestamps; team abbreviations remain visible
 while remote marks load or if the CDN fails. The app's Games/Schedule link resets
 the slate to its default filters; browser Back/Forward restores each URL's filters.
-The October 7 cloud review reads the committed **2026-10-06T17:05:01Z**
+The October 8 cloud review reads the committed **2026-10-07T17:43:07Z**
 publication (results through **2026-10-06T00:15:00Z**). Its 208 fixtures
 include retained pre-game snapshots; the published slate is not a live schedule.
 
@@ -40,6 +40,17 @@ positions stay separate from forecast probabilities; missing or ambiguous
 identity/statistics remain unknown, and statistic period is unverified.
 This cloud review reuses the recorded
 October 4 summary for browser QA and makes no new source-freshness claim.
+
+[Close-game paths](docs/PREDICTION_PATHS_2026-10.md) adds narrow/wider win
+probabilities to published matchup pages and Forecast Lab. The 1–3, 1–7 and
+1–8 point controls sum stored margin cells; wider wins use the remainder of
+each team's published win chance, with ties separate. Share links preserve the
+selected margin band. Unsupported or inconsistent distributions are withheld;
+archived matchups without a retained forecast show explicit missing coverage.
+The view links directly to the existing forward-published record, which remains
+separate from historical evaluation. No model, scouting grade or accuracy
+improvement is claimed. The October 8 evidence check finds **64** settled,
+first-published forecasts, all at least seven days before kickoff.
 
 ## What it does
 

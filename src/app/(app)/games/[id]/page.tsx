@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 
 import { MarginDistribution } from '@/components/charts/MarginDistribution'
 import { SpreadSlider } from '@/components/forecast/SpreadSlider'
+import { CloseGamePaths } from '@/components/forecast/CloseGamePaths'
 import { LiveBadge } from '@/components/live/LiveBadge'
 import { BackButton } from '@/components/primitives/BackButton'
 import { TeamLogo } from '@/components/primitives/TeamLogo'
@@ -163,6 +164,8 @@ function UpcomingGame({
 
       {/* The distinctive surface. Every sibling project shows a win
           probability; this is the one that shows football's lattice. */}
+      <CloseGamePaths game={game} snapshot={forecasts} />
+
       {game.margin_distribution ? (
         <section id="distribution" className="card scroll-mt-20 p-4" aria-label="Margin distribution">
           <h2 className="eyebrow mb-1">How it is likely to finish</h2>
@@ -344,7 +347,7 @@ function PlayedGame({
           {game.date}
           {tie ? ' · finished level' : ''}
         </p>
-        <div className="mt-4"><GameSectionNav sections={['comparison', 'players', 'context']} /></div>
+        <div className="mt-4"><GameSectionNav sections={['paths', 'comparison', 'players', 'context']} /></div>
       </header>
 
       {tie ? (
@@ -425,6 +428,8 @@ function PlayedGame({
           </p>
         </section>
       )}
+
+      <CloseGamePaths game={null} snapshot={null} />
 
       <GameLeaderComparison detail={detail} gameId={game.game_id} home={game.home} away={game.away} date={game.date} datePrecision="day" />
 

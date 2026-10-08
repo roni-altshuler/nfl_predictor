@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-10-08T06:07:00.309Z",
+  "checks": [
+    {
+      "width": 320,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    },
+    {
+      "width": 1440,
+      "overflow": false,
+      "axe": [],
+      "overlay": false
+    }
+  ],
+  "home": {
+    "overflow": false,
+    "axe": []
+  },
+  "errors": [],
+  "clock": "current",
+  "game_id": "401872980",
+  "passed": true
+}

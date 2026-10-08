@@ -97,7 +97,7 @@ export default function AccuracyPage() {
         </p>
       ) : null}
 
-      {forecastLog ? <section className="card p-4" aria-label="Published forecast record">
+      {forecastLog ? <section id="published-record" className="card scroll-mt-20 p-4" aria-label="Published forecast record">
         <h2 className="eyebrow">Published forecast record · {forecastLog.season}</h2>
         <dl className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
           <div><dt className="eyebrow">Decided games</dt><dd className="numeric mt-1 text-xl">{forecastLog.n}</dd></div>
@@ -118,7 +118,7 @@ export default function AccuracyPage() {
         <h2 className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
           Scored on decided games
         </h2>
-        <div className="overflow-x-auto rounded-[var(--radius)] border border-[var(--border-color)] bg-[var(--card-bg)]">
+        <div role="region" aria-label="Historical forecast scorecards" tabIndex={0} className="overflow-x-auto rounded-[var(--radius)] border border-[var(--border-color)] bg-[var(--card-bg)]">
           <table className="w-full min-w-[560px] border-collapse">
             <thead>
               <tr className="border-b border-[var(--border-color)] text-left">

@@ -1,0 +1,17 @@
+Historical artifact generated: 2026-10-06T18:44:59+00:00
+Price timing: historical retained prices; closing timestamps unverified
+Protocol: weekly, expanding window; season, season_type, week
+
+| Forecaster | n | Brier | Log loss | Accuracy | ECE |
+|---|---:|---:|---:|---:|---:|
+| market | 3871 | 0.21198 | 0.61155 | 0.66314 | 0.01215 |
+| elo_only | 5748 | 0.21989 | 0.62929 | 0.64405 | 0.01276 |
+| margin_model | 5748 | 0.22001 | 0.62940 | 0.64040 | 0.02067 |
+| constant_base_rate | 5748 | 0.24667 | 0.68647 | 0.55950 | 0.01369 |
+
+Live artifact generated: 2026-10-07T17:43:19+00:00
+Verified settled rows: 64
+Recomputed live Brier: 0.23030
+Recomputed live accuracy: 0.62500
+Horizon counts from kickoff/publication timestamps: {"1_to_7_days": 0, "7_days_or_more": 64, "under_24h": 0}
+Historical metrics were not rerun. Live metrics verify the stored probabilities and results, not an independent outcome source.

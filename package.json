@@ -9,8 +9,9 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "icons": "node scripts/generate-icons.mjs",
-    "test": "node scripts/forecast-lab.test.cjs && node scripts/week-browser.test.cjs && node scripts/player-profiles.test.cjs",
-    "test:browser": "node scripts/leader_comparison_audit.mjs && node scripts/forecast_lab_audit.mjs && node scripts/week_browser_audit.mjs && node scripts/player_profiles_audit.mjs",
+    "test": "node scripts/forecast-lab.test.cjs && node scripts/prediction-paths.test.cjs && node scripts/week-browser.test.cjs && node scripts/player-profiles.test.cjs",
+    "test:browser": "node scripts/prediction_paths_audit.mjs && node scripts/leader_comparison_audit.mjs && node scripts/forecast_lab_audit.mjs && node scripts/week_browser_audit.mjs && node scripts/player_profiles_audit.mjs",
+    "test:paths-browser": "node scripts/prediction_paths_audit.mjs",
     "test:comparison-browser": "node scripts/leader_comparison_audit.mjs",
     "test:player-browser": "node scripts/player_profiles_audit.mjs",
     "test:week-browser": "node scripts/week_browser_audit.mjs"
