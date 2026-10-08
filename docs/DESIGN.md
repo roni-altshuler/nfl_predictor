@@ -318,3 +318,21 @@ The game section navigation opens the comparison with keyboard focus. Existing
 horizontal score/statistic/spread tables also have named focusable scroll regions.
 Empty, source-error and ambiguous/unknown states retain useful navigation and
 explicit missing-data copy.
+
+## Close-game paths (2026-10-08)
+
+Published matchup pages and the expanded Forecast Lab reuse the Chalkboard
+cards, direct numeric labels and away/home colors for narrow and wider wins.
+A native 44px select offers margins of 1–3, 1–7 and 1–8 points. Numeric labels
+carry every probability; the two small bars are decorative. Ties remain a
+separate outcome. Keyboard section navigation focuses the card, then the select.
+The `marginBand` query uses history replacement so adjustments add no Back
+steps, preserve other query parameters and require no provider/model request.
+
+Narrow wins sum published score-margin cells with their home/away orientation.
+Wider wins subtract those cells from the existing headline win probability.
+No tail shape or player contribution is inferred. Inconsistent or unsupported
+source coverage shows an explicit unavailable state. Forecast publication,
+results cutoff and model version accompany the summary; its evidence link
+opens the existing first-published record. The linked historical score table
+has a named, focusable scroll region on small screens.

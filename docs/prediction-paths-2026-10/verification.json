@@ -1,0 +1,26 @@
+{
+  "verified_at": "2026-10-08T06:08:12.698Z",
+  "base_sha": "76f8f792147c445c2b09685abe42ae73a61fc6a4",
+  "forecast_sha256": "0504b1f9d5e533ab7c3d7ce832e85fdb5707c0da61ffd830c63393ba52fd7ff8",
+  "environment": "saved cloud /workspace/nfl_predictor",
+  "browser": "Chromium 151.0.7922.173",
+  "playwright": "1.60.0",
+  "clock": "current",
+  "node_contract_tests": 23,
+  "week_contract_checks": "passed",
+  "backend_tests": 116,
+  "lint": "passed without warnings",
+  "typecheck": "passed",
+  "production_build": "306/306 static pages",
+  "browser_suites": [
+    "paths",
+    "comparison",
+    "lab",
+    "week",
+    "players"
+  ],
+  "controlled_espn_fixtures": true,
+  "provider_refresh": false,
+  "model_training": false,
+  "hosted_preview_browser_verified": false
+}

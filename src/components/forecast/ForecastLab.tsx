@@ -4,12 +4,14 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { MarginDistribution } from '@/components/charts/MarginDistribution'
 import { PlayoffImpact } from './PlayoffImpact'
+import { CloseGamePaths } from './CloseGamePaths'
 import { parseScenarios } from '@/lib/playoffScenarios'
 import { SpreadSlider } from './SpreadSlider'
 import { TeamLogo } from '@/components/primitives/TeamLogo'
 import { toggleTeam, useWatchlist } from '@/lib/watchlist'
 import { kickoff, pct, stamp } from '@/lib/format'
 import { parseForecast, validTeams, recordAfter, type LabData } from '@/lib/forecastLab'
+import { marginBand } from '@/lib/predictionPaths'
 
 export function ForecastLab({ initial, compact = false }: { initial: LabData; compact?: boolean }) {
   const [data, setData] = useState(initial)
@@ -85,6 +87,10 @@ export function ForecastLab({ initial, compact = false }: { initial: LabData; co
   async function share() {
     if (!game) return
     const url = new URL('/lab',window.location.origin); url.searchParams.set('game',game.game_id)
+    const requestedBand = new URL(window.location.href).searchParams.get('marginBand')
+    if (!compact && requestedBand !== null) {
+      url.searchParams.set('marginBand', String(marginBand(requestedBand).band)); url.hash = 'paths'
+    }
     try { await navigator.clipboard.writeText(url.toString()); setStatus('Game link copied.') }
     catch { setStatus(`Share this game: ${url.toString()}`) }
   }
@@ -124,6 +130,7 @@ export function ForecastLab({ initial, compact = false }: { initial: LabData; co
           <div className="flex flex-wrap gap-3 border-t border-[var(--border-color)] p-4"><Link className="lab-control" href={`/games/${game.game_id}`}>Game breakdown →</Link><button type="button" className="lab-control" onClick={share}>Share game</button>{compact?<Link className="lab-control" href={`/lab?game=${game.game_id}`}>Play it out ↗</Link>:null}</div>
         </article>
         {!compact ? <>
+          <CloseGamePaths game={game} snapshot={data.forecast} />
           <PlayoffImpact key={`${game.game_id}:${data.scenarios?.computed_at ?? ""}`} game={game} data={data.scenarios} />
           <details className="card p-4"><summary className="cursor-pointer text-sm">Try a simple record scenario</summary>
           <section className="card p-4 sm:p-5" aria-label="Record scenario"><h2 className="eyebrow">What if this game goes your way?</h2><p className="mt-2 text-sm text-[var(--text-secondary)]">Add one hypothetical result to the published standings.</p>
