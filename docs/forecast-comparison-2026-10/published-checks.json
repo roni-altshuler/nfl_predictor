@@ -1,0 +1,59 @@
+{
+  "checks": [
+    {
+      "width": 320,
+      "state": "published",
+      "game": "401872981",
+      "keyboardDisclosure": true,
+      "navigation": "matchup → evidence → Back → Forward → reload",
+      "overflow": false,
+      "palette": "rgb(11, 18, 14)",
+      "ambient": "off",
+      "axe": []
+    },
+    {
+      "width": 390,
+      "state": "published",
+      "game": "401872981",
+      "keyboardDisclosure": true,
+      "navigation": "matchup → evidence → Back → Forward → reload",
+      "overflow": false,
+      "palette": "rgb(11, 18, 14)",
+      "ambient": "off",
+      "axe": []
+    },
+    {
+      "width": 768,
+      "state": "published",
+      "game": "401872981",
+      "keyboardDisclosure": true,
+      "navigation": "matchup → evidence → Back → Forward → reload",
+      "overflow": false,
+      "palette": "rgb(11, 18, 14)",
+      "ambient": "off",
+      "axe": []
+    },
+    {
+      "width": 1440,
+      "state": "published",
+      "game": "401872981",
+      "keyboardDisclosure": true,
+      "navigation": "matchup → evidence → Back → Forward → reload",
+      "overflow": false,
+      "palette": "rgb(11, 18, 14)",
+      "ambient": "off",
+      "axe": []
+    }
+  ],
+  "errors": [],
+  "source": {
+    "first_generated_at": "2026-10-08T17:47:47+00:00",
+    "first_sha256": "7794c6f2179a72139e5b769d09b13b24b119357de08123c827e74becf5f84b2d",
+    "warehouse_sha256": "fa735d77ed0a1488ccbb7035fc8b882e91ea5ab0ffa194a6681dba75b2bce87f",
+    "warehouse_url": "https://github.com/roni-altshuler/nfl_predictor/releases/download/warehouse-latest/warehouse-37819104556-1.sqlite.gz",
+    "snapshots": 14084,
+    "snapshot_through": "2026-10-08T17:47:35+00:00",
+    "results_fetched_through": "2026-10-08T17:46:26+00:00",
+    "latest_result_kickoff": "2026-10-06T00:15:00+00:00"
+  }
+}

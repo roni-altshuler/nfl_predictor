@@ -1,0 +1,14 @@
+[
+  {
+    "case": "naive",
+    "exit_code": 1,
+    "output_exists": false,
+    "last_error": "ValueError: Timezone required"
+  },
+  {
+    "case": "malformed",
+    "exit_code": 1,
+    "output_exists": false,
+    "last_error": "ValueError: Invalid isoformat string: 'bad-retained-timestamp'"
+  }
+]

@@ -160,6 +160,33 @@ The report rejects duplicate games, post-kickoff forecasts, invalid
 probabilities, and inconsistent live headline/cohort counts. Stored results
 remain the outcome source; the report does not independently fetch outcomes.
 
+The separate [first-versus-latest comparison](backend/data/predictions/forecast_comparison.json)
+on `/accuracy#forecast-comparison` leaves that original first-publication record
+unchanged. Scored October 9 from the immutable October 8 warehouse backup, it
+contains **64 identical decided games**: first Brier **.23030**, latest Brier
+**.22862**. Latest forecasts cover **62 games under 24 hours** and **2 at 1–7
+days** before stored result kickoff; all 64 first publications were at least
+seven days ahead. Those two games lack a valid retained last-day forecast.
+These small descriptive cohorts establish no accuracy gain or model promotion.
+
+Selection uses timestamp instants strictly before the result warehouse's
+kickoff, including reschedules. Equal instants use a documented lexical model
+version tie-break, never an inferred version rank. Full-precision conditional
+probabilities are rescored against the same stored results; ties are counted
+and excluded. No new outcomes, forecasts or training are fetched. The existing
+daily pipeline will produce and independently audit this separate artifact
+after scoring the first record; no job was manually dispatched for this change.
+
+```bash
+# An existing restored warehouse is required; both inputs remain read-only.
+python -m backend.scripts.compare_forecasts --db /path/to/warehouse.sqlite
+python -m backend.scripts.verify_forecast_comparison --db /path/to/warehouse.sqlite
+# Without the warehouse, independently check the committed rows and cohorts.
+python -m backend.scripts.verify_forecast_comparison
+```
+
+See [selection rules, source hashes and browser evidence](docs/FORECAST_COMPARISON_2026-10.md).
+
 ## Setup
 
 ```bash

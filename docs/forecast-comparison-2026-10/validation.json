@@ -1,0 +1,54 @@
+{
+  "backend_tests": 139,
+  "comparison_cases": 23,
+  "node_tests": 23,
+  "week_contracts": "passed",
+  "lint": "zero warnings/errors",
+  "types": "passed",
+  "production_build_pages": 306,
+  "browser": {
+    "theme": {
+      "passed": true,
+      "checks": 112
+    },
+    "paths": {
+      "passed": true,
+      "checks": 12,
+      "loadingObserved": true
+    },
+    "leaders": {
+      "passed": true,
+      "checks": 16,
+      "loadingObserved": true
+    },
+    "lab": {
+      "passed": true,
+      "checks": 4
+    },
+    "week": {
+      "passed": true,
+      "checks": 8
+    },
+    "players": {
+      "passed": true,
+      "checks": 10,
+      "loadingObserved": false
+    }
+  },
+  "comparison_browser": {
+    "published": {
+      "checks": 4,
+      "errors": []
+    },
+    "missing": {
+      "checks": 4,
+      "errors": []
+    },
+    "empty": {
+      "checks": 4,
+      "errors": []
+    }
+  },
+  "first_log_unchanged_sha256": "7794c6f2179a72139e5b769d09b13b24b119357de08123c827e74becf5f84b2d",
+  "hosted_pixels_verified": false
+}
