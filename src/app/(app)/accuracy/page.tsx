@@ -1,10 +1,12 @@
 import { ResearchLedger } from '@/components/evidence/ResearchLedger'
+import { ForecastComparison } from '@/components/evidence/ForecastComparison'
 import { CalibrationChart } from '@/components/charts/CalibrationChart'
 import { PitHistogram } from '@/components/charts/PitHistogram'
 import { SeasonBrierChart } from '@/components/charts/SeasonBrierChart'
 import {
   getMarketBenchmark,
   getForecastLog,
+  getForecastComparison,
   type ContinuousBlock,
 } from '@/lib/artifacts'
 import { pct, signed, stamp } from '@/lib/format'
@@ -110,6 +112,8 @@ export default function AccuracyPage() {
           {Object.entries(forecastLog.cohorts).map(([scope,cohorts])=><div key={scope} className="mt-3 overflow-x-auto"><p className="eyebrow mb-2">{scope.replace('_',' ')}</p><table className="w-full text-left font-mono text-xs"><thead><tr><th className="p-2">Cohort</th><th className="p-2">Games</th><th className="p-2">Brier</th><th className="p-2">Log loss</th></tr></thead><tbody>{Object.entries(cohorts).map(([key,c])=><tr key={key}><td className="p-2">{key.replaceAll('_',' ')}</td><td className="p-2">{c.n}</td><td className="p-2">{c.brier?.toFixed(4)??'—'}</td><td className="p-2">{c.log_loss?.toFixed(4)??'—'}</td></tr>)}</tbody></table></div>)}
         </details>:null}
       </section>:null}
+
+      <ForecastComparison comparison={getForecastComparison()} />
 
       <ResearchLedger />
 

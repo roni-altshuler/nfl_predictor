@@ -116,13 +116,17 @@ jobs:
         # deploy replaces the day's point rather than doubling it.
         run: python -m backend.scripts.conference_race --track
 
-      - name: Score the live record
+      - name: Score the first record and separate latest comparison
         # Reads back the forecasts stamped BEFORE their kickoffs and scores
         # the ones whose games have now been played. It must run AFTER the
         # forecast publish (which stamps today's) and after the results
-        # refresh (which settles the weekend), and it is the only surface on
-        # the site that can claim a number existed before its result did.
-        run: python -m backend.scripts.score_live
+        # refresh (which settles the weekend). The first record is preserved;
+        # latest publications are scored separately with explicit coverage.
+        run: |
+          python -m backend.scripts.score_live
+          python -m backend.scripts.compare_forecasts \
+            --source-url "https://github.com/${GITHUB_REPOSITORY}/releases/download/warehouse-latest/warehouse-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.sqlite.gz"
+          python -m backend.scripts.verify_forecast_comparison --db backend/data/warehouse.sqlite
 
       - name: Refresh the current season's archive entry
         # ONLY the current season. Past seasons do not change, and rewriting

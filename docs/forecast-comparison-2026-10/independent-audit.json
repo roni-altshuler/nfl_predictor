@@ -1,0 +1,11 @@
+{
+  "first_n": 64,
+  "latest_n": 64,
+  "paired_n": 64,
+  "latest_horizons": {
+    "under_24h": 62,
+    "1_to_7_days": 2,
+    "7_days_or_more": 0
+  },
+  "full_history_reselected": true
+}

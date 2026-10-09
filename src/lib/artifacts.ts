@@ -293,6 +293,25 @@ export function getForecastLog(): ForecastLog | null {
   return readJson<ForecastLog>(PREDICTIONS_DIR, 'forecast_log.json')
 }
 
+export interface ComparisonScore { n: number; ties_excluded: number; brier: number | null; log_loss: number | null }
+export interface ComparisonCohort extends ComparisonScore {
+  horizons: Record<'under_24h' | '1_to_7_days' | '7_days_or_more', ComparisonScore>
+  models: Record<string, ComparisonScore>
+}
+export interface ForecastComparison {
+  schema_version: number; season: number; generated_at: string; settled_games: number; settled_decided: number
+  first: ComparisonCohort; latest: ComparisonCohort
+  paired: { n: number; game_ids: string[]; first: ComparisonCohort; latest: ComparisonCohort; latest_minus_first_brier: number | null }
+  coverage: { missing_first: number; missing_latest: number; paired_with_later_publication: number; excluded: Record<string, number> }
+  sources: { first_generated_at: string; snapshot_through: string | null; results_fetched_through: string | null; latest_result_kickoff: string | null; warehouse_url: string | null; snapshots: number }
+}
+
+/** Separate descriptive comparison; never replaces the first-publication log. */
+export function getForecastComparison(): ForecastComparison | null {
+  const comparison = readJson<ForecastComparison>(PREDICTIONS_DIR, 'forecast_comparison.json')
+  return comparison?.schema_version === 1 ? comparison : null
+}
+
 /**
  * The next slate to play, as a week number.
  *
