@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-08T17:47:35+00:00",
+  "generated_at": "2026-10-09T17:23:18+00:00",
   "carryover_applied": true,
   "teams": [
     {
@@ -156,14 +156,6 @@
       "elo": 1473.8
     },
     {
-      "team_id": 9,
-      "name": "Dallas Cowboys",
-      "abbreviation": "DAL",
-      "conference": "National Football Conference",
-      "division": "NFC East",
-      "elo": 1473.8
-    },
-    {
       "team_id": 5,
       "name": "Carolina Panthers",
       "abbreviation": "CAR",
@@ -188,6 +180,22 @@
       "elo": 1458.4
     },
     {
+      "team_id": 9,
+      "name": "Dallas Cowboys",
+      "abbreviation": "DAL",
+      "conference": "National Football Conference",
+      "division": "NFC East",
+      "elo": 1443.5
+    },
+    {
+      "team_id": 30,
+      "name": "Tampa Bay Buccaneers",
+      "abbreviation": "TB",
+      "conference": "National Football Conference",
+      "division": "NFC South",
+      "elo": 1441.1
+    },
+    {
       "team_id": 17,
       "name": "Las Vegas Raiders",
       "abbreviation": "LV",
@@ -210,14 +218,6 @@
       "conference": "National Football Conference",
       "division": "NFC East",
       "elo": 1416.8
-    },
-    {
-      "team_id": 30,
-      "name": "Tampa Bay Buccaneers",
-      "abbreviation": "TB",
-      "conference": "National Football Conference",
-      "division": "NFC South",
-      "elo": 1410.8
     },
     {
       "team_id": 23,

@@ -1,24 +1,24 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-08T17:47:47+00:00",
+  "generated_at": "2026-10-09T17:23:30+00:00",
   "basis": "published",
   "forecasts_made": 272,
-  "games_played": 64,
-  "games_pending": 208,
+  "games_played": 65,
+  "games_pending": 207,
   "ties_excluded": 0,
   "invalid_excluded": 0,
-  "n": 64,
+  "n": 65,
   "note": "Every row here was published strictly before its kickoff and is the EARLIEST such publication for that fixture. This record is never merged with the historical walk-forward on /accuracy, which is a reconstruction.",
-  "brier": 0.2303,
-  "accuracy": 0.625,
-  "ece": 0.07474,
+  "brier": 0.23158,
+  "accuracy": 0.61538,
+  "ece": 0.06498,
   "cohorts": {
     "model_version": {
       "nfl-margin-lattice-1": {
-        "n": 64,
-        "brier": 0.2303,
-        "log_loss": 0.65156,
-        "accuracy": 0.625
+        "n": 65,
+        "brier": 0.23158,
+        "log_loss": 0.65415,
+        "accuracy": 0.61538
       }
     },
     "horizon": {
@@ -35,10 +35,10 @@
         "accuracy": null
       },
       "7_days_or_more": {
-        "n": 64,
-        "brier": 0.2303,
-        "log_loss": 0.65156,
-        "accuracy": 0.625
+        "n": 65,
+        "brier": 0.23158,
+        "log_loss": 0.65415,
+        "accuracy": 0.61538
       }
     }
   },
@@ -1449,6 +1449,28 @@
       "p_home_conditional": 0.518699,
       "brier": 0.269049,
       "log_loss": 0.731262,
+      "correct": false
+    },
+    {
+      "game_id": "401872980",
+      "season": 2026,
+      "week": 5,
+      "kickoff_utc": "2026-10-09T00:15:00+00:00",
+      "generated_at": "2026-08-16T15:19:07+00:00",
+      "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 1280.93,
+      "home": "DAL",
+      "away": "TB",
+      "p_home": 0.55738,
+      "p_tie": 0.003812,
+      "p_away": 0.438808,
+      "exp_margin": 2.066,
+      "home_score": 16,
+      "away_score": 24,
+      "tie": false,
+      "p_home_conditional": 0.559513,
+      "brier": 0.313055,
+      "log_loss": 0.819874,
       "correct": false
     }
   ]
