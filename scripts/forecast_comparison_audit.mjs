@@ -75,6 +75,14 @@ try {
       }
       if (artifact.sources.snapshot_through) assert.ok((await panel(page).innerText()).includes(new Date(artifact.sources.snapshot_through).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'UTC' }) + ' UTC'))
       assert.equal(await panel(page).getByRole('link', { name: 'Retained warehouse source' }).getAttribute('href'), artifact.sources.warehouse_url)
+      const invalidTimes = Object.values(artifact.sources.timestamp_coverage ?? {}).reduce((n, c) => n + c.invalid, 0)
+      const visibleText = await panel(page).innerText()
+      if (invalidTimes) {
+        assert.ok(visibleText.includes(`Source freshness incomplete: ${invalidTimes} invalid`))
+        assert.match(visibleText, /Dates above cover valid timestamps only/)
+        await panel(page).getByText(`Source freshness incomplete: ${invalidTimes} invalid`, { exact: false }).evaluate(el => el.scrollIntoView({ block: 'center' }))
+        await page.screenshot({ path: path.join(output, `timestamp-warning-${width}.png`) })
+      } else assert.equal(visibleText.includes('Source freshness incomplete'), false)
     }
     await page.addScriptTag({ path: axePath })
     const health = await page.evaluate(async () => ({

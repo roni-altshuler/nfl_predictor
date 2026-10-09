@@ -1,0 +1,52 @@
+{
+  "probes": [
+    {
+      "case": "naive",
+      "exit_code": 0,
+      "latest_n": 64,
+      "paired_n": 64,
+      "timestamp_coverage": {
+        "snapshot_through": {
+          "valid": 14083,
+          "invalid": 1
+        },
+        "results_fetched_through": {
+          "valid": 64,
+          "invalid": 0
+        },
+        "latest_result_kickoff": {
+          "valid": 64,
+          "invalid": 0
+        }
+      },
+      "snapshot_through": "2026-10-08T17:47:35+00:00"
+    },
+    {
+      "case": "malformed",
+      "exit_code": 0,
+      "latest_n": 64,
+      "paired_n": 64,
+      "timestamp_coverage": {
+        "snapshot_through": {
+          "valid": 14083,
+          "invalid": 1
+        },
+        "results_fetched_through": {
+          "valid": 64,
+          "invalid": 0
+        },
+        "latest_result_kickoff": {
+          "valid": 64,
+          "invalid": 0
+        }
+      },
+      "snapshot_through": "2026-10-08T17:47:35+00:00"
+    }
+  ],
+  "original_inputs_unchanged": true,
+  "original_sha256": {
+    "/workspace/nfl-comparison-review-2026-10-09/warehouse.sqlite": "fa735d77ed0a1488ccbb7035fc8b882e91ea5ab0ffa194a6681dba75b2bce87f",
+    "backend/data/predictions/forecast_log.json": "7794c6f2179a72139e5b769d09b13b24b119357de08123c827e74becf5f84b2d",
+    "backend/data/predictions/forecast_comparison.json": "ba890a1f375fa1ef0c33b7f352349cb44d31e6a5d0e8f4589eef0e891b61b134"
+  }
+}

@@ -21,6 +21,8 @@ HORIZONS = ("under_24h", "1_to_7_days", "7_days_or_more")
 
 
 def instant(value):
+    if not isinstance(value, str):
+        raise ValueError("Timestamp must be a string")
     parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
     if parsed.tzinfo is None:
         raise ValueError("Timezone required")
@@ -166,6 +168,19 @@ def sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def timestamp_range(values):
+    """Known-valid source maximum plus explicit unknown timestamp coverage."""
+    valid, invalid = [], 0
+    for value in values:
+        try:
+            valid.append((instant(value), value))
+        except (ValueError, TypeError, OverflowError):
+            invalid += 1
+    newest = max((stamp for stamp, _ in valid), default=None)
+    latest = min((raw for stamp, raw in valid if stamp == newest), default=None)
+    return latest, {"valid": len(valid), "invalid": invalid}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--db", type=Path, default=DATA / "warehouse.sqlite")
@@ -179,18 +194,21 @@ def main():
     results, snapshots = read_inputs(args.db, first["season"])
     artifact = compare(first, results, snapshots)
     artifact["generated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    ranges = {"snapshot_through": timestamp_range(r["generated_at"] for r in snapshots),
+              "results_fetched_through": timestamp_range(r["fetched_at"] for r in results),
+              "latest_result_kickoff": timestamp_range(r["actual_kickoff_utc"] for r in results)}
     artifact["sources"] = {"first_generated_at": first["generated_at"], "first_sha256": sha256(args.first),
                            "warehouse_sha256": sha256(args.db), "warehouse_url": args.source_url,
-                           "snapshots": len(snapshots), "snapshot_through": max((r["generated_at"] for r in snapshots), key=instant, default=None),
-                           "results_fetched_through": max((r["fetched_at"] for r in results), key=instant, default=None),
-                           "latest_result_kickoff": max((r["actual_kickoff_utc"] for r in results), key=instant, default=None)}
+                           "snapshots": len(snapshots), **{key: value[0] for key, value in ranges.items()},
+                           "timestamp_coverage": {key: value[1] for key, value in ranges.items()}}
     artifact["protocol"] = {"kickoff": "Stored result date_utc supersedes snapshot schedule; not independently observed kickoff.",
                             "selection": "Latest valid timestamp instant strictly before result kickoff; lexical model version ascending on equal instants, never model ranking. Conflicting same-instant/version probabilities withheld; identical offsets resolve by raw timestamp ascending.",
                             "scores": "Binary Brier and natural-log loss on P(home | decided). Ties counted and excluded; log-loss clamp 1e-15. Full probability precision; original first record unchanged.",
+                            "freshness": "Source maxima cover valid timezone-aware timestamps only. sources.timestamp_coverage counts invalid timestamps separately; missing ranges stay null, never inferred.",
                             "limitations": "Retained snapshots only, no missing-history reconstruction. Stored results rescored for both cohorts, not independently recollected. Small sample; no promotion, significance or accuracy-gain claim."}
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(artifact, indent=2, allow_nan=False) + "\n")
-    print(json.dumps({"first": artifact["first"], "latest": artifact["latest"], "paired_n": artifact["paired"]["n"], "coverage": artifact["coverage"]}, indent=2))
+    print(json.dumps({"first": artifact["first"], "latest": artifact["latest"], "paired_n": artifact["paired"]["n"], "coverage": artifact["coverage"], "sources": artifact["sources"]}, indent=2))
 
 
 if __name__ == "__main__":

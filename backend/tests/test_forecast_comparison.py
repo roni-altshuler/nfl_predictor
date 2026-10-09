@@ -168,3 +168,50 @@ def test_cli_refuses_to_overwrite_either_input(tmp_path, monkeypatch, input_name
     assert error.value.code == 2
     assert first.read_text() == "original first record"
     assert db.read_bytes() == b"original warehouse"
+
+
+@pytest.mark.parametrize("scope", ["snapshot_through", "results_fetched_through", "latest_result_kickoff"])
+@pytest.mark.parametrize("bad_time", ["2026-09-10T17:00:00", "malformed-retained-timestamp"])
+def test_main_reports_valid_source_ranges_and_invalid_timestamp_coverage(tmp_path, monkeypatch, capsys, scope, bad_time):
+    import json
+    import hashlib
+    from backend.scripts.compare_forecasts import main
+    from backend.services.data.warehouse import Warehouse, GameRow
+    db_path = tmp_path/"warehouse.sqlite"
+    warehouse = Warehouse(db_path)
+    warehouse.migrate()
+    warehouse.upsert_competition("nfl", "NFL", "league")
+    home = warehouse.upsert_team("1", "Buffalo Bills", abbreviation="BUF")
+    away = warehouse.upsert_team("2", "Detroit Lions", abbreviation="DET")
+    warehouse.upsert_games([GameRow(game_id="one", source="test", competition_id="nfl", season=2026,
+        season_type=2, week=1, date_utc="2026-09-10T18:00:00Z", home_team_id=home, away_team_id=away,
+        home_score=21, away_score=14)])
+    good_times = ["2026-09-10T15:00:00Z", "2026-09-10T16:00:00+02:00"]
+    for stamp in good_times:
+        warehouse.record_predictions([{**forecast(generated_at=stamp), "season":2026,"home_team":"BUF","away_team":"DET"}])
+    if scope == "snapshot_through":
+        warehouse.record_predictions([{**forecast(generated_at=bad_time),"season":2026,"home_team":"BUF","away_team":"DET"}])
+    else:
+        column = "fetched_at" if scope == "results_fetched_through" else "date_utc"
+        warehouse.conn.execute(f"UPDATE games SET {column}=? WHERE game_id='one'", (bad_time,))
+        warehouse.conn.commit()
+    warehouse.close()
+    first_path, out = tmp_path/"first.json", tmp_path/"comparison.json"
+    first_path.write_text(json.dumps({**record(forecast()),"generated_at":"2026-09-11T00:00:00Z"}))
+    before = {p:hashlib.sha256(p.read_bytes()).hexdigest() for p in (db_path,first_path)}
+    monkeypatch.setattr("sys.argv", ["compare_forecasts","--first",str(first_path),"--db",str(db_path),"--out",str(out)])
+    main()
+    artifact = json.loads(out.read_text())
+    report = json.loads(capsys.readouterr().out)
+    assert report["sources"] == artifact["sources"]
+    assert artifact["sources"]["timestamp_coverage"][scope] == {"valid":2 if scope == "snapshot_through" else 0,"invalid":1}
+    assert artifact["sources"][scope] == (good_times[0] if scope == "snapshot_through" else None)
+    assert artifact["latest"]["n"] == (0 if scope == "latest_result_kickoff" else 1)
+    assert artifact["paired"]["n"] == (0 if scope == "latest_result_kickoff" else 1)
+    assert before == {p:hashlib.sha256(p.read_bytes()).hexdigest() for p in before}
+
+
+def test_all_invalid_source_timestamps_leave_range_unavailable():
+    from backend.scripts.compare_forecasts import timestamp_range
+    assert timestamp_range([None, 123, "bad", "2026-09-10T17:00:00"]) == (None,{"valid":0,"invalid":4})
+    assert timestamp_range([]) == (None,{"valid":0,"invalid":0})

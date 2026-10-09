@@ -18,6 +18,7 @@ export function ForecastComparison({ comparison }: { comparison: Comparison | nu
   const { paired, sources, coverage, latest } = comparison
   const short = latest.horizons.under_24h.n
   const missingShort = comparison.settled_decided - short
+  const unknownTimestamps = Object.values(sources.timestamp_coverage ?? {}).reduce((n, c) => n + c.invalid, 0)
   const sides: [string, ComparisonCohort][] = [['First publication', paired.first], ['Latest pregame', paired.latest]]
   return <section id="forecast-comparison" tabIndex={-1} aria-label="First versus latest forecasts" className="card scroll-mt-20 p-4 sm:p-5">
     <div className="flex flex-wrap items-center justify-between gap-2">
@@ -59,6 +60,7 @@ export function ForecastComparison({ comparison }: { comparison: Comparison | nu
       </div>
       <p className="mt-3 text-xs leading-relaxed text-[var(--text-secondary)]">Missing first: {coverage.missing_first} · missing latest: {coverage.missing_latest} · later publications in paired set: {coverage.paired_with_later_publication}. {Object.entries(coverage.excluded).map(([reason, n]) => `${n} ${reason.replaceAll('_', ' ')}`).join(' · ') || 'No invalid candidates excluded'}.</p>
       <p className="mt-3 font-mono text-[11px] leading-relaxed text-[var(--text-tertiary)]">{sources.snapshots.toLocaleString()} stored snapshots · through {forecastStamp(sources.snapshot_through)}<br />Results fetched through {forecastStamp(sources.results_fetched_through)} · latest result kickoff {forecastStamp(sources.latest_result_kickoff)}<br />Comparison scored {forecastStamp(comparison.generated_at)} · first log {forecastStamp(sources.first_generated_at)}</p>
+      {unknownTimestamps ? <p className="mt-2 text-xs leading-relaxed text-[var(--accent-warn)]">Source freshness incomplete: {unknownTimestamps} invalid {unknownTimestamps === 1 ? 'timestamp excluded' : 'timestamps excluded'}. Dates above cover valid timestamps only. Publication: {sources.timestamp_coverage?.snapshot_through.invalid} · result fetch: {sources.timestamp_coverage?.results_fetched_through.invalid} · kickoff: {sources.timestamp_coverage?.latest_result_kickoff.invalid}.</p> : null}
       <p className="mt-3 text-xs leading-relaxed text-[var(--text-secondary)]">Latest valid publication strictly before the stored result kickoff; old schedule timestamps do not set eligibility. Equal instants use lexical model version order, without ranking models. Conflicting probabilities for the same instant and version are withheld.</p>
       <p className="mt-2 text-xs leading-relaxed text-[var(--text-secondary)]">Both cohorts use stored results and full-precision conditional home-win probabilities. Kickoff and outcomes have not been independently recollected. The original first-publication record above remains unchanged.</p>
       {sources.warehouse_url ? <a href={sources.warehouse_url} className="mt-2 inline-flex min-h-[44px] items-center font-mono text-xs text-[var(--accent-info)]">Retained warehouse source ↗</a> : null}

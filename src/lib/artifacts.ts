@@ -303,7 +303,8 @@ export interface ForecastComparison {
   first: ComparisonCohort; latest: ComparisonCohort
   paired: { n: number; game_ids: string[]; first: ComparisonCohort; latest: ComparisonCohort; latest_minus_first_brier: number | null }
   coverage: { missing_first: number; missing_latest: number; paired_with_later_publication: number; excluded: Record<string, number> }
-  sources: { first_generated_at: string; snapshot_through: string | null; results_fetched_through: string | null; latest_result_kickoff: string | null; warehouse_url: string | null; snapshots: number }
+  sources: { first_generated_at: string; snapshot_through: string | null; results_fetched_through: string | null; latest_result_kickoff: string | null; warehouse_url: string | null; snapshots: number
+    timestamp_coverage?: Record<'snapshot_through' | 'results_fetched_through' | 'latest_result_kickoff', { valid: number; invalid: number }> }
 }
 
 /** Separate descriptive comparison; never replaces the first-publication log. */

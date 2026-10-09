@@ -122,7 +122,7 @@ Local screenshots verify the cloud production build, not hosted Vercel pixels,
 physical iOS/Android devices or an installed PWA. Exact-head CI and PR links
 are recorded in the draft PR description.
 
-Final local gates passed: **139 backend tests** (23 comparison cases), **23
+Original comparison gates passed: **139 backend tests** (23 comparison cases), **23
 Node tests plus week contracts**, zero lint warnings/errors, typecheck and
 the **306-page** production build. All seven actual Chromium suites passed:
 new comparison (4 published journeys), theme (112 checks plus 5 hydration
@@ -138,3 +138,45 @@ Screenshots: [mobile](forecast-comparison-2026-10/mobile.png),
 [cohort table](forecast-comparison-2026-10/cohorts-desktop.png),
 [missing artifact](forecast-comparison-2026-10/missing-artifact-mobile.png),
 [empty latest](forecast-comparison-2026-10/empty-latest-mobile.png).
+
+## Reviewer follow-up: invalid metadata timestamps
+
+On isolated copies of the restored October 8 database, replacing one snapshot
+publication timestamp with a naive or malformed string reproduced a CLI error.
+Selection correctly withheld the row, but source metadata maxima still parsed
+all raw timestamps and raised before writing the comparison output.
+
+Source maxima now consider valid timezone-aware instants only. Each of the three
+range fields has explicit `sources.timestamp_coverage` valid/invalid counts;
+an all-invalid range is `null`. The CLI prints those counts. If any invalid
+timestamp is present, the Accuracy disclosure labels source freshness incomplete
+and separately counts publication, result-fetch and kickoff timestamps. Those
+counts refer to timestamps, not distinct games. The existing artifact lacks
+the optional field and continues to render unchanged.
+
+The two isolated probes now exit successfully with **14,083 valid publication
+timestamps and one invalid**, 64 latest and paired games, and the original
+valid maximum October 8 at 17:47:35 UTC. Original warehouse, first log and
+comparison artifact hashes remain unchanged. CLI integration tests cover naive
+and malformed strings in all three source fields, differing timestamp offsets,
+all-invalid ranges and read-only input preservation. The backend suite now has
+**146 tests**, including **30 comparison cases**. No committed data was regenerated.
+The [before](forecast-comparison-2026-10/metadata-probe-before.json) and
+[after](forecast-comparison-2026-10/metadata-probe-after.json) probe summaries
+record both exit codes and preserved input hashes. A separate detached cloud
+worktree supplies explicitly synthetic timestamp-coverage counts for browser
+QA; the primary checkout's artifact is never altered. The warning passed all
+four viewport journeys, keyboard/table interactions, axe and overflow checks:
+[warning screenshot](forecast-comparison-2026-10/metadata-warning-mobile.png),
+[browser checks](forecast-comparison-2026-10/metadata-warning-checks.json).
+
+The separate reviewer audit is a standard-library-only script outside the
+repository, importing neither implementation module. It reads SQLite in
+`mode=ro&immutable=1` with `query_only=ON`; the existing WAL is empty. It verified
+the expected warehouse hash, 14,084 snapshots / 272 fixtures / 64 results, and
+exactly matched all 64 selected raw probabilities, versions and timestamps.
+It checked all IDs, horizons, cohort scores and coverage with zero mismatches.
+Its script, complete log and per-game evidence remain in the saved cloud review
+directory `/workspace/nfl-comparison-review-2026-10-09/` as
+`standalone_sqlite_audit.py`, `standalone-audit.log` and
+`standalone-row-evidence.json`. They were not pushed merely for the audit.
