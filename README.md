@@ -2,6 +2,13 @@
 
 NFL game and season probabilities, compared with historical market prices.
 
+[October 10 framework maintenance](docs/NEXT_MAINTENANCE_2026-10-10.md)
+pins Next.js and its lint package to 15.5.27, with registry audit snapshots and
+responsive production-browser evidence. The two targeted cache advisories are
+absent after the patch; the audit still reports 14 affected-package entries.
+The Accuracy review reads the October 9 publication and its 65 paired games;
+it adds no forecasts, source collection, training or accuracy claim.
+
 [Forecast Lab and reliability improvements](docs/IMPROVEMENT_AUDIT_2026-09-18.md)
 adds interactive matchup exploration, record scenarios, safer forecast history,
 and a measured recency experiment. See the [verification report](docs/VERIFICATION_2026-09-18.md)

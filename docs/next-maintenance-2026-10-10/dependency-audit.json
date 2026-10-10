@@ -1,0 +1,245 @@
+{
+  "review_date": "2026-10-10",
+  "repository": "https://github.com/roni-altshuler/nfl_predictor",
+  "base_commit": "22f86a32d4ae62d12259da6bcf9cadb7e0919dc6",
+  "runtime": {
+    "node": "v24.19.0",
+    "npm": "11.9.0",
+    "ci_node": "20",
+    "react": "18.3.1",
+    "eslint": "8.57.1"
+  },
+  "versions": {
+    "next": {
+      "before": "15.5.24",
+      "after": "15.5.27"
+    },
+    "eslint-config-next": {
+      "before": "15.5.24",
+      "after": "15.5.27"
+    }
+  },
+  "lock_version_changes": [
+    {
+      "package": "node_modules/@next/env",
+      "before": "15.5.24",
+      "after": "15.5.27"
+    },
+    {
+      "package": "node_modules/@next/eslint-plugin-next",
+      "before": "15.5.24",
+      "after": "15.5.27"
+    },
+    {
+      "package": "node_modules/@next/swc-darwin-arm64",
+      "before": "15.5.24",
+      "after": "15.5.27"
+    },
+    {
+      "package": "node_modules/@next/swc-darwin-x64",
+      "before": "15.5.24",
+      "after": "15.5.27"
+    },
+    {
+      "package": "node_modules/@next/swc-linux-arm64-gnu",
+      "before": "15.5.24",
+      "after": "15.5.27"
+    },
+    {
+      "package": "node_modules/@next/swc-linux-arm64-musl",
+      "before": "15.5.24",
+      "after": "15.5.27"
+    },
+    {
+      "package": "node_modules/@next/swc-linux-x64-gnu",
+      "before": "15.5.24",
+      "after": "15.5.27"
+    },
+    {
+      "package": "node_modules/@next/swc-linux-x64-musl",
+      "before": "15.5.24",
+      "after": "15.5.27"
+    },
+    {
+      "package": "node_modules/@next/swc-win32-arm64-msvc",
+      "before": "15.5.24",
+      "after": "15.5.27"
+    },
+    {
+      "package": "node_modules/@next/swc-win32-x64-msvc",
+      "before": "15.5.24",
+      "after": "15.5.27"
+    },
+    {
+      "package": "node_modules/eslint-config-next",
+      "before": "15.5.24",
+      "after": "15.5.27"
+    },
+    {
+      "package": "node_modules/next",
+      "before": "15.5.24",
+      "after": "15.5.27"
+    }
+  ],
+  "audit": {
+    "before": {
+      "vulnerability_package_counts": {
+        "info": 0,
+        "low": 0,
+        "moderate": 3,
+        "high": 11,
+        "critical": 0,
+        "total": 14
+      },
+      "sha256": "a484ef681f3e989054a1e18c56cc6b98258a68caf85f1f5db19e1dcea24810b9",
+      "file_observed_at": "2026-10-10T12:45:34.627124+00:00"
+    },
+    "after": {
+      "vulnerability_package_counts": {
+        "info": 0,
+        "low": 0,
+        "moderate": 3,
+        "high": 11,
+        "critical": 0,
+        "total": 14
+      },
+      "sha256": "c67fc21f973136c365dc0fe98e1088fc1c6d91d79bda837a1c969c0fa4407e03",
+      "file_observed_at": "2026-10-10T12:46:53.588017+00:00"
+    },
+    "removed_advisories": [
+      "https://github.com/advisories/GHSA-4jqv-mc3x-m676",
+      "https://github.com/advisories/GHSA-mcj8-r9mp-w47p"
+    ],
+    "next_after_via": [
+      "postcss"
+    ],
+    "remaining_packages": [
+      {
+        "package": "@next/eslint-plugin-next",
+        "severity": "high",
+        "direct": false
+      },
+      {
+        "package": "brace-expansion",
+        "severity": "high",
+        "direct": false
+      },
+      {
+        "package": "braces",
+        "severity": "high",
+        "direct": false
+      },
+      {
+        "package": "chokidar",
+        "severity": "high",
+        "direct": false
+      },
+      {
+        "package": "eslint-config-next",
+        "severity": "high",
+        "direct": true
+      },
+      {
+        "package": "fast-glob",
+        "severity": "high",
+        "direct": false
+      },
+      {
+        "package": "js-yaml",
+        "severity": "high",
+        "direct": false
+      },
+      {
+        "package": "micromatch",
+        "severity": "high",
+        "direct": false
+      },
+      {
+        "package": "next",
+        "severity": "moderate",
+        "direct": true
+      },
+      {
+        "package": "postcss",
+        "severity": "high",
+        "direct": false
+      },
+      {
+        "package": "postcss-nested",
+        "severity": "moderate",
+        "direct": false
+      },
+      {
+        "package": "postcss-selector-parser",
+        "severity": "moderate",
+        "direct": false
+      },
+      {
+        "package": "source-map-js",
+        "severity": "high",
+        "direct": false
+      },
+      {
+        "package": "tailwindcss",
+        "severity": "high",
+        "direct": true
+      }
+    ],
+    "limitation": "Registry audit snapshot; counts aggregate affected packages, not distinct advisories. A package can remain flagged through transitive dependencies. Not a deployed-exposure or compromise assessment."
+  },
+  "release_sources": [
+    "https://nextjs.org/blog/september-2026-security-release",
+    "https://github.com/vercel/next.js/releases/tag/v15.5.27",
+    "https://github.com/advisories/GHSA-mcj8-r9mp-w47p",
+    "https://github.com/advisories/GHSA-4jqv-mc3x-m676",
+    "https://nextjs.org/blog/upcoming-nextjs-security-update-october-2026"
+  ],
+  "release_scope": "15.5.27 patches the two specified advisory version ranges; no claim about the announced October 14 release whose affected versions were unpublished at review time.",
+  "source_artifacts": [
+    {
+      "path": "backend/data/predictions/game_forecasts.json",
+      "sha256": "7904f3bc577e1a0c3161f78bc8ffc1fa31d9e91b1da1af2199d8fa9db05af9f8",
+      "generated_at": "2026-10-09T17:23:18+00:00"
+    },
+    {
+      "path": "backend/data/predictions/forecast_log.json",
+      "sha256": "f7e07ec888ed28c2f65a4885b5d9212a5ec2031568e8a74d828f4e98e19d4aec",
+      "generated_at": "2026-10-09T17:23:30+00:00"
+    },
+    {
+      "path": "backend/data/predictions/forecast_comparison.json",
+      "sha256": "f5443fc65f86ce574fa3baa622621b320f4f3ef3ae27ad64a25721f51a75e5d7",
+      "generated_at": "2026-10-09T17:23:30+00:00"
+    }
+  ],
+  "route_preconditions": {
+    "router": "App Router",
+    "pages_directories_present": false,
+    "catch_all_route_files": [],
+    "scope": "Inspection of checkout routing; no deployed exploit or compromise test."
+  },
+  "registry_verification": {
+    "next": {
+      "version": "15.5.27",
+      "engines": {
+        "node": "^18.18.0 || ^19.8.0 || >= 20.0.0"
+      },
+      "peerDependencies": {
+        "sass": "^1.3.0",
+        "react": "^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0",
+        "react-dom": "^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0",
+        "@playwright/test": "^1.51.1",
+        "@opentelemetry/api": "^1.1.0",
+        "babel-plugin-react-compiler": "*"
+      },
+      "dist.integrity": "sha512-F82CrlPZ8GRxBH9RIIoR3qU1t5RT3dv1K8moe8SjlDEquiFipvEI13R1Om90TaUOEwShkWCMlg8+gvTNzfMhvg=="
+    },
+    "eslint-config-next": {
+      "version": "15.5.27",
+      "peerDependencies": {
+        "eslint": "^7.23.0 || ^8.0.0 || ^9.0.0",
+        "typescript": ">=3.3.1"
+      }
+    }
+  }
+}
