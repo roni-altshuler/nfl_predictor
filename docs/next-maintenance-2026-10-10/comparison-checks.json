@@ -1,0 +1,73 @@
+{
+  "checks": [
+    {
+      "width": 320,
+      "state": "published",
+      "game": "401872981",
+      "keyboardDisclosure": true,
+      "navigation": "matchup → evidence → Back → Forward → reload",
+      "overflow": false,
+      "palette": "rgb(11, 18, 14)",
+      "ambient": "off",
+      "axe": []
+    },
+    {
+      "width": 390,
+      "state": "published",
+      "game": "401872981",
+      "keyboardDisclosure": true,
+      "navigation": "matchup → evidence → Back → Forward → reload",
+      "overflow": false,
+      "palette": "rgb(11, 18, 14)",
+      "ambient": "off",
+      "axe": []
+    },
+    {
+      "width": 768,
+      "state": "published",
+      "game": "401872981",
+      "keyboardDisclosure": true,
+      "navigation": "matchup → evidence → Back → Forward → reload",
+      "overflow": false,
+      "palette": "rgb(11, 18, 14)",
+      "ambient": "off",
+      "axe": []
+    },
+    {
+      "width": 1440,
+      "state": "published",
+      "game": "401872981",
+      "keyboardDisclosure": true,
+      "navigation": "matchup → evidence → Back → Forward → reload",
+      "overflow": false,
+      "palette": "rgb(11, 18, 14)",
+      "ambient": "off",
+      "axe": []
+    }
+  ],
+  "errors": [],
+  "source": {
+    "first_generated_at": "2026-10-09T17:23:30+00:00",
+    "first_sha256": "f7e07ec888ed28c2f65a4885b5d9212a5ec2031568e8a74d828f4e98e19d4aec",
+    "warehouse_sha256": "ebf13d884676fc133b76d6db5dd1e91d296cd02b2e6f9d1178d992cb3eb8e438",
+    "warehouse_url": "https://github.com/roni-altshuler/nfl_predictor/releases/download/warehouse-latest/warehouse-37965729788-1.sqlite.gz",
+    "snapshots": 14291,
+    "snapshot_through": "2026-10-09T17:23:18+00:00",
+    "results_fetched_through": "2026-10-09T17:22:09+00:00",
+    "latest_result_kickoff": "2026-10-09T00:15:00+00:00",
+    "timestamp_coverage": {
+      "snapshot_through": {
+        "valid": 14291,
+        "invalid": 0
+      },
+      "results_fetched_through": {
+        "valid": 65,
+        "invalid": 0
+      },
+      "latest_result_kickoff": {
+        "valid": 65,
+        "invalid": 0
+      }
+    }
+  }
+}

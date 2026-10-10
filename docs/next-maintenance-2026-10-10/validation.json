@@ -1,0 +1,154 @@
+{
+  "date": "2026-10-10T12:57:33.531080+00:00",
+  "base": "22f86a32d4ae62d12259da6bcf9cadb7e0919dc6",
+  "versions": {
+    "next": "15.5.27",
+    "eslint-config-next": "15.5.27",
+    "react": "18.3.1",
+    "node": "24.19.0",
+    "npm": "11.9.0",
+    "chromium": "151.0.7922.173"
+  },
+  "gates": {
+    "clean_npm_ci": "passed (--ignore-scripts --no-audit --no-fund)",
+    "lint": "passed, no ESLint warnings/errors",
+    "frontend_contracts": "23 Node tests plus week-browser contract assertions passed",
+    "typecheck": "passed",
+    "backend": "146 passed",
+    "build": "305/305 generated pages",
+    "comparison_rows": "passed, 65 paired games; full-history reselection not performed",
+    "production_browser_suite": "all seven existing scripts passed"
+  },
+  "browser": {
+    "base_url": "http://127.0.0.1:3026",
+    "clock": "current; no override",
+    "widths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "fixtures": "Existing recorded ESPN summary subset and explicit synthetic archive/error fixtures; other ESPN server fetches return controlled 503; browser ESPN CDN requests are blocked. No live-source freshness claim.",
+    "suites": {
+      "comparison": {
+        "evidence": "comparison-checks.json",
+        "checks": 4,
+        "passed": true,
+        "errors": [],
+        "source_sha256": "3ac7f76a362222728267e24c2da2188c78517636dd770c0f09e4b9cf388ea3ca"
+      },
+      "theme": {
+        "evidence": "theme-checks.json",
+        "checks": 112,
+        "passed": true,
+        "errors": [],
+        "source_sha256": "ac022842226aa1707a2563550a8cb953174a78745f7cb221978d9ea739d20674",
+        "forecast_generated_at": "2026-10-09T17:23:18+00:00",
+        "pre_hydration_preference_checks": 5
+      },
+      "paths": {
+        "evidence": "paths-checks.json",
+        "checks": 12,
+        "passed": true,
+        "errors": [],
+        "source_sha256": "1bf509a3724eb74a82881dc95b081de56761b1ead22ae0d6624600c04360bcca",
+        "loadingObserved": true,
+        "clock": "current",
+        "forecast_generated_at": "2026-10-09T17:23:18+00:00",
+        "trained_through": "2026-10-09T00:15:00+00:00"
+      },
+      "leaders": {
+        "evidence": "leaders-checks.json",
+        "checks": 16,
+        "passed": true,
+        "errors": [],
+        "source_sha256": "e1686d5e96597fb4bdfa2bbb9d8a55e63696f4e2a19cc6b8586d000d02789278",
+        "loadingObserved": true,
+        "clock": "current browser clock; no clock override",
+        "sourceMode": "Captured 2026 ESPN summary subset in its published archive context; synthetic ambiguity/absence/unknown fixtures; other ESPN server responses controlled 503",
+        "forecastGeneratedAt": "2026-10-09T17:23:18+00:00",
+        "portraitRequests": []
+      },
+      "lab": {
+        "evidence": "lab-checks.json",
+        "checks": 4,
+        "passed": true,
+        "errors": [],
+        "source_sha256": "afa743524704ca3446594371de4d5f6610735b7a4ecd975b31e59ad1f86ace5f",
+        "clock": "current"
+      },
+      "week": {
+        "evidence": "week-checks.json",
+        "checks": 8,
+        "passed": true,
+        "errors": [],
+        "source_sha256": "d3ca7c541b089e516ba93a63c50ad810e257e1f92625acd084a35f604417e27c",
+        "clock": "current (no clock override)",
+        "forecast_generated_at": "2026-10-09T17:23:18+00:00",
+        "trained_through": "2026-10-09T00:15:00+00:00"
+      },
+      "players": {
+        "evidence": "players-checks.json",
+        "checks": 10,
+        "passed": true,
+        "errors": [],
+        "source_sha256": "5d684717fadd44f8cea3ad0b918240d3a62c8eec9c744940c75358d7ee10eed9",
+        "loadingObserved": false,
+        "forecast_generated_at": "2026-10-09T17:23:18+00:00",
+        "portraitRequests": []
+      }
+    }
+  },
+  "screenshots_visually_inspected": [
+    "comparison-mobile-320.png",
+    "comparison-mobile-390.png",
+    "comparison-tablet-768.png",
+    "comparison-desktop-1440.png"
+  ],
+  "source_file_changes": [],
+  "limitations": [
+    "Local production browser QA; hosted preview pixels and live health not verified.",
+    "Registry still reports 14 affected-package entries (11 high, 3 moderate), including nested PostCSS.",
+    "October 14 security notice had no affected-version range at review time.",
+    "Comparison row audit does not reselect forecasts from the full warehouse.",
+    "Player-profile conditional loading was not observed against this retained slate; loadingObserved is recorded in the profile checks."
+  ],
+  "logs": {
+    "browser.log": {
+      "sha256": "6a8497cedd49813d951a2a14b87915a858d5b1139a5ef0f3b5bb3af7fcda202f",
+      "cloud_path": "/workspace/nfl-next-maintenance-2026-10-10/browser.log"
+    },
+    "npm-ci.log": {
+      "sha256": "ac9c1aecbfc707da3665c0ec25461273122a11462908e672ded24ccc8996832a",
+      "cloud_path": "/workspace/nfl-next-maintenance-2026-10-10/npm-ci.log"
+    },
+    "backend-tests.log": {
+      "sha256": "0b824937321ff7db27c5bcb2e85bc8326b2310ef4b0075ff860e80c34a992cb9",
+      "cloud_path": "/workspace/nfl-next-maintenance-2026-10-10/backend-tests.log"
+    },
+    "build.log": {
+      "sha256": "26c61ef82066a6797aa78175cdf5b07eaaeb1e17531dff897e6b1c338415549f",
+      "cloud_path": "/workspace/nfl-next-maintenance-2026-10-10/build.log"
+    },
+    "typecheck.log": {
+      "sha256": "3b8fb1d8a7fc2fe435e60fad3a7dea28e6f0b6202370666c24ba50bc48d2d9ca",
+      "cloud_path": "/workspace/nfl-next-maintenance-2026-10-10/typecheck.log"
+    },
+    "forecast-row-verification.log": {
+      "sha256": "2f0f9a2cae8d450ba04c3c5acd9299f35b9dbd4a93099aa3c081ceee0467ccaf",
+      "cloud_path": "/workspace/nfl-next-maintenance-2026-10-10/forecast-row-verification.log"
+    },
+    "lint.log": {
+      "sha256": "7767a4b1a3a7095d30307a70df2e86b118c2c1f9eee00ab09dfb0ae88461b638",
+      "cloud_path": "/workspace/nfl-next-maintenance-2026-10-10/lint.log"
+    },
+    "install.log": {
+      "sha256": "d36f32f18453c076e4f580c5d393f108df36d73de45d06d885ad17ef25cad3a7",
+      "cloud_path": "/workspace/nfl-next-maintenance-2026-10-10/install.log"
+    },
+    "frontend-tests.log": {
+      "sha256": "0f4987b2dc7f1d811f51c395438dc8df92c16652f9b4b13595c75083fee9b763",
+      "cloud_path": "/workspace/nfl-next-maintenance-2026-10-10/frontend-tests.log"
+    }
+  }
+}

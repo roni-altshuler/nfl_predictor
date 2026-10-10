@@ -1,0 +1,183 @@
+{
+  "generated_at": "2026-10-10T12:54:58.220Z",
+  "forecast_generated_at": "2026-10-09T17:23:18+00:00",
+  "trained_through": "2026-10-09T00:15:00+00:00",
+  "model": "nfl-margin-lattice-1",
+  "clock": "current",
+  "loadingObserved": true,
+  "checks": [
+    {
+      "name": "paths-game",
+      "width": 320,
+      "overflow": false,
+      "axe": [],
+      "reducedMotion": true,
+      "enterDuration": "1e-05s",
+      "overlay": false
+    },
+    {
+      "name": "paths-record",
+      "width": 320,
+      "overflow": false,
+      "axe": [],
+      "reducedMotion": true,
+      "enterDuration": "1e-05s",
+      "overlay": false
+    },
+    {
+      "name": "paths-lab",
+      "width": 320,
+      "overflow": false,
+      "axe": [],
+      "reducedMotion": true,
+      "enterDuration": "1e-05s",
+      "overlay": false
+    },
+    {
+      "name": "paths-game",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "reducedMotion": true,
+      "enterDuration": "1e-05s",
+      "overlay": false
+    },
+    {
+      "name": "paths-refresh-outage",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "reducedMotion": true,
+      "enterDuration": "1e-05s",
+      "overlay": false
+    },
+    {
+      "name": "paths-inconsistent-source",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "reducedMotion": true,
+      "enterDuration": "1e-05s",
+      "overlay": false
+    },
+    {
+      "name": "paths-lab",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "reducedMotion": true,
+      "enterDuration": "1e-05s",
+      "overlay": false
+    },
+    {
+      "name": "paths-archive-empty",
+      "width": 390,
+      "overflow": false,
+      "axe": [],
+      "reducedMotion": true,
+      "enterDuration": "1e-05s",
+      "overlay": false
+    },
+    {
+      "name": "paths-game",
+      "width": 768,
+      "overflow": false,
+      "axe": [],
+      "reducedMotion": true,
+      "enterDuration": "1e-05s",
+      "overlay": false
+    },
+    {
+      "name": "paths-lab",
+      "width": 768,
+      "overflow": false,
+      "axe": [],
+      "reducedMotion": true,
+      "enterDuration": "1e-05s",
+      "overlay": false
+    },
+    {
+      "name": "paths-game",
+      "width": 1440,
+      "overflow": false,
+      "axe": [],
+      "reducedMotion": true,
+      "enterDuration": "1e-05s",
+      "overlay": false
+    },
+    {
+      "name": "paths-lab",
+      "width": 1440,
+      "overflow": false,
+      "axe": [],
+      "reducedMotion": true,
+      "enterDuration": "1e-05s",
+      "overlay": false
+    }
+  ],
+  "journeys": [
+    {
+      "width": 320,
+      "game": "401872981",
+      "other": "401872982",
+      "keyboard": true,
+      "share": true,
+      "repeatedBandLookup": true,
+      "matchupTeamBack": true,
+      "labFixtureBack": true,
+      "recordBack": true,
+      "slateFiltersBack": true,
+      "unsupportedBand": true,
+      "preservesCompare": true,
+      "archiveWithheld": true
+    },
+    {
+      "width": 390,
+      "game": "401872981",
+      "other": "401872982",
+      "keyboard": true,
+      "share": true,
+      "repeatedBandLookup": true,
+      "matchupTeamBack": true,
+      "labFixtureBack": true,
+      "recordBack": true,
+      "slateFiltersBack": true,
+      "unsupportedBand": true,
+      "preservesCompare": true,
+      "archiveWithheld": true
+    },
+    {
+      "width": 768,
+      "game": "401872981",
+      "other": "401872982",
+      "keyboard": true,
+      "share": true,
+      "repeatedBandLookup": true,
+      "matchupTeamBack": true,
+      "labFixtureBack": true,
+      "recordBack": true,
+      "slateFiltersBack": true,
+      "unsupportedBand": true,
+      "preservesCompare": true,
+      "archiveWithheld": true
+    },
+    {
+      "width": 1440,
+      "game": "401872981",
+      "other": "401872982",
+      "keyboard": true,
+      "share": true,
+      "repeatedBandLookup": true,
+      "matchupTeamBack": true,
+      "labFixtureBack": true,
+      "recordBack": true,
+      "slateFiltersBack": true,
+      "unsupportedBand": true,
+      "preservesCompare": true,
+      "archiveWithheld": true
+    }
+  ],
+  "errors": [],
+  "portraits": [],
+  "passed": true
+}
