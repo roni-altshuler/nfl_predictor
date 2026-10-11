@@ -225,7 +225,7 @@ try {
   const page = await c.newPage()
   await page.goto(`${base}/teams/${game.home}`)
   const teamHeading = (await page.getByRole('heading', { level: 1 }).textContent()).trim()
-  await page.getByRole('region', { name: 'Explore team players', exact: true }).getByRole('link').click()
+  await page.getByRole('region', { name: 'Published matchup', exact: true }).getByRole('link', { name: 'Player reports →', exact: true }).click()
   await page.waitForURL(/\/games\/\d+#players$/)
   await page.getByRole('region', { name: 'Players in this matchup', exact: true }).waitFor()
   const teamMatchUrl = page.url()

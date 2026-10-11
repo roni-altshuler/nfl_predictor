@@ -2,6 +2,13 @@
 
 NFL game and season probabilities, compared with historical market prices.
 
+[October 11 team matchup exploration](docs/TEAM_MATCHUP_2026-10-11.md) brings
+the first matchup in each team's retained publication above season projections,
+with both win chances, projected points, a separate tie chance, and distinct
+matchup/player/schedule links. Kickoff dates remain visible on phones. The
+review reads the **October 10** forecast publication, with results used through
+**October 9**; it adds no live status, new data collection or accuracy claim.
+
 [October 10 framework maintenance](docs/NEXT_MAINTENANCE_2026-10-10.md)
 pins Next.js and its lint package to 15.5.27, with registry audit snapshots and
 responsive production-browser evidence. The two targeted cache advisories are

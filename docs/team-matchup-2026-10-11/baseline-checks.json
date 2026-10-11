@@ -1,0 +1,18 @@
+[
+  {
+    "width": 390,
+    "team": "NYG",
+    "featuredMatchup": false,
+    "scheduleTop": 1336,
+    "firstKickoffVisible": false,
+    "firstScheduleRow": "wk 5\n@\nWSH\nWashington Commanders\n52.3%"
+  },
+  {
+    "width": 1440,
+    "team": "NYG",
+    "featuredMatchup": false,
+    "scheduleTop": 1206,
+    "firstKickoffVisible": true,
+    "firstScheduleRow": "wk 5\n@\nWSH\nWashington Commanders\nSun, Oct 11 · 1:00 PM ET\n52.3%"
+  }
+]

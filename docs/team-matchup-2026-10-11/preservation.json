@@ -1,0 +1,258 @@
+{
+  "checked_at": "2026-10-11T13:08:16.163Z",
+  "base": "c857f8ddd402ee5feb8c39ba47ea9723ca946290",
+  "preservedFiles": [
+    {
+      "file": ".github/workflows/ci.yml",
+      "unchanged": true,
+      "sha256": "d76ab3296c0af4aa4ed377653a26e3f3376b63211698d9d04f08a56cc79de10f"
+    },
+    {
+      "file": ".github/workflows/daily_forecast.yml",
+      "unchanged": true,
+      "sha256": "9587a94eeb1c1ab598698b5191bfb4c4ba82725b4b99fea2ef6dc7fb6f4eb84d"
+    },
+    {
+      "file": ".github/workflows/weekly_benchmark.yml",
+      "unchanged": true,
+      "sha256": "2c44861d5d7a19741f8ec644edbcec10298c599d134b9adf2d6c748faf40c71d"
+    },
+    {
+      "file": "backend/data/diagnostics/market_benchmark.json",
+      "unchanged": true,
+      "sha256": "a616deeb37dfb656dac6e7f09ac7bf40a812a0fd5e893f070475a76445e3379d"
+    },
+    {
+      "file": "backend/data/diagnostics/retrodictions.json",
+      "unchanged": true,
+      "sha256": "9c51dd6a1dafb3241e7737a26a788b0fe97af4eaf303c8a0c67bb34d3367bacc"
+    },
+    {
+      "file": "backend/data/history/season_2002.json",
+      "unchanged": true,
+      "sha256": "d2e36b53d94a0989855900cc5ef123d4ddfdc5072e65e1fbcf2af3dd99601596"
+    },
+    {
+      "file": "backend/data/history/season_2003.json",
+      "unchanged": true,
+      "sha256": "d09f31d9d32ee84d92a6f28fabbf3df6cd6390c86631946c5ab6af7988f6902d"
+    },
+    {
+      "file": "backend/data/history/season_2004.json",
+      "unchanged": true,
+      "sha256": "9e3f3cdfa3e9c0e925b816ddf5a89fb541fdab0a3f015e3b9d576fb76a497550"
+    },
+    {
+      "file": "backend/data/history/season_2005.json",
+      "unchanged": true,
+      "sha256": "ff440383229698b9846a9f3e72ea4f74b1c7572070a5dfef59c16fae80eece73"
+    },
+    {
+      "file": "backend/data/history/season_2006.json",
+      "unchanged": true,
+      "sha256": "6d08766972f52fe7fd6d29e454ded941941611517e1e92b6cfe87a36878c3ffe"
+    },
+    {
+      "file": "backend/data/history/season_2007.json",
+      "unchanged": true,
+      "sha256": "9423074dc26955301fd04c0d1626e6ed1bef3a33e8e0fccce5ffcc52787436f6"
+    },
+    {
+      "file": "backend/data/history/season_2008.json",
+      "unchanged": true,
+      "sha256": "5cfbfbfcd5bc7ad86dd7c35806c6c2468a7f40843ebcb0cf56c4ac25e8f0c6b2"
+    },
+    {
+      "file": "backend/data/history/season_2009.json",
+      "unchanged": true,
+      "sha256": "ee3fd6e8b07c3aee3af18ec2300e740aad0925863e6431c54091f8ddec16e47b"
+    },
+    {
+      "file": "backend/data/history/season_2010.json",
+      "unchanged": true,
+      "sha256": "6e889f1f0cc853d0c9bbc275b6ce719380c8559d47ff754695bb0071bcf35380"
+    },
+    {
+      "file": "backend/data/history/season_2011.json",
+      "unchanged": true,
+      "sha256": "154f5581330702c7d2742eca2603cd6061042e451bd0561d4d28407819140fbf"
+    },
+    {
+      "file": "backend/data/history/season_2012.json",
+      "unchanged": true,
+      "sha256": "41213bec4a911014377bf1d61ae3ed86774eb4243b0cdd878089c120b8c19e0b"
+    },
+    {
+      "file": "backend/data/history/season_2013.json",
+      "unchanged": true,
+      "sha256": "cd7b4a1eda7aa61ba44ea93a62364976b5e48740e157ecd378d58b35a3159a5d"
+    },
+    {
+      "file": "backend/data/history/season_2014.json",
+      "unchanged": true,
+      "sha256": "a8b22546411de8a787282009ee1895f7485b71ea690ac244e3d6f9c945928b88"
+    },
+    {
+      "file": "backend/data/history/season_2015.json",
+      "unchanged": true,
+      "sha256": "a2da20fced83b5c5102a1a4d3b87f4a2ca80414d541405e5d6d55fa17e95b33b"
+    },
+    {
+      "file": "backend/data/history/season_2016.json",
+      "unchanged": true,
+      "sha256": "e3154e76412b3c793634c56e2d0d0f277442f544ece0b72eee82c07c60991b0c"
+    },
+    {
+      "file": "backend/data/history/season_2017.json",
+      "unchanged": true,
+      "sha256": "706f54cb8edc2f2f4d64bc8f237fad4a48921ff752800b85ca3b2dd3854fddce"
+    },
+    {
+      "file": "backend/data/history/season_2018.json",
+      "unchanged": true,
+      "sha256": "2debf442d1f8020c7e086ad64280fe2d78ae93f7219fe60f3ca2802f75afa82e"
+    },
+    {
+      "file": "backend/data/history/season_2019.json",
+      "unchanged": true,
+      "sha256": "8fec659c5adadb8bafcd61ce1054c03a746377c89d896b717312e67d42234430"
+    },
+    {
+      "file": "backend/data/history/season_2020.json",
+      "unchanged": true,
+      "sha256": "1c8d8159bc69bd25c0d12055910ad7e90ad32f16b261244d511f83072168b5e6"
+    },
+    {
+      "file": "backend/data/history/season_2021.json",
+      "unchanged": true,
+      "sha256": "20db7dbb3daf31d47be71d9f112c27068602497ab57614ca68e15aaa39ffbeff"
+    },
+    {
+      "file": "backend/data/history/season_2022.json",
+      "unchanged": true,
+      "sha256": "529a5f5f1ca738adbe690a5b5cba7c078600f016f1b76a12b6096ea95bdfc0ee"
+    },
+    {
+      "file": "backend/data/history/season_2023.json",
+      "unchanged": true,
+      "sha256": "8b37e2fc127ae4612e429b9c4a64185ccdfc23bcd3d6f219022664dae83dee65"
+    },
+    {
+      "file": "backend/data/history/season_2024.json",
+      "unchanged": true,
+      "sha256": "6b51d115a07d5b59c69668b95a7a1f1499b2eb39372b3e18437eb702873e3914"
+    },
+    {
+      "file": "backend/data/history/season_2025.json",
+      "unchanged": true,
+      "sha256": "ad5b2057c8ff5025c23f30e24c3a3c61927e544adb9251ab18cb027ce7e4508d"
+    },
+    {
+      "file": "backend/data/history/season_2026.json",
+      "unchanged": true,
+      "sha256": "7b47940b9e8c591b8ef024c1a1487e06634708e41a19148086ab4e4b3800435d"
+    },
+    {
+      "file": "backend/data/history/seasons.json",
+      "unchanged": true,
+      "sha256": "9570f7cfabcc4c3471ec5bf16d6a28273edadaabdc8a61eeabe152745649aab0"
+    },
+    {
+      "file": "backend/data/predictions/conference_race_2025.json",
+      "unchanged": true,
+      "sha256": "b9ba22c166a07fedde11f3bb1e3dc2ed2fe3110f070c305d92b7e1a2fb2aa4fc"
+    },
+    {
+      "file": "backend/data/predictions/conference_race_current.json",
+      "unchanged": true,
+      "sha256": "8b8587e7cd96b79cbe85a264e042412405ffcc94eeb19444c1272bc22ef3863a"
+    },
+    {
+      "file": "backend/data/predictions/forecast_comparison.json",
+      "unchanged": true,
+      "sha256": "3560e0d385ab42868cc18505e87bfb336d86aff2fe2de0a245925421c3a2f5ee"
+    },
+    {
+      "file": "backend/data/predictions/forecast_log.json",
+      "unchanged": true,
+      "sha256": "55312aa2d437279c0ca9b351afc061b4ee68f24e53ba1a6d285ce3fcff5027cc"
+    },
+    {
+      "file": "backend/data/predictions/game_context.json",
+      "unchanged": true,
+      "sha256": "d966dd3c5c446573ef4a2e20bf06ee718541577cfde95c7e418d867959f51f18"
+    },
+    {
+      "file": "backend/data/predictions/game_forecasts.json",
+      "unchanged": true,
+      "sha256": "95802be3149e22beda69635046e2f252de81712b7cb463951b715ffffa14b8de"
+    },
+    {
+      "file": "backend/data/predictions/matchups.json",
+      "unchanged": true,
+      "sha256": "b99fa9e76a508fabe2b97b6edb4a526b0f66d6211e66f57c3b765146a6bf7a03"
+    },
+    {
+      "file": "backend/data/predictions/playoff_picture.json",
+      "unchanged": true,
+      "sha256": "b870fffd4b6409e53cafff94e49f3011a951ed8cdd7dcc4c921311067d54efd6"
+    },
+    {
+      "file": "backend/data/predictions/playoff_scenarios.json",
+      "unchanged": true,
+      "sha256": "0b7376ca5aabcd62c96ba7a5e4858ac245640fc8b0bb820fdce988ae604273b6"
+    },
+    {
+      "file": "backend/data/predictions/power_ratings.json",
+      "unchanged": true,
+      "sha256": "0f0a9944a1ae2c75b7970ce89ec926506108c93b6bb3aaa91e7fb186de0ad96b"
+    },
+    {
+      "file": "backend/data/predictions/season_projections.json",
+      "unchanged": true,
+      "sha256": "655a29b51038b1467bc6b9802e9ae9960d8fd780ea049035ad7a7b9d10a00f74"
+    },
+    {
+      "file": "backend/data/predictions/team_history.json",
+      "unchanged": true,
+      "sha256": "4def0b40bc6aada284cb28e8507cdae754ed30e4900467a0a1d14a0046209d2b"
+    },
+    {
+      "file": "package-lock.json",
+      "unchanged": true,
+      "sha256": "09939da9a794b5b66caa63c1eced5cd5e5f95d0f761fddf8ed51ca16d82d7bc6"
+    }
+  ],
+  "preservedUnpublishedFixture": [
+    {
+      "file": "backend/data/predictions/forecast_comparison.json",
+      "unchanged": true
+    },
+    {
+      "file": "scripts/forecast_comparison_audit.mjs",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/evidence/ForecastComparison.tsx",
+      "unchanged": true
+    },
+    {
+      "file": "src/lib/artifacts.ts",
+      "unchanged": true
+    }
+  ],
+  "dependenciesUnchanged": true,
+  "olderRecoveryRefsUnchanged": true,
+  "currentRefs": [
+    "refs/heads/codex/nfl-forecast-comparison-2026-10-09 c26ba558c9580c6ab652fdc6f320e9e5c80d401c",
+    "refs/heads/codex/nfl-leader-comparison-2026-10-07 dd655c8eb48a408b10b08b95c08aa5bb590cbd44",
+    "refs/heads/codex/nfl-next15-maintenance-2026-10-10 74b09ccb45bb471f8dd6ed39c1b9ebe9243e5df6",
+    "refs/heads/codex/nfl-player-profiles-2026-10-06 302028497331359c8143c242b97299555289a12f",
+    "refs/heads/codex/nfl-prediction-insights-2026-10-08 36e1a87e07a8cd5670b5f338711607c07a6c7aad",
+    "refs/heads/codex/nfl-team-matchup-2026-10-11 c857f8ddd402ee5feb8c39ba47ea9723ca946290",
+    "refs/heads/codex/nfl-theme-journey-2026-10-08 40969efe9b7d7b4f138331aeac2f4b164bd35079",
+    "refs/heads/codex/week-browsing-2026-10-03 245a508edef702c3d514eb052d9509e5c2d70650",
+    "refs/heads/work 903353b21212eea8517a52581486132014820637"
+  ],
+  "worktrees": "worktree /workspace/nfl_predictor\nHEAD c857f8ddd402ee5feb8c39ba47ea9723ca946290\nbranch refs/heads/codex/nfl-team-matchup-2026-10-11\n\nworktree /workspace/nfl-comparison-review-2026-10-09/ui-fixture\nHEAD c0d633053e02eb56648b66cdb78c104adbafdb6b\ndetached\n\n"
+}
