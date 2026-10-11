@@ -1,0 +1,58 @@
+{
+  "checked_at": "2026-10-11T13:20:02.695Z",
+  "base": "c857f8ddd402ee5feb8c39ba47ea9723ca946290",
+  "branch": "codex/nfl-team-matchup-2026-10-11",
+  "versions": {
+    "node": "v24.19.0",
+    "npm": "11.9.0",
+    "browser": "151.0.7922.173",
+    "next": "15.5.27"
+  },
+  "gates": {
+    "lint": "0 warnings/errors",
+    "typecheck": "passed",
+    "nodeContracts": 27,
+    "weekContractAssertions": "passed",
+    "backendTests": 146,
+    "productionBuildPages": 305,
+    "teamBrowser": "passed; final production build",
+    "profileBrowser": "passed; final production build; controlled fixtures",
+    "weekBrowser": "passed; preceding production build before final team-identity spacing adjustment"
+  },
+  "source": {
+    "publication": "2026-10-10T16:08:53+00:00",
+    "resultsThrough": "2026-10-09T00:15:00+00:00",
+    "retainedForecasts": 207,
+    "forecastSha256": "95802be3149e22beda69635046e2f252de81712b7cb463951b715ffffa14b8de",
+    "liveCollection": false,
+    "modelTraining": false
+  },
+  "preservation": {
+    "protectedFilesUnchanged": 44,
+    "unpublishedFixtureFilesUnchanged": 4,
+    "dependencyVersionsUnchanged": true,
+    "workflowChanges": false,
+    "manualDispatch": false,
+    "merge": false
+  },
+  "limitations": {
+    "providerHealth": "Controlled 503s, captured subset and synthetic archive responses; no live health claim",
+    "hostedPreview": "Pixels not inspected; existing Vercel connector scope returns 403",
+    "noJavaScriptGameDetail": "Inherited game streaming needs JavaScript; no no-JS detail claim",
+    "profileLoadingObserved": false
+  },
+  "evidenceSha256": {
+    "audit.json": "c67fc21f973136c365dc0fe98e1088fc1c6d91d79bda837a1c969c0fa4407e03",
+    "baseline-checks.json": "ab9f8549e98987ea33c02d1b3900ed985f6eb596cb7a356677201d6333e159b3",
+    "before-390.png": "937b710786bfaf815e25627a0a67e8d646ce0a142ec9757623581473f41f8b3b",
+    "preservation.json": "117e4e5f72db88ec2fc08da2024dc31a444c40e6ea3eaf8f96d0f45e3a17f2bb",
+    "profile-checks.json": "9c7ea949396cb1dcb1762c15c4373df0bfd24b8a4ebc5c1c7d1d135a060e032f",
+    "schedule-390.png": "d579e370dfd5b30b72d1ca79ead864e3fed5ee2d9c338780593fb64876189d6c",
+    "team-1440.png": "ff17853a3a45c6c844706b52efa9cb808293237840880045d1f6e0f410a3eadb",
+    "team-320.png": "eef73e42e0cb66949a21bf9c4e391e08ecb43e827f9909d8a04653c90a7cdb37",
+    "team-390.png": "a9aaa289122a6f9bd3a01658ea53316cf91afb93f0e62db64a1a54a4d903122c",
+    "team-768.png": "c75720936e574a2051de92aac448f9261b6d64a51dfda5c371cdd3bf2cd8b968",
+    "team-checks.json": "dc84a81fa9db771b9fd687917c73587e040b7ea3605d4d7ad0cbfb548064ac8c",
+    "week-checks.json": "9f2bd71ece1c0eaa3179fb8e657a1998ed9238b3da8c639cc985e0a072c982b8"
+  }
+}

@@ -5,6 +5,7 @@ import { RatingHistoryChart } from '@/components/charts/RatingHistoryChart'
 import { BackButton } from '@/components/primitives/BackButton'
 import { FollowButton } from '@/components/primitives/FollowButton'
 import { TeamLogo } from '@/components/primitives/TeamLogo'
+import { TeamPublishedMatchup } from '@/components/teams/TeamPublishedMatchup'
 import {
   getGameForecasts,
   getPowerRatings,
@@ -101,6 +102,8 @@ export default async function TeamPage({
         </div>
       </header>
 
+      <TeamPublishedMatchup game={fixtures[0]} teamAbbreviation={team.abbreviation} publishedAt={forecasts?.generated_at} resultsThrough={forecasts?.trained_through} />
+
       <section className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Tile label="Elo" value={team.elo.toFixed(0)} />
         {projection ? (
@@ -121,14 +124,6 @@ export default async function TeamPage({
           <Tile label="Projection" value="—" />
         )}
       </section>
-
-      {fixtures[0] ? <section className="card p-4 sm:p-6" aria-label="Explore team players">
-        <h2 className="text-lg">Explore team players</h2>
-        <p className="mt-2 text-sm text-[var(--text-secondary)]">Meet the selected leaders and reported players through a published matchup. Full roster coverage is not available.</p>
-        <Link href={`/games/${fixtures[0].game_id}#players`} className="mt-3 inline-flex min-h-[44px] items-center text-sm text-[var(--accent-info)] hover:underline">
-          Week {fixtures[0].week} matchup player reports →
-        </Link>
-      </section> : null}
 
       {history && history.seasons.length > 2 ? (
         <section>
@@ -160,8 +155,8 @@ export default async function TeamPage({
         </section>
       ) : null}
 
-      <section>
-        <h2 className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
+      <section id="team-schedule" tabIndex={-1} aria-labelledby="team-schedule-title" className="scroll-mt-20">
+        <h2 id="team-schedule-title" className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
           {forecasts?.season ?? ''} schedule
         </h2>
         <p className="mb-3 text-sm text-[var(--text-secondary)]">Open a matchup to explore its selected player leaders and reported availability. Full roster coverage is not available.</p>
@@ -176,37 +171,33 @@ export default async function TeamPage({
                 <Link
                   key={game.game_id}
                   href={`/games/${game.game_id}`}
-                  className="flex flex-wrap items-center gap-x-3 gap-y-1 p-3 transition-colors hover:bg-[var(--card-hover)]"
+                  className="grid min-h-[44px] grid-cols-[minmax(0,1fr)_auto] gap-x-3 gap-y-2 p-3 transition-colors hover:bg-[var(--card-hover)]"
                 >
-                  <span className="w-12 shrink-0 font-mono text-[11px] text-[var(--text-tertiary)]">
-                    wk {game.week}
-                  </span>
-                  <span className="w-8 shrink-0 font-mono text-[11px] text-[var(--text-tertiary)]">
-                    {game.neutral_site ? 'vs' : isHome ? 'vs' : '@'}
+                  <span className="col-span-2 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] text-[var(--text-secondary)]">
+                    <span>Week {game.week} · {game.neutral_site ? 'neutral site' : isHome ? 'home' : 'away'}</span>
+                    <time dateTime={game.date_utc}>{kickoff(game.date_utc)}</time>
                   </span>
                   <span className="flex min-w-0 items-center gap-2">
                     <TeamLogo
                       abbreviation={opponent}
                       name={opponentName}
-                      size={18}
+                      size={24}
                     />
-                    <span className="truncate text-sm text-[var(--text-secondary)]">
+                    <span className="text-sm text-[var(--text-secondary)]">
                       {opponentName}
                     </span>
                   </span>
-                  <span className="ml-auto flex items-baseline gap-3">
-                    <span className="hidden font-mono text-[10px] text-[var(--text-tertiary)] sm:inline">
-                      {kickoff(game.date_utc)}
-                    </span>
+                  <span className="self-center text-right">
                     <span
                       className={
                         win >= 0.5
-                          ? 'numeric w-14 text-right text-sm text-[var(--accent-primary)]'
-                          : 'numeric w-14 text-right text-sm text-[var(--text-tertiary)]'
+                          ? 'numeric block text-sm text-[var(--accent-primary)]'
+                          : 'numeric block text-sm text-[var(--text-secondary)]'
                       }
                     >
                       {pct(win)}
                     </span>
+                    <span className="mt-1 block text-[10px] text-[var(--text-secondary)]">{team.abbreviation} win</span>
                   </span>
                 </Link>
               )
@@ -268,7 +259,7 @@ export default async function TeamPage({
           <h2 className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
             Season by season
           </h2>
-          <div className="card overflow-x-auto">
+          <div className="card overflow-x-auto" tabIndex={0} role="region" aria-label="Season by season record">
             <table className="min-w-[460px]">
               <thead>
                 <tr>

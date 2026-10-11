@@ -1,0 +1,224 @@
+{
+  "passed": true,
+  "generated_at": "2026-10-11T13:19:08.857Z",
+  "browser": "151.0.7922.173",
+  "publication": "2026-10-10T16:08:53+00:00",
+  "resultsThrough": "2026-10-09T00:15:00+00:00",
+  "clock": "current (plus explicit 2030 stability probe)",
+  "sourceMode": "Committed artifacts; ESPN images blocked; server fixture mode recorded separately",
+  "checks": [
+    {
+      "width": 320,
+      "state": "team",
+      "overflow": false,
+      "axe": [],
+      "palette": "rgb(11, 18, 14)",
+      "overlay": false
+    },
+    {
+      "width": 320,
+      "state": "schedule-return",
+      "overflow": false,
+      "axe": [],
+      "palette": "rgb(11, 18, 14)",
+      "overlay": false
+    },
+    {
+      "width": 390,
+      "state": "team",
+      "overflow": false,
+      "axe": [],
+      "palette": "rgb(11, 18, 14)",
+      "overlay": false
+    },
+    {
+      "width": 390,
+      "state": "schedule-return",
+      "overflow": false,
+      "axe": [],
+      "palette": "rgb(11, 18, 14)",
+      "overlay": false
+    },
+    {
+      "width": 768,
+      "state": "team",
+      "overflow": false,
+      "axe": [],
+      "palette": "rgb(11, 18, 14)",
+      "overlay": false
+    },
+    {
+      "width": 768,
+      "state": "schedule-return",
+      "overflow": false,
+      "axe": [],
+      "palette": "rgb(11, 18, 14)",
+      "overlay": false
+    },
+    {
+      "width": 1440,
+      "state": "team",
+      "overflow": false,
+      "axe": [],
+      "palette": "rgb(11, 18, 14)",
+      "overlay": false
+    },
+    {
+      "width": 1440,
+      "state": "schedule-return",
+      "overflow": false,
+      "axe": [],
+      "palette": "rgb(11, 18, 14)",
+      "overlay": false
+    },
+    {
+      "width": 390,
+      "state": "neutral-team",
+      "overflow": false,
+      "axe": [],
+      "palette": "rgb(11, 18, 14)",
+      "overlay": false
+    }
+  ],
+  "journeys": [
+    {
+      "width": 320,
+      "team": "NYG",
+      "game": "401872988",
+      "controls": [
+        {
+          "name": "WSHWashington Commanders",
+          "height": 80
+        },
+        {
+          "name": "Explore matchup →",
+          "height": 44
+        },
+        {
+          "name": "Player reports →",
+          "height": 44
+        },
+        {
+          "name": "Published schedule ↓",
+          "height": 44
+        }
+      ],
+      "probabilityRowsAligned": true,
+      "keyboardMatchup": true,
+      "opponentReturn": true,
+      "playerReportsReturn": true,
+      "scheduleFocus": true,
+      "repeatedReturnCycles": 2,
+      "hashReload": true,
+      "publishedCardUnchangedByLaterClock": true
+    },
+    {
+      "width": 390,
+      "team": "NYG",
+      "game": "401872988",
+      "controls": [
+        {
+          "name": "WSHWashington Commanders",
+          "height": 80
+        },
+        {
+          "name": "Explore matchup →",
+          "height": 44
+        },
+        {
+          "name": "Player reports →",
+          "height": 44
+        },
+        {
+          "name": "Published schedule ↓",
+          "height": 44
+        }
+      ],
+      "probabilityRowsAligned": true,
+      "keyboardMatchup": true,
+      "opponentReturn": true,
+      "playerReportsReturn": true,
+      "scheduleFocus": true,
+      "repeatedReturnCycles": 2,
+      "hashReload": true,
+      "publishedCardUnchangedByLaterClock": true
+    },
+    {
+      "width": 768,
+      "team": "NYG",
+      "game": "401872988",
+      "controls": [
+        {
+          "name": "WSHWashington Commanders",
+          "height": 44
+        },
+        {
+          "name": "Explore matchup →",
+          "height": 44
+        },
+        {
+          "name": "Player reports →",
+          "height": 44
+        },
+        {
+          "name": "Published schedule ↓",
+          "height": 44
+        }
+      ],
+      "probabilityRowsAligned": true,
+      "keyboardMatchup": true,
+      "opponentReturn": true,
+      "playerReportsReturn": true,
+      "scheduleFocus": true,
+      "repeatedReturnCycles": 2,
+      "hashReload": true,
+      "publishedCardUnchangedByLaterClock": true
+    },
+    {
+      "width": 1440,
+      "team": "NYG",
+      "game": "401872988",
+      "controls": [
+        {
+          "name": "WSHWashington Commanders",
+          "height": 44
+        },
+        {
+          "name": "Explore matchup →",
+          "height": 44
+        },
+        {
+          "name": "Player reports →",
+          "height": 44
+        },
+        {
+          "name": "Published schedule ↓",
+          "height": 44
+        }
+      ],
+      "probabilityRowsAligned": true,
+      "keyboardMatchup": true,
+      "opponentReturn": true,
+      "playerReportsReturn": true,
+      "scheduleFocus": true,
+      "repeatedReturnCycles": 2,
+      "hashReload": true,
+      "publishedCardUnchangedByLaterClock": true
+    }
+  ],
+  "interruption": {
+    "heldRscRequests": 2,
+    "cancelledFor": "/games",
+    "olderResponseDidNotReplaceDestination": true,
+    "retryAndReturnPassed": true
+  },
+  "noJavaScript": {
+    "teamCard": true,
+    "scheduleAnchor": true,
+    "opponentTeam": true,
+    "matchupDetail": "Inherited game streaming needs JavaScript; no no-JS detail claim"
+  },
+  "freshTabCanonicalParent": true,
+  "blockedRequests": 539,
+  "errors": []
+}
