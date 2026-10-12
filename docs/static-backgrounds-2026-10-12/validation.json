@@ -1,0 +1,597 @@
+{
+  "checked_at": "2026-10-12T07:14:40.501Z",
+  "base": "1be2a407f38fb0a1e634797e33beb29492fe77cc",
+  "buildId": "y8RaB08jbRvulfZuZOwmP",
+  "versions": {
+    "node": "v24.19.0",
+    "next": "15.5.27"
+  },
+  "localGates": {
+    "lint": "0 warnings/errors",
+    "typecheck": "passed",
+    "nodeContracts": 27,
+    "weekContractAssertions": "passed",
+    "productionBuildPages": 305,
+    "browserScripts": 8,
+    "execution": "First seven scripts completed in combined run; final team script rerun after reporting the same exposed loss-table contrast finding. Theme helper extraction uses identical checks."
+  },
+  "motion": {
+    "themeStates": 128,
+    "preHydrationCases": 5,
+    "viewports": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "systemPreferences": [
+      "light",
+      "dark"
+    ],
+    "separateLightThemeExists": false,
+    "reducedMotion": false,
+    "canvas": 0,
+    "bodyBackgroundImages": "none",
+    "continuingRafFrames": 0,
+    "pendingRafs": 0,
+    "ambientControls": 0
+  },
+  "preservedInteractions": {
+    "passed": true,
+    "source": "Committed artifacts; browser images blocked; existing server fixture mode",
+    "bracket": {
+      "keyboardTeamTarget": "/teams/JAX",
+      "returnedTextUnchanged": true,
+      "visibleFocusOutline": true
+    },
+    "loading": {
+      "bodyImage": "none",
+      "canvas": 0,
+      "shimmers": [
+        {
+          "name": "skeleton-shimmer",
+          "iterations": "infinite"
+        },
+        {
+          "name": "skeleton-shimmer",
+          "iterations": "infinite"
+        }
+      ],
+      "completedToInteractiveControls": true
+    },
+    "errors": []
+  },
+  "limits": {
+    "existingSmallRedTableContrast": [
+      {
+        "name": "team",
+        "width": 320,
+        "scheme": "light",
+        "findings": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                "tr:nth-child(1) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(2) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(3) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(5) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(6) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(8) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(9) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(10) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(11) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(12) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(14) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(15) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(17) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(18) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(20) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(21) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(23) > .text-\\[var\\(--accent-loss\\)\\]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "team",
+        "width": 320,
+        "scheme": "dark",
+        "findings": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                "tr:nth-child(1) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(2) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(3) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(5) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(6) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(8) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(9) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(10) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(11) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(12) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(14) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(15) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(17) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(18) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(20) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(21) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(23) > .text-\\[var\\(--accent-loss\\)\\]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "team",
+        "width": 390,
+        "scheme": "light",
+        "findings": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                "tr:nth-child(1) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(2) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(3) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(5) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(6) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(8) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(9) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(10) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(11) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(12) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(14) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(15) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(17) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(18) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(20) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(21) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(23) > .text-\\[var\\(--accent-loss\\)\\]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "team",
+        "width": 390,
+        "scheme": "dark",
+        "findings": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                "tr:nth-child(1) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(2) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(3) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(5) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(6) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(8) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(9) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(10) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(11) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(12) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(14) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(15) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(17) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(18) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(20) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(21) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(23) > .text-\\[var\\(--accent-loss\\)\\]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "team",
+        "width": 768,
+        "scheme": "light",
+        "findings": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                "tr:nth-child(1) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(2) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(3) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(5) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(6) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(8) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(9) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(10) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(11) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(12) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(14) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(15) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(17) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(18) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(20) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(21) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(23) > .text-\\[var\\(--accent-loss\\)\\]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "team",
+        "width": 768,
+        "scheme": "dark",
+        "findings": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                "tr:nth-child(1) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(2) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(3) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(5) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(6) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(8) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(9) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(10) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(11) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(12) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(14) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(15) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(17) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(18) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(20) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(21) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(23) > .text-\\[var\\(--accent-loss\\)\\]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "team",
+        "width": 1440,
+        "scheme": "light",
+        "findings": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                "tr:nth-child(1) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(2) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(3) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(5) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(6) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(8) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(9) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(10) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(11) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(12) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(14) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(15) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(17) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(18) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(20) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(21) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(23) > .text-\\[var\\(--accent-loss\\)\\]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "team",
+        "width": 1440,
+        "scheme": "dark",
+        "findings": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                "tr:nth-child(1) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(2) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(3) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(5) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(6) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(8) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(9) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(10) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(11) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(12) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(14) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(15) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(17) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(18) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(20) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(21) > .text-\\[var\\(--accent-loss\\)\\]"
+              ],
+              [
+                "tr:nth-child(23) > .text-\\[var\\(--accent-loss\\)\\]"
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "sourcePublication": "2026-10-11T16:35:55+00:00",
+    "resultsThrough": "2026-10-09T00:15:00+00:00",
+    "provider": "Existing captured/synthetic fixture build and controlled outages; browser images blocked",
+    "hostedPixelsVerified": false,
+    "foregroundMotion": "Finite route/list/data transitions, loading shimmer, live-score indicator and user-operated chart feedback retained"
+  },
+  "artifactSha256": "9387400c169bc5d25a60eefb44b9ee7e2f83f49336193c8ce135a71cfbddab91",
+  "evidenceSha256": {
+    "after-checks.json": "83f7582e6d6fc1f1474d97fd4816d4b238d9b3c75ee2a8894bbb44e428be42bd",
+    "before-checks.json": "761a0a78f7562a6ad7ac48159f0c4910091136b4eae2f118c376a4c32254976e",
+    "bracket-after-1440.png": "45f9a338ca79c1c7ccf79c07baf059efb795a5d4d77814464ca64975f67670d2",
+    "bracket-return-390.png": "f06b49a31493c0f97ec632ec91c64cc22e601419d9469e67eb7737da37737325",
+    "contrast-comparison.json": "70e9f6c291462731291fbb2c43666516db19b18481bb9e7365e33dbfb386f4ed",
+    "home-after-320.png": "e587194b14da04ab372936fd0532606f444543774af72d1086ad86c003d7d30a",
+    "home-after-390.png": "a1f4e0b2392e9dccad08b4ed270e4488bd666cc4d0c504aefbf6c2b5fbb70fb2",
+    "home-after-768.png": "1aa898e543534d67b3e590ab379238fe98094e895f3da61b047ccd9cc25182b9",
+    "home-before-390.png": "d43b811cc913001a74112d2f299610a892c129f2637da921a7c32ead12b8f717",
+    "interaction-checks.json": "887b4e9306a04fddf4f03f9486ede3d25c7a4dd50d672e30a230b0f44eef681e",
+    "loading-paths-390.png": "403566758487ac1f4fcaa30bbdf40e75a04bc55296596d3099158f36156cda5b",
+    "preservation.json": "50785d9b051f0472948a7ff088dc6cfb091615c2a16285a81aacfbf01ed79eec",
+    "schedule-after-1440.png": "ff21d12a79e43de23be20ca6542729a4bfc041cd876d7a1df017572b4d5dcf04",
+    "schedule-before-1440.png": "7c744d64c4cca9054a6fa8fdb1453146d70287397faa5ba3611b6624c80e27a8",
+    "team-after-390.png": "400d86388357834317d245e50999433ab610d23c82969ca21736ac0b6d2deacc",
+    "team-checks.json": "506352f6e08c8880f634e3371ed1ced1309c82173db1c17e0375c90e0f4e3368",
+    "theme-checks.json": "8a47115e3a2f375a17c2cec8fe51289f1c9dd83a30bfd97ad0fee0f4c82a6efb"
+  }
+}

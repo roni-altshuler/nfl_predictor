@@ -1,0 +1,118 @@
+{
+  "checked_at": "2026-10-12T06:41:19.020Z",
+  "source": "2026-10-11T16:35:55+00:00",
+  "results": [
+    {
+      "name": "home",
+      "url": "/",
+      "width": 390,
+      "scheme": "light",
+      "stored": "soft",
+      "before": {
+        "canvas": 1,
+        "ambient": "soft",
+        "bodyBackground": "radial-gradient(130% 85% at 50% -12%, rgba(214, 232, 216, 0.05), rgba(0, 0, 0, 0) 58%), radial-gradient(140% 80% at 50% 118%, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0) 62%)",
+        "raf": {
+          "calls": 120,
+          "frames": 119
+        },
+        "runningAnimations": []
+      },
+      "after": {
+        "canvas": 1,
+        "ambient": "soft",
+        "bodyBackground": "radial-gradient(130% 85% at 50% -12%, rgba(214, 232, 216, 0.05), rgba(0, 0, 0, 0) 58%), radial-gradient(140% 80% at 50% 118%, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0) 62%)",
+        "raf": {
+          "calls": 150,
+          "frames": 149
+        },
+        "runningAnimations": []
+      },
+      "frameDelta": 30
+    },
+    {
+      "name": "schedule",
+      "url": "/games",
+      "width": 1440,
+      "scheme": "dark",
+      "stored": "vivid",
+      "before": {
+        "canvas": 1,
+        "ambient": "vivid",
+        "bodyBackground": "radial-gradient(130% 85% at 50% -12%, rgba(214, 232, 216, 0.05), rgba(0, 0, 0, 0) 58%), radial-gradient(140% 80% at 50% 118%, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0) 62%)",
+        "raf": {
+          "calls": 132,
+          "frames": 131
+        },
+        "runningAnimations": []
+      },
+      "after": {
+        "canvas": 1,
+        "ambient": "vivid",
+        "bodyBackground": "radial-gradient(130% 85% at 50% -12%, rgba(214, 232, 216, 0.05), rgba(0, 0, 0, 0) 58%), radial-gradient(140% 80% at 50% 118%, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0) 62%)",
+        "raf": {
+          "calls": 162,
+          "frames": 161
+        },
+        "runningAnimations": []
+      },
+      "frameDelta": 30
+    },
+    {
+      "name": "team",
+      "url": "/teams/LAR",
+      "width": 390,
+      "scheme": "dark",
+      "stored": "soft",
+      "before": {
+        "canvas": 1,
+        "ambient": "soft",
+        "bodyBackground": "radial-gradient(130% 85% at 50% -12%, rgba(214, 232, 216, 0.05), rgba(0, 0, 0, 0) 58%), radial-gradient(140% 80% at 50% 118%, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0) 62%)",
+        "raf": {
+          "calls": 118,
+          "frames": 117
+        },
+        "runningAnimations": []
+      },
+      "after": {
+        "canvas": 1,
+        "ambient": "soft",
+        "bodyBackground": "radial-gradient(130% 85% at 50% -12%, rgba(214, 232, 216, 0.05), rgba(0, 0, 0, 0) 58%), radial-gradient(140% 80% at 50% 118%, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0) 62%)",
+        "raf": {
+          "calls": 148,
+          "frames": 147
+        },
+        "runningAnimations": []
+      },
+      "frameDelta": 30
+    },
+    {
+      "name": "game",
+      "url": "/games/401872994",
+      "width": 1440,
+      "scheme": "light",
+      "stored": "vivid",
+      "before": {
+        "canvas": 1,
+        "ambient": "vivid",
+        "bodyBackground": "radial-gradient(130% 85% at 50% -12%, rgba(214, 232, 216, 0.05), rgba(0, 0, 0, 0) 58%), radial-gradient(140% 80% at 50% 118%, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0) 62%)",
+        "raf": {
+          "calls": 121,
+          "frames": 120
+        },
+        "runningAnimations": []
+      },
+      "after": {
+        "canvas": 1,
+        "ambient": "vivid",
+        "bodyBackground": "radial-gradient(130% 85% at 50% -12%, rgba(214, 232, 216, 0.05), rgba(0, 0, 0, 0) 58%), radial-gradient(140% 80% at 50% 118%, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0) 62%)",
+        "raf": {
+          "calls": 152,
+          "frames": 151
+        },
+        "runningAnimations": []
+      },
+      "frameDelta": 31
+    }
+  ]
+}

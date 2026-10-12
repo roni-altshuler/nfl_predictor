@@ -2,6 +2,11 @@
 
 NFL game and season probabilities, compared with historical market prices.
 
+[October 12 static backgrounds](docs/STATIC_BACKGROUNDS_2026-10-12.md) removes
+all decorative field rendering, its animation controls and body gradient layers.
+Every page uses a flat backdrop with the existing dark-green/cream palette.
+Scores, schedules, team/player links, charts and loading/status feedback remain.
+
 [October 11 team matchup exploration](docs/TEAM_MATCHUP_2026-10-11.md) brings
 the first matchup in each team's retained publication above season projections,
 with both win chances, projected points, a separate tie chance, and distinct
@@ -69,9 +74,9 @@ first-published forecasts, all at least seven days before kickoff.
 [Cross-page appearance and preference QA](docs/THEME_JOURNEY_2026-10.md)
 checks the homepage, schedule, matchups, Close-game paths, Forecast Lab and
 profiles under light/dark system preferences. NFL intentionally retains its
-dark green Chalkboard identity and cream logo plates. Board-animation choices
-persist across reload and navigation; controls remain neutral while hydration
-reads that choice. The app manifest now matches the page's green canvas.
+dark-green palette and cream logo plates. The October 12 removal supersedes
+that review's animation controls; legacy choices are now ignored. Manifest
+colours continue to match the static background.
 
 ## What it does
 
