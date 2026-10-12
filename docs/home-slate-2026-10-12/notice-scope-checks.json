@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "syntheticMalformedArtifact": true,
+  "productionDataMutated": false,
+  "fixture": "One valid row, an invalid probability triple (sum 1.3), a duplicate valid ID; both excluded by the existing Lab parser while raw slate/quick picks remain.",
+  "checks": [
+    {
+      "width": 320,
+      "rawSlateRows": 3,
+      "rawDuplicateRows": 2,
+      "rawInvalidTripleRow": 1,
+      "labRows": 1,
+      "withheldInLab": 2,
+      "quickPickLinks": 3,
+      "scopedNoticeVisibleWithToolsClosed": true,
+      "keyboardDisclosure": true,
+      "axe": []
+    },
+    {
+      "width": 390,
+      "rawSlateRows": 3,
+      "rawDuplicateRows": 2,
+      "rawInvalidTripleRow": 1,
+      "labRows": 1,
+      "withheldInLab": 2,
+      "quickPickLinks": 3,
+      "scopedNoticeVisibleWithToolsClosed": true,
+      "keyboardDisclosure": true,
+      "axe": []
+    },
+    {
+      "width": 1440,
+      "rawSlateRows": 3,
+      "rawDuplicateRows": 2,
+      "rawInvalidTripleRow": 1,
+      "labRows": 1,
+      "withheldInLab": 2,
+      "quickPickLinks": 3,
+      "scopedNoticeVisibleWithToolsClosed": true,
+      "keyboardDisclosure": true,
+      "axe": []
+    }
+  ]
+}

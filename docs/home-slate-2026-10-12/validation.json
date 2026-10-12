@@ -1,0 +1,145 @@
+{
+  "checkedAt": "2026-10-12T13:54:57.309899+00:00",
+  "base": "a564f1cf545841b5cc9fa2ea25804c70d35ac9fb",
+  "localGates": {
+    "backendTests": 146,
+    "nodeContracts": 28,
+    "weekContractAssertions": "passed",
+    "lint": "0 warnings/errors",
+    "types": "passed",
+    "productionBuildPages": 305,
+    "browserScripts": 8,
+    "fullSuite": {
+      "comparison": {
+        "checks": 4,
+        "axeViolations": 0,
+        "errors": 0,
+        "passed": true
+      },
+      "theme": {
+        "checks": 128,
+        "axeViolations": 0,
+        "errors": 0,
+        "passed": true
+      },
+      "paths": {
+        "checks": 12,
+        "axeViolations": 0,
+        "errors": 0,
+        "passed": true
+      },
+      "leaders": {
+        "checks": 16,
+        "axeViolations": 0,
+        "errors": 0,
+        "passed": true
+      },
+      "lab": {
+        "checks": 4,
+        "axeViolations": 0,
+        "errors": 0,
+        "passed": true
+      },
+      "week": {
+        "checks": 8,
+        "axeViolations": 0,
+        "errors": 0,
+        "passed": true
+      },
+      "profiles": {
+        "checks": 10,
+        "axeViolations": 0,
+        "errors": 0,
+        "passed": true
+      },
+      "team": {
+        "checks": 9,
+        "axeViolations": 0,
+        "errors": 0,
+        "passed": true
+      }
+    },
+    "fullSuiteValidatedAtHead": "566d895e5c1f45b5df422c983bcf4b614e560028",
+    "noticeScopeDelta": {
+      "realParserAndRenderedComponentRegression": "passed",
+      "fixtureBrowserWidths": [
+        320,
+        390,
+        1440
+      ],
+      "rawSlateRows": 3,
+      "rawQuickPickLinks": 3,
+      "labRows": 1,
+      "labWithheld": 2,
+      "axeViolations": 0,
+      "affectedFullLabAudit": "passed",
+      "ordinaryHomeChecks": 18,
+      "ordinaryDataRestored": {
+        "games": 207,
+        "withheld": 0,
+        "malformedFixturePresent": false,
+        "passed": true
+      },
+      "fixtureArtifactAndPreloaderCommitted": false
+    }
+  },
+  "focusedHomeStates": 18,
+  "strictUnfilteredAxe": true,
+  "contrastWaivers": 0,
+  "normalMotion": true,
+  "themeStates": 128,
+  "heldBundleCases": 5,
+  "systemPreferences": [
+    "light",
+    "dark"
+  ],
+  "separateLightTheme": false,
+  "source": {
+    "publication": "2026-10-11T16:35:55+00:00",
+    "resultsThrough": "2026-10-09T00:15:00+00:00",
+    "gameForecastSha256": "9387400c169bc5d25a60eefb44b9ee7e2f83f49336193c8ce135a71cfbddab91",
+    "providerHealthVerified": false,
+    "fixtureMode": "Existing captured/synthetic archive and error fixtures, with controlled provider/CDN outages. No synthetic current scores or live status claims."
+  },
+  "preservation": {
+    "unchangedExistingProtectedFiles": 162,
+    "intentionallyAdaptedExistingAuditScripts": [
+      "scripts/forecast-lab.test.cjs",
+      "scripts/forecast_lab_audit.mjs",
+      "scripts/theme_journey_audit.mjs"
+    ],
+    "allExistingDataModelsProvidersComponentsDependenciesWorkflowsUnchanged": true,
+    "all10OlderLocalRefsPreserved": true,
+    "fixtureWorktreeAnd4UnpublishedFilesUnchanged": true
+  },
+  "limits": {
+    "hostedPixelsVerified": false,
+    "deploymentAliasToShaVerified": false,
+    "initialBundleReduced": false,
+    "heldNavigationGameSkeletonObservedLocally": false,
+    "forecastQualityEvaluated": false
+  },
+  "evidenceSha256": {
+    "geometry.json": "ed46fabc704047fe73cbccaf2a076415169c6a222d145f24142872537e6a65a2",
+    "home-after-1440.png": "9ef1f03334ec60fac4fb5fdaeb0ed9373ade434c5b3e35fefa26ed3c6a7d5268",
+    "home-after-320.png": "5605909e9ce0bd1d4960a2fc70431bad9db87f747ecde7846f61c31ef5307d20",
+    "home-after-390.png": "b7817701cbe4fa6fe55b0f3bd5f435851e44c1aad11765a11bea55708967c876",
+    "home-after-768.png": "65660ae4824f98997eaf9e461e7c7d48286e017ebf46e8822804ee4daf081206",
+    "home-before-1440.png": "eaffe42be59df5bc56e109fbfa2de66bf93b32e12b2c878d53fdd812f5fb39f3",
+    "home-before-320.png": "23af35388f7b981d7b6b42232d12265e78525df228435015a4188727967c15a2",
+    "home-before-390.png": "60dd8176f249cd0a615571e4b96863dfcca888c2ab9dcbd2f8380b55856cff7b",
+    "home-before-768.png": "930fb54eef139fbff9842a2216c723859726fdbd57d99354e55e79663d40d432",
+    "home-checks.json": "7abd72b9b24e429437242931d2b88be4ec169e7283389a3732b94d4a4ba1a3a9",
+    "home-following-empty-390.png": "578b4c2397cb2b9698793fd53350ab9d0d31ca2486b7896de35821d130e3382b",
+    "home-held-navigation-390.png": "a8057904d476dcc20d7be72d4ae44867e9e5ebd040f77da1aed1bb44c7be0bab",
+    "home-stale-390.png": "cd960d3558122765f61eee4f0d3c2e3cdd946e6ebcebf41337795f2c98b884ee",
+    "notice-scope-checks.json": "9ddc03c4e1aac28ae61a9ce16892522c502a67769d56bde5412b43045e64844f",
+    "notice-scope-fixture-1440.png": "1cf3773d0e47075ff6d9c56b882a679dc3f644f10424198c50f5661beb352c87",
+    "notice-scope-fixture-320.png": "db96701c3c6b8babdd08a18db164be04c0ff918545bab6930668b08bf66919fa",
+    "notice-scope-fixture-390.png": "34707854013d1293e211eeeec2c552b8b4223700706463e893e9ea83a2cbe320",
+    "theme-checks.json": "ffb71b720064a5ada2f8fe4b2573625c887952dfbba01c6cebeb555d4218a6ec",
+    "tools-closed-390.png": "4c2a490d645ef61a3e63ddc004c40cd93370728614db66cc28613b8838293c53",
+    "tools-expanded-390.png": "00b1549fa2efbabf641138c4080e77946b98d1df15c3e67fdf297b79f5b41166"
+  },
+  "noticeScope": "The count explicitly names Forecast Lab. Raw slate, Following and quick-pick behavior is unchanged; no shared-validation or live incident claim."
+}

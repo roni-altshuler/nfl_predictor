@@ -1,0 +1,277 @@
+{
+  "passed": true,
+  "source": "Committed artifacts; controlled browser provider/CDN outages; current clock plus explicit 47/49-hour freshness probes",
+  "checks": [
+    {
+      "name": "closed",
+      "width": 320,
+      "scheme": "light",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "expanded",
+      "width": 320,
+      "scheme": "light",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "closed",
+      "width": 320,
+      "scheme": "dark",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "expanded",
+      "width": 320,
+      "scheme": "dark",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "closed",
+      "width": 390,
+      "scheme": "light",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "expanded",
+      "width": 390,
+      "scheme": "light",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "closed",
+      "width": 390,
+      "scheme": "dark",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "expanded",
+      "width": 390,
+      "scheme": "dark",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "closed",
+      "width": 768,
+      "scheme": "light",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "expanded",
+      "width": 768,
+      "scheme": "light",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "closed",
+      "width": 768,
+      "scheme": "dark",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "expanded",
+      "width": 768,
+      "scheme": "dark",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "closed",
+      "width": 1440,
+      "scheme": "light",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "expanded",
+      "width": 1440,
+      "scheme": "light",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "closed",
+      "width": 1440,
+      "scheme": "dark",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "expanded",
+      "width": 1440,
+      "scheme": "dark",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "stale-with-tools-closed",
+      "width": 390,
+      "scheme": "dark",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    },
+    {
+      "name": "following-empty",
+      "width": 390,
+      "scheme": "dark",
+      "overflow": false,
+      "axe": [],
+      "bodyImage": "none",
+      "palette": "rgb(11, 18, 14)",
+      "canvas": 0
+    }
+  ],
+  "journeys": [
+    {
+      "width": 320,
+      "scheme": "light",
+      "game": "401872981",
+      "firstCardY": 369.5,
+      "repeatedKeyboardMatchupReturns": 2,
+      "nativeDisclosureKeyboard": true,
+      "sourceVisibleWhenClosed": true,
+      "reloadStartsWithSlate": true
+    },
+    {
+      "width": 320,
+      "scheme": "dark",
+      "game": "401872981",
+      "firstCardY": 369.5,
+      "repeatedKeyboardMatchupReturns": 2,
+      "nativeDisclosureKeyboard": true,
+      "sourceVisibleWhenClosed": true,
+      "reloadStartsWithSlate": true
+    },
+    {
+      "width": 390,
+      "scheme": "light",
+      "game": "401872981",
+      "firstCardY": 369.5,
+      "repeatedKeyboardMatchupReturns": 2,
+      "nativeDisclosureKeyboard": true,
+      "sourceVisibleWhenClosed": true,
+      "reloadStartsWithSlate": true
+    },
+    {
+      "width": 390,
+      "scheme": "dark",
+      "game": "401872981",
+      "firstCardY": 369.5,
+      "repeatedKeyboardMatchupReturns": 2,
+      "nativeDisclosureKeyboard": true,
+      "sourceVisibleWhenClosed": true,
+      "reloadStartsWithSlate": true
+    },
+    {
+      "width": 768,
+      "scheme": "light",
+      "game": "401872981",
+      "firstCardY": 269.5,
+      "repeatedKeyboardMatchupReturns": 2,
+      "nativeDisclosureKeyboard": true,
+      "sourceVisibleWhenClosed": true,
+      "reloadStartsWithSlate": true
+    },
+    {
+      "width": 768,
+      "scheme": "dark",
+      "game": "401872981",
+      "firstCardY": 269.5,
+      "repeatedKeyboardMatchupReturns": 2,
+      "nativeDisclosureKeyboard": true,
+      "sourceVisibleWhenClosed": true,
+      "reloadStartsWithSlate": true
+    },
+    {
+      "width": 1440,
+      "scheme": "light",
+      "game": "401872981",
+      "firstCardY": 253.5,
+      "repeatedKeyboardMatchupReturns": 2,
+      "nativeDisclosureKeyboard": true,
+      "sourceVisibleWhenClosed": true,
+      "reloadStartsWithSlate": true
+    },
+    {
+      "width": 1440,
+      "scheme": "dark",
+      "game": "401872981",
+      "firstCardY": 253.5,
+      "repeatedKeyboardMatchupReturns": 2,
+      "nativeDisclosureKeyboard": true,
+      "sourceVisibleWhenClosed": true,
+      "reloadStartsWithSlate": true
+    },
+    {
+      "interruptedForSchedule": true,
+      "heldRscRequests": 2,
+      "loadingSkeletonObserved": false,
+      "lateResponseDidNotReplaceDestination": true,
+      "retryPassed": true
+    }
+  ],
+  "emptyFilterTeam": "CAR",
+  "errors": []
+}

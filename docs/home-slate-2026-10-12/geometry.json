@@ -1,0 +1,91 @@
+{
+  "source": "Committed forecast, real browser time, controlled provider/CDN outage; no live score claim",
+  "measurements": [
+    {
+      "width": 320,
+      "beforeFirstCard": {
+        "x": 16,
+        "y": 2209.5,
+        "width": 288,
+        "height": 241
+      },
+      "afterFirstCard": {
+        "x": 16,
+        "y": 369.5,
+        "width": 288,
+        "height": 241
+      },
+      "hrefUnchanged": true,
+      "textUnchanged": true,
+      "cardHref": "/games/401872981",
+      "cardText": "SUN, OCT 11 \u00b7 9:30 AM ET\nNEUTRAL\nPHI\nPHI\n19.9 pts\n32.4%\nJAX\nJAX\n26.1 pts\n67.3%\nmodel\nJAX +6.3\ntotal\n46.0\nmarket\n-7.5\nGAME DETAIL"
+    },
+    {
+      "width": 390,
+      "beforeFirstCard": {
+        "x": 16,
+        "y": 2078.5,
+        "width": 358,
+        "height": 241
+      },
+      "afterFirstCard": {
+        "x": 16,
+        "y": 369.5,
+        "width": 358,
+        "height": 241
+      },
+      "hrefUnchanged": true,
+      "textUnchanged": true,
+      "cardHref": "/games/401872981",
+      "cardText": "SUN, OCT 11 \u00b7 9:30 AM ET\nNEUTRAL\nPHI\nPHI\n19.9 pts\n32.4%\nJAX\nJAX\n26.1 pts\n67.3%\nmodel\nJAX +6.3\ntotal\n46.0\nmarket\n-7.5\nGAME DETAIL"
+    },
+    {
+      "width": 768,
+      "beforeFirstCard": {
+        "x": 252,
+        "y": 1860.5,
+        "width": 236,
+        "height": 256
+      },
+      "afterFirstCard": {
+        "x": 252,
+        "y": 269.5,
+        "width": 236,
+        "height": 256
+      },
+      "hrefUnchanged": true,
+      "textUnchanged": true,
+      "cardHref": "/games/401872981",
+      "cardText": "SUN, OCT 11 \u00b7 9:30 AM ET\nNEUTRAL\nPHI\nPHI\n19.9 pts\n32.4%\nJAX\nJAX\n26.1 pts\n67.3%\nmodel\nJAX +6.3\ntotal\n46.0\nmarket\n-7.5\nGAME DETAIL"
+    },
+    {
+      "width": 1440,
+      "beforeFirstCard": {
+        "x": 252,
+        "y": 1236,
+        "width": 377.328125,
+        "height": 241
+      },
+      "afterFirstCard": {
+        "x": 252,
+        "y": 253.5,
+        "width": 377.328125,
+        "height": 241
+      },
+      "hrefUnchanged": true,
+      "textUnchanged": true,
+      "cardHref": "/games/401872981",
+      "cardText": "SUN, OCT 11 \u00b7 9:30 AM ET\nNEUTRAL\nPHI\nPHI\n19.9 pts\n32.4%\nJAX\nJAX\n26.1 pts\n67.3%\nmodel\nJAX +6.3\ntotal\n46.0\nmarket\n-7.5\nGAME DETAIL"
+    }
+  ],
+  "disclosureVisibility": {
+    "closed": {
+      "open": null,
+      "labVisible": false
+    },
+    "expanded": {
+      "open": "",
+      "labVisible": true
+    }
+  }
+}

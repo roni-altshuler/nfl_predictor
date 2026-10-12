@@ -1,5 +1,6 @@
 /** Real-artifact browser audit. Set BROWSER_TEST_MODULE_ROOT if using shared tooling. */
 import { createRequire } from 'node:module'
+import { auditHomeSlate } from './home_slate_audit.mjs'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import assert from 'node:assert/strict'
@@ -106,6 +107,7 @@ try {
   await page.goto(`${base}/lab?game=missing`,{waitUntil:'domcontentloaded'})
   await page.getByText(/The shared game has kicked off/).waitFor()
   await page.goto(base,{waitUntil:'domcontentloaded'})
+  await page.locator('#forecast-tools > summary').click()
   await page.getByRole('heading',{name:'Your Sunday starts here.'}).waitFor()
   await page.getByRole('region',{name:'Week briefing',exact:true}).waitFor()
   await page.screenshot({path:path.join(output,'homepage.png'),fullPage:false,timeout:20000})
@@ -120,6 +122,7 @@ try {
   await page.goto(`${base}/accuracy`,{waitUntil:'domcontentloaded'})
   await page.getByRole('heading',{name:/Published forecast record/}).waitFor()
   await page.getByRole('region',{name:'Model development',exact:true}).waitFor()
+  await auditHomeSlate({browser,base,output:path.join(output,'home-slate'),axePath,publication:data.forecast})
   assert.deepEqual(errors,[])
   await fs.writeFile(path.join(output,'results.json'),JSON.stringify({generated_at:new Date().toISOString(),checks,home:homeCheck,errors,clock:process.env.AUDIT_USE_PUBLICATION_TIME==='1'?'publication':'current',game_id:game.game_id,passed:true},null,2))
   console.log(JSON.stringify({passed:true,viewports:checks.map(c=>c.width),game:game.game_id,output}))

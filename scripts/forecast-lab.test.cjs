@@ -20,6 +20,24 @@ test('invalid triples, lattices, dates and duplicate IDs are withheld',()=>{
   assert.equal(parseForecast({...artifact,games:[artifact.games[0],artifact.games[0]]}).forecast.games.length,1)
   assert.equal(parseForecast(null).forecast,null)
 })
+test('homepage withholding notice identifies the Lab cohort when the raw snapshot has invalid and duplicate rows',()=>{
+  const valid=structuredClone(artifact.games[0])
+  const invalid={...structuredClone(valid),game_id:'900000121',p_home:.8,p_away:.1,p_tie:.4}
+  const fixture={...artifact,games:[valid,invalid,structuredClone(valid)]}
+  const parsed=parseForecast(fixture)
+  assert.equal(parsed.withheld,2)
+  assert.deepEqual(parsed.forecast.games,[valid])
+  assert.equal(fixture.games.length,3,'Validation must not mutate the original snapshot used by other views')
+  const format={},context={}
+  const compile=(file)=>ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX}}).outputText
+  Function('exports','require',compile('src/lib/format.ts'))(format,require)
+  Function('exports','require',compile('src/components/forecast/ForecastContext.tsx'))(context,name=>name==='@/lib/format'?format:require(name))
+  const React=require('react'),{renderToStaticMarkup}=require('react-dom/server')
+  const html=renderToStaticMarkup(React.createElement(context.ForecastContext,{publishedAt:fixture.generated_at,resultsThrough:fixture.trained_through,asOf:fixture.generated_at,withheld:parsed.withheld}))
+  assert.match(html,/Forecast Lab: 2 invalid or duplicate forecasts withheld\./)
+  assert.match(html,/Forecast published/)
+  assert.match(html,/Results used through/)
+})
 test('record scenario adds only the selected result',()=>{
  const t={current_wins:2,current_losses:1,current_ties:0}
  assert.equal(recordAfter(t,'win'),'3–1–0');assert.equal(recordAfter(t,'loss'),'2–2–0');assert.equal(recordAfter(t,'tie'),'2–1–1')
