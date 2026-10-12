@@ -15,7 +15,10 @@ hierarchy change, not a live-score feed or model-quality improvement.
 Publication context stays outside the disclosure: exact forecast publication,
 results cutoff and pre-game coverage. The existing 48-hour stale rule is mirrored
 above the slate and updates after hydration, so cached HTML cannot hide an aged
-source. Invalid/duplicate withholding notices also remain above the games.
+source. The Lab's invalid/duplicate withholding notice also remains above the
+games, explicitly scoped to **Forecast Lab**. It does not claim that slate
+cards, Following or quick picks have passed the Lab validator; those existing
+views still use the original published snapshot.
 Missing results timestamps explicitly render unavailable.
 
 ## Actual before/after pixels
@@ -57,6 +60,20 @@ game skeleton; no loading-indicator claim is made for that case. The existing
 full audits separately exercise loading, refresh errors and unavailable data.
 
 ## Source and execution limits
+
+The [malformed-artifact regression](home-slate-2026-10-12/notice-scope-checks.json)
+uses a local-only in-memory fixture with one valid row, an invalid probability
+triple and a duplicate valid ID. The actual homepage retains three raw slate
+cards and three quick picks; the Lab explorer shows one row and the visible
+notice says “Forecast Lab: 2 invalid or duplicate forecasts withheld.”
+Keyboard disclosure and strict zero-Axe checks pass at 320/390/1440px.
+See the explicitly synthetic [phone](home-slate-2026-10-12/notice-scope-fixture-390.png)
+and [desktop](home-slate-2026-10-12/notice-scope-fixture-1440.png) captures.
+The committed contract test renders the real context component after the real
+parser excludes those two rows, and verifies the raw fixture is unchanged.
+Current committed data validates with zero withheld rows; this is no live
+incident claim or change to shared homepage validation. The fixture and its
+preloader stay outside the repository, and the ordinary QA build is restored.
 
 The retained forecast is **2026-10-11T16:35:55+00:00**, using results through
 **2026-10-09T00:15:00+00:00**. Its data hash is unchanged. UI review does not

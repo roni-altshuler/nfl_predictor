@@ -40,7 +40,7 @@ export function ForecastContext({
         Published pre-game probabilities, not a live schedule. Open a matchup for the outlook and evidence.
       </p>
       {stale ? <p className="lab-notice">Forecasts are more than 48 hours old. Check their publication date before using them.</p> : null}
-      {withheld > 0 ? <p className="lab-notice">{withheld} invalid or duplicate forecasts withheld.</p> : null}
+      {withheld > 0 ? <p className="lab-notice">Forecast Lab: {withheld} invalid or duplicate forecasts withheld.</p> : null}
     </section>
   )
 }

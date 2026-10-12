@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-12T12:45:50.525065+00:00",
+  "checkedAt": "2026-10-12T13:54:57.309899+00:00",
   "base": "a564f1cf545841b5cc9fa2ea25804c70d35ac9fb",
   "localGates": {
     "backendTests": 146,
-    "nodeContracts": 27,
+    "nodeContracts": 28,
     "weekContractAssertions": "passed",
     "lint": "0 warnings/errors",
     "types": "passed",
@@ -58,6 +58,29 @@
         "errors": 0,
         "passed": true
       }
+    },
+    "fullSuiteValidatedAtHead": "566d895e5c1f45b5df422c983bcf4b614e560028",
+    "noticeScopeDelta": {
+      "realParserAndRenderedComponentRegression": "passed",
+      "fixtureBrowserWidths": [
+        320,
+        390,
+        1440
+      ],
+      "rawSlateRows": 3,
+      "rawQuickPickLinks": 3,
+      "labRows": 1,
+      "labWithheld": 2,
+      "axeViolations": 0,
+      "affectedFullLabAudit": "passed",
+      "ordinaryHomeChecks": 18,
+      "ordinaryDataRestored": {
+        "games": 207,
+        "withheld": 0,
+        "malformedFixturePresent": false,
+        "passed": true
+      },
+      "fixtureArtifactAndPreloaderCommitted": false
     }
   },
   "focusedHomeStates": 18,
@@ -79,8 +102,9 @@
     "fixtureMode": "Existing captured/synthetic archive and error fixtures, with controlled provider/CDN outages. No synthetic current scores or live status claims."
   },
   "preservation": {
-    "unchangedExistingProtectedFiles": 163,
+    "unchangedExistingProtectedFiles": 162,
     "intentionallyAdaptedExistingAuditScripts": [
+      "scripts/forecast-lab.test.cjs",
       "scripts/forecast_lab_audit.mjs",
       "scripts/theme_journey_audit.mjs"
     ],
@@ -109,8 +133,13 @@
     "home-following-empty-390.png": "578b4c2397cb2b9698793fd53350ab9d0d31ca2486b7896de35821d130e3382b",
     "home-held-navigation-390.png": "a8057904d476dcc20d7be72d4ae44867e9e5ebd040f77da1aed1bb44c7be0bab",
     "home-stale-390.png": "cd960d3558122765f61eee4f0d3c2e3cdd946e6ebcebf41337795f2c98b884ee",
+    "notice-scope-checks.json": "9ddc03c4e1aac28ae61a9ce16892522c502a67769d56bde5412b43045e64844f",
+    "notice-scope-fixture-1440.png": "1cf3773d0e47075ff6d9c56b882a679dc3f644f10424198c50f5661beb352c87",
+    "notice-scope-fixture-320.png": "db96701c3c6b8babdd08a18db164be04c0ff918545bab6930668b08bf66919fa",
+    "notice-scope-fixture-390.png": "34707854013d1293e211eeeec2c552b8b4223700706463e893e9ea83a2cbe320",
     "theme-checks.json": "ffb71b720064a5ada2f8fe4b2573625c887952dfbba01c6cebeb555d4218a6ec",
     "tools-closed-390.png": "4c2a490d645ef61a3e63ddc004c40cd93370728614db66cc28613b8838293c53",
     "tools-expanded-390.png": "00b1549fa2efbabf641138c4080e77946b98d1df15c3e67fdf297b79f5b41166"
-  }
+  },
+  "noticeScope": "The count explicitly names Forecast Lab. Raw slate, Following and quick-pick behavior is unchanged; no shared-validation or live incident claim."
 }
