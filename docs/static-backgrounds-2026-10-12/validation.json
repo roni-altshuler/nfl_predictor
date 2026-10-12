@@ -592,6 +592,13 @@
     "schedule-before-1440.png": "7c744d64c4cca9054a6fa8fdb1453146d70287397faa5ba3611b6624c80e27a8",
     "team-after-390.png": "400d86388357834317d245e50999433ab610d23c82969ca21736ac0b6d2deacc",
     "team-checks.json": "506352f6e08c8880f634e3371ed1ced1309c82173db1c17e0375c90e0f4e3368",
-    "theme-checks.json": "8a47115e3a2f375a17c2cec8fe51289f1c9dd83a30bfd97ad0fee0f4c82a6efb"
+    "theme-checks.json": "8a47115e3a2f375a17c2cec8fe51289f1c9dd83a30bfd97ad0fee0f4c82a6efb",
+    "availability-checks.json": "3684b6e22dfdc2da194c36a23d397b5c70497fb7c506597527d08060d77fb7fc"
+  },
+  "additionalSyntheticAvailabilityQa": {
+    "browserScripts": 5,
+    "allPassed": true,
+    "actualPlayerStatusClaim": false,
+    "fixtureSha256": "b069ff74b0d827fd1e19ac3459e5d8163bce3b7fee323bb4b65c931e47f32762"
   }
 }

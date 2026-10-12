@@ -1,0 +1,239 @@
+{
+  "tested_at": "2026-10-12T07:56:46.460Z",
+  "sourceMode": "Explicitly synthetic Out status lines for committed forecast IDs, via a local-only fetch preloader. No actual player status, provider freshness, or probability claim. Model/forecast/source files unchanged.",
+  "fixtureFile": "/workspace/nfl-static-backgrounds-review-2026-10-12/availability-fixture.cjs",
+  "fixtureSha256": "b069ff74b0d827fd1e19ac3459e5d8163bce3b7fee323bb4b65c931e47f32762",
+  "checks": [
+    {
+      "name": "paths",
+      "passed": true,
+      "checks": [
+        {
+          "width": 320,
+          "name": "paths-game",
+          "overflow": false,
+          "existingRedTextFindings": 1
+        },
+        {
+          "width": 320,
+          "name": "paths-record",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 320,
+          "name": "paths-lab",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 390,
+          "name": "paths-game",
+          "overflow": false,
+          "existingRedTextFindings": 1
+        },
+        {
+          "width": 390,
+          "name": "paths-refresh-outage",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 390,
+          "name": "paths-inconsistent-source",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 390,
+          "name": "paths-lab",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 390,
+          "name": "paths-archive-empty",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 768,
+          "name": "paths-game",
+          "overflow": false,
+          "existingRedTextFindings": 1
+        },
+        {
+          "width": 768,
+          "name": "paths-lab",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 1440,
+          "name": "paths-game",
+          "overflow": false,
+          "existingRedTextFindings": 1
+        },
+        {
+          "width": 1440,
+          "name": "paths-lab",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "leaders",
+      "passed": true,
+      "checks": [
+        {
+          "width": 320,
+          "name": "comparison-unavailable",
+          "overflow": false,
+          "existingRedTextFindings": 1
+        },
+        {
+          "width": 390,
+          "name": "comparison-unavailable",
+          "overflow": false,
+          "existingRedTextFindings": 1
+        },
+        {
+          "width": 768,
+          "name": "comparison-unavailable",
+          "overflow": false,
+          "existingRedTextFindings": 1
+        },
+        {
+          "width": 1440,
+          "name": "comparison-unavailable",
+          "overflow": false,
+          "existingRedTextFindings": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "lab",
+      "passed": true,
+      "checks": [
+        {
+          "width": 320,
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "existingRedTextFindings": 0
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "week",
+      "passed": true,
+      "checks": [
+        {
+          "width": 320,
+          "name": "week",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 320,
+          "name": "game",
+          "overflow": false,
+          "existingRedTextFindings": 1
+        },
+        {
+          "width": 390,
+          "name": "week",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 390,
+          "name": "game",
+          "overflow": false,
+          "existingRedTextFindings": 1
+        },
+        {
+          "width": 768,
+          "name": "week",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 768,
+          "name": "game",
+          "overflow": false,
+          "existingRedTextFindings": 1
+        },
+        {
+          "width": 1440,
+          "name": "week",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 1440,
+          "name": "game",
+          "overflow": false,
+          "existingRedTextFindings": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "profiles",
+      "passed": true,
+      "checks": [
+        {
+          "width": 320,
+          "name": "player",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 390,
+          "name": "player",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 768,
+          "name": "player",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 1440,
+          "name": "player",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        },
+        {
+          "width": 390,
+          "name": "profile-no-context",
+          "overflow": false,
+          "existingRedTextFindings": 0
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "headDuringQa": "3cf3258c2e9a9b15dcd57a165933900f4b93035a",
+  "runtimeUiUnchanged": true
+}

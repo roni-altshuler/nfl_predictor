@@ -85,6 +85,14 @@ records the actual violations and incomplete results. The expanded journey
 records only the historical loss-table and tiny availability-badge shapes
 separately and retains
 strict assertions elsewhere. This is not a zero-accessibility-findings claim.
+The same two-shape reporting rule is shared by the full-page browser audits;
+unknown contrast targets and other Axe rules remain failures.
+An additional [controlled availability run](static-backgrounds-2026-10-12/availability-checks.json)
+tests the five full-page audits with explicitly synthetic `Out` lines rendered
+by the unchanged game components. The preloader is local QA only, outside the
+repository; no fake status is committed or deployed. Both single-row fixture
+and multi-row CI selector paths are checked. The ordinary QA build is restored
+after that probe, with the synthetic build retained separately for review.
 The owner's scope excludes unrelated health fixes, so no palette/table fix is
 bundled into the background-removal PR.
 

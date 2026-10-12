@@ -9,8 +9,9 @@ export function existingRedTextContrast(violation) {
     targets.every(target => target.length > 0 && target.every(selector => {
       if (!selector.includes('accent-loss')) return false
       const historicalCell = selector.includes('tr:nth-child(')
-      const availabilityBadge = selector.includes('justify-between.gap-2') &&
-        selector.includes('shrink-0') && selector.includes('10px')
+      // Axe chooses different ancestor paths for one versus many status rows.
+      // The badge's unchanged three-class style is the stable boundary.
+      const availabilityBadge = selector.includes('shrink-0') && selector.includes('10px')
       return historicalCell || availabilityBadge
     }))
 }
