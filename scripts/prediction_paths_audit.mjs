@@ -3,7 +3,6 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { createRequire } from 'node:module'
-import { existingRedTextContrast } from './existing_red_text_contrast.mjs'
 const require = createRequire(path.join(process.env.BROWSER_TEST_MODULE_ROOT || process.cwd(), 'package.json'))
 const { chromium } = require('playwright')
 const axePath = require.resolve('axe-core/axe.min.js')
@@ -60,8 +59,7 @@ async function audit(page, width, name, target = '#paths') {
     overlay: !!document.querySelector('[data-nextjs-dialog]'),
   }))
   assert.equal(result.overflow, false, `${name} at ${width}px`)
-  result.existingRedTextFindings = result.axe.filter(existingRedTextContrast)
-  assert.deepEqual(result.axe.filter(v => !result.existingRedTextFindings.includes(v)), [], `${name} accessibility at ${width}px`)
+  assert.deepEqual(result.axe, [], `${name} accessibility at ${width}px`)
   assert.equal(result.overlay, false)
   assert.equal(result.reducedMotion, true)
   assert.ok(result.enterDuration.split(',').every(d => (d.trim().endsWith('ms') ? parseFloat(d) : parseFloat(d) * 1000) <= .02))

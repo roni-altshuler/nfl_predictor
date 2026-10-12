@@ -69,32 +69,36 @@ than the deleted ambient control. Lint, TypeScript, the 27 Node contracts plus
 week assertions, and the 305-page production build pass. Actual browser gate
 results are recorded in [validation](static-backgrounds-2026-10-12/validation.json).
 
-## Exposed contrast finding and scope limits
+## Contrast completion and strict gates
 
-The added team-page visit exposes insufficient contrast in existing small red
-historical table values (`--accent-loss: #c8544c`). CI also reaches populated
-availability reports whose existing tiny red status badges use that colour;
-local controlled outages have no such badges. An independent original-main
-build confirms that its canvas/gradients made Axe's contrast evaluation
-incomplete for those backgrounds. The static view makes the check computable;
-one measured table value is **4.26:1**, below the 4.5:1 text threshold. The team
-table, colour token and historical values are unchanged.
+The flat backdrop exposes small red text that previously used `--accent-loss`
+(`#c8544c`). An independent original-main build reported incomplete contrast
+evaluation with its canvas/gradients; that is not evidence of an accessible
+baseline. The initial static measurement was 4.26:1, below the 4.5:1 text floor.
 
-The [original/static comparison](static-backgrounds-2026-10-12/contrast-comparison.json)
-records the actual violations and incomplete results. The expanded journey
-records only the historical loss-table and tiny availability-badge shapes
-separately and retains
-strict assertions elsewhere. This is not a zero-accessibility-findings claim.
-The same two-shape reporting rule is shared by the full-page browser audits;
-unknown contrast targets and other Axe rules remain failures.
-An additional [controlled availability run](static-backgrounds-2026-10-12/availability-checks.json)
-tests the five full-page audits with explicitly synthetic `Out` lines rendered
-by the unchanged game components. The preloader is local QA only, outside the
-repository; no fake status is committed or deployed. Both single-row fixture
-and multi-row CI selector paths are checked. The ordinary QA build is restored
-after that probe, with the synthetic build retained separately for review.
-The owner's scope excludes unrelated health fixes, so no palette/table fix is
-bundled into the background-removal PR.
+Small loss/status/error labels now use the existing `--accent-loss-soft`
+(`#d4655e`) text token. Eight text-token uses are corrected across team history
+and form, game availability and form, archived standings, season preview,
+upset margins and the conditional accuracy note. Their values, meaning and
+layout are unchanged. Base loss/live/chart colours and the chart palette stay
+unchanged. This is the directly exposed text completion of the removal.
+
+All added contrast waivers, helper imports and exemptions are deleted. Every
+browser audit again asserts an empty Axe violation array. The
+[contrast measurements](static-backgrounds-2026-10-12/contrast-measurements.json)
+validate actual composited backgrounds, normal table rows, hovered rows and
+synthetic availability badges at 320/390/1440px. The measured minimum is
+**4.57:1**. The [original/static comparison](static-backgrounds-2026-10-12/contrast-comparison.json)
+remains as the before measurement, not a permission to bypass failures.
+
+Focused screenshots show the [historical table](static-backgrounds-2026-10-12/historical-table-390.png)
+and [availability badges](static-backgrounds-2026-10-12/availability-badges-390.png)
+after correction. Availability uses explicitly synthetic `Out` lines rendered
+by the unchanged game components. The local-only preloader remains outside the
+repository; no fake status is committed or deployed. All eight scripts pass in
+the [strict populated run](static-backgrounds-2026-10-12/availability-checks.json).
+This supplements the ordinary captured/outage fixture and populated provider
+responses in automatic CI. The ordinary QA build is restored after fixture QA.
 
 QA reads the retained publication **2026-10-11T16:35:55+00:00**, with results
 used through **2026-10-09T00:15:00+00:00**. Neither date becomes fresher because

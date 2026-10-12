@@ -3,7 +3,6 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { createRequire } from 'node:module'
-import { existingRedTextContrast } from './existing_red_text_contrast.mjs'
 const require = createRequire(path.join(process.env.BROWSER_TEST_MODULE_ROOT || process.cwd(), 'package.json'))
 const { chromium } = require('playwright')
 const axePath = require.resolve('axe-core/axe.min.js')
@@ -23,7 +22,7 @@ const hero = page => page.getByRole('region', { name: 'Published matchup', exact
 const teamReady = page => page.getByRole('heading', { level: 1, name: teamName, exact: true }).waitFor()
 const gameReady = page => page.getByRole('region', { name: 'Forecast', exact: true }).waitFor()
 const date = value => new Date(value).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'UTC' }) + ' UTC'
-const checks = [], errors = [], blocked = [], journeys = [], existingRedTextFindings = []
+const checks = [], errors = [], blocked = [], journeys = []
 await fs.mkdir(output, { recursive: true })
 await fs.rm(path.join(output, 'results.json'), { force: true })
 const browser = await chromium.launch({ headless: true, args: ['--no-sandbox'],
@@ -58,9 +57,7 @@ async function health(page, width, state) {
     overlay: !!document.querySelector('[data-nextjs-dialog]'),
   }))
   assert.equal(result.overflow, false)
-  const tableContrast = result.axe.filter(existingRedTextContrast)
-  if (tableContrast.length) existingRedTextFindings.push({ width, state, findings: tableContrast })
-  assert.deepEqual(result.axe.filter(v => !tableContrast.includes(v)), [])
+  assert.deepEqual(result.axe, [])
   assert.equal(result.palette, 'rgb(11, 18, 14)')
   assert.equal(result.overlay, false)
   checks.push({ width, state, ...result })
@@ -193,7 +190,7 @@ try {
   await interrupted.close()
   assert.deepEqual(errors, [])
   assert.equal(blocked.filter(url => /\/headshots\//.test(url)).length, 0)
-  await fs.writeFile(path.join(output, 'results.json'), JSON.stringify({ passed: true, generated_at: new Date().toISOString(), browser: browser.version(), publication: publication.generated_at, resultsThrough: publication.trained_through, clock: 'current (plus explicit 2030 stability probe)', sourceMode: 'Committed artifacts; ESPN images blocked; server fixture mode recorded separately', checks, journeys, interruption, existingRedTextFindings, noJavaScript: { teamCard: true, scheduleAnchor: true, opponentTeam: true, matchupDetail: 'Inherited game streaming needs JavaScript; no no-JS detail claim' }, freshTabCanonicalParent: true, blockedRequests: blocked.length, errors }, null, 2) + '\n')
+  await fs.writeFile(path.join(output, 'results.json'), JSON.stringify({ passed: true, generated_at: new Date().toISOString(), browser: browser.version(), publication: publication.generated_at, resultsThrough: publication.trained_through, clock: 'current (plus explicit 2030 stability probe)', sourceMode: 'Committed artifacts; ESPN images blocked; server fixture mode recorded separately', checks, journeys, interruption, noJavaScript: { teamCard: true, scheduleAnchor: true, opponentTeam: true, matchupDetail: 'Inherited game streaming needs JavaScript; no no-JS detail claim' }, freshTabCanonicalParent: true, blockedRequests: blocked.length, errors }, null, 2) + '\n')
   console.log(JSON.stringify({ passed: true, checks: checks.length, output, interruption }))
 } finally {
   await browser.close()

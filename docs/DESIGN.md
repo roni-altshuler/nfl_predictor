@@ -33,6 +33,9 @@ colour-alone floor, so **direct labels are mandatory on every chart**, not
 styling.
 
 Every probability renders as text; colour is always secondary encoding.
+Small loss/status/error text uses the existing `--accent-loss-soft` (`#d4655e`)
+for readable contrast on static surfaces, including table hover. The base loss
+colour remains for semantic graphic/live signals; no chart palette changes.
 Absent data renders as absent (`—`), never as zero.
 
 ## 3. Type

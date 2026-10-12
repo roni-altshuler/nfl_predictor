@@ -3,7 +3,6 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { createRequire } from 'node:module'
-import { existingRedTextContrast } from './existing_red_text_contrast.mjs'
 const require = createRequire(path.join(process.env.BROWSER_TEST_MODULE_ROOT || process.cwd(), 'package.json'))
 const { chromium } = require('playwright')
 const axePath = require.resolve('axe-core/axe.min.js')
@@ -52,8 +51,7 @@ async function visual(page, width, name) {
     overlay: !!document.querySelector('[data-nextjs-dialog]'),
   }))
   assert.equal(check.overflow, false)
-  check.existingRedTextFindings = check.axe.filter(existingRedTextContrast)
-  assert.deepEqual(check.axe.filter(v => !check.existingRedTextFindings.includes(v)), [])
+  assert.deepEqual(check.axe, [])
   assert.equal(check.overlay, false)
   await page.screenshot({ path: path.join(output, `${name}-${width}.png`), fullPage: true })
   checks.push({ name, width, ...check })

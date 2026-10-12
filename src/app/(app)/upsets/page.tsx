@@ -87,7 +87,7 @@ export default function UpsetsPage() {
         note="Actual margin against the projected one, home perspective."
         games={misses}
         metric={(g) => (
-          <span className="text-[var(--accent-loss)]">
+          <span className="text-[var(--accent-loss-soft)]">
             off by {Math.abs(g.margin_miss!).toFixed(1)} · proj{' '}
             {signed(g.exp_margin)}
           </span>

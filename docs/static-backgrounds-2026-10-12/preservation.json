@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-12T07:05:13.115Z",
+  "checked_at": "2026-10-12T08:35:47.097200+00:00",
   "base": "1be2a407f38fb0a1e634797e33beb29492fe77cc",
   "protectedFiles": 126,
   "allProtectedHashesUnchanged": true,
@@ -134,5 +134,6 @@
     "src/lib/utils.ts": "e46429536f43f5910f5b2b0c50bb2769b510a4558bb4b5d20a3b0a9091dbf7c3",
     "src/lib/watchlist.ts": "5f8e87c15519d22b1b0554b51cf47e7163160e96f5a4096ef2ae7a58b8b6bc60",
     "src/lib/weekBrowser.ts": "f224b0659671e76d094b110304226bdf8fa47c9cda3cc6e9527afd43cbe8fdce"
-  }
+  },
+  "oldLocalRefCount": 9
 }

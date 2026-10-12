@@ -6,6 +6,8 @@ NFL game and season probabilities, compared with historical market prices.
 all decorative field rendering, its animation controls and body gradient layers.
 Every page uses a flat backdrop with the existing dark-green/cream palette.
 Scores, schedules, team/player links, charts and loading/status feedback remain.
+Small red loss/status text uses the existing accessible text token, with strict
+zero-violation browser assertions and measured table/availability contrast.
 
 [October 11 team matchup exploration](docs/TEAM_MATCHUP_2026-10-11.md) brings
 the first matchup in each team's retained publication above season projections,

@@ -270,7 +270,7 @@ function SwingBoard({
             className={
               tone === 'up'
                 ? 'w-12 text-right font-mono text-sm text-[var(--accent-primary)]'
-                : 'w-12 text-right font-mono text-sm text-[var(--accent-loss)]'
+                : 'w-12 text-right font-mono text-sm text-[var(--accent-loss-soft)]'
             }
           >
             {signed(delta, 1)}

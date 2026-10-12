@@ -604,7 +604,7 @@ function Availability({
                     <span
                       className={`numeric shrink-0 text-[10px] ${
                         /out|doubtful/i.test(entry.status)
-                          ? 'text-[var(--accent-loss)]'
+                          ? 'text-[var(--accent-loss-soft)]'
                           : 'text-[var(--accent-warn)]'
                       }`}
                     >
@@ -735,7 +735,7 @@ function FormList({ games }: { games: FormGame[] }) {
                   game.result === 'W'
                     ? 'text-[var(--accent-primary)]'
                     : game.result === 'L'
-                      ? 'text-[var(--accent-loss)]'
+                      ? 'text-[var(--accent-loss-soft)]'
                       : 'text-[var(--accent-warn)]'
                 }`}
               >
