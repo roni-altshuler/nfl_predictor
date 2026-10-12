@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { playoffSwing } from '@/lib/playoffScenarios'
 import { WeekBriefing } from '@/components/forecast/WeekBriefing'
 import { ForecastLab } from '@/components/forecast/ForecastLab'
+import { ForecastContext } from '@/components/forecast/ForecastContext'
 import { getLabData } from '@/lib/server/forecastLab'
 
 import { EvidencePanel } from '@/components/evidence/EvidencePanel'
@@ -91,10 +92,10 @@ export default function HomePage() {
         </h1>
         {forecasts ? (
           <p className="mt-2 font-mono text-[11px] text-[var(--text-tertiary)]">
-            {slate.length} games · model {forecasts.model_version} · published{' '}
-            {stamp(forecasts.generated_at)}
+            {slate.length} games · model {forecasts.model_version}
           </p>
         ) : null}
+        {forecasts ? <ForecastContext publishedAt={forecasts.generated_at} resultsThrough={forecasts.trained_through} asOf={lab.asOf} withheld={lab.withheld} /> : null}
       </header>
 
       {preseason ? (
@@ -111,14 +112,10 @@ export default function HomePage() {
         </p>
       ) : null}
 
-      <WeekBriefing games={(lab.forecast?.games ?? []).map(({game_id,date_utc,week,home,away,home_name,away_name,p_home,p_away}) => ({game_id,date_utc,week,home,away,home_name,away_name,p_home,p_away}))} stakes={(lab.scenarios?.games ?? []).map(g=>({game_id:g.game_id,swing:playoffSwing(g)}))} asOf={lab.asOf} />
-
       <FollowingStrip fixtures={nextFixtures} />
 
-      <ForecastLab initial={{...lab,scenarios:null}} compact />
-
       {/* ------------------------------------------------------- the slate */}
-      <section>
+      <section aria-label="Published slate">
         <div className="mb-4 flex items-baseline justify-between">
           <h2 className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
             The slate
@@ -138,6 +135,16 @@ export default function HomePage() {
           <SlateWithFilter games={slate} />
         )}
       </section>
+
+      <details className="card p-4" id="forecast-tools">
+        <summary className="min-h-[44px] cursor-pointer font-mono text-sm leading-[44px] text-[var(--text-secondary)]">
+          Week outlook &amp; tools
+        </summary>
+        <div className="mt-4 space-y-8">
+          <WeekBriefing games={(lab.forecast?.games ?? []).map(({game_id,date_utc,week,home,away,home_name,away_name,p_home,p_away}) => ({game_id,date_utc,week,home,away,home_name,away_name,p_home,p_away}))} stakes={(lab.scenarios?.games ?? []).map(g=>({game_id:g.game_id,swing:playoffSwing(g)}))} asOf={lab.asOf} />
+          <ForecastLab initial={{...lab,scenarios:null}} compact />
+        </div>
+      </details>
 
       {slate.length ? <QuickPicks games={slate} /> : null}
 

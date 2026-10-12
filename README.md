@@ -2,6 +2,12 @@
 
 NFL game and season probabilities, compared with historical market prices.
 
+[October 12 homepage slate](docs/HOME_SLATE_2026-10-12.md) puts the published
+week's existing matchup cards first. The briefing and Forecast Lab are available
+in a native disclosure; exact publication/results timestamps and stale-source
+warnings remain above the games. This changes browsing, not forecasts or live
+score coverage.
+
 [October 12 static backgrounds](docs/STATIC_BACKGROUNDS_2026-10-12.md) removes
 all decorative field rendering, its animation controls and body gradient layers.
 Every page uses a flat backdrop with the existing dark-green/cream palette.

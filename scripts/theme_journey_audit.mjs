@@ -120,7 +120,7 @@ async function pendingPreference(width, scheme, stored) {
   await page.route('**/_next/static/**/*.js', async route => { await held; await route.continue() })
   try {
     await page.goto(base, { waitUntil: 'commit' })
-    await page.getByRole('heading', { name: 'Your Sunday starts here.', exact: true }).waitFor()
+    await page.getByRole('heading', { name: 'The slate', exact: true }).waitFor()
     const state = await page.evaluate(() => ({
       ambient: document.documentElement.dataset.ambient,
       image: getComputedStyle(document.body).backgroundImage,
@@ -145,14 +145,20 @@ try {
   for (const width of [320, 390, 768, 1440]) for (const scheme of ['light', 'dark']) {
     const { context, page } = await newPage(width, scheme, 'vivid')
     await page.goto(base)
-    await page.getByRole('heading', { name: 'Your Sunday starts here.', exact: true }).waitFor()
+    await page.getByRole('heading', { name: 'The slate', exact: true }).waitFor()
     const manifestUrl = await page.locator('link[rel="manifest"]').getAttribute('href')
     const manifest = await (await page.request.get(new URL(manifestUrl, base).href)).json()
     const boardColor = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--background').trim())
     assert.equal(manifest.theme_color, boardColor)
     assert.equal(manifest.background_color, boardColor)
     assert.equal(await page.locator('meta[name="theme-color"]').getAttribute('content'), boardColor)
+    await page.locator('#forecast-tools > summary').focus()
+    await page.keyboard.press('Enter')
+    await page.getByRole('heading', { name: 'Your Sunday starts here.', exact: true }).waitFor()
     assert.match(await page.getByRole('link', { name: 'Explore every matchup ↗', exact: true }).evaluate(link => getComputedStyle(link).fontFamily), /monospace/)
+    await page.locator('#forecast-tools > summary').focus()
+    await page.keyboard.press('Enter')
+    assert.equal(await page.locator('#forecast-tools').getAttribute('open'), null)
     await audit(page, 'home', width, scheme)
     await page.reload()
     await audit(page, 'home-reload', width, scheme)

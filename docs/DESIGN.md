@@ -158,6 +158,11 @@ Font variables now use native sans/monospace stacks, preserving tabular figures
 without a Google Fonts request at build time. The mobile bar includes Lab;
 season archives remain available from Schedule and the desktop rail.
 
+The October 12 homepage leads with the published slate. Its briefing and
+compact Lab share a native disclosure below the games; publication, results
+cutoff, stale-source and withholding notices stay outside that disclosure.
+Game cards and the dedicated Lab remain the existing components.
+
 
 ## January effect and weekly briefing (2026-09-18)
 
