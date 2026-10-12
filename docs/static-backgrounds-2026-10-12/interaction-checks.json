@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "source": "Committed artifacts; browser images blocked; existing server fixture mode",
+  "bracket": {
+    "keyboardTeamTarget": "/teams/JAX",
+    "returnedTextUnchanged": true,
+    "visibleFocusOutline": true
+  },
+  "loading": {
+    "bodyImage": "none",
+    "canvas": 0,
+    "shimmers": [
+      {
+        "name": "skeleton-shimmer",
+        "iterations": "infinite"
+      },
+      {
+        "name": "skeleton-shimmer",
+        "iterations": "infinite"
+      }
+    ],
+    "completedToInteractiveControls": true
+  },
+  "errors": []
+}

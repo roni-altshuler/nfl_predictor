@@ -1,33 +1,19 @@
 # Gridiron design system
 
 Authored from `src/app/globals.css` — if the two disagree, the CSS wins. The
-language is **Chalkboard** (v2, 2026-08-25): the whole site is a coach's
-board, at the owner's explicit request, and a deliberate divergence from the
-flat-black "Bugatti" language the sibling projects (Hardwood/NBA,
-Pitchverse/soccer) keep. What survives from Bugatti on purpose: colour
-carries MEANING only, every probability renders as text, absent data renders
-as absent, and the chart palette is unchanged because it was validated, not
-chosen. This file records what the system is and, where it matters, why.
+language retains Gridiron's slate-green, cream and off-white palette. Following
+its owner's October 12 request, the shared page background is flat and static;
+decorative canvas layers and their render loops have been removed. Colour
+carries meaning only, every probability renders as text, and missing data stays
+missing. The validated chart palette is unchanged.
 
-## 1. Surfaces — the board
+## 1. Surfaces — static slate
 
-Blackboard slate `#0b120e` canvas, lit from above by two body gradients (the
-theme's depth). The field — a complete, bounded design with both end
-zones — is drawn by `ChalkboardField` at z-index −1, **centred in the
-content area and always seen whole** (§6a): every surface above it is
-TRANSLUCENT by token (`--card-bg: rgba(13,22,17,0.80)`, 0.72 until
-2026-09-12) so the field reads through the cards rather than being walled
-off by them. Hairlines are chalk
-(`rgba(255,255,255,0.14)`, `0.28` on hover); chrome (`--nav-bg`) is
-translucent + backdrop-blur.
-
-**The legibility contract replaces the old flat rule**: a field line at
-0.12 alpha arrives under a table at ~0.02 through the 0.80 card (and at
-~0.013 under the default `soft` dial) — present, never competing with ink. Raise the card transparency or the field alphas
-together and this breaks; they are one budget. The soccer sibling's 2026-07
-ambient revert happened because atmosphere sat OVER data at full strength —
-this system inverts that: the atmosphere is total, and the data surfaces
-are the shield.
+Every route uses the flat `#0b120e` body background. Existing card and navigation
+colours, cream logo plates (`#f4efe6`) and off-white text remain consistent.
+There is no simulated field, ambient hero, particle layer, background gradient,
+or animation preference control. Loading shimmer is a foreground status cue,
+not a decorative page background. Cards and tables sit over one static colour.
 
 ## 2. Colour carries meaning only
 
@@ -47,6 +33,9 @@ colour-alone floor, so **direct labels are mandatory on every chart**, not
 styling.
 
 Every probability renders as text; colour is always secondary encoding.
+Small loss/status/error text uses the existing `--accent-loss-soft` (`#d4655e`)
+for readable contrast on static surfaces, including table hover. The base loss
+colour remains for semantic graphic/live signals; no chart palette changes.
 Absent data renders as absent (`—`), never as zero.
 
 ## 3. Type
@@ -110,103 +99,19 @@ The pieces: `.page-enter` (route-keyed content rise, replayed by `AppShell`),
 `.skeleton-shimmer` (the one gradient in the product — a static grey block
 reads as broken rather than loading).
 
-## 6a. The field, and the game played on it
+## 6a. Decorative background removal (2026-10-12)
 
-`ChalkboardField` draws a TRUE field as a **centred, complete design**: a
-full boundary with both end zones always on screen, goal lines, hatched
-end zones with the brand in faint chalk, goalposts, hand-ruled lines every
-five yards (the fives lighter), numerals cycling to the 50 at the tens,
-and interior hash columns ticked at every yard. The field is centred in
-the CONTENT area — the sidebar is measured at layout and excluded, so its
-rect goes to zero on the mobile layout — and its width is proportioned
-against its length (≤0.62, clamped), so on every device it reads as a
-football field seen whole, never an abstract board cropped by the
-viewport. Yardage is real — yard 0 is the bottom goal line, 100 the top —
-so everything the game does is legible.
+`ChalkboardField`, its dynamic import, resize/visibility listeners, simulated
+plays, particles and recurring animation-frame callback are deleted. The
+`AmbientToggle`, pre-paint storage script and ambient CSS are deleted too.
+Old device values remain stored but are ignored; they cannot reactivate a
+background after reload or navigation. Body gradient layers are removed.
 
-On it, an endless **simulated game** (v3): the O team in white chalk
-against the X team in blue chalk (`--accent-info`), whoever holds the ball
-lining up on offense. Snaps resolve from a plausible football
-distribution — runs through a gap, passes with the route drawn in
-`--accent-primary`, sacks, incompletions, interceptions returned the other
-way — the white scrimmage line and the TV-convention **yellow line to
-gain** (`--accent-warn`, hidden on goal-to-go) glide with every result, the
-down is chalked in the margin (`3RD & 4`), fourth downs punt or kick at
-the posts, and a drive that reaches the paint gets TOUCHDOWN scrawled
-across the end zone before possession flips. The ball is a small yellow
-ellipse; flights (throws, punts, kicks) trail dashes.
-
-**The camera is contained, by rule (v3.2).** This layer sits behind data
-the reader came for, so the v3.1 broadcast push-in was capped: the camera
-may lean toward the play only as far as keeps the ENTIRE field — both end
-zones — inside the frame (`maxZoom`, capped at 1.03 since 2026-09-12; ~1.08
-before), and it never pans sideways
-(`pinnedX` keeps the field at the same screen position at any zoom, so
-the centred design stays put and only a gentle vertical lean moves). The
-result is a slow breath toward the action, never a cut; the resting state
-between plays is always the full centred field; and the huddles are
-deliberately long — the board rests more than it moves, or it competes
-with the data. Camera shake was removed for the same reason; the chalk
-impact burst at a tackle stays, because it is local to the play. The
-field renders as vectors *through* the camera transform each frame so
-chalk stays crisp — which is why all hand-ruled wobble comes from a
-deterministic noise hash, never `Math.random` at draw time (random wobble
-re-rolled per frame makes the whole board shimmer). Close-up polish:
-ghost marks trail a carried ball, the ball has a lace, and the O's are
-drawn as not-quite-closed hand circles.
-
-Rules:
-
-- **No score is ever kept and no team is ever named.** A fake score in the
-  background of a forecasting site would read as a real one. The game is
-  atmosphere with football's grammar — never data.
-- Field alphas live in one budget with card transparency (§1). Current
-  (`vivid`) values: sidelines 0.15, lines 0.12, goal lines 0.18, hashes
-  0.08, numerals 0.10, end-zone hatch 0.04 / text 0.06, posts 0.12, player
-  marks 0.24, route 0.32, scrimmage 0.18, first-down line 0.22, ball 0.45,
-  down text 0.16, celebration 0.26; tackle burst 0.30 over 240ms. The
-  default `soft` dial multiplies the whole canvas by 0.55 and blurs it
-  0.6px on top. Pacing: huddle 2.4–5.4s, whistle 0.7s, celebration 1.5s.
-  Change the alphas only together with `--card-bg`.
-  (v2, 2026-08-25 → 2026-09-12: sidelines 0.20, lines 0.16, goal 0.24,
-  hashes 0.10, numerals 0.14, hatch 0.05 / text 0.08, posts 0.16, marks
-  0.36, route 0.50, scrimmage 0.26, first-down 0.32, ball 0.70, down text
-  0.24, celebration 0.42; huddle 1.6–3.6s, celebration 2.1s.)
-- The game is the sanctioned exception to §6's "nothing loops" rule, and
-  it earns it by pacing: one snap at a time (~2–3s), then a huddle. The
-  rAF loop skips drawing entirely while the board is static between
-  plays; a hidden tab stops it; a resize resets the play in progress
-  rather than animating against a stale field; reduced motion gets one
-  static frame — field, formation, a finished route — and never moves.
-- The shell wrapper deliberately paints **no** background — the body's
-  slate (and its two light gradients) is what the field draws on.
-  Reintroducing an opaque wrapper silently deletes the field, and an opaque
-  card token walls it out of the content column.
-- Canvas font strings cannot resolve CSS variables — the numerals use a
-  plain monospace stack, and an invalid font declaration is silently
-  ignored wholesale. Team colours are read from the live tokens once at
-  init, so the palette still cascades.
-
-**2026-09-12 — the quiet board.** The owner's read was that the field had
-become "a little too sharp" and was pulling focus from the numbers. Three
-things changed, all recorded above. (1) The reader now holds the dial:
-`AmbientToggle` ("Board · soft / vivid / off") in the sidebar footer and
-the mobile header writes `gridiron-ambient` to localStorage, stamps
-`data-ambient` on `<html>` and fires `ambientchange`; the root layout runs
-a ~180-byte inline script before first paint so the choice never flashes;
-globals.css dims the canvas to 0.55 opacity + 0.6px blur under `soft`
-(the default) and removes it under `off`, where the canvas also stops its
-rAF loop. (2) Even `vivid` is calmer: field lines ×0.75, moving marks
-×0.6–0.7, zoom cap 1.09 → 1.03, camera lean halved, huddles 1.5× longer,
-whistle and celebration shorter, burst quieter. (3) The surfaces shield
-more: cards 0.72 → 0.80, the body's two gradients −30% (0.07 → 0.05,
-0.55 → 0.38), the display text-shadow halved. Reduced motion is unchanged.
-The same day the pages lost prose and gained play: title odds and ratings
-as bar lists, a 32-mark team explorer, quick-pick chips and `/predict`
-deep links (`?home=&away=`), a spread slider over the published surface
-with the table folded into `<details>`, and a hover/tap/arrow-key readout
-on the margin lattice. Nothing computes a probability; the slider and the
-readout are lookups and sums over published cells.
+Finite foreground page/list/data transitions, chart controls, focus/hover
+feedback, loading shimmer and the factual live-score indicator remain. Their
+purpose is navigation, reading data or reporting status; none is a decorative
+background layer. Normal-motion browser tests inspect mounted DOM, SVG animation
+elements, running CSS animations and pending/recurring animation-frame callbacks.
 
 ## 7. Loading, empty, missing
 
@@ -221,7 +126,6 @@ readout are lookups and sums over published cells.
 ## 8. Interaction inventory
 
 Client components, exhaustively: `AppShell` (route tracking, seasons menu),
-`AmbientToggle` (the board dial — a device preference, like the watchlist),
 `BackButton`, `WeekRail` (scroll-spy + unfold-on-jump), `MatchupPicker`
 (URL-synced via `?home=&away=`), `SpreadSlider` (a range input over the
 published spread rows), `MarginDistribution` (hover/tap/arrow readout),
@@ -247,7 +151,8 @@ spread surface and margin lattice. Search, week and following filters, shareable
 fixture URLs and a hypothetical record calculator support exploration. The
 record calculator changes only wins/losses/ties, never forecast probabilities.
 The selected game precedes the fixture picker on narrow screens. New controls
-have 44px minimum targets; the existing chalkboard and ambient dial remain.
+have 44px minimum targets. The original chalkboard and ambient dial were
+removed on October 12; Forecast Lab data and controls remain.
 
 Font variables now use native sans/monospace stacks, preserving tabular figures
 without a Google Fonts request at build time. The mobile bar includes Lab;
@@ -339,21 +244,16 @@ results cutoff and model version accompany the summary; its evidence link
 opens the existing first-published record. The linked historical score table
 has a named, focusable scroll region on small screens.
 
-## Cross-page appearance and preferences (2026-10-08)
+## Cross-page appearance and preferences
 
-The homepage and inner routes share the same root palette, body gradients,
-typography, shell and card surfaces. NFL remains intentionally dark-only under
-either system color preference; there is no light-theme setting to reset.
-Cream `--logo-plate` surfaces and the leather football mark remain intentional.
-Static manifest background/theme colors match the `--background` token and
-the viewport theme metadata (`#0b120e`).
+The homepage and inner routes share one root palette, flat body background,
+typography, shell and card surfaces. NFL remains dark-only under both light and
+dark system preferences; this removal does not introduce a theme provider.
+Cream logo plates and the leather football mark remain. Manifest colours and
+viewport metadata still match `#0b120e`.
 
-The root's pre-paint script applies the saved board animation setting before
-client bundles execute. The server cannot read local storage, so the animation
-dial renders neutral, disabled choices with an `aria-busy` group until hydration
-reads that attribute. It then enables and selects the actual choice. Rendering
-`soft` as selected before that read incorrectly described a saved `off` or
-`vivid` setting; a neutral pending dial keeps preference feedback truthful
-without changing the board's first-paint appearance or introducing a theme
-provider. The full desktop/mobile journey checks both system preferences,
-reload, Back/Forward, empty/source-error states and the existing route skeletons.
+The October 8 animation-preference implementation is superseded by the October
+12 removal. No root script reads or announces an ambient setting. The browser
+journey now verifies static backgrounds before and after hydration, even with
+legacy `soft`, `vivid`, `off` or unsupported values, and checks normal-motion
+navigation, reload, Back/Forward, empty/source-error states, teams and brackets.

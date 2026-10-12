@@ -1,0 +1,110 @@
+{
+  "checked_at": "2026-10-12T06:49:41.389Z",
+  "source": "2026-10-11T16:35:55+00:00",
+  "results": [
+    {
+      "name": "home",
+      "url": "/",
+      "width": 390,
+      "scheme": "light",
+      "stored": "soft",
+      "before": {
+        "canvas": 0,
+        "bodyBackground": "none",
+        "raf": {
+          "calls": 0,
+          "frames": 0
+        },
+        "runningAnimations": []
+      },
+      "after": {
+        "canvas": 0,
+        "bodyBackground": "none",
+        "raf": {
+          "calls": 0,
+          "frames": 0
+        },
+        "runningAnimations": []
+      },
+      "frameDelta": 0
+    },
+    {
+      "name": "schedule",
+      "url": "/games",
+      "width": 1440,
+      "scheme": "dark",
+      "stored": "vivid",
+      "before": {
+        "canvas": 0,
+        "bodyBackground": "none",
+        "raf": {
+          "calls": 0,
+          "frames": 0
+        },
+        "runningAnimations": []
+      },
+      "after": {
+        "canvas": 0,
+        "bodyBackground": "none",
+        "raf": {
+          "calls": 0,
+          "frames": 0
+        },
+        "runningAnimations": []
+      },
+      "frameDelta": 0
+    },
+    {
+      "name": "team",
+      "url": "/teams/LAR",
+      "width": 390,
+      "scheme": "dark",
+      "stored": "soft",
+      "before": {
+        "canvas": 0,
+        "bodyBackground": "none",
+        "raf": {
+          "calls": 0,
+          "frames": 0
+        },
+        "runningAnimations": []
+      },
+      "after": {
+        "canvas": 0,
+        "bodyBackground": "none",
+        "raf": {
+          "calls": 0,
+          "frames": 0
+        },
+        "runningAnimations": []
+      },
+      "frameDelta": 0
+    },
+    {
+      "name": "game",
+      "url": "/games/401872994",
+      "width": 1440,
+      "scheme": "light",
+      "stored": "vivid",
+      "before": {
+        "canvas": 0,
+        "bodyBackground": "none",
+        "raf": {
+          "calls": 2,
+          "frames": 2
+        },
+        "runningAnimations": []
+      },
+      "after": {
+        "canvas": 0,
+        "bodyBackground": "none",
+        "raf": {
+          "calls": 2,
+          "frames": 2
+        },
+        "runningAnimations": []
+      },
+      "frameDelta": 0
+    }
+  ]
+}

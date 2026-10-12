@@ -1,0 +1,118 @@
+{
+  "checked_at": "2026-10-12T08:35:47.097819+00:00",
+  "base": "1be2a407f38fb0a1e634797e33beb29492fe77cc",
+  "versions": {
+    "node": "v24.19.0",
+    "next": "15.5.27",
+    "chromium": "151.0.7922.173"
+  },
+  "localGates": {
+    "lint": "0 warnings/errors",
+    "typecheck": "passed",
+    "nodeContracts": 27,
+    "weekContractAssertions": "passed",
+    "productionBuildPages": 305,
+    "browserScripts": 8,
+    "execution": "All eight scripts completed in one strict full browser run against the explicitly synthetic populated availability fixture. Every entire Axe violation array is asserted empty; no contrast waivers or filtered violation arrays."
+  },
+  "motion": {
+    "themeStates": 128,
+    "preHydrationCases": 5,
+    "viewports": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "systemPreferences": [
+      "light",
+      "dark"
+    ],
+    "separateLightThemeExists": false,
+    "reducedMotion": false,
+    "canvas": 0,
+    "bodyBackgroundImages": "none",
+    "continuingRafFrames": 0,
+    "pendingRafs": 0,
+    "ambientControls": 0
+  },
+  "contrast": {
+    "minimumMeasuredRatio": 4.57,
+    "smallTextToken": "--accent-loss-soft (#d4655e)",
+    "baseGraphicLossToken": "--accent-loss (#c8544c), unchanged",
+    "textUsesUpdated": 8,
+    "sourcePages": 6,
+    "axeViolationsAcrossFullRun": 0,
+    "waivers": 0,
+    "tested": "Actual composited backgrounds, normal and hovered historical rows, explicitly synthetic Out badges, 320/390/1440px"
+  },
+  "preservedInteractions": {
+    "passed": true,
+    "source": "Committed artifacts; browser images blocked; existing server fixture mode",
+    "bracket": {
+      "keyboardTeamTarget": "/teams/JAX",
+      "returnedTextUnchanged": true,
+      "visibleFocusOutline": true
+    },
+    "loading": {
+      "bodyImage": "none",
+      "canvas": 0,
+      "shimmers": [
+        {
+          "name": "skeleton-shimmer",
+          "iterations": "infinite"
+        },
+        {
+          "name": "skeleton-shimmer",
+          "iterations": "infinite"
+        }
+      ],
+      "completedToInteractiveControls": true
+    },
+    "errors": []
+  },
+  "limits": {
+    "sourcePublication": "2026-10-11T16:35:55+00:00",
+    "resultsThrough": "2026-10-09T00:15:00+00:00",
+    "provider": "Existing captured ESPN subset, synthetic archive/error fixtures and explicitly synthetic availability rows; other requests controlled 503. No live provider health or actual player status claim.",
+    "hostedPixelsVerified": false,
+    "foregroundMotion": "Finite foreground transitions, factual live-score indicator and loading shimmer remain."
+  },
+  "artifactSha256": "9387400c169bc5d25a60eefb44b9ee7e2f83f49336193c8ce135a71cfbddab91",
+  "fixtureSha256": "b069ff74b0d827fd1e19ac3459e5d8163bce3b7fee323bb4b65c931e47f32762",
+  "evidenceSha256": {
+    "after-checks.json": "83f7582e6d6fc1f1474d97fd4816d4b238d9b3c75ee2a8894bbb44e428be42bd",
+    "availability-badges-1440.png": "e2324460d3d87bc8090b9109721513214427b06c4e383a8530f4109bdc8d7dd0",
+    "availability-badges-320.png": "d127ed1f142c2cf9b2d0c467af10edb3612e7daba037d17735b5c940e665e9b9",
+    "availability-badges-390.png": "ce7d988b657da25cdca8eb24487758f62c0cd9a9babcd3003a0715c40df1ce9f",
+    "availability-checks.json": "47951af45ecc6fbb3c65310b2e75d1161025ba899e009099538fa23858a32795",
+    "before-checks.json": "761a0a78f7562a6ad7ac48159f0c4910091136b4eae2f118c376a4c32254976e",
+    "bracket-after-1440.png": "45f9a338ca79c1c7ccf79c07baf059efb795a5d4d77814464ca64975f67670d2",
+    "bracket-return-390.png": "50f96fed8c1b348087b634797b1026775a862450e1b23623281fb33dc3539385",
+    "contrast-comparison.json": "70e9f6c291462731291fbb2c43666516db19b18481bb9e7365e33dbfb386f4ed",
+    "contrast-measurements.json": "02342369a775e29b197d177edde2085354ec4e7d13e8c84aa56aad984137ea0f",
+    "historical-table-1440.png": "650da9916888df7cb52a83fd3e0cde903c8db8727d7ac885fec1202293ea689a",
+    "historical-table-320.png": "a82d2f0764428def7032826270568d39c51f687686b5e45c416c3a40fbdae426",
+    "historical-table-390.png": "945d11a2d7707c0c1543b7f84fa5efe19a12788565f8f1f66c0a85dd9fbe786f",
+    "home-after-320.png": "e587194b14da04ab372936fd0532606f444543774af72d1086ad86c003d7d30a",
+    "home-after-390.png": "a1f4e0b2392e9dccad08b4ed270e4488bd666cc4d0c504aefbf6c2b5fbb70fb2",
+    "home-after-768.png": "1aa898e543534d67b3e590ab379238fe98094e895f3da61b047ccd9cc25182b9",
+    "home-before-390.png": "d43b811cc913001a74112d2f299610a892c129f2637da921a7c32ead12b8f717",
+    "interaction-checks.json": "887b4e9306a04fddf4f03f9486ede3d25c7a4dd50d672e30a230b0f44eef681e",
+    "loading-paths-390.png": "9c03aa4a93980a07d9d99c2fdd49afa8597670b55143979125d3acfe41affa18",
+    "ordinary-restoration.json": "fdba2e3d332c3a435e6b7878538a3c999db8179ab5d8c01d00450437df5c7e08",
+    "preservation.json": "868c38246b1d60290a76b21f62edd2ba5fb6764a5766cecb935fd5be2f27c33b",
+    "schedule-after-1440.png": "ff21d12a79e43de23be20ca6542729a4bfc041cd876d7a1df017572b4d5dcf04",
+    "schedule-before-1440.png": "7c744d64c4cca9054a6fa8fdb1453146d70287397faa5ba3611b6624c80e27a8",
+    "team-after-390.png": "b5c858898425a69efb43d2be8e6f41c5dc0d29249f870adada24c5f22d64a6cf",
+    "team-checks.json": "d19cd55a068f3a86c3b067320afa4c0c66926f8243448a75b9e9c302fa8a429c",
+    "theme-checks.json": "c26ee49c298142bc08537163b42017b62484672d389eec8fbaf644674fd84d4b"
+  },
+  "ordinaryBuildRestoration": {
+    "passed": true,
+    "ordinaryBuildId": "1v2NGOI3auueo7j9DrPxJ",
+    "syntheticBuildRetainedOutsideRepository": true,
+    "probe": "ordinary-restoration.json",
+    "syntheticAvailabilityPresent": false
+  }
+}

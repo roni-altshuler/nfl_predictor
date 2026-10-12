@@ -1,0 +1,1232 @@
+{
+  "passed": true,
+  "actualSource": "Committed historical values and forecast identity. Availability labels are explicitly synthetic QA; no real status claim.",
+  "minimumRatio": 4.57,
+  "results": [
+    {
+      "width": 320,
+      "normal": [
+        {
+          "text": "-55",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-77",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-19",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-2",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-32",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-188",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-114",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-112",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-17",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-79",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-18",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-29",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-60",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-30",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-170",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-23",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-79",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        }
+      ],
+      "hover": [
+        {
+          "text": "-55",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            24.72,
+            32.89,
+            28.33
+          ],
+          "fontSize": "13px",
+          "ratio": 4.57
+        },
+        {
+          "text": "-77",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-19",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-2",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-32",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-188",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-114",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-112",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-17",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-79",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-18",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-29",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-60",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-30",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-170",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-23",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-79",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        }
+      ],
+      "syntheticAvailability": [
+        {
+          "text": "Out",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "10px",
+          "ratio": 5.139
+        },
+        {
+          "text": "Out",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "10px",
+          "ratio": 5.139
+        }
+      ],
+      "axe": [],
+      "chartLossToken": "#c8544c",
+      "textLossToken": "#d4655e"
+    },
+    {
+      "width": 390,
+      "normal": [
+        {
+          "text": "-55",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-77",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-19",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-2",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-32",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-188",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-114",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-112",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-17",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-79",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-18",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-29",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-60",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-30",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-170",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-23",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-79",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        }
+      ],
+      "hover": [
+        {
+          "text": "-55",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            24.72,
+            32.89,
+            28.33
+          ],
+          "fontSize": "13px",
+          "ratio": 4.57
+        },
+        {
+          "text": "-77",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-19",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-2",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-32",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-188",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-114",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-112",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-17",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-79",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-18",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-29",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-60",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-30",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-170",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-23",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-79",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        }
+      ],
+      "syntheticAvailability": [
+        {
+          "text": "Out",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "10px",
+          "ratio": 5.139
+        },
+        {
+          "text": "Out",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "10px",
+          "ratio": 5.139
+        }
+      ],
+      "axe": [],
+      "chartLossToken": "#c8544c",
+      "textLossToken": "#d4655e"
+    },
+    {
+      "width": 1440,
+      "normal": [
+        {
+          "text": "-55",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-77",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-19",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-2",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-32",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-188",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-114",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-112",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-17",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-79",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-18",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-29",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-60",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-30",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-170",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-23",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-79",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        }
+      ],
+      "hover": [
+        {
+          "text": "-55",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            24.72,
+            32.89,
+            28.33
+          ],
+          "fontSize": "13px",
+          "ratio": 4.57
+        },
+        {
+          "text": "-77",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-19",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-2",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-32",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-188",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-114",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-112",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-17",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-79",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-18",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-29",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-60",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-30",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-170",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-23",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        },
+        {
+          "text": "-79",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "13px",
+          "ratio": 5.139
+        }
+      ],
+      "syntheticAvailability": [
+        {
+          "text": "Out",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "10px",
+          "ratio": 5.139
+        },
+        {
+          "text": "Out",
+          "color": "rgb(212, 101, 94)",
+          "background": [
+            12.6,
+            21.2,
+            16.4
+          ],
+          "fontSize": "10px",
+          "ratio": 5.139
+        }
+      ],
+      "axe": [],
+      "chartLossToken": "#c8544c",
+      "textLossToken": "#d4655e"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,135 @@
+{
+  "checked_at": "2026-10-12T07:04:26.054Z",
+  "rawEvidence": "/workspace/nfl-static-backgrounds-review-2026-10-12/health-compare.json",
+  "results": [
+    {
+      "name": "original",
+      "base": "1be2a407f38fb0a1e634797e33beb29492fe77cc",
+      "bodyImage": "radial-gradient(130% 85% at 50% -12%, rgba(214, 232, 216, 0.05), rgba(0, 0, 0, 0) 58%), radial-gradient(140% 80% at 50% 118%, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0) 62%)",
+      "canvas": 1,
+      "lossColor": "#c8544c",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodeCount": 339,
+          "example": {
+            "target": [
+              ".text-xs.hover\\:text-\\[var\\(--text-secondary\\)\\][href$=\"ratings\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node",
+            "checks": [
+              {
+                "contrastRatio": 0,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": "imgNode",
+                "expectedContrastRatio": "4.5:1"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "static",
+      "base": "working removal branch",
+      "bodyImage": "none",
+      "canvas": 0,
+      "lossColor": "#c8544c",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodeCount": 17,
+          "targets": [
+            [
+              "tr:nth-child(1) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(2) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(3) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(5) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(6) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(8) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(9) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(10) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(11) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(12) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(14) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(15) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(17) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(18) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(20) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(21) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            [
+              "tr:nth-child(23) > .text-\\[var\\(--accent-loss\\)\\]"
+            ]
+          ],
+          "example": {
+            "target": [
+              "tr:nth-child(1) > .text-\\[var\\(--accent-loss\\)\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.26 (foreground color: #c8544c, background color: #0d1510, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "checks": [
+              {
+                "fgColor": "#c8544c",
+                "bgColor": "#0d1510",
+                "contrastRatio": 4.26,
+                "fontSize": "9.8pt (13px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            ]
+          }
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodeCount": 48,
+          "example": {
+            "target": [
+              ".text-xs.tracking-\\[0\\.12em\\][href$=\"ratings\"] > span[aria-hidden=\"true\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "checks": [
+              {
+                "messageKey": "nonBmp"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

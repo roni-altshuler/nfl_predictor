@@ -220,7 +220,7 @@ export default function AccuracyPage() {
               .
             </p>
             {model.mean < 0 ? (
-              <p className="mt-3 font-mono text-[11px] leading-relaxed text-[var(--accent-loss)]">
+              <p className="mt-3 font-mono text-[11px] leading-relaxed text-[var(--accent-loss-soft)]">
                 The model is ahead on this sample. Audit price timing and data
                 leakage before interpreting that difference as an advantage.
               </p>

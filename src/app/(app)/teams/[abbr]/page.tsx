@@ -242,7 +242,7 @@ export default async function TeamPage({
                     game.result === 'W'
                       ? 'numeric w-4 text-right text-[12px] text-[var(--accent-primary)]'
                       : game.result === 'L'
-                        ? 'numeric w-4 text-right text-[12px] text-[var(--accent-loss)]'
+                        ? 'numeric w-4 text-right text-[12px] text-[var(--accent-loss-soft)]'
                         : 'numeric w-4 text-right text-[12px] text-[var(--accent-warn)]'
                   }
                 >
@@ -316,7 +316,7 @@ function SeasonRow({
         className={
           diff >= 0
             ? 'numeric text-right text-[var(--accent-primary)]'
-            : 'numeric text-right text-[var(--accent-loss)]'
+            : 'numeric text-right text-[var(--accent-loss-soft)]'
         }
       >
         {signed(diff, 0)}

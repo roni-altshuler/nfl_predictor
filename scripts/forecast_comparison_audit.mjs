@@ -24,7 +24,6 @@ try {
   for (const width of [320, 390, 768, 1440]) {
     const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' })
     await context.route(/https:\/\/[^/]*(espn\.com|espncdn\.com)\//, route => route.abort())
-    await context.addInitScript(() => localStorage.setItem('gridiron-ambient', 'off'))
     const page = await context.newPage()
     page.on('pageerror', error => errors.push(error.message))
     page.on('request', request => requests.push(request.url()))
@@ -93,7 +92,7 @@ try {
     }))
     assert.equal(health.overflow, false)
     assert.equal(health.palette, 'rgb(11, 18, 14)')
-    assert.equal(health.ambient, 'off')
+    assert.equal(health.ambient, undefined)
     assert.deepEqual(health.axe, [])
     await panel(page).scrollIntoViewIfNeeded()
     await page.screenshot({ path: path.join(output, `${state}-${width}.png`) })
@@ -109,7 +108,7 @@ try {
     await page.goForward()
     await page.waitForURL('**/accuracy#published-record')
     await page.reload({ waitUntil: 'networkidle' })
-    assert.equal(await page.locator('html').getAttribute('data-ambient'), 'off')
+    assert.equal(await page.locator('html').getAttribute('data-ambient'), null)
     checks.push({ width, state, game: game.game_id, keyboardDisclosure: state !== 'missing', navigation: 'matchup → evidence → Back → Forward → reload', ...health })
     await context.close()
   }

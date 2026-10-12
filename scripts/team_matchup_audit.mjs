@@ -30,10 +30,6 @@ const browser = await chromium.launch({ headless: true, args: ['--no-sandbox'],
 async function context(width, options = {}) {
   const c = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce', ...options })
   await c.route(/^https:/, route => { blocked.push(route.request().url()); return route.abort() })
-  await c.addInitScript(() => {
-    // axe creates opaque sandbox frames that cannot access device storage.
-    try { localStorage.setItem('gridiron-ambient', 'off') } catch { /* no preference in that frame */ }
-  })
   c.on('page', p => p.on('pageerror', error => errors.push(error.message)))
   return c
 }
@@ -176,8 +172,9 @@ try {
     held++; observed(); await barrier; await route.continue().catch(() => {})
   })
   await p.goto(teamUrl, { waitUntil: 'domcontentloaded' })
-  await p.getByRole('button', { name: /^off$/i, exact: true }).click()
   await Promise.race([seen, new Promise((_, reject) => setTimeout(() => reject(new Error('No held matchup RSC request observed')), 10000))])
+  await p.getByRole('button', { name: /^follow$/i, exact: true }).click()
+  await p.getByRole('button', { name: /^following$/i, exact: true }).waitFor()
   await hero(p).getByRole('link', { name: 'Explore matchup →', exact: true }).click({ noWaitAfter: true })
   await p.getByRole('link', { name: /^Games$/i, exact: true }).click({ noWaitAfter: true })
   await p.waitForURL(`${base}/games`); await p.locator('[data-ready="true"]').waitFor()

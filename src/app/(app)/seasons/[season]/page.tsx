@@ -197,7 +197,7 @@ export default async function SeasonPage({
                             className={
                               team.point_diff >= 0
                                 ? 'px-3 py-2 font-mono text-[11px] text-[var(--accent-primary)]'
-                                : 'px-3 py-2 font-mono text-[11px] text-[var(--accent-loss)]'
+                                : 'px-3 py-2 font-mono text-[11px] text-[var(--accent-loss-soft)]'
                             }
                           >
                             {signed(team.point_diff, 0)}
