@@ -13,7 +13,7 @@
     "weekContractAssertions": "passed",
     "productionBuildPages": 305,
     "browserScripts": 8,
-    "execution": "First seven scripts completed in combined run; final team script rerun after reporting the same exposed loss-table contrast finding. Theme helper extraction uses identical checks."
+    "execution": "First seven scripts completed in the combined local run; final team script rerun after reporting exposed loss-table contrast. Local controlled outages omit availability badges; populated CI responses additionally expose the unchanged tiny red availability labels, now recorded separately."
   },
   "motion": {
     "themeStates": 128,

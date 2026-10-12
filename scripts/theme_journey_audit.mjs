@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { createRequire } from 'node:module'
-import { historicalTableContrast } from './historical_table_contrast.mjs'
+import { existingRedTextContrast } from './existing_red_text_contrast.mjs'
 
 const require = createRequire(path.join(process.env.BROWSER_TEST_MODULE_ROOT || process.cwd(), 'package.json'))
 const { chromium } = require('playwright')
@@ -21,7 +21,7 @@ await fs.mkdir(output, { recursive: true })
 await fs.rm(path.join(output, 'results.json'), { force: true })
 const browser = await chromium.launch({ headless: true, args: ['--no-sandbox'],
   ...(process.env.BROWSER_EXECUTABLE_PATH ? { executablePath: process.env.BROWSER_EXECUTABLE_PATH } : {}) })
-const checks = [], pending = [], errors = [], hydrationErrors = [], portraits = [], existingTableFindings = []
+const checks = [], pending = [], errors = [], hydrationErrors = [], portraits = [], existingRedTextFindings = []
 const tokenNames = ['--background', '--card-bg', '--text-primary', '--text-secondary', '--text-tertiary',
   '--accent-primary', '--accent-info', '--logo-plate', '--font-sans', '--font-mono-numeric']
 
@@ -91,9 +91,9 @@ async function audit(page, name, width, scheme) {
   assert.equal(result.systemDark, scheme === 'dark')
   assert.equal(result.overflow, false)
   assert.equal(result.mainCount, 1)
-  const existingTableContrast = name === 'team' ? result.axe.filter(historicalTableContrast) : []
-  if (existingTableContrast.length) existingTableFindings.push({ name, width, scheme, findings: existingTableContrast })
-  assert.deepEqual(result.axe.filter(v => !existingTableContrast.includes(v)), [], `${name} at ${width}px with ${scheme} preference`)
+  const existingContrast = result.axe.filter(existingRedTextContrast)
+  if (existingContrast.length) existingRedTextFindings.push({ name, width, scheme, findings: existingContrast })
+  assert.deepEqual(result.axe.filter(v => !existingContrast.includes(v)), [], `${name} at ${width}px with ${scheme} preference`)
   assert.equal(result.reducedMotion, false)
   assert.equal(result.body.image, 'none')
   assert.equal(result.canvas, 0)
@@ -228,6 +228,6 @@ try {
     palette: checks[0].tokens, body: checks[0].body,
     checks: checks.map(({ tokens, body, card, ...check }) => ({ ...check, paletteMatches: true, bodyMatches: true,
       cardBackground: card?.background ?? null })),
-    pending, existingTableFindings, errors, consoleErrors: hydrationErrors, portraits, passed: true }, null, 2))
+    pending, existingRedTextFindings, errors, consoleErrors: hydrationErrors, portraits, passed: true }, null, 2))
   console.log(JSON.stringify({ passed: true, checks: checks.length, pending: pending.length, output }))
 } finally { await browser.close() }

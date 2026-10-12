@@ -72,7 +72,9 @@ results are recorded in [validation](static-backgrounds-2026-10-12/validation.js
 ## Exposed contrast finding and scope limits
 
 The added team-page visit exposes insufficient contrast in existing small red
-historical table values (`--accent-loss: #c8544c`). An independent original-main
+historical table values (`--accent-loss: #c8544c`). CI also reaches populated
+availability reports whose existing tiny red status badges use that colour;
+local controlled outages have no such badges. An independent original-main
 build confirms that its canvas/gradients made Axe's contrast evaluation
 incomplete for those backgrounds. The static view makes the check computable;
 one measured table value is **4.26:1**, below the 4.5:1 text threshold. The team
@@ -80,7 +82,8 @@ table, colour token and historical values are unchanged.
 
 The [original/static comparison](static-backgrounds-2026-10-12/contrast-comparison.json)
 records the actual violations and incomplete results. The expanded journey
-records these specific historical loss-table findings separately and retains
+records only the historical loss-table and tiny availability-badge shapes
+separately and retains
 strict assertions elsewhere. This is not a zero-accessibility-findings claim.
 The owner's scope excludes unrelated health fixes, so no palette/table fix is
 bundled into the background-removal PR.
