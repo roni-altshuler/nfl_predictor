@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-12T20:11:03+00:00",
+  "generated_at": "2026-10-13T18:02:30+00:00",
   "carryover_applied": true,
   "teams": [
     {
@@ -20,20 +20,20 @@
       "elo": 1647.3
     },
     {
+      "team_id": 4,
+      "name": "Buffalo Bills",
+      "abbreviation": "BUF",
+      "conference": "American Football Conference",
+      "division": "AFC East",
+      "elo": 1637.7
+    },
+    {
       "team_id": 21,
       "name": "Minnesota Vikings",
       "abbreviation": "MIN",
       "conference": "National Football Conference",
       "division": "NFC North",
       "elo": 1624.1
-    },
-    {
-      "team_id": 4,
-      "name": "Buffalo Bills",
-      "abbreviation": "BUF",
-      "conference": "American Football Conference",
-      "division": "AFC East",
-      "elo": 1623.4
     },
     {
       "team_id": 15,
@@ -65,7 +65,7 @@
       "abbreviation": "LAR",
       "conference": "National Football Conference",
       "division": "NFC West",
-      "elo": 1586.0
+      "elo": 1571.7
     },
     {
       "team_id": 3,

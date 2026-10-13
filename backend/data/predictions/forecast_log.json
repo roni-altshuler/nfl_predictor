@@ -1,24 +1,24 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-12T20:11:10+00:00",
+  "generated_at": "2026-10-13T18:02:42+00:00",
   "basis": "published",
   "forecasts_made": 272,
-  "games_played": 78,
-  "games_pending": 194,
+  "games_played": 79,
+  "games_pending": 193,
   "ties_excluded": 1,
   "invalid_excluded": 0,
-  "n": 77,
+  "n": 78,
   "note": "Every row here was published strictly before its kickoff and is the EARLIEST such publication for that fixture. This record is never merged with the historical walk-forward on /accuracy, which is a reconstruction.",
-  "brier": 0.22771,
-  "accuracy": 0.63636,
-  "ece": 0.06889,
+  "brier": 0.22899,
+  "accuracy": 0.62821,
+  "ece": 0.07299,
   "cohorts": {
     "model_version": {
       "nfl-margin-lattice-1": {
-        "n": 77,
-        "brier": 0.22771,
-        "log_loss": 0.64572,
-        "accuracy": 0.63636
+        "n": 78,
+        "brier": 0.22899,
+        "log_loss": 0.64834,
+        "accuracy": 0.62821
       }
     },
     "horizon": {
@@ -35,10 +35,10 @@
         "accuracy": null
       },
       "7_days_or_more": {
-        "n": 77,
-        "brier": 0.22771,
-        "log_loss": 0.64572,
-        "accuracy": 0.63636
+        "n": 78,
+        "brier": 0.22899,
+        "log_loss": 0.64834,
+        "accuracy": 0.62821
       }
     }
   },
@@ -1754,6 +1754,28 @@
       "brier": 0.230333,
       "log_loss": 0.653792,
       "correct": true
+    },
+    {
+      "game_id": "401872994",
+      "season": 2026,
+      "week": 5,
+      "kickoff_utc": "2026-10-13T00:15:00+00:00",
+      "generated_at": "2026-08-16T15:19:07+00:00",
+      "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 1376.93,
+      "home": "LAR",
+      "away": "BUF",
+      "p_home": 0.570595,
+      "p_tie": 0.003791,
+      "p_away": 0.425614,
+      "exp_margin": 2.534,
+      "home_score": 34,
+      "away_score": 37,
+      "tie": false,
+      "p_home_conditional": 0.572766,
+      "brier": 0.328061,
+      "log_loss": 0.850424,
+      "correct": false
     }
   ]
 }
