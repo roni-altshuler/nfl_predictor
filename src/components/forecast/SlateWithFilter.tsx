@@ -28,7 +28,7 @@ export function SlateWithFilter({ games }: { games: GameForecast[] }) {
   return (
     <div>
       {watchlist.length ? (
-        <div className="mb-3 flex gap-1" role="group" aria-label="Filter the slate">
+        <div className="mb-3 flex gap-2" role="group" aria-label="Filter the slate">
           {[
             { key: false, label: `All · ${games.length}` },
             {
@@ -42,7 +42,7 @@ export function SlateWithFilter({ games }: { games: GameForecast[] }) {
               aria-pressed={onlyFollowing === pill.key}
               onClick={() => setOnlyFollowing(pill.key)}
               className={cn(
-                'min-h-[30px] rounded-full px-3 font-mono text-[11px] uppercase tracking-[0.08em] transition-colors',
+                'min-h-[44px] rounded-full px-3 font-mono text-[11px] uppercase tracking-[0.08em] transition-colors',
                 onlyFollowing === pill.key
                   ? 'bg-[var(--card-hover)] text-[var(--text-primary)]'
                   : 'text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]',

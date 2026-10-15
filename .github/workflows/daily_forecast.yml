@@ -48,6 +48,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Synchronize main before generating artifacts
+        run: bash scripts/synchronize-publication.sh
+
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
@@ -141,6 +144,15 @@ jobs:
           python -m backend.scripts.build_history \
             --from-season "$(python -c 'from backend.services.espn.client import current_season; print(current_season())')"
 
+      # Validate the generated tree with the same checks as CI before any
+      # release upload, commit or push. Default success semantics fail closed.
+      - uses: ./.github/actions/backend-checks
+
+      - uses: ./.github/actions/frontend-checks
+
+      - name: Verify main before release publication
+        run: bash scripts/verify-publication-base.sh
+
       - name: Verify and preserve forecast history before publication
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -150,9 +162,14 @@ jobs:
           gzip -c backend/data/warehouse.sqlite > /tmp/warehouse.sqlite.gz
           # A unique backup survives interrupted replacement of the latest asset.
           cp /tmp/warehouse.sqlite.gz "/tmp/warehouse-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.sqlite.gz"
+          bash scripts/verify-publication-base.sh
           gh release upload warehouse-latest \
             "/tmp/warehouse-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.sqlite.gz"
+          bash scripts/verify-publication-base.sh
           gh release upload warehouse-latest /tmp/warehouse.sqlite.gz --clobber
+
+      - name: Verify main before committing artifacts
+        run: bash scripts/verify-publication-base.sh
 
       - name: Commit refreshed artifacts
         run: |
@@ -169,6 +186,6 @@ jobs:
             echo "forecast unchanged"
           else
             git commit -m "chore: refresh forecast [automated]"
-            git pull --rebase --autostash origin main
-            git push
+            # A concurrent update is rejected; never rebase a validated tree.
+            git push origin HEAD:main
           fi
