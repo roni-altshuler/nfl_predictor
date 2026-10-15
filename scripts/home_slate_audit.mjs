@@ -32,6 +32,7 @@ export async function auditHomeSlate({ browser, base, output, axePath, publicati
   let firstId, inactiveTeam
   for (const width of [320, 390, 768, 1440]) for (const scheme of ['light', 'dark']) {
     const c = await context(width, scheme), p = await c.newPage()
+    if (process.env.AUDIT_USE_PUBLICATION_TIME === '1') await p.clock.setFixedTime(new Date(publication.generated_at))
     await p.goto(base, { waitUntil: 'networkidle' })
     const details = p.locator('#forecast-tools'), summary = details.locator(':scope > summary')
     assert.equal(await details.getAttribute('open'), null)
@@ -45,10 +46,52 @@ export async function auditHomeSlate({ browser, base, output, axePath, publicati
     const expected = publication.games.filter(g => g.week === game.week)
     assert.equal(await links.count(), expected.length)
     const teams = new Set(expected.flatMap(g => [g.home, g.away]))
-    inactiveTeam = publication.games.flatMap(g => [g.home, g.away]).find(t => !teams.has(t))
+    // Full 32-team weeks have no bye team. An explicit browser-only stored
+    // preference still exercises the empty view without changing forecast data.
+    inactiveTeam = publication.games.flatMap(g => [g.home, g.away]).find(t => !teams.has(t)) ?? '__audit_empty_following__'
     await health(p, 'closed', width, scheme)
     const bounds = await link.boundingBox(); assert.ok(bounds.y < 500, 'A matchup must be reachable on the first screen')
     await p.screenshot({ path: path.join(output, `home-${width}-${scheme}.png`) })
+    const fullSlate = await links.evaluateAll(rows => rows.map(row => ({ href: row.getAttribute('href'), text: row.innerText })))
+    const setFollowing = async team => p.evaluate(value => {
+      localStorage.setItem('gridiron:watchlist:v1', JSON.stringify(value ? [value] : []))
+      window.dispatchEvent(new Event('gridiron:watchlist'))
+    }, team)
+    await setFollowing(game.home)
+    const filter = slate(p).getByRole('group', { name: 'Filter the slate' })
+    const all = filter.getByRole('button', { name: /^All/ }), following = filter.getByRole('button', { name: /^Following/ })
+    await filter.waitFor()
+    const targets = await filter.getByRole('button').evaluateAll(buttons => buttons.map(button => ({
+      name: button.textContent, width: button.getBoundingClientRect().width, height: button.getBoundingClientRect().height,
+    })))
+    for (const target of targets) assert.ok(target.width >= 44 && target.height >= 44, `${width}px: ${target.name} must have a 44px target`)
+    const assertFocus = async button => {
+      const focus = await button.evaluate(el => ({ active: document.activeElement === el, visible: el.matches(':focus-visible'),
+        style: getComputedStyle(el).outlineStyle, width: parseFloat(getComputedStyle(el).outlineWidth), color: getComputedStyle(el).outlineColor }))
+      assert.equal(focus.active, true); assert.equal(focus.visible, true)
+      assert.equal(focus.style, 'solid'); assert.ok(focus.width >= 2); assert.equal(focus.color, 'rgb(95, 166, 87)')
+    }
+    await all.focus(); await p.keyboard.press('Tab'); await assertFocus(following)
+    await p.screenshot({ path: path.join(output, `home-filter-focus-${width}-${scheme}.png`) })
+    await p.keyboard.press('Space')
+    assert.equal(await following.getAttribute('aria-pressed'), 'true'); assert.equal(await all.getAttribute('aria-pressed'), 'false')
+    assert.equal(await links.count(), expected.filter(g => [g.home, g.away].includes(game.home)).length)
+    await p.keyboard.press('Shift+Tab'); await assertFocus(all); await p.keyboard.press('Enter')
+    assert.deepEqual(await links.evaluateAll(rows => rows.map(row => ({ href: row.getAttribute('href'), text: row.innerText }))), fullSlate)
+    await setFollowing(inactiveTeam)
+    await all.focus(); await p.keyboard.press('Tab'); await p.keyboard.press('Enter')
+    await slate(p).getByText(/None of your teams play this week/).waitFor()
+    assert.equal(await links.count(), 0); assert.equal(await following.getAttribute('aria-pressed'), 'true')
+    await health(p, 'following-empty', width, scheme)
+    await p.screenshot({ path: path.join(output, `home-following-empty-${width}-${scheme}.png`) })
+    await following.focus(); await p.keyboard.press('Shift+Tab'); await assertFocus(all); await p.keyboard.press('Space')
+    assert.equal(await all.getAttribute('aria-pressed'), 'true'); assert.equal(await following.getAttribute('aria-pressed'), 'false')
+    assert.deepEqual(await links.evaluateAll(rows => rows.map(row => ({ href: row.getAttribute('href'), text: row.innerText }))), fullSlate)
+    assert.equal(await source(p).innerText(), sourceText)
+    await health(p, 'following-recovered', width, scheme)
+    journeys.push({ width, scheme, targets, keyboardTabOrder: 'All → Following → All', enterAndSpaceActivation: true,
+      visibleFocus: true, emptyFollowingRecovery: true, recoveredFullSlate: fullSlate.length })
+    await setFollowing(null); assert.equal(await filter.count(), 0)
     for (let i = 0; i < 2; i++) {
       await link.focus(); await p.keyboard.press('Enter')
       await p.waitForURL(base + href)
@@ -77,7 +120,7 @@ export async function auditHomeSlate({ browser, base, output, axePath, publicati
   await p.screenshot({ path: path.join(output, 'home-stale-390.png') })
   await p.clock.setFixedTime(new Date(Date.parse(publication.generated_at) + 47 * 3600000)); await p.reload()
   await source(p).waitFor(); assert.equal(await source(p).getByText(/more than 48 hours/).count(), 0)
-  if (inactiveTeam) {
+  {
     await p.evaluate(team => { localStorage.setItem('gridiron:watchlist:v1', JSON.stringify([team])); window.dispatchEvent(new Event('gridiron:watchlist')) }, inactiveTeam)
     const filter = slate(p).getByRole('group', { name: 'Filter the slate' })
     await filter.getByRole('button', { name: /^Following/ }).click()

@@ -1,0 +1,19 @@
+name: Backend tests
+description: Shared CI and publication checks; failures stop subsequent steps.
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v6
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+
+    # CI installs into a bare 3.12 and calls plain `python -m ...`. A script
+    # that only works under a named venv is a script CI cannot run.
+    - name: Install dependencies
+      shell: bash
+      run: pip install -r requirements.txt
+
+    - name: Tests
+      shell: bash
+      run: python -m pytest backend/tests/ -q
