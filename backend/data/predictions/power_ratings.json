@@ -1,16 +1,8 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-15T15:32:25+00:00",
+  "generated_at": "2026-10-16T15:18:39+00:00",
   "carryover_applied": true,
   "teams": [
-    {
-      "team_id": 29,
-      "name": "Seattle Seahawks",
-      "abbreviation": "SEA",
-      "conference": "National Football Conference",
-      "division": "NFC West",
-      "elo": 1658.9
-    },
     {
       "team_id": 28,
       "name": "San Francisco 49ers",
@@ -18,6 +10,14 @@
       "conference": "National Football Conference",
       "division": "NFC West",
       "elo": 1647.3
+    },
+    {
+      "team_id": 29,
+      "name": "Seattle Seahawks",
+      "abbreviation": "SEA",
+      "conference": "National Football Conference",
+      "division": "NFC West",
+      "elo": 1644.1
     },
     {
       "team_id": 4,
@@ -44,20 +44,20 @@
       "elo": 1620.0
     },
     {
+      "team_id": 10,
+      "name": "Denver Broncos",
+      "abbreviation": "DEN",
+      "conference": "American Football Conference",
+      "division": "AFC West",
+      "elo": 1605.7
+    },
+    {
       "team_id": 22,
       "name": "New England Patriots",
       "abbreviation": "NE",
       "conference": "American Football Conference",
       "division": "AFC East",
       "elo": 1605.1
-    },
-    {
-      "team_id": 10,
-      "name": "Denver Broncos",
-      "abbreviation": "DEN",
-      "conference": "American Football Conference",
-      "division": "AFC West",
-      "elo": 1591.0
     },
     {
       "team_id": 19,
