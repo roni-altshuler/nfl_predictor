@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { MarginDistribution } from '@/components/charts/MarginDistribution'
 import { SpreadSlider } from '@/components/forecast/SpreadSlider'
 import { CloseGamePaths } from '@/components/forecast/CloseGamePaths'
+import { ForecastContext } from '@/components/forecast/ForecastContext'
 import { LiveBadge } from '@/components/live/LiveBadge'
 import { BackButton } from '@/components/primitives/BackButton'
 import { TeamLogo } from '@/components/primitives/TeamLogo'
@@ -126,173 +127,29 @@ function UpcomingGame({
       <GameSectionNav />
 
       <section id="forecast" className="card scroll-mt-20 p-4" aria-label="Forecast">
-        <h2 className="eyebrow mb-3">Forecast</h2>
-        <ProbabilityRow game={game} />
-
-        <dl className="mt-5 grid grid-cols-2 gap-4 border-t border-[var(--border-color)] pt-4 sm:grid-cols-4">
-          <Stat
-            label="Projected margin"
-            value={`${game.exp_margin >= 0 ? game.home : game.away} ${signed(Math.abs(game.exp_margin))}`}
-          />
-          <Stat label="Projected total" value={game.exp_total.toFixed(1)} />
-          <Stat
-            label="Projected score"
-            value={`${Math.round(game.exp_away_score)}–${Math.round(game.exp_home_score)}`}
-          />
-          <Stat label="Margin sd" value={game.margin_sd.toFixed(1)} />
-        </dl>
-
-        {/* Into the picker. The picker prices a HYPOTHETICAL meeting (no
-            date, neutral rest) so its number can differ from this one, and
-            flipping the venue is the cheapest way to see what home field is
-            worth in this matchup. */}
-        <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 border-t border-[var(--border-color)] pt-3 font-mono text-[11px]">
-          <Link
-            href={`/predict?home=${game.home}&away=${game.away}`}
-            className="text-[var(--accent-info)] hover:underline"
-          >
-            price this matchup →
-          </Link>
-          <Link
-            href={`/predict?home=${game.away}&away=${game.home}`}
-            className="text-[var(--text-tertiary)] transition-colors hover:text-[var(--text-primary)] hover:underline"
-          >
-            flip venue · {game.home} at {game.away}
-          </Link>
+        <h2 className="text-lg">Game prediction</h2>
+        <p className="mt-1 mb-4 text-sm text-[var(--text-secondary)]">
+          {game.p_home === game.p_away ? 'Both teams have the same win chance.' : `${game.p_home > game.p_away ? game.home_name : game.away_name} has the higher win chance.`}
         </p>
+        <ProbabilityRow game={game} />
+        <div className="mt-4 border-t border-[var(--border-color)] pt-4">
+          <p className="eyebrow mb-2">Projected points</p>
+          <dl className="grid grid-cols-2 gap-4">
+            <Stat label={game.away} value={game.exp_away_score.toFixed(1)} />
+            <Stat label={game.home} value={game.exp_home_score.toFixed(1)} />
+          </dl>
+        </div>
+        <details className="mt-3 border-t border-[var(--border-color)]">
+          <summary className="min-h-[44px] cursor-pointer py-3 text-xs text-[var(--accent-info)]">How to read this prediction</summary>
+          <p className="pb-2 text-sm leading-relaxed text-[var(--text-secondary)]">Win chance is the model&apos;s probability for each team. Projected points are averages, not an exact final score. Either team can win; a tie is a separate outcome. Player reports below provide context and do not change this published prediction.</p>
+        </details>
       </section>
 
-      {/* The distinctive surface. Every sibling project shows a win
-          probability; this is the one that shows football's lattice. */}
-      <CloseGamePaths game={game} snapshot={forecasts} />
-
-      {game.margin_distribution ? (
-        <section id="distribution" className="card scroll-mt-20 p-4" aria-label="Margin distribution">
-          <h2 className="eyebrow mb-1">How it is likely to finish</h2>
-          <p className="mb-3 text-[11px] leading-relaxed text-[var(--text-tertiary)]">
-            The 3s and 7s are football&apos;s arithmetic — a normal curve
-            would draw a tidy bell straight through them.
-          </p>
-          <MarginDistribution
-            data={game.margin_distribution}
-            home={game.home}
-            away={game.away}
-          />
-        </section>
-      ) : null}
-
-      {game.spread_surface?.length ? (
-        <section className="card p-4" aria-label="Against the spread">
-          <h2 className="eyebrow mb-1">Against the spread</h2>
-          <p className="mb-3 text-[11px] leading-relaxed text-[var(--text-tertiary)]">
-            Slide to any line the model prices — a whole number can{' '}
-            <em>push</em>, and at −3 that is worth about one game in twelve.
-          </p>
-          <SpreadSlider
-            rows={game.spread_surface}
-            home={game.home}
-            away={game.away}
-            marketLine={market.spread_home}
-          />
-          <details className="mt-4">
-            <summary className="cursor-pointer font-mono text-[11px] text-[var(--accent-info)] hover:underline">
-              every line as a table
-            </summary>
-            <div className="mt-2 overflow-x-auto" tabIndex={0} role="region" aria-label="Spread probabilities table">
-              <table className="min-w-[420px]">
-                <thead>
-                  <tr>
-                    <th scope="col">{game.home} line</th>
-                    <th scope="col" className="numeric text-right">covers</th>
-                    <th scope="col" className="numeric text-right">push</th>
-                    <th scope="col" className="numeric text-right">{game.away} covers</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {game.spread_surface.map((row) => {
-                    const isMarket = row.line === market.spread_home
-                    return (
-                      <tr key={row.line}>
-                        <td
-                          className={
-                            isMarket
-                              ? 'numeric text-[var(--accent-market)]'
-                              : 'numeric'
-                          }
-                        >
-                          {spread(row.line)}
-                          {isMarket ? ' · market' : ''}
-                        </td>
-                        <td className="numeric text-right">{pct(row.home_cover)}</td>
-                        <td
-                          className={
-                            row.push >= 0.04
-                              ? 'numeric text-right text-[var(--accent-warn)]'
-                              : 'numeric text-right text-[var(--text-tertiary)]'
-                          }
-                        >
-                          {row.push < 0.0005 ? '—' : pct(row.push)}
-                        </td>
-                        <td className="numeric text-right">{pct(row.away_cover)}</td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </details>
-        </section>
-      ) : null}
-
-      <section id="market" className="card scroll-mt-20 p-4" aria-label="Market">
-        <h2 className="eyebrow mb-3">The market</h2>
-        {hasLine ? (
-          <>
-            <dl className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-              <Stat label="Spread" value={spread(market.spread_home)} />
-              <Stat
-                label="Total"
-                value={market.total_points?.toFixed(1) ?? '—'}
-              />
-              <Stat label={`${game.home} ML`} value={moneyline(market.ml_home)} />
-              <Stat label={`${game.away} ML`} value={moneyline(market.ml_away)} />
-            </dl>
-            {atMarket ? (
-              <p className="mt-4 border-t border-[var(--border-color)] pt-3 text-[11px] leading-relaxed text-[var(--text-secondary)]">
-                At the market&apos;s {spread(market.spread_home)} the model
-                gives {game.home} {pct(atMarket.home_cover)} to cover and{' '}
-                {pct(atMarket.away_cover)} against
-                {atMarket.push < 0.0005 ? (
-                  <>
-                    {' '}
-                    — a half-point line{' '}
-                    <strong className="text-[var(--text-primary)]">
-                      cannot push
-                    </strong>
-                    .
-                  </>
-                ) : (
-                  <>, with {pct(atMarket.push)} on the push.</>
-                )}
-              </p>
-            ) : null}
-            <p className="mt-3 text-[10px] leading-relaxed text-[var(--text-tertiary)]">
-              Provider {market.provider ?? 'unknown'} · the market is the
-              benchmark, not the target.
-            </p>
-          </>
-        ) : (
-          <p className="text-sm text-[var(--text-tertiary)]">
-            No line published — which is a different fact from an even line.
-          </p>
-        )}
-      </section>
+      <GamePlayers detail={detail} gameId={game.game_id} />
 
       <div id="availability" className="scroll-mt-20"><Availability detail={detail} game={game} /></div>
 
       <GameLeaderComparison detail={detail} gameId={game.game_id} home={game.home} away={game.away} date={game.date_utc} datePrecision="instant" />
-
-      <GamePlayers detail={detail} gameId={game.game_id} />
 
       <div id="context" className="scroll-mt-20"><HeadToHead
         meetings={meetings}
@@ -302,6 +159,173 @@ function UpcomingGame({
       /></div>
 
       <FormBlock home={game.home} away={game.away} />
+
+      {/* The distinctive surface. Every sibling project shows a win
+          probability; this is the one that shows football's lattice. */}
+      <CloseGamePaths game={game} snapshot={forecasts} />
+
+      <details id="prediction-details" className="card scroll-mt-20 p-4">
+        <summary className="min-h-[44px] cursor-pointer py-3 font-mono text-sm text-[var(--text-secondary)]">Prediction details &amp; model numbers</summary>
+        <div className="mt-4 space-y-6">
+          <section aria-label="Model numbers">
+            <h2 className="eyebrow">Model numbers</h2>
+            <dl className="mt-5 grid grid-cols-2 gap-4 border-t border-[var(--border-color)] pt-4 sm:grid-cols-4">
+              <Stat
+                label="Projected margin"
+                value={`${game.exp_margin >= 0 ? game.home : game.away} ${signed(Math.abs(game.exp_margin))}`}
+              />
+              <Stat label="Projected total" value={game.exp_total.toFixed(1)} />
+              <Stat
+                label="Projected score"
+                value={`${Math.round(game.exp_away_score)}–${Math.round(game.exp_home_score)}`}
+              />
+              <Stat label="Margin sd" value={game.margin_sd.toFixed(1)} />
+            </dl>
+
+            {/* Into the picker. The picker prices a HYPOTHETICAL meeting (no
+                date, neutral rest) so its number can differ from this one, and
+                flipping the venue is the cheapest way to see what home field is
+                worth in this matchup. */}
+            <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 border-t border-[var(--border-color)] pt-3 font-mono text-[11px]">
+              <Link
+                href={`/predict?home=${game.home}&away=${game.away}`}
+                className="inline-flex min-h-[44px] items-center text-[var(--accent-info)] hover:underline"
+              >
+                price this matchup →
+              </Link>
+              <Link
+                href={`/predict?home=${game.away}&away=${game.home}`}
+                className="inline-flex min-h-[44px] items-center text-[var(--text-tertiary)] transition-colors hover:text-[var(--text-primary)] hover:underline"
+              >
+                flip venue · {game.home} at {game.away}
+              </Link>
+            </p>
+          </section>
+
+          {game.margin_distribution ? (
+            <section id="distribution" className="card scroll-mt-20 p-4" aria-label="Margin distribution">
+              <h2 className="eyebrow mb-1">How it is likely to finish</h2>
+              <p className="mb-3 text-[11px] leading-relaxed text-[var(--text-tertiary)]">
+                The 3s and 7s are football&apos;s arithmetic — a normal curve
+                would draw a tidy bell straight through them.
+              </p>
+              <MarginDistribution
+                data={game.margin_distribution}
+                home={game.home}
+                away={game.away}
+              />
+            </section>
+          ) : null}
+
+          {game.spread_surface?.length ? (
+            <section className="card p-4" aria-label="Against the spread">
+              <h2 className="eyebrow mb-1">Against the spread</h2>
+              <p className="mb-3 text-[11px] leading-relaxed text-[var(--text-tertiary)]">
+                Slide to any line the model prices — a whole number can{' '}
+                <em>push</em>, and at −3 that is worth about one game in twelve.
+              </p>
+              <SpreadSlider
+                rows={game.spread_surface}
+                home={game.home}
+                away={game.away}
+                marketLine={market.spread_home}
+              />
+              <details className="mt-4">
+                <summary className="cursor-pointer font-mono text-[11px] text-[var(--accent-info)] hover:underline">
+                  every line as a table
+                </summary>
+                <div className="mt-2 overflow-x-auto" tabIndex={0} role="region" aria-label="Spread probabilities table">
+                  <table className="min-w-[420px]">
+                    <thead>
+                      <tr>
+                        <th scope="col">{game.home} line</th>
+                        <th scope="col" className="numeric text-right">covers</th>
+                        <th scope="col" className="numeric text-right">push</th>
+                        <th scope="col" className="numeric text-right">{game.away} covers</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {game.spread_surface.map((row) => {
+                        const isMarket = row.line === market.spread_home
+                        return (
+                          <tr key={row.line}>
+                            <td
+                              className={
+                                isMarket
+                                  ? 'numeric text-[var(--accent-market)]'
+                                  : 'numeric'
+                              }
+                            >
+                              {spread(row.line)}
+                              {isMarket ? ' · market' : ''}
+                            </td>
+                            <td className="numeric text-right">{pct(row.home_cover)}</td>
+                            <td
+                              className={
+                                row.push >= 0.04
+                                  ? 'numeric text-right text-[var(--accent-warn)]'
+                                  : 'numeric text-right text-[var(--text-tertiary)]'
+                              }
+                            >
+                              {row.push < 0.0005 ? '—' : pct(row.push)}
+                            </td>
+                            <td className="numeric text-right">{pct(row.away_cover)}</td>
+                          </tr>
+                        )
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </details>
+            </section>
+          ) : null}
+
+          <section id="market" className="card scroll-mt-20 p-4" aria-label="Market">
+            <h2 className="eyebrow mb-3">The market</h2>
+            {hasLine ? (
+              <>
+                <dl className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                  <Stat label="Spread" value={spread(market.spread_home)} />
+                  <Stat
+                    label="Total"
+                    value={market.total_points?.toFixed(1) ?? '—'}
+                  />
+                  <Stat label={`${game.home} ML`} value={moneyline(market.ml_home)} />
+                  <Stat label={`${game.away} ML`} value={moneyline(market.ml_away)} />
+                </dl>
+                {atMarket ? (
+                  <p className="mt-4 border-t border-[var(--border-color)] pt-3 text-[11px] leading-relaxed text-[var(--text-secondary)]">
+                    At the market&apos;s {spread(market.spread_home)} the model
+                    gives {game.home} {pct(atMarket.home_cover)} to cover and{' '}
+                    {pct(atMarket.away_cover)} against
+                    {atMarket.push < 0.0005 ? (
+                      <>
+                        {' '}
+                        — a half-point line{' '}
+                        <strong className="text-[var(--text-primary)]">
+                          cannot push
+                        </strong>
+                        .
+                      </>
+                    ) : (
+                      <>, with {pct(atMarket.push)} on the push.</>
+                    )}
+                  </p>
+                ) : null}
+                <p className="mt-3 text-[10px] leading-relaxed text-[var(--text-tertiary)]">
+                  Provider {market.provider ?? 'unknown'} · the market is the
+                  benchmark, not the target.
+                </p>
+              </>
+            ) : (
+              <p className="text-sm text-[var(--text-tertiary)]">
+                No line published — which is a different fact from an even line.
+              </p>
+            )}
+          </section>
+
+        </div>
+      </details>
     </div>
   )
 }
@@ -461,14 +485,14 @@ function GameHeader({ game, forecasts }: { game: GameForecast; forecasts: GameFo
     <header>
       <BackButton fallback={`/games?week=${game.week}`} label={`Week ${game.week} slate`} />
       <div className="card mt-3 p-4 sm:p-6">
-      <p className="eyebrow mt-3">
+      <p className="eyebrow">
         Week {game.week} · {game.season}
         {game.neutral_site ? ' · neutral site' : ''}
       </p>
-      <h1 className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2 text-2xl">
-        <TeamName abbr={game.away} name={game.away_name} />
-        <span className="text-[var(--text-tertiary)]">at</span>
-        <TeamName abbr={game.home} name={game.home_name} />
+      <h1 className="mt-3 grid grid-cols-[1fr_auto_1fr] items-center gap-3 text-xs min-[360px]:text-sm sm:text-xl">
+        <TeamName abbr={game.away} name={game.away_name} stacked />
+        <span className="text-xs text-[var(--text-tertiary)]">at</span>
+        <TeamName abbr={game.home} name={game.home_name} stacked />
       </h1>
       <p className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1 numeric text-[11px] text-[var(--text-tertiary)]">
         <span>
@@ -485,11 +509,7 @@ function GameHeader({ game, forecasts }: { game: GameForecast; forecasts: GameFo
           home={game.home}
         />
       </p>
-      <dl className="mt-4 grid gap-3 border-t border-[var(--border-color)] pt-4 text-xs sm:grid-cols-2">
-        <div><dt className="text-[var(--text-tertiary)]">Forecast published</dt><dd className="mt-1 font-mono">{forecastStamp(forecasts.generated_at)}</dd></div>
-        <div><dt className="text-[var(--text-tertiary)]">Results used through</dt><dd className="mt-1 font-mono">{forecastStamp(forecasts.trained_through)}</dd></div>
-      </dl>
-      <p className="mt-3 text-xs leading-relaxed text-[var(--text-secondary)]">Published pre-game snapshot. Player availability and roster changes are not inputs to these probabilities.</p>
+      <ForecastContext compact publishedAt={forecasts.generated_at} resultsThrough={forecasts.trained_through} asOf={new Date().toISOString()} withheld={0} modelVersion={forecasts.model_version} description="Published pre-game snapshot. Player availability and roster changes are not inputs to these probabilities." />
       </div>
     </header>
   )
@@ -502,13 +522,13 @@ function GameHeader({ game, forecasts }: { game: GameForecast; forecasts: GameFo
  * first place a team mark can carry its own destination without nesting one
  * anchor inside another.
  */
-function TeamName({ abbr, name }: { abbr: string; name?: string }) {
+function TeamName({ abbr, name, stacked = false }: { abbr: string; name?: string; stacked?: boolean }) {
   return (
     <Link
       href={`/teams/${abbr}`}
-      className="inline-flex items-center gap-2 text-[var(--text-primary)] transition-colors hover:underline"
+      className={`inline-flex min-h-[44px] items-center gap-2 text-[var(--text-primary)] transition-colors hover:underline ${stacked ? 'min-w-0 flex-col text-center' : ''}`}
     >
-      <TeamLogo abbreviation={abbr} name={name} size={26} />
+      <TeamLogo abbreviation={abbr} name={name} size={stacked ? 32 : 26} />
       <span>{name ?? abbr}</span>
     </Link>
   )
@@ -520,10 +540,10 @@ function ProbabilityRow({ game }: { game: GameForecast }) {
   return (
     <div>
       <div className="mb-2 flex items-baseline justify-between gap-3">
-        <span className="numeric text-sm text-[var(--text-secondary)]">
+        <span className="numeric text-xl text-[var(--text-primary)]">
           {game.away} {pct(game.p_away)}
         </span>
-        <span className="numeric text-sm text-[var(--text-secondary)]">
+        <span className="numeric text-xl text-[var(--text-primary)]">
           {pct(game.p_home)} {game.home}
         </span>
       </div>

@@ -82,7 +82,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-8">
       <header>
         <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--text-tertiary)]">
           {forecasts ? `${forecasts.season} season` : 'no forecast published'}
@@ -92,10 +92,15 @@ export default function HomePage() {
         </h1>
         {forecasts ? (
           <p className="mt-2 font-mono text-[11px] text-[var(--text-tertiary)]">
-            {slate.length} games · model {forecasts.model_version}
+            {slate.length} games · pick a matchup to explore
           </p>
         ) : null}
-        {forecasts ? <ForecastContext publishedAt={forecasts.generated_at} resultsThrough={forecasts.trained_through} asOf={lab.asOf} withheld={lab.withheld} /> : null}
+        <nav aria-label="Explore Gridiron" className="mt-4 flex gap-2">
+          <Link href="#slate" className="inline-flex min-h-[44px] items-center rounded-full bg-[var(--card-hover)] px-4 font-mono text-xs text-[var(--text-primary)]" aria-label="Browse this week's games">Games</Link>
+          {projections || ratings ? <Link href="#teams" className="inline-flex min-h-[44px] items-center rounded-full border border-[var(--border-color)] px-4 font-mono text-xs text-[var(--text-secondary)]">Teams</Link> : null}
+          {slate.length ? <Link href={`/games/${slate[0].game_id}#players`} className="inline-flex min-h-[44px] items-center rounded-full border border-[var(--border-color)] px-4 font-mono text-xs text-[var(--text-secondary)]" aria-label="Explore players in the next matchup">Players</Link> : null}
+        </nav>
+        {forecasts ? <ForecastContext compact modelVersion={forecasts.model_version} publishedAt={forecasts.generated_at} resultsThrough={forecasts.trained_through} asOf={lab.asOf} withheld={lab.withheld} /> : null}
       </header>
 
       {preseason ? (
@@ -115,14 +120,14 @@ export default function HomePage() {
       <FollowingStrip fixtures={nextFixtures} />
 
       {/* ------------------------------------------------------- the slate */}
-      <section aria-label="Published slate">
+      <section id="slate" className="scroll-mt-20" aria-label="Published slate">
         <div className="mb-4 flex items-baseline justify-between">
           <h2 className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
-            The slate
+            Games this week
           </h2>
           <Link
             href="/games"
-            className="font-mono text-[11px] text-[var(--accent-info)] hover:underline"
+            className="inline-flex min-h-[44px] items-center font-mono text-[11px] text-[var(--accent-info)] hover:underline"
           >
             full schedule
           </Link>
@@ -136,6 +141,8 @@ export default function HomePage() {
         )}
       </section>
 
+      {projections || ratings ? <TeamsExplorer projections={projections} ratings={ratings} /> : null}
+
       <details className="card p-4" id="forecast-tools">
         <summary className="min-h-[44px] cursor-pointer font-mono text-sm leading-[44px] text-[var(--text-secondary)]">
           Week outlook &amp; tools
@@ -143,23 +150,13 @@ export default function HomePage() {
         <div className="mt-4 space-y-8">
           <WeekBriefing games={(lab.forecast?.games ?? []).map(({game_id,date_utc,week,home,away,home_name,away_name,p_home,p_away}) => ({game_id,date_utc,week,home,away,home_name,away_name,p_home,p_away}))} stakes={(lab.scenarios?.games ?? []).map(g=>({game_id:g.game_id,swing:playoffSwing(g)}))} asOf={lab.asOf} />
           <ForecastLab initial={{...lab,scenarios:null}} compact />
+          {slate.length ? <QuickPicks games={slate} /> : null}
+          {projections ? <TitleOdds projections={projections} /> : null}
+          {ratings ? <RatingsLadder ratings={ratings} /> : null}
+          <EvidencePanel />
         </div>
       </details>
 
-      {slate.length ? <QuickPicks games={slate} /> : null}
-
-      {/* --------------------------------------------------- the title race */}
-      {projections ? <TitleOdds projections={projections} /> : null}
-
-      {/* ------------------------------------------------------- the ratings */}
-      {ratings ? <RatingsLadder ratings={ratings} /> : null}
-
-      {/* ------------------------------------------------------- the teams */}
-      {projections || ratings ? (
-        <TeamsExplorer projections={projections} ratings={ratings} />
-      ) : null}
-
-      <EvidencePanel />
     </div>
   )
 }
@@ -388,7 +385,7 @@ function TeamsExplorer({
   }))
 
   return (
-    <section aria-label="Teams">
+    <section id="teams" className="scroll-mt-20" aria-label="Teams">
       <SectionHead
         title={projections ? 'Teams · projected record' : 'Teams · rating'}
         href="/ratings"
