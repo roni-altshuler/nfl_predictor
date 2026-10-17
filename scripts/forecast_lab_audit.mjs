@@ -1,6 +1,7 @@
 /** Real-artifact browser audit. Set BROWSER_TEST_MODULE_ROOT if using shared tooling. */
 import { createRequire } from 'node:module'
 import { auditHomeSlate } from './home_slate_audit.mjs'
+import { auditFanJourney } from './fan_journey_audit.mjs'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import assert from 'node:assert/strict'
@@ -123,6 +124,7 @@ try {
   await page.getByRole('heading',{name:/Published forecast record/}).waitFor()
   await page.getByRole('region',{name:'Model development',exact:true}).waitFor()
   await auditHomeSlate({browser,base,output:path.join(output,'home-slate'),axePath,publication:data.forecast})
+  await auditFanJourney({browser,base,output:path.join(output,'fan-journey'),axePath,publication:data.forecast})
   assert.deepEqual(errors,[])
   await fs.writeFile(path.join(output,'results.json'),JSON.stringify({generated_at:new Date().toISOString(),checks,home:homeCheck,errors,clock:process.env.AUDIT_USE_PUBLICATION_TIME==='1'?'publication':'current',game_id:game.game_id,passed:true},null,2))
   console.log(JSON.stringify({passed:true,viewports:checks.map(c=>c.width),game:game.game_id,output}))
