@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "season": 2026,
-  "settled_games": 80,
-  "settled_decided": 79,
+  "settled_games": 92,
+  "settled_decided": 91,
   "first": {
-    "n": 79,
+    "n": 91,
     "ties_excluded": 1,
-    "brier": 0.22967879950336315,
-    "log_loss": 0.649748507299409,
+    "brier": 0.23710626241194455,
+    "log_loss": 0.665687339625159,
     "horizons": {
       "under_24h": {
         "n": 0,
@@ -22,32 +22,32 @@
         "log_loss": null
       },
       "7_days_or_more": {
-        "n": 79,
+        "n": 91,
         "ties_excluded": 1,
-        "brier": 0.22967879950336315,
-        "log_loss": 0.649748507299409
+        "brier": 0.23710626241194455,
+        "log_loss": 0.665687339625159
       }
     },
     "models": {
       "nfl-margin-lattice-1": {
-        "n": 79,
+        "n": 91,
         "ties_excluded": 1,
-        "brier": 0.22967879950336315,
-        "log_loss": 0.649748507299409
+        "brier": 0.23710626241194455,
+        "log_loss": 0.665687339625159
       }
     }
   },
   "latest": {
-    "n": 79,
+    "n": 91,
     "ties_excluded": 1,
-    "brier": 0.22695587048993635,
-    "log_loss": 0.6425412232283584,
+    "brier": 0.23540689306642826,
+    "log_loss": 0.6607518811428386,
     "horizons": {
       "under_24h": {
-        "n": 77,
+        "n": 89,
         "ties_excluded": 1,
-        "brier": 0.22443812084880324,
-        "log_loss": 0.6373548563643452
+        "brier": 0.23341852590671738,
+        "log_loss": 0.6566740279664335
       },
       "1_to_7_days": {
         "n": 2,
@@ -64,10 +64,10 @@
     },
     "models": {
       "nfl-margin-lattice-1": {
-        "n": 79,
+        "n": 91,
         "ties_excluded": 1,
-        "brier": 0.22695587048993635,
-        "log_loss": 0.6425412232283584
+        "brier": 0.23540689306642826,
+        "log_loss": 0.6607518811428386
       }
     }
   },
@@ -151,14 +151,26 @@
       "401872992",
       "401872993",
       "401872994",
-      "401872995"
+      "401872995",
+      "401872996",
+      "401872997",
+      "401872998",
+      "401872999",
+      "401873000",
+      "401873001",
+      "401873002",
+      "401873003",
+      "401873004",
+      "401873005",
+      "401873006",
+      "401873007"
     ],
-    "n": 79,
+    "n": 91,
     "first": {
-      "n": 79,
+      "n": 91,
       "ties_excluded": 0,
-      "brier": 0.22967879950336315,
-      "log_loss": 0.649748507299409,
+      "brier": 0.23710626241194455,
+      "log_loss": 0.665687339625159,
       "horizons": {
         "under_24h": {
           "n": 0,
@@ -173,32 +185,32 @@
           "log_loss": null
         },
         "7_days_or_more": {
-          "n": 79,
+          "n": 91,
           "ties_excluded": 0,
-          "brier": 0.22967879950336315,
-          "log_loss": 0.649748507299409
+          "brier": 0.23710626241194455,
+          "log_loss": 0.665687339625159
         }
       },
       "models": {
         "nfl-margin-lattice-1": {
-          "n": 79,
+          "n": 91,
           "ties_excluded": 0,
-          "brier": 0.22967879950336315,
-          "log_loss": 0.649748507299409
+          "brier": 0.23710626241194455,
+          "log_loss": 0.665687339625159
         }
       }
     },
     "latest": {
-      "n": 79,
+      "n": 91,
       "ties_excluded": 0,
-      "brier": 0.22695587048993635,
-      "log_loss": 0.6425412232283584,
+      "brier": 0.23540689306642826,
+      "log_loss": 0.6607518811428386,
       "horizons": {
         "under_24h": {
-          "n": 77,
+          "n": 89,
           "ties_excluded": 0,
-          "brier": 0.22443812084880324,
-          "log_loss": 0.6373548563643452
+          "brier": 0.23341852590671738,
+          "log_loss": 0.6566740279664335
         },
         "1_to_7_days": {
           "n": 2,
@@ -215,21 +227,21 @@
       },
       "models": {
         "nfl-margin-lattice-1": {
-          "n": 79,
+          "n": 91,
           "ties_excluded": 0,
-          "brier": 0.22695587048993635,
-          "log_loss": 0.6425412232283584
+          "brier": 0.23540689306642826,
+          "log_loss": 0.6607518811428386
         }
       }
     },
-    "latest_minus_first_brier": -0.0027229290134268003
+    "latest_minus_first_brier": -0.0016993693455162884
   },
   "coverage": {
     "missing_first": 0,
     "missing_latest": 0,
-    "paired_with_later_publication": 79,
+    "paired_with_later_publication": 91,
     "excluded": {
-      "at_or_after_actual_kickoff": 2
+      "at_or_after_actual_kickoff": 3
     }
   },
   "games": [
@@ -240,7 +252,7 @@
       "home_score": 13,
       "away_score": 10,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "SEA",
       "away": "NE",
       "first": {
@@ -279,7 +291,7 @@
       "home_score": 7,
       "away_score": 27,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "LAR",
       "away": "SF",
       "first": {
@@ -318,7 +330,7 @@
       "home_score": 20,
       "away_score": 13,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "PIT",
       "away": "ATL",
       "first": {
@@ -357,7 +369,7 @@
       "home_score": 23,
       "away_score": 41,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "IND",
       "away": "BAL",
       "first": {
@@ -396,7 +408,7 @@
       "home_score": 31,
       "away_score": 36,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "HOU",
       "away": "BUF",
       "first": {
@@ -435,7 +447,7 @@
       "home_score": 37,
       "away_score": 59,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "CAR",
       "away": "CHI",
       "first": {
@@ -474,7 +486,7 @@
       "home_score": 34,
       "away_score": 10,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "JAX",
       "away": "CLE",
       "first": {
@@ -513,7 +525,7 @@
       "home_score": 31,
       "away_score": 30,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "DET",
       "away": "NO",
       "first": {
@@ -552,7 +564,7 @@
       "home_score": 10,
       "away_score": 23,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "TEN",
       "away": "NYJ",
       "first": {
@@ -591,7 +603,7 @@
       "home_score": 33,
       "away_score": 27,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "CIN",
       "away": "TB",
       "first": {
@@ -630,7 +642,7 @@
       "home_score": 14,
       "away_score": 26,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "LAC",
       "away": "ARI",
       "first": {
@@ -669,7 +681,7 @@
       "home_score": 39,
       "away_score": 22,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "MIN",
       "away": "GB",
       "first": {
@@ -708,7 +720,7 @@
       "home_score": 27,
       "away_score": 13,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "LV",
       "away": "MIA",
       "first": {
@@ -747,7 +759,7 @@
       "home_score": 24,
       "away_score": 22,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "PHI",
       "away": "WSH",
       "first": {
@@ -786,7 +798,7 @@
       "home_score": 28,
       "away_score": 20,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "NYG",
       "away": "DAL",
       "first": {
@@ -825,7 +837,7 @@
       "home_score": 31,
       "away_score": 10,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "KC",
       "away": "DEN",
       "first": {
@@ -864,7 +876,7 @@
       "home_score": 41,
       "away_score": 31,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "BUF",
       "away": "DET",
       "first": {
@@ -903,7 +915,7 @@
       "home_score": 3,
       "away_score": 34,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "ATL",
       "away": "CAR",
       "first": {
@@ -942,7 +954,7 @@
       "home_score": 6,
       "away_score": 20,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "HOU",
       "away": "CIN",
       "first": {
@@ -981,7 +993,7 @@
       "home_score": 19,
       "away_score": 23,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "TB",
       "away": "CLE",
       "first": {
@@ -1020,7 +1032,7 @@
       "home_score": 17,
       "away_score": 20,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "NYJ",
       "away": "GB",
       "first": {
@@ -1059,7 +1071,7 @@
       "home_score": 3,
       "away_score": 9,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "CHI",
       "away": "MIN",
       "first": {
@@ -1098,7 +1110,7 @@
       "home_score": 17,
       "away_score": 24,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "BAL",
       "away": "NO",
       "first": {
@@ -1137,7 +1149,7 @@
       "home_score": 20,
       "away_score": 24,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "TEN",
       "away": "PHI",
       "first": {
@@ -1176,7 +1188,7 @@
       "home_score": 20,
       "away_score": 13,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "DEN",
       "away": "JAX",
       "first": {
@@ -1215,7 +1227,7 @@
       "home_score": 14,
       "away_score": 26,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "LAC",
       "away": "LV",
       "first": {
@@ -1254,7 +1266,7 @@
       "home_score": 35,
       "away_score": 13,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "SF",
       "away": "MIA",
       "first": {
@@ -1293,7 +1305,7 @@
       "home_score": 7,
       "away_score": 31,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "ARI",
       "away": "SEA",
       "first": {
@@ -1332,7 +1344,7 @@
       "home_score": 37,
       "away_score": 20,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "DAL",
       "away": "WSH",
       "first": {
@@ -1371,7 +1383,7 @@
       "home_score": 33,
       "away_score": 30,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "KC",
       "away": "IND",
       "first": {
@@ -1410,7 +1422,7 @@
       "home_score": 20,
       "away_score": 3,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "NE",
       "away": "PIT",
       "first": {
@@ -1449,7 +1461,7 @@
       "home_score": 28,
       "away_score": 6,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "LAR",
       "away": "NYG",
       "first": {
@@ -1488,7 +1500,7 @@
       "home_score": 14,
       "away_score": 35,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "GB",
       "away": "ATL",
       "first": {
@@ -1527,7 +1539,7 @@
       "home_score": 21,
       "away_score": 18,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "CLE",
       "away": "CAR",
       "first": {
@@ -1566,7 +1578,7 @@
       "home_score": 30,
       "away_score": 27,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "PIT",
       "away": "CIN",
       "first": {
@@ -1605,7 +1617,7 @@
       "home_score": 19,
       "away_score": 17,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "IND",
       "away": "HOU",
       "first": {
@@ -1644,7 +1656,7 @@
       "home_score": 10,
       "away_score": 24,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "MIA",
       "away": "KC",
       "first": {
@@ -1683,7 +1695,7 @@
       "home_score": 24,
       "away_score": 16,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "BUF",
       "away": "LAC",
       "first": {
@@ -1722,7 +1734,7 @@
       "home_score": 31,
       "away_score": 24,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "DET",
       "away": "NYJ",
       "first": {
@@ -1761,7 +1773,7 @@
       "home_score": 33,
       "away_score": 31,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "WSH",
       "away": "SEA",
       "first": {
@@ -1800,7 +1812,7 @@
       "home_score": 12,
       "away_score": 7,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "NYG",
       "away": "TEN",
       "first": {
@@ -1839,7 +1851,7 @@
       "home_score": 35,
       "away_score": 6,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "JAX",
       "away": "NE",
       "first": {
@@ -1878,7 +1890,7 @@
       "home_score": 36,
       "away_score": 30,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "SF",
       "away": "ARI",
       "first": {
@@ -1917,7 +1929,7 @@
       "home_score": 16,
       "away_score": 23,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "TB",
       "away": "MIN",
       "first": {
@@ -1956,7 +1968,7 @@
       "home_score": 31,
       "away_score": 34,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "DAL",
       "away": "BAL",
       "first": {
@@ -1995,7 +2007,7 @@
       "home_score": 27,
       "away_score": 35,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "NO",
       "away": "LV",
       "first": {
@@ -2034,7 +2046,7 @@
       "home_score": 30,
       "away_score": 26,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "DEN",
       "away": "LAR",
       "first": {
@@ -2073,7 +2085,7 @@
       "home_score": 27,
       "away_score": 7,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "CHI",
       "away": "PHI",
       "first": {
@@ -2112,7 +2124,7 @@
       "home_score": 27,
       "away_score": 24,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "CLE",
       "away": "PIT",
       "first": {
@@ -2151,7 +2163,7 @@
       "home_score": 13,
       "away_score": 30,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "WSH",
       "away": "IND",
       "first": {
@@ -2190,7 +2202,7 @@
       "home_score": 36,
       "away_score": 24,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "NYG",
       "away": "ARI",
       "first": {
@@ -2229,7 +2241,7 @@
       "home_score": 30,
       "away_score": 34,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "HOU",
       "away": "DAL",
       "first": {
@@ -2268,7 +2280,7 @@
       "home_score": 14,
       "away_score": 17,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "TB",
       "away": "GB",
       "first": {
@@ -2307,7 +2319,7 @@
       "home_score": 17,
       "away_score": 22,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "CIN",
       "away": "JAX",
       "first": {
@@ -2346,7 +2358,7 @@
       "home_score": 20,
       "away_score": 24,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "PHI",
       "away": "LAR",
       "first": {
@@ -2385,7 +2397,7 @@
       "home_score": 26,
       "away_score": 29,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "BUF",
       "away": "NE",
       "first": {
@@ -2424,7 +2436,7 @@
       "home_score": 23,
       "away_score": 12,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "CHI",
       "away": "NYJ",
       "first": {
@@ -2463,7 +2475,7 @@
       "home_score": 24,
       "away_score": 18,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "BAL",
       "away": "TEN",
       "first": {
@@ -2502,7 +2514,7 @@
       "home_score": 15,
       "away_score": 10,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "MIN",
       "away": "MIA",
       "first": {
@@ -2541,7 +2553,7 @@
       "home_score": 24,
       "away_score": 14,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "SF",
       "away": "DEN",
       "first": {
@@ -2580,7 +2592,7 @@
       "home_score": 27,
       "away_score": 30,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "LV",
       "away": "KC",
       "first": {
@@ -2619,7 +2631,7 @@
       "home_score": 30,
       "away_score": 23,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "SEA",
       "away": "LAC",
       "first": {
@@ -2658,7 +2670,7 @@
       "home_score": 32,
       "away_score": 26,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "CAR",
       "away": "DET",
       "first": {
@@ -2697,7 +2709,7 @@
       "home_score": 24,
       "away_score": 45,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "NO",
       "away": "ATL",
       "first": {
@@ -2736,7 +2748,7 @@
       "home_score": 16,
       "away_score": 24,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "DAL",
       "away": "TB",
       "first": {
@@ -2775,7 +2787,7 @@
       "home_score": 19,
       "away_score": 17,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "JAX",
       "away": "PHI",
       "first": {
@@ -2814,7 +2826,7 @@
       "home_score": 24,
       "away_score": 31,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "MIA",
       "away": "CIN",
       "first": {
@@ -2853,7 +2865,7 @@
       "home_score": 17,
       "away_score": 12,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "NYJ",
       "away": "CLE",
       "first": {
@@ -2892,7 +2904,7 @@
       "home_score": 3,
       "away_score": 26,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "TEN",
       "away": "HOU",
       "first": {
@@ -2931,7 +2943,7 @@
       "home_score": 34,
       "away_score": 22,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "PIT",
       "away": "IND",
       "first": {
@@ -2970,7 +2982,7 @@
       "home_score": 45,
       "away_score": 17,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "NE",
       "away": "LV",
       "first": {
@@ -3009,7 +3021,7 @@
       "home_score": 13,
       "away_score": 23,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "NO",
       "away": "MIN",
       "first": {
@@ -3048,7 +3060,7 @@
       "home_score": 27,
       "away_score": 27,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "WSH",
       "away": "NYG",
       "first": {
@@ -3087,7 +3099,7 @@
       "home_score": 17,
       "away_score": 23,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "LAC",
       "away": "DEN",
       "first": {
@@ -3126,7 +3138,7 @@
       "home_score": 31,
       "away_score": 7,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "GB",
       "away": "CHI",
       "first": {
@@ -3165,7 +3177,7 @@
       "home_score": 21,
       "away_score": 45,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "ARI",
       "away": "DET",
       "first": {
@@ -3204,7 +3216,7 @@
       "home_score": 29,
       "away_score": 32,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "SEA",
       "away": "SF",
       "first": {
@@ -3243,7 +3255,7 @@
       "home_score": 23,
       "away_score": 30,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "ATL",
       "away": "BAL",
       "first": {
@@ -3282,7 +3294,7 @@
       "home_score": 34,
       "away_score": 37,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "LAR",
       "away": "BUF",
       "first": {
@@ -3321,7 +3333,7 @@
       "home_score": 17,
       "away_score": 14,
       "source": "espn",
-      "fetched_at": "2026-10-18T14:20:15+00:00",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
       "home": "DEN",
       "away": "SEA",
       "first": {
@@ -3352,29 +3364,497 @@
         "log_loss": 0.763341381302525
       },
       "latest_unavailable": null
+    },
+    {
+      "game_id": "401872996",
+      "week": 6,
+      "actual_kickoff_utc": "2026-10-18T13:30:00+00:00",
+      "home_score": 31,
+      "away_score": 34,
+      "source": "espn",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
+      "home": "JAX",
+      "away": "HOU",
+      "first": {
+        "generated_at": "2026-08-16T15:19:07+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.530744,
+        "p_tie": 0.003842,
+        "p_away": 0.465414,
+        "scheduled_kickoff_utc": "2026-10-18T13:30:00+00:00",
+        "horizon_hours": 1510.181388888889,
+        "horizon": "7_days_or_more",
+        "p_home_conditional": 0.5327909829565189,
+        "brier": 0.28386623151977364,
+        "log_loss": 0.760978547475682
+      },
+      "first_unavailable": null,
+      "latest": {
+        "generated_at": "2026-10-17T14:06:50+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.637893,
+        "p_tie": 0.003724,
+        "p_away": 0.358382,
+        "scheduled_kickoff_utc": "2026-10-18T13:30:00+00:00",
+        "horizon_hours": 23.386111111111113,
+        "horizon": "under_24h",
+        "p_home_conditional": 0.6402780356829189,
+        "brier": 0.4099559629779771,
+        "log_loss": 1.022423867267197
+      },
+      "latest_unavailable": null
+    },
+    {
+      "game_id": "401872997",
+      "week": 6,
+      "actual_kickoff_utc": "2026-10-18T17:00:00+00:00",
+      "home_score": 13,
+      "away_score": 10,
+      "source": "espn",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
+      "home": "CLE",
+      "away": "BAL",
+      "first": {
+        "generated_at": "2026-08-16T15:19:07+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.406989,
+        "p_tie": 0.003745,
+        "p_away": 0.589266,
+        "scheduled_kickoff_utc": "2026-10-18T17:00:00+00:00",
+        "horizon_hours": 1513.681388888889,
+        "horizon": "7_days_or_more",
+        "p_home_conditional": 0.4085189032928317,
+        "brier": 0.3498498877619146,
+        "log_loss": 0.8952170908620763
+      },
+      "first_unavailable": null,
+      "latest": {
+        "generated_at": "2026-10-18T14:21:19+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.398646,
+        "p_tie": 0.003839,
+        "p_away": 0.597515,
+        "scheduled_kickoff_utc": "2026-10-18T17:00:00+00:00",
+        "horizon_hours": 2.644722222222222,
+        "horizon": "under_24h",
+        "p_home_conditional": 0.40018229984912074,
+        "brier": 0.35978127341429017,
+        "log_loss": 0.9158350860736691
+      },
+      "latest_unavailable": null
+    },
+    {
+      "game_id": "401872998",
+      "week": 6,
+      "actual_kickoff_utc": "2026-10-18T17:00:00+00:00",
+      "home_score": 14,
+      "away_score": 25,
+      "source": "espn",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
+      "home": "PHI",
+      "away": "CAR",
+      "first": {
+        "generated_at": "2026-08-16T15:19:07+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.651563,
+        "p_tie": 0.003562,
+        "p_away": 0.344875,
+        "scheduled_kickoff_utc": "2026-10-18T17:00:00+00:00",
+        "horizon_hours": 1513.681388888889,
+        "horizon": "7_days_or_more",
+        "p_home_conditional": 0.6538921638877683,
+        "brier": 0.427574961993828,
+        "log_loss": 1.0610048874176266
+      },
+      "first_unavailable": null,
+      "latest": {
+        "generated_at": "2026-10-18T14:21:19+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.554706,
+        "p_tie": 0.003934,
+        "p_away": 0.44136,
+        "scheduled_kickoff_utc": "2026-10-18T17:00:00+00:00",
+        "horizon_hours": 2.644722222222222,
+        "horizon": "under_24h",
+        "p_home_conditional": 0.5568968321376294,
+        "brier": 0.310134081644927,
+        "log_loss": 0.8139526514852317
+      },
+      "latest_unavailable": null
+    },
+    {
+      "game_id": "401872999",
+      "week": 6,
+      "actual_kickoff_utc": "2026-10-18T17:00:00+00:00",
+      "home_score": 23,
+      "away_score": 31,
+      "source": "espn",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
+      "home": "ATL",
+      "away": "CHI",
+      "first": {
+        "generated_at": "2026-08-16T15:19:07+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.496857,
+        "p_tie": 0.003854,
+        "p_away": 0.49929,
+        "scheduled_kickoff_utc": "2026-10-18T17:00:00+00:00",
+        "horizon_hours": 1513.681388888889,
+        "horizon": "7_days_or_more",
+        "p_home_conditional": 0.49877879469596353,
+        "brier": 0.24878028603835814,
+        "log_loss": 0.6907077477889133
+      },
+      "first_unavailable": null,
+      "latest": {
+        "generated_at": "2026-10-18T14:21:19+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.499391,
+        "p_tie": 0.003973,
+        "p_away": 0.496636,
+        "scheduled_kickoff_utc": "2026-10-18T17:00:00+00:00",
+        "horizon_hours": 2.644722222222222,
+        "horizon": "under_24h",
+        "p_home_conditional": 0.5013829946376955,
+        "brier": 0.2513849073118634,
+        "log_loss": 0.695917002252253
+      },
+      "latest_unavailable": null
+    },
+    {
+      "game_id": "401873000",
+      "week": 6,
+      "actual_kickoff_utc": "2026-10-18T17:00:00+00:00",
+      "home_score": 27,
+      "away_score": 34,
+      "source": "espn",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
+      "home": "NYG",
+      "away": "NO",
+      "first": {
+        "generated_at": "2026-08-16T15:19:07+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.539213,
+        "p_tie": 0.003835,
+        "p_away": 0.456952,
+        "scheduled_kickoff_utc": "2026-10-18T17:00:00+00:00",
+        "horizon_hours": 1513.681388888889,
+        "horizon": "7_days_or_more",
+        "p_home_conditional": 0.5412888427117998,
+        "brier": 0.29299361124427953,
+        "log_loss": 0.7793345539595447
+      },
+      "first_unavailable": null,
+      "latest": {
+        "generated_at": "2026-10-18T14:21:19+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.650697,
+        "p_tie": 0.003676,
+        "p_away": 0.345627,
+        "scheduled_kickoff_utc": "2026-10-18T17:00:00+00:00",
+        "horizon_hours": 2.644722222222222,
+        "horizon": "under_24h",
+        "p_home_conditional": 0.6530977874667276,
+        "brier": 0.42653671999393494,
+        "log_loss": 1.0587123470121504
+      },
+      "latest_unavailable": null
+    },
+    {
+      "game_id": "401873001",
+      "week": 6,
+      "actual_kickoff_utc": "2026-10-18T17:00:00+00:00",
+      "home_score": 26,
+      "away_score": 19,
+      "source": "espn",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
+      "home": "NE",
+      "away": "NYJ",
+      "first": {
+        "generated_at": "2026-08-16T15:19:07+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.831385,
+        "p_tie": 0.002396,
+        "p_away": 0.166219,
+        "scheduled_kickoff_utc": "2026-10-18T17:00:00+00:00",
+        "horizon_hours": 1513.681388888889,
+        "horizon": "7_days_or_more",
+        "p_home_conditional": 0.8333817827514726,
+        "brier": 0.027761630319077486,
+        "log_loss": 0.18226341918221126
+      },
+      "first_unavailable": null,
+      "latest": {
+        "generated_at": "2026-10-18T14:21:19+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.77952,
+        "p_tie": 0.002922,
+        "p_away": 0.217557,
+        "scheduled_kickoff_utc": "2026-10-18T17:00:00+00:00",
+        "horizon_hours": 2.644722222222222,
+        "horizon": "under_24h",
+        "p_home_conditional": 0.7818052166482629,
+        "brier": 0.04760896348191151,
+        "log_loss": 0.24614965303328698
+      },
+      "latest_unavailable": null
+    },
+    {
+      "game_id": "401873002",
+      "week": 6,
+      "actual_kickoff_utc": "2026-10-18T17:00:00+00:00",
+      "home_score": 19,
+      "away_score": 26,
+      "source": "espn",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
+      "home": "TB",
+      "away": "PIT",
+      "first": {
+        "generated_at": "2026-08-16T15:19:07+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.544768,
+        "p_tie": 0.003829,
+        "p_away": 0.451403,
+        "scheduled_kickoff_utc": "2026-10-18T17:00:00+00:00",
+        "horizon_hours": 1513.681388888889,
+        "horizon": "7_days_or_more",
+        "p_home_conditional": 0.5468619343466132,
+        "brier": 0.29905797523731953,
+        "log_loss": 0.7915584192435
+      },
+      "first_unavailable": null,
+      "latest": {
+        "generated_at": "2026-10-18T14:21:19+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.511357,
+        "p_tie": 0.003971,
+        "p_away": 0.484672,
+        "scheduled_kickoff_utc": "2026-10-18T17:00:00+00:00",
+        "horizon_hours": 2.644722222222222,
+        "horizon": "under_24h",
+        "p_home_conditional": 0.5133956943020735,
+        "brier": 0.2635751389279081,
+        "log_loss": 0.7203040001352282
+      },
+      "latest_unavailable": null
+    },
+    {
+      "game_id": "401873003",
+      "week": 6,
+      "actual_kickoff_utc": "2026-10-18T17:00:00+00:00",
+      "home_score": 20,
+      "away_score": 26,
+      "source": "espn",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
+      "home": "IND",
+      "away": "TEN",
+      "first": {
+        "generated_at": "2026-08-16T15:19:07+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.651854,
+        "p_tie": 0.003561,
+        "p_away": 0.344585,
+        "scheduled_kickoff_utc": "2026-10-18T17:00:00+00:00",
+        "horizon_hours": 1513.681388888889,
+        "horizon": "7_days_or_more",
+        "p_home_conditional": 0.6541835476130501,
+        "brier": 0.42795611396759575,
+        "log_loss": 1.0618471291118408
+      },
+      "first_unavailable": null,
+      "latest": {
+        "generated_at": "2026-10-18T14:21:19+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.708714,
+        "p_tie": 0.003397,
+        "p_away": 0.287889,
+        "scheduled_kickoff_utc": "2026-10-18T17:00:00+00:00",
+        "horizon_hours": 2.644722222222222,
+        "horizon": "under_24h",
+        "p_home_conditional": 0.7111297076167742,
+        "brier": 0.5057054610551187,
+        "log_loss": 1.2417775069003856
+      },
+      "latest_unavailable": null
+    },
+    {
+      "game_id": "401873004",
+      "week": 6,
+      "actual_kickoff_utc": "2026-10-18T20:05:00+00:00",
+      "home_score": 16,
+      "away_score": 18,
+      "source": "espn",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
+      "home": "LAR",
+      "away": "ARI",
+      "first": {
+        "generated_at": "2026-08-16T15:19:07+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.795032,
+        "p_tie": 0.002713,
+        "p_away": 0.202254,
+        "scheduled_kickoff_utc": "2026-10-18T20:05:00+00:00",
+        "horizon_hours": 1516.7647222222222,
+        "horizon": "7_days_or_more",
+        "p_home_conditional": 0.7971955888280795,
+        "brier": 0.6355208068469484,
+        "log_loss": 1.5955132561608352
+      },
+      "first_unavailable": null,
+      "latest": {
+        "generated_at": "2026-10-18T14:21:19+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.762766,
+        "p_tie": 0.003049,
+        "p_away": 0.234185,
+        "scheduled_kickoff_utc": "2026-10-18T20:05:00+00:00",
+        "horizon_hours": 5.728055555555556,
+        "horizon": "under_24h",
+        "p_home_conditional": 0.7650987861991212,
+        "brier": 0.5853761526433686,
+        "log_loss": 1.448590220021643
+      },
+      "latest_unavailable": null
+    },
+    {
+      "game_id": "401873005",
+      "week": 6,
+      "actual_kickoff_utc": "2026-10-18T20:25:00+00:00",
+      "home_score": 30,
+      "away_score": 33,
+      "source": "espn",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
+      "home": "LV",
+      "away": "BUF",
+      "first": {
+        "generated_at": "2026-08-16T15:19:07+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.271375,
+        "p_tie": 0.003182,
+        "p_away": 0.725442,
+        "scheduled_kickoff_utc": "2026-10-18T20:25:00+00:00",
+        "horizon_hours": 1517.0980555555554,
+        "horizon": "7_days_or_more",
+        "p_home_conditional": 0.2722415448372168,
+        "brier": 0.07411545873535433,
+        "log_loss": 0.3177860781995284
+      },
+      "first_unavailable": null,
+      "latest": {
+        "generated_at": "2026-10-18T14:21:19+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.342779,
+        "p_tie": 0.00365,
+        "p_away": 0.653571,
+        "scheduled_kickoff_utc": "2026-10-18T20:25:00+00:00",
+        "horizon_hours": 6.061388888888889,
+        "horizon": "under_24h",
+        "p_home_conditional": 0.3440347267526471,
+        "brier": 0.11835989321176857,
+        "log_loss": 0.42164742856220466
+      },
+      "latest_unavailable": null
+    },
+    {
+      "game_id": "401873006",
+      "week": 6,
+      "actual_kickoff_utc": "2026-10-18T20:25:00+00:00",
+      "home_score": 22,
+      "away_score": 6,
+      "source": "espn",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
+      "home": "KC",
+      "away": "LAC",
+      "first": {
+        "generated_at": "2026-08-16T15:19:07+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.526591,
+        "p_tie": 0.003845,
+        "p_away": 0.469564,
+        "scheduled_kickoff_utc": "2026-10-18T20:25:00+00:00",
+        "horizon_hours": 1517.0980555555554,
+        "horizon": "7_days_or_more",
+        "p_home_conditional": 0.5286235575788909,
+        "brier": 0.22219575046958118,
+        "log_loss": 0.637478711821458
+      },
+      "first_unavailable": null,
+      "latest": {
+        "generated_at": "2026-10-18T14:21:19+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.742371,
+        "p_tie": 0.003191,
+        "p_away": 0.254439,
+        "scheduled_kickoff_utc": "2026-10-18T20:25:00+00:00",
+        "horizon_hours": 6.061388888888889,
+        "horizon": "under_24h",
+        "p_home_conditional": 0.7447467421073224,
+        "brier": 0.06515422566482579,
+        "log_loss": 0.2947110618765647
+      },
+      "latest_unavailable": null
+    },
+    {
+      "game_id": "401873007",
+      "week": 6,
+      "actual_kickoff_utc": "2026-10-19T00:20:00+00:00",
+      "home_score": 23,
+      "away_score": 13,
+      "source": "espn",
+      "fetched_at": "2026-10-19T17:21:47+00:00",
+      "home": "GB",
+      "away": "DAL",
+      "first": {
+        "generated_at": "2026-08-16T15:19:07+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.620392,
+        "p_tie": 0.003671,
+        "p_away": 0.375937,
+        "scheduled_kickoff_utc": "2026-10-19T00:20:00+00:00",
+        "horizon_hours": 1521.0147222222222,
+        "horizon": "7_days_or_more",
+        "p_home_conditional": 0.6226778503887772,
+        "brier": 0.142372004587234,
+        "log_loss": 0.4737259880129423
+      },
+      "first_unavailable": null,
+      "latest": {
+        "generated_at": "2026-10-18T14:21:19+00:00",
+        "model_version": "nfl-margin-lattice-1",
+        "p_home": 0.611732,
+        "p_tie": 0.00381,
+        "p_away": 0.384458,
+        "scheduled_kickoff_utc": "2026-10-19T00:20:00+00:00",
+        "horizon_hours": 9.978055555555555,
+        "horizon": "under_24h",
+        "p_home_conditional": 0.6140716128449392,
+        "brier": 0.14894072001210654,
+        "log_loss": 0.4876437243381823
+      },
+      "latest_unavailable": null
     }
   ],
-  "generated_at": "2026-10-18T14:21:31+00:00",
+  "generated_at": "2026-10-19T17:23:04+00:00",
   "sources": {
-    "first_generated_at": "2026-10-18T14:21:31+00:00",
-    "first_sha256": "7013bbc8b3579dd12b12b1c73db0f85f36902b17acb6dc0f1284ce43944236b4",
-    "warehouse_sha256": "26405fec6ea0cb9c7ddea1646232895f81c505aa6653f4989da001204266f0e3",
-    "warehouse_url": "https://github.com/roni-altshuler/nfl_predictor/releases/download/warehouse-latest/warehouse-39135507901-1.sqlite.gz",
-    "snapshots": 16054,
-    "snapshot_through": "2026-10-18T14:21:19+00:00",
-    "results_fetched_through": "2026-10-18T14:20:15+00:00",
-    "latest_result_kickoff": "2026-10-16T00:15:00+00:00",
+    "first_generated_at": "2026-10-19T17:23:03+00:00",
+    "first_sha256": "1618eb1c782336cdbda80bbf6812bcf762d8048649f8a9cf15f0bfa652eaf82c",
+    "warehouse_sha256": "987c6398640df8ed2e0fd2ac1967ec351c9714d75f9e5899eb902c51b75d0a65",
+    "warehouse_url": "https://github.com/roni-altshuler/nfl_predictor/releases/download/warehouse-latest/warehouse-39293416802-1.sqlite.gz",
+    "snapshots": 16234,
+    "snapshot_through": "2026-10-19T17:22:52+00:00",
+    "results_fetched_through": "2026-10-19T17:21:47+00:00",
+    "latest_result_kickoff": "2026-10-19T00:20:00+00:00",
     "timestamp_coverage": {
       "snapshot_through": {
-        "valid": 16054,
+        "valid": 16234,
         "invalid": 0
       },
       "results_fetched_through": {
-        "valid": 80,
+        "valid": 92,
         "invalid": 0
       },
       "latest_result_kickoff": {
-        "valid": 80,
+        "valid": 92,
         "invalid": 0
       }
     }
