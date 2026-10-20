@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-19T17:22:52+00:00",
+  "generated_at": "2026-10-20T15:35:51+00:00",
   "carryover_applied": true,
   "teams": [
     {
@@ -9,7 +9,7 @@
       "abbreviation": "SF",
       "conference": "National Football Conference",
       "division": "NFC West",
-      "elo": 1647.3
+      "elo": 1653.1
     },
     {
       "team_id": 4,
@@ -217,7 +217,7 @@
       "abbreviation": "WSH",
       "conference": "National Football Conference",
       "division": "NFC East",
-      "elo": 1416.7
+      "elo": 1410.9
     },
     {
       "team_id": 18,
