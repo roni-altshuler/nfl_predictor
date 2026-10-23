@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-22T15:49:43+00:00",
+  "generated_at": "2026-10-23T15:40:36+00:00",
   "carryover_applied": true,
   "teams": [
     {
@@ -36,14 +36,6 @@
       "elo": 1624.1
     },
     {
-      "team_id": 22,
-      "name": "New England Patriots",
-      "abbreviation": "NE",
-      "conference": "American Football Conference",
-      "division": "AFC East",
-      "elo": 1611.6
-    },
-    {
       "team_id": 10,
       "name": "Denver Broncos",
       "abbreviation": "DEN",
@@ -60,6 +52,14 @@
       "elo": 1601.5
     },
     {
+      "team_id": 22,
+      "name": "New England Patriots",
+      "abbreviation": "NE",
+      "conference": "American Football Conference",
+      "division": "AFC East",
+      "elo": 1591.6
+    },
+    {
       "team_id": 16,
       "name": "Kansas City Chiefs",
       "abbreviation": "KC",
@@ -73,7 +73,7 @@
       "abbreviation": "CHI",
       "conference": "National Football Conference",
       "division": "NFC North",
-      "elo": 1554.6
+      "elo": 1574.7
     },
     {
       "team_id": 19,
