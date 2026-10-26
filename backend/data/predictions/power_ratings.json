@@ -1,15 +1,15 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-25T14:54:41+00:00",
+  "generated_at": "2026-10-26T17:10:32+00:00",
   "carryover_applied": true,
   "teams": [
     {
-      "team_id": 28,
-      "name": "San Francisco 49ers",
-      "abbreviation": "SF",
+      "team_id": 29,
+      "name": "Seattle Seahawks",
+      "abbreviation": "SEA",
       "conference": "National Football Conference",
       "division": "NFC West",
-      "elo": 1653.1
+      "elo": 1662.8
     },
     {
       "team_id": 4,
@@ -20,20 +20,12 @@
       "elo": 1645.0
     },
     {
-      "team_id": 29,
-      "name": "Seattle Seahawks",
-      "abbreviation": "SEA",
-      "conference": "National Football Conference",
-      "division": "NFC West",
-      "elo": 1644.1
-    },
-    {
       "team_id": 21,
       "name": "Minnesota Vikings",
       "abbreviation": "MIN",
       "conference": "National Football Conference",
       "division": "NFC North",
-      "elo": 1624.1
+      "elo": 1630.7
     },
     {
       "team_id": 10,
@@ -41,7 +33,15 @@
       "abbreviation": "DEN",
       "conference": "American Football Conference",
       "division": "AFC West",
-      "elo": 1605.7
+      "elo": 1619.6
+    },
+    {
+      "team_id": 28,
+      "name": "San Francisco 49ers",
+      "abbreviation": "SF",
+      "conference": "National Football Conference",
+      "division": "NFC West",
+      "elo": 1618.0
     },
     {
       "team_id": 15,
@@ -60,14 +60,6 @@
       "elo": 1591.6
     },
     {
-      "team_id": 16,
-      "name": "Kansas City Chiefs",
-      "abbreviation": "KC",
-      "conference": "American Football Conference",
-      "division": "AFC West",
-      "elo": 1577.9
-    },
-    {
       "team_id": 6,
       "name": "Chicago Bears",
       "abbreviation": "CHI",
@@ -81,47 +73,7 @@
       "abbreviation": "LAR",
       "conference": "National Football Conference",
       "division": "NFC West",
-      "elo": 1551.6
-    },
-    {
-      "team_id": 3,
-      "name": "Baltimore Ravens",
-      "abbreviation": "BAL",
-      "conference": "American Football Conference",
-      "division": "AFC North",
-      "elo": 1551.5
-    },
-    {
-      "team_id": 11,
-      "name": "Detroit Lions",
-      "abbreviation": "DET",
-      "conference": "National Football Conference",
-      "division": "NFC North",
-      "elo": 1547.4
-    },
-    {
-      "team_id": 13,
-      "name": "Houston Texans",
-      "abbreviation": "HOU",
-      "conference": "American Football Conference",
-      "division": "AFC South",
-      "elo": 1540.1
-    },
-    {
-      "team_id": 27,
-      "name": "Pittsburgh Steelers",
-      "abbreviation": "PIT",
-      "conference": "American Football Conference",
-      "division": "AFC North",
-      "elo": 1540.0
-    },
-    {
-      "team_id": 12,
-      "name": "Green Bay Packers",
-      "abbreviation": "GB",
-      "conference": "National Football Conference",
-      "division": "NFC North",
-      "elo": 1531.4
+      "elo": 1571.4
     },
     {
       "team_id": 7,
@@ -129,15 +81,63 @@
       "abbreviation": "CIN",
       "conference": "American Football Conference",
       "division": "AFC North",
-      "elo": 1520.5
+      "elo": 1560.3
     },
     {
-      "team_id": 5,
-      "name": "Carolina Panthers",
-      "abbreviation": "CAR",
+      "team_id": 16,
+      "name": "Kansas City Chiefs",
+      "abbreviation": "KC",
+      "conference": "American Football Conference",
+      "division": "AFC West",
+      "elo": 1559.2
+    },
+    {
+      "team_id": 11,
+      "name": "Detroit Lions",
+      "abbreviation": "DET",
+      "conference": "National Football Conference",
+      "division": "NFC North",
+      "elo": 1558.4
+    },
+    {
+      "team_id": 27,
+      "name": "Pittsburgh Steelers",
+      "abbreviation": "PIT",
+      "conference": "American Football Conference",
+      "division": "AFC North",
+      "elo": 1552.4
+    },
+    {
+      "team_id": 12,
+      "name": "Green Bay Packers",
+      "abbreviation": "GB",
+      "conference": "National Football Conference",
+      "division": "NFC North",
+      "elo": 1520.3
+    },
+    {
+      "team_id": 3,
+      "name": "Baltimore Ravens",
+      "abbreviation": "BAL",
+      "conference": "American Football Conference",
+      "division": "AFC North",
+      "elo": 1511.7
+    },
+    {
+      "team_id": 13,
+      "name": "Houston Texans",
+      "abbreviation": "HOU",
+      "conference": "American Football Conference",
+      "division": "AFC South",
+      "elo": 1510.2
+    },
+    {
+      "team_id": 2,
+      "name": "Atlanta Falcons",
+      "abbreviation": "ATL",
       "conference": "National Football Conference",
       "division": "NFC South",
-      "elo": 1495.7
+      "elo": 1485.1
     },
     {
       "team_id": 26,
@@ -148,20 +148,20 @@
       "elo": 1479.2
     },
     {
+      "team_id": 30,
+      "name": "Tampa Bay Buccaneers",
+      "abbreviation": "TB",
+      "conference": "National Football Conference",
+      "division": "NFC South",
+      "elo": 1471.0
+    },
+    {
       "team_id": 8,
       "name": "Cleveland Browns",
       "abbreviation": "CLE",
       "conference": "American Football Conference",
       "division": "AFC North",
-      "elo": 1455.6
-    },
-    {
-      "team_id": 2,
-      "name": "Atlanta Falcons",
-      "abbreviation": "ATL",
-      "conference": "National Football Conference",
-      "division": "NFC South",
-      "elo": 1449.9
+      "elo": 1465.8
     },
     {
       "team_id": 24,
@@ -169,7 +169,15 @@
       "abbreviation": "NYG",
       "conference": "National Football Conference",
       "division": "NFC East",
-      "elo": 1430.8
+      "elo": 1460.6
+    },
+    {
+      "team_id": 5,
+      "name": "Carolina Panthers",
+      "abbreviation": "CAR",
+      "conference": "National Football Conference",
+      "division": "NFC South",
+      "elo": 1447.1
     },
     {
       "team_id": 9,
@@ -180,36 +188,12 @@
       "elo": 1428.4
     },
     {
-      "team_id": 30,
-      "name": "Tampa Bay Buccaneers",
-      "abbreviation": "TB",
-      "conference": "National Football Conference",
-      "division": "NFC South",
-      "elo": 1422.5
-    },
-    {
-      "team_id": 23,
-      "name": "New Orleans Saints",
-      "abbreviation": "NO",
-      "conference": "National Football Conference",
-      "division": "NFC South",
-      "elo": 1421.8
-    },
-    {
       "team_id": 14,
       "name": "Indianapolis Colts",
       "abbreviation": "IND",
       "conference": "American Football Conference",
       "division": "AFC South",
-      "elo": 1421.1
-    },
-    {
-      "team_id": 17,
-      "name": "Las Vegas Raiders",
-      "abbreviation": "LV",
-      "conference": "American Football Conference",
-      "division": "AFC West",
-      "elo": 1418.7
+      "elo": 1414.4
     },
     {
       "team_id": 32,
@@ -220,6 +204,14 @@
       "elo": 1410.9
     },
     {
+      "team_id": 23,
+      "name": "New Orleans Saints",
+      "abbreviation": "NO",
+      "conference": "National Football Conference",
+      "division": "NFC South",
+      "elo": 1409.4
+    },
+    {
       "team_id": 18,
       "name": "Los Angeles Chargers",
       "abbreviation": "LAC",
@@ -228,20 +220,12 @@
       "elo": 1404.2
     },
     {
-      "team_id": 1,
-      "name": "Arizona Cardinals",
-      "abbreviation": "ARI",
-      "conference": "National Football Conference",
-      "division": "NFC West",
-      "elo": 1389.5
-    },
-    {
-      "team_id": 25,
-      "name": "New York Jets",
-      "abbreviation": "NYJ",
+      "team_id": 17,
+      "name": "Las Vegas Raiders",
+      "abbreviation": "LV",
       "conference": "American Football Conference",
-      "division": "AFC East",
-      "elo": 1379.4
+      "division": "AFC West",
+      "elo": 1398.9
     },
     {
       "team_id": 20,
@@ -249,7 +233,23 @@
       "abbreviation": "MIA",
       "conference": "American Football Conference",
       "division": "AFC East",
-      "elo": 1369.2
+      "elo": 1385.8
+    },
+    {
+      "team_id": 1,
+      "name": "Arizona Cardinals",
+      "abbreviation": "ARI",
+      "conference": "National Football Conference",
+      "division": "NFC West",
+      "elo": 1375.6
+    },
+    {
+      "team_id": 25,
+      "name": "New York Jets",
+      "abbreviation": "NYJ",
+      "conference": "American Football Conference",
+      "division": "AFC East",
+      "elo": 1362.8
     },
     {
       "team_id": 31,
@@ -257,7 +257,7 @@
       "abbreviation": "TEN",
       "conference": "American Football Conference",
       "division": "AFC South",
-      "elo": 1323.2
+      "elo": 1313.0
     }
   ]
 }
