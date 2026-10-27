@@ -1,24 +1,24 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-26T17:10:41+00:00",
+  "generated_at": "2026-10-27T16:16:20+00:00",
   "basis": "published",
   "forecasts_made": 272,
-  "games_played": 106,
-  "games_pending": 166,
+  "games_played": 107,
+  "games_pending": 165,
   "ties_excluded": 1,
   "invalid_excluded": 0,
-  "n": 105,
+  "n": 106,
   "note": "Every row here was published strictly before its kickoff and is the EARLIEST such publication for that fixture. This record is never merged with the historical walk-forward on /accuracy, which is a reconstruction.",
-  "brier": 0.2326,
-  "accuracy": 0.59048,
-  "ece": 0.0855,
+  "brier": 0.23454,
+  "accuracy": 0.58491,
+  "ece": 0.0843,
   "cohorts": {
     "model_version": {
       "nfl-margin-lattice-1": {
-        "n": 105,
-        "brier": 0.2326,
-        "log_loss": 0.6563,
-        "accuracy": 0.59048
+        "n": 106,
+        "brier": 0.23454,
+        "log_loss": 0.66033,
+        "accuracy": 0.58491
       }
     },
     "horizon": {
@@ -35,10 +35,10 @@
         "accuracy": null
       },
       "7_days_or_more": {
-        "n": 105,
-        "brier": 0.2326,
-        "log_loss": 0.6563,
-        "accuracy": 0.59048
+        "n": 106,
+        "brier": 0.23454,
+        "log_loss": 0.66033,
+        "accuracy": 0.58491
       }
     }
   },
@@ -2084,6 +2084,28 @@
       "brier": 0.092748,
       "log_loss": 0.36319,
       "correct": true
+    },
+    {
+      "game_id": "401873009",
+      "season": 2026,
+      "week": 7,
+      "kickoff_utc": "2026-10-27T00:15:00+00:00",
+      "generated_at": "2026-08-16T15:19:07+00:00",
+      "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 1712.93,
+      "home": "PHI",
+      "away": "DAL",
+      "p_home": 0.659375,
+      "p_tie": 0.003531,
+      "p_away": 0.337094,
+      "exp_margin": 5.77,
+      "home_score": 21,
+      "away_score": 38,
+      "tie": false,
+      "p_home_conditional": 0.661712,
+      "brier": 0.437862,
+      "log_loss": 1.083856,
+      "correct": false
     },
     {
       "game_id": "401873010",

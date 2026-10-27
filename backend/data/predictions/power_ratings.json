@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-26T17:10:32+00:00",
+  "generated_at": "2026-10-27T16:16:08+00:00",
   "carryover_applied": true,
   "teams": [
     {
@@ -140,20 +140,20 @@
       "elo": 1485.1
     },
     {
-      "team_id": 26,
-      "name": "Philadelphia Eagles",
-      "abbreviation": "PHI",
-      "conference": "National Football Conference",
-      "division": "NFC East",
-      "elo": 1479.2
-    },
-    {
       "team_id": 30,
       "name": "Tampa Bay Buccaneers",
       "abbreviation": "TB",
       "conference": "National Football Conference",
       "division": "NFC South",
       "elo": 1471.0
+    },
+    {
+      "team_id": 9,
+      "name": "Dallas Cowboys",
+      "abbreviation": "DAL",
+      "conference": "National Football Conference",
+      "division": "NFC East",
+      "elo": 1467.0
     },
     {
       "team_id": 8,
@@ -180,12 +180,12 @@
       "elo": 1447.1
     },
     {
-      "team_id": 9,
-      "name": "Dallas Cowboys",
-      "abbreviation": "DAL",
+      "team_id": 26,
+      "name": "Philadelphia Eagles",
+      "abbreviation": "PHI",
       "conference": "National Football Conference",
       "division": "NFC East",
-      "elo": 1428.4
+      "elo": 1440.5
     },
     {
       "team_id": 14,
