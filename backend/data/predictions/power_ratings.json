@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-29T17:21:11+00:00",
+  "generated_at": "2026-10-30T16:58:35+00:00",
   "carryover_applied": true,
   "teams": [
     {
@@ -113,7 +113,7 @@
       "abbreviation": "GB",
       "conference": "National Football Conference",
       "division": "NFC North",
-      "elo": 1520.3
+      "elo": 1534.2
     },
     {
       "team_id": 3,
@@ -172,20 +172,20 @@
       "elo": 1460.6
     },
     {
-      "team_id": 5,
-      "name": "Carolina Panthers",
-      "abbreviation": "CAR",
-      "conference": "National Football Conference",
-      "division": "NFC South",
-      "elo": 1447.1
-    },
-    {
       "team_id": 26,
       "name": "Philadelphia Eagles",
       "abbreviation": "PHI",
       "conference": "National Football Conference",
       "division": "NFC East",
       "elo": 1440.5
+    },
+    {
+      "team_id": 5,
+      "name": "Carolina Panthers",
+      "abbreviation": "CAR",
+      "conference": "National Football Conference",
+      "division": "NFC South",
+      "elo": 1433.3
     },
     {
       "team_id": 14,
