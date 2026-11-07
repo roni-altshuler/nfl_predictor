@@ -23,6 +23,22 @@ assert.deepEqual(ci.jobs.backend.steps.slice(1), [{ uses: './.github/actions/bac
 assert.deepEqual(ci.jobs.frontend.steps.slice(1), [{ uses: './.github/actions/frontend-checks' }])
 assert.equal(backend.runs.steps[0].with['python-version'], '3.12')
 assert.equal(frontend.runs.steps[0].with['node-version'], '20')
+// A floating runner can advance beyond the locked browser's dependency support.
+// Cover every caller, including CI, so publication and PR checks stay compatible.
+const browserJobs = [
+  ci.jobs.frontend,
+  read('.github/workflows/daily_forecast.yml').jobs.forecast,
+  read('.github/workflows/weekly_benchmark.yml').jobs.benchmark,
+]
+function supportedBrowserRunners(jobs) {
+  for (const job of jobs) {
+    assert.equal(job['runs-on'], 'ubuntu-24.04', 'Playwright gate requires the reviewed supported runner')
+    assert.ok(job.steps.some(step => step.uses === './.github/actions/frontend-checks'))
+  }
+}
+supportedBrowserRunners(browserJobs)
+assert.throws(() => supportedBrowserRunners([{ ...browserJobs[0], 'runs-on': 'ubuntu-latest' }]), /reviewed supported runner/)
+assert.throws(() => supportedBrowserRunners([{ ...browserJobs[0], 'runs-on': 'ubuntu-26.04' }]), /reviewed supported runner/)
 const gates = expand([{ uses: './.github/actions/backend-checks' }, { uses: './.github/actions/frontend-checks' }])
 assert.deepEqual(gates.filter(s => s.run).map(s => s.run.split('\n')[0]), [
   'pip install -r requirements.txt', 'python -m pytest backend/tests/ -q', 'npm ci',

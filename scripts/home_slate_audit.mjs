@@ -8,6 +8,18 @@ export async function auditHomeSlate({ browser, base, output, axePath, publicati
   const checks = [], errors = [], journeys = []
   const source = page => page.getByRole('region', { name: 'Forecast source', exact: true })
   const slate = page => page.getByRole('region', { name: 'Published slate', exact: true })
+  const staleWarning = 'Forecasts are more than 48 hours old. Check their publication date before using them.'
+  async function clockCorrectSource(page) {
+    // Static HTML uses build time; the client effect adopts the browser clock.
+    // Wait for the expected freshness state before freezing the complete text.
+    await page.waitForFunction(({ published, warning }) => {
+      const region = document.querySelector('[aria-label="Forecast source"]')
+      return region && region.textContent.includes(warning) === (Date.now() - Date.parse(published) > 48 * 3600000)
+    }, { published: publication.generated_at, warning: staleWarning })
+    const clock = await page.evaluate(published => ({ now: Date.now(), stale: Date.now() - Date.parse(published) > 48 * 3600000 }), publication.generated_at)
+    assert.equal(await source(page).getByText(staleWarning, { exact: true }).count(), clock.stale ? 1 : 0)
+    return clock
+  }
   async function context(width, scheme = 'dark') {
     const c = await browser.newContext({ viewport: { width, height: width < 768 ? 844 : 1000 }, colorScheme: scheme, reducedMotion: 'no-preference' })
     await c.route(/^https:/, r => r.abort())
@@ -37,6 +49,7 @@ export async function auditHomeSlate({ browser, base, output, axePath, publicati
     const details = p.locator('#forecast-tools'), summary = details.locator(':scope > summary')
     assert.equal(await details.getAttribute('open'), null)
     assert.equal(await p.getByRole('heading', { name: 'Your Sunday starts here.' }).isVisible(), false)
+    const sourceClock = await clockCorrectSource(p)
     const sourceText = await source(p).innerText()
     assert.match(sourceText, /Forecast published/); assert.match(sourceText, /Results used through/)
     assert.match(sourceText, /Published pre-game probabilities, not a live schedule/)
@@ -89,7 +102,7 @@ export async function auditHomeSlate({ browser, base, output, axePath, publicati
     assert.deepEqual(await links.evaluateAll(rows => rows.map(row => ({ href: row.getAttribute('href'), text: row.innerText }))), fullSlate)
     assert.equal(await source(p).innerText(), sourceText)
     await health(p, 'following-recovered', width, scheme)
-    journeys.push({ width, scheme, targets, keyboardTabOrder: 'All → Following → All', enterAndSpaceActivation: true,
+    journeys.push({ width, scheme, sourceClock, targets, keyboardTabOrder: 'All → Following → All', enterAndSpaceActivation: true,
       visibleFocus: true, emptyFollowingRecovery: true, recoveredFullSlate: fullSlate.length })
     await setFollowing(null); assert.equal(await filter.count(), 0)
     for (let i = 0; i < 2; i++) {
@@ -114,11 +127,13 @@ export async function auditHomeSlate({ browser, base, output, axePath, publicati
   const c = await context(390), p = await c.newPage()
   await p.clock.install({ time: new Date(Date.parse(publication.generated_at) + 49 * 3600000) })
   await p.goto(base, { waitUntil: 'networkidle' })
+  await clockCorrectSource(p)
   await source(p).getByText('Forecasts are more than 48 hours old. Check their publication date before using them.').waitFor()
   assert.equal(await p.locator('#forecast-tools').getAttribute('open'), null)
   await health(p, 'stale-with-tools-closed', 390, 'dark')
   await p.screenshot({ path: path.join(output, 'home-stale-390.png') })
   await p.clock.setFixedTime(new Date(Date.parse(publication.generated_at) + 47 * 3600000)); await p.reload()
+  await clockCorrectSource(p)
   await source(p).waitFor(); assert.equal(await source(p).getByText(/more than 48 hours/).count(), 0)
   {
     await p.evaluate(team => { localStorage.setItem('gridiron:watchlist:v1', JSON.stringify([team])); window.dispatchEvent(new Event('gridiron:watchlist')) }, inactiveTeam)

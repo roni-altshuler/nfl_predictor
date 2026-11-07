@@ -89,7 +89,7 @@ try {
     if (controlled) {
       await page.goto(`${base}/games`)
       await page.locator('[data-ready="true"]').waitFor()
-      await page.getByRole('combobox', { name: 'Season or results archive', exact: true }).selectOption(String(captured.season))
+      await page.getByRole('combobox', { name: 'Season', exact: true }).selectOption(String(captured.season))
       await page.waitForURL(`**/seasons/${captured.season}/games`)
       const entry = page.locator(`a[href="/games/${captured.game_id}"]`)
       await entry.focus()
