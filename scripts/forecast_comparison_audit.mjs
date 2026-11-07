@@ -32,6 +32,8 @@ try {
     await page.getByRole('link', { name: 'Read the published-ahead record' }).click()
     await page.waitForURL('**/accuracy#published-record')
     assert.match(await page.locator('#published-record').innerText(), new RegExp(`Decided games\\s+${first.n}`, 'i'))
+    await page.locator('#probability-benchmarks > summary').focus()
+    await page.keyboard.press('Enter')
     await panel(page).scrollIntoViewIfNeeded()
     if (state === 'missing') {
       assert.match(await panel(page).innerText(), /Comparison unavailable/)

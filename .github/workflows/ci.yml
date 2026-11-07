@@ -23,7 +23,8 @@ jobs:
 
   frontend:
     name: Lint · Typecheck · Build
-    runs-on: ubuntu-latest
+    # Playwright 1.60 supports Ubuntu 24.04; ubuntu-latest can advance beyond it.
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6

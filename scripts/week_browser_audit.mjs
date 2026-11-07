@@ -11,6 +11,8 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:3012'
 const output = process.env.WEEK_AUDIT_OUTPUT || '/tmp/nfl-week-browser-audit'
 const forecast = JSON.parse(await fs.readFile('backend/data/predictions/game_forecasts.json', 'utf8'))
 const weeks = [...new Set(forecast.games.map(game => game.week))].sort((a, b) => a - b)
+const history = JSON.parse(await fs.readFile(`backend/data/history/season_${forecast.season}.json`, 'utf8'))
+const seasonWeeks = [...new Set([...weeks, ...history.games.filter(game => game.postseason === false).map(game => game.week)])].sort((a, b) => a - b)
 assert.ok(weeks.length > 1, 'Need at least two published weeks')
 const game = forecast.games.find(game => game.week === weeks[0])
 const gameUrl = `${base}/games/${game.game_id}`
@@ -59,16 +61,16 @@ async function auditSamePathNavigation(width, arrival) {
   const navigationPage = await navigationContext.newPage()
   navigationPage.on('pageerror', error => errors.push(error.message))
   const selection = async () => ({ url: navigationPage.url(),
-    week: await navigationPage.getByRole('combobox', { name: 'Select week', exact: true }).inputValue(),
-    team: await navigationPage.getByRole('combobox', { name: 'Filter by team', exact: true }).inputValue(),
+    week: await navigationPage.getByRole('combobox', { name: 'Week', exact: true }).inputValue(),
+    team: await navigationPage.getByRole('combobox', { name: 'Team', exact: true }).inputValue(),
     following: await navigationPage.getByRole('checkbox').isChecked(),
     games: await navigationPage.getByRole('region', { name: 'Weekly slate', exact: true }).locator('li a')
       .evaluateAll(links => links.map(link => link.getAttribute('href'))),
   })
   const waitForSelection = expected => navigationPage.waitForFunction(expected => {
     const root = document.querySelector('[aria-label="Weekly slate"]')
-    return root?.querySelector('select[aria-label="Select week"]')?.value === expected.week &&
-      root.querySelector('select[aria-label="Filter by team"]')?.value === expected.team &&
+    return root?.querySelector('select[aria-label="Week"]')?.value === expected.week &&
+      root.querySelector('select[aria-label="Team"]')?.value === expected.team &&
       root.querySelector('input[type="checkbox"]')?.checked === expected.following
   }, expected)
   const filteredUrl = `${base}/games?week=${selectedWeek}&team=${team}&following=1`
@@ -81,8 +83,8 @@ async function auditSamePathNavigation(width, arrival) {
       await navigationPage.goto(filteredUrl)
       await navigationPage.locator('[data-ready="true"]').waitFor()
     } else {
-      await navigationPage.getByRole('combobox', { name: 'Select week', exact: true }).selectOption(String(selectedWeek))
-      await navigationPage.getByRole('combobox', { name: 'Filter by team', exact: true }).selectOption(team)
+      await navigationPage.getByRole('combobox', { name: 'Week', exact: true }).selectOption(String(selectedWeek))
+      await navigationPage.getByRole('combobox', { name: 'Team', exact: true }).selectOption(team)
       await navigationPage.getByRole('checkbox').check()
     }
     const expectedFilter = { week: String(selectedWeek), team, following: true }
@@ -121,8 +123,8 @@ async function auditSamePathNavigation(width, arrival) {
 try {
   assert.equal((await page.goto(slateUrl)).status(), 200)
   await ready()
-  assert.equal(await slate.getByRole('combobox', { name: 'Select week', exact: true }).inputValue(), String(game.week))
-  assert.equal(await slate.getByRole('combobox', { name: 'Filter by team', exact: true }).inputValue(), game.away)
+  assert.equal(await slate.getByRole('combobox', { name: 'Week', exact: true }).inputValue(), String(game.week))
+  assert.equal(await slate.getByRole('combobox', { name: 'Team', exact: true }).inputValue(), game.away)
   assert.equal(await slate.locator(`a[href="/games/${game.game_id}"]`).count(), 1)
   const stamp = new Date(forecast.generated_at).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'UTC' }) + ' UTC'
   assert.match(await page.locator('#main').innerText(), /Pre-game snapshots|pre-game snapshots/)
@@ -132,7 +134,7 @@ try {
   assert.equal(await mark.innerText(), game.away)
   assert.equal(await mark.locator('img').count(), 0, 'Broken image must be removed')
 
-  const week = slate.getByRole('combobox', { name: 'Select week', exact: true })
+  const week = slate.getByRole('combobox', { name: 'Week', exact: true })
   await week.selectOption(String(weeks.at(-1)))
   assert.equal(await slate.getByRole('button', { name: 'Next week →', exact: true }).isDisabled(), true)
   await slate.getByRole('button', { name: '← Previous week', exact: true }).click()
@@ -143,7 +145,7 @@ try {
   assert.equal(await week.inputValue(), String(weeks.at(-2)), 'Forward restores a week selection')
   await page.goto(slateUrl)
   await ready()
-  assert.equal(await slate.getByRole('button', { name: '← Previous week', exact: true }).isDisabled(), true)
+  assert.equal(await slate.getByRole('button', { name: '← Previous week', exact: true }).isDisabled(), game.week === seasonWeeks[0], 'Previous week remains available when recorded earlier weeks exist')
 
   await slate.locator(`a[href="/games/${game.game_id}"]`).focus()
   await page.keyboard.press('Enter')
@@ -168,14 +170,16 @@ try {
   await page.waitForURL(slateUrl)
   await ready()
   assert.equal(await week.inputValue(), String(game.week))
-  assert.equal(await slate.getByRole('combobox', { name: 'Filter by team', exact: true }).inputValue(), game.away)
+  assert.equal(await slate.getByRole('combobox', { name: 'Team', exact: true }).inputValue(), game.away)
 
   await slate.getByRole('checkbox', { name: 'Following only (0)', exact: true }).check()
   await slate.getByRole('heading', { name: 'No games match these filters', exact: true }).waitFor()
   await slate.getByRole('button', { name: 'Show the whole week', exact: true }).click()
-  assert.equal(await slate.getByRole('combobox', { name: 'Filter by team', exact: true }).inputValue(), '')
+  assert.equal(await slate.getByRole('combobox', { name: 'Team', exact: true }).inputValue(), '')
   assert.equal(await slate.getByRole('checkbox').isChecked(), false)
-  assert.equal(await slate.locator('li').count(), forecast.games.filter(row => row.week === game.week).length)
+  assert.equal(await slate.locator('li > a[href^="/games/"]').count(), forecast.games.filter(row => row.week === game.week).length, 'Every published forecast remains after filter recovery')
+  const recordedWeek = history.games.filter(row => row.postseason === false && row.week === game.week)
+  assert.equal(await slate.locator('[data-record-game]').count(), Math.min(16, recordedWeek.length), 'Recorded results remain separate from forecast cards')
   console.log('Week selection, keyboard matchup/return, header outage and empty-filter recovery passed')
 
   for (const width of [390, 1440]) {
@@ -196,8 +200,8 @@ try {
   await page.goto(`${base}/games?week=4evil&team=NOT-A-TEAM`)
   await ready()
   assert.ok(weeks.includes(Number(await week.inputValue())))
-  assert.equal(await slate.getByRole('combobox', { name: 'Filter by team', exact: true }).inputValue(), '')
-  await slate.getByRole('combobox', { name: 'Season or results archive', exact: true }).selectOption('2025')
+  assert.equal(await slate.getByRole('combobox', { name: 'Team', exact: true }).inputValue(), '')
+  await slate.getByRole('combobox', { name: 'Season', exact: true }).selectOption('2025')
   await page.waitForURL('**/seasons/2025/games')
   assert.ok((await page.getByRole('heading', { level: 1 }).innerText()).includes('2025'))
   assert.equal(await overflow(), false)

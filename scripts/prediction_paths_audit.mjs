@@ -115,7 +115,7 @@ try {
     await page.getByRole('button', { name: /Back/ }).first().click()
     await page.waitForURL(`**/games?week=${game.week}&team=${game.away}`)
     await page.locator('[data-ready="true"]').waitFor()
-    assert.equal(await page.getByRole('combobox', { name: 'Select week', exact: true }).inputValue(), String(game.week))
+    assert.equal(await page.getByRole('combobox', { name: 'Week', exact: true }).inputValue(), String(game.week))
     await page.goto(`${base}/lab?game=${game.game_id}&marginBand=3#paths`)
     await ready(page, game, 3)
     assert.equal(await page.getByTestId('home-probability').innerText(), percentage(game.p_home))
@@ -130,7 +130,8 @@ try {
     await page.waitForURL('**/accuracy#published-record')
     const record = page.getByRole('region', { name: 'Published forecast record', exact: true })
     assert.match(await record.innerText(), new RegExp(String(log.n)))
-    assert.match(await record.innerText(), /small live sample is separate from the historical backtest/)
+    assert.match(await record.innerText(), /not the latest weekly fit/)
+    assert.match(await page.getByRole('region', { name: 'Retrospective testing', exact: true }).innerText(), /walk-forward forecasts were reconstructed for testing and never fill the saved pregame record above/)
     if (width === 320) {
       const scoreTable = page.getByRole('region', { name: 'Historical forecast scorecards', exact: true })
       await scoreTable.focus(); await page.keyboard.press('ArrowRight')

@@ -264,3 +264,16 @@ The October 8 animation-preference implementation is superseded by the October
 journey now verifies static backgrounds before and after hydration, even with
 legacy `soft`, `vivid`, `off` or unsupported values, and checks normal-motion
 navigation, reload, Back/Forward, empty/source-error states, teams and brackets.
+
+## Saved prediction record (2026-11)
+
+Accuracy opens with the saved three-way outcome record: correct/total and a
+readable percentage, with source dates and original model scope. Season/week
+navigation and coverage filters are native 44px controls with URL restoration.
+The cumulative and last-16 lines retain numeric labels, a fixed 0–100% axis,
+solid/dashed distinction and an equivalent keyboard-accessible data table.
+The ledger pairs each saved pick with its actual outcome, labels scheduled and
+recorded times separately, and exposes original evidence in native disclosures.
+Unknown history withholds totals; honest empty records show no percentage.
+Completed schedule weeks reuse this ledger. Conditional binary probability
+benchmarks and retrospective testing stay separate from the primary record.

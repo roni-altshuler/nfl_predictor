@@ -1,3 +1,7 @@
+import { SeasonRecord } from '@/components/record/SeasonRecord'
+import { ConditionalProbabilityRecord } from '@/components/record/ConditionalProbabilityRecord'
+import { loadSeasonRecord } from '@/lib/server/record'
+import { getSeasonsIndex } from '@/lib/archive'
 import { ResearchLedger } from '@/components/evidence/ResearchLedger'
 import { ForecastComparison } from '@/components/evidence/ForecastComparison'
 import { CalibrationChart } from '@/components/charts/CalibrationChart'
@@ -5,7 +9,6 @@ import { PitHistogram } from '@/components/charts/PitHistogram'
 import { SeasonBrierChart } from '@/components/charts/SeasonBrierChart'
 import {
   getMarketBenchmark,
-  getForecastLog,
   getForecastComparison,
   type ContinuousBlock,
 } from '@/lib/artifacts'
@@ -34,10 +37,8 @@ const ORDER = ['market', 'margin_model', 'elo_only', 'constant_base_rate']
  * benchmark, baselines are never deleted, and a claim is stated as a paired
  * comparison on named games or it is not stated.
  */
-export default function AccuracyPage() {
+function HistoricalTesting() {
   const benchmark = getMarketBenchmark()
-  const forecastLog = getForecastLog()
-  const live = (forecastLog?.n ?? 0) > 0
 
   if (!benchmark) {
     return (
@@ -70,18 +71,14 @@ export default function AccuracyPage() {
             walk-forward, {benchmark.refit_cadence}
           </p>
           <span
-            className={
-              live
-                ? 'font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent-primary)]'
-                : 'font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent-warn)]'
-            }
+            className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent-warn)]"
           >
             Historical backtest
           </span>
         </div>
-        <h1 className="mt-2 text-3xl font-semibold uppercase tracking-[0.1em]">
-          Accuracy
-        </h1>
+        <h2 className="mt-2 text-2xl font-semibold uppercase tracking-[0.1em]">
+          Historical backtest
+        </h2>
         <p className="mt-2 font-mono text-[11px] text-[var(--text-tertiary)]">
           {benchmark.scored_games.toLocaleString()} games scored from{' '}
           {benchmark.first_scored_season} · {benchmark.warmup_seasons}-season
@@ -90,30 +87,10 @@ export default function AccuracyPage() {
         </p>
       </header>
 
-      {!live ? (
-        <p className="rounded-[var(--radius)] border border-[var(--border-color)] bg-[var(--card-bg)] px-4 py-3 font-mono text-[11px] leading-relaxed text-[var(--accent-warn)]">
-          <strong className="font-semibold">No live record yet.</strong>{' '}
-          Everything below is out-of-sample walk-forward — but read by nobody
-          before those kickoffs. The live record starts at zero and is never
-          merged with this.
-        </p>
-      ) : null}
 
-      {forecastLog ? <section id="published-record" className="card scroll-mt-20 p-4" aria-label="Published forecast record">
-        <h2 className="eyebrow">Published forecast record · {forecastLog.season}</h2>
-        <dl className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          <div><dt className="eyebrow">Decided games</dt><dd className="numeric mt-1 text-xl">{forecastLog.n}</dd></div>
-          <div><dt className="eyebrow">Brier</dt><dd className="numeric mt-1 text-xl">{forecastLog.brier?.toFixed(4) ?? '—'}</dd></div>
-          <div><dt className="eyebrow">Accuracy</dt><dd className="numeric mt-1 text-xl">{pct(forecastLog.accuracy)}</dd></div>
-          <div><dt className="eyebrow">Pending</dt><dd className="numeric mt-1 text-xl">{forecastLog.games_pending}</dd></div>
-        </dl>
-        <p className="mt-4 text-xs leading-relaxed text-[var(--text-secondary)]">Earliest recorded pregame forecast per fixture. This small live sample is separate from the historical backtest below. Published {stamp(forecastLog.generated_at)}.</p>
-        {forecastLog.cohorts ? <details className="mt-4"><summary className="cursor-pointer font-mono text-xs">Break down by model and forecast horizon</summary>
-          {Object.entries(forecastLog.cohorts).map(([scope,cohorts])=><div key={scope} className="mt-3 overflow-x-auto"><p className="eyebrow mb-2">{scope.replace('_',' ')}</p><table className="w-full text-left font-mono text-xs"><thead><tr><th className="p-2">Cohort</th><th className="p-2">Games</th><th className="p-2">Brier</th><th className="p-2">Log loss</th></tr></thead><tbody>{Object.entries(cohorts).map(([key,c])=><tr key={key}><td className="p-2">{key.replaceAll('_',' ')}</td><td className="p-2">{c.n}</td><td className="p-2">{c.brier?.toFixed(4)??'—'}</td><td className="p-2">{c.log_loss?.toFixed(4)??'—'}</td></tr>)}</tbody></table></div>)}
-        </details>:null}
-      </section>:null}
 
-      <ForecastComparison comparison={getForecastComparison()} />
+
+
 
       <ResearchLedger />
 
@@ -451,4 +428,21 @@ function Stat({
       </dd>
     </div>
   )
+}
+
+
+export default function AccuracyPage() {
+  const record = loadSeasonRecord()
+  const seasons = [...new Set([...(record.season === null ? [] : [record.season]), ...(getSeasonsIndex()?.seasons.map(value => value.season) ?? [])])].sort((a, b) => b - a)
+  return <div className="space-y-10">
+    <SeasonRecord record={record} seasons={seasons} />
+    <details id="probability-benchmarks" className="card p-4">
+      <summary className="flex min-h-[44px] cursor-pointer items-center text-lg">Probability benchmarks · first versus latest</summary>
+      <div className="mt-4 space-y-6"><p className="text-sm leading-relaxed text-[var(--text-secondary)]">These conditional binary probability scores exclude actual ties. First and latest cohorts remain separate; their descriptive difference is not a claim of improved accuracy.</p><ConditionalProbabilityRecord /><ForecastComparison comparison={getForecastComparison()} /></div>
+    </details>
+    <section id="historical-testing" className="scroll-mt-20 border-t border-[var(--border-color)] pt-8" aria-label="Retrospective testing">
+      <p className="mb-6 text-sm leading-relaxed text-[var(--text-secondary)]">Retrospective evaluation follows. These walk-forward forecasts were reconstructed for testing and never fill the saved pregame record above.</p>
+      <HistoricalTesting />
+    </section>
+  </div>
 }
