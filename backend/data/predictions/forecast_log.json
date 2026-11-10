@@ -1,24 +1,24 @@
 {
   "season": 2026,
-  "generated_at": "2026-11-09T21:20:34+00:00",
+  "generated_at": "2026-11-10T18:31:16+00:00",
   "basis": "published",
   "forecasts_made": 272,
-  "games_played": 135,
-  "games_pending": 137,
+  "games_played": 136,
+  "games_pending": 136,
   "ties_excluded": 1,
   "invalid_excluded": 0,
-  "n": 134,
+  "n": 135,
   "note": "Every row here was published strictly before its kickoff and is the EARLIEST such publication for that fixture. This record is never merged with the historical walk-forward on /accuracy, which is a reconstruction.",
-  "brier": 0.22795,
-  "accuracy": 0.60448,
-  "ece": 0.08775,
+  "brier": 0.22817,
+  "accuracy": 0.6,
+  "ece": 0.09085,
   "cohorts": {
     "model_version": {
       "nfl-margin-lattice-1": {
-        "n": 134,
-        "brier": 0.22795,
-        "log_loss": 0.6461,
-        "accuracy": 0.60448
+        "n": 135,
+        "brier": 0.22817,
+        "log_loss": 0.64656,
+        "accuracy": 0.6
       }
     },
     "horizon": {
@@ -35,10 +35,10 @@
         "accuracy": null
       },
       "7_days_or_more": {
-        "n": 134,
-        "brier": 0.22795,
-        "log_loss": 0.6461,
-        "accuracy": 0.60448
+        "n": 135,
+        "brier": 0.22817,
+        "log_loss": 0.64656,
+        "accuracy": 0.6
       }
     }
   },
@@ -3008,6 +3008,28 @@
       "brier": 0.124529,
       "log_loss": 0.435235,
       "correct": true
+    },
+    {
+      "game_id": "401873051",
+      "season": 2026,
+      "week": 9,
+      "kickoff_utc": "2026-11-10T01:15:00+00:00",
+      "generated_at": "2026-08-16T15:19:07+00:00",
+      "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 2049.93,
+      "home": "MIN",
+      "away": "BUF",
+      "p_home": 0.50513,
+      "p_tie": 0.003854,
+      "p_away": 0.491017,
+      "exp_margin": 0.23,
+      "home_score": 6,
+      "away_score": 23,
+      "tie": false,
+      "p_home_conditional": 0.507084,
+      "brier": 0.257134,
+      "log_loss": 0.707416,
+      "correct": false
     }
   ]
 }

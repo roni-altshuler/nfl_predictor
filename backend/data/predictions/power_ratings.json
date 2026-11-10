@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-11-09T21:20:25+00:00",
+  "generated_at": "2026-11-10T18:31:10+00:00",
   "carryover_applied": true,
   "teams": [
     {
@@ -9,7 +9,7 @@
       "abbreviation": "BUF",
       "conference": "American Football Conference",
       "division": "AFC East",
-      "elo": 1660.8
+      "elo": 1689.8
     },
     {
       "team_id": 10,
@@ -52,14 +52,6 @@
       "elo": 1624.0
     },
     {
-      "team_id": 21,
-      "name": "Minnesota Vikings",
-      "abbreviation": "MIN",
-      "conference": "National Football Conference",
-      "division": "NFC North",
-      "elo": 1613.3
-    },
-    {
       "team_id": 19,
       "name": "Los Angeles Rams",
       "abbreviation": "LAR",
@@ -82,6 +74,14 @@
       "conference": "American Football Conference",
       "division": "AFC North",
       "elo": 1585.4
+    },
+    {
+      "team_id": 21,
+      "name": "Minnesota Vikings",
+      "abbreviation": "MIN",
+      "conference": "National Football Conference",
+      "division": "NFC North",
+      "elo": 1584.4
     },
     {
       "team_id": 12,
