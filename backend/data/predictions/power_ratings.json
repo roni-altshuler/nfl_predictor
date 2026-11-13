@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-11-12T18:45:19+00:00",
+  "generated_at": "2026-11-13T18:26:03+00:00",
   "carryover_applied": true,
   "teams": [
     {
@@ -132,14 +132,6 @@
       "elo": 1489.1
     },
     {
-      "team_id": 24,
-      "name": "New York Giants",
-      "abbreviation": "NYG",
-      "conference": "National Football Conference",
-      "division": "NFC East",
-      "elo": 1482.6
-    },
-    {
       "team_id": 3,
       "name": "Baltimore Ravens",
       "abbreviation": "BAL",
@@ -148,12 +140,28 @@
       "elo": 1471.2
     },
     {
+      "team_id": 24,
+      "name": "New York Giants",
+      "abbreviation": "NYG",
+      "conference": "National Football Conference",
+      "division": "NFC East",
+      "elo": 1463.7
+    },
+    {
       "team_id": 9,
       "name": "Dallas Cowboys",
       "abbreviation": "DAL",
       "conference": "National Football Conference",
       "division": "NFC East",
       "elo": 1462.8
+    },
+    {
+      "team_id": 32,
+      "name": "Washington Commanders",
+      "abbreviation": "WSH",
+      "conference": "National Football Conference",
+      "division": "NFC East",
+      "elo": 1442.5
     },
     {
       "team_id": 8,
@@ -170,14 +178,6 @@
       "conference": "National Football Conference",
       "division": "NFC South",
       "elo": 1440.5
-    },
-    {
-      "team_id": 32,
-      "name": "Washington Commanders",
-      "abbreviation": "WSH",
-      "conference": "National Football Conference",
-      "division": "NFC East",
-      "elo": 1423.6
     },
     {
       "team_id": 5,
