@@ -34,11 +34,15 @@ function Side({
   probability,
   score,
   favoured,
+  simple,
+  name,
 }: {
   abbr: string
   probability: number
   score: number
   favoured: boolean
+  simple?: boolean
+  name?: string
 }) {
   return (
     <div className="flex items-center gap-3">
@@ -51,26 +55,27 @@ function Side({
               : 'font-mono text-sm text-[var(--text-secondary)]'
           }
         >
-          {abbr}
+          {simple ? name ?? abbr : abbr}
         </div>
         <div className="font-mono text-[11px] text-[var(--text-tertiary)]">
-          {score.toFixed(1)} pts
+          {score.toFixed(1)} {simple ? 'projected pts' : 'pts'}
         </div>
       </div>
       <div
         className={
           favoured
-            ? 'font-mono text-sm font-semibold text-[var(--accent-primary)]'
-            : 'font-mono text-sm text-[var(--text-secondary)]'
+            ? 'shrink-0 text-right font-mono text-sm font-semibold text-[var(--accent-primary)]'
+            : 'shrink-0 text-right font-mono text-sm text-[var(--text-secondary)]'
         }
       >
+        {simple ? <span className="mb-1 block font-mono text-[10px] font-normal text-[var(--text-tertiary)]">Win chance</span> : null}
         {pct(probability)}
       </div>
     </div>
   )
 }
 
-export function GameCard({ game, riseIndex }: { game: GameForecast; riseIndex?: number }) {
+export function GameCard({ game, riseIndex, simple = false }: { game: GameForecast; riseIndex?: number; simple?: boolean }) {
   const homeFavoured = game.p_home >= game.p_away
   const hasLine =
     game.market.spread_home !== null ||
@@ -83,7 +88,9 @@ export function GameCard({ game, riseIndex }: { game: GameForecast; riseIndex?: 
         riseIndex !== undefined ? ' rise' : ''
       }`}
       style={riseIndex !== undefined ? ({ '--rise-i': riseIndex } as React.CSSProperties) : undefined}
-      aria-label={`${game.away} at ${game.home}, week ${game.week} — full forecast`}
+      aria-label={simple
+        ? `View prediction: ${game.away_name ?? game.away} at ${game.home_name ?? game.home}, week ${game.week}`
+        : `${game.away} at ${game.home}, week ${game.week} — full forecast`}
     >
       <header className="mb-3 flex items-baseline justify-between gap-2">
         <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
@@ -110,12 +117,16 @@ export function GameCard({ game, riseIndex }: { game: GameForecast; riseIndex?: 
           probability={game.p_away}
           score={game.exp_away_score}
           favoured={!homeFavoured}
+          simple={simple}
+          name={game.away_name}
         />
         <Side
           abbr={game.home}
           probability={game.p_home}
           score={game.exp_home_score}
           favoured={homeFavoured}
+          simple={simple}
+          name={game.home_name}
         />
       </div>
 
@@ -138,7 +149,7 @@ export function GameCard({ game, riseIndex }: { game: GameForecast; riseIndex?: 
       </div>
 
       <footer className="mt-3 border-t border-[var(--border-color)] pt-3">
-        <dl className="grid grid-cols-3 gap-2 font-mono text-[11px]">
+        {simple ? <p className="font-mono text-[10px] text-[var(--text-tertiary)]">Pre-game prediction</p> : <dl className="grid grid-cols-3 gap-2 font-mono text-[11px]">
           <div>
             <dt className="text-[var(--text-tertiary)]">model</dt>
             <dd className="text-[var(--text-secondary)]">
@@ -171,7 +182,7 @@ export function GameCard({ game, riseIndex }: { game: GameForecast; riseIndex?: 
               )}
             </dd>
           </div>
-        </dl>
+        </dl>}
 
         <div className="mt-2 flex items-baseline justify-between gap-2">
           {game.p_tie >= 0.01 ? (
@@ -182,7 +193,7 @@ export function GameCard({ game, riseIndex }: { game: GameForecast; riseIndex?: 
             <span />
           )}
           <span className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--text-tertiary)] transition-colors group-hover:text-[var(--accent-info)]">
-            Game detail
+            {simple ? 'View prediction' : 'Game detail'}
             <svg
               width="10"
               height="10"
