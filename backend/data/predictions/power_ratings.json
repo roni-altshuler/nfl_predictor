@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-11-16T20:51:36+00:00",
+  "generated_at": "2026-11-17T19:40:33+00:00",
   "carryover_applied": true,
   "teams": [
     {
@@ -132,14 +132,6 @@
       "elo": 1489.1
     },
     {
-      "team_id": 3,
-      "name": "Baltimore Ravens",
-      "abbreviation": "BAL",
-      "conference": "American Football Conference",
-      "division": "AFC North",
-      "elo": 1471.2
-    },
-    {
       "team_id": 24,
       "name": "New York Giants",
       "abbreviation": "NYG",
@@ -162,6 +154,14 @@
       "conference": "National Football Conference",
       "division": "NFC East",
       "elo": 1450.4
+    },
+    {
+      "team_id": 3,
+      "name": "Baltimore Ravens",
+      "abbreviation": "BAL",
+      "conference": "American Football Conference",
+      "division": "AFC North",
+      "elo": 1450.3
     },
     {
       "team_id": 32,
@@ -220,20 +220,20 @@
       "elo": 1391.4
     },
     {
+      "team_id": 18,
+      "name": "Los Angeles Chargers",
+      "abbreviation": "LAC",
+      "conference": "American Football Conference",
+      "division": "AFC West",
+      "elo": 1389.4
+    },
+    {
       "team_id": 1,
       "name": "Arizona Cardinals",
       "abbreviation": "ARI",
       "conference": "National Football Conference",
       "division": "NFC West",
       "elo": 1370.0
-    },
-    {
-      "team_id": 18,
-      "name": "Los Angeles Chargers",
-      "abbreviation": "LAC",
-      "conference": "American Football Conference",
-      "division": "AFC West",
-      "elo": 1368.4
     },
     {
       "team_id": 20,

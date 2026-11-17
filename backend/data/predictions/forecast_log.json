@@ -1,24 +1,24 @@
 {
   "season": 2026,
-  "generated_at": "2026-11-16T20:51:43+00:00",
+  "generated_at": "2026-11-17T19:40:39+00:00",
   "basis": "published",
   "forecasts_made": 272,
-  "games_played": 149,
-  "games_pending": 123,
+  "games_played": 150,
+  "games_pending": 122,
   "ties_excluded": 1,
   "invalid_excluded": 0,
-  "n": 148,
+  "n": 149,
   "note": "Every row here was published strictly before its kickoff and is the EARLIEST such publication for that fixture. This record is never merged with the historical walk-forward on /accuracy, which is a reconstruction.",
-  "brier": 0.22732,
-  "accuracy": 0.58784,
-  "ece": 0.09471,
+  "brier": 0.22843,
+  "accuracy": 0.58389,
+  "ece": 0.096,
   "cohorts": {
     "model_version": {
       "nfl-margin-lattice-1": {
-        "n": 148,
-        "brier": 0.22732,
-        "log_loss": 0.64435,
-        "accuracy": 0.58784
+        "n": 149,
+        "brier": 0.22843,
+        "log_loss": 0.64664,
+        "accuracy": 0.58389
       }
     },
     "horizon": {
@@ -35,10 +35,10 @@
         "accuracy": null
       },
       "7_days_or_more": {
-        "n": 148,
-        "brier": 0.22732,
-        "log_loss": 0.64435,
-        "accuracy": 0.58784
+        "n": 149,
+        "brier": 0.22843,
+        "log_loss": 0.64664,
+        "accuracy": 0.58389
       }
     }
   },
@@ -3315,6 +3315,28 @@
       "p_home_conditional": 0.489035,
       "brier": 0.261085,
       "log_loss": 0.715322,
+      "correct": false
+    },
+    {
+      "game_id": "401873065",
+      "season": 2026,
+      "week": 10,
+      "kickoff_utc": "2026-11-17T01:15:00+00:00",
+      "generated_at": "2026-08-16T15:19:07+00:00",
+      "model_version": "nfl-margin-lattice-1",
+      "horizon_hours": 2217.93,
+      "home": "BAL",
+      "away": "LAC",
+      "p_home": 0.624153,
+      "p_tie": 0.003659,
+      "p_away": 0.372189,
+      "exp_margin": 4.461,
+      "home_score": 20,
+      "away_score": 23,
+      "tie": false,
+      "p_home_conditional": 0.626445,
+      "brier": 0.392433,
+      "log_loss": 0.984689,
       "correct": false
     }
   ]
