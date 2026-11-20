@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-11-19T19:24:51+00:00",
+  "generated_at": "2026-11-20T19:00:27+00:00",
   "carryover_applied": true,
   "teams": [
     {
@@ -108,20 +108,20 @@
       "elo": 1540.7
     },
     {
+      "team_id": 13,
+      "name": "Houston Texans",
+      "abbreviation": "HOU",
+      "conference": "American Football Conference",
+      "division": "AFC South",
+      "elo": 1534.5
+    },
+    {
       "team_id": 22,
       "name": "New England Patriots",
       "abbreviation": "NE",
       "conference": "American Football Conference",
       "division": "AFC East",
       "elo": 1530.7
-    },
-    {
-      "team_id": 13,
-      "name": "Houston Texans",
-      "abbreviation": "HOU",
-      "conference": "American Football Conference",
-      "division": "AFC South",
-      "elo": 1518.6
     },
     {
       "team_id": 30,
@@ -204,14 +204,6 @@
       "elo": 1395.8
     },
     {
-      "team_id": 14,
-      "name": "Indianapolis Colts",
-      "abbreviation": "IND",
-      "conference": "American Football Conference",
-      "division": "AFC South",
-      "elo": 1393.4
-    },
-    {
       "team_id": 26,
       "name": "Philadelphia Eagles",
       "abbreviation": "PHI",
@@ -226,6 +218,14 @@
       "conference": "American Football Conference",
       "division": "AFC West",
       "elo": 1389.4
+    },
+    {
+      "team_id": 14,
+      "name": "Indianapolis Colts",
+      "abbreviation": "IND",
+      "conference": "American Football Conference",
+      "division": "AFC South",
+      "elo": 1377.5
     },
     {
       "team_id": 1,

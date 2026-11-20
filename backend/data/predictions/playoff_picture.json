@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-11-19T19:24:51+00:00",
+  "generated_at": "2026-11-20T19:00:27+00:00",
   "seeds_per_conference": 7,
   "byes_per_conference": 1,
   "conferences": {
@@ -11,20 +11,20 @@
         "name": "Buffalo Bills",
         "division": "AFC East",
         "wins": 13.7,
-        "losses": 3.2,
-        "p_division": 0.9927,
-        "p_playoffs": 0.9994,
-        "p_bye": 0.5489,
-        "p_conference_title": 0.3896,
+        "losses": 3.3,
+        "p_division": 0.9929,
+        "p_playoffs": 0.9996,
+        "p_bye": 0.552,
+        "p_conference_title": 0.3898,
         "p_championship": 0.2374,
         "seed_distribution": {
-          "1": 0.5489,
-          "2": 0.2259,
-          "3": 0.138,
-          "4": 0.0799,
-          "5": 0.0021,
-          "6": 0.0027,
-          "7": 0.0019
+          "1": 0.552,
+          "2": 0.22,
+          "3": 0.1381,
+          "4": 0.0828,
+          "5": 0.0022,
+          "6": 0.0032,
+          "7": 0.0014
         }
       },
       {
@@ -34,19 +34,19 @@
         "division": "AFC South",
         "wins": 12.5,
         "losses": 4.5,
-        "p_division": 0.989,
-        "p_playoffs": 0.997,
-        "p_bye": 0.1032,
-        "p_conference_title": 0.1854,
-        "p_championship": 0.1003,
+        "p_division": 0.9818,
+        "p_playoffs": 0.9945,
+        "p_bye": 0.1028,
+        "p_conference_title": 0.1909,
+        "p_championship": 0.103,
         "seed_distribution": {
-          "1": 0.1032,
-          "2": 0.2529,
-          "3": 0.2888,
-          "4": 0.3442,
-          "5": 0.0007,
-          "6": 0.0034,
-          "7": 0.004
+          "1": 0.1028,
+          "2": 0.248,
+          "3": 0.2978,
+          "4": 0.3333,
+          "5": 0.0019,
+          "6": 0.0049,
+          "7": 0.0059
         }
       },
       {
@@ -54,21 +54,21 @@
         "abbreviation": "CIN",
         "name": "Cincinnati Bengals",
         "division": "AFC North",
-        "wins": 12.4,
+        "wins": 12.5,
         "losses": 4.5,
-        "p_division": 0.8324,
-        "p_playoffs": 0.9884,
-        "p_bye": 0.1011,
-        "p_conference_title": 0.1309,
-        "p_championship": 0.0625,
+        "p_division": 0.8378,
+        "p_playoffs": 0.989,
+        "p_bye": 0.0998,
+        "p_conference_title": 0.1261,
+        "p_championship": 0.0627,
         "seed_distribution": {
-          "1": 0.1011,
-          "2": 0.2294,
-          "3": 0.2406,
-          "4": 0.2612,
-          "5": 0.0562,
-          "6": 0.0665,
-          "7": 0.0333
+          "1": 0.0998,
+          "2": 0.2394,
+          "3": 0.2412,
+          "4": 0.2573,
+          "5": 0.0521,
+          "6": 0.0669,
+          "7": 0.0322
         }
       },
       {
@@ -77,19 +77,19 @@
         "name": "Denver Broncos",
         "division": "AFC West",
         "wins": 12.5,
-        "losses": 4.4,
-        "p_division": 0.6619,
-        "p_playoffs": 0.9864,
-        "p_bye": 0.1839,
-        "p_conference_title": 0.1741,
-        "p_championship": 0.0895,
+        "losses": 4.5,
+        "p_division": 0.6575,
+        "p_playoffs": 0.9841,
+        "p_bye": 0.182,
+        "p_conference_title": 0.1739,
+        "p_championship": 0.0933,
         "seed_distribution": {
-          "1": 0.1839,
-          "2": 0.1806,
-          "3": 0.1805,
-          "4": 0.1169,
+          "1": 0.182,
+          "2": 0.1811,
+          "3": 0.1734,
+          "4": 0.1211,
           "5": 0.2061,
-          "6": 0.0857,
+          "6": 0.0877,
           "7": 0.0328
         }
       },
@@ -99,20 +99,20 @@
         "name": "Kansas City Chiefs",
         "division": "AFC West",
         "wins": 11.5,
-        "losses": 5.5,
-        "p_division": 0.3376,
-        "p_playoffs": 0.9667,
-        "p_bye": 0.058,
-        "p_conference_title": 0.0707,
-        "p_championship": 0.0328,
+        "losses": 5.4,
+        "p_division": 0.3416,
+        "p_playoffs": 0.9655,
+        "p_bye": 0.0588,
+        "p_conference_title": 0.0711,
+        "p_championship": 0.0329,
         "seed_distribution": {
-          "1": 0.058,
-          "2": 0.0848,
-          "3": 0.1009,
-          "4": 0.0937,
-          "5": 0.4168,
-          "6": 0.1499,
-          "7": 0.0624
+          "1": 0.0588,
+          "2": 0.0876,
+          "3": 0.0975,
+          "4": 0.0976,
+          "5": 0.4185,
+          "6": 0.1424,
+          "7": 0.063
         }
       },
       {
@@ -121,20 +121,20 @@
         "name": "Pittsburgh Steelers",
         "division": "AFC North",
         "wins": 10.5,
-        "losses": 6.4,
-        "p_division": 0.1015,
-        "p_playoffs": 0.8239,
+        "losses": 6.5,
+        "p_division": 0.0928,
+        "p_playoffs": 0.8062,
         "p_bye": 0.0043,
-        "p_conference_title": 0.0306,
-        "p_championship": 0.0127,
+        "p_conference_title": 0.0249,
+        "p_championship": 0.0098,
         "seed_distribution": {
           "1": 0.0043,
-          "2": 0.0205,
-          "3": 0.0349,
-          "4": 0.0418,
-          "5": 0.2023,
-          "6": 0.3247,
-          "7": 0.1953
+          "2": 0.018,
+          "3": 0.0319,
+          "4": 0.0386,
+          "5": 0.1979,
+          "6": 0.3114,
+          "7": 0.2041
         }
       },
       {
@@ -142,21 +142,21 @@
         "abbreviation": "CLE",
         "name": "Cleveland Browns",
         "division": "AFC North",
-        "wins": 9.4,
+        "wins": 9.5,
         "losses": 7.5,
-        "p_division": 0.065,
-        "p_playoffs": 0.6125,
-        "p_bye": 0.0004,
-        "p_conference_title": 0.006,
-        "p_championship": 0.0018,
+        "p_division": 0.068,
+        "p_playoffs": 0.6045,
+        "p_bye": 0.0003,
+        "p_conference_title": 0.0067,
+        "p_championship": 0.0014,
         "seed_distribution": {
-          "1": 0.0004,
-          "2": 0.005,
-          "3": 0.0142,
-          "4": 0.0454,
-          "5": 0.0584,
-          "6": 0.1935,
-          "7": 0.2955
+          "1": 0.0003,
+          "2": 0.0053,
+          "3": 0.0171,
+          "4": 0.0452,
+          "5": 0.0585,
+          "6": 0.1965,
+          "7": 0.2816
         }
       },
       {
@@ -164,21 +164,21 @@
         "abbreviation": "NE",
         "name": "New England Patriots",
         "division": "AFC East",
-        "wins": 8.5,
+        "wins": 8.6,
         "losses": 8.4,
-        "p_division": 0.0073,
-        "p_playoffs": 0.4299,
-        "p_bye": 0.0003,
-        "p_conference_title": 0.0101,
-        "p_championship": 0.0044,
+        "p_division": 0.0071,
+        "p_playoffs": 0.4168,
+        "p_bye": 0.0001,
+        "p_conference_title": 0.0109,
+        "p_championship": 0.0039,
         "seed_distribution": {
-          "1": 0.0003,
-          "2": 0.0008,
+          "1": 0.0001,
+          "2": 0.0006,
           "3": 0.0017,
-          "4": 0.0046,
-          "5": 0.0514,
-          "6": 0.1288,
-          "7": 0.2424
+          "4": 0.0047,
+          "5": 0.0524,
+          "6": 0.1283,
+          "7": 0.2291
         }
       },
       {
@@ -186,19 +186,19 @@
         "abbreviation": "HOU",
         "name": "Houston Texans",
         "division": "AFC South",
-        "wins": 7.5,
-        "losses": 9.5,
-        "p_division": 0.0103,
-        "p_playoffs": 0.1027,
+        "wins": 8.0,
+        "losses": 9.0,
+        "p_division": 0.0182,
+        "p_playoffs": 0.1615,
         "p_bye": 0.0,
-        "p_conference_title": 0.0022,
-        "p_championship": 0.0008,
+        "p_conference_title": 0.005,
+        "p_championship": 0.0018,
         "seed_distribution": {
-          "3": 0.0003,
-          "4": 0.0101,
-          "5": 0.004,
-          "6": 0.0246,
-          "7": 0.0636
+          "3": 0.0009,
+          "4": 0.0173,
+          "5": 0.0084,
+          "6": 0.0389,
+          "7": 0.0959
         }
       },
       {
@@ -208,16 +208,17 @@
         "division": "AFC North",
         "wins": 6.8,
         "losses": 10.2,
-        "p_division": 0.0011,
-        "p_playoffs": 0.0453,
+        "p_division": 0.0014,
+        "p_playoffs": 0.0432,
         "p_bye": 0.0,
-        "p_conference_title": 0.0002,
+        "p_conference_title": 0.0004,
         "p_championship": 0.0001,
         "seed_distribution": {
-          "4": 0.0011,
-          "5": 0.001,
-          "6": 0.0134,
-          "7": 0.0298
+          "3": 0.0001,
+          "4": 0.0013,
+          "5": 0.0008,
+          "6": 0.0126,
+          "7": 0.0284
         }
       },
       {
@@ -227,16 +228,17 @@
         "division": "AFC West",
         "wins": 6.7,
         "losses": 10.3,
-        "p_division": 0.0006,
-        "p_playoffs": 0.0389,
+        "p_division": 0.0009,
+        "p_playoffs": 0.0338,
         "p_bye": 0.0,
         "p_conference_title": 0.0001,
         "p_championship": 0.0001,
         "seed_distribution": {
-          "4": 0.0006,
-          "5": 0.0009,
-          "6": 0.006,
-          "7": 0.0314
+          "3": 0.0001,
+          "4": 0.0008,
+          "5": 0.0013,
+          "6": 0.0072,
+          "7": 0.0245
         }
       },
       {
@@ -244,35 +246,16 @@
         "abbreviation": "IND",
         "name": "Indianapolis Colts",
         "division": "AFC South",
-        "wins": 5.8,
-        "losses": 11.2,
-        "p_division": 0.0006,
-        "p_playoffs": 0.0083,
-        "p_bye": 0.0,
-        "p_conference_title": 0.0,
-        "p_championship": 0.0,
-        "seed_distribution": {
-          "3": 0.0001,
-          "4": 0.0006,
-          "6": 0.0008,
-          "7": 0.007
-        }
-      },
-      {
-        "team_id": 25,
-        "abbreviation": "NYJ",
-        "name": "New York Jets",
-        "division": "AFC East",
-        "wins": 4.1,
-        "losses": 12.8,
+        "wins": 5.3,
+        "losses": 11.7,
         "p_division": 0.0,
-        "p_playoffs": 0.0003,
+        "p_playoffs": 0.0008,
         "p_bye": 0.0,
         "p_conference_title": 0.0,
         "p_championship": 0.0,
         "seed_distribution": {
           "6": 0.0001,
-          "7": 0.0003
+          "7": 0.0007
         }
       },
       {
@@ -283,12 +266,28 @@
         "wins": 3.9,
         "losses": 13.1,
         "p_division": 0.0,
-        "p_playoffs": 0.0002,
+        "p_playoffs": 0.0001,
         "p_bye": 0.0,
         "p_conference_title": 0.0,
         "p_championship": 0.0,
         "seed_distribution": {
-          "7": 0.0002
+          "7": 0.0001
+        }
+      },
+      {
+        "team_id": 25,
+        "abbreviation": "NYJ",
+        "name": "New York Jets",
+        "division": "AFC East",
+        "wins": 4.1,
+        "losses": 12.8,
+        "p_division": 0.0,
+        "p_playoffs": 0.0001,
+        "p_bye": 0.0,
+        "p_conference_title": 0.0,
+        "p_championship": 0.0,
+        "seed_distribution": {
+          "7": 0.0001
         }
       },
       {
@@ -312,14 +311,16 @@
         "abbreviation": "TEN",
         "name": "Tennessee Titans",
         "division": "AFC South",
-        "wins": 3.2,
+        "wins": 3.3,
         "losses": 13.7,
         "p_division": 0.0,
-        "p_playoffs": 0.0,
+        "p_playoffs": 0.0001,
         "p_bye": 0.0,
         "p_conference_title": 0.0,
         "p_championship": 0.0,
-        "seed_distribution": {}
+        "seed_distribution": {
+          "7": 0.0001
+        }
       }
     ],
     "National Football Conference": [
@@ -330,19 +331,19 @@
         "division": "NFC West",
         "wins": 13.1,
         "losses": 3.9,
-        "p_division": 0.8858,
-        "p_playoffs": 0.9829,
-        "p_bye": 0.4576,
-        "p_conference_title": 0.291,
-        "p_championship": 0.1447,
+        "p_division": 0.8811,
+        "p_playoffs": 0.9812,
+        "p_bye": 0.4539,
+        "p_conference_title": 0.2885,
+        "p_championship": 0.1368,
         "seed_distribution": {
-          "1": 0.4576,
-          "2": 0.4187,
-          "3": 0.0094,
-          "4": 0.0002,
-          "5": 0.026,
-          "6": 0.0362,
-          "7": 0.0349
+          "1": 0.4539,
+          "2": 0.4162,
+          "3": 0.011,
+          "4": 0.0001,
+          "5": 0.0272,
+          "6": 0.0369,
+          "7": 0.036
         }
       },
       {
@@ -352,19 +353,19 @@
         "division": "NFC North",
         "wins": 12.0,
         "losses": 4.9,
-        "p_division": 0.4083,
-        "p_playoffs": 0.9498,
-        "p_bye": 0.2087,
-        "p_conference_title": 0.1845,
-        "p_championship": 0.0835,
+        "p_division": 0.4118,
+        "p_playoffs": 0.947,
+        "p_bye": 0.2101,
+        "p_conference_title": 0.1867,
+        "p_championship": 0.0851,
         "seed_distribution": {
-          "1": 0.2087,
-          "2": 0.1971,
-          "3": 0.0023,
+          "1": 0.2101,
+          "2": 0.1991,
+          "3": 0.0025,
           "4": 0.0001,
-          "5": 0.2831,
-          "6": 0.1663,
-          "7": 0.0922
+          "5": 0.2811,
+          "6": 0.16,
+          "7": 0.0941
         }
       },
       {
@@ -374,19 +375,18 @@
         "division": "NFC North",
         "wins": 11.9,
         "losses": 5.1,
-        "p_division": 0.3764,
-        "p_playoffs": 0.9236,
-        "p_bye": 0.2035,
-        "p_conference_title": 0.1729,
-        "p_championship": 0.0804,
+        "p_division": 0.3748,
+        "p_playoffs": 0.9233,
+        "p_bye": 0.2044,
+        "p_conference_title": 0.1727,
+        "p_championship": 0.0795,
         "seed_distribution": {
-          "1": 0.2035,
-          "2": 0.1704,
-          "3": 0.0024,
-          "4": 0.0001,
-          "5": 0.2555,
-          "6": 0.1847,
-          "7": 0.107
+          "1": 0.2044,
+          "2": 0.1686,
+          "3": 0.0019,
+          "5": 0.2604,
+          "6": 0.1792,
+          "7": 0.109
         }
       },
       {
@@ -396,18 +396,18 @@
         "division": "NFC North",
         "wins": 11.5,
         "losses": 5.5,
-        "p_division": 0.207,
-        "p_playoffs": 0.8621,
-        "p_bye": 0.1075,
-        "p_conference_title": 0.1459,
-        "p_championship": 0.0662,
+        "p_division": 0.2052,
+        "p_playoffs": 0.8607,
+        "p_bye": 0.1091,
+        "p_conference_title": 0.1471,
+        "p_championship": 0.0686,
         "seed_distribution": {
-          "1": 0.1075,
-          "2": 0.0985,
-          "3": 0.001,
-          "5": 0.2481,
-          "6": 0.241,
-          "7": 0.166
+          "1": 0.1091,
+          "2": 0.0954,
+          "3": 0.0006,
+          "5": 0.2457,
+          "6": 0.2422,
+          "7": 0.1676
         }
       },
       {
@@ -417,18 +417,18 @@
         "division": "NFC East",
         "wins": 8.5,
         "losses": 7.5,
-        "p_division": 0.663,
-        "p_playoffs": 0.666,
-        "p_bye": 0.0022,
-        "p_conference_title": 0.0209,
-        "p_championship": 0.0059,
+        "p_division": 0.6646,
+        "p_playoffs": 0.6677,
+        "p_bye": 0.0026,
+        "p_conference_title": 0.0208,
+        "p_championship": 0.0055,
         "seed_distribution": {
-          "1": 0.0022,
-          "2": 0.0147,
-          "3": 0.4985,
-          "4": 0.1474,
-          "6": 0.0006,
-          "7": 0.0024
+          "1": 0.0026,
+          "2": 0.0159,
+          "3": 0.5039,
+          "4": 0.1422,
+          "6": 0.0004,
+          "7": 0.0027
         }
       },
       {
@@ -438,19 +438,19 @@
         "division": "NFC West",
         "wins": 10.3,
         "losses": 6.7,
-        "p_division": 0.0692,
-        "p_playoffs": 0.5148,
-        "p_bye": 0.0059,
-        "p_conference_title": 0.072,
-        "p_championship": 0.0347,
+        "p_division": 0.0708,
+        "p_playoffs": 0.5168,
+        "p_bye": 0.0055,
+        "p_conference_title": 0.0728,
+        "p_championship": 0.035,
         "seed_distribution": {
-          "1": 0.0059,
-          "2": 0.0607,
-          "3": 0.0026,
+          "1": 0.0055,
+          "2": 0.0621,
+          "3": 0.003,
           "4": 0.0001,
-          "5": 0.056,
-          "6": 0.1419,
-          "7": 0.2477
+          "5": 0.0528,
+          "6": 0.1482,
+          "7": 0.245
         }
       },
       {
@@ -460,18 +460,19 @@
         "division": "NFC West",
         "wins": 10.0,
         "losses": 7.0,
-        "p_division": 0.045,
-        "p_playoffs": 0.4465,
-        "p_bye": 0.0128,
-        "p_conference_title": 0.0578,
-        "p_championship": 0.0266,
+        "p_division": 0.0481,
+        "p_playoffs": 0.4525,
+        "p_bye": 0.013,
+        "p_conference_title": 0.0586,
+        "p_championship": 0.0267,
         "seed_distribution": {
-          "1": 0.0128,
-          "2": 0.0301,
-          "3": 0.0021,
-          "5": 0.0979,
-          "6": 0.1351,
-          "7": 0.1685
+          "1": 0.013,
+          "2": 0.033,
+          "3": 0.0019,
+          "4": 0.0001,
+          "5": 0.0976,
+          "6": 0.1371,
+          "7": 0.1696
         }
       },
       {
@@ -480,18 +481,18 @@
         "name": "Tampa Bay Buccaneers",
         "division": "NFC South",
         "wins": 7.3,
-        "losses": 9.6,
-        "p_division": 0.4344,
-        "p_playoffs": 0.4355,
+        "losses": 9.7,
+        "p_division": 0.4342,
+        "p_playoffs": 0.4348,
         "p_bye": 0.0,
-        "p_conference_title": 0.0191,
-        "p_championship": 0.0049,
+        "p_conference_title": 0.0171,
+        "p_championship": 0.0051,
         "seed_distribution": {
-          "2": 0.0008,
-          "3": 0.1297,
-          "4": 0.3039,
+          "2": 0.0006,
+          "3": 0.1286,
+          "4": 0.305,
           "6": 0.0001,
-          "7": 0.001
+          "7": 0.0005
         }
       },
       {
@@ -501,18 +502,18 @@
         "division": "NFC South",
         "wins": 7.5,
         "losses": 9.5,
-        "p_division": 0.4051,
-        "p_playoffs": 0.4076,
+        "p_division": 0.4036,
+        "p_playoffs": 0.4057,
         "p_bye": 0.0001,
         "p_conference_title": 0.0089,
-        "p_championship": 0.0023,
+        "p_championship": 0.0024,
         "seed_distribution": {
           "1": 0.0001,
-          "2": 0.0017,
-          "3": 0.1398,
-          "4": 0.2634,
-          "6": 0.0002,
-          "7": 0.0023
+          "2": 0.0022,
+          "3": 0.1346,
+          "4": 0.2666,
+          "6": 0.0006,
+          "7": 0.0015
         }
       },
       {
@@ -522,17 +523,18 @@
         "division": "NFC North",
         "wins": 9.5,
         "losses": 7.5,
-        "p_division": 0.0084,
-        "p_playoffs": 0.3071,
-        "p_bye": 0.0016,
-        "p_conference_title": 0.0159,
-        "p_championship": 0.0059,
+        "p_division": 0.0083,
+        "p_playoffs": 0.3068,
+        "p_bye": 0.0014,
+        "p_conference_title": 0.016,
+        "p_championship": 0.0064,
         "seed_distribution": {
-          "1": 0.0016,
+          "1": 0.0014,
           "2": 0.0067,
-          "5": 0.0335,
-          "6": 0.0929,
-          "7": 0.1724
+          "3": 0.0002,
+          "5": 0.0352,
+          "6": 0.0945,
+          "7": 0.1688
         }
       },
       {
@@ -540,19 +542,19 @@
         "abbreviation": "DAL",
         "name": "Dallas Cowboys",
         "division": "NFC East",
-        "wins": 7.3,
+        "wins": 7.2,
         "losses": 9.7,
         "p_division": 0.1694,
-        "p_playoffs": 0.1736,
+        "p_playoffs": 0.1727,
         "p_bye": 0.0,
         "p_conference_title": 0.0044,
-        "p_championship": 0.0013,
+        "p_championship": 0.001,
         "seed_distribution": {
           "2": 0.0001,
-          "3": 0.0786,
-          "4": 0.0906,
-          "6": 0.0006,
-          "7": 0.0036
+          "3": 0.0809,
+          "4": 0.0883,
+          "6": 0.0004,
+          "7": 0.0029
         }
       },
       {
@@ -561,18 +563,19 @@
         "name": "Washington Commanders",
         "division": "NFC East",
         "wins": 6.5,
-        "losses": 9.4,
-        "p_division": 0.1597,
-        "p_playoffs": 0.1612,
+        "losses": 9.5,
+        "p_division": 0.1583,
+        "p_playoffs": 0.1602,
         "p_bye": 0.0,
-        "p_conference_title": 0.0036,
-        "p_championship": 0.0008,
+        "p_conference_title": 0.0038,
+        "p_championship": 0.0011,
         "seed_distribution": {
-          "2": 0.0003,
-          "3": 0.0978,
-          "4": 0.0617,
-          "6": 0.0001,
-          "7": 0.0014
+          "2": 0.0001,
+          "3": 0.0959,
+          "4": 0.0624,
+          "5": 0.0001,
+          "6": 0.0003,
+          "7": 0.0015
         }
       },
       {
@@ -582,15 +585,14 @@
         "division": "NFC South",
         "wins": 5.8,
         "losses": 11.1,
-        "p_division": 0.0819,
-        "p_playoffs": 0.0821,
+        "p_division": 0.0829,
+        "p_playoffs": 0.0831,
         "p_bye": 0.0,
-        "p_conference_title": 0.0016,
+        "p_conference_title": 0.0011,
         "p_championship": 0.0003,
         "seed_distribution": {
-          "3": 0.015,
-          "4": 0.0669,
-          "6": 0.0001,
+          "3": 0.0154,
+          "4": 0.0675,
           "7": 0.0002
         }
       },
@@ -601,17 +603,15 @@
         "division": "NFC South",
         "wins": 6.0,
         "losses": 11.0,
-        "p_division": 0.0788,
-        "p_playoffs": 0.0791,
+        "p_division": 0.0794,
+        "p_playoffs": 0.0795,
         "p_bye": 0.0,
-        "p_conference_title": 0.0014,
-        "p_championship": 0.0003,
+        "p_conference_title": 0.0011,
+        "p_championship": 0.0002,
         "seed_distribution": {
-          "2": 0.0001,
-          "3": 0.0184,
-          "4": 0.0603,
-          "6": 0.0001,
-          "7": 0.0002
+          "3": 0.0172,
+          "4": 0.0621,
+          "7": 0.0001
         }
       },
       {
@@ -621,15 +621,14 @@
         "division": "NFC East",
         "wins": 5.0,
         "losses": 12.0,
-        "p_division": 0.008,
-        "p_playoffs": 0.008,
+        "p_division": 0.0077,
+        "p_playoffs": 0.0077,
         "p_bye": 0.0,
-        "p_conference_title": 0.0002,
+        "p_conference_title": 0.0001,
         "p_championship": 0.0001,
         "seed_distribution": {
           "3": 0.0024,
-          "4": 0.0056,
-          "7": 0.0001
+          "4": 0.0054
         }
       },
       {
@@ -640,12 +639,12 @@
         "wins": 6.0,
         "losses": 11.0,
         "p_division": 0.0,
-        "p_playoffs": 0.0002,
+        "p_playoffs": 0.0003,
         "p_bye": 0.0,
         "p_conference_title": 0.0,
         "p_championship": 0.0,
         "seed_distribution": {
-          "7": 0.0002
+          "7": 0.0003
         }
       }
     ]
