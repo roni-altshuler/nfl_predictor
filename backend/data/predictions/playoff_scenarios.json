@@ -1,10 +1,10 @@
 {
   "season": 2026,
-  "generated_at": "2026-11-20T19:00:27+00:00",
-  "computed_at": "2026-11-20T19:00:33+00:00",
+  "generated_at": "2026-11-21T17:55:23+00:00",
+  "computed_at": "2026-11-21T17:55:30+00:00",
   "model_version": "nfl-margin-lattice-1",
   "simulation_version": "nfl-season-h2h-2",
-  "forecast_sha256": "add7d2f3150a540411f92fb361da1ec6dcfbccabcb3f0f1281edf28e8e914007",
+  "forecast_sha256": "42e1fc6397043f749ee9d98bfa3bfa17b9059b9814cb05238df6d2af06c75359",
   "simulations": 20000,
   "min_branch_samples": 200,
   "method": "conditional_simulation",
