@@ -60,6 +60,7 @@ export function SlateWithFilter({ games }: { games: GameForecast[] }) {
             <GameCard
               key={game.game_id}
               game={game}
+              simple
               riseIndex={Math.min(index, 11)}
             />
           ))}

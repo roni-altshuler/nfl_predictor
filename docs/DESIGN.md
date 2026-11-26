@@ -165,6 +165,21 @@ notice explicitly names Forecast Lab, whose parser supplies that count; it
 does not label raw slate, Following or quick-pick rows as validated.
 Game cards and the dedicated Lab remain the existing components.
 
+The October 17 fan-facing homepage adds Games, Teams and matchup-scoped Players
+entry points. Its slate cards label win chances and projected points in plain
+language; full model and market numbers remain on each game page. Team discovery
+comes before optional week tools, ratings and the record. Source dates and model
+version open in a native disclosure; stale and withholding notices stay visible.
+
+Upcoming games lead with the teams, a compact section rail, win chances and
+projected points. A short optional explanation distinguishes average points from
+an exact score and keeps uncertainty explicit. Players and game context precede
+the existing close-game explorer. Distribution, spread and market detail open
+under “Prediction details & model numbers”. Section links reveal that disclosure
+before scrolling/focusing, including shared hashes, without adding Back steps.
+All new controls retain 44px targets and the existing focus outline. Data,
+probabilities, model inputs, provider coverage and branding are unchanged.
+
 
 ## January effect and weekly briefing (2026-09-18)
 
